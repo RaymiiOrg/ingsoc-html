@@ -1,0 +1,300 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>File locking, grep and process killing on OpenVMS - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />
+        # <script src="/s//inc/js/toc.js" type="text/javascript"></script> -->
+        <script type="text/javascript">
+            window.onload=function(){var n="",e=0;document.getElementById("contents").innerHTML=document.getElementById("contents").innerHTML.replace(/<h([\d])>([^<]+)<\/h([\d])>/gi,function(r,t,o,a){if(t!=a)return r;t>e?n+=new Array(t-e+1).join("<ol>"):t<e&&(n+=new Array(e-t+1).join("</ol>")),e=parseInt(t);var i=o.replace(/ /g,"_");return n+='<li><a href="#'+i+'">'+o+"</a></li>","<h"+t+'><a name="'+i+'">'+o+"</a></h"+a+">"}),e&&(n+=new Array(e+1).join("</ol>")),document.getElementById("toc").innerHTML+=n};
+        </script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>File locking, grep and process killing on OpenVMS</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="File_locking_grep_and_process_killing_on_OpenVMS.html" class="link">File locking, grep and process killing on OpenVMS</a></li></ul><p><small>06-05-2018</small> | <small>Remy van Elst</small> | <a href="File_locking_grep_and_process_killing_on_OpenVMS.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+
+<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
+
+<p>On the <a href="http://decus.org">DECUS</a> OpenVMS system there is no <code>curl</code> or <code>wget</code> installed. I wanted to download a remote <code>C</code> file to play around with the compiler and some simple <code>Hello World</code> code, to get a feel of the build system. After a bit of searching around the internet I was not able to find a command like curl or wget to download a remote file. But, the searches led me to the OpenVMS port of curl, which, I hoped, might be able to run on the DECUS system. Just like on a linux system, running the binary under my user account, not install it system wide. This ended up to be another adventure in which I figured out how to trace a locked file to a process, grep the output of a process on OpenVMS and kill a process. I did not get curl to work or compile my code, yet. </p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
+
+<p>The <code>cc</code> command is installed on the DECUS system: </p>
+
+<pre><code>$ CC /VERSION
+HP C V7.3-010 on OpenVMS Alpha V8.4-2L2
+</code></pre>
+
+<p>When I get to my C code I will probably play around and write another small article on it here.</p>
+
+<p>I downloaded the OpenVMS curl version from the <a href="https://sourceforge.net/projects/vms-ports/files/?source=raymii.org">vmsports</a> project to my computer. This is a project that compiles some software for OpenVMS, like <code>find</code>, <code>python</code> and the one I was looking for, <code>curl</code>.</p>
+
+<p>Using an sFTP client (filezilla), I uploaded the file to the DECUS system. You&#39;re all probably thinking, why did he not just upload his C code with sFTP? It simply did not occur, yet. When I was typing this article I thought, hmm. But it was too late already, plus, I did learn new stuff in the process. As Bob Ross would say, <code>We don&#39;t make mistakes, just happy little accidents.</code></p>
+
+<p>Filezilla however did complain and kept uploading the file. I closed Filezilla and went to check what was wrong via SSH. The file was there, leaving 5 versions. Probably an upload failure. Delete the files and try again.</p>
+
+<h3>-RMS-E-FLK, file currently locked by another user</h3>
+
+<p>I found out how to remove files and folders <a href="https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html">and wrote an article on that</a>. To remove all versions of a file, using big scary wildcards:</p>
+
+<pre><code>$ DELETE vmsports*.*;*
+%DELETE-W-FILNOTDEL, error deleting DSA3:[DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1
+-RMS-E-FLK, file currently locked by another user
+</code></pre>
+
+<p>Huh? I was not aware of multiple users or sessions in this account.</p>
+
+<p>That error message refers to the <code>RMS</code>. I saw that <a href="https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html">here</a> as well, I might need to look into it some more. </p>
+
+<p>I remembered something about locking when reading <code>HELP</code> pages earlier. In this case, I tried the following:</p>
+
+<pre><code>$ SET FILE /UNLOCK VMSPORTS*.*;*
+%SET-I-NOTLOCKED, DSA3:[DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1 notlocked
+</code></pre>
+
+<p>That didn&#39;t help. Lets read the <code>HELP</code>:</p>
+
+<pre><code>$ HELP SET FILE /UNLOCK
+
+SET
+
+  FILE
+
+    /UNLOCK
+
+       Clears a file marked as deaccess locked. Deaccess locking is
+       required by and used by those few applications that maintain
+       their own locking and consistency, typically without the use
+       of the OpenVMS distributed lock manager, and potentially also
+       without the use of RMS. When an application using deaccess
+       locking does not correctly deaccess the file (often due to an
+       application or system failure), the file is marked as locked, and
+       is thus inaccessible until the integrity of the contents of the
+       file are verified and the SET FILE/UNLOCK command is used.
+
+       This command does not affect the state of files that are locked
+       using RMS or the distributed lock manager.
+
+       For details on file deaccess locking, see the VSI OpenVMS I/O
+       User&#39;s Reference Manual, the ACP-QIO interface documentation, and
+       specifically the FIB$V_DLOCK option available on the IO$_CREATE
+       and IO$_ACCESS functions.
+
+       The SET FILE/UNLOCK command can clear the cause of the following
+       error message:
+
+       %SYSTEM-W-FILELOCKED, file is deaccess locked
+
+       However, this command cannot resolve the cause of the error
+       message:
+
+       %RMS-W-FLK, file currently locked by another user
+</code></pre>
+
+<p>That explains why it did not work. I suspected that there might be a process which locked my file. </p>
+
+<h3>Tracing a process&#39; open files (lsof)</h3>
+
+<p>The HPe forums where of help here. First I needed the root disk name, which is in the <code>DIR</code> output:</p>
+
+<pre><code>$ DIR
+
+Directory DSA3:[DECUSERVE_USER.EXAMPLE]
+
+$MAIN.TPU$JOURNAL;1 .VIMINFO;1          A.;1                FTP_SERVER.LOG;3
+FTP_SERVER.LOG;1    LOGIN.COM;2         LOGIN.COM;1         LOGIN_COM.TPU$JOURNAL;1
+MAIL.DIR;1          NOTES$NOTEBOOK.NOTE;1                   SSH.DIR;1
+SSH2.DIR;1          THREE.DIR;1         VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1
+WWW.DIR;1
+</code></pre>
+
+<p>Using the <code>SHOW DEV</code>  command we can list all processes that have files open:</p>
+
+<pre><code>$ SHOW DEV /FILES DSA3:
+Files accessed on device DSA3: on  6-MAY-2018 10:31:44.88
+Process name      PID     File name
+                00000000  insufficient privilege or object protection violation
+                00000000  insufficient privilege or object protection violation
+Rob Brooks      0000043B  insufficient privilege or object protection violation
+HENKLE          0000F62B  insufficient privilege or object protection violation
+HENKLE          0000F62B  insufficient privilege or object protection violation
+HENKLE          0000F62B  insufficient privilege or object protection violation
+HENKLE          0000F62B  insufficient privilege or object protection violation
+[...]
+HtHTNOTES_AN165 0000E541  insufficient privilege or object protection violation
+&lt;FTP_EXAMPLE&gt;      00011591  [DECUSERVE_USER.EXAMPLE]FTP_SERVER.LOG;3
+&lt;FTP_EXAMPLE&gt;      00011591  [DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1
+</code></pre>
+
+<p>Except for the huge list of errors, it confirms that the FTP server has locked my file. One of the ways to release that lock is to stop the process. Another way is to reboot the system. The latter being a harsh solution if all else fails.</p>
+
+<h3>Search the output of one command for a string (pipe and grep) on OpenVMS</h3>
+
+<p>A big list of open files is not really usefull, and I don&#39;t want to see all those other users, none of my business. I wanted to filter that list to only show my user. Let&#39;s see if I can use a pipe and grep:</p>
+
+<pre><code>$ SHOW DEV /FILES DSA3: | GREP EXAMPLE
+%DCL-W-MAXPARM, too many parameters - reenter command with fewer parameters
+ \|\
+</code></pre>
+
+<p>Nope, but I do suspect OpenVMS having an excellent solution for this problem. The DCL shell is over 30 years old so someone had to have this problem.</p>
+
+<p>Browsing around the documentation I found <a href="https://web.archive.org/web/20180506143839/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_155.html">this</a>. It seems that if you want to pipe output of a command, you first need to preface the command with the word <code>PIPE</code>, then the command, then the <code>|</code> (pipe char), then another process. </p>
+
+<p>There is no <code>grep</code> on OpenVMS unless you install it. There however is <code>SEARCH</code>. A logical name, just like most of OpenVMS&#39; workings.</p>
+
+<p>The <code>search</code> command requires a filename. You can&#39;t just pipe output into it directly, you need to tell it that it has to search the output. OpenVMS has the <code>SYS$OUTPUT</code> and <code>SYS$INPUT</code> files for that when using the <code>PIPE</code> command. </p>
+
+<p>Reading through the documentation:</p>
+
+<ul>
+<li><code>|</code>: Key pipe separator. The pipe connects the <code>SYS$OUTPUT</code> of one pipeline-segment command to the <code>SYS$INPUT</code> of the next command. </li>
+</ul>
+
+<p>A few tries later I conjured up this command sequence:</p>
+
+<pre><code>$ PIPE SHOW DEV /FILES DSA3: | SEARCH SYS$INPUT EXAMPLE
+Files accessed on device DSA3: on  6-MAY-2018 12:48:11.51
+Process name      PID     File name
+[...]
+&lt;FTP_EXAMPLE&gt;      000111AF  [DECUSERVE_USER.EXAMPLE]FTP_SERVER.LOG;4
+</code></pre>
+
+<p>To show all running processes including their PID&#39;s, use the <code>SHOW SYSTEM</code> command. Combine that with out <code>PIPE&amp;SEARCH</code> shell trick to get all the processes of the current user. Searching the <a href="https://web.archive.org/web/20180506165527/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_248.html">docs</a> didn&#39;t gave me another way or flag to the <code>SHOW SYSTEM</code> or <code>SHOW PROCESS</code> command to filter out one specific user.</p>
+
+<pre><code>$ PIPE SHOW SYSTEM | SEARCH SYS$INPUT EXAMPLE
+OpenVMS V8.4-2L2  on node EISNER    6-MAY-2018 12:49:45.02   Uptime  23 18:27:17
+  Pid    Process Name    State  Pri      I/O       CPU       Page flts  Pages
+[...]
+0001156B EXAMPLE            LEF      9      374   0 00:00:00.15       641     89
+000111AF &lt;FTP_EXAMPLE&gt;      LEF      5    46299   0 00:00:06.01       705    346  N
+000115B0 EXAMPLE_62273      LEF      6      129   0 00:00:00.01        84    105  S
+000115BE EXAMPLE_27501      CUR   0  4      188   0 00:00:00.04       138    165  S
+000115BF EXAMPLE_29010      COM      4      185   0 00:00:00.02       128    152  S
+</code></pre>
+
+<p>It seems that we can try to stop (kill) process <code>000111AF</code>. Use the <code>STOP</code> command with the <code>/ID</code> flag:</p>
+
+<pre><code>$ STOP /ID=000111AF
+</code></pre>
+
+<p>Now the file deletion was possible:</p>
+
+<pre><code>$ DEL VMSPO*.*;*
+$
+</code></pre>
+
+<p>The actual cause of the upload failure? I don&#39;t have enough quota.</p>
+
+<h3>SHOW QUOTA</h3>
+
+<p>The sFTP client showed me this error after failing a few times:</p>
+
+<pre><code>550 File Write Error: %%SYSTEM-F-EXDISKQUOTA, disk quota exceeded
+</code></pre>
+
+<p>This is where my adventure ends. Without looking up documentation, because of the logicalness of DCL, the following command showed me that I had exhausted my disk quota:</p>
+
+<pre><code>$ show quota
+  User [EXAMPLE] has 10000 blocks used, 0 available,
+  of 10000 authorized and permitted overdraft of 0 blocks on DISK_USER
+</code></pre>
+
+<p>What is a disk block you ask? Again the <a href="https://web.archive.org/web/20180506170308/http://h41379.www4.hpe.com/faq/vmsfaq_003.html">documentation</a> has all the answers:</p>
+
+<pre><code>A disk block is the minimum unit of disk storage allocation in OpenVMS.
+Under OpenVMS VAX and OpenVMS Alpha, the disk volume block size is consistent, with each block containing 512 bytes, or one-half kilobyte. Each byte is comprised of eight bits. A bit represents the smallest unit of information, typically refered to as a one or a zero.
+[...]
+The number of bytes in a file can be determined by multiplying the number of blocks allocated for the file times the number of bytes in a block. For example: to convert OpenVMS disk blocks to (base two) kilobytes (KB; 1024 bytes), simply divide by two. To convert blocks to (base two) megabytes, divide by 2048. Blocks to (base two) gigabytes (GB), divide by 2097152. 
+</code></pre>
+
+<p>In the case of the DECUS system, I have about 5 megabytes of quota and my zipped <code>curl</code> was around 7 MB, explaining the quota error. </p>
+</div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/es40.html" class="link">es40 &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

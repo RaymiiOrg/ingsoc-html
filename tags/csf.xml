@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag csf on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/csf.xml</link> 
+            <description>RSS feed for tag csf on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/csf.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>Recap of week 53, 2015</title> 
+                <link>https://raymii.org/s/blog/Recap_of_week_53_2015.html</link> 
+                <guid>https://raymii.org/s/blog/Recap_of_week_53_2015.html</guid>
+                <description>Recap of week 53 of 2015, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
+                <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Configserver Firewall and Security (CSF and LFD)</title> 
+                <link>https://raymii.org/s/articles/Configserver_Firewall_and_Security_CSF_LFD.html</link> 
+                <guid>https://raymii.org/s/articles/Configserver_Firewall_and_Security_CSF_LFD.html</guid>
+                <description>his page covers my notes about csf and lfd. csf is an easy SPI iptables firewall suite. lfd is the login failure daemon, which scans log files for failed authentication and blocks the IP's doing that. This page covers installation, populair command line options and popular config file options.</description> 
+                <pubDate>Sun, 12 Oct 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    

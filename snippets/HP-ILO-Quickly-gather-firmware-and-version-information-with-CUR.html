@@ -1,0 +1,133 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>HP ILO - Quickly gather ILO version and firmware information via CURL - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />
+        # <script src="/s//inc/js/toc.js" type="text/javascript"></script> -->
+        <script type="text/javascript">
+            window.onload=function(){var n="",e=0;document.getElementById("contents").innerHTML=document.getElementById("contents").innerHTML.replace(/<h([\d])>([^<]+)<\/h([\d])>/gi,function(r,t,o,a){if(t!=a)return r;t>e?n+=new Array(t-e+1).join("<ol>"):t<e&&(n+=new Array(e-t+1).join("</ol>")),e=parseInt(t);var i=o.replace(/ /g,"_");return n+='<li><a href="#'+i+'">'+o+"</a></li>","<h"+t+'><a name="'+i+'">'+o+"</a></h"+a+">"}),e&&(n+=new Array(e+1).join("</ol>")),document.getElementById("toc").innerHTML+=n};
+        </script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>HP ILO - Quickly gather ILO version and firmware information via CURL</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/snippets.html" class="link">Snippets</a></li><li><a href="HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html" class="link">HP ILO - Quickly gather ILO version and firmware information via CURL</a></li></ul><p><small>13-04-2013</small> | <small>Remy van Elst</small> | <a href="HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Have a lot of HP servers with ILO cards, and want to gather information from them quicly? By default you can get some information in XML format, for ILO, ILO2, ILO3 and ILO4, with curl. You don&#39;t have to log in via SSH, and can script it/loop it.</p>
+
+<p>On the command line, make sure you&#39;re in the right VLAN/management network (replace the IP with your ILO IP) :</p>
+
+<pre><code>curl http://10.2.76.22/xmldata?item=All
+</code></pre>
+
+<p>For https:</p>
+
+<pre><code>curl -k https://10.2.76.22/xmldata?item=All
+</code></pre>
+
+<p>Example response:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;RIMP&gt;&lt;HSI&gt;&lt;SBSN&gt;CZCxxxx &lt;/SBSN&gt;&lt;SPN&gt;ProLiant DL380 G5&lt;/SPN&gt;&lt;UUID&gt;xxxxxxxx&lt;/UUID&gt;&lt;SP&gt;1&lt;/SP&gt;&lt;cUUID&gt;0000-0000-0000-0000&lt;/cUUID&gt;&lt;VIRTUAL&gt;&lt;STATE&gt;Inactive&lt;/STATE&gt;&lt;VID&gt;&lt;BSN&gt;&lt;/BSN&gt;&lt;cUUID&gt;&lt;/cUUID&gt;&lt;/VID&gt;&lt;/VIRTUAL&gt;&lt;/HSI&gt;&lt;MP&gt;&lt;ST&gt;1&lt;/ST&gt;&lt;PN&gt;Integrated Lights-Out 2 (iLO 2)&lt;/PN&gt;&lt;FWRI&gt;2.02&lt;/FWRI&gt;&lt;BBLK&gt;3; Jul 11 2004&lt;/BBLK&gt;&lt;HWRI&gt;ASIC:  7&lt;/HWRI&gt;&lt;SN&gt;00xx00xx00xx      &lt;/SN&gt;&lt;UUID&gt;ILO000xxx000&lt;/UUID&gt;&lt;IPM&gt;1&lt;/IPM&gt;&lt;SSO&gt;0&lt;/SSO&gt;&lt;PWRM&gt;3.4&lt;/PWRM&gt;&lt;/MP&gt;&lt;/RIMP&gt;
+</code></pre>
+
+<p>A quick tip, to know the ILO version look at the <code>HWRI&gt;ASIC:</code> value: </p>
+
+<ul>
+<li>ASIC 2 = ILO 1</li>
+<li>ASIC 7 = ILO 2</li>
+<li>ASIC 16 = ILO 4</li>
+</ul>
+
+<p>With curl you can loop as well:</p>
+
+<pre><code>curl http://10.2.76.[1-120]/xmldata?item=All
+</code></pre>
+
+<p>Also, here is a script to find all the ILO&#39;s on your network: <a href="http://blog.nachotech.com/?p=63">http://blog.nachotech.com/?p=63</a></p>
+</div><hr>Tags: <a href="../tags/curl.html" class="link">curl &nbsp;</a><a href="../tags/dl380.html" class="link">dl380 &nbsp;</a><a href="../tags/hp.html" class="link">hp &nbsp;</a><a href="../tags/ilo.html" class="link">ilo &nbsp;</a><a href="../tags/ilo2.html" class="link">ilo2 &nbsp;</a><a href="../tags/ilo3.html" class="link">ilo3 &nbsp;</a><a href="../tags/ilo4.html" class="link">ilo4 &nbsp;</a><a href="../tags/remote-access.html" class="link">remote-access &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

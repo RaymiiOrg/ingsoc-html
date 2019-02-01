@@ -1,0 +1,152 @@
+This is a text-only version of the following page on https://raymii.org:
+---
+
+	Title    : 	Recap of week 52, 2015
+	Author   : 	Remy van Elst
+	Date     : 	26-12-2015
+	URL      : 	https://raymii.org/s/blog/Recap_of_week_52_2015.html
+	Format   : 	Markdown/HTML
+---
+
+
+
+Recap of week 52, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.
+
+<img src="https://raymii.org/s/inc/img/comics/gingerbread.png" alt="comic">
+Comic by [Kris Wilson, From Cyanide and Happiness](http://explosm.net/comics/4154/)
+
+If you like this website and want to support it AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+
+Earlier editions can [be found here](https://raymii.org/s/tags/recap.html)
+
+
+### News, tutorials and articles
+
+- [SysAdvent blog](http://sysadvent.blogspot.nl/). Just like last year, great articles.
+- The software freedom conservancy needs 2400 supporters to [continue their efforts](https://sfconservancy.org/news/2015/nov/23/2015fundraiser/) in Free Software. I signed up for a monthly donation, so should you.
+- The Register [writes](http://www.theregister.co.uk/2015/11/25/software_conservancy_funding_drive/) about the SFC's struggle as well, specificly because of vmware.
+- Check broken links with [wget](http://www.createdbypete.com/articles/simple-way-to-find-broken-links-with-wget/).
+- [IPSEC VPN on Ubuntu 15.04 with StrongSwan](https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html).
+- An HTTP Status Code to Report Legal Obstacles, [but why 451?](https://www.mnot.net/blog/2015/12/18/451)
+- Tutorial series on [how Tor works](http://jordan-wright.com/blog/2015/02/28/how-tor-works-part-one/).
+- Magic plugins that promise optimizations and speedup [probably don't](https://codeseekah.com/2015/12/18/lighthouse-wordpress-performance-plugin-review/).
+- [Atlassian's products](http://appcues.com/blog/atlassian-5-billion-dollar-user-onboarding-magic/) are good and earn a lot of revenue, because they are so simple and wel integrated.
+- Running [Windows](http://pr1ntf.xyz/windowsunderbhyve.html) on FreeBSD's bhyve hypervisor.
+- Some software [lasts forever](https://wincent.com/blog/old-stuff-that-rocks) and some just a few years.
+- [DigitalOcean](http://www.datacenterknowledge.com/archives/2015/11/24/digitalocean-from-two-data-centers-to-11-in-three-years/) from two data centers to 11 in three years.
+- A recap of development for the curl project, [8 curl releases, a total of 575 bugs fixed, 1,200 commits by 107 different individuals](http://daniel.haxx.se/blog/2015/12/20/a-2015-retrospective/) in 2015. Amazing that is.
+- The ScreenOS backdoor that has been in Juniper devices since 2012 is [explained a bit more here](https://community.rapid7.com/community/infosec/blog/2015/12/20/cve-2015-7755-juniper-screenos-authentication-backdoor) including the backdoor password.
+- Adam Langley from Google also talks about [one of the Juniper vulnerabilities announced last week.](https://www.imperialviolet.org/2015/12/19/juniper.html)
+- And Matthew Green is talking on the [Juniper Netscreen](http://blog.cryptographyengineering.com/2015/12/on-juniper-backdoor.html) backdoors. Big names on a big issue.
+- Adam Langley also wrote a nice article on [post-quantum key agreement](https://www.imperialviolet.org/2015/12/24/rlwe.html). What will happen to crypto when quantumcomputers get mainstream?
+- [Taking Let's Encrypt for a spin](https://timkadlec.com/2015/12/taking-lets-encrypt-for-a-spin/). It's really that easy.
+- Rails 5.0.0 [beta](http://weblog.rubyonrails.org/2015/12/18/Rails-5-0-beta1/), with special API mode.
+- Distrowatch reviews [Arch linux](http://distrowatch.com/weekly.php?issue=20151221###arch).
+- Distrowatch also reviews [OpenBSD 5.8](http://distrowatch.com/weekly.php?issue=20151207###openbsd).
+- Microsoft will remove [these 14](http://social.technet.microsoft.com/wiki/contents/articles/31680.microsoft-trusted-root-certificate-program-updates.aspx) root CA certificates from their trust store.
+- Forget the SSH Key [passphrase](http://gotlinux.nl/article/forget-ssh-passphrase-upon-laptop-suspend) on laptop suspend with systemd.
+- A short article on practical [SSL](https://certsimple.com/blog/obsolete-cipher-suite-and-things-web-developers-should-know-about-ssl) commands and more
+- Review of the [System76 Meerkat](http://www.cio.com/article/3016775/linux/system76-meerkat-god-of-small-things.html). A fast small PC running Linux out of the box.
+- Why it's [harder](https://blog.cloudflare.com/why-its-harder-to-forge-a-sha-1-certificate-than-it-is-to-find-a-sha-1-collision/) to forge a SHA-1 certificate than it is to find a SHA-1 collision..
+- A practical example of [Kdenlive's advanced video-editing features](http://www.ocsmag.com/2015/12/22/the-video-editing-challenge-part-i-kdenlive/): Combining various video clips into one using multiple masks (aka advanced split screening).
+- The firefox [add-on landscape](http://www.ghacks.net/2015/12/23/mozilla-needs-to-focus-add-ons/) will face some big changes in the next year. Let's hope my favorite extensions get updated. Good to see progress here.
+- Run [DragonFly BSD](http://lists.dragonflybsd.org/pipermail/users/2015-December/228471.html) on a [Digital Ocean VPS (referral link).](https://www.digitalocean.com/?refcode=7435ae6b8212)
+- Automate to save mental energy, [not to save time](http://www.johndcook.com/blog/2015/12/22/automate-to-save-mental-energy-not-time/). And, IMHO, to [transfer knowledge](http://www.walkingrandomly.com/?p=5923) out of your head, reducing the busfactor.
+- Steam has an [oops with security](http://kotaku.com/steam-goes-nuts-offers-access-to-other-peoples-account-1749718979).
+- Open letter to Mozilla, bring back [persona](http://www.stavros.io/posts/open-letter-mozilla-bring-back-persona/).
+- GPL enforcement is a [social good](https://mjg59.dreamwidth.org/38992.html).
+
+
+
+### Software and releases
+
+- [Streisand](https://github.com/jlund/streisand) sets up a new server running L2TP/IPsec, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, and a Tor bridge, using Ansible. Supports major cloudproviders, sets up a VPN server very fast.
+- Wine 1.8 released after [17 months of development.](https://www.winehq.org/announce/1.8) That means that [Wine 1.9 dev](https://www.winehq.org//announce/1.9.0) is available.
+- LibreOffice [5.1 released.](https://www.libreoffice.org/download/libreoffice-fresh/) Release [notes here.](https://www.libreoffice.org/download/release-notes/)
+- A list of all [311 vulnerabilities](http://www.itgovernance.co.uk/blog/list-of-flash-vulnerabilities-in-2015/) patched in Flash in 2015.
+- Mediagoblin, the open source media publishing platform, released [version 0.8.1](http://mediagoblin.org/news/mediagoblin-0.8.1-security-release.html).
+- [RSSGuard](https://bitbucket.org/skunkos/rssguard/), A Qt desktop rss client with support for Tiny Tiny RSS.
+- pfSense [2.2.6](https://blog.pfsense.org/?p=1971) released, fixing security issues like SQL injection, local file inclusion and more.
+- [SuperTux 0.4.0](https://github.com/SuperTux/supertux/releases/tag/v0.4.0) released, after 10 years of development. New levels, new bosses, add-on manager in game, new badguys, bonuses and power-ups (air-, earth- and ice-flower). I've played a lot of SuperTux, I'm going to try this new version.
+- [Fedora 24 ships gcc 6](https://fedoraproject.org/wiki/Changes/GCC6), all packages need a rebuild.
+- Mir, the display manager, got a new release, [version 0.18](http://kdubois.net/?p=2032). Bugfixes and new features, but I don't understand half of the words in the changelog.
+- Capcom announces Steam OS/Linux support for [Street Fighter 5!](http://www.capcom-unity.com/street_fighter/blog/2015/12/17/announcing-steam-os-support-for-sfv)
+- A great [blog about mainframe hacking and security](http://www.bigendiansmalls.com/).
+- Full disk Encryption with LUKS is trivial to hack by editing the bootloader and [initrd](http://blog.gdssecurity.com/labs/2015/12/23/introducing-evilabigail.html). Secure boot is the solution here, sadly.
+- [Darktable 2.0](http://www.darktable.org/2015/12/darktable-2-0-released/) released. Open source lightroom alternative.
+- [Manjaro 15.12 (Capella)](https://manjaro.github.io/Manjaro-15.12-released/) released. Based on Arch, but very friendly.
+- Hardware actually. [freetserv](https://freetserv.github.io/): a free open-source hardware build-it-yourself serial terminal server to remote-control up to 48 devices via their RS-232 serial port.
+- [Some AD checks](https://www.reddit.com/r/sysadmin/comments/3y0pad/some_ad_checks_you_should_be_running_on_a_regular/) you should be running often.
+
+
+
+### Talks, videos, slides and podcasts
+
+Container Hacks and Fun Images, by [Jessica Frazelle](https://jessfraz.com/), from DockerCon 2015
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1qlLUf7KtAw?rel=0" frameborder="0" allowfullscreen></iframe>
+
+- Kdenlive's good looks now independent from KDE: [15.12 release](https://www.youtube.com/watch?v=H1C4iJtuBIM).
+- Linux Voice [christmas special, s3 e22](https://www.linuxvoice.com/podcast-season-3-episode-22/). Good magazine as well, those guys do.
+- UNIX: Making computers easier to use -- [AT&T archives film from 1982, Bell Laboratories](https://www.youtube.com/watch?v=XvDZLjaCJuw).
+
+
+### Fun and nifty things and discussions
+
+- What is your [favorite](https://www.reddit.com/r/sysadmin/comments/3xh7h4/what_is_your_favorite_command/) command?
+- InfoGraph on [how nasty your keyboard is](http://lifehacker.com/this-graphic-shows-how-nasty-your-keyboard-can-get-and-1748410593).
+- Do you regret your [career choice](https://www.reddit.com/r/sysadmin/comments/3xnoj7/do_you_regret_your_career_choice/) as a sysadmin?
+- Yet another Raspberry Pi Zero [USB hub](http://hackaday.com/2015/12/19/yet-another-pi-zero-usb-hub/).
+- What do you use [as a home router?](https://www.reddit.com/r/sysadmin/comments/3xucfz/hey_rsysadmin_what_do_you_use_for_your_home_router/)
+- Add [wifi](http://hackaday.com/2015/12/21/giving-the-c64-a-wifi-modem/) to your Commodore 64.
+- [How do you](https://www.reddit.com/r/sysadmin/comments/3xvykc/so_your_firewall_isnt_actually_blocking_anything/) tell your client that they firewall sucks, without being "that guy"?
+- Howto create A Doom level. [It's Fun!](http://eev.ee/blog/2015/12/19/you-should-make-a-doom-level-part-1/)
+- Has [active directory management](https://www.reddit.com/r/sysadmin/comments/3xqffv/has_active_directory_management_ever_made_you/) ever made you emotional?
+- 3D print objects directly from [Fallout 4](http://hackaday.com/2015/12/20/printing-objects-directly-from-fallout-4/)!
+- From GNU: Words to avoid (or use with care) because they are [loaded or confusing](https://www.gnu.org/philosophy/words-to-avoid.en.html).
+- This [redditor hates recruiters big time](https://www.reddit.com/r/sysadmin/comments/3xxb6n/how_much_do_it_recruiters_make/). So do I by the way, but not that bitter.
+- Procedural [castle generation](http://www.ultimaratioregum.co.uk/game/2015/12/13/castle-generation/).
+- Why do people [hate Unity](https://www.reddit.com/r/linux/comments/3xpule/why_people_hate_unity)?
+- Fix your [broken builds](https://gist.github.com/marick/3ec112bc38b2af267e15) faster by hooking up lava lamps to your CI.
+- Remember to spend [time with your loved ones](https://www.reddit.com/r/sysadmin/comments/3xqp8h/just_watched_my_replacement_change_the_admin/) during and after the holidays.
+
+
+
+
+
+---
+
+License:
+All the text on this website is free as in freedom unless stated otherwise. 
+This means you can use it in any way you want, you can copy it, change it 
+the way you like and republish it, as long as you release the (modified) 
+content under the same license to give others the same freedoms you've got 
+and place my name and a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for 
+advertisements. You are tracked and Google knows everything about you. 
+Use an adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license 
+unless already licensed under a license which does not allows this form 
+of licensing or if another license is stated on that page / in that software:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Just to be clear, the information on this website is for ment for educational 
+purposes and you use it at your own risk. I do not take responsibility if you 
+screw something up. Use common sense, do not rm -rf / as root for example. 
+If you have any questions then do not hesitate to contact me.
+
+See https://raymii.org/s/static/About.html for details.

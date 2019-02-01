@@ -1,0 +1,548 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag articles on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/articles.xml</link> 
+            <description>RSS feed for tag articles on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/articles.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>GPG noninteractive batch sign, trust and send gnupg keys</title> 
+                <link>https://raymii.org/s/articles/GPG_noninteractive_batch_sign_trust_and_send_gnupg_keys.html</link> 
+                <guid>https://raymii.org/s/articles/GPG_noninteractive_batch_sign_trust_and_send_gnupg_keys.html</guid>
+                <description>Recently a team I consult for started using a shared password manager, pass. It uses GPG keys and presents itself as the standard unix password manager, but in essence it's nothing more than a wrapper around GPG encrypted files. We all had to generate new keys since the team is new and we were not allowed to use existing keys. Using a new, empty keyring, I generated my key and imported their keys. I wanted to trust, sign and publish all keys to a keyserver, this article shows how to do that noninteractively in batch form. Saves me doing the same thing four times, since now it's just four people, but next time it might be a hundred.</description> 
+                <pubDate>Fri, 01 Jun 2018 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Essential Monitoring checks</title> 
+                <link>https://raymii.org/s/articles/Essential_Monitoring_checks.html</link> 
+                <guid>https://raymii.org/s/articles/Essential_Monitoring_checks.html</guid>
+                <description>In this article I'll provide a list of checks I consider essential for monitoring and why they are usefull. It's on different levels, ranging from your application (health checks), to operating system (disk usage, load) and hardware (iDrac, disks, power). Use it as a starting point when setting up your monitoring.</description> 
+                <pubDate>Tue, 20 Mar 2018 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Dell PowerEdge firmware upgrades via iDrac</title> 
+                <link>https://raymii.org/s/articles/Dell_PowerEdge_firmware_upgrades_via_iDrac.html</link> 
+                <guid>https://raymii.org/s/articles/Dell_PowerEdge_firmware_upgrades_via_iDrac.html</guid>
+                <description>The recent spectre and meltdown vulnerabilities require BIOS and firmware updates. Dell provides binaries for Windows and Linux, but just for Red Hat and SUSE. Some firmware updates can be run on Ubuntu or Debian, but some fail with the error that RPM could not be found. Which is correct since it's not Red Hat. In this small article I'll show you how to upgrade the firmware via the iDrac, which I recently discovered.</description> 
+                <pubDate>Fri, 26 Jan 2018 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>ncdu - for troubleshooting diskspace and inode issues</title> 
+                <link>https://raymii.org/s/articles/ncdu_-_for_troubleshooting_diskspace_and_inode_issues.html</link> 
+                <guid>https://raymii.org/s/articles/ncdu_-_for_troubleshooting_diskspace_and_inode_issues.html</guid>
+                <description>In my box of sysadmin tools there are multiple gems I use for troubleshooting servers. Since I work at a cloud provider sometimes I have to fix servers that are not mine. One of those tools is `ncdu`. It's a very usefull tool when a server has a full disk, both full of used space or full of used inodes. This article covers ncdu and shows the process of finding the culprit when you're out of disk space or inodes.</description> 
+                <pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Adding IPv6 to a keepalived and haproxy cluster</title> 
+                <link>https://raymii.org/s/articles/Adding_IPv6_to_a_keepalived_and_haproxy_cluster.html</link> 
+                <guid>https://raymii.org/s/articles/Adding_IPv6_to_a_keepalived_and_haproxy_cluster.html</guid>
+                <description>At work I regularly build high-available clusters for customers, where the setup is distributed over multiple datacenters with failover software. If one component fails, the service doesn't experience issues or downtime due to the failure. Recently I was tasked with expanding a cluster setup to be also reachable via IPv6. This article goes over the settings and configuration required for haproxy and keepalived for IPv6. The internal cluster will only be IPv4, the loadbalancer terminates HTTP and HTTPS connections. </description> 
+                <pubDate>Sun, 24 Sep 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>atop is broken on Ubuntu 16.04 (version 1.26): trap divide error</title> 
+                <link>https://raymii.org/s/articles/atop_is_broken_on_Ubuntu_16.04.html</link> 
+                <guid>https://raymii.org/s/articles/atop_is_broken_on_Ubuntu_16.04.html</guid>
+                <description>Recently a few of my Ubuntu 16.04 machines had issues and I was troubleshooting them, noticing `atop` logs missing. atop is a very handy tool which can be setup to record system state every X minutes, and we set it up to run every 5 minutes. You can then at a later moment see what the server was doing, even sorting by disk, memory, cpu or network usage. This post discusses the error and a quick fix.</description> 
+                <pubDate>Mon, 18 Sep 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Openstack Horizon, remove the loading modal with uBlock Origin</title> 
+                <link>https://raymii.org/s/articles/Openstack_Horizon_remove_the_loading_modal_with_uBlock_origin.html</link> 
+                <guid>https://raymii.org/s/articles/Openstack_Horizon_remove_the_loading_modal_with_uBlock_origin.html</guid>
+                <description>The OpenStack dashboard, Horizon, is a great piece of software to manage your OpenStack resources via the web. However, it has, in my opinion, a very big usability issue. The loading dialog that appears after you click a link. It blocks the entire page and all other links. So, whenever I click, I have to wait three to five seconds before I can do anything else. Clicked the wrong menu item? Sucks to be you, here have some loading. Clicked a link and quickly want to open something in a new tab while the page is still loading? Nope, not today. It's not that browsers have had a function to show that a page is loading, no, of course, the loading indication that has been there forever is not good enough. Let's re-invent the wheel and significantly impact the user experience. With two rules in uBlock Origin this loading modal is removed and you can work normally again in Horizon</description> 
+                <pubDate>Thu, 25 May 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Distributed load testing with Tsung</title> 
+                <link>https://raymii.org/s/articles/Basic_Website_load_testing_with_Tsung.html</link> 
+                <guid>https://raymii.org/s/articles/Basic_Website_load_testing_with_Tsung.html</guid>
+                <description>At $dayjob I manage a large OpenStack Cloud. Next to that I also build high-performance and redundant clusters for customers. Think multiple datacenters, haproxy, galera or postgres or mysql replication, drbd with nfs or glusterfs and all sorts of software that can (and sometimes cannot) be clustered (redis, rabbitmq etc.). Our customers deploy their application on there and when one or a few components fail, their application stays up. Hypervisors, disks, switches, routers, all can fail without actual service downtime. Next to building such clusters, we also monitor and manage them. When we build such a cluster (fully automated with Ansible) we do a basic load test. We do this not for benchmarking or application flow testing, but to optimize the cluster components. Simple things like the mpm workers or threads in Apache or more advanced topics like MySQL or DRBD. Optimization there depends on the specifications of the servers used and the load patterns. Tsung is a high-performance but simple to configure and use piece of software written in Erlang. Configuration is done in a simple readable XML file. Tsung can be run distributed as well for large setups. It has good reporting and a live web interface for status and reports during a test.</description> 
+                <pubDate>Thu, 13 Apr 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Openstack Soft Delete - recover deleted instances</title> 
+                <link>https://raymii.org/s/articles/Openstack_Soft_Delete_-_recover_deleted_instances.html</link> 
+                <guid>https://raymii.org/s/articles/Openstack_Soft_Delete_-_recover_deleted_instances.html</guid>
+                <description>This article contains both an end user and OpenStack administrator guide to set up and use soft_delete with OpenStack Nova. If an instance is deleted with nova delete, it's gone right away. If soft_delete is enabled, it will be queued for deletion for a set amount of time, allowing end-users and administrators to restore the instance with the nova restore command. This can save your ass (or an end-users bottom) if the wrong instance is removed. Setup is simple, just one variable in nova.conf. There are some caveats we'll also discuss here. </description> 
+                <pubDate>Sat, 18 Mar 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Running WPS-8 (Word Processing System) on the DEC(mate) PDP-8i and SIMH</title> 
+                <link>https://raymii.org/s/articles/Running_WPS-8_(Word_Processing_System)_on_the_DEC(mate)_PDP-8i_and_SIMH.html</link> 
+                <guid>https://raymii.org/s/articles/Running_WPS-8_(Word_Processing_System)_on_the_DEC(mate)_PDP-8i_and_SIMH.html</guid>
+                <description>This article covers running WPS-8 on a modern day emulator. WPS-8 is a word processor by DEC for the PDP-8. The PDP-8 was a very populair 12-bit minicomputer from 1965. WPS-8 was released around 1970, it came bundled with DEC's VT78 terminal. This terminal bundle was also known as the DECmate. This article covers the setup of the emulator, simh with the correct disk images and terminal settings. It covers basic usage and the features of WPS-8 and it has a section on key remapping. The early keyboards used with WPS-8 have small but incompatible differences with recent keyboards, but nothing that xterm remapping can't fix. </description> 
+                <pubDate>Thu, 09 Mar 2017 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)</title> 
+                <link>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</link> 
+                <guid>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</guid>
+                <description>This guide shows you how to build an RK05 bootable system disk with OS/8 on it for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build source, copy over all the files and set up the LPT printer and the PTR/PIP paper tape punch/readers. As an added bonus the article also shows you how to get text files in and out of the PDP-8 sytem using the printer and papertape reader / puncher.</description> 
+                <pubDate>Wed, 07 Dec 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Nitrokey Start: Getting started guide (gnuk openpgp token)</title> 
+                <link>https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html</link> 
+                <guid>https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html</guid>
+                <description>The Nitrokey Start is an OpenPGP USB token. It supports three 2048 bit GPG keys and is based on gnuk. Gnuk is an implementation of USB cryptographic token for GPG. Cryptographic token is a store of private keys and it computes cryptographic functions on the device. The main difference with other GPG cards like the Nitrokey Pro or the OpenPGP card is that this device does not use a smartcard. Whereas the other devices are basically USB smartcard readers, the Nitrokey Start has everything in it's firmware. This article is a getting started guide where I talk about the initial setup of the device, setting up a user PIN, an admin PIN and a reset code, generating the key and subkeys on the device, or loading external keys into the device and usage examples with GPG, OpenSSH and Thunderbird.</description> 
+                <pubDate>Sun, 14 Aug 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Nitrokey HSM/SmartCard-HSM and Raspberry Pi web cluster</title> 
+                <link>https://raymii.org/s/articles/Nitrokey_HSM_web_cluster.html</link> 
+                <guid>https://raymii.org/s/articles/Nitrokey_HSM_web_cluster.html</guid>
+                <description>This article sets up a Nitrokey HSM/SmartCard-HSM web cluster and has a lot of benchmarks. This specific HSM is not a fast HSM since it's very inexpensive and targeted at secure key storage, not performance. But, what if you do want more performance? Then you scale horizontally, just add some more HSM's and a loadbalancer in front. The cluster consists of Raspberry Pi's and Nitrokey HSM's and SmartCard-HSM's, softwarewise we use Apache, `mod_nss` and haproxy. We benchmark a small HTML file and a Wordpress site, with a regular 4096 bit RSA certificate without using the HSM's, a regular 2048 bit RSA certificate without using the HSM's, a 2048 bit RSA certificate in the HSM, a 1024 bit RSA certificate in the HSM and an EC prime256v1 key in the HSM. We do these benchmarks with the `OpenSC` module and with the `sc-hsm-embedded` module to see if that makes any difference.</description> 
+                <pubDate>Mon, 01 Aug 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Storing arbitraty data in the Nitrokey HSM/SmartCard-HSM with Elementary Files (EF)</title> 
+                <link>https://raymii.org/s/articles/Storing_arbitraty_data_in_the_Nitrokey_HSM.html</link> 
+                <guid>https://raymii.org/s/articles/Storing_arbitraty_data_in_the_Nitrokey_HSM.html</guid>
+                <description>This is a guide which shows you how to write small elementary files to a nitrokey HSM. This can be usefull if you want to securely store data protected by a user pin. You can enter the wrong pin only three times, so offline brute forcing is out of the picture.</description> 
+                <pubDate>Sun, 17 Jul 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Use the Nitrokey HSM or SmartCard-HSM with sc-hsm-embedded, mod_nss and Apache (read only module)</title> 
+                <link>https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html</link> 
+                <guid>https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html</guid>
+                <description>This is a guide on using the Nitrokey HSM with sc-hsm-embedded module instead of the PC/SC daemon and OpenSC, mod_nss and the Apache webserver. This is an extension on the earlier guide, with new benchmarks. The sc-hsm-embedded module is not using a global lock like OpenSC, therefore providing better performance. The sc-hsm-embedded module is also a read only module, suitable for embedded systems or secure systems. The HSM allows you to store the private key for a SSL certificate inside the HSM (instead of on the filesystem), so that it can never leave the device and thus never be stolen. The guide covers the installation of the sc-hsm-embedded module, configuration of and benchmarks from Apache with the HSM and different key sizes.</description> 
+                <pubDate>Fri, 15 Jul 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Decrypt/Extract Nitrokey HSM/SmartCard-HSM RSA private keys</title> 
+                <link>https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html</link> 
+                <guid>https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html</guid>
+                <description>This is a guide which shows you how to extract private RSA key material from the Nitrokey HSM / SmartCard-HSM using the DKEK. This way you can get the private key out of the HSM in an unencrypted form. It does require access to the HSM device, all the DKEK share and their passwords. Do note that doing this defeats the entire purpose of a HSM, namely that you never have access to the keys. In the article I'll go over some explanation why this might be a feature you need and why it might be a case of security over convinience.</description> 
+                <pubDate>Wed, 13 Jul 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Use the Nitrokey HSM or SmartCard-HSM with mod_nss and Apache</title> 
+                <link>https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html</link> 
+                <guid>https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html</guid>
+                <description>This is a guide on using the Nitrokey HSM with mod_nss and the Apache webserver. The HSM allows you to store the private key for a SSL certificate inside the HSM (instead of on the filesystem), so that it can never leave the device and thus never be stolen. The guide covers the installation and configuration of mod_nss, coupling the HSM to NSS, generating the keys and configuring Apache, and last but not least we also do some benchmarks on Apache with the HSM and different key sizes.</description> 
+                <pubDate>Tue, 21 Jun 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Get started with the Nitrokey HSM or SmartCard-HSM</title> 
+                <link>https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html</link> 
+                <guid>https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html</guid>
+                <description>This is a guide to get started with the Nitrokey HSM (or SmartCard-HSM). It covers what a HSM is and what it can be used for. It also goes over software installation and initializing the device, including backups of the device and the keys. Finally we do some actual crypto operatons via pkcs11, OpenSSL, Apache and OpenSSH. We also cover usage in Thunderbird (S/MIME), Elementary Files (EF), a Web cluster with Apache and mod_nss and the decryption of the keys.</description> 
+                <pubDate>Sun, 19 Jun 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Toggling in a simple program DEC PDP-8 and PiDP-8 using the switch register</title> 
+                <link>https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html</link> 
+                <guid>https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html</guid>
+                <description>In this guide I'll show you how to toggle in a simple program on the DEC PDP-8 or the PiDP-8, or in a front-panel simulator named BlinkenBone if you lack the hardware. I have a replica of the PDP-8/I (the PiDP-8) but lacked the actual knowledge on the front panel and switches to get started and do something cool. This guide has step by step instructons, with pictures, and basic explanation. After all, what is an expensive blinking light panel without fun stuff to toggle in?</description> 
+                <pubDate>Wed, 08 Jun 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>IPv6 in a Docker container on a non-ipv6 network</title> 
+                <link>https://raymii.org/s/articles/IPv6_in_a_Docker_container_on_a_non-ipv6_network.html</link> 
+                <guid>https://raymii.org/s/articles/IPv6_in_a_Docker_container_on_a_non-ipv6_network.html</guid>
+                <description>At work and at home my ISP's have native IPv6. I recently was at a clients location where they had no IPv6 at all and had to set up and demonstrate an application in a Docker container with IPv6 functionality. They said the had IPv6 but on location it appeared that IPv6 wasn't working. Since IPv6 was required for the demo the container needed a workaround. This article describes the workaround I used to add IPv6 to a Docker container on a non IPv6 network.</description> 
+                <pubDate>Tue, 12 Apr 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Active Directory and Exchange Command Line Powershell</title> 
+                <link>https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html</link> 
+                <guid>https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html</guid>
+                <description>This is a collection of Powershell snippets to install Active Directory, create a new Active Directory Domain, join an existing Active Directory domain and to install Microsoft Exchange 2013. The snippets were tested on Windows Server 2012 R2.</description> 
+                <pubDate>Sat, 27 Feb 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Let's Encrypt with DirectAdmin, now built in!</title> 
+                <link>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</link> 
+                <guid>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</guid>
+                <description>Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. This article shows you how to setup Let's Encrypt with the DirectAdmin web control panel. DirectAdmin now supports Lets Encrypt natively since 1.50, so no more ssh fiddling, just via the control panel, for all the users on the server.</description> 
+                <pubDate>Wed, 24 Feb 2016 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Let's Encrypt with DirectAdmin or other Web Control Panels</title> 
+                <link>https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html</link> 
+                <guid>https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html</guid>
+                <description>Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. This article shows you how to setup Let's Encrypt with the DirectAdmin web control panel. The guide is generic, so it works for other controlpanels as well. For now it works with the beta, and required some linux knowledge and root access to the hosting server.</description> 
+                <pubDate>Thu, 10 Dec 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Linux Containers</title> 
+                <link>https://raymii.org/s/articles/Linux_Containers.html</link> 
+                <guid>https://raymii.org/s/articles/Linux_Containers.html</guid>
+                <description>This article goes over Linux Containers. It touches both bare linux cgroups and namespaces and goes over LXC (linux conrainers).</description> 
+                <pubDate>Thu, 12 Nov 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Install Ubuntu Linux on the LG Chromebase</title> 
+                <link>https://raymii.org/s/articles/LG_Chromebase_Linux.html</link> 
+                <guid>https://raymii.org/s/articles/LG_Chromebase_Linux.html</guid>
+                <description>I recently acquired the LG Chromebase 22CV241-W. It is an All in One type machine with Chrome OS. The hardware, excluding the screen and lack of battery, is largely the same as the Acer C720. Of course I removed Chrome OS and installed a real Linux on it, of which you'll find instructions below. In my case it is Ubuntu Mate. Arch Linux also works fine, but this was for someone else, so a more beginner friendly distro seemed to be a better choise. This article will cover the removal of Chrome OS and the installation of Ubuntu Mate on the LG Chromebase.</description> 
+                <pubDate>Mon, 03 Aug 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Running TSS/8 on the DEC PiDP-8/i and SIMH</title> 
+                <link>https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html</link> 
+                <guid>https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html</guid>
+                <description>In this guide I'll show you how run the TSS/8 operating system on the PiDP replica by Oscar Vermeulen, and on SIMH on any other computer. I'll also cover a few basic commands like the editor, user management and system information. TSS-8 was a little time-sharing operating system  released in 1968 and requires a minimum of 12K words of memory and a swapping device; on a 24K word machine, it supports up to 17 users. Each user gets a virtual 4K PDP-8; many of the utilities users ran on these virtual machines were only slightly modified versions of utilities from the Disk Monitor System or paper-tape environments. Internally, TSS-8 consists of RMON, the resident monitor, DMON, the disk monitor (file system), and KMON, the keyboard monitor (command shell). BASIC was well supported, while restricted (4K) versions of FORTRAN D and Algol were available.</description> 
+                <pubDate>Sun, 26 Jul 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Running Adventure on the DEC PDP-8 with SIMH</title> 
+                <link>https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html</link> 
+                <guid>https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html</guid>
+                <description>In this guide I'll show you how run the classic Colossal Cave Adventure game on a PDP-8, emulated by the SIMH emulator. The PDP-8 was an 12 bit minicomputer made in 1964 by DEC, the Digital Equipment Corporation. We will install and set up SIMH, the emulator with a RK05 diskimage running OS/8. We will use FORTRAN on OS/8 to load ADVENTURE, then we use our brain to play the game. As a bonus, I also show you how to edit files using EDIT, and show you a bit of the OS/8 system.</description> 
+                <pubDate>Thu, 23 Jul 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Openstack - (Manually) migrating (KVM) Nova compute virtual machines</title> 
+                <link>https://raymii.org/s/articles/Openstack_-_(Manually)_migrating_(KVM)_Nova_Compute_Virtual_Machines.html</link> 
+                <guid>https://raymii.org/s/articles/Openstack_-_(Manually)_migrating_(KVM)_Nova_Compute_Virtual_Machines.html</guid>
+                <description>This guide shows you how to migrate KVM virtual machines with the  Openstack Nova compute service, either manually or with the Openstack tooling. Openstack provides a few different ways to migrate virtual machines from one compute node to another. Each option has different requirements and restrictions, for example, you can't live-migrate without shared storage. You can't live-migrate if you have a configdrive enabled. You can't select the target host if you use the nova migrate (non-live) command etc. This article describes the most common migration scenario's including live and manual migration using native linux tools.</description> 
+                <pubDate>Sat, 13 Jun 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>The awesomely epic guide to KDE</title> 
+                <link>https://raymii.org/s/articles/The_awesomely_epic_guide_to_KDE.html</link> 
+                <guid>https://raymii.org/s/articles/The_awesomely_epic_guide_to_KDE.html</guid>
+                <description>This article shows gives an overview of the major KDE features like font management, visual effects, file management, eye candy, the panels, the task switcer and more great KDE stuff.</description> 
+                <pubDate>Mon, 04 May 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Filing Effective Bug Reports</title> 
+                <link>https://raymii.org/s/articles/Filing_Effective_Bug_Reports.html</link> 
+                <guid>https://raymii.org/s/articles/Filing_Effective_Bug_Reports.html</guid>
+                <description>This article shows you how to report bugs properly and help open source projects by doing so. It explains the things that help create a good bug report, one on which the developers can actually work on. It also explains the process of bug reporting, what happens after you've did the initial report?</description> 
+                <pubDate>Sun, 03 May 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Raspberry Pi Arcade Machine</title> 
+                <link>https://raymii.org/s/articles/Raspberry_Pi_Arcade_Machine.html</link> 
+                <guid>https://raymii.org/s/articles/Raspberry_Pi_Arcade_Machine.html</guid>
+                <description>This article shows you how to build your own full size arcade machine using a Raspberry Pi. It involves a real, full size arcade cabinet, a converter device called a J-Pac and the MAME emulator software.</description> 
+                <pubDate>Sun, 03 May 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>systemd: Don't fear change</title> 
+                <link>https://raymii.org/s/articles/systemd_dont_fear_change.html</link> 
+                <guid>https://raymii.org/s/articles/systemd_dont_fear_change.html</guid>
+                <description>This article talks about systemd in Red Hat Enterprise Linux / CentOS 7. It gives some usage examples and talks about the differences between systemd, upstart and sysvinit.</description> 
+                <pubDate>Wed, 25 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Keep messages secure with GPG</title> 
+                <link>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</link> 
+                <guid>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</guid>
+                <description>This article shows you how to get started with GPG and Mailvelope. It discusses public/private key crypto and shows you how to use the Mailvelope software to encrypt and decrypt GPG messages on any webmail provider.</description> 
+                <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>OpenSSL: Manually verify a certificate against a CRL</title> 
+                <link>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</link> 
+                <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
+                <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
+                <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Olimex OlinuXino A20 LIME2 mainline 4.0.0 kernel, u-boot and debian rootfs image building tutorial</title> 
+                <link>https://raymii.org/s/articles/Olimex_OlinuXino_A20_Lime2_Kernel_3.19_uBoot_Debian_7_image_building.html</link> 
+                <guid>https://raymii.org/s/articles/Olimex_OlinuXino_A20_Lime2_Kernel_3.19_uBoot_Debian_7_image_building.html</guid>
+                <description>The Olimex OlinuXino A20 LIME2 is an amazing, powerfull and cheap open source ARM development board. It costs EUR 45, and has 160 GPIO pins. This is a guide to build a linux image with Debian and the mainline 4.0.0 kernel for the Olimex A20-Lime2 board, from scratch. By default it comes with an 3.4 kernel with binary blobs and patches from Allwinner. Recently the mainline kernel has gained support for these boards, you can now run and use the mainline kernel without these awfull non-free binary blobs.</description> 
+                <pubDate>Sat, 21 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Solve word puzzles with bash</title> 
+                <link>https://raymii.org/s/articles/Solve_word_puzzles_with_bash.html</link> 
+                <guid>https://raymii.org/s/articles/Solve_word_puzzles_with_bash.html</guid>
+                <description>This article shows you how to solve word puzzles with Bash. It covers the grep tool including regular expressions to solve different kinds of word puzzles.</description> 
+                <pubDate>Sun, 08 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Euclid's algorithm: recursion and python</title> 
+                <link>https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html</link> 
+                <guid>https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html</guid>
+                <description>This article talks about Euclids Algorithm. The problem that Euclid's algorithm solves is easy enough to understand: what is the largest common divisor of two integers? Take the numbers 100 and 80, for example: what's the largest number that divides into both? It walks us through Python example code explaining the function.</description> 
+                <pubDate>Sun, 08 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Installing Virtual Machines with virt-install, plus copy pastable distro install one-liners</title> 
+                <link>https://raymii.org/s/articles/virt-install_introduction_and_copy_paste_distro_install_commands.html</link> 
+                <guid>https://raymii.org/s/articles/virt-install_introduction_and_copy_paste_distro_install_commands.html</guid>
+                <description>virt-install is a command line tool for creating new KVM , Xen or Linux container guests using the libvirt hypervisor management library. It allows you to create a VM and start an installation from the command line. This article has a few copy pastable getting started examples for different distro's.</description> 
+                <pubDate>Sun, 08 Feb 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Raspberry Pi FM radio transmitter with Buttons</title> 
+                <link>https://raymii.org/s/articles/Raspberry_Pi_FM_Radio_With_Buttons.html</link> 
+                <guid>https://raymii.org/s/articles/Raspberry_Pi_FM_Radio_With_Buttons.html</guid>
+                <description>The PiFM project allows you to use a Raspberry Pi to send out a WAV file on the FM band. This is awesome because every normal radio then can receive your music/podcast without expensive (sonos) equipment. I've used a lasercutter to craft a new top plate for my Pi which has room for three buttons. These are hooked up to a python script which allows me to start and stop the transmission, and skip or go back songs. It also allows me to shut down the Pi instead of just pulling the power cable.</description> 
+                <pubDate>Wed, 04 Feb 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Olimex OlinuXino A20 LIME2 Minimal Debian 7 Image</title> 
+                <link>https://raymii.org/s/articles/Olimex_A20-OLinuXino-LIME2_minimal_debian_7_image.html</link> 
+                <guid>https://raymii.org/s/articles/Olimex_A20-OLinuXino-LIME2_minimal_debian_7_image.html</guid>
+                <description>The Olimex OlinuXino A20 LIME2 is an amazing, powerfull and cheap open source ARM development board. It costs EUR 45, and has 160 GPIO pins. The default Debian image from OlimeX is quite huge and bloated, over 2,5 GB, with X and all. I do not want a huge image, so I stripped it down to a 200 MB image with only dhcp and ssh and a few basic tools. It uses about 15 MB of RAM. This image allows you to start with almost nothing and build up only what you need.</description> 
+                <pubDate>Wed, 28 Jan 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>HTTP Public Key Pinning Extension HPKP for Apache, NGINX and Lighttpd</title> 
+                <link>https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html</link> 
+                <guid>https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html</guid>
+                <description>Public Key Pinning means that a certificate chain must include a whitelisted public key. It ensures only whitelisted Certificate Authorities (CA) can sign certificates for `*.example.com`, and not any CA in your browser store. This article has background theory and configuration examples for Apache, Lighttpd and NGINX.</description> 
+                <pubDate>Tue, 30 Dec 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Fix inconsistent Openstack volumes and instances from Cinder and Nova via the database</title> 
+                <link>https://raymii.org/s/articles/Fix_inconsistent_Openstack_volumes_and_instances_from_Cinder_and_Nova_via_the_database.html</link> 
+                <guid>https://raymii.org/s/articles/Fix_inconsistent_Openstack_volumes_and_instances_from_Cinder_and_Nova_via_the_database.html</guid>
+                <description>When running Openstack, sometimes the state of a volume  or an instance can be inconsistent on the cluster. Nova might find a volume attached while Cinder says the volume is detached or otherwise. Sometimes a volume deletion hangs, or a detach does not work. If you've found and fixed the underlying issue (lvm, iscsi, ceph, nfs etc...) you need to bring the database up to date with the new consistent state. Most of the time a reset-state works, sometimes you need to manually edit the database to correct the state. These snippets show you how.</description> 
+                <pubDate>Mon, 22 Dec 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Olimex OlinuXino a10 Lime uBoot, Kernel and root image guide</title> 
+                <link>https://raymii.org/s/articles/Olimex_OlinuXino _10 Lime_uBoot_Kernel.html</link> 
+                <guid>https://raymii.org/s/articles/Olimex_OlinuXino _10 Lime_uBoot_Kernel.html</guid>
+                <description>The Olimex OlinuXino A10 LIME is an amazing, powerfull and cheap open source ARM development board. It costs EUR 30, and has 160 GPIO. This guide is a cleaned up version of theirs with instructions to build your own kernel and u-boot image on Ubuntu 14.04.</description> 
+                <pubDate>Sat, 20 Dec 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Openstack Affinity Groups, make sure instances are on the same or different compute hypervisor hosts</title> 
+                <link>https://raymii.org/s/articles/Openstack_Affinity_Groups-make-sure-instances-are-on-the-same-or-a-different-hypervisor-host.html</link> 
+                <guid>https://raymii.org/s/articles/Openstack_Affinity_Groups-make-sure-instances-are-on-the-same-or-a-different-hypervisor-host.html</guid>
+                <description>This guide shows you how to use Openstack Affinity groups. Affinity or Anti-Affinity groups allow you to make sure instances (VM/VPS) are on the same hypervisor host or on a different one. There are cases when you want two instances on different compute nodes, for example, when they are clustered servers like a load balancer or a database master-master setup. All VMs in each Affinity group are hosted in the same hypervisor, while no two VMs of a same Anti-Affinity group are hosted in the same hypervisor.</description> 
+                <pubDate>Sat, 29 Nov 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Olimex OlinuXino a10 Lime Minimal Debian 7 Image</title> 
+                <link>https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html</link> 
+                <guid>https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html</guid>
+                <description>The Olimex OlinuXino A10 LIME is an amazing, powerfull and cheap open source ARM development board. It costs EUR 30, and has 160 GPIO. The default Debian image from OlimeX is quite huge and bloated, over 2 GB, with X and all. I do not want a huge image, so I stripped it down to a 200 MB image with only dhcp and ssh and a few basic tools. It uses about 20 MB of RAM. This image allows you to start with almost nothing and build up only what you need.</description> 
+                <pubDate>Fri, 31 Oct 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Check and Fix SSL servers for SSLv3 connections or the Poodle CVE-2014-3566 bug</title> 
+                <link>https://raymii.org/s/articles/Check_servers_for_the_Poodle_bug.html</link> 
+                <guid>https://raymii.org/s/articles/Check_servers_for_the_Poodle_bug.html</guid>
+                <description>The POODLE CVE-2014-3566 bug is a new bug discovered by Google in the SSLv3 protocol. The fix is easy, disable support for SSLv3. See https://cipherli.st for a good list of SSL ciphers. You can use this check from the shell to check your servers. This command can easily be automated with other shell scripts. It also allows you to check your services without exposing them to an external checking website.</description> 
+                <pubDate>Tue, 14 Oct 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Configserver Firewall and Security (CSF and LFD)</title> 
+                <link>https://raymii.org/s/articles/Configserver_Firewall_and_Security_CSF_LFD.html</link> 
+                <guid>https://raymii.org/s/articles/Configserver_Firewall_and_Security_CSF_LFD.html</guid>
+                <description>his page covers my notes about csf and lfd. csf is an easy SPI iptables firewall suite. lfd is the login failure daemon, which scans log files for failed authentication and blocks the IP's doing that. This page covers installation, populair command line options and popular config file options.</description> 
+                <pubDate>Sun, 12 Oct 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Patch Shellshock)with Ansible</title> 
+                <link>https://raymii.org/s/articles/Patch_CVE-2014-6271_Shellshock_with_Ansible.html</link> 
+                <guid>https://raymii.org/s/articles/Patch_CVE-2014-6271_Shellshock_with_Ansible.html</guid>
+                <description>This is a simple ansible playbook to patch Debian, CentOS, Ubuntu and derivatives for the Shellshock vulnerability (CVE-2014-6271).</description> 
+                <pubDate>Wed, 24 Sep 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Build a $35 Time Capsule - Raspberry Pi Time Machine Backup Server</title> 
+                <link>https://raymii.org/s/articles/Build_a_35_dollar_Time_Capsule_-_Raspberry_Pi_Time_Machine.html</link> 
+                <guid>https://raymii.org/s/articles/Build_a_35_dollar_Time_Capsule_-_Raspberry_Pi_Time_Machine.html</guid>
+                <description>This is a simple guide on building a $35 Time Capsule with a Raspberry Pi. A Time Capsule is a network attached storage device from Apple for use with their Time Machine. Time Machine gives users a very easy and userfriendly way to automatically create and restore (encrypted) backups. A Time Capsule is basically an expensive NAS that only talks the AFP/netatalk protocol. The 2 TB version costs $299 at this time, a Raspberry Pi only $35. </description> 
+                <pubDate>Fri, 29 Aug 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Building HA Clusters with Ansible and Openstack</title> 
+                <link>https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html</link> 
+                <guid>https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html</guid>
+                <description>This is an extensive guide on building high available clusters with Ansible and Openstack. We'll build a Highly available cluster consisting out of two load balancers, two database servers and two application servers running a simple wordpress site. This is all done with Ansible, the cluster nodes are all on Openstack. Ansible is a super awesome orchestration tool and Openstack is a big buzzword filled software suite for datacenter virtualization.</description> 
+                <pubDate>Fri, 25 Jul 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>OpenSSL: Manually verify a certificate against an OCSP</title> 
+                <link>https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html</link> 
+                <guid>https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html</guid>
+                <description>This article shows you how to manually verfify a certificate against an OCSP server. OCSP stands for the Online Certificate Status Protocol and is one way to validate a certificate status. It is an alternative to the CRL, certificate revocation list. This article shows you how to manually validate a certificate against an OCSP server.</description> 
+                <pubDate>Mon, 07 Apr 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Chef: overwrite templates in wrapper-cookbooks</title> 
+                <link>https://raymii.org/s/articles/Chef_-_overwrite_templates_in_wrapper_cookbooks.html</link> 
+                <guid>https://raymii.org/s/articles/Chef_-_overwrite_templates_in_wrapper_cookbooks.html</guid>
+                <description>This article describes how to use a template in a wrapper-cookbook in Chef. The Chef Cookbook Wrapper Pattern is based upon a design convention where you customize an existing library cookbook by using a separate wrapper cookbook, which wraps the original cookbook with any related configuration changes. a library cookbook is an existing cookbook, typically an open-source contribution from a user in the Chef community, designed for server configuration purposes. A wrapper cookbook is a cookbook that wraps the original library cookbook with custom modifications or additions such as overriding a Chef attribute, changing a Chef template, converting a Chef attribute to a user-definable input, etc. To override a template by just defining it again would result in it being written two times every Chef run, which is not what we want. Using this method, you can override the template from the default cookbook with a template in your wrapper-cookbook. It has an example for the graphite cookbook, where the wrapper ads LDAP login to the Apache server.</description> 
+                <pubDate>Wed, 02 Apr 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Chef: chef_gem vs gem_package and ORDER</title> 
+                <link>https://raymii.org/s/articles/Chef_-_chef_gem_vs_gem_package_and_ORDER.html</link> 
+                <guid>https://raymii.org/s/articles/Chef_-_chef_gem_vs_gem_package_and_ORDER.html</guid>
+                <description>This article describes a situation I had at one of my clients with Chef and the steps took to resolve this problem. They have a cookbook which builds a postgresql database node and it installs the pg ruby gem. However, it uses the chef_gem resource to do that, and it keeps failing.</description> 
+                <pubDate>Tue, 01 Apr 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>3D modeling a real world object in OpenSCAD</title> 
+                <link>https://raymii.org/s/articles/3D_modelling_a_real_world_object_in_OpenSCAD.html</link> 
+                <guid>https://raymii.org/s/articles/3D_modelling_a_real_world_object_in_OpenSCAD.html</guid>
+                <description>This article shows you how I built a real world object in OpenSCAD and how I got it 3D printed. OpenSCAD is a Solid 3D modeling based on the Computational Geometry Algorithms Library. It is not like Blender, AutoCAD or Maya, who allow you to visually create and manipulate something. OpenSCAD allows you to program the entire thing. Want a cube? Type cube([10,10,10]) and you have a cube. I have no previous experience in 3D modeling or OpenSCAD, however, in about three hours I had my key ready made.</description> 
+                <pubDate>Sun, 02 Mar 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>OpenSSL: Get all certificates from a website in plain text</title> 
+                <link>https://raymii.org/s/articles/OpenSSL_-_Get_all_certificates_from_a_website_in_plain_text.html</link> 
+                <guid>https://raymii.org/s/articles/OpenSSL_-_Get_all_certificates_from_a_website_in_plain_text.html</guid>
+                <description>This article shows you how to get all certificates of a website in plain text. With a few OpenSSL commands one can get the website certificate plus intermediate certificates, however, if you feed that output to OpenSSL it only works on the first certificate. Using a bit of sed and bash magic we can feed all certificates one by one to OpenSSL.</description> 
+                <pubDate>Tue, 04 Feb 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Check if passwordless sudo can be used in a bash script or nagios check</title> 
+                <link>https://raymii.org/s/articles/Check_if_passwordless_sudo_can_be_used_in_a_bash_script_or_nagios_check.html</link> 
+                <guid>https://raymii.org/s/articles/Check_if_passwordless_sudo_can_be_used_in_a_bash_script_or_nagios_check.html</guid>
+                <description>This is a simple trick to see if you can use passwordless sudo in a script. This for example can be usefull in a Nagios plugin which requires sudo. Instead of putting the sudo line in your README and otherwise having a NRPE Unable to parse result error, you could just give a nice warning message plus the right sudo configuration rule.</description> 
+                <pubDate>Thu, 30 Jan 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>DigitalOcean Sucks. Use DigitalOcean!</title> 
+                <link>https://raymii.org/s/articles/Digital_Ocean_Sucks._Use_Digital_Ocean.html</link> 
+                <guid>https://raymii.org/s/articles/Digital_Ocean_Sucks._Use_Digital_Ocean.html</guid>
+                <description>DigitalOcean Sucks. Use DigitalOcean. Why? Read this article to find out.</description> 
+                <pubDate>Tue, 19 Nov 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Set up your own truly secure, encrypted and shared file synchronization, aka Dropbox clone</title> 
+                <link>https://raymii.org/s/articles/Set_up_your_own_truly_secure_encrypted_shared_storage_aka_Dropbox_clone.html</link> 
+                <guid>https://raymii.org/s/articles/Set_up_your_own_truly_secure_encrypted_shared_storage_aka_Dropbox_clone.html</guid>
+                <description>This article describes my truly secure, encrypted file synchronization service. It used EncFS and dvcs-autosync which lets me share only the encrypted data and mount that locally to get the plaintext. It works on OS X, Linux and ARM linux. This article has setup instructions for all those platforms.</description> 
+                <pubDate>Tue, 15 Oct 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>IPv4 Address Conversion Tricks</title> 
+                <link>https://raymii.org/s/articles/IPv4_Address_Conversion_Tricks.html</link> 
+                <guid>https://raymii.org/s/articles/IPv4_Address_Conversion_Tricks.html</guid>
+                <description>Did you know that http://3515693643/ is a valid link? Why? Because this is the decimal form of the binary IP address. Normally we represent IP addresses as 10.0.0.1, 4 blocks of numbers. Those numbers are actually binary octets represented in decimal, therefore they can never be more than 255. If we take the whole binary number of all blocks, and convert that to base 10, we get a result like above, which in turn is a working network address. I've written a little javascript based converter so you can try it out yourself.</description> 
+                <pubDate>Sun, 01 Sep 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Diffie Hellman Key Exchange Dutch Notes and Example</title> 
+                <link>https://raymii.org/s/articles/Diffie-Hellman-Key-Exchange-Dutch-Notes.html</link> 
+                <guid>https://raymii.org/s/articles/Diffie-Hellman-Key-Exchange-Dutch-Notes.html</guid>
+                <description>This is a Dutch article on a Diffie Hellman Key Exchange, including an example. I wrote this to better understand the Diffie Hellman Key Exchange.</description> 
+                <pubDate>Sun, 28 Jul 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>My Todo.txt Workflow, including Unison, Todour and Android</title> 
+                <link>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</link> 
+                <guid>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</guid>
+                <description>Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless for Android.</description> 
+                <pubDate>Wed, 24 Jul 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Word occurrence counter and analyzer</title> 
+                <link>https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html</link> 
+                <guid>https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html</guid>
+                <description>With these commands you can analyze a text file. It will count all the occurrences of all words and put out the stats. It is usefull for song lyrics, books, notes and everything.</description> 
+                <pubDate>Thu, 07 Mar 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Small low cost linux pc's, an overview from 11-2012</title> 
+                <link>https://raymii.org/s/articles/Small_Linux_PCs.html</link> 
+                <guid>https://raymii.org/s/articles/Small_Linux_PCs.html</guid>
+                <description>This is an overview of small linux computers, mostly ARM based.</description> 
+                <pubDate>Wed, 07 Nov 2012 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Complete word count analysis of Security Now, episode 1 trough 370.</title> 
+                <link>https://raymii.org/s/articles/Security_Now_Word_Analyzer.html</link> 
+                <guid>https://raymii.org/s/articles/Security_Now_Word_Analyzer.html</guid>
+                <description>Bash-based analysis of which words are used in the security now podcast by Steve Gibson and Leo Laporte</description> 
+                <pubDate>Sun, 09 Sep 2012 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Tiny Tiny RSS</title> 
+                <link>https://raymii.org/s/articles/Tiny-Tiny-RSS.html</link> 
+                <guid>https://raymii.org/s/articles/Tiny-Tiny-RSS.html</guid>
+                <description>Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible. I will go over the features of TIny Tiny RSS, compare it to Google Reader and write some things I like about it, and things I miss about it.</description> 
+                <pubDate>Sat, 01 Sep 2012 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Small Operating Systems / Linux Distributions</title> 
+                <link>https://raymii.org/s/articles/Small_Linux_Distros.html</link> 
+                <guid>https://raymii.org/s/articles/Small_Linux_Distros.html</guid>
+                <description>This is an overview of small operating systems and Linux distributions, most of them work well on older hardware (pre-dual core era). It provides screenshots, package information, size and specs and project information on the distro.</description> 
+                <pubDate>Mon, 09 Jul 2012 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Chrome Extensions for Privacy, Adblocking and anti-tracking</title> 
+                <link>https://raymii.org/s/articles/Chrome-extensions-for-privacy.html</link> 
+                <guid>https://raymii.org/s/articles/Chrome-extensions-for-privacy.html</guid>
+                <description>This is a list with extensions for google chrome which help you block tracking and ads, and help you protect your privacy.</description> 
+                <pubDate>Thu, 01 Sep 2011 00:00:00 GMT</pubDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    

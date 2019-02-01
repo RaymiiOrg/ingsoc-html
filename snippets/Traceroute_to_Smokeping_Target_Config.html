@@ -1,0 +1,176 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Traceroute to Smokeping Target config - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />
+        # <script src="/s//inc/js/toc.js" type="text/javascript"></script> -->
+        <script type="text/javascript">
+            window.onload=function(){var n="",e=0;document.getElementById("contents").innerHTML=document.getElementById("contents").innerHTML.replace(/<h([\d])>([^<]+)<\/h([\d])>/gi,function(r,t,o,a){if(t!=a)return r;t>e?n+=new Array(t-e+1).join("<ol>"):t<e&&(n+=new Array(e-t+1).join("</ol>")),e=parseInt(t);var i=o.replace(/ /g,"_");return n+='<li><a href="#'+i+'">'+o+"</a></li>","<h"+t+'><a name="'+i+'">'+o+"</a></h"+a+">"}),e&&(n+=new Array(e+1).join("</ol>")),document.getElementById("toc").innerHTML+=n};
+        </script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Traceroute to Smokeping Target config</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/snippets.html" class="link">Snippets</a></li><li><a href="Traceroute_to_Smokeping_Target_Config.html" class="link">Traceroute to Smokeping Target config</a></li></ul><p><small>28-06-2014</small> | <small>Remy van Elst</small> | <a href="Traceroute_to_Smokeping_Target_Config.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This little one-liner converts the output of traceroute to Smokeping Target output. This way you can build your smokeping config faster.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
+
+<p>There is an <a href="https://raymii.org/s/snippets/IPv6_Traceroute_to_Smokeping_Target_Config.html">IPv6 version of this article</a>.</p>
+
+<p>You can see smokeping in action <a href="http://smokeping.serverius.eu/">here at serverius</a>. More info about <a href="http://oss.oetiker.ch/smokeping/">Smokeping here on the website</a>.</p>
+
+<p>I have most hops from my ISP in my smokeping config to see where the latency might be. This traceroute one liner helps to get the right config.</p>
+
+<pre><code>traceroute -w 3 example.org | grep -v &quot;*&quot; | sed -e &#39;s/(//g&#39; -e &#39;s/)//g&#39; | awk &#39;{ gsub(/\./,&quot;_&quot;,$2); print &quot;++ &quot;$2&quot;\nmenu = &quot;$3&quot;\ntitle = &quot;$2&quot; - &quot;$3&quot;\nhost = &quot;$3&quot;\n&quot;}&#39;
+</code></pre>
+
+<p>The &quot;*&quot; are grepped out, the <code>()</code> are removed from the IP address and we also replace . in the hostname so that Smokeping doesn&#39;t barf on that.</p>
+
+<p>This will give you something like this (for <a href="https://tweakers.net">tweakers.net</a>:</p>
+
+<pre><code>++ 0_so-1-2-0_xr1_tc2_xs4all_net
+menu = 194.109.5.14
+title = 0_so-1-2-0_xr1_tc2_xs4all_net - 194.109.5.14
+host = 194.109.5.14
+
+++ amsix_true_nl
+menu = 195.69.144.171
+title = amsix_true_nl - 195.69.144.171
+host = 195.69.144.171
+
+++ ams7_edge01_tengig-6-1-11_true_nl
+menu = 87.233.1.218
+title = ams7_edge01_tengig-6-1-11_true_nl - 87.233.1.218
+host = 87.233.1.218
+
+++ tweakers_net
+menu = 213.239.154.20
+title = tweakers_net - 213.239.154.20
+host = 213.239.154.20
+</code></pre>
+
+<p>Or for <a href="http://reddit.com">reddit.com</a>:</p>
+
+<pre><code>++ 0_so-1-2-0_xr1_tc2_xs4all_net
+menu = 194.109.5.14
+title = 0_so-1-2-0_xr1_tc2_xs4all_net - 194.109.5.14
+host = 194.109.5.14
+
+++ eth7-1_edge1_ams5_nl_atrato_net
+menu = 195.69.145.229
+title = eth7-1_edge1_ams5_nl_atrato_net - 195.69.145.229
+host = 195.69.145.229
+
+++ eth1-6_edge2_ams5_nl_as5580_net
+menu = 78.152.44.44
+title = eth1-6_edge2_ams5_nl_as5580_net - 78.152.44.44
+host = 78.152.44.44
+
+++ 78_152_38_234
+menu = 78.152.38.234
+title = 78_152_38_234 - 78.152.38.234
+host = 78.152.38.234
+
+++ a23-62-98-210_deploy_static_akamaitechnologies_com
+menu = 23.62.98.210
+title = a23-62-98-210_deploy_static_akamaitechnologies_com - 23.62.98.210
+host = 23.62.98.210
+</code></pre>
+
+<p>This can be pasted right in to Smokeping&#39;s config.</p>
+
+<p>I use the following version of Traceroute:</p>
+
+<pre><code>$ traceroute -V
+Modern traceroute for Linux, version 2.0.19, Sep 29 2013
+Copyright (c) 2008  Dmitry Butskoy,   License: GPL v2 or any later
+</code></pre>
+</div><hr>Tags: <a href="../tags/ipv4.html" class="link">ipv4 &nbsp;</a><a href="../tags/ipv6.html" class="link">ipv6 &nbsp;</a><a href="../tags/network.html" class="link">network &nbsp;</a><a href="../tags/smokeping.html" class="link">smokeping &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><a href="../tags/traceroute.html" class="link">traceroute &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

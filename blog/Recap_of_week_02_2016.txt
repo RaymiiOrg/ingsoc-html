@@ -1,0 +1,221 @@
+This is a text-only version of the following page on https://raymii.org:
+---
+
+	Title    : 	Recap of week 02, 2016
+	Author   : 	Remy van Elst
+	Date     : 	16-01-2016
+	URL      : 	https://raymii.org/s/blog/Recap_of_week_02_2016.html
+	Format   : 	Markdown/HTML
+---
+
+
+
+
+
+
+Recap of week 02 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.
+
+<img src="https://raymii.org/s/inc/img/comics/wumo-airco.png" alt="comic">
+Comic by [Wumo][50].
+
+
+If you like this website and want to support it AND get $10 Digital Ocean credit (a VPS 2 months for free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+
+Earlier editions can [be found here](https://raymii.org/s/tags/recap.html). That page has a special RSS feed for the recaps as well.
+
+### News, tutorials and articles
+
+- Ford, Mazda, Mitsubishi Motors and Subaru [join the Linux Foundation][3] and Automotive Grade Linux. Better ave some open source in your computerized murder machine.
+
+- Using [two factor][47] authentication for SSH. A good article on setting up HOTP two factor auth. Note that SSH keys don't require second auth here because the implementation is with PAM, and SSH keys are before PAM. So, usefull when you need to have password authentication on.
+
+- An article from a gamedeveloper, why [they like to write in C][7]. Reliably, fast but also dangerous.
+
+
+- How Nvidia [breaks Chrome Incognito][8] mode. Both point at each other, but still, should be fixed.
+
+- A very informative and detailed article on [AJAX request using XMLHttpRequest][13]. I sometimes do coding, and this is a very good explanation on the lower level, now I understand what goes on behind a `jquery.load()`.
+
+- Dan Luu [writes about][15] some really bad intel CPU bugs in 2015, and how we should expect to see more in the future. Above my level, but still an interesting read.
+
+- The [US Department of Defense (DoD)][22] is still issuing SHA-1 signed certificates, and using them to secure connections to .mil websites.
+
+- [Snapper][31] is OpenSUSE's tool to manage BTRFS snapshots. It's a good tool, and enabled by default. I have a machine with OpenSUSE Leap and that creats snapshots at every update and every half hour, so I've used snapper to clean snapshots up. Works like a charm.
+
+- Owncloud writes about how they [are making upgrading more robust][33]. I use OwnCloud, but only for my contact and calendar sync. File sync is too flaky, I've lost important files due to Owncloud sync issues. Lucky me for having great backups. 
+
+- [Add a Why (reason)][36] to SSH, to better audit log actions.
+
+- A neat [article][39] on a rather huge (physical) FreeNAS home server build. I like my small Synology which is very power efficient.
+
+- There are [no secure smartphones][40]. Remember the Baseband? A second PC in your phone, with unlimited NSA and carrier access, sping on you all the time.
+
+- [Bare metal][43] programming on your Raspberry Pi with Rust. A lot, and I mean a huge amount of code to get a light blinking. In C this would be much shorter and more clear, but they again, C is not a `safe` language.
+
+- Mozilla is [shutting down Persona.org][48]. I'm sad that they so blatantly drop and discontinue Persona, since it's a very nice option for authentication on the web.
+
+- OMG Ubuntu has a scoop on a [convergence device][49] running Ubuntu. It might be a  10-inch tablet with 64-bit ARM processor made by Spanish OEM Bq and might be released at the Mobile World Congress.
+
+### Software, hardware and releases
+
+- [Piet][5] is a programming language in which programs look like abstract paintings. 
+
+- [Ansible][25] 2.0 has been released. Ansible is my favorite configuration management system, easy, written in Python, great documentation and no client required. 2.0 has `try/except` error handling, a bunch of new Openstack modules and many more good stuff.
+
+- Inferno OS for the Raspberry Pi released [version 0.5][6], with support for the 512MB original model B. Interesting reasearch project to port Inferno, a plan 9-like OS to the Raspberry Pi.
+
+- [OpenSSH][41] has a vulnerability which can expose client memory (and thus private keys), in an undocumented experimental feature. Update and add `UseRoaming No` to your `.ssh/config` file.
+
+- Some Fritzbox AVM models have a [buffer overflow remote code execution][12]. Sadly, my ISP provided model as well. Which is a nice thing, since they disabled telnet in a previous firmware without proper notice beforehand. I'm not updating, since I now have my root access back.
+
+- [Linux Mint 17.3 "Rosa" KDE][11] released, along with the XFCE version.
+
+- Equicon posted a [PDF describing][14] a legacy train control system in Melbource. They migrated around twenty PDP-11/84 systems to emulated hardware, without downtime. Pretty cool.
+
+- Apple [released][16] public beta's for OS X 10.11.4 and iOS 9.3. OS X 10.11.4 public beta 1 includes support for Live Photos in the Messages app, password protected Notes and compatibility with iOS 9.3. iOS 9.3 public beta 1 includes support for password protected Notes, a f.lux-like NightShift mode, support for multiple users in educational environments and a variety of new 3D Touch shortcuts. 
+
+- [Veeam backup and replication][48] v9 is released. My windows colleagues are fond of this, as they say, `a million times better than Backup Exec`. No experience with it myself.
+
+- [Linux kernel 4.4 was released][17]. This releese adds support for 3D support in virtual GPU driver, which allows 3D hardware-accelerated graphics in virtualization guests; loop device support for Direct I/O and Asynchronous I/O, which saves memory and increases performance; support for Open-channel SSDs, which are devices that share the responsibility of the Flash Translation Layer with the operating system; the TCP listener handling is completely lockless and allows for faster and more scalable TCP servers; journalled RAID5 in the MD layer which fixes the RAID write hole; eBPF programs can now be run by unprivileged users, and perf has added support for eBPF programs aswell; a new `mlock2()` syscall that allows users to request memory to be locked on page fault; and block polling support. There are also new drivers and many other small improvements. [Here is the full changelog][18]. ([via][19])
+
+- The open source video editor [OpenShot][23] has released version 2.0 after a few years of no development. It's a nice product to create home video's, like Movie Maker.
+
+- [ForceBindIP][24] is a freeware Windows application that will inject itself into another application and alter how certain Windows socket calls are made, allowing you to force the other application to use a specific network interface / IP address. This is useful if you are in an environment with multiple interfaces and your application has no option to bind to a specific interface. I want this for Linux.
+
+- So you think you can program [an elevator][26]? A fun programming challenge in Python.
+
+- Exzap released the version 1.3.0 of his Wii U emulator, [cemu][27].
+
+- [Scribus 1.4.6][30] was released, with SVG blend support and better PDF exports.
+
+- [Awkaster][32], a ray casting demo written in AWK. Or, basically a small Doom/Wolfenstein clone. Amazing!
+
+- The Atom text editor has a new release, version [1.4.0][34]. I'm more of a `vim` and Sublime Text fan myself, Atom feels very slow.
+
+- MidnightBSD [0.7.3][35] released, mostly security fixes.
+
+- FreeBSD on the [EdgeRouter Lite][37], without serial port access. Turns out it's just a USB stick, so DD an image and done. Neat small device runs full FreeBSD as a router.
+
+- [Let's Encrypt][38] has issued over 300K certificates!
+
+- Jeff Hoogland released version [0.2.0][42] of the Moksha desktop. For those unfamiliar, that's an E17 fork used in Bodhi Linux. Low resource usage, but high on special effects.
+
+### Talks, videos, slides and podcasts
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DQveAaR7JnI?rel=0" frameborder="0" allowfullscreen></iframe>
+
+Mycroft, turn on Netflix.
+
+- [Geek News Radio episode 4][1], geeky discussions on Baileys, The Expanse, Fallout 4, the OnePlus X and more.
+
+- Some dude [opens up an Unlimited][2] set Magic the Gathering pack and finds one of the Power 9 cards, and is very happy with that.
+
+- [Compromise in Free Software][9]. Discussion with Bryan Lunduke, Richard M Stallman, Aaron Seigo, Swapnil Bhartiya, and Stuart Langridge.
+
+- [Old Mandrake Linux commercial][10] from 1999
+
+- [Power a Raspberry Pi Zero][20] via Ethernet (PoE).
+
+- [A collection of all security conferences][21] of 2015 with video's.
+
+ 
+### Fun and nifty things and discussions
+
+- D&D Meets the [Electronic Age][4].
+
+- Since `coreutils` v8.24, `dd` has a [progress option][44]. Yay, it only took like a million years! I use `progress` [myself][45] since that has been there for some time and works with a lot more programs like `cp`, `mv`, etc.
+
+- A tip on dealing with [jackass customers][28].
+
+- [Technically correct][46] is the best kind of correct.
+
+- Decoding data hiding in a computer in the movie Star Trek IV. It was a [packet radio transmission][29].
+
+
+[1]: http://sixgun.org/episode/gnr4
+[2]: https://www.youtube.com/watch?v=aqEhEN8hMAg
+[3]: https://www.automotivelinux.org/news/announcement/2016/01/ford-mazda-mitsubishi-motors-and-subaru-join-linux-foundation-and
+[4]: http://odd74.proboards.com/thread/11485/meets-electronic-age
+[5]: http://www.dangermouse.net/esoteric/piet.html
+[6]: http://lynxline.com/inferno-rpi-0-5-release/
+[7]: http://jonathanwhiting.com/writing/blog/games_in_c/
+[8]: https://charliehorse55.wordpress.com/2016/01/09/how-nvidia-breaks-chrome-incognito/
+[9]: https://archive.org/details/CompromiseInFreeSoftware
+[10]: https://www.youtube.com/watch?v=3szC4TGgFkc
+[11]: http://blog.linuxmint.com/?p=2978
+[12]: https://www.redteam-pentesting.de/en/advisories/rt-sa-2015-001/-avm-fritz-box-remote-code-execution-via-buffer-overflow
+[13]: http://www.microhowto.info/howto/make_an_ajax_request_using_xmlhttprequest.html
+[14]: http://www.equicon.de/index.php/en/virtualization/reference-projects/metro-trains-melbourne
+[15]: http://danluu.com/cpu-bugs/
+[16]: http://osxdaily.com/2016/01/14/public-beta-os-x-10-11-4-and-ios-9-3-released/
+[17]: https://lkml.org/lkml/2016/1/10/305
+[18]: http://kernelnewbies.org/Linux_4.4
+[19]: http://www.osnews.com/story/29037/Linux_4_4_released
+[20]: http://n-o-d-e.net/post/137087519331/how-to-power-a-raspberry-pi-zero-over-ethernet
+[21]: http://www.tunnelsup.com/online-security-conferences/
+[22]: http://news.netcraft.com/archives/2016/01/08/us-military-still-shackled-to-outdated-dod-pki-infrastructure.html
+[23]: http://www.openshotvideo.com/2016/01/openshot-20-beta-released.html
+[24]: https://r1ch.net/projects/forcebindip
+[25]: http://www.ansible.com/blog/ansible-2.0-launch
+[26]: https://github.com/mshang/python-elevator-challenge/blob/master/README.md
+[27]: https://gbatemp.net/threads/release-cemu-wii-u-emulator.399524/page-139#post-5967172
+[28]: http://www.davedelaney.me/blog/how-to-fend-off-a-jerk?utm_source=hackernewsletter&utm_medium=email&utm_term=fun
+[29]: http://hackaday.com/2016/01/13/decoding-data-hiding-in-star-trek-iv/
+[30]: http://wiki.scribus.net/canvas/1.4.6_Release
+[31]: https://www.linux.com/news/enterprise/systems-management/878490-snapper-suses-ultimate-btrfs-snapshot-manager
+[32]: https://github.com/TheMozg/awk-raycaster
+[33]: https://owncloud.org/blog/making-owncloud-upgrades-more-robust/
+[34]: https://github.com/atom/atom/releases/tag/v1.4.0
+[35]: https://bsdsec.net/articles/midnightbsd-security-midnightbsd-0-7-3-release
+[36]: https://blog.spreedly.com/2015/12/21/papers-please/
+[37]: http://www.daemonology.net/blog/2016-01-10-FreeBSD-EdgeRouter-Lite.html
+[38]: https://letsencrypt.org/stats/
+[39]: https://ramsdenj.github.io/server/2016/01/01/FreeNAS-Server-Build.html
+[40]: https://www.devever.net/~hl/nosecuresmartphone  
+[41]: http://arstechnica.com/security/2016/01/bug-that-can-leak-crypto-keys-just-fixed-in-widely-used-openssh/
+[42]: http://it.toolbox.com/blogs/enlightenment/moksha-desktop-020-released-71005
+[43]: https://blog.thiago.me/raspberry-pi-bare-metal-programming-with-rust/
+[44]: https://www.reddit.com/r/linux/comments/40c2km/did_you_know_about_dds_builtin_progress/
+[45]: https://github.com/Xfennec/progress
+[46]: https://www.reddit.com/r/sysadmin/comments/40x8pb/technically_correct_but/
+[47]: http://www.arm-blog.com/using-2-factor-authentication-for-ssh/
+[48]: https://mail.mozilla.org/pipermail/persona-notices/2016/000005.html
+[49]: http://www.omgubuntu.co.uk/2016/01/ubuntu-convergence-device-demo-mwc-2016
+[50]: http://wumo.com/wumo/2016/01/17
+
+---
+
+License:
+All the text on this website is free as in freedom unless stated otherwise. 
+This means you can use it in any way you want, you can copy it, change it 
+the way you like and republish it, as long as you release the (modified) 
+content under the same license to give others the same freedoms you've got 
+and place my name and a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for 
+advertisements. You are tracked and Google knows everything about you. 
+Use an adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license 
+unless already licensed under a license which does not allows this form 
+of licensing or if another license is stated on that page / in that software:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Just to be clear, the information on this website is for ment for educational 
+purposes and you use it at your own risk. I do not take responsibility if you 
+screw something up. Use common sense, do not rm -rf / as root for example. 
+If you have any questions then do not hesitate to contact me.
+
+See https://raymii.org/s/static/About.html for details.

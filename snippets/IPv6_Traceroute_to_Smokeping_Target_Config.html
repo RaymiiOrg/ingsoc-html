@@ -1,0 +1,222 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Traceroute IPv6 to Smokeping Target config - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />
+        # <script src="/s//inc/js/toc.js" type="text/javascript"></script> -->
+        <script type="text/javascript">
+            window.onload=function(){var n="",e=0;document.getElementById("contents").innerHTML=document.getElementById("contents").innerHTML.replace(/<h([\d])>([^<]+)<\/h([\d])>/gi,function(r,t,o,a){if(t!=a)return r;t>e?n+=new Array(t-e+1).join("<ol>"):t<e&&(n+=new Array(e-t+1).join("</ol>")),e=parseInt(t);var i=o.replace(/ /g,"_");return n+='<li><a href="#'+i+'">'+o+"</a></li>","<h"+t+'><a name="'+i+'">'+o+"</a></h"+a+">"}),e&&(n+=new Array(e+1).join("</ol>")),document.getElementById("toc").innerHTML+=n};
+        </script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Traceroute IPv6 to Smokeping Target config</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/snippets.html" class="link">Snippets</a></li><li><a href="IPv6_Traceroute_to_Smokeping_Target_Config.html" class="link">Traceroute IPv6 to Smokeping Target config</a></li></ul><p><small>05-03-2017</small> | <small>Remy van Elst</small> | <a href="IPv6_Traceroute_to_Smokeping_Target_Config.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This little one-liner converts the output of traceroute for IPv6 to Smokeping Target output. This way you can build your smokeping config faster.</p>
+
+<p>Do note you have to setup your IPv6 probe as described <a href="http://oss.oetiker.ch/smokeping/probe/FPing6.en.html">here</a>. Later in this article I&#39;ll describe the inheritance by example.</p>
+
+<p>I had only setup my smokepings for IPv4. Recently we had an issue were network config was borked and the whole IPv4 network was not announced via BGP anymore. I was at home troubleshooting, but finding nothing since I have native IPv6 and that part still worked. My Smokeping did show loss, and that explicitly uses IPv4. That helped with the debugging a lot. I have a <a href="https://raymii.org/s/snippets/Traceroute_to_Smokeping_Target_Config.html">IPv4</a> version of this article as well.</p>
+
+<p>You can see smokeping in action <a href="http://smokeping.serverius.eu/">here at serverius</a>. More info about <a href="http://oss.oetiker.ch/smokeping/">Smokeping here on the website</a>.</p>
+
+<h3>Traceroute one liner</h3>
+
+<p>This is the command to get the Smokeping config:</p>
+
+<pre><code>traceroute -6 -w 3 revspace.nl | grep -v &quot;*&quot; | sed -e &#39;s/(//g&#39; -e &#39;s/)//g&#39; | awk &#39;{ gsub(/\./,&quot;_&quot;,$2); gsub(/\:/,&quot;_&quot;,$2); print &quot;++ &quot;$2&quot;\nmenu = &quot;$2&quot; - &quot;$3&quot;\ntitle = &quot;$2&quot; - &quot;$3&quot;\nhost = &quot;$3&quot;\n&quot;}&#39;
+</code></pre>
+
+<p>The &quot;*&quot; are grepped out, the <code>()</code> are removed from the IP address and we also replace <code>.</code> and <code>:</code> in the hostname, the Smokeping config doesn&#39;t allow that.</p>
+
+<h3>Example</h3>
+
+<p>This will give you something like this (for <a href="https://tweakers.net">tweakers.net</a>:</p>
+
+<pre><code>++ lo0_dr11_d12_xs4all_net
+menu = lo0_dr11_d12_xs4all_net - 2001:888:1:1001::1
+title = lo0_dr11_d12_xs4all_net - 2001:888:1:1001::1
+host = 2001:888:1:1001::1
+
+++ 0_ae21_xr3_3d12_xs4all_net
+menu = 0_ae21_xr3_3d12_xs4all_net - 2001:888:1:4024::1
+title = 0_ae21_xr3_3d12_xs4all_net - 2001:888:1:4024::1
+host = 2001:888:1:4024::1
+
+++ 0_ge-0-2-0_xr1_sara_xs4all_net
+menu = 0_ge-0-2-0_xr1_sara_xs4all_net - 2001:888:1:4006::1
+title = 0_ge-0-2-0_xr1_sara_xs4all_net - 2001:888:1:4006::1
+host = 2001:888:1:4006::1
+
+++ 10ge12-12_core1_ams1_he_net
+menu = 10ge12-12_core1_ams1_he_net - 2001:470:0:e8::1
+title = 10ge12-12_core1_ams1_he_net - 2001:470:0:e8::1
+host = 2001:470:0:e8::1
+
+++ amsix_true_nl
+menu = amsix_true_nl - 2001:7f8:1::a501:5703:1
+title = amsix_true_nl - 2001:7f8:1::a501:5703:1
+host = 2001:7f8:1::a501:5703:1
+
+++ 2001_990_0_1378__1a
+menu = 2001_990_0_1378__1a - 2001:990:0:1378::1a
+title = 2001_990_0_1378__1a - 2001:990:0:1378::1a
+host = 2001:990:0:1378::1a
+
+++ tweakers_net
+menu = tweakers_net - 2001:9a8:0:e:1337:0:80:1
+title = tweakers_net - 2001:9a8:0:e:1337:0:80:1
+host = 2001:9a8:0:e:1337:0:80:1
+</code></pre>
+
+<p>This can be pasted right in to Smokeping&#39;s config.</p>
+
+<h3>Probe config</h3>
+
+<p>On Debian, add the FPing6 probe to <code>/etc/smokeping/config.d/Probes</code>:</p>
+
+<pre><code>*** Probes ***
+
++ FPing
+binary = /usr/bin/fping
+
++ FPing6
+binary = /usr/bin/fping6
+</code></pre>
+
+<p>The <a href="http://oss.oetiker.ch/smokeping/probe/FPing6.en.html">documentation</a> has a bigger example.</p>
+
+<p>The inherentance in the <code>Targets</code> configuration bit me a bit. If your default probe is <code>FPing</code>, you cannot add the <code>probe = FPing6</code> to a specific check. You need to make a seperate section. So instead of this:</p>
+
+<pre><code>+ cloudvps
+
+menu = cloudvps
+title = CloudVPS
+
+++ rt-eu01_cloudvps_nl
+menu = rt-eu01_cloudvps_nl - 80.246.207.201
+title = rt-eu01_cloudvps_nl - 80.246.207.201
+host = 80.246.207.201
+
+++ rt-eq01_cloudvps_nl
+menu = rt-eq01_cloudvps_nl - 2001:4cb8:40b:1::1d0a
+title = rt-eq01_cloudvps_nl - 2001:4cb8:40b:1::1d0a
+host = 2001:4cb8:40b:1::1d0a
+</code></pre>
+
+<p>You need to seperate the IPv6 hosts out to a new section:</p>
+
+<pre><code>+ cloudvpsv6
+
+menu = cloudvpsv6
+title = CloudVPS IPv6
+probe = FPing6
+
+++ rt-eq01_cloudvps_nl
+menu = rt-eq01_cloudvps_nl - 2001:4cb8:40b:1::1d0a
+title = rt-eq01_cloudvps_nl - 2001:4cb8:40b:1::1d0a
+host = 2001:4cb8:40b:1::1d0a
+</code></pre>
+
+<h3>No IPv6?</h3>
+
+<p>If a service doesn&#39;t have IPv6 setup, it will fail:</p>
+
+<pre><code>reddit.com: Name or service not known
+Cannot handle &quot;host&quot; cmdline arg `reddit.com&#39; on position 1 (argc 4)
+</code></pre>
+
+<p>I use the following version of Traceroute:</p>
+
+<pre><code>$ traceroute -V
+Modern traceroute for Linux, version 2.1.0
+Copyright (c) 2016  Dmitry Butskoy,   License: GPL v2 or any later
+</code></pre>
+</div><hr>Tags: <a href="../tags/ipv6.html" class="link">ipv6 &nbsp;</a><a href="../tags/network.html" class="link">network &nbsp;</a><a href="../tags/smokeping.html" class="link">smokeping &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><a href="../tags/traceroute.html" class="link">traceroute &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

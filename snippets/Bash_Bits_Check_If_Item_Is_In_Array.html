@@ -1,0 +1,152 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Bash Bits: Check if item is in array - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />
+        # <script src="/s//inc/js/toc.js" type="text/javascript"></script> -->
+        <script type="text/javascript">
+            window.onload=function(){var n="",e=0;document.getElementById("contents").innerHTML=document.getElementById("contents").innerHTML.replace(/<h([\d])>([^<]+)<\/h([\d])>/gi,function(r,t,o,a){if(t!=a)return r;t>e?n+=new Array(t-e+1).join("<ol>"):t<e&&(n+=new Array(e-t+1).join("</ol>")),e=parseInt(t);var i=o.replace(/ /g,"_");return n+='<li><a href="#'+i+'">'+o+"</a></li>","<h"+t+'><a name="'+i+'">'+o+"</a></h"+a+">"}),e&&(n+=new Array(e+1).join("</ol>")),document.getElementById("toc").innerHTML+=n};
+        </script>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Bash Bits: Check if item is in array</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/snippets.html" class="link">Snippets</a></li><li><a href="Bash_Bits_Check_If_Item_Is_In_Array.html" class="link">Bash Bits: Check if item is in array</a></li></ul><p><small>21-09-2013</small> | <small>Remy van Elst</small> | <a href="Bash_Bits_Check_If_Item_Is_In_Array.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how find out if an array has an item.</p>
+
+<p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
+
+<p>This is a simple function which helps you find out if an (non associative) array has an item. It allows you to call the function with just the array name, not ${arrayname[@]}. It returns 1 if the item is in the array, and 0 if it is not.</p>
+
+<p>This is the function:</p>
+
+<pre><code>in_array() {
+    local haystack=${1}[@]
+    local needle=${2}
+    for i in ${!haystack}; do
+        if [[ ${i} == ${needle} ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+</code></pre>
+
+<p>Now we can test it and see that it works:</p>
+
+<pre><code>declare -a vpsservers=(&quot;vps1&quot; &quot;vps2&quot; &quot;vps3&quot; &quot;vps4&quot; &quot;vps6&quot;);
+
+in_array vpsservers vps3 &amp;&amp; echo &quot;found&quot; || echo &quot;not found&quot;
+in_array vpsservers vps5 &amp;&amp; echo &quot;found&quot; || echo &quot;not found&quot;
+</code></pre>
+
+<p>Should return:</p>
+
+<pre><code>found
+not found
+</code></pre>
+
+<p>Now a usage example. Lets say you have a script which requires a specific version of Ubuntu and does not work on other versions of ubuntu. You can use this to check if the version of ubuntu is supported with this function. </p>
+
+<pre><code>declare -a supported_ubuntu=(&quot;Ubuntu 10.04.1 LTS&quot; &quot;Ubuntu 10.04.3 LTS&quot; &quot;Ubuntu 10.04.4 LTS&quot; &quot;Ubuntu 10.10&quot; &quot;Ubuntu 12.04 LTS&quot; &quot;Ubuntu 12.04.1 LTS&quot;)
+
+if [ -f &quot;/etc/lsb-release&quot; ]; then
+    running_ubuntu=`awk -F &quot;\&quot;&quot; &#39;/DESCRIPTION/ { print $2 }&#39; /etc/lsb-release`
+    if in_array supported_ubuntu &quot;${running_ubuntu}&quot;; then
+        echo &quot;${running_ubuntu} is supported.&quot;
+    else
+        echo &quot;${running_ubuntu} is not supported. Run ${0} again with the -f option to ignore this warning.&quot;
+        exit 1
+    fi
+fi
+</code></pre>
+
+<p>Do note that forcing a specific version of something is not a best practice, however sometimes you are forced to.</p>
+</div><hr>Tags: <a href="../tags/array.html" class="link">array &nbsp;</a><a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/bash-bits.html" class="link">bash-bits &nbsp;</a><a href="../tags/haystack.html" class="link">haystack &nbsp;</a><a href="../tags/needle.html" class="link">needle &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

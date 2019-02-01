@@ -1,0 +1,146 @@
+This is a text-only version of the following page on https://raymii.org:
+---
+
+	Title    : 	Recap of week 51, 2015
+	Author   : 	Remy van Elst
+	Date     : 	19-12-2015
+	URL      : 	https://raymii.org/s/blog/Recap_of_week_51_2015.html
+	Format   : 	Markdown/HTML
+---
+
+
+
+Recap of week 51, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.
+
+Earlier editions can [be found here](https://raymii.org/s/tags/recap.html)
+
+<img src="https://raymii.org/s/inc/img/comics/wumo565d9107ebeb82.99057631.png" alt="wumo">
+Comic by [Wumo](http://wumo.com/wumo/2015/12/14)
+
+
+If you like this website and want to support it AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+
+### News, tutorials and articles
+
+-  Self hosting a [firefox Sync server](https://known.phyks.me/2015/self-hosting-firefox-sync-15)
+- A rant from a developer who thinks a smaller archive is nice but forgets [all the procedural changes and the extra dev time lost](http://imoverclocked.blogspot.nl/2015/12/for-love-of-bits-stop-using-gzip.html?m=1)
+- The Linux Mint team has problems with their servers due to a catastrophal disk crash. [Donate a bit to help them work on the awesome distro they make, and read their monthly update](http://blog.linuxmint.com/?p=2957)
+- Remove other desktop environments like Kubuntu of XFCE and go back to a [pure Ubuntu](http://www.psychocats.net/ubuntucat/pure-ubuntu-15-10/). It has these commands for the other *buntu's as well.
+- OpenBSD 5.8 on a [HP 6560b laptop](https://box.matto.nl/openbsdhp6560.html)
+- Let's Encrypt on a [FreeBSD NGINX reverse proxy](http://savagedlight.me/2015/11/24/lets-encrypt-on-a-freebsd-nginx-reverse-proxy/) including a good auto-renewal script.
+- Another tutorial on [Let's Encrypt with NGINX plus auto-renewal script](https://aapjeisbaas.nl/lets-encrypt.html)
+- Lets Encrypt issued +160K certificates. That's 60K [more than last week](https://letsencrypt.org/stats/)
+- A good modern guide for creating GPG keys, including [subkeys and best practices](https://alexcabal.com/creating-the-perfect-gpg-keypair/)
+- Google Chrome will block all [SHA-1](https://googleonlinesecurity.blogspot.nl/2015/12/an-update-on-sha-1-certificates-in.html) certificates after 2017, or maybe half of 2016, and give warnings earlier next year.
+- Facebook wants to [delay the SHA-1 deprecation](https://m.facebook.com/notes/alex-stamos/the-sha-1-sunset/10153782990367929) by introducing a special Legacy certificate. That is, of course, very stupid, we all know how good EXPORT crypto was...
+- Facebook also [fucks up a security researcher that follows the rules](http://exfiltrated.com/research-Instagram-RCE.php###Threats_And_Intimidation), including intimidation... They did give an [official response](https://www.facebook.com/notes/alex-stamos/bug-bounty-ethics/10153799951452929).
+- Facebook switches all flash video Players to [HTML5](https://code.facebook.com/posts/159906447698921/why-we-chose-to-move-to-html5-video/)
+- A good read [on how hard file consistensy actually is](http://danluu.com/file-consistency/)
+- Avast on Mac does a [man in the middle without validating certificates](http://www.thesafemac.com/avasts-man-in-the-middle/)
+- Lenovo ships a driver from CSR that installs a "test" [root certificate](http://www.golem.de/news/lenovo-csr-bluetooth-treiber-installiert-root-zertifikat-1512-117996.html)
+- A pre-boot rootkit, nothing new, still the press does a [scary article...](http://www.extremetech.com/computing/219027-new-pc-malware-loads-before-windows-is-virtually-impossible-to-detect?mailing_id=fuckyou)
+- A nice writeup on some of the [flaws in the kerberos protocol](http://dfir-blog.com/2015/12/13/protecting-windows-networks-kerberos-attacks/)
+- 'Hack' Grub2 by pressing [space 28 times](http://hmarco.org/bugs/CVE-2015-8370-Grub2-authentication-bypass.html)
+- FreeBSD kernel exploit breaks out of jail [and possibly jailbreaks the PS4](http://www.networkworld.com/article/3014714/security/developer-claims-ps4-officially-jailbroken.html). Actual  [background info from the dev here](https://cturt.github.io/ps4-2.html) and [here](https://cturt.github.io/ps4-3.html)
+- Philips Smart Home Hue Lights [now block third party devices](https://home-assistant.io/blog/2015/12/12/philips-hue-blocks-3rd-party-bulbs/). Lamps that worked perfectly before the update keep working, until you need to pair again. This is why I have trust issues with closed sourced software. And probably explains part of my negative bias towards home automation and the "internet of things"...
+- A nice article on [good practices for Bash scripting](http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming)
+- Western Digital and Owncloud bring a kit to market to get Owncloud to home users. But which home users will buy a [Raspberry Pi 2 and a 1TB HDD as a kit to run just Owncloud?](https://owncloud.org/blog/western-digital-and-owncloud-team-up-to-bring-owncloud-to-home-users/). 
+- Collabora and Owncloud release a preview of [Libreoffice Online that runs on Owncloud](http://www.itworld.com/article/3015015/open-source-tools/watch-out-microsoft-google-libreoffice-as-a-service-is-here.html)
+- Forward or save all outgoing [email with Exim](https://raymii.org/s/blog/Forward_or_save_all_outgoing_email_with_exim.html)
+- How Does the Use of Docker [Affect Latency?](http://highscalability.com/blog/2015/12/16/how-does-the-use-of-docker-effect-latency.html)
+- The Dutch Government published a obligation for companies to [report data leaks](https://www.security.nl/posting/454683/Meldplicht+datalekken+in+Staatscourant+gepubliceerd) in the official state gazette.
+- Python Core developer writes on [why Python 3 exists and the big difference with Python 2](http://www.snarky.ca/why-python-3-exists)
+- 684.8 TB of data is up for grabs due to publicly [exposed MongoDB databases](https://blog.shodan.io/its-still-the-data-stupid/)
+- If your icons are unclear, put a damn [text label with it](http://thomasbyttebier.be/blog/the-best-icon-is-a-text-label)
+- The GOV.UK site is [an open redirect to porn and other malicious content](https://shkspr.mobi/blog/2015/12/when-govuk-is-nsfw/)
+- Good writeup by BBC Digital Media about how they [replaced varnish with nginx](http://www.bbc.co.uk/blogs/internet/entries/17d22fb8-cea2-49d5-be14-86e7a1dcde04) and why.
+
+
+
+### Software and releases
+
+- OPNSense, a firewall appliance based on FreeBSD, forked from PFSense, [released 15.7.22](https://opnsense.org/opnsense-15-7-22-released/). Lots of bugfixes.
+- cURL enables [HTTP 2.0 by default](http://daniel.haxx.se/blog/2015/12/14/curl-and-http2-by-default/). The main dev blog a lot and writes good articles. 
+- Drupal creator writes about de-coupling the frontend of the CMS of [the backend](http://buytaert.net/should-we-decouple-drupal-with-a-client-side-framework)
+- Getting xterm and modern applications to share a clipboard to do [cut and paste together](https://utcc.utoronto.ca/~cks/space/blog/unix/XtermModernCutAndPaste)
+- A critical Joomla zero day in all versions dating back to 2008 was found allowing remote code execution. [Update to the latest 3.4.6](https://blog.sucuri.net/2015/12/remote-command-execution-vulnerability-in-joomla.html). It is so bad, they even released patches for unsupported versions 1.5 and 2.5. I think people who failed to upgrade for almost 10 years deserve their server getting abused.... Also the [official Joomla announcement](https://www.joomla.org/announcements/release-news/5641-joomla-3-4-6-released.html). 
+- A very detailed technical writeup on how [the Joomla bug works](https://blog.patrolserver.com/2015/12/17/in-depth-analyses-of-the-joomla-0-day-user-agent-exploit/)
+- Firelet, distributed [linux iptables firewall manager](http://firelet.net/)
+- Qubes OS, the Linux that runs every application in its own Xen VM will come preinstalled on the [Purism Laptop](http://arstechnica.com/gadgets/2015/12/qubes-os-will-ship-pre-installed-on-purisms-security-focused-librem-13-laptop/). You know, that device that promises fully open source hardware and software but still ships with an nvidia card and a binary blob for the bios/uefi...
+- Lets Encrypt client now in the Fedora [repo's by default](https://fedoramagazine.org/letsencrypt-now-available-fedora/)
+- Firefox 43 [released](https://www.mozilla.org/en-US/firefox/43.0/releasenotes/) with 64bit Windows version and better tracking blocking in anonymous browsing mode
+- ReactOS, open source Windows OS clone (not linux) releases RC for [version 0.4](http://liliputing.com/2015/12/open-source-windows-clone-reactos-hits-version-0-4-almost.html)
+- [Request Map Generator](http://requestmap.webperf.tools/) is a visual way of looking at what requests are being made for a given page. ([via](https://josephscott.org/archives/2015/12/request-map/))
+- Juniper ScreenOS has a[ backdoor coded in since 2012.](http://forums.juniper.net/t5/Security-Incident-Response/Important-Announcement-about-ScreenOS/ba-p/285554). Makes me wonder how the code review procedures are at Juniper...
+- There were a few Xen Security Advisories published this week (XSA). Here's  a writeup on [one of them](https://www.insinuator.net/2015/12/xen-xsa-155-double-fetches-in-paravirtualized-devices/)
+- Wireshark 2.0, [now with Qt](https://lwn.net/Articles/667165/)
+- Software created or [maintained by the OpenBSD project](http://www.openbsd.org/innovations.html)
+- CopiedApp, A full featured clipboard[ manager for OS X.](http://copiedapp.com/). I can't live without a clipboard manager, on linux [ClipIt is my preferred choice.](https://www.google.nl/url?q=http://community.linuxmint.com/software/view/clipit)
+
+
+### Talks, slides and podcasts
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cWRDxANRT-I?rel=0" frameborder="0" allowfullscreen></iframe>
+
+- A round table discussion with Richard Stallman, Aaron Seigo, Stuart Langridge and [Bryan Lunduke on compromise in Free Software](http://lunduke.com/2015/12/16/need-for-compromise-in-free-software-with-richard-stallman/)
+- [Fuck you, pay me!](https://vimeo.com/22053820) - on freelancing and payment by clients. 
+
+
+### Fun and nifty things and discussions
+
+- This guy writes about his journey [on becoming a morming person](https://medium.com/@jazer/how-i-became-a-morning-person-and-why-i-decided-to-make-the-change-eb1b012a16e5###.aul8va8ht)
+- Solder more USB ports on the new awesome [Raspberry Pi Zero](http://hackaday.com/2015/12/12/solder-more-usb-ports-to-the-raspberry-pi-zero/)
+- The Open Source Smartwatch. 3D print it yourself, stack an arduino and an rtc module and [have the coolest geeky watch ever](http://oswatch.org)
+- A nice recap of the creation and hurdles of the PiDP8/i, a very nice [remake of the PDP-8/i](http://hackaday.com/2015/12/05/experiences-in-developing-an-electronics-kit/)
+- And here's another guy producing a PDP, this time a PDP-11, [with a Pi](http://hackaday.com/2015/12/12/turning-a-pi-into-a-pdp/). Not a mass kit, but does include a [good guide for programming the PDP-11](http://jonatron.me/)
+- Here's yet another retro thingy, adding a second hard drive to [a commodore](http://hackaday.com/2015/12/13/adding-a-second-drive-to-a-forgotten-commodore/###respond)
+- And more retro with a classic Mac [getting a network connection](http://hackaday.com/2015/12/15/better-networking-with-a-macintosh-classic/). Source is in French though.
+- How to keep [your head up in the constant stream of bad news](http://lifehacker.com/how-to-keep-your-head-up-in-the-constant-stream-of-bad-1747891922)
+- Sometimes you rewrite your core company software [in two weeks before going live](http://garethrees.org/2015/12/14/javascript/)
+- Lines of code, or tickets answered are [not a good measurement for how good your employees work.](http://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.tx)
+- You need to register [your drone next year](http://lifehacker.com/psa-register-your-recreational-drone-with-the-faa-by-f-1747983645), and the year after that you probably need to get a pilot license as well.
+- An interactive [LED Christmas tree](http://www.evilmadscientist.com/2015/interactive-led-christmas-tree/)
+- A cozy [fireplace for emacs](https://github.com/johanvts/emacs-fireplace/blob/master/README.rst)
+- Can we [use Jenkins for that?](http://engineering.simondata.com/can-we-use-jenkins-for-that/)
+- Tom Limoncelli has the solution for the [government encryption problem](http://everythingsysadmin.com/2015/12/five-reallys.html)
+- Fun stuff happens on your network, like bringing down your AIX with Oracle if your [smartwatch claims to be localhost](https://www.reddit.com/r/sysadmin/comments/3x8skg/tifu_by_connecting_my_samsung_watch_to_our/)
+- Moving from [an MSP to internal IT, what to expect?](https://www.reddit.com/r/sysadmin/comments/3x8id3/moving_from_an_msp_to_internal_it_what_to_expect/)
+- Remember the kernel version in Terminator? [It's finally released.](https://www.reddit.com/r/linux/comments/3wwzyj/remember_the_kernel_version_in_terminator_its/)
+- ford.com had their Apache Server Status [page open wide](https://www.reddit.com/r/sysadmin/comments/3wyq44/fordcom_server_status_page/)
+
+---
+
+License:
+All the text on this website is free as in freedom unless stated otherwise. 
+This means you can use it in any way you want, you can copy it, change it 
+the way you like and republish it, as long as you release the (modified) 
+content under the same license to give others the same freedoms you've got 
+and place my name and a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for 
+advertisements. You are tracked and Google knows everything about you. 
+Use an adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license 
+unless already licensed under a license which does not allows this form 
+of licensing or if another license is stated on that page / in that software:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Just to be clear, the information on this website is for ment for educational 
+purposes and you use it at your own risk. I do not take responsibility if you 
+screw something up. Use common sense, do not rm -rf / as root for example. 
+If you have any questions then do not hesitate to contact me.
+
+See https://raymii.org/s/static/About.html for details.

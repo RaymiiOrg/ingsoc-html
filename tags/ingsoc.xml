@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag ingsoc on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/ingsoc.xml</link> 
+            <description>RSS feed for tag ingsoc on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/ingsoc.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>Site updates for accessibility, text only pages and skip to main content</title> 
+                <link>https://raymii.org/s/blog/Site_Improvements_for_accessibility.html</link> 
+                <guid>https://raymii.org/s/blog/Site_Improvements_for_accessibility.html</guid>
+                <description>I've made some new improvements to this website. Raymii.org is generated using my self-written static site generator named ingsoc, the new features are focussed on accessibility. If you are using a screen reader or command-line browser this will benefit you. Or if you like to archive stuff offline. The two main improvements are a text-only version of every content page (article/tutorial etc) and a 'Skip to main content' link.</description> 
+                <pubDate>Wed, 01 Aug 2018 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Site updates, new layout for overview pages</title> 
+                <link>https://raymii.org/s/blog/Site_updates_new_layout_for_overview_pages.html</link> 
+                <guid>https://raymii.org/s/blog/Site_updates_new_layout_for_overview_pages.html</guid>
+                <description>This site is generated with my self-written open source static site generator named ingsoc (named after 1984). I've updated the overview pages with a new layout so that items are sorted by their publishing date instead of alphabetically. I've also rewritten some internal logic regarding tags and categories. This article shows the difference before and after and includes some old screenshots of raymii.org.</description> 
+                <pubDate>Fri, 04 May 2018 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>ingsoc</title> 
+                <link>https://raymii.org/s/software/ingsoc.html</link> 
+                <guid>https://raymii.org/s/software/ingsoc.html</guid>
+                <description>ingsoc is a static site generator written in Python with the purpose of generating raymii.org. It differs from other static site generators because it does not create a blog-like site, but it is focused on pages and structure. It also does not use a template engine. It generates categories, pages, tags, an XML sitemap and a RSS feed. It takes markdown files with a yaml config header as input, and outputs html.</description> 
+                <pubDate>Tue, 02 Dec 2014 00:00:00 GMT</pubDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    
