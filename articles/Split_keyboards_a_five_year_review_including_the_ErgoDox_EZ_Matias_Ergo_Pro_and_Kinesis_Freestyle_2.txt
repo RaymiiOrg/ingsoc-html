@@ -46,14 +46,14 @@ There are no letters on my keycaps because the layout of the ergodox is customiz
 
 The Ergodox EZ comes with an ortho-linear layout. What this means is that the keys are lined up exactly on top of each other. This layout reduces finger travel and fatigue. Here is a picture of the default layout of the ErgoDox:
 
-<img src="https://raymii.org/s/inc/img/ergodox-default-layout.png" width=800 height=450>
+<img src="https://raymii.org/s/inc/img/ergodox-default-layout.png">
 
 It took me about a month to get used to the ergodox layout. I printed it out and placed it on my desk, which helped a lot. I do prefer the wrist rests but not the tilt kit. My first Ergodox included the tilt kit, however, I never use it. My second ergodox doesn't have the tilt kit.
 
 
 One other very nice feature of the Ergodox is the thumb cluster:
 
-<img src="https://raymii.org/s/inc/img/ergodox-thumb.png" width=800 height=450>
+<img src="https://raymii.org/s/inc/img/ergodox-thumb.png">
 
 On a regular keyboard, you only use your thumbs for the space bar. The ergodox has a thumb cluster on each half. It includes six keys you can use with your thumb. The position is comfortable, and it enables you to use your thumb for more than just the space bar. The keys on the left thumb cluster include `space`, `backspace`, `home` and `end`. I've added the backtick/tilde (`~`) and the percent sign (`%`) since I use those often.
 
