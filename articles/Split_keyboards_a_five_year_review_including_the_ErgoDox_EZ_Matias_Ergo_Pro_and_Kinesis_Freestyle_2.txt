@@ -53,7 +53,7 @@ It took me about a month to get used to the ergodox layout. I printed it out and
 
 One other very nice feature of the Ergodox is the thumb cluster:
 
-<img src="https://raymii.org/s/inc/img/ergodox-thumb.png">
+<img src="https://raymii.org/s/inc/img/ergodox-thumb.png" width=800 height=450>
 
 On a regular keyboard, you only use your thumbs for the space bar. The ergodox has a thumb cluster on each half. It includes six keys you can use with your thumb. The position is comfortable, and it enables you to use your thumb for more than just the space bar. The keys on the left thumb cluster include `space`, `backspace`, `home` and `end`. I've added the backtick/tilde (`~`) and the percent sign (`%`) since I use those often.
 
