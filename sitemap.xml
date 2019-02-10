@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/blog/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</loc>
+            <lastmod>2019-02-08</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/software/Sparkling_Network.html</loc>
             <lastmod>2019-01-12</lastmod>
             <changefreq>weekly</changefreq>
@@ -2292,7 +2298,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/disk.html</loc>
+            <loc>https://raymii.org/s/tags/sc-hsm-embedded.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2377,6 +2383,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/noop.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/matias-ergo-pro.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2592,7 +2604,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/network-weathermap.html</loc>
+            <loc>https://raymii.org/s/tags/ping.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2718,7 +2730,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sc-hsm-embedded.html</loc>
+            <loc>https://raymii.org/s/tags/disk.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2803,6 +2815,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/install.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/sles.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3456,7 +3474,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/namespace.html</loc>
+            <loc>https://raymii.org/s/tags/split-keyboard.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3570,7 +3588,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/bodhi.html</loc>
+            <loc>https://raymii.org/s/tags/ergodox.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3750,7 +3768,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ping.html</loc>
+            <loc>https://raymii.org/s/tags/namespace.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4236,6 +4254,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/mbr.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/inputrc.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
@@ -4374,6 +4398,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/bug-reporting.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/drupal.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
@@ -4411,6 +4441,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/introduction.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/bodhi.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4770,7 +4806,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/bug-reporting.html</loc>
+            <loc>https://raymii.org/s/tags/qmk.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5160,7 +5196,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/outlook-anywhere.html</loc>
+            <loc>https://raymii.org/s/tags/kinesis-freestyle.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6744,7 +6780,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/scientific-linux.html</loc>
+            <loc>https://raymii.org/s/tags/ergonomic.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7008,6 +7044,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/scientific-linux.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/ossec-wui.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
@@ -7188,7 +7230,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/server-2008.html</loc>
+            <loc>https://raymii.org/s/tags/vt220.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7584,7 +7626,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mbr.html</loc>
+            <loc>https://raymii.org/s/tags/mechanical-keyboards.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/server-2008.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7609,6 +7657,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/arcade.html</loc>
+            <lastmod>2019-02-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/network-weathermap.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7986,7 +8040,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sles.html</loc>
+            <loc>https://raymii.org/s/tags/mountain-lion.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8046,7 +8100,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mountain-lion.html</loc>
+            <loc>https://raymii.org/s/tags/outlook-anywhere.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8101,12 +8155,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/cleanup.html</loc>
-            <lastmod>2019-02-03</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/vt220.html</loc>
             <lastmod>2019-02-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>

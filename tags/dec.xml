@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/dec.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Split keyboards, a five year review including the ErgoDox EZ, Matias Ergo Pro and Kinesis Freestyle 2</title> 
+                <link>https://raymii.org/s/blog/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</link> 
+                <guid>https://raymii.org/s/blog/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</guid>
+                <description>A split keyboard is weird at first, but once you get used to it, you will never want anything else. The keyboard is made up from two halves allowing your arms and wrists to be in a natural (neutral, straight) position, instead of having an angle/twist in your wrist. I've been using split keyboards for about five years now. Over those years I've tried several different models from different manufacturers. In this article I'll talk about the three split keyboards I've used intensively and two I have only seen or tried shortly. We'll start with my current and favorite split keyboard, the ErgoDox EZ. The other two I've used are the Matias Ergo Pro and the Kinesis Freestyle 2. I discuss the UHK and Microsoft Natural Ergonomic Keyboard 4000 briefly.</description> 
+                <pubDate>Fri, 08 Feb 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>Multiple passwords for one user, UIC uniqueness and the system password on OpenVMS</title> 
                 <link>https://raymii.org/s/blog/Multiple_passwords_for_one_user_UIC_uniqueness_and_the_system_password_on_OpenVMS.html</link> 
                 <guid>https://raymii.org/s/blog/Multiple_passwords_for_one_user_UIC_uniqueness_and_the_system_password_on_OpenVMS.html</guid>
