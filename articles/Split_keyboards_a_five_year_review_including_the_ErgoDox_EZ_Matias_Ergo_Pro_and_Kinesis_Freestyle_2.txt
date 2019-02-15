@@ -116,9 +116,9 @@ Due to the price being as low as it is compared to other split keyboards, around
 
 <img src="https://raymii.org/s/inc/img/uhk.png">
 
-The UHK is a fully programmable mechanical split keyboard. It has add on modules to provide a thumb cluster which include a set of keys, a trackball or touchpad. It can be clicked together to provide a normal (non-split) keyboard.
+The UHK is a fully programmable mechanical split keyboard. It has add on modules to provide a thumb cluster which include a set of keys, a trackball or touchpad. It can be clicked together to provide a normal (non-split) keyboard. I have not used this board.
 
-A co worker has the UHK and he's not happy with it. It feels flimsy and like cheap plastic. The add on components for the thumb cluster are loose and the shipping has been delayed so many times that he had to wait two years for his board to arrive.
+A co worker has the UHK and he's not happy with it. His opinion is that the board feels flimsy and like cheap plastic. The shipping has been delayed so many times that he had to wait two years for his board to arrive.
 
 Looking at the pictures and the youtube reviews I think I might like it due to the layout and flexibility in addons and programming. A trackball integrated in my keyboard seems awesome, even less hand movement. Also, the possibility to click the keyboard together into a regular, mechanical keyboard seems cool for the people who want that.
 
