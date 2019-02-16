@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/blog/My_phone_serves_me_400_ads_per_hour_blokada_blocks_beats_them_all.html</loc>
+            <lastmod>2019-02-16</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</loc>
             <lastmod>2019-02-10</lastmod>
             <changefreq>weekly</changefreq>
@@ -3960,6 +3966,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/wcag.html</loc>
+            <lastmod>2019-02-09</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/linuxtracker.html</loc>
             <lastmod>2019-02-09</lastmod>
             <changefreq>weekly</changefreq>
@@ -4357,6 +4369,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/debootstrap.html</loc>
+            <lastmod>2019-02-09</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/blokada.html</loc>
             <lastmod>2019-02-09</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6546,7 +6564,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wcag.html</loc>
+            <loc>https://raymii.org/s/tags/android.html</loc>
             <lastmod>2019-02-09</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7021,6 +7039,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/xterm.html</loc>
+            <lastmod>2019-02-09</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/ublock-origin.html</loc>
             <lastmod>2019-02-09</lastmod>
             <changefreq>weekly</changefreq>
         </url>
