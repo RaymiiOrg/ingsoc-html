@@ -121,6 +121,7 @@ Joke Buis - Welk Een Vriend Is Onze Jezus
 <p>The full script to send the desktop notifications:</p>
 
 <pre><code>#!/bin/bash
+PATH=&quot;/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH&quot;
 if [[ ! -f /tmp/gnr-prev.txt ]]; then touch /tmp/gnr-prev.txt; fi
 PREVSONG=&quot;$(cat /tmp/gnr-prev.txt)&quot;
 curl -s &#39;https://api.grootnieuwsradio.nl/playing.json&#39; | sed -n &#39;s|.*&quot;PlayingNow&quot;:&quot;\([^&quot;]*\)&quot;.*|\1|p&#39; &gt; /tmp/gnr-cur.txt
@@ -132,7 +133,13 @@ if [[ &quot;$PREVSONG&quot; != &quot;$CURSONG&quot; ]]; then
 fi
 </code></pre>
 
-<p>Put it in <code>cron</code> for regular execution.</p>
+<p>Put it in <code>cron</code> for regular execution. Add this to your crontab as well if you use KDE:</p>
+
+<pre><code>DISPLAY=:0.0
+XAUTHORITY=/home/remy/.Xauthority
+</code></pre>
+
+<p>Replace <code>remy</code> with your username.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/bash-bits.html" class="link">bash-bits &nbsp;</a><a href="../tags/curl.html" class="link">curl &nbsp;</a><a href="../tags/json.html" class="link">json &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/sed.html" class="link">sed &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">

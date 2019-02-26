@@ -57,6 +57,7 @@ Example output:
 The full script to send the desktop notifications:
 
 	#!/bin/bash
+	PATH="/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 	if [[ ! -f /tmp/gnr-prev.txt ]]; then touch /tmp/gnr-prev.txt; fi
 	PREVSONG="$(cat /tmp/gnr-prev.txt)"
 	curl -s 'https://api.grootnieuwsradio.nl/playing.json' | sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p' > /tmp/gnr-cur.txt
@@ -67,8 +68,12 @@ The full script to send the desktop notifications:
 		notify-send "GNR: $CURSONG";
 	fi
 
-Put it in `cron` for regular execution.
+Put it in `cron` for regular execution. Add this to your crontab as well if you use KDE:
 
+	DISPLAY=:0.0
+	XAUTHORITY=/home/remy/.Xauthority
+
+Replace `remy` with your username.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
