@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/bash.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Get a JSON value with bash and sed</title> 
+                <link>https://raymii.org/s/snippets/Get_json_value_with_sed.html</link> 
+                <guid>https://raymii.org/s/snippets/Get_json_value_with_sed.html</guid>
+                <description>Recently I was asked to get one value from a json object using only shell tools. The json in question is from a dutch radio station and it lists the current song that is played. Using this together with a few shell commands and notify-send we can show the current song when it changes as a desktop notification. I'd rather use Python or jq if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.</description> 
+                <pubDate>Tue, 26 Feb 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>Line total (up+down sum) in PHP Network Weathermap</title> 
                 <link>https://raymii.org/s/tutorials/Line_total_up_down_sum_in_php_weathermap.html</link> 
                 <guid>https://raymii.org/s/tutorials/Line_total_up_down_sum_in_php_weathermap.html</guid>
