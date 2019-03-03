@@ -43,7 +43,7 @@
       <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
 <li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
 <li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
-<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li><li class='hideifsmall'><a href="/s/tags/pdp-8.html" class="link">PDP-8</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li></ul>            
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
                <!-- advertisement start -->
                 <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
                 <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
@@ -364,7 +364,7 @@ DRBD CRITICAL: Device 0 WFConnection UpToDate
 
 <h5>Ceph</h5>
 
-<p>Ceph is the best thing for high-available storage since sliced bread. <a href="https://en.wikipedia.org/wiki/Ceph_(software">Wikipedia</a>) has the best description, so I&#39;m not going to cover it here.</p>
+<p>Ceph is the best thing for high-available storage since sliced bread. <a href="https://en.wikipedia.org/wiki/Ceph_(software)">Wikipedia</a> has the best description, so I&#39;m not going to cover it here.</p>
 
 <p>The checks I run on a ceph cluster are checks of the different components (<code>mon</code>, <code>mds</code> and <code>osd</code>). The OSD check, basically all the disks underneath Ceph:</p>
 
@@ -629,7 +629,7 @@ INFO: tcp connections for dst 172.32.173.163 reached WARN 137442 &gt; 65536
 
 <h4>Disk stats, IO wait and IOPS</h4>
 
-<p><a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/Storage-Subsystem/check_diskstat/details">check_diskstat</a>, <a href="https://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/check_iostat--2D-I-2FO-statistics/details">check_iostat</a> and <a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/File-System/Check-IO-Wait-(by-Nestor@Toronto">check_iowait</a>/details) are just like the connection sockets checks usefull to graph and get insight in the performance of your environment. Good to kick your VM provider if their platform has issues with IO performance, especially when you&#39;re able to show what stats are normal.</p>
+<p><a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/Storage-Subsystem/check_diskstat/details">check_diskstat</a>, <a href="https://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/check_iostat--2D-I-2FO-statistics/details">check_iostat</a> and <a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/File-System/Check-IO-Wait-(by-Nestor@Toronto)/details">check_iowait</a> are just like the connection sockets checks usefull to graph and get insight in the performance of your environment. Good to kick your VM provider if their platform has issues with IO performance, especially when you&#39;re able to show what stats are normal.</p>
 
 <p>check_diskstat:</p>
 

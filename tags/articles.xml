@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/articles.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Viewing PDF, .docx and .odt files in Mutt (as text)</title> 
+                <link>https://raymii.org/s/articles/Viewing_PDF_docx_and_odt_files_in_Mutt.html</link> 
+                <guid>https://raymii.org/s/articles/Viewing_PDF_docx_and_odt_files_in_Mutt.html</guid>
+                <description>Mutt is my email client at work. I like the simple interface, the speed and the ability to customize the workflow. Email is synced with offlineimap and sent via msmtp, addresses are in abook, and calcurse is the Calendar for meetings, no complicated setup there. One aspect I especially like is the ability to view attachments on the command line right from Mutt itself. Some departments at work send emails with an attached PDF or .docx file that contains the actual message, instead of just putting the text in the email itself. Using pandoc and pdftotext in Mutt, the text of the attachments is displayed as a regular mail, no interruptions in my workflow by opening an external program. This article explains how to set up your .muttrc and .mailcap to use pandoc and pdf2text to view attachments as text in mutt.</description> 
+                <pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>Split keyboards, a five year review including the ErgoDox EZ, Matias Ergo Pro and Kinesis Freestyle 2</title> 
                 <link>https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</link> 
                 <guid>https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html</guid>
@@ -271,18 +279,18 @@
             </item>
     
             <item>
-                <title>OpenSSL: Manually verify a certificate against a CRL</title> 
-                <link>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</link> 
-                <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
-                <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
-                <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Keep messages secure with GPG</title> 
                 <link>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</link> 
                 <guid>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</guid>
                 <description>This article shows you how to get started with GPG and Mailvelope. It discusses public/private key crypto and shows you how to use the Mailvelope software to encrypt and decrypt GPG messages on any webmail provider.</description> 
+                <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>OpenSSL: Manually verify a certificate against a CRL</title> 
+                <link>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</link> 
+                <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
+                <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
                 <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
             </item>
     
