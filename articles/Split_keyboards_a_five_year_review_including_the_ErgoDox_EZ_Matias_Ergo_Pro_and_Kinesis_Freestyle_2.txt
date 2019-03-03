@@ -118,8 +118,6 @@ Due to the price being as low as it is compared to other split keyboards, around
 
 The UHK is a fully programmable mechanical split keyboard. It has add on modules to provide a thumb cluster which include a set of keys, a trackball or touchpad. It can be clicked together to provide a normal (non-split) keyboard. I have not used this board.
 
-A co worker has the UHK and he's not happy with it. His opinion is that the board feels flimsy and like cheap plastic. The shipping has been delayed so many times that he had to wait two years for his board to arrive.
-
 Looking at the pictures and the youtube reviews I think I might like it due to the layout and flexibility in addons and programming. A trackball integrated in my keyboard seems awesome, even less hand movement. Also, the possibility to click the keyboard together into a regular, mechanical keyboard seems cool for the people who want that.
 
 Price is comparable to the ergodox at around EUR 310 for a base board. The trackball and key cluster add-ons are not available at the moment (no ETA) but do cost EUR 70 each. If you want two (one for each half), you are looking at a total of around EUR 460.

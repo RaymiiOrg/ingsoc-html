@@ -14,6 +14,8 @@ Mutt is my email client at work. I like the simple interface, the speed and the 
 
 I do assume you have a working Mutt set up as I don't cover that here. [The Arch Linux Wiki](https://wiki.archlinux.org/index.php/mutt) on Mutt is a great place to start if you haven't got mutt setup yet.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+
 ### Installing software
 
 On Ubuntu both packages required are in the repository and can be installed using apt:
