@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/articles/SpaceCat_Launchpad_v2_an_awesome_little_macropad.html</loc>
+            <lastmod>2019-03-05</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/articles/Viewing_PDF_docx_and_odt_files_in_Mutt.html</loc>
             <lastmod>2019-03-03</lastmod>
             <changefreq>weekly</changefreq>
@@ -2514,7 +2520,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/vmware.html</loc>
+            <loc>https://raymii.org/s/tags/rundll32.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3822,6 +3828,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/keyboard.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/piwik.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
@@ -4308,7 +4320,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/rundll32.html</loc>
+            <loc>https://raymii.org/s/tags/electronics.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4333,6 +4345,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/dkek.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cabinet.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5190,7 +5208,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cabinet.html</loc>
+            <loc>https://raymii.org/s/tags/macropad.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5202,7 +5220,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/volume.html</loc>
+            <loc>https://raymii.org/s/tags/waagent.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5365,6 +5383,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/upgrade.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/launchpad.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5898,6 +5922,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/packages.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/news.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
@@ -6210,7 +6240,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/radvd.html</loc>
+            <loc>https://raymii.org/s/tags/containers.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6312,6 +6342,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/jetbrains.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/difference-engine.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
@@ -6360,7 +6396,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/raymii.org.html</loc>
+            <loc>https://raymii.org/s/tags/spacecat.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7032,6 +7068,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/vmware.html</loc>
+            <lastmod>2019-02-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/authorized_keys.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
@@ -7452,7 +7494,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/packages.html</loc>
+            <loc>https://raymii.org/s/tags/raymii.org.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7842,7 +7884,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/waagent.html</loc>
+            <loc>https://raymii.org/s/tags/volume.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7962,7 +8004,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/containers.html</loc>
+            <loc>https://raymii.org/s/tags/radvd.html</loc>
             <lastmod>2019-02-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
