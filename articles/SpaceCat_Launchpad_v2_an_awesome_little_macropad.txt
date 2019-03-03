@@ -10,7 +10,7 @@ This is a text-only version of the following page on https://raymii.org:
 
 
 
-On Reddit, [Josh (from SpaceCat)](https://spacecat.design/) did a valentines day action, 10% off your entire order. I'm eyeing a LaunchPad for a while now, both to have a small macro pad and to experiment with QMK (firmware). So I ordered the LaunchPad full kit, an assortment of Cherry MX key switches and a vim keycap. This article goes over the quality,  the build process and my current setup of the Launchpad.
+On Reddit, [Josh (from SpaceCat)](https://spacecat.design/) did a valentines day action, 10% off your entire order. I'm eyeing a LaunchPad for a while now, both to have a small macro pad and to experiment with QMK (firmware). So I ordered the LaunchPad full kit, an assortment of Gateron switches and a VIM keycap. This article goes over the quality,  the build process and my current setup of the Launchpad.
 
 <img src="https://raymii.org/s/inc/img/launchpad_2.jpg">
 
@@ -78,19 +78,20 @@ The [manual](https://raymii.org/s/inc/downloads/lpadv1_fin.pdf) is has pictures 
 
 It took me about an hour to build the enitre kit. I did make a mistake during building, I forgot to put the plate between the switches and the PCB. That makes it a PCB mounted pad, which looks quite okay:
 
-<img src="https://raymii.org/s/inc/img/launchpad_3.jpg">
+<img src="https://raymii.org/s/inc/img/launchpad_3.png">
 
 I finished the build, tested the firmware and then decided I wanted the plate in between. So, I desoldered the switches (two under the arduino are harder to desolder), broke one switch in the process and put the plate in between. 
 
 With plate it looks like this:
 
-<img src="https://raymii.org/s/inc/img/launchpad_4.jpg">
+<img src="https://raymii.org/s/inc/img/launchpad_4.png">
 
 Some notes on the build process:
 
 - Putting the Arduino on the header pins is a time-consuming process. It involves bending the header pins just a tiny bit and retrying. Be carefull because they can break. 
 - The manual did not state to put the plate between the switches first, so I forgot to do that.
 - The manual does not explicitly says which side is which and on which side components go. I had to deduce it from the pictures.
+- The reset switch is hard to solder correctly (mine is angled)
 - Both PCB mount and plate mount switches work, but if you use the middle plate, you don't need PCB mounted switches.
 
 The difference between PCB and plate mount switches are two small pins on the switch:
@@ -146,6 +147,8 @@ On Ubuntu I installed the Arduino IDE and used `avrdude` to flash the compiled `
 
 I do need to look into QMK more to program macro's and explore all other cool features for this Macro pad.
 
+
+After flashing the first keymap, flashing the second and latter firmwares is harder. You need to press the reset switch twice quickly. The Arduino goes into firmware programming mode for 8 seconds. If you just press reset once, it will go into programming mode for 750 ms.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
