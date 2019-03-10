@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	My phone serves me 400+ ads and trackers per hour. Blokada, the best android adblocker, beats 'm all!
-	Author   : 	Remy van Elst
-	Date     : 	16-02-2019
-	URL      : 	https://raymii.org/s/blog/My_phone_serves_me_400_ads_per_hour_blokada_blocks_beats_them_all.html
-	Format   : 	Markdown/HTML
+Title    : 	My phone serves me 400+ ads and trackers per hour. Blokada, the best android adblocker, beats 'm all!
+Author   : 	Remy van Elst
+Date     : 	16-02-2019
+URL      : 	https://raymii.org/s/blog/My_phone_serves_me_400_ads_per_hour_blokada_blocks_beats_them_all.html
+Format   : 	Markdown/HTML
 ---
 
 

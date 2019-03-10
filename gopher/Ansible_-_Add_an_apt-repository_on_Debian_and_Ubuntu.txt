@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ansible - Add an apt-repository on Debian and Ubuntu
-	Author   : 	Remy van Elst
-	Date     : 	14-12-2018
-	URL      : 	https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
-	Format   : 	Markdown/HTML
+Title    : 	Ansible - Add an apt-repository on Debian and Ubuntu
+Author   : 	Remy van Elst
+Date     : 	14-12-2018
+URL      : 	https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
+Format   : 	Markdown/HTML
 ---
 
 

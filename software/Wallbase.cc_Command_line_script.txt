@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Wallbase.cc commandline bash wget downloader
-	Author   : 	Remy van Elst
-	Date     : 	22-07-2012
-	URL      : 	https://raymii.org/s/software/Wallbase.cc_Command_line_script.html
-	Format   : 	Markdown/HTML
+Title    : 	Wallbase.cc commandline bash wget downloader
+Author   : 	Remy van Elst
+Date     : 	22-07-2012
+URL      : 	https://raymii.org/s/software/Wallbase.cc_Command_line_script.html
+Format   : 	Markdown/HTML
 ---
 
 

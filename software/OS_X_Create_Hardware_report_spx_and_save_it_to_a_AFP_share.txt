@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OS X - Create Hardware report SPX and save it to a AFP share
-	Author   : 	Remy van Elst
-	Date     : 	02-06-2013
-	URL      : 	https://raymii.org/s/software/OS_X_Create_Hardware_report_spx_and_save_it_to_a_AFP_share.html
-	Format   : 	Markdown/HTML
+Title    : 	OS X - Create Hardware report SPX and save it to a AFP share
+Author   : 	Remy van Elst
+Date     : 	02-06-2013
+URL      : 	https://raymii.org/s/software/OS_X_Create_Hardware_report_spx_and_save_it_to_a_AFP_share.html
+Format   : 	Markdown/HTML
 ---
 
 

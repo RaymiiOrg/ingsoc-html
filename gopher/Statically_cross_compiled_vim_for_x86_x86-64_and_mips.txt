@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Statically (cross) compiled vim for x86, x86-64 and mipsel
-	Author   : 	Remy van Elst
-	Date     : 	17-09-2014
-	URL      : 	https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html
-	Format   : 	Markdown/HTML
+Title    : 	Statically (cross) compiled vim for x86, x86-64 and mipsel
+Author   : 	Remy van Elst
+Date     : 	17-09-2014
+URL      : 	https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html
+Format   : 	Markdown/HTML
 ---
 
 

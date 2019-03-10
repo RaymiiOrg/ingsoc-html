@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Overflow the Investigatory Powers Bill!
-	Author   : 	Remy van Elst
-	Date     : 	24-11-2016
-	URL      : 	https://raymii.org/s/blog/Overflow_the_Investigatory_Powers_Bill.html
-	Format   : 	Markdown/HTML
+Title    : 	Overflow the Investigatory Powers Bill!
+Author   : 	Remy van Elst
+Date     : 	24-11-2016
+URL      : 	https://raymii.org/s/blog/Overflow_the_Investigatory_Powers_Bill.html
+Format   : 	Markdown/HTML
 ---
 
 

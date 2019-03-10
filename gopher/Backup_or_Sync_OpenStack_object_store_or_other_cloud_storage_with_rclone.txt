@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Backup OpenStack object store or S3 with rclone
-	Author   : 	Remy van Elst
-	Date     : 	17-08-2017
-	URL      : 	https://raymii.org/s/tutorials/Backup_or_Sync_OpenStack_object_store_or_other_cloud_storage_with_rclone.html
-	Format   : 	Markdown/HTML
+Title    : 	Backup OpenStack object store or S3 with rclone
+Author   : 	Remy van Elst
+Date     : 	17-08-2017
+URL      : 	https://raymii.org/s/tutorials/Backup_or_Sync_OpenStack_object_store_or_other_cloud_storage_with_rclone.html
+Format   : 	Markdown/HTML
 ---
 
 

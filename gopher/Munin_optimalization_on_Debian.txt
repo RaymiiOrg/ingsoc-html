@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice)
-	Author   : 	Remy van Elst
-	Date     : 	08-12-2012
-	URL      : 	https://raymii.org/s/tutorials/Munin_optimalization_on_Debian.html
-	Format   : 	Markdown/HTML
+Title    : 	Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice)
+Author   : 	Remy van Elst
+Date     : 	08-12-2012
+URL      : 	https://raymii.org/s/tutorials/Munin_optimalization_on_Debian.html
+Format   : 	Markdown/HTML
 ---
 
 

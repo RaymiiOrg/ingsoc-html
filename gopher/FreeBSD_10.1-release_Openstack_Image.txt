@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Build a FreeBSD 10.1-release Openstack Image with bsd-cloudinit
-	Author   : 	Remy van Elst
-	Date     : 	23-11-2014
-	URL      : 	https://raymii.org/s/tutorials/FreeBSD_10.1-release_Openstack_Image.html
-	Format   : 	Markdown/HTML
+Title    : 	Build a FreeBSD 10.1-release Openstack Image with bsd-cloudinit
+Author   : 	Remy van Elst
+Date     : 	23-11-2014
+URL      : 	https://raymii.org/s/tutorials/FreeBSD_10.1-release_Openstack_Image.html
+Format   : 	Markdown/HTML
 ---
 
 

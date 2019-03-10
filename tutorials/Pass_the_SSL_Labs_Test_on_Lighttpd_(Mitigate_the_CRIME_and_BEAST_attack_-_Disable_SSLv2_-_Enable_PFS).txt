@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Stong SSL Security on Lighttpd
-	Author   : 	Remy van Elst
-	Date     : 	24-07-2013
-	URL      : 	https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html
-	Format   : 	Markdown/HTML
+Title    : 	Stong SSL Security on Lighttpd
+Author   : 	Remy van Elst
+Date     : 	24-07-2013
+URL      : 	https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html
+Format   : 	Markdown/HTML
 ---
 
 

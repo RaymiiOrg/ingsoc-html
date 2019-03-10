@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Small OpenVMS titbits
-	Author   : 	Remy van Elst
-	Date     : 	22-04-2018
-	URL      : 	https://raymii.org/s/blog/Small_OpenVMS_titbits.html
-	Format   : 	Markdown/HTML
+Title    : 	Small OpenVMS titbits
+Author   : 	Remy van Elst
+Date     : 	22-04-2018
+URL      : 	https://raymii.org/s/blog/Small_OpenVMS_titbits.html
+Format   : 	Markdown/HTML
 ---
 
 

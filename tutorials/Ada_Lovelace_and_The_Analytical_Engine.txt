@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ada Lovelace and The Analytical Engine
-	Author   : 	Juliet Kemp
-	Date     : 	09-03-2015
-	URL      : 	https://raymii.org/s/tutorials/Ada_Lovelace_and_The_Analytical_Engine.html
-	Format   : 	Markdown/HTML
+Title    : 	Ada Lovelace and The Analytical Engine
+Author   : 	Juliet Kemp
+Date     : 	09-03-2015
+URL      : 	https://raymii.org/s/tutorials/Ada_Lovelace_and_The_Analytical_Engine.html
+Format   : 	Markdown/HTML
 ---
 
 

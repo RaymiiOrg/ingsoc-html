@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Imagemagick thumbnailer
-	Author   : 	Remy van Elst
-	Date     : 	29-11-2007
-	URL      : 	https://raymii.org/s/snippets/Imagemagick-thumbnailer.html
-	Format   : 	Markdown/HTML
+Title    : 	Imagemagick thumbnailer
+Author   : 	Remy van Elst
+Date     : 	29-11-2007
+URL      : 	https://raymii.org/s/snippets/Imagemagick-thumbnailer.html
+Format   : 	Markdown/HTML
 ---
 
 

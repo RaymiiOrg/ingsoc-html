@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL: Manually verify a certificate against an OCSP
-	Author   : 	Remy van Elst
-	Date     : 	07-04-2014
-	URL      : 	https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL: Manually verify a certificate against an OCSP
+Author   : 	Remy van Elst
+Date     : 	07-04-2014
+URL      : 	https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html
+Format   : 	Markdown/HTML
 ---
 
 

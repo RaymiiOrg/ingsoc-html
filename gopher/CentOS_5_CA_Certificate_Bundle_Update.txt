@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	CentOS 5 CA Certificate Bundle Update
-	Author   : 	Remy van Elst
-	Date     : 	06-07-2014
-	URL      : 	https://raymii.org/s/snippets/CentOS_5_CA_Certificate_Bundle_Update.html
-	Format   : 	Markdown/HTML
+Title    : 	CentOS 5 CA Certificate Bundle Update
+Author   : 	Remy van Elst
+Date     : 	06-07-2014
+URL      : 	https://raymii.org/s/snippets/CentOS_5_CA_Certificate_Bundle_Update.html
+Format   : 	Markdown/HTML
 ---
 
 

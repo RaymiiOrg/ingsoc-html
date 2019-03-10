@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Recap of week 51, 2015
-	Author   : 	Remy van Elst
-	Date     : 	19-12-2015
-	URL      : 	https://raymii.org/s/blog/Recap_of_week_51_2015.html
-	Format   : 	Markdown/HTML
+Title    : 	Recap of week 51, 2015
+Author   : 	Remy van Elst
+Date     : 	19-12-2015
+URL      : 	https://raymii.org/s/blog/Recap_of_week_51_2015.html
+Format   : 	Markdown/HTML
 ---
 
 

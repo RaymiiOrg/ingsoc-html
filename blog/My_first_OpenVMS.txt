@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	My first OpenVMS
-	Author   : 	Remy van Elst
-	Date     : 	31-03-2018
-	URL      : 	https://raymii.org/s/blog/My_first_OpenVMS.html
-	Format   : 	Markdown/HTML
+Title    : 	My first OpenVMS
+Author   : 	Remy van Elst
+Date     : 	31-03-2018
+URL      : 	https://raymii.org/s/blog/My_first_OpenVMS.html
+Format   : 	Markdown/HTML
 ---
 
 

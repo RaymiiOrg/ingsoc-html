@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	log_vcs - Ansible callback plugin that creates VCS (git) branches for every Ansible run
-	Author   : 	Remy van Elst
-	Date     : 	10-07-2018
-	URL      : 	https://raymii.org/s/software/log_vcs_-_Ansible_Callback_plugin_that_creates_git_branches_for_every_ansible_run.html
-	Format   : 	Markdown/HTML
+Title    : 	log_vcs - Ansible callback plugin that creates VCS (git) branches for every Ansible run
+Author   : 	Remy van Elst
+Date     : 	10-07-2018
+URL      : 	https://raymii.org/s/software/log_vcs_-_Ansible_Callback_plugin_that_creates_git_branches_for_every_ansible_run.html
+Format   : 	Markdown/HTML
 ---
 
 

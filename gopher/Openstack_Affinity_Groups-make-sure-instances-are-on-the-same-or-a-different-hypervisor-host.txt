@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Openstack Affinity Groups, make sure instances are on the same or different compute hypervisor hosts
-	Author   : 	Remy van Elst
-	Date     : 	29-11-2014
-	URL      : 	https://raymii.org/s/articles/Openstack_Affinity_Groups-make-sure-instances-are-on-the-same-or-a-different-hypervisor-host.html
-	Format   : 	Markdown/HTML
+Title    : 	Openstack Affinity Groups, make sure instances are on the same or different compute hypervisor hosts
+Author   : 	Remy van Elst
+Date     : 	29-11-2014
+URL      : 	https://raymii.org/s/articles/Openstack_Affinity_Groups-make-sure-instances-are-on-the-same-or-a-different-hypervisor-host.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Mouse movement via the keyboard with xdotool and xbindkeys
-	Author   : 	Remy van Elst
-	Date     : 	13-09-2016
-	URL      : 	https://raymii.org/s/blog/Mouse_movement_via_the_keyboard_with_xdotool_and_xbindkeys.html
-	Format   : 	Markdown/HTML
+Title    : 	Mouse movement via the keyboard with xdotool and xbindkeys
+Author   : 	Remy van Elst
+Date     : 	13-09-2016
+URL      : 	https://raymii.org/s/blog/Mouse_movement_via_the_keyboard_with_xdotool_and_xbindkeys.html
+Format   : 	Markdown/HTML
 ---
 
 

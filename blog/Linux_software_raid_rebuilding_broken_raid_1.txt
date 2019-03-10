@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Linux software raid, rebuilding broken raid 1
-	Author   : 	Remy van Elst
-	Date     : 	14-04-2014
-	URL      : 	https://raymii.org/s/blog/Linux_software_raid_rebuilding_broken_raid_1.html
-	Format   : 	Markdown/HTML
+Title    : 	Linux software raid, rebuilding broken raid 1
+Author   : 	Remy van Elst
+Date     : 	14-04-2014
+URL      : 	https://raymii.org/s/blog/Linux_software_raid_rebuilding_broken_raid_1.html
+Format   : 	Markdown/HTML
 ---
 
 

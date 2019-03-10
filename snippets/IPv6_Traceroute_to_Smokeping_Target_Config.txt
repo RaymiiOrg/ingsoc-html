@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Traceroute IPv6 to Smokeping Target config
-	Author   : 	Remy van Elst
-	Date     : 	05-03-2017
-	URL      : 	https://raymii.org/s/snippets/IPv6_Traceroute_to_Smokeping_Target_Config.html
-	Format   : 	Markdown/HTML
+Title    : 	Traceroute IPv6 to Smokeping Target config
+Author   : 	Remy van Elst
+Date     : 	05-03-2017
+URL      : 	https://raymii.org/s/snippets/IPv6_Traceroute_to_Smokeping_Target_Config.html
+Format   : 	Markdown/HTML
 ---
 
 

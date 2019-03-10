@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	EasyConverter
-	Author   : 	Remy van Elst
-	Date     : 	23-12-2009
-	URL      : 	https://raymii.org/s/software/Easyconverter.html
-	Format   : 	Markdown/HTML
+Title    : 	EasyConverter
+Author   : 	Remy van Elst
+Date     : 	23-12-2009
+URL      : 	https://raymii.org/s/software/Easyconverter.html
+Format   : 	Markdown/HTML
 ---
 
 

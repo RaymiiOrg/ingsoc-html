@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Get the current or all Firefox tab urls in Bash
-	Author   : 	Remy van Elst
-	Date     : 	01-09-2014
-	URL      : 	https://raymii.org/s/snippets/Get_the_current_or_all_Firefox_tab_urls_in_Bash.html
-	Format   : 	Markdown/HTML
+Title    : 	Get the current or all Firefox tab urls in Bash
+Author   : 	Remy van Elst
+Date     : 	01-09-2014
+URL      : 	https://raymii.org/s/snippets/Get_the_current_or_all_Firefox_tab_urls_in_Bash.html
+Format   : 	Markdown/HTML
 ---
 
 

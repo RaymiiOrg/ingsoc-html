@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Stopping fail2ban.server : ERROR Unexpected communication error and other errors in fail2ban on ubuntu 9.04
-	Author   : 	Remy van Elst
-	Date     : 	23-06-2011
-	URL      : 	https://raymii.org/s/tutorials/Stopping-fail2ban.server-ERROR-Unexpected-communication-error-and-other-errors-in-fail2ban-on-ubuntu-9.04.html
-	Format   : 	Markdown/HTML
+Title    : 	Stopping fail2ban.server : ERROR Unexpected communication error and other errors in fail2ban on ubuntu 9.04
+Author   : 	Remy van Elst
+Date     : 	23-06-2011
+URL      : 	https://raymii.org/s/tutorials/Stopping-fail2ban.server-ERROR-Unexpected-communication-error-and-other-errors-in-fail2ban-on-ubuntu-9.04.html
+Format   : 	Markdown/HTML
 ---
 
 

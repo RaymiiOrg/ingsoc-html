@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ejabberd Active Directory LDAP Login
-	Author   : 	Remy van Elst
-	Date     : 	12-06-2013
-	URL      : 	https://raymii.org/s/tutorials/Ejabberd_Active_Directory_LDAP_Login.html
-	Format   : 	Markdown/HTML
+Title    : 	Ejabberd Active Directory LDAP Login
+Author   : 	Remy van Elst
+Date     : 	12-06-2013
+URL      : 	https://raymii.org/s/tutorials/Ejabberd_Active_Directory_LDAP_Login.html
+Format   : 	Markdown/HTML
 ---
 
 

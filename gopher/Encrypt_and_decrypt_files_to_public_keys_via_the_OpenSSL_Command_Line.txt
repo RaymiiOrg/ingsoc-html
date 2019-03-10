@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Encrypt and decrypt files to public keys via the OpenSSL Command Line
-	Author   : 	Remy van Elst
-	Date     : 	25-10-2018
-	URL      : 	https://raymii.org/s/tutorials/Encrypt_and_decrypt_files_to_public_keys_via_the_OpenSSL_Command_Line.html
-	Format   : 	Markdown/HTML
+Title    : 	Encrypt and decrypt files to public keys via the OpenSSL Command Line
+Author   : 	Remy van Elst
+Date     : 	25-10-2018
+URL      : 	https://raymii.org/s/tutorials/Encrypt_and_decrypt_files_to_public_keys_via_the_OpenSSL_Command_Line.html
+Format   : 	Markdown/HTML
 ---
 
 

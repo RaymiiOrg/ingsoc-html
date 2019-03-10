@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL Command Generator
-	Author   : 	Remy van Elst
-	Date     : 	08-11-2014
-	URL      : 	https://raymii.org/s/software/OpenSSL_Command_Generator.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL Command Generator
+Author   : 	Remy van Elst
+Date     : 	08-11-2014
+URL      : 	https://raymii.org/s/software/OpenSSL_Command_Generator.html
+Format   : 	Markdown/HTML
 ---
 
 

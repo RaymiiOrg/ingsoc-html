@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Munin - Set up the NGINX status plugin on Ubuntu 12.04
-	Author   : 	Remy van Elst
-	Date     : 	31-01-2013
-	URL      : 	https://raymii.org/s/snippets/Munin-NGINX-Status-Plugin-Ubuntu-12.04.html
-	Format   : 	Markdown/HTML
+Title    : 	Munin - Set up the NGINX status plugin on Ubuntu 12.04
+Author   : 	Remy van Elst
+Date     : 	31-01-2013
+URL      : 	https://raymii.org/s/snippets/Munin-NGINX-Status-Plugin-Ubuntu-12.04.html
+Format   : 	Markdown/HTML
 ---
 
 

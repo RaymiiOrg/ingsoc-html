@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Better Cron env and shell control with the SHELL variable
-	Author   : 	shtylman
-	Date     : 	08-03-2013
-	URL      : 	https://raymii.org/s/tutorials/Better_cron_env_and_shell_control_with_the_SHELL_variale.html
-	Format   : 	Markdown/HTML
+Title    : 	Better Cron env and shell control with the SHELL variable
+Author   : 	shtylman
+Date     : 	08-03-2013
+URL      : 	https://raymii.org/s/tutorials/Better_cron_env_and_shell_control_with_the_SHELL_variale.html
+Format   : 	Markdown/HTML
 ---
 
 

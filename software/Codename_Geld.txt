@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Codename Geld
-	Author   : 	Remy van Elst
-	Date     : 	15-10-2012
-	URL      : 	https://raymii.org/s/software/Codename_Geld.html
-	Format   : 	Markdown/HTML
+Title    : 	Codename Geld
+Author   : 	Remy van Elst
+Date     : 	15-10-2012
+URL      : 	https://raymii.org/s/software/Codename_Geld.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ruby script to upload or convert a Maildir Inbox to an IMAP server
-	Author   : 	Thibaut Colar
-	Date     : 	01-01-2013
-	URL      : 	https://raymii.org/s/software/Ruby_script_to_upload_or_convert_a_Maildir_Inbox_to_an_IMAP_Server.html
-	Format   : 	Markdown/HTML
+Title    : 	Ruby script to upload or convert a Maildir Inbox to an IMAP server
+Author   : 	Thibaut Colar
+Date     : 	01-01-2013
+URL      : 	https://raymii.org/s/software/Ruby_script_to_upload_or_convert_a_Maildir_Inbox_to_an_IMAP_Server.html
+Format   : 	Markdown/HTML
 ---
 
 

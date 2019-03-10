@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Send email with multiple inline images via bash with a loop
-	Author   : 	Remy van Elst
-	Date     : 	23-07-2018
-	URL      : 	https://raymii.org/s/snippets/Send_email_with_multiple_inline_images_via_bash.html
-	Format   : 	Markdown/HTML
+Title    : 	Send email with multiple inline images via bash with a loop
+Author   : 	Remy van Elst
+Date     : 	23-07-2018
+URL      : 	https://raymii.org/s/snippets/Send_email_with_multiple_inline_images_via_bash.html
+Format   : 	Markdown/HTML
 ---
 
 

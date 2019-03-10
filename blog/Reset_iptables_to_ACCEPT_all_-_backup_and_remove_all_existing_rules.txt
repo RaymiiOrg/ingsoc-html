@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Reset iptables to ACCEPT all (backup and remove all existing rules)
-	Author   : 	Remy van Elst
-	Date     : 	03-09-2016
-	URL      : 	https://raymii.org/s/blog/Reset_iptables_to_ACCEPT_all_-_backup_and_remove_all_existing_rules.html
-	Format   : 	Markdown/HTML
+Title    : 	Reset iptables to ACCEPT all (backup and remove all existing rules)
+Author   : 	Remy van Elst
+Date     : 	03-09-2016
+URL      : 	https://raymii.org/s/blog/Reset_iptables_to_ACCEPT_all_-_backup_and_remove_all_existing_rules.html
+Format   : 	Markdown/HTML
 ---
 
 

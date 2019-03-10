@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Traceroute to Smokeping Target config
-	Author   : 	Remy van Elst
-	Date     : 	28-06-2014
-	URL      : 	https://raymii.org/s/snippets/Traceroute_to_Smokeping_Target_Config.html
-	Format   : 	Markdown/HTML
+Title    : 	Traceroute to Smokeping Target config
+Author   : 	Remy van Elst
+Date     : 	28-06-2014
+URL      : 	https://raymii.org/s/snippets/Traceroute_to_Smokeping_Target_Config.html
+Format   : 	Markdown/HTML
 ---
 
 

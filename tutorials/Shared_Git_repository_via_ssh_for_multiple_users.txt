@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Shared Git repository over ssh for multiple users
-	Author   : 	Remy van Elst
-	Date     : 	05-01-2015
-	URL      : 	https://raymii.org/s/tutorials/Shared_Git_repository_via_ssh_for_multiple_users.html
-	Format   : 	Markdown/HTML
+Title    : 	Shared Git repository over ssh for multiple users
+Author   : 	Remy van Elst
+Date     : 	05-01-2015
+URL      : 	https://raymii.org/s/tutorials/Shared_Git_repository_via_ssh_for_multiple_users.html
+Format   : 	Markdown/HTML
 ---
 
 

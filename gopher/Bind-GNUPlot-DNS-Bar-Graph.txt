@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bind DNS Query Graph Charts with GNUPlot
-	Author   : 	Remy van Elst
-	Date     : 	13-08-2013
-	URL      : 	https://raymii.org/s/software/Bind-GNUPlot-DNS-Bar-Graph.html
-	Format   : 	Markdown/HTML
+Title    : 	Bind DNS Query Graph Charts with GNUPlot
+Author   : 	Remy van Elst
+Date     : 	13-08-2013
+URL      : 	https://raymii.org/s/software/Bind-GNUPlot-DNS-Bar-Graph.html
+Format   : 	Markdown/HTML
 ---
 
 

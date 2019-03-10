@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Build a Flexible and Powerful System with Arch Linux
-	Author   : 	Graham Morrison
-	Date     : 	09-03-2015
-	URL      : 	https://raymii.org/s/tutorials/Build_a_Flexible_and_Powerful_System_with_Arch_Linux.html
-	Format   : 	Markdown/HTML
+Title    : 	Build a Flexible and Powerful System with Arch Linux
+Author   : 	Graham Morrison
+Date     : 	09-03-2015
+URL      : 	https://raymii.org/s/tutorials/Build_a_Flexible_and_Powerful_System_with_Arch_Linux.html
+Format   : 	Markdown/HTML
 ---
 
 

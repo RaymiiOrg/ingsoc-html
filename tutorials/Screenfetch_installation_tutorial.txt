@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Screenfetch installation tutorial
-	Author   : 	Remy van Elst
-	Date     : 	09-03-2013
-	URL      : 	https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html
-	Format   : 	Markdown/HTML
+Title    : 	Screenfetch installation tutorial
+Author   : 	Remy van Elst
+Date     : 	09-03-2013
+URL      : 	https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html
+Format   : 	Markdown/HTML
 ---
 
 

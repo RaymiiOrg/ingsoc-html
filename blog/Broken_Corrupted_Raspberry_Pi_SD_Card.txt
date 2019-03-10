@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Broken Corrupted Raspberry Pi SD Card
-	Author   : 	Remy van Elst
-	Date     : 	09-01-2015
-	URL      : 	https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html
-	Format   : 	Markdown/HTML
+Title    : 	Broken Corrupted Raspberry Pi SD Card
+Author   : 	Remy van Elst
+Date     : 	09-01-2015
+URL      : 	https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html
+Format   : 	Markdown/HTML
 ---
 
 

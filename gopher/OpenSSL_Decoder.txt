@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL Decoder Script
-	Author   : 	Remy van Elst
-	Date     : 	15-11-2014
-	URL      : 	https://raymii.org/s/software/OpenSSL_Decoder.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL Decoder Script
+Author   : 	Remy van Elst
+Date     : 	15-11-2014
+URL      : 	https://raymii.org/s/software/OpenSSL_Decoder.html
+Format   : 	Markdown/HTML
 ---
 
 

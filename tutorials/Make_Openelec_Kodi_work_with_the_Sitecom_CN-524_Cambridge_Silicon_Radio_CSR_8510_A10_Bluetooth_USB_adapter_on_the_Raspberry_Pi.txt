@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Make OpenELEC/Kodi work with the Sitecom CN-524/ Cambridge Silicon Radio (CSR) 8510 A10 Bluetooth USB adapter on the Raspberry Pi.
-	Author   : 	Remy van Elst
-	Date     : 	01-10-2015
-	URL      : 	https://raymii.org/s/tutorials/Make_Openelec_Kodi_work_with_the_Sitecom_CN-524_Cambridge_Silicon_Radio_CSR_8510_A10_Bluetooth_USB_adapter_on_the_Raspberry_Pi.html
-	Format   : 	Markdown/HTML
+Title    : 	Make OpenELEC/Kodi work with the Sitecom CN-524/ Cambridge Silicon Radio (CSR) 8510 A10 Bluetooth USB adapter on the Raspberry Pi.
+Author   : 	Remy van Elst
+Date     : 	01-10-2015
+URL      : 	https://raymii.org/s/tutorials/Make_Openelec_Kodi_work_with_the_Sitecom_CN-524_Cambridge_Silicon_Radio_CSR_8510_A10_Bluetooth_USB_adapter_on_the_Raspberry_Pi.html
+Format   : 	Markdown/HTML
 ---
 
 

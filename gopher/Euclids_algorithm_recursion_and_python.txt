@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Euclid's algorithm: recursion and python
-	Author   : 	Graham Morrison
-	Date     : 	08-03-2015
-	URL      : 	https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html
-	Format   : 	Markdown/HTML
+Title    : 	Euclid's algorithm: recursion and python
+Author   : 	Graham Morrison
+Date     : 	08-03-2015
+URL      : 	https://raymii.org/s/articles/Euclids_algorithm_recursion_and_python.html
+Format   : 	Markdown/HTML
 ---
 
 

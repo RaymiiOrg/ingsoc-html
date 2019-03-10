@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bonding NIC Teaming on Ubuntu 12.04
-	Author   : 	Remy van Elst
-	Date     : 	14-02-2014
-	URL      : 	https://raymii.org/s/tutorials/NIC_Bonding_on_Ubuntu_12.04.html
-	Format   : 	Markdown/HTML
+Title    : 	Bonding NIC Teaming on Ubuntu 12.04
+Author   : 	Remy van Elst
+Date     : 	14-02-2014
+URL      : 	https://raymii.org/s/tutorials/NIC_Bonding_on_Ubuntu_12.04.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Building HA Clusters with Ansible and Openstack
-	Author   : 	Remy van Elst
-	Date     : 	25-07-2014
-	URL      : 	https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html
-	Format   : 	Markdown/HTML
+Title    : 	Building HA Clusters with Ansible and Openstack
+Author   : 	Remy van Elst
+Date     : 	25-07-2014
+URL      : 	https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html
+Format   : 	Markdown/HTML
 ---
 
 

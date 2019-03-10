@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Forward or save outgoing email with Exim
-	Author   : 	Remy van Elst
-	Date     : 	16-12-2015
-	URL      : 	https://raymii.org/s/blog/Forward_or_save_all_outgoing_email_with_exim.html
-	Format   : 	Markdown/HTML
+Title    : 	Forward or save outgoing email with Exim
+Author   : 	Remy van Elst
+Date     : 	16-12-2015
+URL      : 	https://raymii.org/s/blog/Forward_or_save_all_outgoing_email_with_exim.html
+Format   : 	Markdown/HTML
 ---
 
 

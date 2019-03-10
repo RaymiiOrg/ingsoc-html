@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Toggling in a simple program DEC PDP-8 and PiDP-8 using the switch register
-	Author   : 	Remy van Elst
-	Date     : 	08-06-2016
-	URL      : 	https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html
-	Format   : 	Markdown/HTML
+Title    : 	Toggling in a simple program DEC PDP-8 and PiDP-8 using the switch register
+Author   : 	Remy van Elst
+Date     : 	08-06-2016
+URL      : 	https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bash ja/nee keuze
-	Author   : 	Remy van Elst
-	Date     : 	03-02-2008
-	URL      : 	https://raymii.org/s/snippets/Ja-Nee-keuze-toevoegen-in-een-bash-script.html
-	Format   : 	Markdown/HTML
+Title    : 	Bash ja/nee keuze
+Author   : 	Remy van Elst
+Date     : 	03-02-2008
+URL      : 	https://raymii.org/s/snippets/Ja-Nee-keuze-toevoegen-in-een-bash-script.html
+Format   : 	Markdown/HTML
 ---
 
 

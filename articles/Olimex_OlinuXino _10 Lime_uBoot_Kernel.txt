@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Olimex OlinuXino a10 Lime uBoot, Kernel and root image guide
-	Author   : 	Remy van Elst
-	Date     : 	20-12-2014
-	URL      : 	https://raymii.org/s/articles/Olimex_OlinuXino _10 Lime_uBoot_Kernel.html
-	Format   : 	Markdown/HTML
+Title    : 	Olimex OlinuXino a10 Lime uBoot, Kernel and root image guide
+Author   : 	Remy van Elst
+Date     : 	20-12-2014
+URL      : 	https://raymii.org/s/articles/Olimex_OlinuXino _10 Lime_uBoot_Kernel.html
+Format   : 	Markdown/HTML
 ---
 
 

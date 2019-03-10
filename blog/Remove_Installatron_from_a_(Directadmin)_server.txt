@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Remove Installatron from a (Directadmin) server
-	Author   : 	Remy van Elst
-	Date     : 	08-02-2015
-	URL      : 	https://raymii.org/s/blog/Remove_Installatron_from_a_(Directadmin)_server.html
-	Format   : 	Markdown/HTML
+Title    : 	Remove Installatron from a (Directadmin) server
+Author   : 	Remy van Elst
+Date     : 	08-02-2015
+URL      : 	https://raymii.org/s/blog/Remove_Installatron_from_a_(Directadmin)_server.html
+Format   : 	Markdown/HTML
 ---
 
 

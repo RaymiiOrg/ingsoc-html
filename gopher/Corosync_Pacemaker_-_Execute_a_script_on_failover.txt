@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Corosync Pacemaker - Execute script on failover
-	Author   : 	Remy van Elst
-	Date     : 	20-11-2013
-	URL      : 	https://raymii.org/s/tutorials/Corosync_Pacemaker_-_Execute_a_script_on_failover.html
-	Format   : 	Markdown/HTML
+Title    : 	Corosync Pacemaker - Execute script on failover
+Author   : 	Remy van Elst
+Date     : 	20-11-2013
+URL      : 	https://raymii.org/s/tutorials/Corosync_Pacemaker_-_Execute_a_script_on_failover.html
+Format   : 	Markdown/HTML
 ---
 
 

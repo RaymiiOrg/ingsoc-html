@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	SSH: Key and user restrictions
-	Author   : 	Remy van Elst
-	Date     : 	15-02-2009
-	URL      : 	https://raymii.org/s/tutorials/SSH-Key-Restrictions.html
-	Format   : 	Markdown/HTML
+Title    : 	SSH: Key and user restrictions
+Author   : 	Remy van Elst
+Date     : 	15-02-2009
+URL      : 	https://raymii.org/s/tutorials/SSH-Key-Restrictions.html
+Format   : 	Markdown/HTML
 ---
 
 

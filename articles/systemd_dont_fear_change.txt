@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	systemd: Don't fear change
-	Author   : 	Jonathan Roberts
-	Date     : 	25-03-2015
-	URL      : 	https://raymii.org/s/articles/systemd_dont_fear_change.html
-	Format   : 	Markdown/HTML
+Title    : 	systemd: Don't fear change
+Author   : 	Jonathan Roberts
+Date     : 	25-03-2015
+URL      : 	https://raymii.org/s/articles/systemd_dont_fear_change.html
+Format   : 	Markdown/HTML
 ---
 
 

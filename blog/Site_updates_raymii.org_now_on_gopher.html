@@ -74,15 +74,73 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>I&#39;ve made some new improvements to this website. Raymii.org is generated using my self-written static site generator named ingsoc and it now supports Gopher. You can browse to <a href="gopher://raymii.org:70/">gopher://raymii.org:70</a> using your favorite gopher browser (<code>lynx</code> or <a href="https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&amp;hl=en_US">DiggieDog for Android</a>) to view all the articles here on gopherspace. If you don&#39;t have a gopher browser, you can use <a href="https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F">the floodgap http to gopher proxy</a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><h3>Introduction to Gopher</h3>
 
-<p>If you want to know what Gopher is, <a href="http://web.archive.org/web/20190310082022/https://prgmr.com/blog/gopher/2018/08/23/gopher.html">read this article</a>. The reason for me to add Gopher support for my site is just that I like tinkering and text-based simple stuff. Gopher fits that bill.</p>
+<p>I&#39;ve made some new improvements to this website. Raymii.org is generated using my 
+self-written static site generator named ingsoc and it now supports Gopher. 
+You can browse to <a href="gopher://raymii.org:70/">gopher://raymii.org:70</a> using your favorite 
+gopher browser (<code>lynx</code> or <a href="https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&amp;hl=en_US">DiggieDog for Android</a>) 
+to view all the articles here on gopherspace. If you don&#39;t have a gopher browser, 
+you can use <a href="https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F">the floodgap http to gopher proxy</a></p>
+
+<p>Gopher is a protocol for information transfer over the internet that was very popular 
+before HTTP took over as the dominant protocol, but there is still a community of gopher 
+users that prefer the simplicity of the protocol over the more complex and large protocols 
+more often encountered. Note that not all browsers support gopher, or have incomplete 
+support. If you want to know more about Gopher, <a href="http://web.archive.org/web/20190310082022/https://prgmr.com/blog/gopher/2018/08/23/gopher.html">read this article</a>. 
+The reason for me to add Gopher support for my site is just that I like tinkering and 
+text-based simple stuff. Gopher fits that bill.</p>
 
 <p><img src="https://raymii.org/s/inc/img/gopher.png"></p>
 
-<p>Due to <a href="https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html">this excellent guide</a> on <code>pygopherd</code> and how to create a <code>Gophermap</code> (sort of <code>index.html</code> file) I was able to get up and running quickly. I made an Ansible playbook to install and configure <code>Pygopherd</code> and updated my static site generator to <a href="https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher/gophermap">generate the gophermap</a></p>
+<h3>Static site generator</h3>
 
-<p>Images and links are not handled yet. You basically get the Markdown I write on which this site is generated. Just as the plain text file link you can click at every article.</p>
+<p>Due to <a href="https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html">this excellent guide</a> 
+on <code>pygopherd</code> and how to create a <code>Gophermap</code> (sort of <code>index.html</code> file) I was able to get up and 
+running quickly. I made an Ansible playbook to install and configure <code>Pygopherd</code> and updated my static 
+site generator to <a href="https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher/gophermap">generate the gophermap</a></p>
+
+<p>If you want to setup a gopher server, it can be as simple as:</p>
+
+<pre><code>apt-get install pygopherd
+</code></pre>
+
+<p>Afterwards, edit the file <code>/var/gopher/gophermap</code>. Or remove it and place files in <code>/var/gopher</code>.</p>
+
+<p>My static site generator&#39;s gopher part is simple. It takes the Markdown files, uses the header 
+for meta information like title and date and puts that meta information in a dict. Using a <code>lambda</code> 
+and an <code>OrderedDict</code> the items are stored in another list, sorted by date:</p>
+
+<pre><code>gopherItems = collections.OrderedDict(sorted(parsedFiles.items(), reverse=True, key=lambda item: dateutil.parser.parse(item[1][&#39;date&#39;], dayfirst=True)))
+</code></pre>
+
+<p>The metadata looks like this:</p>
+
+<pre><code>title: &quot;Site updates, raymii.org now also available on Gopher&quot;
+author: &quot;Remy van Elst&quot;
+category: &quot;blog&quot;
+date: &quot;10-03-2019&quot;
+</code></pre>
+
+<p>Then, using a <code>for</code> loop, every item is written to the <code>gophermap</code> file:</p>
+
+<pre><code>with open(&#39;gophermap&#39;, &#39;w&#39;) as gopherMapFile:
+    for filename, values in gopherItems.items():
+        itemLine  = &quot;0&quot; + str(values[&#39;title&#39;]) + &quot; (&quot; + str(values[&#39;date&#39;]) + &quot;)\t&quot;
+        itemLine += str(filename) + &quot;.txt\traymii.org\t70\n&quot;
+        gopherMapFile.write(itemLine)
+    gopherMapFile.write(&quot;1This server runs on Pygopherd\t/devel/gopher/pygopherd\tgopher.quux.org\t70\n&quot;)
+    gopherMapFile.close()
+</code></pre>
+
+<p>Not the most elegant Python, nowdays I&#39;d probably use templates (<code>jinja2</code>), but this works fine for now.</p>
+
+<p>After all the files have been created, the generator does a <code>git commit</code> and a <code>git push</code>. 
+The servers all poll the repository and if there are changes, they <code>pull</code> the new site. 
+Hassle free deployment. After all, it&#39;s just static HTML.</p>
+
+<p>Images and links are not handled yet. You basically get the Markdown I write on which 
+this site is generated. Just as the plain text file link you can click at every article.</p>
 
 <p>If you use the gopher version of Raymii.org, <a href="https://raymii.org/s/static/About.html">please let me know</a>. </p>
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Hosted Piwik
-	Author   : 	Remy van Elst
-	Date     : 	09-03-2013
-	URL      : 	https://raymii.org/s/software/Hosted_Piwik.html
-	Format   : 	Markdown/HTML
+Title    : 	Hosted Piwik
+Author   : 	Remy van Elst
+Date     : 	09-03-2013
+URL      : 	https://raymii.org/s/software/Hosted_Piwik.html
+Format   : 	Markdown/HTML
 ---
 
 

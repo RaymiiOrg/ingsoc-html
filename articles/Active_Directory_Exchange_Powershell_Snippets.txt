@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Active Directory and Exchange Command Line Powershell
-	Author   : 	Remy van Elst
-	Date     : 	27-02-2016
-	URL      : 	https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html
-	Format   : 	Markdown/HTML
+Title    : 	Active Directory and Exchange Command Line Powershell
+Author   : 	Remy van Elst
+Date     : 	27-02-2016
+URL      : 	https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL one liner to get expiry date from SSL Certificate of any website
-	Author   : 	Remy van Elst
-	Date     : 	23-01-2013
-	URL      : 	https://raymii.org/s/snippets/OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL one liner to get expiry date from SSL Certificate of any website
+Author   : 	Remy van Elst
+Date     : 	23-01-2013
+URL      : 	https://raymii.org/s/snippets/OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.html
+Format   : 	Markdown/HTML
 ---
 
 

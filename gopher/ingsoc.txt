@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	ingsoc
-	Author   : 	Remy van Elst
-	Date     : 	02-12-2014
-	URL      : 	https://raymii.org/s/software/ingsoc.html
-	Format   : 	Markdown/HTML
+Title    : 	ingsoc
+Author   : 	Remy van Elst
+Date     : 	02-12-2014
+URL      : 	https://raymii.org/s/software/ingsoc.html
+Format   : 	Markdown/HTML
 ---
 
 

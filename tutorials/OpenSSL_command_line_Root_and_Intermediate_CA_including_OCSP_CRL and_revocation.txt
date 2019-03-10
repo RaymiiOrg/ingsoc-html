@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation
-	Author   : 	Remy van Elst
-	Date     : 	17-12-2018
-	URL      : 	https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation
+Author   : 	Remy van Elst
+Date     : 	17-12-2018
+URL      : 	https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html
+Format   : 	Markdown/HTML
 ---
 
 

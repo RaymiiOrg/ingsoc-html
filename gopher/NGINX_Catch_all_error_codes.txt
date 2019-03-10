@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	NGINX: Catch all error codes
-	Author   : 	Remy van Elst
-	Date     : 	13-03-2013
-	URL      : 	https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html
-	Format   : 	Markdown/HTML
+Title    : 	NGINX: Catch all error codes
+Author   : 	Remy van Elst
+Date     : 	13-03-2013
+URL      : 	https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html
+Format   : 	Markdown/HTML
 ---
 
 

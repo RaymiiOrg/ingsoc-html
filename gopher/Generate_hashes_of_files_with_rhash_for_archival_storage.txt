@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Generate hashes of files with rhash for archival storage
-	Author   : 	Remy van Elst
-	Date     : 	11-12-2015
-	URL      : 	https://raymii.org/s/blog/Generate_hashes_of_files_with_rhash_for_archival_storage.html
-	Format   : 	Markdown/HTML
+Title    : 	Generate hashes of files with rhash for archival storage
+Author   : 	Remy van Elst
+Date     : 	11-12-2015
+URL      : 	https://raymii.org/s/blog/Generate_hashes_of_files_with_rhash_for_archival_storage.html
+Format   : 	Markdown/HTML
 ---
 
 

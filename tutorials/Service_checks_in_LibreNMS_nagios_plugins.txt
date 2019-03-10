@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Service checks in LibreNMS (http, all other Nagios plugins)
-	Author   : 	Remy van Elst
-	Date     : 	10-09-2018
-	URL      : 	https://raymii.org/s/tutorials/Service_checks_in_LibreNMS_nagios_plugins.html
-	Format   : 	Markdown/HTML
+Title    : 	Service checks in LibreNMS (http, all other Nagios plugins)
+Author   : 	Remy van Elst
+Date     : 	10-09-2018
+URL      : 	https://raymii.org/s/tutorials/Service_checks_in_LibreNMS_nagios_plugins.html
+Format   : 	Markdown/HTML
 ---
 
 

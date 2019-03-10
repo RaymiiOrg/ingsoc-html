@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Owncloud, DirectAdmin, Apache 2.4 and Error AH01797: client denied by server configuration
-	Author   : 	Remy van Elst
-	Date     : 	15-09-2014
-	URL      : 	https://raymii.org/s/blog/Owncloud_DirectAdmin,_Apache_2.4_and_Error_AH01797_client_denied_by_server_configuration.html
-	Format   : 	Markdown/HTML
+Title    : 	Owncloud, DirectAdmin, Apache 2.4 and Error AH01797: client denied by server configuration
+Author   : 	Remy van Elst
+Date     : 	15-09-2014
+URL      : 	https://raymii.org/s/blog/Owncloud_DirectAdmin,_Apache_2.4_and_Error_AH01797_client_denied_by_server_configuration.html
+Format   : 	Markdown/HTML
 ---
 
 

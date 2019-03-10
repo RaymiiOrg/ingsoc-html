@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Recap of week 02, 2016
-	Author   : 	Remy van Elst
-	Date     : 	16-01-2016
-	URL      : 	https://raymii.org/s/blog/Recap_of_week_02_2016.html
-	Format   : 	Markdown/HTML
+Title    : 	Recap of week 02, 2016
+Author   : 	Remy van Elst
+Date     : 	16-01-2016
+URL      : 	https://raymii.org/s/blog/Recap_of_week_02_2016.html
+Format   : 	Markdown/HTML
 ---
 
 

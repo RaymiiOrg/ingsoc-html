@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Persistent reverse (NAT bypassing) SSH tunnel access with autossh
-	Author   : 	Remy van Elst
-	Date     : 	05-10-2012
-	URL      : 	https://raymii.org/s/tutorials/Autossh_persistent_tunnels.html
-	Format   : 	Markdown/HTML
+Title    : 	Persistent reverse (NAT bypassing) SSH tunnel access with autossh
+Author   : 	Remy van Elst
+Date     : 	05-10-2012
+URL      : 	https://raymii.org/s/tutorials/Autossh_persistent_tunnels.html
+Format   : 	Markdown/HTML
 ---
 
 

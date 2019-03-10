@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	FreeIPA DNS workaround for DNS zone [...]. already exists in DNS and is handled by server(s):
-	Author   : 	Remy van Elst
-	Date     : 	10-04-2018
-	URL      : 	https://raymii.org/s/snippets/FreeIPA_DNS_workaround_for_DNS_zone_already_exists_in_DNS_and_is_handled_by_servers.html
-	Format   : 	Markdown/HTML
+Title    : 	FreeIPA DNS workaround for DNS zone [...]. already exists in DNS and is handled by server(s):
+Author   : 	Remy van Elst
+Date     : 	10-04-2018
+URL      : 	https://raymii.org/s/snippets/FreeIPA_DNS_workaround_for_DNS_zone_already_exists_in_DNS_and_is_handled_by_servers.html
+Format   : 	Markdown/HTML
 ---
 
 

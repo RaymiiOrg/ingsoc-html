@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Chrome Extensions for Privacy, Adblocking and anti-tracking
-	Author   : 	Remy van Elst
-	Date     : 	01-09-2011
-	URL      : 	https://raymii.org/s/articles/Chrome-extensions-for-privacy.html
-	Format   : 	Markdown/HTML
+Title    : 	Chrome Extensions for Privacy, Adblocking and anti-tracking
+Author   : 	Remy van Elst
+Date     : 	01-09-2011
+URL      : 	https://raymii.org/s/articles/Chrome-extensions-for-privacy.html
+Format   : 	Markdown/HTML
 ---
 
 

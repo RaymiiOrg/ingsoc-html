@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Set up a Collectd server with web frontend
-	Author   : 	Remy van Elst
-	Date     : 	09-04-2013
-	URL      : 	https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html
-	Format   : 	Markdown/HTML
+Title    : 	Set up a Collectd server with web frontend
+Author   : 	Remy van Elst
+Date     : 	09-04-2013
+URL      : 	https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html
+Format   : 	Markdown/HTML
 ---
 
 

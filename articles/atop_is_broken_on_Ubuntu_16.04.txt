@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	atop is broken on Ubuntu 16.04 (version 1.26): trap divide error
-	Author   : 	Remy van Elst
-	Date     : 	18-09-2017
-	URL      : 	https://raymii.org/s/articles/atop_is_broken_on_Ubuntu_16.04.html
-	Format   : 	Markdown/HTML
+Title    : 	atop is broken on Ubuntu 16.04 (version 1.26): trap divide error
+Author   : 	Remy van Elst
+Date     : 	18-09-2017
+URL      : 	https://raymii.org/s/articles/atop_is_broken_on_Ubuntu_16.04.html
+Format   : 	Markdown/HTML
 ---
 
 

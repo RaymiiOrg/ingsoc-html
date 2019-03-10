@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Back Up Thunderbird Message Filters
-	Author   : 	Remy van Elst
-	Date     : 	15-12-2013
-	URL      : 	https://raymii.org/s/tutorials/Thunderbird_Back_Up_Mail__Message_Filters.html
-	Format   : 	Markdown/HTML
+Title    : 	Back Up Thunderbird Message Filters
+Author   : 	Remy van Elst
+Date     : 	15-12-2013
+URL      : 	https://raymii.org/s/tutorials/Thunderbird_Back_Up_Mail__Message_Filters.html
+Format   : 	Markdown/HTML
 ---
 
 

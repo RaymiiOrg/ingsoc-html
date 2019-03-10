@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Silent unatended apt-get upgrade
-	Author   : 	Remy van Elst
-	Date     : 	30-03-2013
-	URL      : 	https://raymii.org/s/tutorials/Silent-automatic-apt-get-upgrade.html
-	Format   : 	Markdown/HTML
+Title    : 	Silent unatended apt-get upgrade
+Author   : 	Remy van Elst
+Date     : 	30-03-2013
+URL      : 	https://raymii.org/s/tutorials/Silent-automatic-apt-get-upgrade.html
+Format   : 	Markdown/HTML
 ---
 
 

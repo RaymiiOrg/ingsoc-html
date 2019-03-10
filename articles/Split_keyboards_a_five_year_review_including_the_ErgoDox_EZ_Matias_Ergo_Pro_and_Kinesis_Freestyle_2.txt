@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Split keyboards, a five year review including the ErgoDox EZ, Matias Ergo Pro and Kinesis Freestyle 2
-	Author   : 	Remy van Elst
-	Date     : 	10-02-2019
-	URL      : 	https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html
-	Format   : 	Markdown/HTML
+Title    : 	Split keyboards, a five year review including the ErgoDox EZ, Matias Ergo Pro and Kinesis Freestyle 2
+Author   : 	Remy van Elst
+Date     : 	10-02-2019
+URL      : 	https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html
+Format   : 	Markdown/HTML
 ---
 
 

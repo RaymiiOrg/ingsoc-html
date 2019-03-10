@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Raspberry Pi unattended upgrade Raspbian to Debian Testing
-	Author   : 	Remy van Elst
-	Date     : 	27-07-2016
-	URL      : 	https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html
-	Format   : 	Markdown/HTML
+Title    : 	Raspberry Pi unattended upgrade Raspbian to Debian Testing
+Author   : 	Remy van Elst
+Date     : 	27-07-2016
+URL      : 	https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	ncdu - for troubleshooting diskspace and inode issues
-	Author   : 	Remy van Elst
-	Date     : 	29-10-2017
-	URL      : 	https://raymii.org/s/articles/ncdu_-_for_troubleshooting_diskspace_and_inode_issues.html
-	Format   : 	Markdown/HTML
+Title    : 	ncdu - for troubleshooting diskspace and inode issues
+Author   : 	Remy van Elst
+Date     : 	29-10-2017
+URL      : 	https://raymii.org/s/articles/ncdu_-_for_troubleshooting_diskspace_and_inode_issues.html
+Format   : 	Markdown/HTML
 ---
 
 

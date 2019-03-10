@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	GPG noninteractive batch sign, trust and send gnupg keys
-	Author   : 	Remy van Elst
-	Date     : 	01-06-2018
-	URL      : 	https://raymii.org/s/articles/GPG_noninteractive_batch_sign_trust_and_send_gnupg_keys.html
-	Format   : 	Markdown/HTML
+Title    : 	GPG noninteractive batch sign, trust and send gnupg keys
+Author   : 	Remy van Elst
+Date     : 	01-06-2018
+URL      : 	https://raymii.org/s/articles/GPG_noninteractive_batch_sign_trust_and_send_gnupg_keys.html
+Format   : 	Markdown/HTML
 ---
 
 

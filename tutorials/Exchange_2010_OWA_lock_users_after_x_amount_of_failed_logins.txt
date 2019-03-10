@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Exchange 2010 - OWA - Lock user after x amount of failed logins
-	Author   : 	Remy van Elst
-	Date     : 	19-12-2012
-	URL      : 	https://raymii.org/s/tutorials/Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.html
-	Format   : 	Markdown/HTML
+Title    : 	Exchange 2010 - OWA - Lock user after x amount of failed logins
+Author   : 	Remy van Elst
+Date     : 	19-12-2012
+URL      : 	https://raymii.org/s/tutorials/Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.html
+Format   : 	Markdown/HTML
 ---
 
 

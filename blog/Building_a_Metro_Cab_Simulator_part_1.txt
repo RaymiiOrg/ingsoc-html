@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	DRAFT (Re)Building a Metro Cab Simulator part 1
-	Author   : 	Remy van Elst
-	Date     : 	04-07-2006
-	URL      : 	https://raymii.org/s/blog/Building_a_Metro_Cab_Simulator_part_1.html
-	Format   : 	Markdown/HTML
+Title    : 	DRAFT (Re)Building a Metro Cab Simulator part 1
+Author   : 	Remy van Elst
+Date     : 	04-07-2006
+URL      : 	https://raymii.org/s/blog/Building_a_Metro_Cab_Simulator_part_1.html
+Format   : 	Markdown/HTML
 ---
 
 

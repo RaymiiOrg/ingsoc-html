@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	The awesomely epic guide to KDE
-	Author   : 	Graham Morrison
-	Date     : 	04-05-2015
-	URL      : 	https://raymii.org/s/articles/The_awesomely_epic_guide_to_KDE.html
-	Format   : 	Markdown/HTML
+Title    : 	The awesomely epic guide to KDE
+Author   : 	Graham Morrison
+Date     : 	04-05-2015
+URL      : 	https://raymii.org/s/articles/The_awesomely_epic_guide_to_KDE.html
+Format   : 	Markdown/HTML
 ---
 
 

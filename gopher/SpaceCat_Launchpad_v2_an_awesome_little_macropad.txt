@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	SpaceCat Launchpad v2, an awesome cool little macropad
-	Author   : 	Remy van Elst
-	Date     : 	05-03-2019
-	URL      : 	https://raymii.org/s/articles/SpaceCat_Launchpad_v2_an_awesome_little_macropad.html
-	Format   : 	Markdown/HTML
+Title    : 	SpaceCat Launchpad v2, an awesome cool little macropad
+Author   : 	Remy van Elst
+Date     : 	05-03-2019
+URL      : 	https://raymii.org/s/articles/SpaceCat_Launchpad_v2_an_awesome_little_macropad.html
+Format   : 	Markdown/HTML
 ---
 
 

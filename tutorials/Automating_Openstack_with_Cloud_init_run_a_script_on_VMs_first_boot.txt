@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Automating Openstack with cloud init run a script on VM's first boot
-	Author   : 	Remy van Elst
-	Date     : 	11-03-2015
-	URL      : 	https://raymii.org/s/tutorials/Automating_Openstack_with_Cloud_init_run_a_script_on_VMs_first_boot.html
-	Format   : 	Markdown/HTML
+Title    : 	Automating Openstack with cloud init run a script on VM's first boot
+Author   : 	Remy van Elst
+Date     : 	11-03-2015
+URL      : 	https://raymii.org/s/tutorials/Automating_Openstack_with_Cloud_init_run_a_script_on_VMs_first_boot.html
+Format   : 	Markdown/HTML
 ---
 
 

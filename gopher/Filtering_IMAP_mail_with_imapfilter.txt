@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Filtering IMAP mail with imapfilter
-	Author   : 	Remy van Elst
-	Date     : 	17-01-2015
-	URL      : 	https://raymii.org/s/blog/Filtering_IMAP_mail_with_imapfilter.html
-	Format   : 	Markdown/HTML
+Title    : 	Filtering IMAP mail with imapfilter
+Author   : 	Remy van Elst
+Date     : 	17-01-2015
+URL      : 	https://raymii.org/s/blog/Filtering_IMAP_mail_with_imapfilter.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ubuntu/Debian update mailer
-	Author   : 	Remy van Elst
-	Date     : 	10-06-2012
-	URL      : 	https://raymii.org/s/software/Ubuntu_update_mailer.html
-	Format   : 	Markdown/HTML
+Title    : 	Ubuntu/Debian update mailer
+Author   : 	Remy van Elst
+Date     : 	10-06-2012
+URL      : 	https://raymii.org/s/software/Ubuntu_update_mailer.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	RET Metro ATB
-	Author   : 	Remy van Elst
-	Date     : 	02-01-2006
-	URL      : 	https://raymii.org/s/blog/RET_Metro_ATB.html
-	Format   : 	Markdown/HTML
+Title    : 	RET Metro ATB
+Author   : 	Remy van Elst
+Date     : 	02-01-2006
+URL      : 	https://raymii.org/s/blog/RET_Metro_ATB.html
+Format   : 	Markdown/HTML
 ---
 
 

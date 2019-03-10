@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bash script for massive rename to numbers
-	Author   : 	Remy van Elst
-	Date     : 	14-09-2008
-	URL      : 	https://raymii.org/s/snippets/Bash-massive-rename-to-numbers.html
-	Format   : 	Markdown/HTML
+Title    : 	Bash script for massive rename to numbers
+Author   : 	Remy van Elst
+Date     : 	14-09-2008
+URL      : 	https://raymii.org/s/snippets/Bash-massive-rename-to-numbers.html
+Format   : 	Markdown/HTML
 ---
 
 

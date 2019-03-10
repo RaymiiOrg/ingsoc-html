@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Munin - Fix MySQL plugin on Ubuntu 12.04 and Debian 6
-	Author   : 	Remy van Elst
-	Date     : 	02-02-2013
-	URL      : 	https://raymii.org/s/snippets/Munin-Fix-MySQL-Plugin-on-Ubuntu-12.04.html
-	Format   : 	Markdown/HTML
+Title    : 	Munin - Fix MySQL plugin on Ubuntu 12.04 and Debian 6
+Author   : 	Remy van Elst
+Date     : 	02-02-2013
+URL      : 	https://raymii.org/s/snippets/Munin-Fix-MySQL-Plugin-on-Ubuntu-12.04.html
+Format   : 	Markdown/HTML
 ---
 
 

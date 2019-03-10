@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL match certificate and private key
-	Author   : 	Remy van Elst
-	Date     : 	09-02-2013
-	URL      : 	https://raymii.org/s/snippets/OpenSSL_match_certificate_with_private_key.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL match certificate and private key
+Author   : 	Remy van Elst
+Date     : 	09-02-2013
+URL      : 	https://raymii.org/s/snippets/OpenSSL_match_certificate_with_private_key.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Solve word puzzles with bash
-	Author   : 	Ben Everard
-	Date     : 	08-03-2015
-	URL      : 	https://raymii.org/s/articles/Solve_word_puzzles_with_bash.html
-	Format   : 	Markdown/HTML
+Title    : 	Solve word puzzles with bash
+Author   : 	Ben Everard
+Date     : 	08-03-2015
+URL      : 	https://raymii.org/s/articles/Solve_word_puzzles_with_bash.html
+Format   : 	Markdown/HTML
 ---
 
 

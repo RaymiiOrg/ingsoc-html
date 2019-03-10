@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Site updates, new layout for overview pages
-	Author   : 	Remy van Elst
-	Date     : 	04-05-2018
-	URL      : 	https://raymii.org/s/blog/Site_updates_new_layout_for_overview_pages.html
-	Format   : 	Markdown/HTML
+Title    : 	Site updates, new layout for overview pages
+Author   : 	Remy van Elst
+Date     : 	04-05-2018
+URL      : 	https://raymii.org/s/blog/Site_updates_new_layout_for_overview_pages.html
+Format   : 	Markdown/HTML
 ---
 
 

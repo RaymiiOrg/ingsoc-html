@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bash script to list all changed files in certain period
-	Author   : 	Remy van Elst
-	Date     : 	13-05-2012
-	URL      : 	https://raymii.org/s/software/List-all-changed-files-in-a-certain-period.html
-	Format   : 	Markdown/HTML
+Title    : 	Bash script to list all changed files in certain period
+Author   : 	Remy van Elst
+Date     : 	13-05-2012
+URL      : 	https://raymii.org/s/software/List-all-changed-files-in-a-certain-period.html
+Format   : 	Markdown/HTML
 ---
 
 

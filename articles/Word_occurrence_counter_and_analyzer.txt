@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Word occurrence counter and analyzer
-	Author   : 	Remy van Elst
-	Date     : 	07-03-2013
-	URL      : 	https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html
-	Format   : 	Markdown/HTML
+Title    : 	Word occurrence counter and analyzer
+Author   : 	Remy van Elst
+Date     : 	07-03-2013
+URL      : 	https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html
+Format   : 	Markdown/HTML
 ---
 
 

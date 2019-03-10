@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Site updates for accessibility, text only pages and skip to main content
-	Author   : 	Remy van Elst
-	Date     : 	01-08-2018
-	URL      : 	https://raymii.org/s/blog/Site_Improvements_for_accessibility.html
-	Format   : 	Markdown/HTML
+Title    : 	Site updates for accessibility, text only pages and skip to main content
+Author   : 	Remy van Elst
+Date     : 	01-08-2018
+URL      : 	https://raymii.org/s/blog/Site_Improvements_for_accessibility.html
+Format   : 	Markdown/HTML
 ---
 
 

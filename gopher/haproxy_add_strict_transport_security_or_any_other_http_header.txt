@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	haproxy: add strict transport security or any other http header
-	Author   : 	Remy van Elst
-	Date     : 	11-12-2013
-	URL      : 	https://raymii.org/s/snippets/haproxy_add_strict_transport_security_or_any_other_http_header.html
-	Format   : 	Markdown/HTML
+Title    : 	haproxy: add strict transport security or any other http header
+Author   : 	Remy van Elst
+Date     : 	11-12-2013
+URL      : 	https://raymii.org/s/snippets/haproxy_add_strict_transport_security_or_any_other_http_header.html
+Format   : 	Markdown/HTML
 ---
 
 

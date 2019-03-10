@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Ansible Inventory from VMWare
-	Author   : 	Remy van Elst
-	Date     : 	06-01-2014
-	URL      : 	https://raymii.org/s/software/Ansible__Dynamic_Inventory_From_VMware_vCenter.html
-	Format   : 	Markdown/HTML
+Title    : 	Ansible Inventory from VMWare
+Author   : 	Remy van Elst
+Date     : 	06-01-2014
+URL      : 	https://raymii.org/s/software/Ansible__Dynamic_Inventory_From_VMware_vCenter.html
+Format   : 	Markdown/HTML
 ---
 
 

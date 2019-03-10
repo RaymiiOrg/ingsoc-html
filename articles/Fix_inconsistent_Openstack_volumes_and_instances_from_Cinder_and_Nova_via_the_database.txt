@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Fix inconsistent Openstack volumes and instances from Cinder and Nova via the database
-	Author   : 	Remy van Elst
-	Date     : 	22-12-2014
-	URL      : 	https://raymii.org/s/articles/Fix_inconsistent_Openstack_volumes_and_instances_from_Cinder_and_Nova_via_the_database.html
-	Format   : 	Markdown/HTML
+Title    : 	Fix inconsistent Openstack volumes and instances from Cinder and Nova via the database
+Author   : 	Remy van Elst
+Date     : 	22-12-2014
+URL      : 	https://raymii.org/s/articles/Fix_inconsistent_Openstack_volumes_and_instances_from_Cinder_and_Nova_via_the_database.html
+Format   : 	Markdown/HTML
 ---
 
 

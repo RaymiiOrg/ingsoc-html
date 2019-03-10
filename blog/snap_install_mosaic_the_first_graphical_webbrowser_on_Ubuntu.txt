@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	snap install mosaic, the first graphical webbrowser on Ubuntu
-	Author   : 	Remy van Elst
-	Date     : 	14-06-2018
-	URL      : 	https://raymii.org/s/blog/snap_install_mosaic_the_first_graphical_webbrowser_on_Ubuntu.html
-	Format   : 	Markdown/HTML
+Title    : 	snap install mosaic, the first graphical webbrowser on Ubuntu
+Author   : 	Remy van Elst
+Date     : 	14-06-2018
+URL      : 	https://raymii.org/s/blog/snap_install_mosaic_the_first_graphical_webbrowser_on_Ubuntu.html
+Format   : 	Markdown/HTML
 ---
 
 

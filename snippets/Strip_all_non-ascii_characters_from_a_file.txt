@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Strip all non-ascii characters from a file
-	Author   : 	Remy van Elst
-	Date     : 	27-06-2013
-	URL      : 	https://raymii.org/s/snippets/Strip_all_non-ascii_characters_from_a_file.html
-	Format   : 	Markdown/HTML
+Title    : 	Strip all non-ascii characters from a file
+Author   : 	Remy van Elst
+Date     : 	27-06-2013
+URL      : 	https://raymii.org/s/snippets/Strip_all_non-ascii_characters_from_a_file.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Check HTTP status code for a page on all DNS records
-	Author   : 	Remy van Elst
-	Date     : 	09-04-2017
-	URL      : 	https://raymii.org/s/snippets/Check_HTTP_status_code_for_a_page_on_all_DNS_records.html
-	Format   : 	Markdown/HTML
+Title    : 	Check HTTP status code for a page on all DNS records
+Author   : 	Remy van Elst
+Date     : 	09-04-2017
+URL      : 	https://raymii.org/s/snippets/Check_HTTP_status_code_for_a_page_on_all_DNS_records.html
+Format   : 	Markdown/HTML
 ---
 
 

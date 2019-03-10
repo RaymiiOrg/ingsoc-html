@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Get all IP ranges from an AS number
-	Author   : 	Remy van Elst
-	Date     : 	04-01-2015
-	URL      : 	https://raymii.org/s/snippets/Get_all_IP_ranges_from_an_AS_number.html
-	Format   : 	Markdown/HTML
+Title    : 	Get all IP ranges from an AS number
+Author   : 	Remy van Elst
+Date     : 	04-01-2015
+URL      : 	https://raymii.org/s/snippets/Get_all_IP_ranges_from_an_AS_number.html
+Format   : 	Markdown/HTML
 ---
 
 

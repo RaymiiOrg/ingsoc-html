@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Set your IP as wallpaper
-	Author   : 	Remy van Elst
-	Date     : 	14-09-2014
-	URL      : 	https://raymii.org/s/tutorials/Set-your-ip-as-wallpaper.html
-	Format   : 	Markdown/HTML
+Title    : 	Set your IP as wallpaper
+Author   : 	Remy van Elst
+Date     : 	14-09-2014
+URL      : 	https://raymii.org/s/tutorials/Set-your-ip-as-wallpaper.html
+Format   : 	Markdown/HTML
 ---
 
 

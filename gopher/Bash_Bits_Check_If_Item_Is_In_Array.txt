@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Bash Bits: Check if item is in array
-	Author   : 	Remy van Elst
-	Date     : 	21-09-2013
-	URL      : 	https://raymii.org/s/snippets/Bash_Bits_Check_If_Item_Is_In_Array.html
-	Format   : 	Markdown/HTML
+Title    : 	Bash Bits: Check if item is in array
+Author   : 	Remy van Elst
+Date     : 	21-09-2013
+URL      : 	https://raymii.org/s/snippets/Bash_Bits_Check_If_Item_Is_In_Array.html
+Format   : 	Markdown/HTML
 ---
 
 

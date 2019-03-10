@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	File locking, grep and process killing on OpenVMS
-	Author   : 	Remy van Elst
-	Date     : 	06-05-2018
-	URL      : 	https://raymii.org/s/blog/File_locking_grep_and_process_killing_on_OpenVMS.html
-	Format   : 	Markdown/HTML
+Title    : 	File locking, grep and process killing on OpenVMS
+Author   : 	Remy van Elst
+Date     : 	06-05-2018
+URL      : 	https://raymii.org/s/blog/File_locking_grep_and_process_killing_on_OpenVMS.html
+Format   : 	Markdown/HTML
 ---
 
 

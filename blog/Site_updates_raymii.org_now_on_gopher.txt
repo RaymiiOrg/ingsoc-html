@@ -1,24 +1,78 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Site updates, raymii.org now also available on Gopher
-	Author   : 	Remy van Elst
-	Date     : 	10-03-2019
-	URL      : 	https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html
-	Format   : 	Markdown/HTML
+Title    : 	Site updates, raymii.org now also available on Gopher
+Author   : 	Remy van Elst
+Date     : 	10-03-2019
+URL      : 	https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html
+Format   : 	Markdown/HTML
 ---
 
 
 
-I've made some new improvements to this website. Raymii.org is generated using my self-written static site generator named ingsoc and it now supports Gopher. You can browse to [gopher://raymii.org:70](gopher://raymii.org:70/) using your favorite gopher browser (`lynx` or [DiggieDog for Android](https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&hl=en_US)) to view all the articles here on gopherspace. If you don't have a gopher browser, you can use [the floodgap http to gopher proxy](https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F)
+### Introduction to Gopher
 
-If you want to know what Gopher is, [read this article](http://web.archive.org/web/20190310082022/https://prgmr.com/blog/gopher/2018/08/23/gopher.html). The reason for me to add Gopher support for my site is just that I like tinkering and text-based simple stuff. Gopher fits that bill.
+I've made some new improvements to this website. Raymii.org is generated using my 
+self-written static site generator named ingsoc and it now supports Gopher. 
+You can browse to [gopher://raymii.org:70](gopher://raymii.org:70/) using your favorite 
+gopher browser (`lynx` or [DiggieDog for Android](https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&hl=en_US)) 
+to view all the articles here on gopherspace. If you don't have a gopher browser, 
+you can use [the floodgap http to gopher proxy](https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F)
+
+Gopher is a protocol for information transfer over the internet that was very popular 
+before HTTP took over as the dominant protocol, but there is still a community of gopher 
+users that prefer the simplicity of the protocol over the more complex and large protocols 
+more often encountered. Note that not all browsers support gopher, or have incomplete 
+support. If you want to know more about Gopher, [read this article](http://web.archive.org/web/20190310082022/https://prgmr.com/blog/gopher/2018/08/23/gopher.html). 
+The reason for me to add Gopher support for my site is just that I like tinkering and 
+text-based simple stuff. Gopher fits that bill.
 
 <img src="https://raymii.org/s/inc/img/gopher.png">
 
-Due to [this excellent guide](https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html) on `pygopherd` and how to create a `Gophermap` (sort of `index.html` file) I was able to get up and running quickly. I made an Ansible playbook to install and configure `Pygopherd` and updated my static site generator to [generate the gophermap](https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher/gophermap)
+### Static site generator
 
-Images and links are not handled yet. You basically get the Markdown I write on which this site is generated. Just as the plain text file link you can click at every article.
+Due to [this excellent guide](https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html) 
+on `pygopherd` and how to create a `Gophermap` (sort of `index.html` file) I was able to get up and 
+running quickly. I made an Ansible playbook to install and configure `Pygopherd` and updated my static 
+site generator to [generate the gophermap](https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher/gophermap)
+
+If you want to setup a gopher server, it can be as simple as:
+
+    apt-get install pygopherd
+
+Afterwards, edit the file `/var/gopher/gophermap`. Or remove it and place files in `/var/gopher`.
+
+My static site generator's gopher part is simple. It takes the Markdown files, uses the header 
+for meta information like title and date and puts that meta information in a dict. Using a `lambda` 
+and an `OrderedDict` the items are stored in another list, sorted by date:
+
+    gopherItems = collections.OrderedDict(sorted(parsedFiles.items(), reverse=True, key=lambda item: dateutil.parser.parse(item[1]['date'], dayfirst=True)))
+
+The metadata looks like this:
+
+    title: "Site updates, raymii.org now also available on Gopher"
+    author: "Remy van Elst"
+    category: "blog"
+    date: "10-03-2019"
+
+Then, using a `for` loop, every item is written to the `gophermap` file:
+
+      
+    with open('gophermap', 'w') as gopherMapFile:
+        for filename, values in gopherItems.items():
+            itemLine  = "0" + str(values['title']) + " (" + str(values['date']) + ")\t"
+            itemLine += str(filename) + ".txt\traymii.org\t70\n"
+            gopherMapFile.write(itemLine)
+        gopherMapFile.write("1This server runs on Pygopherd\t/devel/gopher/pygopherd\tgopher.quux.org\t70\n")
+        gopherMapFile.close()
+
+Not the most elegant Python, nowdays I'd probably use templates (`jinja2`), but this works fine for now.
+
+After all the files have been created, the generator does a `git commit` and a `git push`. 
+The servers all poll the repository and if there are changes, they `pull` the new site. 
+Hassle free deployment. After all, it's just static HTML.
+
+Images and links are not handled yet. You basically get the Markdown I write on which 
+this site is generated. Just as the plain text file link you can click at every article.
 
 If you use the gopher version of Raymii.org, [please let me know](https://raymii.org/s/static/About.html). 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Install the latest ZNC from source on Ubuntu
-	Author   : 	Remy van Elst
-	Date     : 	25-10-2013
-	URL      : 	https://raymii.org/s/tutorials/Install_the_Lastest_ZNC_from_Source_in_Ubuntu.html
-	Format   : 	Markdown/HTML
+Title    : 	Install the latest ZNC from source on Ubuntu
+Author   : 	Remy van Elst
+Date     : 	25-10-2013
+URL      : 	https://raymii.org/s/tutorials/Install_the_Lastest_ZNC_from_Source_in_Ubuntu.html
+Format   : 	Markdown/HTML
 ---
 
 

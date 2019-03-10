@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Nitrokey Start: Getting started guide (gnuk openpgp token)
-	Author   : 	Remy van Elst
-	Date     : 	14-08-2016
-	URL      : 	https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html
-	Format   : 	Markdown/HTML
+Title    : 	Nitrokey Start: Getting started guide (gnuk openpgp token)
+Author   : 	Remy van Elst
+Date     : 	14-08-2016
+URL      : 	https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html
+Format   : 	Markdown/HTML
 ---
 
 

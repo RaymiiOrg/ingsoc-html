@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Olimex OlinuXino a10 Lime Minimal Debian 7 Image
-	Author   : 	Remy van Elst
-	Date     : 	31-10-2014
-	URL      : 	https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html
-	Format   : 	Markdown/HTML
+Title    : 	Olimex OlinuXino a10 Lime Minimal Debian 7 Image
+Author   : 	Remy van Elst
+Date     : 	31-10-2014
+URL      : 	https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html
+Format   : 	Markdown/HTML
 ---
 
 

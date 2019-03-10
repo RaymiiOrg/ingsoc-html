@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Correctly grep and display the uptime, load average and amount of users
-	Author   : 	Remy van Elst
-	Date     : 	06-09-2012
-	URL      : 	https://raymii.org/s/snippets/Get_uptime_load_and_users_with_grep_sed_and_awk.html
-	Format   : 	Markdown/HTML
+Title    : 	Correctly grep and display the uptime, load average and amount of users
+Author   : 	Remy van Elst
+Date     : 	06-09-2012
+URL      : 	https://raymii.org/s/snippets/Get_uptime_load_and_users_with_grep_sed_and_awk.html
+Format   : 	Markdown/HTML
 ---
 
 

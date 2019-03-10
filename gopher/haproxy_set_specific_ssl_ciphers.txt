@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	haproxy: set specific ssl ciphers
-	Author   : 	Remy van Elst
-	Date     : 	12-12-2013
-	URL      : 	https://raymii.org/s/snippets/haproxy_set_specific_ssl_ciphers.html
-	Format   : 	Markdown/HTML
+Title    : 	haproxy: set specific ssl ciphers
+Author   : 	Remy van Elst
+Date     : 	12-12-2013
+URL      : 	https://raymii.org/s/snippets/haproxy_set_specific_ssl_ciphers.html
+Format   : 	Markdown/HTML
 ---
 
 

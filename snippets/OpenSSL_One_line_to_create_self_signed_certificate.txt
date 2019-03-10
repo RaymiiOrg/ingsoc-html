@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenSSL One liner to create self signed certificate
-	Author   : 	Remy van Elst
-	Date     : 	09-10-2013
-	URL      : 	https://raymii.org/s/snippets/OpenSSL_One_line_to_create_self_signed_certificate.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenSSL One liner to create self signed certificate
+Author   : 	Remy van Elst
+Date     : 	09-10-2013
+URL      : 	https://raymii.org/s/snippets/OpenSSL_One_line_to_create_self_signed_certificate.html
+Format   : 	Markdown/HTML
 ---
 
 

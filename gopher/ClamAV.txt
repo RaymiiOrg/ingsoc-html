@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	ClamAV installation and daily scan + report on Ubuntu
-	Author   : 	Remy van Elst
-	Date     : 	01-12-2012
-	URL      : 	https://raymii.org/s/tutorials/ClamAV.html
-	Format   : 	Markdown/HTML
+Title    : 	ClamAV installation and daily scan + report on Ubuntu
+Author   : 	Remy van Elst
+Date     : 	01-12-2012
+URL      : 	https://raymii.org/s/tutorials/ClamAV.html
+Format   : 	Markdown/HTML
 ---
 
 

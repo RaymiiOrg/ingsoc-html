@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenVZ/Proxmox - pre-backup all container dump script
-	Author   : 	Remy van Elst
-	Date     : 	18-01-2015
-	URL      : 	https://raymii.org/s/software/OpenVZ_Proxmox_-_pre-backup_all_container_dump_script.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenVZ/Proxmox - pre-backup all container dump script
+Author   : 	Remy van Elst
+Date     : 	18-01-2015
+URL      : 	https://raymii.org/s/software/OpenVZ_Proxmox_-_pre-backup_all_container_dump_script.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Nitrokey HSM/SmartCard-HSM and Raspberry Pi web cluster
-	Author   : 	Remy van Elst
-	Date     : 	01-08-2016
-	URL      : 	https://raymii.org/s/articles/Nitrokey_HSM_web_cluster.html
-	Format   : 	Markdown/HTML
+Title    : 	Nitrokey HSM/SmartCard-HSM and Raspberry Pi web cluster
+Author   : 	Remy van Elst
+Date     : 	01-08-2016
+URL      : 	https://raymii.org/s/articles/Nitrokey_HSM_web_cluster.html
+Format   : 	Markdown/HTML
 ---
 
 

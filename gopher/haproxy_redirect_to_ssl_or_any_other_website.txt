@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	haproxy: redirect to ssl or other website
-	Author   : 	Remy van Elst
-	Date     : 	09-12-2013
-	URL      : 	https://raymii.org/s/snippets/haproxy_redirect_to_ssl_or_any_other_website.html
-	Format   : 	Markdown/HTML
+Title    : 	haproxy: redirect to ssl or other website
+Author   : 	Remy van Elst
+Date     : 	09-12-2013
+URL      : 	https://raymii.org/s/snippets/haproxy_redirect_to_ssl_or_any_other_website.html
+Format   : 	Markdown/HTML
 ---
 
 

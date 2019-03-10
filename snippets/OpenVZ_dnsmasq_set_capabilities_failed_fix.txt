@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OpenVZ dnsmasq set capabilities failed fix
-	Author   : 	Remy van Elst
-	Date     : 	14-08-2013
-	URL      : 	https://raymii.org/s/snippets/OpenVZ_dnsmasq_set_capabilities_failed_fix.html
-	Format   : 	Markdown/HTML
+Title    : 	OpenVZ dnsmasq set capabilities failed fix
+Author   : 	Remy van Elst
+Date     : 	14-08-2013
+URL      : 	https://raymii.org/s/snippets/OpenVZ_dnsmasq_set_capabilities_failed_fix.html
+Format   : 	Markdown/HTML
 ---
 
 

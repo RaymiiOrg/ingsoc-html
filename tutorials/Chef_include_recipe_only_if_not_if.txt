@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Chef: include_recipe only_if or not_if
-	Author   : 	Remy van Elst
-	Date     : 	06-10-2013
-	URL      : 	https://raymii.org/s/tutorials/Chef_include_recipe_only_if_not_if.html
-	Format   : 	Markdown/HTML
+Title    : 	Chef: include_recipe only_if or not_if
+Author   : 	Remy van Elst
+Date     : 	06-10-2013
+URL      : 	https://raymii.org/s/tutorials/Chef_include_recipe_only_if_not_if.html
+Format   : 	Markdown/HTML
 ---
 
 

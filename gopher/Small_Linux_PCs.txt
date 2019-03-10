@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Small low cost linux pc's, an overview from 11-2012
-	Author   : 	Remy van Elst
-	Date     : 	07-11-2012
-	URL      : 	https://raymii.org/s/articles/Small_Linux_PCs.html
-	Format   : 	Markdown/HTML
+Title    : 	Small low cost linux pc's, an overview from 11-2012
+Author   : 	Remy van Elst
+Date     : 	07-11-2012
+URL      : 	https://raymii.org/s/articles/Small_Linux_PCs.html
+Format   : 	Markdown/HTML
 ---
 
 

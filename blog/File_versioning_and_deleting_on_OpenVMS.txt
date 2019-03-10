@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	File versioning and deleting on OpenVMS with DELETE and PURGE
-	Author   : 	Remy van Elst
-	Date     : 	15-04-2018
-	URL      : 	https://raymii.org/s/blog/File_versioning_and_deleting_on_OpenVMS.html
-	Format   : 	Markdown/HTML
+Title    : 	File versioning and deleting on OpenVMS with DELETE and PURGE
+Author   : 	Remy van Elst
+Date     : 	15-04-2018
+URL      : 	https://raymii.org/s/blog/File_versioning_and_deleting_on_OpenVMS.html
+Format   : 	Markdown/HTML
 ---
 
 

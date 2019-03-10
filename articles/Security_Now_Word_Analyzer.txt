@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Complete word count analysis of Security Now, episode 1 trough 370.
-	Author   : 	Remy van Elst
-	Date     : 	09-09-2012
-	URL      : 	https://raymii.org/s/articles/Security_Now_Word_Analyzer.html
-	Format   : 	Markdown/HTML
+Title    : 	Complete word count analysis of Security Now, episode 1 trough 370.
+Author   : 	Remy van Elst
+Date     : 	09-09-2012
+URL      : 	https://raymii.org/s/articles/Security_Now_Word_Analyzer.html
+Format   : 	Markdown/HTML
 ---
 
 

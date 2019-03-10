@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Some Bash and Arch Tweaks 
-	Author   : 	Remy van Elst
-	Date     : 	01-01-2012
-	URL      : 	https://raymii.org/s/snippets/Arch-bash-pacman-bashrc-tips.html
-	Format   : 	Markdown/HTML
+Title    : 	Some Bash and Arch Tweaks 
+Author   : 	Remy van Elst
+Date     : 	01-01-2012
+URL      : 	https://raymii.org/s/snippets/Arch-bash-pacman-bashrc-tips.html
+Format   : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	OS X - Enable access for assistive devices via the command line
-	Author   : 	Remy van Elst
-	Date     : 	03-09-2013
-	URL      : 	https://raymii.org/s/snippets/OS-X-Enable-Access-for-assistive-devices-via-command-line.html
-	Format   : 	Markdown/HTML
+Title    : 	OS X - Enable access for assistive devices via the command line
+Author   : 	Remy van Elst
+Date     : 	03-09-2013
+URL      : 	https://raymii.org/s/snippets/OS-X-Enable-Access-for-assistive-devices-via-command-line.html
+Format   : 	Markdown/HTML
 ---
 
 

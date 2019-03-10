@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Proxmox VE - One Public IP
-	Author   : 	Remy van Elst
-	Date     : 	10-07-2014
-	URL      : 	https://raymii.org/s/tutorials/Proxmox_VE_One_Public_IP.html
-	Format   : 	Markdown/HTML
+Title    : 	Proxmox VE - One Public IP
+Author   : 	Remy van Elst
+Date     : 	10-07-2014
+URL      : 	https://raymii.org/s/tutorials/Proxmox_VE_One_Public_IP.html
+Format   : 	Markdown/HTML
 ---
 
 

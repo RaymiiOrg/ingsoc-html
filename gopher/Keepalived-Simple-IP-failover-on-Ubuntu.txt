@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Simple keepalived failover setup on Ubuntu 14.04
-	Author   : 	Remy van Elst
-	Date     : 	13-06-2014
-	URL      : 	https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html
-	Format   : 	Markdown/HTML
+Title    : 	Simple keepalived failover setup on Ubuntu 14.04
+Author   : 	Remy van Elst
+Date     : 	13-06-2014
+URL      : 	https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html
+Format   : 	Markdown/HTML
 ---
 
 

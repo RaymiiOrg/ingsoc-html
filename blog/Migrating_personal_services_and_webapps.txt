@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Migrating personal webapps and services
-	Author   : 	Remy van Elst
-	Date     : 	05-05-2016
-	URL      : 	https://raymii.org/s/blog/Migrating_personal_services_and_webapps.html
-	Format   : 	Markdown/HTML
+Title    : 	Migrating personal webapps and services
+Author   : 	Remy van Elst
+Date     : 	05-05-2016
+URL      : 	https://raymii.org/s/blog/Migrating_personal_services_and_webapps.html
+Format   : 	Markdown/HTML
 ---
 
 

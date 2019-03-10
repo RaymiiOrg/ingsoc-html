@@ -1,11 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-
-	Title    : 	Icinga2 / Nagios / Net::SNMP change the default timeout of 60 seconds
-	Author   : 	Remy van Elst
-	Date     : 	16-05-2018
-	URL      : 	https://raymii.org/s/tutorials/Icinga2_Nagios_Net_SNMP_raise_default_timeout.html
-	Format   : 	Markdown/HTML
+Title    : 	Icinga2 / Nagios / Net::SNMP change the default timeout of 60 seconds
+Author   : 	Remy van Elst
+Date     : 	16-05-2018
+URL      : 	https://raymii.org/s/tutorials/Icinga2_Nagios_Net_SNMP_raise_default_timeout.html
+Format   : 	Markdown/HTML
 ---
 
 
