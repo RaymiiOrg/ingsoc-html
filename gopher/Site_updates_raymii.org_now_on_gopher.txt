@@ -10,13 +10,13 @@ This is a text-only version of the following page on https://raymii.org:
 
 
 
-I've made some new improvements to this website. Raymii.org is generated using my self-written static site generator named ingsoc and it now supports Gopher. You can browse to [gopher://raymii.org:70](gopher://raymii.org:70/) using your favorite gopher browser (`lynx`) to view all the articles here on gopherspace. If you don't have a gopher browser, you can use [the floodgap http to gopher proxy](https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F)
+I've made some new improvements to this website. Raymii.org is generated using my self-written static site generator named ingsoc and it now supports Gopher. You can browse to [gopher://raymii.org:70](gopher://raymii.org:70/) using your favorite gopher browser (`lynx` or [DiggieDog for Android](https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&hl=en_US)) to view all the articles here on gopherspace. If you don't have a gopher browser, you can use [the floodgap http to gopher proxy](https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Fraymii.org%3A70%2F)
 
 If you want to know what Gopher is, [read this article](http://web.archive.org/web/20190310082022/https://prgmr.com/blog/gopher/2018/08/23/gopher.html). The reason for me to add Gopher support for my site is just that I like tinkering and text-based simple stuff. Gopher fits that bill.
 
 <img src="https://raymii.org/s/inc/img/gopher.png">
 
-Due to [this excellent guide](https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html) on `pygopherd` and how to create a `Gophermap` (sort of `index.html` file) I was able to get up and running quickly. I made an Ansible playbook to install and configure `Pygopherd` and updated my static site generator to [generate the gophermap](https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher)
+Due to [this excellent guide](https://prgmr.com/blog/gopher/2018/11/09/setting-up-gopherserver.html) on `pygopherd` and how to create a `Gophermap` (sort of `index.html` file) I was able to get up and running quickly. I made an Ansible playbook to install and configure `Pygopherd` and updated my static site generator to [generate the gophermap](https://github.com/RaymiiOrg/raymiiorg.github.io/tree/master/gopher/gophermap)
 
 Images and links are not handled yet. You basically get the Markdown I write on which this site is generated. Just as the plain text file link you can click at every article.
 

@@ -10,7 +10,7 @@
                 <title>Site updates, raymii.org now also available on Gopher</title> 
                 <link>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</link> 
                 <guid>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</guid>
-                <description>I've made some new improvements to this website, you can now view raymii.org on Gopher!</description> 
+                <description>I've made some new improvements to this website, you can now view raymii.org on Gopher! Building on the last site improvement, every article being available as plain text, it was easy to generate a gophermap file and bind it all together with pygopherd.</description> 
                 <pubDate>Sun, 10 Mar 2019 00:00:00 GMT</pubDate>
             </item>
     
