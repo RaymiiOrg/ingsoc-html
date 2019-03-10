@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/server.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Site updates, raymii.org now also available on Gopher</title> 
+                <link>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</link> 
+                <guid>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</guid>
+                <description>I've made some new improvements to this website, you can now view raymii.org on Gopher!</description> 
+                <pubDate>Sun, 10 Mar 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>SSH on Windows Server 2019 (including how to sudo)</title> 
                 <link>https://raymii.org/s/tutorials/SSH_on_Windows_Server_2019.html</link> 
                 <guid>https://raymii.org/s/tutorials/SSH_on_Windows_Server_2019.html</guid>
