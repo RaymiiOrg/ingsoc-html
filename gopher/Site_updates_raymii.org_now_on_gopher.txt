@@ -65,8 +65,19 @@ Then, using a `for` loop, every item is written to the `gophermap` file:
         gopherMapFile.write("1This server runs on Pygopherd\t/devel/gopher/pygopherd\tgopher.quux.org\t70\n")
         gopherMapFile.close()
 
-Not the most elegant Python, nowdays I'd probably use templates (`jinja2`), but this works fine for now.
+Not the most elegant Python, if I would write the generator from scratch today I'd probably use templates (`jinja2`), but this works fine for now.
 
+There is a Gopher only RSS feed, which uses the regular RSS feed generator code and a gopher links section, which is a seperate `gophermap` in the `links` folder. It's filled via the config file of the static site generator:
+
+    gopherlinks: [
+      {'host': 'serf.jpmens.net',     
+       'path': '/', 
+       'port': 70, 
+       'gophertype': 1, 
+       'label': "Jan Piet Mens' gopherspace"
+      }
+    ]
+    
 After all the files have been created, the generator does a `git commit` and a `git push`. 
 The servers all poll the repository and if there are changes, they `pull` the new site. 
 Hassle free deployment. After all, it's just static HTML.

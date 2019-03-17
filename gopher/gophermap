@@ -12,12 +12,12 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-03-10T13:41:31	/	localhost	70
+i            2019-03-17T13:53:09	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
-i              	/	localhost	70
-
-
+1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
+1Links to other gopherspaces	links/	raymii.org	70
+i 	/	localhost	70
 
 0Site updates, raymii.org now also available on Gopher (10-03-2019)	Site_updates_raymii.org_now_on_gopher.txt	raymii.org	70
 0SpaceCat Launchpad v2, an awesome cool little macropad (05-03-2019)	SpaceCat_Launchpad_v2_an_awesome_little_macropad.txt	raymii.org	70
@@ -392,5 +392,4 @@ i              	/	localhost	70
 0RET Metro ZUB (02-01-2006)	RET_Metro_ZUB.txt	raymii.org	70
 0RET Metro ATB (02-01-2006)	RET_Metro_ATB.txt	raymii.org	70
 0About (01-01-2006)	About.txt	raymii.org	70
-i
 1This server runs on Pygopherd	/devel/gopher/pygopherd	gopher.quux.org	70

@@ -133,7 +133,19 @@ date: &quot;10-03-2019&quot;
     gopherMapFile.close()
 </code></pre>
 
-<p>Not the most elegant Python, nowdays I&#39;d probably use templates (<code>jinja2</code>), but this works fine for now.</p>
+<p>Not the most elegant Python, if I would write the generator from scratch today I&#39;d probably use templates (<code>jinja2</code>), but this works fine for now.</p>
+
+<p>There is a Gopher only RSS feed, which uses the regular RSS feed generator code and a gopher links section, which is a seperate <code>gophermap</code> in the <code>links</code> folder. It&#39;s filled via the config file of the static site generator:</p>
+
+<pre><code>gopherlinks: [
+  {&#39;host&#39;: &#39;serf.jpmens.net&#39;,     
+   &#39;path&#39;: &#39;/&#39;, 
+   &#39;port&#39;: 70, 
+   &#39;gophertype&#39;: 1, 
+   &#39;label&#39;: &quot;Jan Piet Mens&#39; gopherspace&quot;
+  }
+]
+</code></pre>
 
 <p>After all the files have been created, the generator does a <code>git commit</code> and a <code>git push</code>. 
 The servers all poll the repository and if there are changes, they <code>pull</code> the new site. 
