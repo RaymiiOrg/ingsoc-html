@@ -76,15 +76,28 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/mutt_djd.png"></p>
 
-<p>mutt is my email client at work. I like the simple interface, the speed and the ability to customize the workflow. Email is synced with <code>offlineimap</code> and sent via <code>msmtp</code>, addresses are in <code>abook</code>, and <code>calcurse</code> is the calendar for meetings, no complicated setup there. One aspect I especially like is the ability to view attachments on the command line right from mutt itself. Some departments at work send emails with an attached <code>PDF</code> or <code>.docx</code> file that contains the actual message, instead of just putting the text in the email itself. Using <code>pandoc</code> and <code>pdftotext</code> in mutt, the text of the attachments is displayed as a regular mail, no interruptions in my workflow by opening an external program. This article explains how to set up your <code>.muttrc</code> and <code>.mailcap</code> to use <code>pandoc</code> and <code>pdftotext</code> to view attachments as text in mutt.</p>
+<p>mutt is my email client at work. I like the simple interface, the speed and the
+ability to customize the workflow.  Email is synced with <code>offlineimap</code> and sent
+via <code>msmtp</code>, addresses are in <code>abook</code>, and <code>calcurse</code> is the calendar for
+meetings, no complicated setup there. One aspect I especially like is the
+ability to view attachments on the command line right from mutt itself. Some
+departments at work send emails with an attached <code>PDF</code> or <code>.docx</code> file that
+contains the actual message, instead of just putting the text in the email
+itself. Using <code>pandoc</code> and <code>pdftotext</code> in mutt, the text of the attachments is
+displayed as a regular mail, no interruptions in my workflow by opening an
+external program. This article explains how to set up your <code>.muttrc</code> and
+<code>.mailcap</code> to use <code>pandoc</code> and <code>pdftotext</code> to view attachments as text in mutt.</p>
 
-<p>I do assume you have a working mutt set up as I don&#39;t cover that here. <a href="https://wiki.archlinux.org/index.php/mutt">The Arch Linux Wiki</a> on mutt is a great place to start if you haven&#39;t got mutt setup yet.</p>
+<p>I do assume you have a working mutt set up as I don&#39;t cover that here. 
+<a href="https://wiki.archlinux.org/index.php/mutt">The Arch Linux Wiki</a> on mutt is a
+great place to start if you haven&#39;t got mutt setup yet.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
 
 <h3>Installing software</h3>
 
-<p>On Ubuntu both packages required are in the repository and can be installed using apt:</p>
+<p>On Ubuntu both packages required are in the repository and can be installed
+using apt:</p>
 
 <pre><code>apt-get install pandoc poppler-utils
 </code></pre>
@@ -93,7 +106,8 @@
 
 <h3>.mailcap</h3>
 
-<p>Your <code>.mailcap.</code> file contains information for a mail client how to handle non-text files.</p>
+<p>Your <code>.mailcap.</code> file contains information for a mail client how to handle
+non-text files.</p>
 
 <p>In your <code>.muttrc</code> file you need to specify where this file is:</p>
 
@@ -102,21 +116,28 @@
 
 <p>The man page for <code>.mailcap</code> explains the purpose and format of the file:</p>
 
-<p>Each mailcap entry consists of a content-type specification, a command to execute, and (possibly) a set of optional &quot;flag&quot; values. For example, a straightforward mailcap entry (which is default behavior for metamail) would look like this:</p>
+<p>Each mailcap entry consists of a content-type specification, a command to
+execute, and (possibly) a set of optional &quot;flag&quot; values. For example, a
+straightforward mailcap entry (which is default behavior for metamail) would
+look like this:</p>
 
 <pre><code>text/plain; cat %s
 </code></pre>
 
-<p>The optional flags can be used to specify additional information about the mail-handling command. For example:</p>
+<p>The optional flags can be used to specify additional information about the
+mail-handling command. For example:</p>
 
 <pre><code>text/plain; cat %s; copiousoutput
 </code></pre>
 
-<p>can be used to indicate that the output of the &#39;cat&#39; command may be voluminous, requiring either a scrolling window, a pager, or some other appropriate coping mechanism.</p>
+<p>can be used to indicate that the output of the <code>cat</code> command may be voluminous,
+requiring either a scrolling window, a pager, or some other appropriate coping
+mechanism.</p>
 
 <h4>HTML mails</h4>
 
-<p>I use <code>elinks</code> for example to view html mails, the following line accomplishes that:</p>
+<p>I use <code>elinks</code> for example to view html mails, the following line accomplishes
+that:</p>
 
 <pre><code>text/html; elinks -dump ; copiousoutput;
 </code></pre>
@@ -126,13 +147,16 @@
 <pre><code>auto_view text/html text/calendar application/ics
 </code></pre>
 
-<p>You only need <code>text/html</code>, but I also have calendar and meeting invites that I auto view due to Exchange presenting those in some weird empty email with attachment format.</p>
+<p>You only need <code>text/html</code>, but I also have calendar and meeting invites that I
+auto view due to Exchange presenting those in some weird empty email with
+attachment format.</p>
 
 <p>Now, back to the PDF and .docx files.</p>
 
 <h4>PDF &amp; .docx</h4>
 
-<p>The following command will convert a .docx file to text. The to parameter states markdown, but the output will be plain text with markdown formatting.</p>
+<p>The following command will convert a .docx file to text. The to parameter states
+markdown, but the output will be plain text with markdown formatting.</p>
 
 <pre><code>pandoc --from docx --to markdown My_doc_file.docx
 </code></pre>
@@ -147,16 +171,23 @@
 <pre><code>pdftotext -layout %s
 </code></pre>
 
-<p>Do note that in both cases non-text items might be lost, like images. Not a big issue since my files are mostly plain text but do keep it in mind. Tables work quite well, which surprised me. You still can save the attachments and view them with another program (like LibreOffice).</p>
+<p>Do note that in both cases non-text items might be lost, like images. Not a big
+issue since my files are mostly plain text but do keep it in mind. Tables work
+quite well, which surprised me. You still can save the attachments and view them
+with another program (like LibreOffice).</p>
 
-<p>Putting two and two together results in the following three lines in your <code>.mailcap</code> file:</p>
+<p>Putting two and two together results in the following three lines in your
+<code>.mailcap</code> file:</p>
 
 <pre><code>application/vnd.openxmlformats-officedocument.wordprocessingml.document; pandoc --from docx --to markdown %s; copiousoutput
 application/vnd.oasis.opendocument.text; pandoc --from odt --to markdown %s; copiousoutput
 application/pdf; pdftotext -layout %s -; copiousoutput;
 </code></pre>
 
-<p>Restart mutt and open an email with an attachment you want to view. Instead of using <code>s</code> to save the file you can now use <code>v</code> to view the file. Either <code>pdftotext</code> or <code>pandoc</code> is invoked, and the plain text output is shown inside mutt.</p>
+<p>Restart mutt and open an email with an attachment you want to view. Instead of
+using <code>s</code> to save the file you can now use <code>v</code> to view the file. Either
+<code>pdftotext</code> or <code>pandoc</code> is invoked, and the plain text output is shown inside
+mutt.</p>
 
 <p><img src="https://raymii.org/s/inc/img/mutt_pdf.png"></p>
 

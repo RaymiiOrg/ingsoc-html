@@ -11,15 +11,28 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/mutt_djd.png">
 
-mutt is my email client at work. I like the simple interface, the speed and the ability to customize the workflow. Email is synced with `offlineimap` and sent via `msmtp`, addresses are in `abook`, and `calcurse` is the calendar for meetings, no complicated setup there. One aspect I especially like is the ability to view attachments on the command line right from mutt itself. Some departments at work send emails with an attached `PDF` or `.docx` file that contains the actual message, instead of just putting the text in the email itself. Using `pandoc` and `pdftotext` in mutt, the text of the attachments is displayed as a regular mail, no interruptions in my workflow by opening an external program. This article explains how to set up your `.muttrc` and `.mailcap` to use `pandoc` and `pdftotext` to view attachments as text in mutt.
+mutt is my email client at work. I like the simple interface, the speed and the
+ability to customize the workflow.  Email is synced with `offlineimap` and sent
+via `msmtp`, addresses are in `abook`, and `calcurse` is the calendar for
+meetings, no complicated setup there. One aspect I especially like is the
+ability to view attachments on the command line right from mutt itself. Some
+departments at work send emails with an attached `PDF` or `.docx` file that
+contains the actual message, instead of just putting the text in the email
+itself. Using `pandoc` and `pdftotext` in mutt, the text of the attachments is
+displayed as a regular mail, no interruptions in my workflow by opening an
+external program. This article explains how to set up your `.muttrc` and
+`.mailcap` to use `pandoc` and `pdftotext` to view attachments as text in mutt.
 
-I do assume you have a working mutt set up as I don't cover that here. [The Arch Linux Wiki](https://wiki.archlinux.org/index.php/mutt) on mutt is a great place to start if you haven't got mutt setup yet.
+I do assume you have a working mutt set up as I don't cover that here. 
+[The Arch Linux Wiki](https://wiki.archlinux.org/index.php/mutt) on mutt is a
+great place to start if you haven't got mutt setup yet.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
 ### Installing software
 
-On Ubuntu both packages required are in the repository and can be installed using apt:
+On Ubuntu both packages required are in the repository and can be installed
+using apt:
 
 	apt-get install pandoc poppler-utils
 
@@ -27,7 +40,8 @@ On Ubuntu both packages required are in the repository and can be installed usin
 
 ### .mailcap
 
-Your `.mailcap.` file contains information for a mail client how to handle non-text files.
+Your `.mailcap.` file contains information for a mail client how to handle
+non-text files.
 
 In your `.muttrc` file you need to specify where this file is:
 
@@ -35,19 +49,26 @@ In your `.muttrc` file you need to specify where this file is:
 
 The man page for `.mailcap` explains the purpose and format of the file:
 
-Each mailcap entry consists of a content-type specification, a command to execute, and (possibly) a set of optional "flag" values. For example, a straightforward mailcap entry (which is default behavior for metamail) would look like this:
+Each mailcap entry consists of a content-type specification, a command to
+execute, and (possibly) a set of optional "flag" values. For example, a
+straightforward mailcap entry (which is default behavior for metamail) would
+look like this:
 
 	text/plain; cat %s
 
-The optional flags can be used to specify additional information about the mail-handling command. For example:
+The optional flags can be used to specify additional information about the
+mail-handling command. For example:
 
 	text/plain; cat %s; copiousoutput
 
-can be used to indicate that the output of the 'cat' command may be voluminous, requiring either a scrolling window, a pager, or some other appropriate coping mechanism.
+can be used to indicate that the output of the `cat` command may be voluminous,
+requiring either a scrolling window, a pager, or some other appropriate coping
+mechanism.
 
 #### HTML mails
 
-I use `elinks` for example to view html mails, the following line accomplishes that:
+I use `elinks` for example to view html mails, the following line accomplishes
+that:
 
 	text/html; elinks -dump ; copiousoutput;
 
@@ -55,13 +76,16 @@ Combined with the following line in my `.muttrc` to auto convert HTML mails:
 
 	auto_view text/html text/calendar application/ics
 
-You only need `text/html`, but I also have calendar and meeting invites that I auto view due to Exchange presenting those in some weird empty email with attachment format.
+You only need `text/html`, but I also have calendar and meeting invites that I
+auto view due to Exchange presenting those in some weird empty email with
+attachment format.
 
 Now, back to the PDF and .docx files.
 
 #### PDF & .docx
 
-The following command will convert a .docx file to text. The to parameter states markdown, but the output will be plain text with markdown formatting.
+The following command will convert a .docx file to text. The to parameter states
+markdown, but the output will be plain text with markdown formatting.
 
 	pandoc --from docx --to markdown My_doc_file.docx
 
@@ -73,15 +97,22 @@ The following command will convert a .pdf file to text:
 
 	pdftotext -layout %s
 
-Do note that in both cases non-text items might be lost, like images. Not a big issue since my files are mostly plain text but do keep it in mind. Tables work quite well, which surprised me. You still can save the attachments and view them with another program (like LibreOffice).
+Do note that in both cases non-text items might be lost, like images. Not a big
+issue since my files are mostly plain text but do keep it in mind. Tables work
+quite well, which surprised me. You still can save the attachments and view them
+with another program (like LibreOffice).
 
-Putting two and two together results in the following three lines in your `.mailcap` file:
+Putting two and two together results in the following three lines in your
+`.mailcap` file:
 
 	application/vnd.openxmlformats-officedocument.wordprocessingml.document; pandoc --from docx --to markdown %s; copiousoutput
 	application/vnd.oasis.opendocument.text; pandoc --from odt --to markdown %s; copiousoutput
 	application/pdf; pdftotext -layout %s -; copiousoutput;
 
-Restart mutt and open an email with an attachment you want to view. Instead of using `s` to save the file you can now use `v` to view the file. Either `pdftotext` or `pandoc` is invoked, and the plain text output is shown inside mutt.
+Restart mutt and open an email with an attachment you want to view. Instead of
+using `s` to save the file you can now use `v` to view the file. Either
+`pdftotext` or `pandoc` is invoked, and the plain text output is shown inside
+mutt.
 
 <img src="https://raymii.org/s/inc/img/mutt_pdf.png">
 
