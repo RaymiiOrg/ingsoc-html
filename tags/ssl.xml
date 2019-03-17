@@ -87,51 +87,11 @@
             </item>
     
             <item>
-                <title>Recap of week 02, 2016</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_02_2016.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_02_2016.html</guid>
-                <description>Recap of week 02 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 16 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Deborphan cleanup until no more orphaned packages left</title> 
                 <link>https://raymii.org/s/snippets/Deborphan_cleanup_until_no_more_orphaned_packages_left.html</link> 
                 <guid>https://raymii.org/s/snippets/Deborphan_cleanup_until_no_more_orphaned_packages_left.html</guid>
                 <description>Deborphan removes packages it thinks your system doesn't need anymore. It is a great tool for package cleanup and maintenance. Sometimes, after cleaning up the packages, it will find new packages that are orphaned (because you just cleaned up). This is a small script that cleans up with deborphan until there is nothing more to cleanup.</description> 
                 <pubDate>Mon, 11 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 01, 2016</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_01_2016.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_01_2016.html</guid>
-                <description>Recap of week 01 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sun, 10 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 53, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_53_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_53_2015.html</guid>
-                <description>Recap of week 53 of 2015, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 52, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_52_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_52_2015.html</guid>
-                <description>Recap of week 52, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 26 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 51, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_51_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_51_2015.html</guid>
-                <description>Recap of week 51, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 19 Dec 2015 00:00:00 GMT</pubDate>
             </item>
     
             <item>

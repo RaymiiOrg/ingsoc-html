@@ -76,11 +76,20 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/mail-send-receive.png" alt="mail"></p>
 
-<p>I have several email accounts at different providers. Most of them don&#39;t offer filtering capabilites like Sieve, or only their own non exportable rule system (Google Apps). My mail client of choice, Thunderbird, has filtering capabilities but my phone has not and I don&#39;t want to leave my machine running Thunderbird all the time since it gets quite slow with huge mailboxes. Imapfilter is a mail filtering utility written in Lua which connects to one or more IMAP accounts and filters on the server using IMAP queries. It is a lightweight command line utility, the configuration can be versioned and is simple text and it is very fast.</p>
+<p>I have several email accounts at different providers. Most of them don&#39;t offer
+filtering capabilites like Sieve, or only their own non exportable rule system
+(Google Apps). My mail client of choice, Thunderbird, has filtering capabilities
+but my phone has not and I don&#39;t want to leave my machine running Thunderbird
+all the time since it gets quite slow with huge mailboxes. Imapfilter is a mail
+filtering utility written in Lua which connects to one or more IMAP accounts and
+filters on the server using IMAP queries. It is a lightweight command line
+utility, the configuration can be versioned and is simple text and it is very
+fast.</p>
 
 <p>If you like this tutorial and want to support my website, use this link to order a Digital Ocean VPS: <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a></p>
 
-<p>Imapfilter is configured via a config file. This article will discuss this config file with filtering and other examples. Start with a blank one:</p>
+<p>Imapfilter is configured via a config file. This article will discuss this
+config file with filtering and other examples. Start with a blank one:</p>
 
 <pre><code>mkdir -p ~/.imapfilter
 vim ~/.imapfilter/config.lua
@@ -88,7 +97,9 @@ vim ~/.imapfilter/config.lua
 
 <h3>Options</h3>
 
-<p>imapfilter has a few global options which are configured via the <code>options.$OPTION = $VALUE</code> format. These are the ones I have, the manpage has more. Comments in the config file are prefix by two dashes (<code>--</code>).</p>
+<p>imapfilter has a few global options which are configured via the
+<code>options.$OPTION = $VALUE</code> format. These are the ones I have, the manpage has
+more. Comments in the config file are prefix by two dashes (<code>--</code>).</p>
 
 <pre><code>-- One of the work mailservers is slow.
 -- The time in seconds for the program to wait for a mail server&#39;s response (default 60)
@@ -123,7 +134,8 @@ account2 = IMAP {
 }
 </code></pre>
 
-<p>You can define as much accounts as needed. You can even <a href="http://thomaslevine.com/!/imapfilter/">get your accounts from offlineimap</a>:</p>
+<p>You can define as much accounts as needed. You can even <a href="http://thomaslevine.com/!/imapfilter/">get your accounts from
+offlineimap</a>:</p>
 
 <pre><code>function offlineimap (key)
   local status
@@ -145,17 +157,22 @@ T = IMAP {
 
 <h3>Mailboxes / Folders</h3>
 
-<p>imapfilter has the concept of <code>mailboxes</code>. While technically correct, we general users just call them (top level) folders. <code>INBOX</code> is a mailbox, other folders are as well. After an IMAP account has been initialized, mailboxes residing in that account can be accessed simply as elements of the account table:</p>
+<p>imapfilter has the concept of <code>mailboxes</code>. While technically correct, we general
+users just call them (top level) folders. <code>INBOX</code> is a mailbox, other folders
+are as well. After an IMAP account has been initialized, mailboxes residing in
+that account can be accessed simply as elements of the account table:</p>
 
 <pre><code>myaccount.mymailbox
 </code></pre>
 
-<p>If mailbox names don&#39;t only include letters, digits and underscores, or begin with a digit, an alternative form must be used:</p>
+<p>If mailbox names don&#39;t only include letters, digits and underscores, or begin
+with a digit, an alternative form must be used:</p>
 
 <pre><code>myaccount[&#39;mymailbox&#39;]
 </code></pre>
 
-<p>A mailbox inside a folder (subfolder) can be only accessed by using the alternative form:</p>
+<p>A mailbox inside a folder (subfolder) can be only accessed by using the
+alternative form:</p>
 
 <pre><code>myaccount[&#39;myfolder/mymailbox&#39;]
 </code></pre>
@@ -164,24 +181,33 @@ T = IMAP {
 
 <h3>Filtering</h3>
 
-<p>The filters defined are processed in order from top to bottom. I mostly filter my inbox by moving messages to another folder. If a message matched a filter it is moved, if it would then lower on match another filter that would not apply to that mail because it is already moved.</p>
+<p>The filters defined are processed in order from top to bottom. I mostly filter
+my inbox by moving messages to another folder. If a message matched a filter it
+is moved, if it would then lower on match another filter that would not apply to
+that mail because it is already moved.</p>
 
-<p>See the <a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> for all configuration options. </p>
+<p>See the <a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> for all
+configuration options. </p>
 
-<p>If you simply want to filter a message based on the sender, receipient or subject you can use the following. It moves all messages with the Duplicity mailing list address to the mailinglists folder:</p>
+<p>If you simply want to filter a message based on the sender, receipient or
+subject you can use the following. It moves all messages with the Duplicity
+mailing list address to the mailinglists folder:</p>
 
 <pre><code>  messages = account1[&quot;INBOX&quot;]:contain_to(&quot;duplicity-talk@nongnu.org&quot;)
   messages:move_messages(account1[&quot;Mailinglists/Duplicity-Talk&quot;])
 </code></pre>
 
-<p>If you want to filter based on a few more parameters, you can use the following operators, <code>*</code> for AND, <code>+</code> for OR and <code>-</code> for NOT. To filter nagios messages with a certain subject line:</p>
+<p>If you want to filter based on a few more parameters, you can use the following
+operators, <code>*</code> for AND, <code>+</code> for OR and <code>-</code> for NOT. To filter nagios messages
+with a certain subject line:</p>
 
 <pre><code>  messages = account1[&quot;INBOX&quot;]:contain_from(&quot;nagios@monitoring.org&quot;)
     * account1[&quot;INBOX&quot;]:contain_subject(&quot;important_hostname&quot;)
   messages:move_messages(account1[&quot;Important/Nagios&quot;])
 </code></pre>
 
-<p>To move messages from Nagios from less important hosts, but not with the &quot;CRITICAL&quot; subject and mark them as read:</p>
+<p>To move messages from Nagios from less important hosts, but not with the
+&quot;CRITICAL&quot; subject and mark them as read:</p>
 
 <pre><code>  messages = account1[&quot;INBOX&quot;]:contain_from(&quot;nagios@monitoring.org&quot;)
     - account1[&quot;INBOX&quot;]:contain_subject(&quot;CRITICAL:&quot;)
@@ -195,7 +221,8 @@ T = IMAP {
 
 <h3>Copying mail</h3>
 
-<p>To copy mail from one account to another account&#39;s folder and mark those copied messages as read, for archival purposes for example, use the following filter:</p>
+<p>To copy mail from one account to another account&#39;s folder and mark those copied
+messages as read, for archival purposes for example, use the following filter:</p>
 
 <pre><code>    messages = account2[&#39;INBOX&#39;]:is_unseen()
     messages:copy_messages(account1[&quot;Backup_of_Account2&quot;])
@@ -208,7 +235,10 @@ T = IMAP {
 
 <h3>pipe_to</h3>
 
-<p>Taken from the <a href="https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua">extended configuration example</a> here is an example piece of code which sends mail to an external program and based on the output deletes the messages the program marked as spam.</p>
+<p>Taken from the <a href="https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua">extended configuration
+example</a>
+here is an example piece of code which sends mail to an external program and
+based on the output deletes the messages the program marked as spam.</p>
 
 <pre><code>-- The auxiliary function pipe_to() is supplied for conveniency.  For
 -- example if there was a utility named &quot;bayesian-spam-filter&quot;, which
@@ -230,7 +260,12 @@ results:delete_messages()
 
 <h3>Conclusion</h3>
 
-<p>The above examples will get you started with message filtering right away. The <a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/config.lua">example config</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua">extended example config</a> will get you even further.</p>
+<p>The above examples will get you started with message filtering right away. The
+<a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/config.lua">example
+config</a> and
+the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua">extended example
+config</a>
+will get you even further.</p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dovecot.html" class="link">dovecot &nbsp;</a><a href="../tags/filter.html" class="link">filter &nbsp;</a><a href="../tags/gmail.html" class="link">gmail &nbsp;</a><a href="../tags/imap.html" class="link">imap &nbsp;</a><a href="../tags/imapfilter.html" class="link">imapfilter &nbsp;</a><a href="../tags/lua.html" class="link">lua &nbsp;</a><a href="../tags/mail.html" class="link">mail &nbsp;</a><a href="../tags/sieve.html" class="link">sieve &nbsp;</a><a href="../tags/smtp.html" class="link">smtp &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

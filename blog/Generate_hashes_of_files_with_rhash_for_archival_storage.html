@@ -74,20 +74,34 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I had to archive a large amount of files to archival storage. To save space and reduce the amount of files I decided to create archives with tar. The files will be stored to tapes and DVD&#39;s, and will be restored in full, so random access times are not an issue, therefore the tar.gz choice.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I had to archive a large amount of files to archival storage. To save
+space and reduce the amount of files I decided to create archives with tar. The
+files will be stored to tapes and DVD&#39;s, and will be restored in full, so random
+access times are not an issue, therefore the tar.gz choice.</p>
 
-<p>I do want to make sure that when the files need to be restored they still are correct. I first dabbled with some long shell commands to create checksums and verify them, but then I found the <code>rhash</code> tool in the repositories. It allows you to create checksums of files and folders, recursively, with all sorts of checksums, like CRC, MD5, SHA1 and many more. It also makes bulk validation very simple.</p>
+<p>I do want to make sure that when the files need to be restored they still are
+correct. I first dabbled with some long shell commands to create checksums and
+verify them, but then I found the <code>rhash</code> tool in the repositories. It allows
+you to create checksums of files and folders, recursively, with all sorts of
+checksums, like CRC, MD5, SHA1 and many more. It also makes bulk validation very
+simple.</p>
 
-<p>This small article shows you how to create an archive file with the checksums included and shows you how to validate these checksums later on.</p>
+<p>This small article shows you how to create an archive file with the checksums
+included and shows you how to validate these checksums later on.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> 
 t</p>
 
-<p>The data in question are archived tapes, disk copies, source code and documentation for the PDP8 mainframe. We also have these for the PDP11 and a few VAX machines. The archives contain about 5 million files and is about 700 GB in size. The company decided to phase out the on-line storage and place this data on tapes and dvd&#39;s, since they&#39;re not accessed more than once or twice a month.</p>
+<p>The data in question are archived tapes, disk copies, source code and
+documentation for the PDP8 mainframe. We also have these for the PDP11 and a few
+VAX machines. The archives contain about 5 million files and is about 700 GB in
+size. The company decided to phase out the on-line storage and place this data
+on tapes and dvd&#39;s, since they&#39;re not accessed more than once or twice a month.</p>
 
 <h3>Creating the hashes</h3>
 
-<p>The first archive contains PDP8 files located in the folder <code>pdp8</code>. This command creates the <code>MD5SUMS</code> file, which we place in the same folder:</p>
+<p>The first archive contains PDP8 files located in the folder <code>pdp8</code>. This command
+creates the <code>MD5SUMS</code> file, which we place in the same folder:</p>
 
 <pre><code>rhash --recursive --md5 --output=pdp8/MD5SUMS pdp8/
 </code></pre>
@@ -96,7 +110,8 @@ t</p>
 
 <h3>Verifying the hashes</h3>
 
-<p>Extract the archive to a folder and use the following command to verify all files:</p>
+<p>Extract the archive to a folder and use the following command to verify all
+files:</p>
 
 <pre><code>rhash --skip-ok --check pdp8/MD5SUMS 
 </code></pre>
@@ -116,7 +131,8 @@ pdp8/pdp8/readme.txt                                ERR
 Errors Occurred: Errors:1   Miss:0   Success:3323 Total:3324
 </code></pre>
 
-<p>If you leave out the <code>--skip-ok</code> option all files checked will be shown which might result in long output.</p>
+<p>If you leave out the <code>--skip-ok</code> option all files checked will be shown which
+might result in long output.</p>
 
 <p>To manually verify one file, first get the checksum:</p>
 

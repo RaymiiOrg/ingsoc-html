@@ -78,7 +78,17 @@
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>OpenVMS 7.3 is the latest version of OpenVMS for the VAX architecture. Since the <a href="http://decus.org">DECUS</a> system uses OpenVMS 8.4 there were some version differences. I could not set my &#39;BACKSPACE=DELETE&#39; (<a href="https://raymii.org/s/blog/Backspace_and_delete_key_behaviour_on_OpenVMS.html">see my article here</a>) on 7.3. The hobbyist license also covers the Alpha and Itanium versions of OpenVMS so I want to try the Alpha version, which is consequently also 8.4, the latest release. This article describes my attempt to compile and install the es40 open source Alpha emulator on Ubuntu 16.04 and subsequently the installation of OpenVMS Alpha. The emulator is not under active development since 2008, and the installation of OpenVMS fails. OpenVMS does boot however, very very slowly.</p>
+<p>OpenVMS 7.3 is the latest version of OpenVMS for the VAX architecture. Since the
+<a href="http://decus.org">DECUS</a> system uses OpenVMS 8.4 there were some version
+differences. I could not set my &#39;BACKSPACE=DELETE&#39; (<a href="https://raymii.org/s/blog/Backspace_and_delete_key_behaviour_on_OpenVMS.html">see my article
+here</a>)
+on 7.3. The hobbyist license also covers the Alpha and Itanium versions of
+OpenVMS so I want to try the Alpha version, which is consequently also 8.4, the
+latest release. This article describes my attempt to compile and install the
+es40 open source Alpha emulator on Ubuntu 16.04 and subsequently the
+installation of OpenVMS Alpha. The emulator is not under active development
+since 2008, and the installation of OpenVMS fails. OpenVMS does boot however,
+very very slowly.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
@@ -90,15 +100,21 @@
 <p>AlphaServer was the name given to a series of server computers, produced from 1994 onwards by Digital Equipment Corporation, and later by Compaq and HP. As the name suggests, the AlphaServers were based on the DEC Alpha 64-bit microprocessor. As part of the roadmap to phase out Alpha-, MIPS- and PA-RISC-based systems in favor of Itanium-based systems at HP, the most recent AlphaServer systems reached their end of general availability on 27 April 2007. The availability of upgrades and options was discontinued on 25 April 2008, approximately one year after the systems were discontinued. </p>
 </blockquote>
 
-<p>The <a href="http://es40.org">es40</a> project is the only open source Alpha emulator for Linux but sadly the development halted around 2009. The author, Camiel Vanderhoeven, is now working for VMS Software inc, the company that now develops OpenVMS and the x86 port. He is also doing <a href="https://www.youtube.com/user/ibm360m65/videos">talks and video&#39;s</a> on OpenVMS:</p>
+<p>The <a href="http://es40.org">es40</a> project is the only open source Alpha emulator for
+Linux but sadly the development halted around 2009. The author, Camiel
+Vanderhoeven, is now working for VMS Software inc, the company that now develops
+OpenVMS and the x86 port. He is also doing <a href="https://www.youtube.com/user/ibm360m65/videos">talks and
+video&#39;s</a> on OpenVMS:</p>
 
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/FZN6LjuEgdw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<p>The ES40 Emulator Project aims to create portable emulator for the HP (DEC, Compaq) AlphaServer ES40. </p>
+<p>The ES40 Emulator Project aims to create portable emulator for the HP (DEC,
+Compaq) AlphaServer ES40. </p>
 
 <p>There are other Alpha emulators, like FreeAXP, but those are Windows only. </p>
 
-<p>Via <a href="http://dipc.ehu.es/cc/computing_resources/erebo.html">this page</a> I found a picture of the actual hardware ES40:</p>
+<p>Via <a href="http://dipc.ehu.es/cc/computing_resources/erebo.html">this page</a> I found a
+picture of the actual hardware ES40:</p>
 
 <p><img src="https://raymii.org/s/inc/img/es-40.jpg"></p>
 
@@ -106,12 +122,15 @@
 
 <h3>Dependencies</h3>
 
-<p>To build the emulator on Ubuntu 16.04, a lot of development dependencies are required. Install all of them using apt:</p>
+<p>To build the emulator on Ubuntu 16.04, a lot of development dependencies are
+required. Install all of them using apt:</p>
 
 <pre><code>apt-get install libpcap-dev build-essential unzip libx11-dev libsdl-dev automake autotools-dev libpoco-dev libxt-dev checkinstall
 </code></pre>
 
-<p>The actual source code is hosted on sourceforge and you can do a CVS checkout, but that is slow and someone put the code on Github, so lets check out the repository:</p>
+<p>The actual source code is hosted on sourceforge and you can do a CVS checkout,
+but that is slow and someone put the code on Github, so lets check out the
+repository:</p>
 
 <pre><code>git clone https://github.com/RaymiiOrg/es40
 </code></pre>
@@ -221,7 +240,8 @@ Makefile:404: recipe for target &#39;all-recursive&#39; failed
 make: *** [all-recursive] Error 1
 </code></pre>
 
-<p>Where does this error come from: <code>g++: error: nope: No such file or directory</code>? I don&#39;t know any Nope binary. Lets see if it&#39;s in the Makefile:</p>
+<p>Where does this error come from: <code>g++: error: nope: No such file or directory</code>?
+I don&#39;t know any Nope binary. Lets see if it&#39;s in the Makefile:</p>
 
 <pre><code>$ grep nope Makefile
 </code></pre>
@@ -232,14 +252,18 @@ make: *** [all-recursive] Error 1
 CXXFLAGS = -g -O2 -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -DHAVE_SDL -I/usr/include -DHAVE_PCAP nope -DHAVE_X11 -pthread
 </code></pre>
 
-<p>Looking in the macro, the <code>nope</code> is there as well. <a href="https://github.com/RaymiiOrg/es40/blob/master/m4/x11.m4#L52">https://github.com/RaymiiOrg/es40/blob/master/m4/x11.m4#L52</a></p>
+<p>Looking in the macro, the <code>nope</code> is there as well.
+<a href="https://github.com/RaymiiOrg/es40/blob/master/m4/x11.m4#L52">https://github.com/RaymiiOrg/es40/blob/master/m4/x11.m4#L52</a></p>
 
 <p>It looks for the following C header file:</p>
 
 <pre><code>X11/Intrinsic.h
 </code></pre>
 
-<p>According to the <a href="https://packages.ubuntu.com/search?suite=lucid&amp;arch=any&amp;mode=exactfilename&amp;searchon=contents&amp;keywords=X11%2FIntrinsic.h">Ubuntu package site</a> that file is in the <code>libxt-dev</code> package. I missed that when installing the dependencies. After installing it, the make ran without breaking errors:</p>
+<p>According to the <a href="https://packages.ubuntu.com/search?suite=lucid&amp;arch=any&amp;mode=exactfilename&amp;searchon=contents&amp;keywords=X11%2FIntrinsic.h">Ubuntu package
+site</a>
+that file is in the <code>libxt-dev</code> package. I missed that when installing the
+dependencies. After installing it, the make ran without breaking errors:</p>
 
 <pre><code>make
 </code></pre>
@@ -340,7 +364,11 @@ open(&quot;/usr/local/etc/es40.cfg&quot;, O_RDONLY) = -1 ENOENT (No such file or
 Segmentation fault (core dumped)
 </code></pre>
 
-<p>So maybe it is missing the configuration. I did not do a <code>make install</code> since I hoped that would&#39;t be needed. Using <code>checkinstall</code> we can create a debian package. I like that over just a <code>make install</code> since it allows you to remove the software from your system and overall general house keeping. After <code>checkinstall</code> I copied the provided default configuration:</p>
+<p>So maybe it is missing the configuration. I did not do a <code>make install</code> since I
+hoped that would&#39;t be needed. Using <code>checkinstall</code> we can create a debian
+package. I like that over just a <code>make install</code> since it allows you to remove
+the software from your system and overall general house keeping. After
+<code>checkinstall</code> I copied the provided default configuration:</p>
 
 <pre><code>cp src/es40.cfg /etc/es40.cfg
 </code></pre>
@@ -401,12 +429,15 @@ es40[0x405c09]
 7f81fc000000-7f81fc021000 rw-p 00000000 00:00 0
 </code></pre>
 
-<p>The output gave a lot more debug information, the actual relevant issue was at the top:</p>
+<p>The output gave a lot more debug information, the actual relevant issue was at
+the top:</p>
 
 <pre><code>Could not open file img\vms83.iso!
 </code></pre>
 
-<p>From the HP hobbyist download server I downloaded the <code>ALPHA084.ISO</code> file. Copy it to the right place and edit <code>es40.cfg</code> to reflect the correct filesystem path.</p>
+<p>From the HP hobbyist download server I downloaded the <code>ALPHA084.ISO</code> file. Copy
+it to the right place and edit <code>es40.cfg</code> to reflect the correct filesystem
+path.</p>
 
 <p>Run it again and see what breaks:</p>
 
@@ -565,11 +596,38 @@ es40[0x45597f]
 
 <p>The emulator needs special firmware <a href="ftp://ftp.hp.com/pub/alphaserver/firmware/current_platforms/v7.3_release/ES40_series/updateviawindows-es40.html">from HP</a>, the SRM.</p>
 
-<p>The SRM firmware (also called the SRM console) is the boot firmware written by DEC for systems based on the Alpha AXP microprocessor. The acronym SRM is derived from the phrase Alpha System Reference Manual, the publication detailing the Alpha AXP architecture and which specified various features of the SRM firmware. The SRM console was initially designed to boot DEC&#39;s OSF/1 AXP (later called Digital UNIX and finally Tru64 UNIX) and OpenVMS operating systems, although various other operating systems (such as Linux, NetBSD, OpenBSD, and FreeBSD, for example) were also written to boot from the SRM console. The third proprietary operating system published for the Alpha AXP architecture - Microsoft Windows NT - did not boot from SRM; instead, Windows booted from the ARC (multi platform &quot;Advanced RISC Computing&quot;) boot firmware. (ARC is also known as AlphaBIOS.)</p>
+<p>The SRM firmware (also called the SRM console) is the boot firmware written by
+DEC for systems based on the Alpha AXP microprocessor. The acronym SRM is
+derived from the phrase Alpha System Reference Manual, the publication detailing
+the Alpha AXP architecture and which specified various features of the SRM
+firmware. The SRM console was initially designed to boot DEC&#39;s OSF/1 AXP (later
+called Digital UNIX and finally Tru64 UNIX) and OpenVMS operating systems,
+although various other operating systems (such as Linux, NetBSD, OpenBSD, and
+FreeBSD, for example) were also written to boot from the SRM console. The third
+proprietary operating system published for the Alpha AXP architecture -
+Microsoft Windows NT - did not boot from SRM; instead, Windows booted from the
+ARC (multi platform &quot;Advanced RISC Computing&quot;) boot firmware. (ARC is also known
+as AlphaBIOS.)</p>
 
-<p>When the system is booted, the SRM console is displayed as a blue screen with a prompt. The prompt looks like <code>P00&gt;&gt;&gt;</code> (the <code>00</code> indicates the primary processor). On multi-processor machines, the prompt could be <code>P01&gt;&gt;&gt;</code>, <code>P02&gt;&gt;&gt;</code>, etc.  It views your NVRAM and devices as a pseudo-filesystem. You can see this if you use the <code>ls</code> command. Also, it contains a fairly large set of diagnostic, setup, and debugging utilities As well, SRM has environment variables, a number of which are pre-defined and correspond to locations in NVRAM. You can view the entire list of environment variables and their values with the <code>show</code> command (there are quite a few of them, so you will probably want to pipe its output to <code>more</code>). You can also show variables matching a &quot;glob&quot; pattern, for example, <code>show boot*</code> will show all the variables starting in &quot;boot&quot;. Read more about the <a href="https://web.archive.org/web/20140106183813/http://www.alphalinux.org/faq/SRM-HOWTO/srm-whatis.html">SRM here</a> or <a href="https://en.wikipedia.org/wiki/System_Reference_Manual">on wikipedia</a>.</p>
+<p>When the system is booted, the SRM console is displayed as a blue screen with a
+prompt. The prompt looks like <code>P00&gt;&gt;&gt;</code> (the <code>00</code> indicates the primary
+processor). On multi-processor machines, the prompt could be <code>P01&gt;&gt;&gt;</code>, <code>P02&gt;&gt;&gt;</code>,
+etc.  It views your NVRAM and devices as a pseudo-filesystem. You can see this
+if you use the <code>ls</code> command. Also, it contains a fairly large set of diagnostic,
+setup, and debugging utilities As well, SRM has environment variables, a number
+of which are pre-defined and correspond to locations in NVRAM. You can view the
+entire list of environment variables and their values with the <code>show</code> command
+(there are quite a few of them, so you will probably want to pipe its output to
+<code>more</code>). You can also show variables matching a &quot;glob&quot; pattern, for example,
+<code>show boot*</code> will show all the variables starting in &quot;boot&quot;. Read more about the
+<a href="https://web.archive.org/web/20140106183813/http://www.alphalinux.org/faq/SRM-HOWTO/srm-whatis.html">SRM
+here</a>
+or <a href="https://en.wikipedia.org/wiki/System_Reference_Manual">on wikipedia</a>.</p>
 
-<p>Download rom image <a href="https://raymii.org/s/inc/downloads/es40-srmon/cl67srmrom.exe">from here: cl67srmrom.exe</a>. It can be found on HP&#39;s public FTP servers as well if needed, see the link above.</p>
+<p>Download rom image <a href="https://raymii.org/s/inc/downloads/es40-srmon/cl67srmrom.exe">from here:
+cl67srmrom.exe</a>.
+It can be found on HP&#39;s public FTP servers as well if needed, see the link
+above.</p>
 
 <p>Make sure the filename in the configuration matches:</p>
 
@@ -578,7 +636,8 @@ es40[0x45597f]
 
 <h3>Boot up es40, finally</h3>
 
-<p>Now that we have a configuration file that does not cause a segfault, we can boot up and connect to telnet to access the emulator.</p>
+<p>Now that we have a configuration file that does not cause a segfault, we can
+boot up and connect to telnet to access the emulator.</p>
 
 <pre><code>  $ es40
 </code></pre>
@@ -669,7 +728,8 @@ Escape character is &#39;^]&#39;.
 <p>The port 21264 was choosen on purpose. Actually this was the first EV6 Alpha processor CPU model number. </p>
 </blockquote>
 
-<p>There seems to be a GUI option, but that window was very tall and small and was not resizable. I therefore choose to use telnet only.</p>
+<p>There seems to be a GUI option, but that window was very tall and small and was
+not resizable. I therefore choose to use telnet only.</p>
 
 <h3>SYSFAULT CPU1 - pc = 001a0e84</h3>
 
@@ -722,7 +782,10 @@ exception context saved starting at 001ACD10
   create powerup
 </code></pre>
 
-<p>And it hang. My happiness was short. Searching around the internet lead me to <a href="https://web.archive.org/web/20180424175732/https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c03082736">the following support information</a>. It states:</p>
+<p>And it hang. My happiness was short. Searching around the internet lead me to
+<a href="https://web.archive.org/web/20180424175732/https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c03082736">the following support
+information</a>.
+It states:</p>
 
 <blockquote>
 <p>This is not an error caused by a hardware failure. The SRM console decreases or increases its dynamic memory allocation (called heap space) to accomodate the hardware configuration, to include the PCI devices installed. The system will add 64kb of heap space for each re-init until it has adequate space. A few re-inits are possible until it has enough.</p>
@@ -785,7 +848,8 @@ Testing the System
 P00&gt;&gt;&gt;
 </code></pre>
 
-<p>Using the reference manual I found out that you have to issue a boot command with a device. Use <code>show dev</code> to show all devices</p>
+<p>Using the reference manual I found out that you have to issue a boot command
+with a device. Use <code>show dev</code> to show all devices</p>
 
 <pre><code>P00&gt;&gt;&gt;show dev
 dqa0.0.0.15.0              DQA0                    OpenVMS8 .3
@@ -822,7 +886,8 @@ SYSFAULT CPU0 - pc = 001a0e84
 exception context saved starting at 0002D9E0
 </code></pre>
 
-<p>A CPU error? Searching the internet gave no real help so I decided to comment out the second CPU from the config, so that we emulate a single CPU machine:</p>
+<p>A CPU error? Searching the internet gave no real help so I decided to comment
+out the second CPU from the config, so that we emulate a single CPU machine:</p>
 
 <pre><code>//cpu1 = ev68cb
 //{
@@ -842,7 +907,9 @@ exception context saved starting at 0002D9E0
 Please enter date and time (DD-MMM-YYYY  HH:MM)
 </code></pre>
 
-<p>This looks like a normal installation screen. Yay! It is very slow however, it takes almost 10 seconds after I entered the date for the next line of text to show up.</p>
+<p>This looks like a normal installation screen. Yay! It is very slow however, it
+takes almost 10 seconds after I entered the date for the next line of text to
+show up.</p>
 
 <pre><code>Please enter date and time (DD-MMM-YYYY  HH:MM)  24-APR-2018 21:12
 
@@ -913,12 +980,14 @@ Do you want to INITIALIZE or to PRESERVE? [PRESERVE] INITIALIZE
 <pre><code>Enter device name for target disk: (? for choices) DQA0
 </code></pre>
 
-<p>Our boot device is the CDROM, <code>DQB0</code>, the prompt earlier shows <code>DQA0</code> as the (virtual) disk.</p>
+<p>Our boot device is the CDROM, <code>DQB0</code>, the prompt earlier shows <code>DQA0</code> as the
+(virtual) disk.</p>
 
 <pre><code>Enter volume label for target system disk: [ALPHASYS] username2
 </code></pre>
 
-<p>If you&#39;re going to cluster, every disk must have a unique name. I tend to go with the system hostname as system disk name.</p>
+<p>If you&#39;re going to cluster, every disk must have a unique name. I tend to go
+with the system hostname as system disk name.</p>
 
 <pre><code>    The target system disk can be initialized with On-Disk Structure
     Level 2 (ODS-2) or Level 5 (ODS-5).  (? for more information)
@@ -926,9 +995,11 @@ Do you want to INITIALIZE or to PRESERVE? [PRESERVE] INITIALIZE
 Do you want to initialize with ODS-2 or ODS-5? (2/5/?) 5
 </code></pre>
 
-<p>ODS, meaning <code>on disk structure</code>, is part of the <code>Files-11</code> filesystem. Compare it with <code>ext2/3/4</code>. </p>
+<p>ODS, meaning <code>on disk structure</code>, is part of the <code>Files-11</code> filesystem. Compare
+it with <code>ext2/3/4</code>. </p>
 
-<p>&quot;Files-11&quot; is the general term for five separate file systems, known as on-disk structure (ODS) levels 1 through 5.</p>
+<p>&quot;Files-11&quot; is the general term for five separate file systems, known as on-disk
+&quot;structure (ODS) levels 1 through 5.</p>
 
 <ul>
 <li>ODS-1 is the flat file system used by the RSX-11 OS, supported by older VMS systems for RSX compatibility, but never used to support VMS itself; it has been largely superseded by ODS-2 and ODS-5.</li>
@@ -1213,7 +1284,9 @@ FDC5210, PS=0000001B
 Press Return to continue...
 </code></pre>
 
-<p>No! We were so far this time. I tried the install another time, this time with ODS-2 as the filesystem, and it failed again, just a little further than the previous time. Literally, 1 line later:</p>
+<p>No! We were so far this time. I tried the install another time, this time with
+ODS-2 as the filesystem, and it failed again, just a little further than the
+previous time. Literally, 1 line later:</p>
 
 <pre><code>    The following products are part of the the OpenVMS installation;
     they will be installed along with the OpenVMS operating system:
@@ -1259,13 +1332,16 @@ FDC5210, PS=0000001B
 Press Return to continue...
 </code></pre>
 
-<p>Reading through <a href="https://web.archive.org/web/20180424184218/http://es40.org/dox/guest_os.html">more dev docs from the emulator</a>, I found this:</p>
+<p>Reading through <a href="https://web.archive.org/web/20180424184218/http://es40.org/dox/guest_os.html">more dev docs from the
+emulator</a>,
+I found this:</p>
 
 <blockquote>
 <p>There is a permissions violation during install. Do not abort it, and the install will work anyway. (note Camiel: differing results of installation reported. A lot seems to depend on timing).</p>
 </blockquote>
 
-<p>I tried a few more times, playing with the config file (different CPU speed, different disk sizes etc), but I ran into other failures like these:</p>
+<p>I tried a few more times, playing with the config file (different CPU speed,
+different disk sizes etc), but I ran into other failures like these:</p>
 
 <pre><code>Exception in CPU thread: System exception: cannot signal semaphore: count would exceed maximum.
 Emulator Failure: Threading error: CPU thread has died: AlphaCPU.cpp, line 532
@@ -1291,7 +1367,11 @@ es40[0x405c09]
 01868000-018aa000 rw-p 00000000 00:00 0      
 </code></pre>
 
-<p>Since I already spent a few hours tinkering without result, <a href="https://web.archive.org/web/20180424185148/http://www.openvmshobbyist.com/forum/viewthread.php?forum_id=163&amp;thread_id=1616&amp;rowstart=20">the only post here</a> wasn&#39;t very usefull since my disk is only 600 MB, and I didn&#39;t find any other information, I decided to stop here and try it in another emulator, probably FreeAXP for Windows.</p>
+<p>Since I already spent a few hours tinkering without result, <a href="https://web.archive.org/web/20180424185148/http://www.openvmshobbyist.com/forum/viewthread.php?forum_id=163&amp;thread_id=1616&amp;rowstart=20">the only post
+here</a>
+wasn&#39;t very usefull since my disk is only 600 MB, and I didn&#39;t find any other
+information, I decided to stop here and try it in another emulator, probably
+FreeAXP for Windows.</p>
 
 <p>Let&#39;s hope the x86 port is finished soon so it can run under KVM and virtualbox.</p>
 </div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/es40.html" class="link">es40 &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">

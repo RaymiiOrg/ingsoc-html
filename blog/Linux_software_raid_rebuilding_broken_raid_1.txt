@@ -9,10 +9,15 @@ Format   : 	Markdown/HTML
 
 
 
+Last week Nagios alerted me about a broken disk in one of my clients testing
+servers. There is a best effort SLA on the thing, and there were spare drives of
+the same type and size in the datacenter. Lucky me. This particular data center
+is on biking distance, so I enjoyed a sunny ride there. 
 
-Last week Nagios alerted me about a broken disk in one of my clients testing servers. There is a best effort SLA on the thing, and there were spare drives of the same type and size in the datacenter. Lucky me. This particular data center is on biking distance, so I enjoyed a sunny ride there. 
-
-Simply put, I needed to replace the disk and rebuild the raid 1 array. This server is a simple Ubuntu 12.04 LTS server with two disks running in raid 1, no spare. Client has a tight budget, and with a best effort SLA not in production, fine with me. Consultant tip, make sure you have those things signed.
+Simply put, I needed to replace the disk and rebuild the raid 1 array. This
+server is a simple Ubuntu 12.04 LTS server with two disks running in raid 1, no
+spare. Client has a tight budget, and with a best effort SLA not in production,
+fine with me. Consultant tip, make sure you have those things signed.
 
 
 The `_` in the `cat /proc/mdstat` tells me the second disk (`/dev/sdb`) has failed:
@@ -31,7 +36,8 @@ Make sure the server can boot from a degraded RAID array:
 
 	grep BOOT_DEGRADED /etc/initramfs-tools/conf.d/mdadm
 
-If it says true, continue on. If not, add or change it and rebuild the initramfs using the following command:
+If it says true, continue on. If not, add or change it and rebuild the initramfs
+using the following command:
 
 	update-initramfs -u
 
@@ -41,11 +47,16 @@ We can now safely shut down the server:
 
 	shutdown -h 10
 
-Replacing the disk was an issue on itself, it is a [Supermicro 512L-260B][1] chassis where the disks are not in a drive bay, rather they are screwed in from the bottom. Therefore the whole server needs to be removed from the rack (no rails...) when replacing the disk. 
+Replacing the disk was an issue on itself, it is a [Supermicro 512L-260B][1]
+chassis where the disks are not in a drive bay, rather they are screwed in from
+the bottom. Therefore the whole server needs to be removed from the rack (no
+rails...) when replacing the disk. 
 
-Normally I would replace them while the server is on, but this server has no hot swap disks so that would be kind of an issue in a full rack. 
+Normally I would replace them while the server is on, but this server has no hot
+swap disks so that would be kind of an issue in a full rack. 
 
-After that, boot the server from the first disk (via the BIOS/UEFI). Make sure you boot to recovery mode. Select the root shell and mount the disk read/write:
+After that, boot the server from the first disk (via the BIOS/UEFI). Make sure
+you boot to recovery mode. Select the root shell and mount the disk read/write:
 
 	mount -o remount,rw /dev/sda1
 

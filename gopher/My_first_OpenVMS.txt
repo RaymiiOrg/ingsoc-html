@@ -13,15 +13,43 @@ Format   : 	Markdown/HTML
 
 (You can read all my OpenVMS articles by [clicking the picture above](https://raymii.org/s/tags/openvms.html))
 
-Last week I registered myself with the DECUServe OpenVMS system. I also registered with HP as an OpenVMS hobbyist and got OpenVMS 7.3 for VAX. This small blog item describes my first steps with the hosted DECUS OpenVMS system. I'm excited since I now know how to create folders, navigate the filesystem and edit files. Oh and I had a nice chat with another OpenVMS user via the PHONE program.
+Last week I registered myself with the DECUServe OpenVMS system. I also
+registered with HP as an OpenVMS hobbyist and got OpenVMS 7.3 for VAX. This
+small blog item describes my first steps with the hosted DECUS OpenVMS system.
+I'm excited since I now know how to create folders, navigate the filesystem and
+edit files. Oh and I had a nice chat with another OpenVMS user via the PHONE
+program.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
-As I like to mess around with legacy systems like the [PDP-8](https://raymii.org/s/tags/pdp-8.html) and the PDP-11, VAX/VMS and thus OpenVMS seems to be a great step forward. Started out as a hardware project to be a a 32-bit virtual address extension for the PDP-11, the VAX saw it's birth at DEC around 1977. Accompanied with several operating systems, like DEC systems before, the VAX could run a lot of software including PDP-11 software. Also released around 1977 was VMS, one of the operating systems for the VAX-11/780. Renamed to VAX/VMS with the release of version 2 in 1980. Ported to the Alpha architecture and renamed OpenVMS with version 6 in 1992. In 2001 with version 8.2 it was ported to the Intel Itanium architecture and now also being ported to the x86 architecture, hopefully ready in [2019, a port by VMS Software Inc. (VSI)](https://www.theregister.co.uk/2016/10/13/openvms_moves_slowly_towards_x86/). A venerable operating system with lots of history behind it and a great future ahead.
+As I like to mess around with legacy systems like the
+[PDP-8](https://raymii.org/s/tags/pdp-8.html) and the PDP-11, VAX/VMS and thus
+OpenVMS seems to be a great step forward. Started out as a hardware project to
+be a a 32-bit virtual address extension for the PDP-11, the VAX saw it's birth
+at DEC around 1977. Accompanied with several operating systems, like DEC systems
+before, the VAX could run a lot of software including PDP-11 software. Also
+released around 1977 was VMS, one of the operating systems for the VAX-11/780.
+Renamed to VAX/VMS with the release of version 2 in 1980. Ported to the Alpha
+architecture and renamed OpenVMS with version 6 in 1992. In 2001 with version
+8.2 it was ported to the Intel Itanium architecture and now also being ported to
+the x86 architecture, hopefully ready in [2019, a port by VMS Software Inc.
+(VSI)](https://www.theregister.co.uk/2016/10/13/openvms_moves_slowly_towards_x86/).
+A venerable operating system with lots of history behind it and a great future
+ahead.
 
-Lively among [hobbyists](https://web.archive.org/web/20180331175310/http://www.hetlab.tk/museum/vaxvms-v4-4-prompt) (Dutch article), with recent [articles on clustering](https://vanalboom.org/node/19) and [installing OpenVMS](https://vanalboom.org/node/18), I wanted to enjoy this as well, so I decided to register as a hobbyist with [HP Enterprise's OpenVMS Hobbyist program](https://web.archive.org/web/20180331175641/https://www.hpe.com/h41268/live/index_e.aspx?qid=24548). It is required to be part of a 'chapter' of OpenVMS Hobbyists, and `DECUServe` seems to be the only club left that allows registration and is open to all.
+Lively among
+[hobbyists](https://web.archive.org/web/20180331175310/http://www.hetlab.tk/museum/vaxvms-v4-4-prompt)
+(Dutch article), with recent [articles on
+clustering](https://vanalboom.org/node/19) and [installing
+OpenVMS](https://vanalboom.org/node/18), I wanted to enjoy this as well, so I
+decided to register as a hobbyist with [HP Enterprise's OpenVMS Hobbyist
+program](https://web.archive.org/web/20180331175641/https://www.hpe.com/h41268/live/index_e.aspx?qid=24548).
+It is required to be part of a 'chapter' of OpenVMS Hobbyists, and `DECUServe`
+seems to be the only club left that allows registration and is open to all.
 
-At first I did not fill in a number and chapter, but was contacted by HPe to register with DECUS before I could become a member. So I did, via [http://decus.org](http://decus.org). 
+At first I did not fill in a number and chapter, but was contacted by HPe to
+register with DECUS before I could become a member. So I did, via
+[http://decus.org](http://decus.org). 
 
 ### DECUServe Online
 
@@ -78,7 +106,9 @@ As I registered I can login with my username and password:
 
 ### Navigating the filesystem
 
-Now for the most exiting part of my OpenVMS journey yet, navigating the filesystem. It is not as you would expect on a Linux/UNIX system, as `ls` dropped me into some sort of file editor:
+Now for the most exiting part of my OpenVMS journey yet, navigating the
+filesystem. It is not as you would expect on a Linux/UNIX system, as `ls`
+dropped me into some sort of file editor:
 
 	 $ ls
     
@@ -106,15 +136,22 @@ Okay, that's not working. Lets try the (Windows) alternative:
     
 	Total of 8
 
-To be honest, I found out that command after reading through 9 [chapters of OpenVMS documentation](https://web.archive.org/web/20180331181136/http://h41379.www4.hpe.com/doc/731final/6489/6489pro_009.html) from HP.
+To be honest, I found out that command after reading through 9 [chapters of
+OpenVMS
+documentation](https://web.archive.org/web/20180331181136/http://h41379.www4.hpe.com/doc/731final/6489/6489pro_009.html)
+from HP.
 
-As you can see I managed to create some files and a folder. As you might also notice, the names and structure is way different that a Linux filesystem.
+As you can see I managed to create some files and a folder. As you might also
+notice, the names and structure is way different that a Linux filesystem.
 
-This is my understanding so far. OpenVMS directories are not seperated by a `/` (as on UNIX) but a dot (`.`). A full file path can be addressed by it's file specification that has the following format:
+This is my understanding so far. OpenVMS directories are not seperated by a `/`
+(as on UNIX) but a dot (`.`). A full file path can be addressed by it's file
+specification that has the following format:
 
 	node::device:[root.][directory]file-name.file-type;version  
 
-So in the case above, there is an `INDEX.HTML` file in the `WWW` folder, which can be addressed via:
+So in the case above, there is an `INDEX.HTML` file in the `WWW` folder, which
+can be addressed via:
 	
     $ dir [.WWW]
     
@@ -125,7 +162,9 @@ So in the case above, there is an `INDEX.HTML` file in the `WWW` folder, which c
 	Total of 1 file.
 
 
-As far as I know a folder should be surrounded by `[brackets]` and the dot in front of WWW specifies the current folder. I could also write the full file specification:
+As far as I know a folder should be surrounded by `[brackets]` and the dot in
+front of WWW specifies the current folder. I could also write the full file
+specification:
 
 	 $ dir EISNER$DRA3:[DECUSERVE_USER.EXAMPLE.WWW]
 
@@ -144,13 +183,15 @@ Creating a folder is not done with `mkdir`:
 	 \MKDIR\
 
 
-But with the logically named `create` command, and the correct folder specifications, with brackets and a leading dot: 
+But with the logically named `create` command, and the correct folder
+specifications, with brackets and a leading dot: 
 
 	 $ create /dir [.RAYMII]
 	 $ dir [.RAYMII]
 	%DIRECT-W-NOFILES, no files found
 
-Changing folders, again, not done with `cd`. Printing the current folder is not `pwd` as well, but `show default`:
+Changing folders, again, not done with `cd`. Printing the current folder is not
+`pwd` as well, but `show default`:
 
 	 $ show default
 	  DISK_USER:[DECUSERVE_USER.EXAMPLE]
@@ -206,14 +247,20 @@ It seems to be an interactive editor, pressing CTRL+Z saves the file:
 
 	7 lines written to file EISNER$DRA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;3
 
-Other editors are available, like `TECO`, which was on several PDP-8 operating systems as well. To be continued in a new article.
+Other editors are available, like `TECO`, which was on several PDP-8 operating
+systems as well. To be continued in a new article.
 
 
 ### File versioning
 
-As you saw in the above examples, OpenVMS by default supports file versioning. On every file on it's filesystem. How awesome is that? 32,767 versions are supported by default and there is nothing you have to do or remember. Just create and edit files!
+As you saw in the above examples, OpenVMS by default supports file versioning.
+On every file on it's filesystem. How awesome is that? 32,767 versions are
+supported by default and there is nothing you have to do or remember. Just
+create and edit files!
 
-Managing versions is quite easy as well. Since the version number is appended to the filename (`REMY.DAT;1`) after a semicolon, you just use file system commands (which I haven't figured out yet) to remove or edit specific versions.
+Managing versions is quite easy as well. Since the version number is appended to
+the filename (`REMY.DAT;1`) after a semicolon, you just use file system commands
+(which I haven't figured out yet) to remove or edit specific versions.
 
 Editing version 2 of the file `REMY.DAT`:
 
@@ -238,7 +285,9 @@ Version 1:
 	this is a test
 
 
-I don't understand we don't have this as an option on modern linux systems to enable. Windows has something like it, `VSS`, but that has to be set up and provides only timed backups. This however is default and awesome.
+I don't understand we don't have this as an option on modern linux systems to
+enable. Windows has something like it, `VSS`, but that has to be set up and
+provides only timed backups. This however is default and awesome.
 
 ### PHONE
 
@@ -260,13 +309,16 @@ Using the `SHOW USERS` command I was able to see a list of currently logged in u
 	 SCHENKENBERG          1
 	 SPALDING              1
 
-There was a user online and I used the `PHONE` program to initiate a chat with `CORNELIUS` (hi George). It was a nice chat, until work required attention. Exit with CTRL+Z.
+There was a user online and I used the `PHONE` program to initiate a chat with
+`CORNELIUS` (hi George). It was a nice chat, until work required attention. Exit
+with CTRL+Z.
 
 Thank you George for the nice talk we had!
 
 <img src="https://raymii.org/s/inc/img/PHONE.png">
 
-The above image shows my discussion with George and my enthousiasm on just having figured out how to create a folder on this OpenVMS system.
+The above image shows my discussion with George and my enthousiasm on just
+having figured out how to create a folder on this OpenVMS system.
 
 ### Other commands
 
@@ -347,11 +399,19 @@ The `HELP` command is very good as well:
 
 ### Conclusion
 
-I'm very happy this system exists and that there are still other people around to keep it running and let new folks like me enjoy and learn about it. The last time I was so enthousiastic about navigating a file system was with the PDP-8 and OS/8, and now with OpenVMS. I do expect to learn more about OpenVMS and eventually installing my own system with `simh` and the Hobbyist binaries I got from HPe, including a ISO image for OpenVMS 7.3 for the VAX architecture.
+I'm very happy this system exists and that there are still other people around
+to keep it running and let new folks like me enjoy and learn about it. The last
+time I was so enthousiastic about navigating a file system was with the PDP-8
+and OS/8, and now with OpenVMS. I do expect to learn more about OpenVMS and
+eventually installing my own system with `simh` and the Hobbyist binaries I got
+from HPe, including a ISO image for OpenVMS 7.3 for the VAX architecture.
 
-I do have one unread email, but no idea how to read that. So that will be the next challenge ahead, figure out how to read and reply to emails. Fun times ahead!
+I do have one unread email, but no idea how to read that. So that will be the
+next challenge ahead, figure out how to read and reply to emails. Fun times
+ahead!
 
-Oh and I also don't know yet how to exit an SSH session other than closing the window.
+Oh and I also don't know yet how to exit an SSH session other than closing the
+window.
 
 
 

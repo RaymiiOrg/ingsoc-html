@@ -11,23 +11,41 @@ Format   : 	Markdown/HTML
 
 <a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a>
 
-(You can read all my OpenVMS articles by [clicking the picture above](https://raymii.org/s/tags/openvms.html))
+(You can read all my OpenVMS articles by [clicking the picture
+(above](https://raymii.org/s/tags/openvms.html))
 
-My OpenVMS adventure continues, after my rabbit hole of folder removal, this time I actually get public key authentication working with OpenSSH so that I don't have to type my password to login.
+My OpenVMS adventure continues, after my rabbit hole of folder removal, this
+time I actually get public key authentication working with OpenSSH so that I
+don't have to type my password to login.
 
-There is a bit of documentation from HP to set up SSH key authentication but that misses one important little thing. That thing took me a few days to figure out.
+There is a bit of documentation from HP to set up SSH key authentication but
+that misses one important little thing. That thing took me a few days to figure
+out.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
 ### Client public key authentication
 
-On the HPe website there is extensive [documentation](https://web.archive.org/web/20180405170159/http://h41379.www4.hpe.com/doc/83final/ba548_90007/index.html) on both the SSH server setup as well as the client setup on OpenVMS. On the [DECUServe](http://decus.org) system I'm not an administrative user so this article will only cover the client part. It assumes a set up and working SSH server.
+On the HPe website there is extensive
+[documentation](https://web.archive.org/web/20180405170159/http://h41379.www4.hpe.com/doc/83final/ba548_90007/index.html)
+on both the SSH server setup as well as the client setup on OpenVMS. On the
+[DECUServe](http://decus.org) system I'm not an administrative user so this
+article will only cover the client part. It assumes a set up and working SSH
+server.
 
-SSH public key authentication allows you to login to an SSH server without specifying a password. It is more secure since passwords can easily be brute forced. An SSH key can be securely on a [HSM](https://raymii.org/s/tags/hsm.html) so that the private part never is exposed and SSH keys allow for key forwarding, that means you can use the key from your laptop to login to other servers and then logon further to machines behind there without placing your private key on the intermidiate machines.
+SSH public key authentication allows you to login to an SSH server without
+specifying a password. It is more secure since passwords can easily be brute
+forced. An SSH key can be securely on a
+[HSM](https://raymii.org/s/tags/hsm.html) so that the private part never is
+exposed and SSH keys allow for key forwarding, that means you can use the key
+from your laptop to login to other servers and then logon further to machines
+behind there without placing your private key on the intermidiate machines.
 
 Overall SSH keys are considered to be best practice instead of passwords.
 
-Since I access the [DECUServe](http://decus.org) system via SSH with a password I was wondering if OpenVMS would support key authentication and [according to the documentation](https://web.archive.org/web/20180405171201/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html) it should just be simple. Place the public key and configure it to allow login.
+Since I access the [DECUServe](http://decus.org) system via SSH with a password
+I was wondering if OpenVMS would support key authentication and [according to
+the documentation](https://web.archive.org/web/20180405171201/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html) it should just be simple. Place the public key and configure it to allow login.
 
 But sadly that was not all.
 
@@ -57,14 +75,19 @@ Directly underneath that the `EVE` editor will show this:
 	1 line read from file EISNER$DRA3:[DECUSERVE_USER.EXAMPLE.SSH2]SSH2_CONFIG.;2
 
 
-Save the file with `CTRL+Z`. As you can see via the `;2` file version number I was messing around. Did I mention how awesome it is that OpenVMS has file versioning built in the filesystem? 
+Save the file with `CTRL+Z`. As you can see via the `;2` file version number I
+was messing around. Did I mention how awesome it is that OpenVMS has file
+versioning built in the filesystem? 
 
-On linux and other systems that use OpenSSH, you would create `~/.ssh/authorized_keys` and place your key(s) in there like so:
+On linux and other systems that use OpenSSH, you would create
+`~/.ssh/authorized_keys` and place your key(s) in there like so:
 
 	ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCq1vxYvJNBZMtrufZD0ivHXrt0A+WhslMcWeQTU2du2jznw64ScrxN+EYXVGg3JKu8N/QK/0VrtsxITFthHJQP0FkC0J8GnWeT3x2y0N38P+H3B/h1rh9DBY/GTUlXY9Q0MKAOEdTjSecK11Nd5183Xcygnv5xAxLqzqmnllumAE1Wd/B0NoKrcSy51hERn0kKTR9hIw8FTOUNPAwTgsMJ+A10aJtqjlk4OrOd1KOHi1jWNTc5wcW6xgWzMksdw++fBBPcJN9Bgihxz9kSwdpkcIYlBkIZZEwZtTvNy7K2nKw94omWmdr0ZlqsNwfOihyQpo4wtusjakTmM4GA+bH3 remy@gateway
 
 
-On OpenVMS, you create a file named `AUTHORIZATION` and in there you specify filenames of public keys, like `KEY EXAMPLE-HOSTNAME.PUB` where `EXAMPLE-HOSTNAME.PUB` is the file name with the format `$USER-$HOST.PUB`.
+On OpenVMS, you create a file named `AUTHORIZATION` and in there you specify
+filenames of public keys, like `KEY EXAMPLE-HOSTNAME.PUB` where
+`EXAMPLE-HOSTNAME.PUB` is the file name with the format `$USER-$HOST.PUB`.
 
 Use `EVE` to create this `AUTHORIZATION.` file and add the filename of your public key file:
 
@@ -75,13 +98,16 @@ My key example:
 
 	KEY REMY-GATEWAY.PUB
 
-Note, do not add the key here like you might be used to on linux, just make up a filename, prefixed with `KEY `. Next create the actual key file:
+Note, do not add the key here like you might be used to on linux, just make up a
+filename, prefixed with `KEY `. Next create the actual key file:
 
 	 $ EVE [.SSH2]REMY-GATEWAY.PUB
 
 Paste your public key and save with `CTRL+Z`.
 
-The documentation states that the public key file requires specific permission. On linux I'm used to setting permissions on the `authorized_keys` file and the private key material, but this will be comparable I guess:
+The documentation states that the public key file requires specific permission.
+On linux I'm used to setting permissions on the `authorized_keys` file and the
+private key material, but this will be comparable I guess:
 
 	SET FILE /PROTECTION=(S:WRED,O:WRED,G:RE,W:R) [.SSH2]REMY-GATEWAY.PUB
 
@@ -98,9 +124,8 @@ By default, or at least on DECUServe my files get the following permissions:
 
 	     Protection: (System: RWED, Owner: RWED, Group, World)
 
-
-Now you should be all set to go. Login specifically disabling password login using your key:
-
+Now you should be all set to go. Login specifically disabling password login
+using your key:
 
 	$ ssh -oHostKeyAlgorithms=+ssh-dss -o "PasswordAuthentication no"  EXAMPLE@eisner.decus.org
 
@@ -144,17 +169,33 @@ Err, what? We followed the documentation to the letter?
 
 ### Why does it not work?
 
-This problem took me a few days to resolve. As I have no access to logging on the OpenVMS system and no knowledge of how to view said logging, I was left to trial and error. 
+This problem took me a few days to resolve. As I have no access to logging on
+the OpenVMS system and no knowledge of how to view said logging, I was left to
+trial and error. 
 
-To save you time and trouble, it appears that the key file was not in the correct format for OpenVMS. We pasted the OpenSSH key format in the key file but there is another format. I found this on a USENET newsgroup, you know you're far in the exotic corners of the internet when you're searching `comp.os.vms`. But hey, it helped me solve this issue.
+To save you time and trouble, it appears that the key file was not in the
+correct format for OpenVMS. We pasted the OpenSSH key format in the key file but
+there is another format. I found this on a USENET newsgroup, you know you're far
+in the exotic corners of the internet when you're searching `comp.os.vms`. But
+hey, it helped me solve this issue.
 
-OpenVMS uses IEFT SECSH (Tectia) format keys. There is an IETF [document](https://www.ietf.org/proceedings/50/I-D/secsh-publickeyfile-01.txt) describing the format and [a document](https://tools.ietf.org/html/draft-ietf-secsh-publickey-subsystem-08) on the SSH key subsystem if you want to know more.
+OpenVMS uses IEFT SECSH (Tectia) format keys. There is an IETF
+[document](https://www.ietf.org/proceedings/50/I-D/secsh-publickeyfile-01.txt)
+describing the format and [a
+document](https://tools.ietf.org/html/draft-ietf-secsh-publickey-subsystem-08)
+on the SSH key subsystem if you want to know more.
 
-The DECUServe system does not have the `SSH-KEYGEN` OpenVMS program installed or at least I got an error when trying to execute it. Otherwise I would have tried to create a key there and compare the files and permissions with my own file.
+The DECUServe system does not have the `SSH-KEYGEN` OpenVMS program installed or
+at least I got an error when trying to execute it. Otherwise I would have tried
+to create a key there and compare the files and permissions with my own file.
 
-OpenSSH uses, suprisingly, `openssh` format public keys. The ones you know and probably 99% of the regular internet uses. But as always there are special snowflakes and it seems this is one of them. Googling around also gave lot's of hits for IBM and `z/OS`.
+OpenSSH uses, suprisingly, `openssh` format public keys. The ones you know and
+probably 99% of the regular internet uses. But as always there are special
+snowflakes and it seems this is one of them. Googling around also gave lot's of
+hits for IBM and `z/OS`.
 
-Using `ssh-keygen` (on linux) we can convert a private key to this format with the `-e` option. From the man page:
+Using `ssh-keygen` (on linux) we can convert a private key to this format with
+the `-e` option. From the man page:
 
 	 -e Extract/convert from OpenSSH private key file to SECSH public key format 
 
@@ -174,9 +215,8 @@ Output:
 	yQpo4wtusjakTmM4GA+bH3
 	---- END SSH2 PUBLIC KEY ----
 
-
-Use the editor to update your KEY file on OpenVMS, in my case `[.SSH]REMY-GATEWAY.PUB`. Save with `CTRL+Z` and retry:
-
+Use the editor to update your KEY file on OpenVMS, in my case
+`[.SSH]REMY-GATEWAY.PUB`. Save with `CTRL+Z` and retry:
 
 	$ ssh -oHostKeyAlgorithms=+ssh-dss -o "PasswordAuthentication no" -i .ssh/id_rsa EXAMPLE@eisner.decus.org
 
@@ -223,7 +263,9 @@ Yay!
 
 ### Conclusion
 
-I learned a lot, again. I notice that filesystem actions like editing and permissions are a bit easier for me since I'm beginning to grasp the concepts and commands. To summarize:
+I learned a lot, again. I notice that filesystem actions like editing and
+permissions are a bit easier for me since I'm beginning to grasp the concepts
+and commands. To summarize:
 
 - OpenVMS supports public key authentication
 - It's almost the same as with OpenSSH on Linux
@@ -235,7 +277,9 @@ I learned a lot, again. I notice that filesystem actions like editing and permis
 
 ### One more thing, LOGOUT of OpenVMS
 
-In an earlier article I wrote that I was unable to logout on OpenVMS since `exit` and  `CTRL+D` not exited the SSH session. I stopped my sessions using either `~.` or by closing the window. 
+In an earlier article I wrote that I was unable to logout on OpenVMS since
+`exit` and  `CTRL+D` not exited the SSH session. I stopped my sessions using
+either `~.` or by closing the window. 
 
 In the same `comp.os.vms` I found the `LOG` command. The help says:
 

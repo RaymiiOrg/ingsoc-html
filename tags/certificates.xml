@@ -15,14 +15,6 @@
             </item>
     
             <item>
-                <title>Recap of week 50, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_50_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_50_2015.html</guid>
-                <description>Recap of week 50 of 2015, covering open source and sysadmin related stuff.</description> 
-                <pubDate>Sat, 12 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Find all services using libssl to restart after an OpenSSL update</title> 
                 <link>https://raymii.org/s/snippets/Find_all_services_using_libssl_to_restart_after_an_OpenSSL_update.html</link> 
                 <guid>https://raymii.org/s/snippets/Find_all_services_using_libssl_to_restart_after_an_OpenSSL_update.html</guid>

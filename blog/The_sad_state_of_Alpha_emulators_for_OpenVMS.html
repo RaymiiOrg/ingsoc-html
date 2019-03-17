@@ -78,35 +78,70 @@
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>OpenVMS 7.3 was the last version for the VAX architecture. All later versions (like 8.4) are only available for the Alpha CPU architecture or Intel&#39;s Itanium platform. Since I don&#39;t want hardware running, which is suprisingly hard to get in The Netherlands, Alpha machines, I want to be able to run it in an emulator. simh is the best open source VAX emulator, but it does not support Alpha. My adventure with es40, the only open source Alpha emulator (development halted 10 years ago) ended prematurely since it crashes all the time. The only other available options are FreeAXP, Charon-AXP, vtAlpha and EmuVM AlphaVM. Only FreeAXP is available as a free (but not open source) download, Charon had a personal version but that is nowhere to be found nowdays, vtAlpha has no free version or trial and EmuVM Alphaserver also stopped with their free version.</p>
+<p>OpenVMS 7.3 was the last version for the VAX architecture. All later versions
+(like 8.4) are only available for the Alpha CPU architecture or Intel&#39;s Itanium
+platform. Since I don&#39;t want hardware running, which is suprisingly hard to get
+in The Netherlands, Alpha machines, I want to be able to run it in an emulator.
+simh is the best open source VAX emulator, but it does not support Alpha. My
+adventure with es40, the only open source Alpha emulator (development halted 10
+years ago) ended prematurely since it crashes all the time. The only other
+available options are FreeAXP, Charon-AXP, vtAlpha and EmuVM AlphaVM. Only
+FreeAXP is available as a free (but not open source) download, Charon had a
+personal version but that is nowhere to be found nowdays, vtAlpha has no free
+version or trial and EmuVM Alphaserver also stopped with their free version.</p>
 
-<p>This article focusses on the hobbyist aspect of Alpha emulation. If you&#39;re a company and spend a big sum of money, you will have all the resources you&#39;ll ever need.</p>
+<p>This article focusses on the hobbyist aspect of Alpha emulation. If you&#39;re a
+company and spend a big sum of money, you will have all the resources you&#39;ll
+ever need.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
 <h3>Limits of commercial Alpha emulators</h3>
 
-<p>FreeAXP and AlphaVM offer a free or trial version of their product. FreeAXP is completely free to use (but doesn&#39;t work in my case) and AlphaVM offers a limited trial for a month.</p>
+<p>FreeAXP and AlphaVM offer a free or trial version of their product. FreeAXP is
+completely free to use (but doesn&#39;t work in my case) and AlphaVM offers a
+limited trial for a month.</p>
 
-<p>AlphaVM used to offer a free version but they stopped doing that in 2015. I contacted them and their CTO was quick and professional with his reply&#39;s. He told me that they stopped the free version because it was used commercially, thus hurting the sale of their commercial offering. If you&#39;re a serious hobbyist their product is available for $400, which, comparing the prices to Charon-AXP and Avanti (freeAXP&#39;s commercial counterpart) is very cheap. The CTO, <a href="https://nl.linkedin.com/in/artemalimarin">Artem Alimarin</a> has, according to LinkedIn, also worked at Stromasys and created Charon-AXP, so he knows Alpha emulation. </p>
+<p>AlphaVM used to offer a free version but they stopped doing that in 2015. I
+contacted them and their CTO was quick and professional with his reply&#39;s. He
+told me that they stopped the free version because it was used commercially,
+thus hurting the sale of their commercial offering. If you&#39;re a serious hobbyist
+their product is available for $400, which, comparing the prices to Charon-AXP
+and Avanti (freeAXP&#39;s commercial counterpart) is very cheap. The CTO, <a href="https://nl.linkedin.com/in/artemalimarin">Artem
+Alimarin</a> has, according to LinkedIn,
+also worked at Stromasys and created Charon-AXP, so he knows Alpha emulation. </p>
 
-<p>I was given a 30 day trial version of AlphaVM basic, with both a Windows and Linux version download. The product does require to be always online due to a license check.</p>
+<p>I was given a 30 day trial version of AlphaVM basic, with both a Windows and
+Linux version download. The product does require to be always online due to a
+license check.</p>
 
-<p>Charon-AXP has no trial version and they did not respond to my inquiries. vtAlpha same story, no trial or free version.</p>
+<p>Charon-AXP has no trial version and they did not respond to my inquiries.
+vtAlpha same story, no trial or free version.</p>
 
-<p>FreeAXP is limited to 1 instance with 128 MB RAM and emulates only an Alphaserver 400.</p>
+<p>FreeAXP is limited to 1 instance with 128 MB RAM and emulates only an
+Alphaserver 400.</p>
 
-<p>AlphaVM Basic is limited to 1 instance, 1 GB of RAM and it can emulate a range of Alpha systems.</p>
+<p>AlphaVM Basic is limited to 1 instance, 1 GB of RAM and it can emulate a range
+of Alpha systems.</p>
 
-<p>Both AlphaVM and FreeAXP allow only 1 instance to be running. That limits your options to tinker with a cluster setup in OpenVMS. You could run multiple instances FreeAXP on different hardware. EmuVM checks the license so that doesn&#39;t work.</p>
+<p>Both AlphaVM and FreeAXP allow only 1 instance to be running. That limits your
+options to tinker with a cluster setup in OpenVMS. You could run multiple
+instances FreeAXP on different hardware. EmuVM checks the license so that
+doesn&#39;t work.</p>
 
-<p>Both FreeAXP and AlphaVM don&#39;t support Idle CPU. That means that when the emulated CPU has nothing to do, it will still use full resources on the host machine.</p>
+<p>Both FreeAXP and AlphaVM don&#39;t support Idle CPU. That means that when the
+emulated CPU has nothing to do, it will still use full resources on the host
+machine.</p>
 
-<p>So if you want to cluster, you need to stick to simh and OpenVMS 7.3, or get your hands on actual hardware.</p>
+<p>So if you want to cluster, you need to stick to simh and OpenVMS 7.3, or get
+your hands on actual hardware.</p>
 
 <h3>es40</h3>
 
-<p>I tried to install <a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40 on Ubuntu 16.04</a> and in that, install OpenVMS 8.4. That works up to halfway through the installer, then it crashes:</p>
+<p>I tried to install <a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40 on Ubuntu
+16.04</a>
+and in that, install OpenVMS 8.4. That works up to halfway through the
+installer, then it crashes:</p>
 
 <pre><code>%SYSTEM-F-ACCVIO, access violation, reason mask=00, virtual address=FFFFFFFFFFFFFFB8, PC=000000007
 FDC5210, PS=0000001B
@@ -132,21 +167,36 @@ pci0.15(ali_ide).disk0.0(file): Closing file.
 <p>FreeAXP is a free Avanti virtual Alpha technology demonstrator. It provides a virtual AlphaServer 400 equipped with 1 CPU, 128MB memory, 7 disk drives, two NICs, and two virtual serial ports. </p>
 </blockquote>
 
-<p>I downloaded version 3.0.0.617 on Windows 10 x64 (1709 build 16299.125). Installation was a breeze and the first try worked as well, I was able to install OpenVMS 8.4. The next try, actually running OpenVMS, fails horribly. The software crashes after loading the config file, and even killing the process via the task manager fails:</p>
+<p>I downloaded version 3.0.0.617 on Windows 10 x64 (1709 build 16299.125).
+Installation was a breeze and the first try worked as well, I was able to
+install OpenVMS 8.4. The next try, actually running OpenVMS, fails horribly. The
+software crashes after loading the config file, and even killing the process via
+the task manager fails:</p>
 
 <p><img src="https://raymii.org/s/inc/img/freeaxp_1.png" alt=freeaxp></p>
 
-<p>That adventure ended way to quickly. There is <a href="https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU">a topic here</a> on <code>os.comp.vms</code> where this issue is discussed, but sadly without a fix yet. Downgrading winPCAP had no effect for me.</p>
+<p>That adventure ended way to quickly. There is <a href="https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU">a topic
+here</a> on
+<code>os.comp.vms</code> where this issue is discussed, but sadly without a fix yet.
+Downgrading winPCAP had no effect for me.</p>
 
 <h3>EmuVM basic</h3>
 
-<p>I was given a trial of EmuVM&#39;s AlphaVM Basic, which will function for 1 month. It runs both on Windows and on linux (without GUI). Here is a picture of the Windows version:</p>
+<p>I was given a trial of EmuVM&#39;s AlphaVM Basic, which will function for 1 month.
+It runs both on Windows and on linux (without GUI). Here is a picture of the
+Windows version:</p>
 
 <p><img src="https://raymii.org/s/inc/img/emuvm_1.png" alt=emuvm></p>
 
-<p>I experienced no problems at all, the installation went without issues and subsequent starts all went fine.</p>
+<p>I experienced no problems at all, the installation went without issues and
+subsequent starts all went fine.</p>
 
-<p>The Linux version of AlphaVM has no GUI. Using the Windows GUI and the option &quot;View config as text&quot; I was able to generate my configuration to use on Ubuntu 16.04. The Debian 7 .deb package installed and it all worked as expected there as well. I did have to change filesystem paths on Linux and I removed most options that looked liken they came from Windows. Disks on Linux can be created with <code>dd</code> and in Windows they provide a tool.</p>
+<p>The Linux version of AlphaVM has no GUI. Using the Windows GUI and the option
+&quot;View config as text&quot; I was able to generate my configuration to use on Ubuntu
+16.04. The Debian 7 .deb package installed and it all worked as expected there
+as well. I did have to change filesystem paths on Linux and I removed most
+options that looked liken they came from Windows. Disks on Linux can be created
+with <code>dd</code> and in Windows they provide a tool.</p>
 
 <p>Here is a screenshot of the Linux version:</p>
 
@@ -154,17 +204,35 @@ pci0.15(ali_ide).disk0.0(file): Closing file.
 
 <h3>Conclusion</h3>
 
-<p>The only free option available is FreeAXP, but that is not available for Linux and the Windows version doesn&#39;t work for me.</p>
+<p>The only free option available is FreeAXP, but that is not available for Linux
+and the Windows version doesn&#39;t work for me.</p>
 
-<p>The only working option is EmuVM&#39;s AlphaVM, which for me works both on Windows and on Linux without issues. The customer support is good and the product is featurefull. </p>
+<p>The only working option is EmuVM&#39;s AlphaVM, which for me works both on Windows
+and on Linux without issues. The customer support is good and the product is
+featurefull. </p>
 
-<p>If I ever would have to do a commercial OpenVMS deployment on Alpha, based on my experience now I would let the company buy the AlphaVM Pro version. That does not require an always online license check but a USB dongle or special hardware bind (also for virtual machines). </p>
+<p>If I ever would have to do a commercial OpenVMS deployment on Alpha, based on my
+experience now I would let the company buy the AlphaVM Pro version. That does
+not require an always online license check but a USB dongle or special hardware
+bind (also for virtual machines). </p>
 
-<p>I do hope that EmuVM rethink their free offering. I suggested not to limit on emulated hardware like FreeAXP, but to just let the product run for two hours and then force five hours of pause until it can run again. No commercial use can be done in only two hours I guess. For hobbyist use it is fine however, in two hours I can tinker a fair amount. I do hope it does not require always connected licensing checks, since my tinkering often happens on systems without internet connection. Or, imagine the case that in 10 years I want to play again and their license server is not available anymore.</p>
+<p>I do hope that EmuVM rethink their free offering. I suggested not to limit on
+emulated hardware like FreeAXP, but to just let the product run for two hours
+and then force five hours of pause until it can run again. No commercial use can
+be done in only two hours I guess. For hobbyist use it is fine however, in two
+hours I can tinker a fair amount. I do hope it does not require always connected
+licensing checks, since my tinkering often happens on systems without internet
+connection. Or, imagine the case that in 10 years I want to play again and their
+license server is not available anymore.</p>
 
-<p>The other option is to get hold of actual Alpha hardware and install OpenVMS there. No limits and clustering is only limited how much hardware you can get your hands on. But, old hardware is hard to maintain and it won&#39;t get newer or cheaper.</p>
+<p>The other option is to get hold of actual Alpha hardware and install OpenVMS
+there. No limits and clustering is only limited how much hardware you can get
+your hands on. But, old hardware is hard to maintain and it won&#39;t get newer or
+cheaper.</p>
 
-<p>So the state of Alpha emulation for OpenVMS in 2018 for hobbyists is poor. Let&#39;s hope VSI release a hobbyist version of the OpenVMS x86 release they are making. Then I can just use KVMN or Virtualbox to play with OpenVMS.</p>
+<p>So the state of Alpha emulation for OpenVMS in 2018 for hobbyists is poor. Let&#39;s
+hope VSI release a hobbyist version of the OpenVMS x86 release they are making.
+Then I can just use KVMN or Virtualbox to play with OpenVMS.</p>
 </div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/es40.html" class="link">es40 &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

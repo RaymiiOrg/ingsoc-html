@@ -80,7 +80,14 @@
 <p>The first webbrowser, created in 1992, displaying this website</p>
 </blockquote>
 
-<p>On one of my favorite podcasts from Jupiter Broadcasting, either Linux Action News or Linux unplugged (252 I think, not sure), Allan Pope was talking about Snap packages and how there are now WinePacks, a snap with Wine and a single (Windows) application packaged. During the discussion he dropped that Mosaic, the first graphical web browser, is available as a snap package, for modern distributions. I installed it, after huge download (1.5 MB), playing around with it is quite fun. Another fun fact according to Wikipedia is that Microsoft licensed Mosaic to create Internet Explorer in 1995.</p>
+<p>On one of my favorite podcasts from Jupiter Broadcasting, either Linux Action
+News or Linux unplugged (252 I think, not sure), Allan Pope was talking about
+Snap packages and how there are now WinePacks, a snap with Wine and a single
+(Windows) application packaged. During the discussion he dropped that Mosaic,
+the first graphical web browser, is available as a snap package, for modern
+distributions. I installed it, after huge download (1.5 MB), playing around with
+it is quite fun. Another fun fact according to Wikipedia is that Microsoft
+licensed Mosaic to create Internet Explorer in 1995.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
@@ -96,14 +103,16 @@
 <pre><code>mosaic 2.7b6 from &#39;snapcrafters&#39; installed
 </code></pre>
 
-<p>There is now a new application in your application menu or Desktop, which you can click on. If you want to run it from the command line, it&#39;s in <code>/snap</code>;</p>
+<p>There is now a new application in your application menu or Desktop, which you
+can click on. If you want to run it from the command line, it&#39;s in <code>/snap</code>;</p>
 
 <pre><code>/snap/bin/mosaic
 </code></pre>
 
 <h3>What does work?</h3>
 
-<p>As a browser from so long ago, it works quite well. Not fancy, but fast and to the point.</p>
+<p>As a browser from so long ago, it works quite well. Not fancy, but fast and to
+the point.</p>
 
 <ul>
 <li>Displaying text</li>
@@ -121,7 +130,8 @@
 
 <p>A site like <a href="http://lite.cnn.io/en">CNN Lite (text only)</a> works really well.</p>
 
-<p>You can add notes to web pages with the &quot;Annotate&quot; menu, something modern browsers lack.</p>
+<p>You can add notes to web pages with the &quot;Annotate&quot; menu, something modern
+browsers lack.</p>
 
 <h3>What doesn&#39;t work?</h3>
 
@@ -132,7 +142,8 @@
 
 <p>instead of the Google Adsense advertisement that should be there. So no tracking</p>
 
-<p>SSL/TLS also is not available. Any secure site will fail with the following error message:</p>
+<p>SSL/TLS also is not available. Any secure site will fail with the following
+error message:</p>
 
 <pre><code>ERROR
 
@@ -142,13 +153,16 @@ The information server either is not accessible or is refusing to serve the docu
 to you.
 </code></pre>
 
-<p>Because there is no SSL and no Javascript, most of the sites you try will not work due to an SSL redirect or a Cookiewall.</p>
+<p>Because there is no SSL and no Javascript, most of the sites you try will not
+work due to an SSL redirect or a Cookiewall.</p>
 
-<p>If you have a spare server somewhere you can setup a reverse proxy for sites you frequent, stripping SSL from it. </p>
+<p>If you have a spare server somewhere you can setup a reverse proxy for sites you
+frequent, stripping SSL from it. </p>
 
 <h3>Manual install (no snap)</h3>
 
-<p>If you&#39;re not on Ubuntu or don&#39;t have snap installed, you can use the upstream source of the snap package <a href="https://github.com/alandipert/ncsa-mosaic">here</a>:</p>
+<p>If you&#39;re not on Ubuntu or don&#39;t have snap installed, you can use the upstream
+source of the snap package <a href="https://github.com/alandipert/ncsa-mosaic">here</a>:</p>
 
 <pre><code>sudo apt-get install build-essential libmotif-dev libjpeg62-dev libpng12-dev x11proto-print-dev libxmu-headers libxpm-dev libxmu-dev git
 

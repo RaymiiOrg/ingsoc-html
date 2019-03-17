@@ -9,22 +9,36 @@ Format   : 	Markdown/HTML
 
 
 
-Recently I had to archive a large amount of files to archival storage. To save space and reduce the amount of files I decided to create archives with tar. The files will be stored to tapes and DVD's, and will be restored in full, so random access times are not an issue, therefore the tar.gz choice.
+Recently I had to archive a large amount of files to archival storage. To save
+space and reduce the amount of files I decided to create archives with tar. The
+files will be stored to tapes and DVD's, and will be restored in full, so random
+access times are not an issue, therefore the tar.gz choice.
 
-I do want to make sure that when the files need to be restored they still are correct. I first dabbled with some long shell commands to create checksums and verify them, but then I found the `rhash` tool in the repositories. It allows you to create checksums of files and folders, recursively, with all sorts of checksums, like CRC, MD5, SHA1 and many more. It also makes bulk validation very simple.
+I do want to make sure that when the files need to be restored they still are
+correct. I first dabbled with some long shell commands to create checksums and
+verify them, but then I found the `rhash` tool in the repositories. It allows
+you to create checksums of files and folders, recursively, with all sorts of
+checksums, like CRC, MD5, SHA1 and many more. It also makes bulk validation very
+simple.
 
-This small article shows you how to create an archive file with the checksums included and shows you how to validate these checksums later on.
+This small article shows you how to create an archive file with the checksums
+included and shows you how to validate these checksums later on.
 
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
 t
 
-The data in question are archived tapes, disk copies, source code and documentation for the PDP8 mainframe. We also have these for the PDP11 and a few VAX machines. The archives contain about 5 million files and is about 700 GB in size. The company decided to phase out the on-line storage and place this data on tapes and dvd's, since they're not accessed more than once or twice a month.
+The data in question are archived tapes, disk copies, source code and
+documentation for the PDP8 mainframe. We also have these for the PDP11 and a few
+VAX machines. The archives contain about 5 million files and is about 700 GB in
+size. The company decided to phase out the on-line storage and place this data
+on tapes and dvd's, since they're not accessed more than once or twice a month.
 
 
 ### Creating the hashes
 
-The first archive contains PDP8 files located in the folder `pdp8`. This command creates the `MD5SUMS` file, which we place in the same folder:
+The first archive contains PDP8 files located in the folder `pdp8`. This command
+creates the `MD5SUMS` file, which we place in the same folder:
 
     rhash --recursive --md5 --output=pdp8/MD5SUMS pdp8/
 
@@ -32,7 +46,8 @@ The archive is later on created with a simple `tar -czf pdp8.tar.gz pdp8`.
 
 ### Verifying the hashes
 
-Extract the archive to a folder and use the following command to verify all files:
+Extract the archive to a folder and use the following command to verify all
+files:
 
     rhash --skip-ok --check pdp8/MD5SUMS 
 
@@ -51,7 +66,8 @@ If a file does not match the hash, the output will include it:
     Errors Occurred: Errors:1   Miss:0   Success:3323 Total:3324
 
 
-If you leave out the `--skip-ok` option all files checked will be shown which might result in long output.
+If you leave out the `--skip-ok` option all files checked will be shown which
+might result in long output.
 
 To manually verify one file, first get the checksum:
 

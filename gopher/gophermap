@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-03-17T14:39:27	/	localhost	70
+i            2019-03-17T22:19:29	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -119,21 +119,13 @@ i 	/	localhost	70
 0IPv6 in a Docker container on a non-ipv6 network (12-04-2016)	IPv6_in_a_Docker_container_on_a_non-ipv6_network.txt	raymii.org	70
 0Active Directory and Exchange Command Line Powershell (27-02-2016)	Active_Directory_Exchange_Powershell_Snippets.txt	raymii.org	70
 0Let's Encrypt with DirectAdmin, now built in! (24-02-2016)	Lets_Encrypt_Directadmin_Now_Built_In.txt	raymii.org	70
-0Recap of week 04, 2016 (30-01-2016)	Recap_of_week_04_2016.txt	raymii.org	70
-0Recap of week 03, 2016 (23-01-2016)	Recap_of_week_03_2016.txt	raymii.org	70
 0Ansible playbook for GoAccess Log Analyzer (17-01-2016)	Ansible_role_for_GoAccess_Log_Analyzer.txt	raymii.org	70
-0Recap of week 02, 2016 (16-01-2016)	Recap_of_week_02_2016.txt	raymii.org	70
 0Deborphan cleanup until no more orphaned packages left (11-01-2016)	Deborphan_cleanup_until_no_more_orphaned_packages_left.txt	raymii.org	70
-0Recap of week 01, 2016 (10-01-2016)	Recap_of_week_01_2016.txt	raymii.org	70
 0Microsoft Office 2013 and 2010 on Linux (02-01-2016)	Office_2013_and_2010_on_Linux.txt	raymii.org	70
-0Recap of week 53, 2015 (01-01-2016)	Recap_of_week_53_2015.txt	raymii.org	70
 0Recursively find all [installed] package dependencies (31-12-2015)	Recursively_find_all_installed_package_dependencies.txt	raymii.org	70
-0Recap of week 52, 2015 (26-12-2015)	Recap_of_week_52_2015.txt	raymii.org	70
 0IPSEC VPN on Ubuntu 15.04 with StrongSwan (20-12-2015)	IPSEC_vpn_with_Ubuntu_15.04.txt	raymii.org	70
 0IPSEC VPN on Ubuntu 15.10 with StrongSwan (20-12-2015)	IPSEC_vpn_with_Ubuntu_15.10.txt	raymii.org	70
-0Recap of week 51, 2015 (19-12-2015)	Recap_of_week_51_2015.txt	raymii.org	70
 0Forward or save outgoing email with Exim (16-12-2015)	Forward_or_save_all_outgoing_email_with_exim.txt	raymii.org	70
-0Recap of week 50, 2015 (12-12-2015)	Recap_of_week_50_2015.txt	raymii.org	70
 0Generate hashes of files with rhash for archival storage (11-12-2015)	Generate_hashes_of_files_with_rhash_for_archival_storage.txt	raymii.org	70
 0Let's Encrypt with DirectAdmin or other Web Control Panels (10-12-2015)	Lets_Encrypt_Directadmin.txt	raymii.org	70
 0Linux Containers (12-11-2015)	Linux_Containers.txt	raymii.org	70
@@ -332,8 +324,8 @@ i 	/	localhost	70
 0Python script to monitor a file for changes and then mail the report with the file attached. (21-12-2012)	Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.txt	raymii.org	70
 0Exchange 2010 - OWA - Lock user after x amount of failed logins (19-12-2012)	Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.txt	raymii.org	70
 0Restore iptables rules after a reboot on debian (12-12-2012)	Restore-iptables-rules-after-a-reboot-on-debian.txt	raymii.org	70
-0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
+0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice) (08-12-2012)	Munin_optimalization_on_Debian.txt	raymii.org	70
 0Set OS X hostname from the commandline (05-12-2012)	OS-X-Change-Hostname.txt	raymii.org	70
 0ClamAV installation and daily scan + report on Ubuntu (01-12-2012)	ClamAV.txt	raymii.org	70
@@ -386,7 +378,6 @@ i 	/	localhost	70
 0Bash ja/nee keuze (03-02-2008)	Ja-Nee-keuze-toevoegen-in-een-bash-script.txt	raymii.org	70
 0Imagemagick thumbnailer (29-11-2007)	Imagemagick-thumbnailer.txt	raymii.org	70
 0Vim Cheatsheet (01-01-2007)	Vim_Cheatsheet.txt	raymii.org	70
-0DRAFT (Re)Building a Metro Cab Simulator part 1 (04-07-2006)	Building_a_Metro_Cab_Simulator_part_1.txt	raymii.org	70
 0RET Metro Type T SG/2 (02-01-2006)	RET_Metro_Type_T.txt	raymii.org	70
 0RET Metro Type M MG/2 (02-01-2006)	RET_Metro_Type_M.txt	raymii.org	70
 0RET Metro ZUB (02-01-2006)	RET_Metro_ZUB.txt	raymii.org	70

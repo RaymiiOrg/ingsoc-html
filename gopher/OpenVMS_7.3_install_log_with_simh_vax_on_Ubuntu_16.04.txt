@@ -15,9 +15,13 @@ Format   : 	Markdown/HTML
 
 
 
-Using [this guide](https://web.archive.org/web/20180324181059/https://vanalboom.org/node/18) I was able to install OpenVMS 7.3 for VAX on simh on Ubuntu 16.04. 
+Using [this
+guide](https://web.archive.org/web/20180324181059/https://vanalboom.org/node/18)
+I was able to install OpenVMS 7.3 for VAX on simh on Ubuntu 16.04. 
 
-This is a copy-paste of my terminal for future reference. This is not one of my usual articles, a guide with comprehensive information an background. Just a log of my terminal.
+This is a copy-paste of my terminal for future reference. This is not one of my
+usual articles, a guide with comprehensive information an background. Just a log
+of my terminal.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 

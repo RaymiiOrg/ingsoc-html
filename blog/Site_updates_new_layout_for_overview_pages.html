@@ -74,15 +74,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This site is generated with my <a href="https://raymii.org/s/software/ingsoc.html">self-written open source static site generator named ingsoc</a> (named after 1984). I&#39;ve updated the overview pages with a new layout so that items are sorted by their publishing date instead of alphabetically. I&#39;ve also rewritten some internal logic regarding tags and categories. This article shows the difference before and after and includes some old screenshots of raymii.org</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This site is generated with my <a href="https://raymii.org/s/software/ingsoc.html">self-written open source static site generator
+named ingsoc</a> (named after 1984).
+I&#39;ve updated the overview pages with a new layout so that items are sorted by
+their publishing date instead of alphabetically. I&#39;ve also rewritten some
+internal logic regarding tags and categories. This article shows the difference
+before and after and includes some old screenshots of raymii.org</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
 <h3>Semantics</h3>
 
-<p>The software suite is named <code>ingsoc</code>, the actual site generator is named <code>newspeak.py</code>. Read more on it <a href="https://raymii.org/s/software/ingsoc.html">here</a>. Before the generator this was a PHP site, but who needs a dynamic scripting language if all you do is host non-dynamic content.</p>
+<p>The software suite is named <code>ingsoc</code>, the actual site generator is named
+<code>newspeak.py</code>. Read more on it
+<a href="https://raymii.org/s/software/ingsoc.html">here</a>. Before the generator this was
+a PHP site, but who needs a dynamic scripting language if all you do is host
+non-dynamic content.</p>
 
-<p><code>ingsoc</code> has the concept of categories. My site is divided into the following categories:</p>
+<p><code>ingsoc</code> has the concept of categories. My site is divided into the following
+categories:</p>
 
 <ul>
 <li><a href="https://raymii.org/s/software/">Software</a></li>
@@ -92,15 +102,30 @@
 <li><a href="https://raymii.org/s/blog/">Blog</a></li>
 </ul>
 
-<p>If I want I can add any number of categories. When I started twelve years ago the site it seemed that that division into categories was enough. But soon I wanted to be able to have more options to categorize an article. A tutorial about a VPN can be on Ubuntu or CentOS or IPSEC or OpenVPN and I wanted to be able to group similar articles. I did not want a million categories since that would not fit the target, an article can only have one category.</p>
+<p>If I want I can add any number of categories. When I started twelve years ago
+the site it seemed that that division into categories was enough. But soon I
+wanted to be able to have more options to categorize an article. A tutorial
+about a VPN can be on Ubuntu or CentOS or IPSEC or OpenVPN and I wanted to be
+able to group similar articles. I did not want a million categories since that
+would not fit the target, an article can only have one category.</p>
 
-<p>Tags to the rescue. I built in tags to the generator and created seperate RSS feeds per tag and an overview page for each tag listing the articles per tag. Like categories, but way more. </p>
+<p>Tags to the rescue. I built in tags to the generator and created seperate RSS
+feeds per tag and an overview page for each tag listing the articles per tag.
+Like categories, but way more. </p>
 
 <p>Tags are cheap, the current site has 927 tags, v.s. 5 categories.</p>
 
-<p>So why not ditch the categories all together? Well, they are used in the URL and it is good to have one &#39;main&#39; category for an article to fall under. That is has multiple tags, is in my opinion, different. A tutorial is still a tutorial no matter which OS it applies to.</p>
+<p>So why not ditch the categories all together? Well, they are used in the URL and
+it is good to have one &#39;main&#39; category for an article to fall under. That is has
+multiple tags, is in my opinion, different. A tutorial is still a tutorial no
+matter which OS it applies to.</p>
 
-<p>The front page has a configurable number of items listed with a summary per item. A year ago I added the &#39;everything&#39; page, which houses all items sorted by date. Looking at the statistics, both that page as well as the tag overview pages are the most visited parts of the site next to the articles. I got some feedback recently that the sorting was off and the person that emailed me thought it was more logical to sort it by date. Which I agreed with</p>
+<p>The front page has a configurable number of items listed with a summary per
+item. A year ago I added the &#39;everything&#39; page, which houses all items sorted by
+date. Looking at the statistics, both that page as well as the tag overview
+pages are the most visited parts of the site next to the articles. I got some
+feedback recently that the sorting was off and the person that emailed me
+thought it was more logical to sort it by date. Which I agreed with</p>
 
 <p>So off to the Python code it was.</p>
 
@@ -110,7 +135,9 @@
 
 <h3>Before and after</h3>
 
-<p>Before, tag pages, category pages and the All Items page were three different methods in my pyhton code. Different looks and layouts, thus less simple to maintain or change. Look at what they are now with the pictures below.</p>
+<p>Before, tag pages, category pages and the All Items page were three different
+methods in my pyhton code. Different looks and layouts, thus less simple to
+maintain or change. Look at what they are now with the pictures below.</p>
 
 <h4>Tags</h4>
 
@@ -122,7 +149,9 @@
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/after_tag_openvms.png"></p>
 
-<p>As you can see, the date is added and sorting is on that date now. If I want I can later on easily add some javascript to make that table sortable ascending or descending, but that is for a later time.</p>
+<p>As you can see, the date is added and sorting is on that date now. If I want I
+can later on easily add some javascript to make that table sortable ascending or
+descending, but that is for a later time.</p>
 
 <h4>Categories</h4>
 
@@ -134,7 +163,10 @@
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/after_category_blog.png"></p>
 
-<p>As you might notice, it looks very similar to a tag page. That is because it is a tag page, not a category page. I added the category as a tag to all pages, so that the layout and code is the same. I removed the category view and made those into redirects. Instead of two code paths, I now have only one.</p>
+<p>As you might notice, it looks very similar to a tag page. That is because it is
+a tag page, not a category page. I added the category as a tag to all pages, so
+that the layout and code is the same. I removed the category view and made those
+into redirects. Instead of two code paths, I now have only one.</p>
 
 <h4>Everything</h4>
 
@@ -146,11 +178,18 @@
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/after_all.png"></p>
 
-<p>Here again, you might notice it looks like a tag page as well. Again, it is. I sneakily add the <code>all</code> tag to all items and filter it out in the HTML. It is used here, and it saves me another code path. This way my python code is more simple and more easy to maintain. This page before was already sorted on the date, but it was not visible. It is now to have a better overview of the timeframe.</p>
+<p>Here again, you might notice it looks like a tag page as well. Again, it is. I
+sneakily add the <code>all</code> tag to all items and filter it out in the HTML. It is
+used here, and it saves me another code path. This way my python code is more
+simple and more easy to maintain. This page before was already sorted on the
+date, but it was not visible. It is now to have a better overview of the
+timeframe.</p>
 
 <h3>Conclusion and old screenshots</h3>
 
-<p>By reducing the code paths it is both simpler for me to maintain and change the code and the layout is the same in all three cases. Plus it was fun to go into my code and add sorting with <code>DateTime</code>. </p>
+<p>By reducing the code paths it is both simpler for me to maintain and change the
+code and the layout is the same in all three cases. Plus it was fun to go into
+my code and add sorting with <code>DateTime</code>. </p>
 
 <p>If you are wondering how this site has looked before, here are screenshots.</p>
 
@@ -172,13 +211,15 @@
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-category.png"></p>
 
-<p>The links page, with a dynamic thumbnailer that also did borders and site screenshots (in PHP with gd):</p>
+<p>The links page, with a dynamic thumbnailer that also did borders and site
+screenshots (in PHP with gd):</p>
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-links.png"></p>
 
 <h4>2012, PHP</h4>
 
-<p>Still PHP, but a new layout. Notice the modern &quot;Metro&quot; look before Microsoft did it.</p>
+<p>Still PHP, but a new layout. Notice the modern &quot;Metro&quot; look before Microsoft did
+it.</p>
 
 <p>The frontpage:</p>
 
@@ -192,13 +233,16 @@
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-page.png"></p>
 
-<p>I had a special text-only version of the articles for text based browsers and mobile phones:</p>
+<p>I had a special text-only version of the articles for text based browsers and
+mobile phones:</p>
 
 <p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-text-only.png"></p>
 
 <h4>2014, static site and themes</h4>
 
-<p>In 2014 the static site came around. I had cool dynamic CSS to create both a dark and a light theme (like Solarized). The dark theme was removed late 2016. This layout and site is still mostly in use today.</p>
+<p>In 2014 the static site came around. I had cool dynamic CSS to create both a
+dark and a light theme (like Solarized). The dark theme was removed late 2016.
+This layout and site is still mostly in use today.</p>
 
 <p>The &#39;Dark&#39; frontpage:</p>
 

@@ -79,14 +79,6 @@
             </item>
     
             <item>
-                <title>Recap of week 02, 2016</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_02_2016.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_02_2016.html</guid>
-                <description>Recap of week 02 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 16 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Ansible - Only if a file exists or does not exist</title> 
                 <link>https://raymii.org/s/tutorials/Ansible_-_Only_if_a_file_exists_or_does_not_exist.html</link> 
                 <guid>https://raymii.org/s/tutorials/Ansible_-_Only_if_a_file_exists_or_does_not_exist.html</guid>

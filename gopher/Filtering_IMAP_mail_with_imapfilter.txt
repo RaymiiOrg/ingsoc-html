@@ -11,18 +11,29 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/mail-send-receive.png" alt="mail">
 
-I have several email accounts at different providers. Most of them don't offer filtering capabilites like Sieve, or only their own non exportable rule system (Google Apps). My mail client of choice, Thunderbird, has filtering capabilities but my phone has not and I don't want to leave my machine running Thunderbird all the time since it gets quite slow with huge mailboxes. Imapfilter is a mail filtering utility written in Lua which connects to one or more IMAP accounts and filters on the server using IMAP queries. It is a lightweight command line utility, the configuration can be versioned and is simple text and it is very fast.
+I have several email accounts at different providers. Most of them don't offer
+filtering capabilites like Sieve, or only their own non exportable rule system
+(Google Apps). My mail client of choice, Thunderbird, has filtering capabilities
+but my phone has not and I don't want to leave my machine running Thunderbird
+all the time since it gets quite slow with huge mailboxes. Imapfilter is a mail
+filtering utility written in Lua which connects to one or more IMAP accounts and
+filters on the server using IMAP queries. It is a lightweight command line
+utility, the configuration can be versioned and is simple text and it is very
+fast.
 
 If you like this tutorial and want to support my website, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
-Imapfilter is configured via a config file. This article will discuss this config file with filtering and other examples. Start with a blank one:
+Imapfilter is configured via a config file. This article will discuss this
+config file with filtering and other examples. Start with a blank one:
 
     mkdir -p ~/.imapfilter
     vim ~/.imapfilter/config.lua
 
 ### Options
 
-imapfilter has a few global options which are configured via the `options.$OPTION = $VALUE` format. These are the ones I have, the manpage has more. Comments in the config file are prefix by two dashes (`--`).
+imapfilter has a few global options which are configured via the
+`options.$OPTION = $VALUE` format. These are the ones I have, the manpage has
+more. Comments in the config file are prefix by two dashes (`--`).
 
     -- One of the work mailservers is slow.
     -- The time in seconds for the program to wait for a mail server's response (default 60)
@@ -55,7 +66,8 @@ I've defined two example accounts, one for work and one for personal stuff:
       ssl = "ssl3"
     }
 
-You can define as much accounts as needed. You can even [get your accounts from offlineimap](http://thomaslevine.com/!/imapfilter/):
+You can define as much accounts as needed. You can even [get your accounts from
+offlineimap](http://thomaslevine.com/!/imapfilter/):
 
     function offlineimap (key)
       local status
@@ -77,15 +89,20 @@ You can define as much accounts as needed. You can even [get your accounts from 
 
 ### Mailboxes / Folders
 
-imapfilter has the concept of `mailboxes`. While technically correct, we general users just call them (top level) folders. `INBOX` is a mailbox, other folders are as well. After an IMAP account has been initialized, mailboxes residing in that account can be accessed simply as elements of the account table:
+imapfilter has the concept of `mailboxes`. While technically correct, we general
+users just call them (top level) folders. `INBOX` is a mailbox, other folders
+are as well. After an IMAP account has been initialized, mailboxes residing in
+that account can be accessed simply as elements of the account table:
 
     myaccount.mymailbox
 
-If mailbox names don't only include letters, digits and underscores, or begin with a digit, an alternative form must be used:
+If mailbox names don't only include letters, digits and underscores, or begin
+with a digit, an alternative form must be used:
 
     myaccount['mymailbox']
 
-A mailbox inside a folder (subfolder) can be only accessed by using the alternative form:
+A mailbox inside a folder (subfolder) can be only accessed by using the
+alternative form:
 
     myaccount['myfolder/mymailbox']
 
@@ -94,22 +111,31 @@ In this article I use this alternative form for ease of use and consistensy.
 
 ### Filtering
 
-The filters defined are processed in order from top to bottom. I mostly filter my inbox by moving messages to another folder. If a message matched a filter it is moved, if it would then lower on match another filter that would not apply to that mail because it is already moved.
+The filters defined are processed in order from top to bottom. I mostly filter
+my inbox by moving messages to another folder. If a message matched a filter it
+is moved, if it would then lower on match another filter that would not apply to
+that mail because it is already moved.
 
-See the [manpage](http://linux.die.net/man/5/imapfilter_config) for all configuration options. 
+See the [manpage](http://linux.die.net/man/5/imapfilter_config) for all
+configuration options. 
 
-If you simply want to filter a message based on the sender, receipient or subject you can use the following. It moves all messages with the Duplicity mailing list address to the mailinglists folder:
+If you simply want to filter a message based on the sender, receipient or
+subject you can use the following. It moves all messages with the Duplicity
+mailing list address to the mailinglists folder:
 
       messages = account1["INBOX"]:contain_to("duplicity-talk@nongnu.org")
       messages:move_messages(account1["Mailinglists/Duplicity-Talk"])
 
-If you want to filter based on a few more parameters, you can use the following operators, `*` for AND, `+` for OR and `-` for NOT. To filter nagios messages with a certain subject line:
+If you want to filter based on a few more parameters, you can use the following
+operators, `*` for AND, `+` for OR and `-` for NOT. To filter nagios messages
+with a certain subject line:
 
       messages = account1["INBOX"]:contain_from("nagios@monitoring.org")
         * account1["INBOX"]:contain_subject("important_hostname")
       messages:move_messages(account1["Important/Nagios"])
 
-To move messages from Nagios from less important hosts, but not with the "CRITICAL" subject and mark them as read:
+To move messages from Nagios from less important hosts, but not with the
+"CRITICAL" subject and mark them as read:
 
       messages = account1["INBOX"]:contain_from("nagios@monitoring.org")
         - account1["INBOX"]:contain_subject("CRITICAL:")
@@ -122,7 +148,8 @@ With these operators you can construct advanced filters.
 
 ### Copying mail
 
-To copy mail from one account to another account's folder and mark those copied messages as read, for archival purposes for example, use the following filter:
+To copy mail from one account to another account's folder and mark those copied
+messages as read, for archival purposes for example, use the following filter:
 
         messages = account2['INBOX']:is_unseen()
         messages:copy_messages(account1["Backup_of_Account2"])
@@ -134,7 +161,10 @@ Place this at the top of the `account2` filtering rules.
 
 ### pipe_to
 
-Taken from the [extended configuration example](https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua) here is an example piece of code which sends mail to an external program and based on the output deletes the messages the program marked as spam.
+Taken from the [extended configuration
+example](https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua)
+here is an example piece of code which sends mail to an external program and
+based on the output deletes the messages the program marked as spam.
 
     -- The auxiliary function pipe_to() is supplied for conveniency.  For
     -- example if there was a utility named "bayesian-spam-filter", which
@@ -155,7 +185,12 @@ Taken from the [extended configuration example](https://raw.githubusercontent.co
 
 ### Conclusion
 
-The above examples will get you started with message filtering right away. The [manpage](http://linux.die.net/man/5/imapfilter_config) and the [example config](https://github.com/lefcha/imapfilter/blob/master/samples/config.lua) and the [extended example config](https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua) will get you even further.
+The above examples will get you started with message filtering right away. The
+[manpage](http://linux.die.net/man/5/imapfilter_config) and the [example
+config](https://github.com/lefcha/imapfilter/blob/master/samples/config.lua) and
+the [extended example
+config](https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua)
+will get you even further.
 
 ---
 

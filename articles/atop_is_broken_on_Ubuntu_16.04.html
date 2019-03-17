@@ -74,7 +74,11 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently a few of my Ubuntu 16.04 machines had issues and I was troubleshooting them, noticing <code>atop</code> logs missing. atop is a very handy tool which can be setup to record system state every X minutes, and we set it up to run every 5 minutes. You can then at a later moment see what the server was doing, even sorting by disk, memory, cpu or network usage. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently a few of my Ubuntu 16.04 machines had issues and I was troubleshooting
+them, noticing <code>atop</code> logs missing. atop is a very handy tool which can be setup
+to record system state every X minutes, and we set it up to run every 5 minutes.
+You can then at a later moment see what the server was doing, even sorting by
+disk, memory, cpu or network usage. </p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
@@ -96,16 +100,24 @@ drwxrwxr-x 10 root syslog    4096 Sep 18 06:25 ..
 <pre><code>atop -r /var/log/atop/atop_20170821 # -b time_to_start
 </code></pre>
 
-<p>will open up atop with that log. Using <code>t</code> and <code>T</code> you can go back and forward in time.</p>
+<p>will open up atop with that log. Using <code>t</code> and <code>T</code> you can go back and forward
+in time.</p>
 
 <h3>The issue</h3>
 
-<p>Checking the system log this message showed up on the dates that the log was missing:</p>
+<p>Checking the system log this message showed up on the dates that the log was
+missing:</p>
 
 <pre><code>Sep 18 00:00:01 server kernel: [82125.706464] traps: atop[517] trap divide error ip:4073c2 sp:7ffebe903810 error:0 in atop[400000+26000]
 </code></pre>
 
-<p>There is a <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=823135">debian bug report</a> where they state this bug is solved in the 2.x release (debian experimental). Ubuntu 16.04 sadly still ships 1.x, and due to policy will never update to 2.x. The bug is solved in December 2016, but the <a href="https://web.archive.org/web/20170918125630/http://changelogs.ubuntu.com/changelogs/pool/universe/a/atop/atop_2.2.6-4/changelog">ubuntu changelog</a> still shows that the last update was in January 2016:</p>
+<p>There is a <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=823135">debian bug
+report</a> where they
+state this bug is solved in the 2.x release (debian experimental). Ubuntu 16.04
+sadly still ships 1.x, and due to policy will never update to 2.x. The bug is
+solved in December 2016, but the <a href="https://web.archive.org/web/20170918125630/http://changelogs.ubuntu.com/changelogs/pool/universe/a/atop/atop_2.2.6-4/changelog">ubuntu
+changelog</a>
+still shows that the last update was in January 2016:</p>
 
 <pre><code>atop (2.2.6-4) unstable; urgency=medium
 
@@ -122,7 +134,9 @@ drwxrwxr-x 10 root syslog    4096 Sep 18 06:25 ..
 
 <h3>Workaround</h3>
 
-<p>The atop version in Ubuntu 16.10 or 17.04 is the 2.x release, which you can download <a href="https://packages.ubuntu.com/zesty/amd64/atop/download">on the ubuntu packages site</a>:</p>
+<p>The atop version in Ubuntu 16.10 or 17.04 is the 2.x release, which you can
+download <a href="https://packages.ubuntu.com/zesty/amd64/atop/download">on the ubuntu packages
+site</a>:</p>
 
 <pre><code>wget http://mirrors.kernel.org/ubuntu/pool/universe/a/atop/atop_2.2.6-4_amd64.deb
 dpkg -i atop_2.2.6-4_amd64.deb
@@ -144,9 +158,12 @@ trying to activate atop-1.26....
 activation of atop-1.26 failed!
 </code></pre>
 
-<p>If you want to replay those logs, replay them on a machine with an older version of atop.</p>
+<p>If you want to replay those logs, replay them on a machine with an older version
+of atop.</p>
 
-<p>Do note that using packages from another major version is not recommended. This method of installing a .deb file is also quick and dirty, a better way is to use <a href="https://wiki.debian.org/AptPreferences">apt pinning</a>. </p>
+<p>Do note that using packages from another major version is not recommended. This
+method of installing a .deb file is also quick and dirty, a better way is to use
+<a href="https://wiki.debian.org/AptPreferences">apt pinning</a>. </p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/atop.html" class="link">atop &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

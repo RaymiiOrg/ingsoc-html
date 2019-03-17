@@ -80,40 +80,72 @@
 
 <h3>What happened</h3>
 
-<p>I got a valid SSL certificate for a domain that is not mine by creating an email alias. In this article I&#39;ll explain what happened, why that was possible and how we all can prevent this.</p>
+<p>I got a valid SSL certificate for a domain that is not mine by creating an email
+alias. In this article I&#39;ll explain what happened, why that was possible and how
+we all can prevent this.</p>
 
-<p>My ISP, <a href="http://xs4all.nl">xs4all</a>, allows me to create personal mailboxes and email aliases. </p>
+<p>My ISP, <a href="http://xs4all.nl">xs4all</a>, allows me to create personal mailboxes and
+email aliases. </p>
 
-<p>An SSL domain validation certificate requires you to click on a link sent to a pre-specified set of email addresses. I was able to register one of those email addresses (<code>administrator@xs4all.nl</code>). With that email address, I was able to receive a validation link for a certificate. </p>
+<p>An SSL domain validation certificate requires you to click on a link sent to a
+pre-specified set of email addresses. I was able to register one of those email
+addresses (<code>administrator@xs4all.nl</code>). With that email address, I was able to
+receive a validation link for a certificate. </p>
 
-<p>The certificate provider Comodo thus issues me a certificate for the domain <a href="https://xs4all.nl">xs4all.nl</a>, because I was able to &quot;provide ownership&quot;.</p>
+<p>The certificate provider Comodo thus issues me a certificate for the domain
+<a href="https://xs4all.nl">xs4all.nl</a>, because I was able to &quot;provide ownership&quot;.</p>
 
-<p>This should not be possible, the provider should have a blacklist for those addresses. </p>
+<p>This should not be possible, the provider should have a blacklist for those
+addresses. </p>
 
-<p>With this certificate I would be able to do a Man in the Middle attack against users, provided I can intercept their connections, for example, at a coffee shop or other place free Wifi is provided. The users would not receive a warning when they would connect to <code>xs4all.nl</code> over my, snooped, connection because it is a valid certificate trusted by all major browsers and operating systems.</p>
+<p>With this certificate I would be able to do a Man in the Middle attack against
+users, provided I can intercept their connections, for example, at a coffee shop
+or other place free Wifi is provided. The users would not receive a warning when
+they would connect to <code>xs4all.nl</code> over my, snooped, connection because it is a
+valid certificate trusted by all major browsers and operating systems.</p>
 
-<p>With the email address I could also request more certificates, for example, for <a href="https://webmail.xs4all.nl">webmail.xs4all.nl</a> or <a href="https://service.xs4all.nl">their service portal</a>.</p>
+<p>With the email address I could also request more certificates, for example, for
+<a href="https://webmail.xs4all.nl">webmail.xs4all.nl</a> or <a href="https://service.xs4all.nl">their service
+portal</a>.</p>
 
-<p>I directly contacted xs4all and the dutch <a href="https://www.ncsc.nl/">National Cyber Security Center</a> to inform them and other ISP&#39;s. The certificate was also revoked a few minutes after issueing.</p>
+<p>I directly contacted xs4all and the dutch <a href="https://www.ncsc.nl/">National Cyber Security
+Center</a> to inform them and other ISP&#39;s. The certificate
+was also revoked a few minutes after issueing.</p>
 
-<p>xs4all have blocked the <code>administrator@</code> email address from the aliasses list, so this should not be possible in the future.</p>
+<p>xs4all have blocked the <code>administrator@</code> email address from the aliasses list,
+so this should not be possible in the future.</p>
 
 <p><img src="https://raymii.org/s/inc/img/xs4all1.png" alt=alias></p>
 
 <h3>How does SSL validation work</h3>
 
-<p>When you request an SSL certificate for a domain you need to proof that you are the owner of that domain. There are multiple ways to do that, as there are multiple types of certificates. These types of certificates are technically the same, the validation behind it is what is different. </p>
+<p>When you request an SSL certificate for a domain you need to proof that you are
+the owner of that domain. There are multiple ways to do that, as there are
+multiple types of certificates. These types of certificates are technically the
+same, the validation behind it is what is different. </p>
 
-<p>The CA/Browser forum, the standards body for Certificate Authorities has set <a href="https://www.cabforum.org/wp-content/uploads/Baseline_Requirements_V1.pdf">baseline requirements</a> which describe exactly how these validations should occur. The certificate provider, Comodo in this case, was not at fault here. They have followed the procedure, the ISP was at fault because they allowed that email alias.</p>
+<p>The CA/Browser forum, the standards body for Certificate Authorities has set
+<a href="https://www.cabforum.org/wp-content/uploads/Baseline_Requirements_V1.pdf">baseline
+requirements</a>
+which describe exactly how these validations should occur. The certificate
+provider, Comodo in this case, was not at fault here. They have followed the
+procedure, the ISP was at fault because they allowed that email alias.</p>
 
 <h4>Domain Validation certificates</h4>
 
-<p>A domain validation, or DV certificate is the simplest form of validation possible. The CA checks the right of the applicant to use a specific domain name. No company identity information is vetted.</p>
+<p>A domain validation, or DV certificate is the simplest form of validation
+possible. The CA checks the right of the applicant to use a specific domain
+name. No company identity information is vetted.</p>
 
-<p>Chapter 3.2.2 (Authentication of Organization and Domain Identity&quot;, respectively &quot;3.2.2.4. Authorization by Domain Name Registrant&quot;) of the <a href="https://cabforum.org/baseline-requirements-documents/">CAB requirements</a> states the following for this verification:</p>
+<p>Chapter 3.2.2 (Authentication of Organization and Domain Identity&quot;, respectively
+&quot;3.2.2.4. Authorization by Domain Name Registrant&quot;) of the <a href="https://cabforum.org/baseline-requirements-documents/">CAB
+requirements</a> states the
+following for this verification:</p>
 
-<p>If the CA uses the Internet mail system to confirm that the Applicant has authorization from the Domain Name Registrant to obtain a Certificate for the requested Fully-Qualified Domain Name, the CA SHALL use a mail system
-address formed in one of the following ways:</p>
+<p>If the CA uses the Internet mail system to confirm that the Applicant has
+authorization from the Domain Name Registrant to obtain a Certificate for the
+requested Fully-Qualified Domain Name, the CA SHALL use a mail system address
+formed in one of the following ways:</p>
 
 <ol>
 <li>Supplied by the Domain Name Registrar;</li>
@@ -122,45 +154,88 @@ address formed in one of the following ways:</p>
 &#39;postmaster&#39;; and b. Domain Name - Formed by pruning zero or more components from the Registered Domain Name or the requested Fully-Qualified Domain Name. </li>
 </ol>
 
-<p>So, if you are able to receive an email on one of those addresses you can provide domain ownership to the certificate provider.</p>
+<p>So, if you are able to receive an email on one of those addresses you can
+provide domain ownership to the certificate provider.</p>
 
 <h4>Organization Validation</h4>
 
-<p>This is one level up from the DV certificate, the Organization Validation, or OV certificate. The CA checks the right of the applicant to use a specific domain name PLUS it conducts some vetting of the organization. This means that the WHOIS company information is compared to the local country&#39;s business registry. For example, in The Netherlands that is the <a href="http://kvk.nl/">Kamer van Koophandel</a> and in the UK that is the <a href="https://www.gov.uk/government/organisations/companies-house">Companies House</a>.</p>
+<p>This is one level up from the DV certificate, the Organization Validation, or OV
+certificate. The CA checks the right of the applicant to use a specific domain
+name PLUS it conducts some vetting of the organization. This means that the
+WHOIS company information is compared to the local country&#39;s business registry.
+For example, in The Netherlands that is the <a href="http://kvk.nl/">Kamer van
+Koophandel</a> and in the UK that is the <a href="https://www.gov.uk/government/organisations/companies-house">Companies
+House</a>.</p>
 
-<p>The same email verification is done as with a DV certificate, plus your company&#39;s WHOIS address and company number is compared to data in such a registry. </p>
+<p>The same email verification is done as with a DV certificate, plus your
+company&#39;s WHOIS address and company number is compared to data in such a
+registry. </p>
 
-<p>The false certificate would not have been issues if I have tried to get the OV variant of this certificate. If I would have given the correct company data instead of my personal data during the application it would have been.</p>
+<p>The false certificate would not have been issues if I have tried to get the OV
+variant of this certificate. If I would have given the correct company data
+instead of my personal data during the application it would have been.</p>
 
 <h4>Extended validation</h4>
 
-<p>An Extended Validation, or EV certificate is a certificate where the browser displays a green bar with the company name. This certificate has the highest level of validation behind it.</p>
+<p>An Extended Validation, or EV certificate is a certificate where the browser
+displays a green bar with the company name. This certificate has the highest
+level of validation behind it.</p>
 
-<p>All the checks for a DV and an OV certificate are performed. The company data is checked in a local registry. Then the CA calls up the phone number in the company registry, and gives you a special code. The email you received earlier contains a link where you need to enter the code, and if that is all correct the certificate will be issues.</p>
+<p>All the checks for a DV and an OV certificate are performed. The company data is
+checked in a local registry. Then the CA calls up the phone number in the
+company registry, and gives you a special code. The email you received earlier
+contains a link where you need to enter the code, and if that is all correct the
+certificate will be issues.</p>
 
-<p>This extra step of calling the applicant is the only extra check they do, and even that is automated. If you have a PBX or a call-menu you&#39;re out of luck because their calling system fails then. Good luck manually contacting them and getting the number changed...</p>
+<p>This extra step of calling the applicant is the only extra check they do, and
+even that is automated. If you have a PBX or a call-menu you&#39;re out of luck
+because their calling system fails then. Good luck manually contacting them and
+getting the number changed...</p>
 
 <h3>How can we prevent this</h3>
 
-<p>There are a lot of certificate authorities, and by a lot I mean hundreds. They are all trusted by your browser, and all can issue certificates for any given domain. </p>
+<p>There are a lot of certificate authorities, and by a lot I mean hundreds. They
+are all trusted by your browser, and all can issue certificates for any given
+domain. </p>
 
-<p>This ranges from large companies like Comodo, Thawte or Verisign, but also countries. For example, The Netherlands have a ceritifcate tree (<a href="https://cert.pkioverheid.nl/">Staat der Nederlanden Root CA</a>) which is trusted by all major platforms. China, via the <a href="https://www.hongkongpost.gov.hk/product/ecert/apply/certapply.html">Hong Kong Post Office</a> as well.</p>
+<p>This ranges from large companies like Comodo, Thawte or Verisign, but also
+countries. For example, The Netherlands have a ceritifcate tree (<a href="https://cert.pkioverheid.nl/">Staat der
+Nederlanden Root CA</a>) which is trusted by all
+major platforms. China, via the <a href="https://www.hongkongpost.gov.hk/product/ecert/apply/certapply.html">Hong Kong Post
+Office</a> as
+well.</p>
 
-<p>Any CA can issue a certificate for ANY domain. That is a problem as well as a benefit. A benefit because it allows you to choose the CA. It also allows you to have multiple certificates, a backup certificate from another CA for example.</p>
+<p>Any CA can issue a certificate for ANY domain. That is a problem as well as a
+benefit. A benefit because it allows you to choose the CA. It also allows you to
+have multiple certificates, a backup certificate from another CA for example.</p>
 
-<p>It is a problem because, if unnoticed, the Hong Kong Post office can issue certificates for American companies and with those intercept people&#39;s communication when they are in China, without them noticing.</p>
+<p>It is a problem because, if unnoticed, the Hong Kong Post office can issue
+certificates for American companies and with those intercept people&#39;s
+communication when they are in China, without them noticing.</p>
 
-<p>We&#39;ve had issues with this system, Diginotar was hacked, Turktrust has issued wrong certificates, TrustWave issued a CA (subordinate) certificate to one of it&#39;s customers instead of a regular certificate, Malasyan DigiCert Sdn. Bhd issues weak certificates and even Microsofts <a href="http://arstechnica.com/security/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/">live.fi</a> domain was not safe.</p>
+<p>We&#39;ve had issues with this system, Diginotar was hacked, Turktrust has issued
+wrong certificates, TrustWave issued a CA (subordinate) certificate to one of
+it&#39;s customers instead of a regular certificate, Malasyan DigiCert Sdn. Bhd
+issues weak certificates and even Microsofts
+<a href="http://arstechnica.com/security/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/">live.fi</a>
+domain was not safe.</p>
 
-<p>There are a few ways to mitigate this problem. Certificate Transparency, Public Key Pinning (HPKP) and DNS based authentication of Named Entities (DANE).</p>
+<p>There are a few ways to mitigate this problem. Certificate Transparency, Public
+Key Pinning (HPKP) and DNS based authentication of Named Entities (DANE).</p>
 
-<p>A combination of these solutions would have prevented this from happening. xs4all did set up at least one of these things (TLSA), if all browsers would support this then my certificate would be unusable. I&#39;ll cover a few of these measurements here below.</p>
+<p>A combination of these solutions would have prevented this from happening.
+xs4all did set up at least one of these things (TLSA), if all browsers would
+support this then my certificate would be unusable. I&#39;ll cover a few of these
+measurements here below.</p>
 
 <h3>Certificate Transparency</h3>
 
 <p><img src="https://raymii.org/s/inc/img/ct_intro_system.png" alt=ct></p>
 
-<p>The <a href="http://www.certificate-transparency.org">Certificate Transparency</a> project aims to remedy these certificate-based threats by making the issuance and existence of SSL certificates open to scrutiny by domain owners, CAs, and domain users. Specifically, Certificate Transparency has three main goals:</p>
+<p>The <a href="http://www.certificate-transparency.org">Certificate Transparency</a> project
+aims to remedy these certificate-based threats by making the issuance and
+existence of SSL certificates open to scrutiny by domain owners, CAs, and domain
+users. Specifically, Certificate Transparency has three main goals:</p>
 
 <ol>
 <li>Make it impossible (or at least very difficult) for a CA to issue a SSL certificate for a domain without the certificate being visible to the owner of that domain.</li>
@@ -168,31 +243,59 @@ address formed in one of the following ways:</p>
 <li>Protect users (as much as possible) from being duped by certificates that were mistakenly or maliciously issued.</li>
 </ol>
 
-<p>They do this with Certificate Logs, Auditors and Monitors. It would provide faster detection of mis-issued certificates and rouge CA&#39;s, plus faster mitigation of issues like these. It is a very interesting project, read the website to find out more about it. It does requires adoption by the CA&#39;s.</p>
+<p>They do this with Certificate Logs, Auditors and Monitors. It would provide
+faster detection of mis-issued certificates and rouge CA&#39;s, plus faster
+mitigation of issues like these. It is a very interesting project, read the
+website to find out more about it. It does requires adoption by the CA&#39;s.</p>
 
 <h4>HTTP Public Key Pinning (HPKP)</h4>
 
-<p>HTTP Public Key Pinning means that a certificate chain must include a whitelisted public key. It ensures only whitelisted Certificate Authorities (CA) can sign certificates for *.example.com, and not any CA in your browser store.</p>
+<p>HTTP Public Key Pinning means that a certificate chain must include a
+whitelisted public key. It ensures only whitelisted Certificate Authorities (CA)
+can sign certificates for *.example.com, and not any CA in your browser store.</p>
 
-<p>HPKP allows a website owner to specify public keys in the website headers. These public keys must be in the certificate chain, otherwise the validation will fail.</p>
+<p>HPKP allows a website owner to specify public keys in the website headers. These
+public keys must be in the certificate chain, otherwise the validation will
+fail.</p>
 
-<p>It allows you to include the public key of your certificate and a backup certificate. Browsers save these headers, if you&#39;ve visited a website (with HPKP) once and later on the certificate is changed maliciously, your browser will fail to connect to the website.</p>
+<p>It allows you to include the public key of your certificate and a backup
+certificate. Browsers save these headers, if you&#39;ve visited a website (with
+HPKP) once and later on the certificate is changed maliciously, your browser
+will fail to connect to the website.</p>
 
-<p>An example might be your bank, which always have their certificate from CA Company A. With the current certificate system, CA Company B, CA Company C and the NSA CA can all create a certificate for your bank, which your browser will hapily accept because those companies are also trusted root CA&#39;s.</p>
+<p>An example might be your bank, which always have their certificate from CA
+Company A. With the current certificate system, CA Company B, CA Company C and
+the NSA CA can all create a certificate for your bank, which your browser will
+hapily accept because those companies are also trusted root CA&#39;s.</p>
 
-<p>If the bank implements HPKP and pin&#39;s their first intermidiate certificate (from CA Company A), browsers will not accept certificates from CA Company B and CA Company C, even if they have a valid trust path. HPKP also allows your browser to report back the failure to the bank, so that they know they are under attack.</p>
+<p>If the bank implements HPKP and pin&#39;s their first intermidiate certificate (from
+CA Company A), browsers will not accept certificates from CA Company B and CA
+Company C, even if they have a valid trust path. HPKP also allows your browser
+to report back the failure to the bank, so that they know they are under attack.</p>
 
-<p>I&#39;ve written <a href="https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html">an article about HPKP</a> which explains this in more detail and provides configuration examples for Apache, NGINX and Lighttpd.</p>
+<p>I&#39;ve written <a href="https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html">an article about
+HPKP</a>
+which explains this in more detail and provides configuration examples for
+Apache, NGINX and Lighttpd.</p>
 
 <h4>DNS based authentication of Named Entities (DANE)</h4>
 
-<p><a href="https://tools.ietf.org/html/rfc6698">DANE</a> enables the administrator of a domain name to certify the keys used in that domain&#39;s TLS clients or servers by storing them in the Domain Name System (DNS). DANE needs DNS records to be signed with DNSSEC. </p>
+<p><a href="https://tools.ietf.org/html/rfc6698">DANE</a> enables the administrator of a
+[domain name to certify the keys used in that domain&#39;s TLS clients or servers by
+[storing them in the Domain Name System (DNS). DANE needs DNS records to be
+[signed with DNSSEC. </p>
 
-<p>The difference with HTTP Public Key Pinning is that this data is in a DNS record, not in the HTTP headers. For HPKP to work you need to have visited the website at least once, DANE does not have this requirement because a DNS lookup happens before the HTTP connection.</p>
+<p>The difference with HTTP Public Key Pinning is that this data is in a DNS
+record, not in the HTTP headers. For HPKP to work you need to have visited the
+website at least once, DANE does not have this requirement because a DNS lookup
+happens before the HTTP connection.</p>
 
-<p>None of the major browsers sadly support DANE validation. There <a href="https://www.dnssec-validator.cz/">is a browser extension</a> available which does support this.</p>
+<p>None of the major browsers sadly support DANE validation. There <a href="https://www.dnssec-validator.cz/">is a browser
+extension</a> available which does support this.</p>
 
-<p>My ISP, xs4all, does have DANE record set up. If all the major browsers supported this, my attempt to set up an MITM attack would fail and the certificate would be worthless.</p>
+<p>My ISP, xs4all, does have DANE record set up. If all the major browsers
+supported this, my attempt to set up an MITM attack would fail and the
+certificate would be worthless.</p>
 
 <p>This is the TLSA record for xs4all.nl, port 443:</p>
 
@@ -202,7 +305,9 @@ _443._tcp.www.xs4all.nl. 21599 IN TLSA 1 0 1 (
                                 AFD8E17D548AEDEA3F13 )
 </code></pre>
 
-<p>If we take the current, valid, <a href="https://tls.so/?host=xs4all.nl&amp;port=&amp;ciphersuites=1&amp;csr=&amp;s=">public key</a> for xs4all.nl we can validate this. </p>
+<p>If we take the current, valid, <a href="https://tls.so/?host=xs4all.nl&amp;port=&amp;ciphersuites=1&amp;csr=&amp;s=">public
+key</a> for xs4all.nl
+we can validate this. </p>
 
 <p>First convert the PEM file (<code>xs4all.pem</code>) to DER.</p>
 
@@ -215,7 +320,8 @@ _443._tcp.www.xs4all.nl. 21599 IN TLSA 1 0 1 (
 SHA256(xs4all.der)= 223a6659d06e9a81390938659e9ef241579e82b820d6afd8e17d548aedea3f13
 </code></pre>
 
-<p>This is the same as the TLSA record above. If we take (valid) the certificate I got it gives us a different SHA 256 hash:</p>
+<p>This is the same as the TLSA record above. If we take (valid) the certificate I
+got it gives us a different SHA 256 hash:</p>
 
 <pre><code>$ openssl x509 -inform PEM -in xs4all.nl.pem -outform DER | openssl sha256                                                                    
 (stdin)= 83618f932d6947744d5ecca299d4b2820c01483947bd16be814e683f7436be24  
@@ -223,7 +329,11 @@ SHA256(xs4all.der)= 223a6659d06e9a81390938659e9ef241579e82b820d6afd8e17d548aedea
 
 <p>That would not be valid according to the TLSA record.</p>
 
-<p>DANE allows a website owner to set up a special <code>TLSA</code> DNS Record. This DNS record holds what is called Certificate Association data. In conjunction with DNSSEC signatures, this will permit better and more secure ways for applications to authenticate certificates. The record can be used in 4 different ways (defined by a &quot;Usage&quot; field):</p>
+<p>DANE allows a website owner to set up a special <code>TLSA</code> DNS Record. This DNS
+record holds what is called Certificate Association data. In conjunction with
+DNSSEC signatures, this will permit better and more secure ways for applications
+to authenticate certificates. The record can be used in 4 different ways
+(defined by a &quot;Usage&quot; field):</p>
 
 <ul>
 <li>(Usage 0) Specify authorized public CAs - this can prevent certificates signed by CAs that you didn&#39;t explicitly specify from being trusted by client software.</li>
@@ -232,13 +342,17 @@ SHA256(xs4all.der)= 223a6659d06e9a81390938659e9ef241579e82b820d6afd8e17d548aedea
 <li>(Usage 3) Directly specify the server certificate in the DNS - no certificate chain from a public CA needs to be used. This is called a &quot;Domain issued certificate&quot;</li>
 </ul>
 
-<p>If you&#39;re looking for a way to not use public CAs, Usage 3 is probably the one for you. That allows you to just create a self signed certificate and put the hash in a TLSA record, not requiring a certificate from a trusted certificate authority.</p>
+<p>If you&#39;re looking for a way to not use public CAs, Usage 3 is probably the one
+for you. That allows you to just create a self signed certificate and put the
+hash in a TLSA record, not requiring a certificate from a trusted certificate
+authority.</p>
 
 <p><a href="https://www.huque.com/bin/gen_tlsa">This webpage</a> has a generator if you want to set up your own certificate TLSA record.</p>
 
 <h3>Proof</h3>
 
-<p>A few screenshots and a nice article don&#39;t make a whole. Here is the textual output of the certificate:</p>
+<p>A few screenshots and a nice article don&#39;t make a whole. Here is the textual
+output of the certificate:</p>
 
 <pre><code>$ openssl x509 -noout -text -in xs4all.nl.pem 
 Certificate:
@@ -449,7 +563,8 @@ smydcNi4uKoOEPIKiiKbdZvnuxw4T1ub0K+Mv9dkMuJApbHltFh0JVLwJGHg3z1m
 (stdin)= f4ef82e22bed048e5c48b4da5e46afa7
 </code></pre>
 
-<p>We can also use Openssl to validate that this certificate is revoked. First get the CRL URL from the certificate:</p>
+<p>We can also use Openssl to validate that this certificate is revoked. First get
+the CRL URL from the certificate:</p>
 
 <pre><code>$ openssl x509 -noout -text -in xs4all.nl.pem | grep -A 4 &#39;X509v3 CRL Distribution Points&#39;
     X509v3 CRL Distribution Points: 
@@ -468,7 +583,11 @@ smydcNi4uKoOEPIKiiKbdZvnuxw4T1ub0K+Mv9dkMuJApbHltFh0JVLwJGHg3z1m
 <pre><code>$ openssl crl -inform DER -outform PEM -in COMODORSADomainValidationSecureServerCA.crl -out COMODORSADomainValidationSecureServerCA.crl.pem
 </code></pre>
 
-<p>We also need the full certificate chain. In this case it you can get it from <a href="https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/979/108/domain-validation-sha-2">Comodo</a>. I&#39;ve placed it in the <code>COMODORSADomainValidationSecureServerCA.pem</code> file. The <code>openssl verify</code> command needs this concatenated together with the PEM CRL file to be able to do a CRL check. Concatenate the two PEM files:</p>
+<p>We also need the full certificate chain. In this case it you can get it from
+<a href="https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/979/108/domain-validation-sha-2">Comodo</a>.
+I&#39;ve placed it in the <code>COMODORSADomainValidationSecureServerCA.pem</code> file. The
+<code>openssl verify</code> command needs this concatenated together with the PEM CRL file
+to be able to do a CRL check. Concatenate the two PEM files:</p>
 
 <pre><code>$ cat COMODORSADomainValidationSecureServerCA.crl.pem COMODORSADomainValidationSecureServerCA.pem &gt; CA_CRL.pem
 </code></pre>
@@ -486,7 +605,8 @@ error 23 at 0 depth lookup:certificate revoked
 xs4all.nl.pem: OK
 </code></pre>
 
-<p>If you want to this manually, you can try it like more verbosely. First get the CRL from the certificate:</p>
+<p>If you want to this manually, you can try it like more verbosely. First get the
+CRL from the certificate:</p>
 
 <pre><code>$ openssl x509 -noout -text -in xs4all.nl.pem | grep -A 4 &#39;X509v3 CRL Distribution Points&#39;
     X509v3 CRL Distribution Points: 

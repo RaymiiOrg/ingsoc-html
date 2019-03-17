@@ -807,35 +807,11 @@
             </item>
     
             <item>
-                <title>Recap of week 04, 2016</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_04_2016.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_04_2016.txt</guid>
-                <description>Recap of week 04 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 30 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 03, 2016</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_03_2016.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_03_2016.txt</guid>
-                <description>Recap of week 03 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 23 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Ansible playbook for GoAccess Log Analyzer</title> 
                 <link>gopher://raymii.org/0/Ansible_role_for_GoAccess_Log_Analyzer.txt</link> 
                 <guid>gopher://raymii.org/0/Ansible_role_for_GoAccess_Log_Analyzer.txt</guid>
                 <description>This is a small Ansible playbook to deploy the GoAccess log analyzer on Debian based systems. Next to Piwik, I use goaccess myself to get better insights in who and what visits my servers. This role is ment to be included in your webserver playbooks.</description> 
                 <pubDate>Sun, 17 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 02, 2016</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_02_2016.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_02_2016.txt</guid>
-                <description>Recap of week 02 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 16 Jan 2016 00:00:00 GMT</pubDate>
             </item>
     
             <item>
@@ -847,14 +823,6 @@
             </item>
     
             <item>
-                <title>Recap of week 01, 2016</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_01_2016.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_01_2016.txt</guid>
-                <description>Recap of week 01 of 2016, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sun, 10 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Microsoft Office 2013 and 2010 on Linux</title> 
                 <link>gopher://raymii.org/0/Office_2013_and_2010_on_Linux.txt</link> 
                 <guid>gopher://raymii.org/0/Office_2013_and_2010_on_Linux.txt</guid>
@@ -863,27 +831,11 @@
             </item>
     
             <item>
-                <title>Recap of week 53, 2015</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_53_2015.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_53_2015.txt</guid>
-                <description>Recap of week 53 of 2015, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Recursively find all [installed] package dependencies</title> 
                 <link>gopher://raymii.org/0/Recursively_find_all_installed_package_dependencies.txt</link> 
                 <guid>gopher://raymii.org/0/Recursively_find_all_installed_package_dependencies.txt</guid>
                 <description>This small script shows you all packages [installed] that are a dependency from a package, and the dependencies of those packages. I installed the build-essential package, but apt-get remove-ing that package doens't remove the development tools. So I was wondering what packages were installed, including those dependencies, to remove the ones I didn't want. This small script shows you all packages that are dependencies of a package, and repeats that for those packages.</description> 
                 <pubDate>Thu, 31 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 52, 2015</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_52_2015.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_52_2015.txt</guid>
-                <description>Recap of week 52, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 26 Dec 2015 00:00:00 GMT</pubDate>
             </item>
     
             <item>
@@ -903,27 +855,11 @@
             </item>
     
             <item>
-                <title>Recap of week 51, 2015</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_51_2015.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_51_2015.txt</guid>
-                <description>Recap of week 51, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 19 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Forward or save outgoing email with Exim</title> 
                 <link>gopher://raymii.org/0/Forward_or_save_all_outgoing_email_with_exim.txt</link> 
                 <guid>gopher://raymii.org/0/Forward_or_save_all_outgoing_email_with_exim.txt</guid>
                 <description>I have a specific server where requirements state that all outgoing email should be saved for archival and auditing purposes. The server uses the Exim mail transfer agent, which makes this easy to configure. The outgoing email is also forwarded to an off-site mailbox, both for backup and easy consulting. This captures all outgoing email, sent by PHP scripts or cronjobs, or user accounts that send via exim. This tutorial also shows how to forward or save all outgoing email for a specific domain.</description> 
                 <pubDate>Wed, 16 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 50, 2015</title> 
-                <link>gopher://raymii.org/0/Recap_of_week_50_2015.txt</link> 
-                <guid>gopher://raymii.org/0/Recap_of_week_50_2015.txt</guid>
-                <description>Recap of week 50 of 2015, covering open source and sysadmin related stuff.</description> 
-                <pubDate>Sat, 12 Dec 2015 00:00:00 GMT</pubDate>
             </item>
     
             <item>
@@ -2511,18 +2447,18 @@
             </item>
     
             <item>
-                <title>CIDR Cheatsheet</title> 
-                <link>gopher://raymii.org/0/CIDR-Cheatsheet.txt</link> 
-                <guid>gopher://raymii.org/0/CIDR-Cheatsheet.txt</guid>
-                <description>This is a handy CIDR cheatsheet.</description> 
-                <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD</title> 
                 <link>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</link> 
                 <guid>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</guid>
                 <description>This script will help you resize the OS X Mountain Lion InstallESD.dmg file to fit on a single layer DVD. The normal .dmg file will give an error that it is to big for a single layer DVD. The install works fine afterwards, the .dmg file just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not work because it is a read only dmg image.</description> 
+                <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>CIDR Cheatsheet</title> 
+                <link>gopher://raymii.org/0/CIDR-Cheatsheet.txt</link> 
+                <guid>gopher://raymii.org/0/CIDR-Cheatsheet.txt</guid>
+                <description>This is a handy CIDR cheatsheet.</description> 
                 <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
             </item>
     
@@ -2940,14 +2876,6 @@
                 <guid>gopher://raymii.org/0/Vim_Cheatsheet.txt</guid>
                 <description>Not available.</description> 
                 <pubDate>Mon, 01 Jan 2007 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>DRAFT (Re)Building a Metro Cab Simulator part 1</title> 
-                <link>gopher://raymii.org/0/Building_a_Metro_Cab_Simulator_part_1.txt</link> 
-                <guid>gopher://raymii.org/0/Building_a_Metro_Cab_Simulator_part_1.txt</guid>
-                <description></description> 
-                <pubDate>Tue, 04 Jul 2006 00:00:00 GMT</pubDate>
             </item>
     
             <item>

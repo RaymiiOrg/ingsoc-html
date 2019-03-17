@@ -9,11 +9,24 @@ Format   : 	Markdown/HTML
 
 
 
-Openssh allows you to configure parameters like username, port, proxycommand, key and more in the ~/.ssh/config file. If you have many servers this file can become cluttered and maintaining it can become a not so nice task. This simple guide shows you how you can use a conf.d directory with seperate smaller files which gets converted to the big config file by Ansible.
+Openssh allows you to configure parameters like username, port, proxycommand,
+key and more in the ~/.ssh/config file. If you have many servers this file can
+become cluttered and maintaining it can become a not so nice task. This simple
+guide shows you how you can use a conf.d directory with seperate smaller files
+which gets converted to the big config file by Ansible. 
 
-I need to manage a lot of linux servers. With a lot I mean almost a thousand servers. Some of those servers require VPN, some of those servers are clusters and some of those servers require a seperate key, username, port or configuration. I don't like the big `~/.ssh/config` file which, in my case, is extremely large.
 
-I much rather prefer the `conf.d` type structure with a lot of small files. OpenSSH does not support this, however, Ansible has the [assemble](http://docs.ansible.com/assemble_module.html) module which, given a set of files or a folder, assembles a configuration file based on all the given files.
+I need to manage a lot of linux servers. With a lot I mean almost a thousand
+servers. Some of those servers require VPN, some of those servers are clusters
+and some of those servers require a seperate key, username, port or
+configuration. I don't like the big `~/.ssh/config` file which, in my case, is
+extremely large.
+
+I much rather prefer the `conf.d` type structure with a lot of small files.
+OpenSSH does not support this, however, Ansible has the
+[assemble](http://docs.ansible.com/assemble_module.html) module which, given a
+set of files or a folder, assembles a configuration file based on all the given
+files.
 
 Using this Ansible module together with a `local connection` we can assemble the configuration file on our own machine.
 
@@ -83,7 +96,8 @@ The `clientX` files contain specific client configuration:
       Port 22
 
 
-To read more about the ssh client config file, see the manual page: [http://linux.die.net/man/5/ssh_config](http://linux.die.net/man/5/ssh_config)
+To read more about the ssh client config file, see the manual page:
+[http://linux.die.net/man/5/ssh_config](http://linux.die.net/man/5/ssh_config)
 
 ---
 

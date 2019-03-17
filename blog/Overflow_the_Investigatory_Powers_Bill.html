@@ -76,25 +76,60 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/ipbill.png" alt=ipbill></p>
 
-<p>I read an article on <a href="http://www.theverge.com/2016/11/23/13718768/uk-surveillance-laws-explained-investigatory-powers-bill">The Register</a> (<a href="https://lwn.net/Articles/707227/rss">via</a>) regarding the Investigatory Powers Bill. The part were ISP&#39;s are forced to save their customers browsing history for a year is the most horryfing part, just as that whole bill. Let&#39;s hope the political process and organizations like the Open Rights Group and the EFF have enough lobbying power to change people&#39;s minds.  If that fails, then we can all try to overflow the logging. Just as some people put keywords in their mail signatures to trigger automatic filters and generate noise, we should all generate as much data and noise as possible. This way the information they do gather will not be usefull, it will take too much time, storage and effort to process it and thus the project will fail. 2 years ago I wrote a small Python script which browser the web for you, all the time. Running that on one or two Raspberry Pi&#39;s or other small low power computers 24/7 will generate a lot of noise in the logging and filtering.</p>
+<p>I read an article on <a href="http://www.theverge.com/2016/11/23/13718768/uk-surveillance-laws-explained-investigatory-powers-bill">The Register</a>
+(<a href="https://lwn.net/Articles/707227/rss">via</a>) regarding the Investigatory Powers
+Bill. The part were ISP&#39;s are forced to save their customers browsing history
+for a year is the most horryfing part, just as that whole bill. Let&#39;s hope the
+political process and organizations like the Open Rights Group and the EFF have
+enough lobbying power to change people&#39;s minds. If that fails, then we can all
+try to overflow the logging. Just as some people put keywords in their mail
+signatures to trigger automatic filters and generate noise, we should all
+generate as much data and noise as possible. This way the information they do
+gather will not be usefull, it will take too much time, storage and effort to
+process it and thus the project will fail. 2 years ago I wrote a small Python
+script which browser the web for you, all the time. Running that on one or two
+Raspberry Pi&#39;s or other small low power computers 24/7 will generate a lot of
+noise in the logging and filtering.</p>
 
 <h3>Background</h3>
 
-<p>The article on The Register is very well written and has a lot of information on the bill. I want to quickly recap why mass Surveillance is a bad idea, both in practice as well as the idea itself.</p>
+<p>The article on The Register is very well written and has a lot of information on
+the bill. I want to quickly recap why mass Surveillance is a bad idea, both in
+practice as well as the idea itself.</p>
 
-<p>The <a href="https://www.eff.org/deeplinks/2013/11/busting-eight-common-excuses-nsa-surveillance">EFF</a> has a great article on the statement &#39;I have nothing to hide, so why should I worry?&#39;. They also have an article <a href="https://www.eff.org/deeplinks/2014/06/top-5-claims-defenders-nsa-have-stop-making-remain-credible">which busts a counter arguments</a> regarding mass surveillance.</p>
+<p>The
+<a href="https://www.eff.org/deeplinks/2013/11/busting-eight-common-excuses-nsa-surveillance">EFF</a>
+has a great article on the statement &#39;I have nothing to hide, so why should I
+worry?&#39;. They also have an article <a href="https://www.eff.org/deeplinks/2014/06/top-5-claims-defenders-nsa-have-stop-making-remain-credible">which busts a counter arguments</a>
+regarding mass surveillance.</p>
 
-<p>The Dutch organization Bits of Freedom has a few good articles <a href="https://www.bof.nl/2011/04/21/european-commission-top-10-misleading-statements-on-data-retention/">on European Data retention laws</a>, on the <a href="https://www.bof.nl/2015/04/30/during-world-war-ii-we-did-have-something-to-hide/">Amsterdam Municipal Register during WWII</a> (having nothing to hide) and <a href="https://www.bof.nl/2015/06/26/demystifying-the-algorithm-who-designs-your-life/">more examples</a> of big data usage. Bruce Schneier also <a href="https://www.schneier.com/blog/archives/2014/05/espionage_vs_su.html">has written on</a> espionage vs. mass surveilance. The <a href="https://www.bof.nl/category/english/">blog</a> of Bits of Freedom (english) contains a lot of great articles.</p>
+<p>The Dutch organization Bits of Freedom has a few good articles <a href="https://www.bof.nl/2011/04/21/european-commission-top-10-misleading-statements-on-data-retention/">on European Data retention laws</a>, 
+on the <a href="https://www.bof.nl/2015/04/30/during-world-war-ii-we-did-have-something-to-hide/">Amsterdam Municipal Register during WWII</a> 
+(having nothing to hide) and <a href="https://www.bof.nl/2015/06/26/demystifying-the-algorithm-who-designs-your-life/">more examples</a> of big data usage. 
+Bruce Schneier also <a href="https://www.schneier.com/blog/archives/2014/05/espionage_vs_su.html">has written on</a> espionage vs. mass surveilance. 
+The <a href="https://www.bof.nl/category/english/">blog</a> of Bits of Freedom (english) contains a lot of great articles.</p>
 
-<p>I myself try not to get involved with the political side of issues like this, since other people, like the EFF, BoF and  the ORG are much better on that front. I do however am technical enough to try to work against this bill. </p>
+<p>I myself try not to get involved with the political side of issues like this,
+since other people, like the EFF, BoF and  the ORG are much better on that
+front. I do however am technical enough to try to work against this bill. </p>
 
 <h3>Generating Noise</h3>
 
-<p>Just as in the early days where people put the word Bomb in their email signature to trigger the filters and generate noise, we use a script to simulate real browsing 24/7. If you have a Raspberry Pi or other small, low power linux computer, it&#39;s perfect for this purpose.</p>
+<p>Just as in the early days where people put the word Bomb in their email
+signature to trigger the filters and generate noise, we use a script to simulate
+real browsing 24/7. If you have a Raspberry Pi or other small, low power linux
+computer, it&#39;s perfect for this purpose.</p>
 
-<p>3 years ago I <a href="https://github.com/RaymiiOrg/browsa">wrote a script, browsa.py</a>. It is a small python script which uses BeautifulSoup4 to browse websites. It saves all the links and chooses a random link to visit next. If there are no links, on of the previously saved links is selected. There is also a fallback list which includes <code>news.google.com</code> and such. Between every page there is a small delay to simulate a real user and the user agent is set to a Firefox version.</p>
+<p>3 years ago I <a href="https://github.com/RaymiiOrg/browsa">wrote a script, browsa.py</a>.
+It is a small python script which uses BeautifulSoup4 to browse websites. It
+saves all the links and chooses a random link to visit next. If there are no
+links, on of the previously saved links is selected. There is also a fallback
+list which includes <code>news.google.com</code> and such. Between every page there is a
+small delay to simulate a real user and the user agent is set to a Firefox
+version.</p>
 
-<p>Since the URL it chooses is random, you will never know where you end up, thus generating a lot of random data.</p>
+<p>Since the URL it chooses is random, you will never know where you end up, thus
+generating a lot of random data.</p>
 
 <p>Make sure you have Git, Screen and Pip installed</p>
 
@@ -127,13 +162,19 @@ cd browsa
 # Info: URL&#39;s on page: 46
 </code></pre>
 
-<p>Sometimes the script hangs or crashes. You can start up a screen session and run the script for a set amount of time, 5 minutes, then restarting it automatically:</p>
+<p>Sometimes the script hangs or crashes. You can start up a screen session and run
+the script for a set amount of time, 5 minutes, then restarting it
+automatically:</p>
 
 <pre><code>screen
 while true; do timeout 300 python2 ./browsa.py https://news.google.nl; done
 </code></pre>
 
-<p>If you run this 24/7, the logging on you will be so large, it will be very hard to get anything usefull out of it. Plus, if enough people do this, there will be so much useless data that the ISP&#39;s, who have to save it, will complain and demand money from the government for the storage. (Or they will raise their prices to their customers...).</p>
+<p>If you run this 24/7, the logging on you will be so large, it will be very hard
+to get anything usefull out of it. Plus, if enough people do this, there will be
+so much useless data that the ISP&#39;s, who have to save it, will complain and
+demand money from the government for the storage. (Or they will raise their
+prices to their customers...).</p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dns.html" class="link">dns &nbsp;</a><a href="../tags/investigatory-powers-bill.html" class="link">investigatory-powers-bill &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/snoopers-charter.html" class="link">snoopers-charter &nbsp;</a><a href="../tags/spying.html" class="link">spying &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

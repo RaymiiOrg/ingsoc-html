@@ -9,7 +9,18 @@ Format   : 	Markdown/HTML
 
 
 
-The OpenStack dashboard, Horizon, is a great piece of software to manage your OpenStack resources via the web. However, it has, in my opinion, a very big usability issue. The loading dialog that appears after you click a link. It blocks the entire page and all other links. So, whenever I click, I have to wait three to five seconds before I can do anything else. Clicked the wrong menu item? Sucks to be you, here have some loading. Clicked a link and quickly want to open something in a new tab while the page is still loading? Nope, not today. It's not that browsers have had a function to show that a page is loading, no, of course, the loading indication that has been there forever is not good enough. Let's re-invent the wheel and significantly impact the user experience. With two rules in uBlock Origin this loading modal is removed and you can work normally again in Horizon
+The OpenStack dashboard, Horizon, is a great piece of software to manage your
+OpenStack resources via the web. However, it has, in my opinion, a very big
+usability issue. The loading dialog that appears after you click a link. It
+blocks the entire page and all other links. So, whenever I click, I have to wait
+three to five seconds before I can do anything else. Clicked the wrong menu
+item? Sucks to be you, here have some loading. Clicked a link and quickly want
+to open something in a new tab while the page is still loading? Nope, not today.
+It's not that browsers have had a function to show that a page is loading, no,
+of course, the loading indication that has been there forever is not good
+enough. Let's re-invent the wheel and significantly impact the user experience.
+With two rules in uBlock Origin this loading modal is removed and you can work
+normally again in Horizon
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
@@ -18,12 +29,14 @@ Here's a screenshot of the loading dialog:
 <img src="https://raymii.org/s/inc/img/horizon_loading.png">
 
 
-To remove the dialog, install uBlock Origin and open up the preferences. Go to the My List tab, and add the following rules:
+To remove the dialog, install uBlock Origin and open up the preferences. Go to
+the My List tab, and add the following rules:
 
 	your.horizon-url.net##.loading
 	your.horizon-url.net##.modal-backdrop
 
-Put your own domain URL there. If you just want to have the loading dialog, but not the backdrop that blocks everything, leave out the last line.
+Put your own domain URL there. If you just want to have the loading dialog, but
+not the backdrop that blocks everything, leave out the last line.
 
 Afterwards, reload the dashboard and enjoy your enhanched user experience.
 

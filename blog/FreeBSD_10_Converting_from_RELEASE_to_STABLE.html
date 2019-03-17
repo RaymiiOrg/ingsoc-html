@@ -74,17 +74,27 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Because of a <a href="www.freebsd.org/cgi/query-pr.cgi?pr=185876&amp;cat=">bug in  mpd</a> which is fixed in 10-STABLE I wanted to move one of my FreeBSD machines from 10.0-RELEASE to 10.0-STABLE. The process to do so is fairly simple. Basically, you check out the new source code, build the world, build the kernel, install the kernel, install the world, merge some stuff and reboot.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Because of a <a href="www.freebsd.org/cgi/query-pr.cgi?pr=185876&amp;cat=">bug in  mpd</a> which is fixed in 10-STABLE I wanted to move one
+of my FreeBSD machines from 10.0-RELEASE to 10.0-STABLE. The process to do so is
+fairly simple. Basically, you check out the new source code, build the world,
+build the kernel, install the kernel, install the world, merge some stuff and
+reboot.</p>
 
 <p>Make sure you have a backup of important stuff on the system. </p>
 
 <h3>Stable?</h3>
 
-<p>The name &quot;-STABLE&quot; is frequently misunderstood. It does not mean solid or steady. -STABLE means that while code can change, the ABI (Application Binary Interface) will remain stable and not change. Programs compiled to run on FreeBSD 9.0-RELEASE, or 9.1-RELEASE, or 9.2-RELEASE will continue to work on FreeBSD 9-STABLE. Effectively, -STABLE is the latest version of FreeBSD you can get without breaking installed software. <a href="http://www.wonkity.com/%7Ewblock/docs/html/stable.html">[source]</a></p>
+<p>The name &quot;-STABLE&quot; is frequently misunderstood. It does not mean solid or
+steady. -STABLE means that while code can change, the ABI (Application Binary
+Interface) will remain stable and not change. Programs compiled to run on
+FreeBSD 9.0-RELEASE, or 9.1-RELEASE, or 9.2-RELEASE will continue to work on
+FreeBSD 9-STABLE. Effectively, -STABLE is the latest version of FreeBSD you can
+get without breaking installed software. <a href="http://www.wonkity.com/%7Ewblock/docs/html/stable.html">[source]</a></p>
 
 <h3>Procedure</h3>
 
-<p>Move the current source code to a backup folder to be sure to get only -STABLE code:</p>
+<p>Move the current source code to a backup folder to be sure to get only -STABLE
+code:</p>
 
 <pre><code>mv /usr/src /usr/src-RELEASE
 </code></pre>
@@ -94,7 +104,8 @@
 <pre><code>mv /usr/ports /usr/ports-RELEASE
 </code></pre>
 
-<p>When I did not moved the <code>/usr/src</code> folder and continued this article, everytime I would be back in 10.0-RELEASE...</p>
+<p>When I did not moved the <code>/usr/src</code> folder and continued this article, everytime
+I would be back in 10.0-RELEASE...</p>
 
 <p>Check out the STABLE source code:</p>
 
@@ -116,7 +127,8 @@
 <pre><code>make buildworld -j4
 </code></pre>
 
-<p>The <code>-j 4</code> part means that it should run 4 jobs at once. I have a quad core CPU so all the cores will be used.</p>
+<p>The <code>-j 4</code> part means that it should run 4 jobs at once. I have a quad core CPU
+so all the cores will be used.</p>
 
 <p>Build the kernel:</p>
 
@@ -173,7 +185,8 @@ make: stopped in /usr/src
 *** /var/tmp/temproot is empty, deleting
 </code></pre>
 
-<p>I already am on FreeBSD 10, but this box is updated from 8 to 9 to 10, so maybe that didn&#39;t work out quite well. Installing unbound via pkg did work:</p>
+<p>I already am on FreeBSD 10, but this box is updated from 8 to 9 to 10, so maybe
+that didn&#39;t work out quite well. Installing unbound via pkg did work:</p>
 
 <pre><code>pkg install unbound
 </code></pre>
@@ -241,7 +254,8 @@ of a specific library.
 &gt;&gt;&gt; Old libraries removed
 </code></pre>
 
-<p>Note that freebsd-update does not work with the STABLE branch. Therefore this process is required...</p>
+<p>Note that freebsd-update does not work with the STABLE branch. Therefore this
+process is required.</p>
 
 <p>That&#39;s it. Run <code>freebsd-version</code> to see that you are now on stable:</p>
 

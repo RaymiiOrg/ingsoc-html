@@ -39,14 +39,6 @@
             </item>
     
             <item>
-                <title>Recap of week 53, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_53_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_53_2015.html</guid>
-                <description>Recap of week 53 of 2015, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Ansible - Sudo sometimes</title> 
                 <link>https://raymii.org/s/tutorials/Ansible_-_Better_sudo_control.html</link> 
                 <guid>https://raymii.org/s/tutorials/Ansible_-_Better_sudo_control.html</guid>

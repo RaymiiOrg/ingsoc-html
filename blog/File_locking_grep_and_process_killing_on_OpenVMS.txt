@@ -14,7 +14,16 @@ Format   : 	Markdown/HTML
 (You can read all my OpenVMS articles by [clicking the picture above](https://raymii.org/s/tags/openvms.html))
 
 
-On the [DECUS](http://decus.org) OpenVMS system there is no `curl` or `wget` installed. I wanted to download a remote `C` file to play around with the compiler and some simple `Hello World` code, to get a feel of the build system. After a bit of searching around the internet I was not able to find a command like curl or wget to download a remote file. But, the searches led me to the OpenVMS port of curl, which, I hoped, might be able to run on the DECUS system. Just like on a linux system, running the binary under my user account, not install it system wide. This ended up to be another adventure in which I figured out how to trace a locked file to a process, grep the output of a process on OpenVMS and kill a process. I did not get curl to work or compile my code, yet. 
+On the [DECUS](http://decus.org) OpenVMS system there is no `curl` or `wget`
+installed. I wanted to download a remote `C` file to play around with the
+compiler and some simple `Hello World` code, to get a feel of the build system.
+After a bit of searching around the internet I was not able to find a command
+like curl or wget to download a remote file. But, the searches led me to the
+OpenVMS port of curl, which, I hoped, might be able to run on the DECUS system.
+Just like on a linux system, running the binary under my user account, not
+install it system wide. This ended up to be another adventure in which I figured
+out how to trace a locked file to a process, grep the output of a process on
+OpenVMS and kill a process. I did not get curl to work or compile my code, yet. 
 
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
@@ -25,18 +34,30 @@ The `cc` command is installed on the DECUS system:
 	$ CC /VERSION
 	HP C V7.3-010 on OpenVMS Alpha V8.4-2L2
 
-When I get to my C code I will probably play around and write another small article on it here.
+When I get to my C code I will probably play around and write another small
+article on it here.
 
 
-I downloaded the OpenVMS curl version from the [vmsports](https://sourceforge.net/projects/vms-ports/files/?source=raymii.org) project to my computer. This is a project that compiles some software for OpenVMS, like `find`, `python` and the one I was looking for, `curl`.
+I downloaded the OpenVMS curl version from the
+[vmsports](https://sourceforge.net/projects/vms-ports/files/?source=raymii.org)
+project to my computer. This is a project that compiles some software for
+OpenVMS, like `find`, `python` and the one I was looking for, `curl`.
 
-Using an sFTP client (filezilla), I uploaded the file to the DECUS system. You're all probably thinking, why did he not just upload his C code with sFTP? It simply did not occur, yet. When I was typing this article I thought, hmm. But it was too late already, plus, I did learn new stuff in the process. As Bob Ross would say, `We don't make mistakes, just happy little accidents.`
+Using an sFTP client (filezilla), I uploaded the file to the DECUS system.
+You're all probably thinking, why did he not just upload his C code with sFTP?
+It simply did not occur, yet. When I was typing this article I thought, hmm. But
+it was too late already, plus, I did learn new stuff in the process. As Bob Ross
+would say, `We don't make mistakes, just happy little accidents.`
 
-Filezilla however did complain and kept uploading the file. I closed Filezilla and went to check what was wrong via SSH. The file was there, leaving 5 versions. Probably an upload failure. Delete the files and try again.
+Filezilla however did complain and kept uploading the file. I closed Filezilla
+and went to check what was wrong via SSH. The file was there, leaving 5
+versions. Probably an upload failure. Delete the files and try again.
 
 ### -RMS-E-FLK, file currently locked by another user
 
-I found out how to remove files and folders [and wrote an article on that](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html). To remove all versions of a file, using big scary wildcards:
+I found out how to remove files and folders [and wrote an article on
+that](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html). To remove
+all versions of a file, using big scary wildcards:
 
 	$ DELETE vmsports*.*;*
 	%DELETE-W-FILNOTDEL, error deleting DSA3:[DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1
@@ -44,9 +65,12 @@ I found out how to remove files and folders [and wrote an article on that](https
 
 Huh? I was not aware of multiple users or sessions in this account.
 
-That error message refers to the `RMS`. I saw that [here](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html) as well, I might need to look into it some more. 
+That error message refers to the `RMS`. I saw that
+[here](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html) as well, I
+might need to look into it some more. 
 
-I remembered something about locking when reading `HELP` pages earlier. In this case, I tried the following:
+I remembered something about locking when reading `HELP` pages earlier. In this
+case, I tried the following:
 
 	$ SET FILE /UNLOCK VMSPORTS*.*;*
 	%SET-I-NOTLOCKED, DSA3:[DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1 notlocked
@@ -89,11 +113,13 @@ That didn't help. Lets read the `HELP`:
 
 	       %RMS-W-FLK, file currently locked by another user
 
-That explains why it did not work. I suspected that there might be a process which locked my file. 
+That explains why it did not work. I suspected that there might be a process
+which locked my file. 
 
 ### Tracing a process' open files (lsof)
 
-The HPe forums where of help here. First I needed the root disk name, which is in the `DIR` output:
+The HPe forums where of help here. First I needed the root disk name, which is
+in the `DIR` output:
 
 	$ DIR
 
@@ -123,24 +149,37 @@ Using the `SHOW DEV`  command we can list all processes that have files open:
 	<FTP_EXAMPLE>      00011591  [DECUSERVE_USER.EXAMPLE]VMSPORTS-AXPVMS-83-CURL-V0747--1.ZIP;1
 
 
-Except for the huge list of errors, it confirms that the FTP server has locked my file. One of the ways to release that lock is to stop the process. Another way is to reboot the system. The latter being a harsh solution if all else fails.
+Except for the huge list of errors, it confirms that the FTP server has locked
+my file. One of the ways to release that lock is to stop the process. Another
+way is to reboot the system. The latter being a harsh solution if all else
+fails.
 
 ### Search the output of one command for a string (pipe and grep) on OpenVMS
 
-A big list of open files is not really usefull, and I don't want to see all those other users, none of my business. I wanted to filter that list to only show my user. Let's see if I can use a pipe and grep:
+A big list of open files is not really usefull, and I don't want to see all
+those other users, none of my business. I wanted to filter that list to only
+show my user. Let's see if I can use a pipe and grep:
 
 
 	$ SHOW DEV /FILES DSA3: | GREP EXAMPLE
 	%DCL-W-MAXPARM, too many parameters - reenter command with fewer parameters
 	 \|\
 
-Nope, but I do suspect OpenVMS having an excellent solution for this problem. The DCL shell is over 30 years old so someone had to have this problem.
+Nope, but I do suspect OpenVMS having an excellent solution for this problem.
+The DCL shell is over 30 years old so someone had to have this problem.
 
-Browsing around the documentation I found [this](https://web.archive.org/web/20180506143839/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_155.html). It seems that if you want to pipe output of a command, you first need to preface the command with the word `PIPE`, then the command, then the `|` (pipe char), then another process. 
+Browsing around the documentation I found
+[this](https://web.archive.org/web/20180506143839/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_155.html).
+It seems that if you want to pipe output of a command, you first need to preface
+the command with the word `PIPE`, then the command, then the `|` (pipe char),
+then another process. 
 
-There is no `grep` on OpenVMS unless you install it. There however is `SEARCH`. A logical name, just like most of OpenVMS' workings.
+There is no `grep` on OpenVMS unless you install it. There however is `SEARCH`.
+A logical name, just like most of OpenVMS' workings.
 
-The `search` command requires a filename. You can't just pipe output into it directly, you need to tell it that it has to search the output. OpenVMS has the `SYS$OUTPUT` and `SYS$INPUT` files for that when using the `PIPE` command. 
+The `search` command requires a filename. You can't just pipe output into it
+directly, you need to tell it that it has to search the output. OpenVMS has the
+`SYS$OUTPUT` and `SYS$INPUT` files for that when using the `PIPE` command. 
 
 Reading through the documentation:
 
@@ -155,7 +194,12 @@ A few tries later I conjured up this command sequence:
 	<FTP_EXAMPLE>      000111AF  [DECUSERVE_USER.EXAMPLE]FTP_SERVER.LOG;4
 
 
-To show all running processes including their PID's, use the `SHOW SYSTEM` command. Combine that with out `PIPE&SEARCH` shell trick to get all the processes of the current user. Searching the [docs](https://web.archive.org/web/20180506165527/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_248.html) didn't gave me another way or flag to the `SHOW SYSTEM` or `SHOW PROCESS` command to filter out one specific user.
+To show all running processes including their PID's, use the `SHOW SYSTEM`
+command. Combine that with out `PIPE&SEARCH` shell trick to get all the
+processes of the current user. Searching the
+[docs](https://web.archive.org/web/20180506165527/http://h41379.www4.hpe.com/doc/83final/9996/9996pro_248.html)
+didn't gave me another way or flag to the `SHOW SYSTEM` or `SHOW PROCESS`
+command to filter out one specific user.
 
 
 	$ PIPE SHOW SYSTEM | SEARCH SYS$INPUT EXAMPLE
@@ -168,7 +212,8 @@ To show all running processes including their PID's, use the `SHOW SYSTEM` comma
 	000115BE EXAMPLE_27501      CUR   0  4      188   0 00:00:00.04       138    165  S
 	000115BF EXAMPLE_29010      COM      4      185   0 00:00:00.02       128    152  S
 
-It seems that we can try to stop (kill) process `000111AF`. Use the `STOP` command with the `/ID` flag:
+It seems that we can try to stop (kill) process `000111AF`. Use the `STOP`
+command with the `/ID` flag:
 
 	$ STOP /ID=000111AF
 
@@ -186,23 +231,26 @@ The sFTP client showed me this error after failing a few times:
 
 	550 File Write Error: %%SYSTEM-F-EXDISKQUOTA, disk quota exceeded
 
-This is where my adventure ends. Without looking up documentation, because of the logicalness of DCL, the following command showed me that I had exhausted my disk quota:
+This is where my adventure ends. Without looking up documentation, because of
+the logicalness of DCL, the following command showed me that I had exhausted my
+disk quota:
 
 	$ show quota
 	  User [EXAMPLE] has 10000 blocks used, 0 available,
 	  of 10000 authorized and permitted overdraft of 0 blocks on DISK_USER
 
 
-What is a disk block you ask? Again the [documentation](https://web.archive.org/web/20180506170308/http://h41379.www4.hpe.com/faq/vmsfaq_003.html) has all the answers:
+What is a disk block you ask? Again the
+[documentation](https://web.archive.org/web/20180506170308/http://h41379.www4.hpe.com/faq/vmsfaq_003.html)
+has all the answers:
 
 	A disk block is the minimum unit of disk storage allocation in OpenVMS.
 	Under OpenVMS VAX and OpenVMS Alpha, the disk volume block size is consistent, with each block containing 512 bytes, or one-half kilobyte. Each byte is comprised of eight bits. A bit represents the smallest unit of information, typically refered to as a one or a zero.
 	[...]
 	The number of bytes in a file can be determined by multiplying the number of blocks allocated for the file times the number of bytes in a block. For example: to convert OpenVMS disk blocks to (base two) kilobytes (KB; 1024 bytes), simply divide by two. To convert blocks to (base two) megabytes, divide by 2048. Blocks to (base two) gigabytes (GB), divide by 2097152. 
 
-
-
-In the case of the DECUS system, I have about 5 megabytes of quota and my zipped `curl` was around 7 MB, explaining the quota error. 
+In the case of the DECUS system, I have about 5 megabytes of quota and my zipped
+`curl` was around 7 MB, explaining the quota error. 
 
 
 

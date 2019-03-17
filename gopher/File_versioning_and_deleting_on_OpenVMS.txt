@@ -14,14 +14,25 @@ Format   : 	Markdown/HTML
 (You can read all my OpenVMS articles by [clicking the picture above](https://raymii.org/s/tags/openvms.html))
 
 
-I'm now a few weeks into my OpenVMS adventure and my home folder on the [DECUS](http://decus.org) system is quite cluttered with files. More specifically, with different versions of files, since OpenVMS by default has file versioning built in. This means that when you edit a file, or copy a file over an existing file, the old file is not overwritten but a new file with a new version is written. The old file still is there. This is one of the best things in my humble opinion so far on OpenVMS, but it does require maintenance to not have the disk get filled up fast. This article goes into the PURGE and DELETE commands which help you deal with file versioning and removal.
+I'm now a few weeks into my OpenVMS adventure and my home folder on the
+[DECUS](http://decus.org) system is quite cluttered with files. More
+specifically, with different versions of files, since OpenVMS by default has
+file versioning built in. This means that when you edit a file, or copy a file
+over an existing file, the old file is not overwritten but a new file with a new
+version is written. The old file still is there. This is one of the best things
+in my humble opinion so far on OpenVMS, but it does require maintenance to not
+have the disk get filled up fast. This article goes into the PURGE and DELETE
+commands which help you deal with file versioning and removal.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+[VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+[credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
 
 ### DIR flags
 
-My home folder [DECUS](http://decus.org) is getting filled up with test files and other titbits. 
+My home folder [DECUS](http://decus.org) is getting filled up with test files
+and other titbits. 
 
 	   $ DIR /SIZE /OWNER /DATE /PROTECTION
 
@@ -59,11 +70,14 @@ Look at those fancy new flags I found to get more information out of DIR:
 	Total of 22 files, 83 blocks.
 
 
-Lets focus on the `REMY.DAT` file, that has 8 versions and all the old ones can be removed.
+Lets focus on the `REMY.DAT` file, that has 8 versions and all the old ones can
+be removed.
 
 ### Look at the files with TYPE
 
-Using the `TYPE` command we can look at a file. Specify the full filename and a specific version number, otherwise if you omit the version you will see the last version:
+Using the `TYPE` command we can look at a file. Specify the full filename and a
+specific version number, otherwise if you omit the version you will see the last
+version:
 
 	 $ TYPE REMY.DAT;1
 	Twas brillig, and the slithy toves
@@ -128,19 +142,34 @@ The last version:
 
 (For those who do [not get](https://en.wikipedia.org/wiki/Jabberwocky) the reference).
 
-As you can see, the poem is finished in the last versions and the earlier versions are working copies that can be removed now that this poem is done.
+As you can see, the poem is finished in the last versions and the earlier
+versions are working copies that can be removed now that this poem is done.
 
 ### PURGE
 
-The [PURGE command](http://web.archive.org/web/20180415125506/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_159.html) removes all but the highest version of a file. The `DELETE` command, which we will cover in the next section, only removes specific files and it requires you to specify a version number as well.
+The [PURGE command](http://web.archive.org/web/20180415125506/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_159.html)
+removes all but the highest version of a file. The `DELETE` command, which we
+will cover in the next section, only removes specific files and it requires you
+to specify a version number as well.
 
-The `PURGE` command is therefore usefull to clean up old versions of a file. There are a few usefull flags, for example the `/SINCE` flag. It removes only the versions from after the specified time. Lets say I worked on a file the whole week but all versions that were created yesterday and today only contain formatting fixes, I would specify the `PURGE /SINCE=YESTERDAY $FILE`. The versions of earlier in the week which do contain changes I want to keep, will be saved that way.
+The `PURGE` command is therefore usefull to clean up old versions of a file.
+There are a few usefull flags, for example the `/SINCE` flag. It removes only
+the versions from after the specified time. Lets say I worked on a file the
+whole week but all versions that were created yesterday and today only contain
+formatting fixes, I would specify the `PURGE /SINCE=YESTERDAY $FILE`. The
+versions of earlier in the week which do contain changes I want to keep, will be
+saved that way.
 
-The opposite of that flags is `/BEFORE` flag. It removes all versions of a file before the given time. If I wanted to save all versions that I created yesterday and today, but remove all earlier versions, the command would be `PURGE /BEFORE=YESTERDAY $FILE`. 
+The opposite of that flags is `/BEFORE` flag. It removes all versions of a file
+before the given time. If I wanted to save all versions that I created yesterday
+and today, but remove all earlier versions, the command would be `PURGE
+/BEFORE=YESTERDAY $FILE`. 
 
-If you do want to keep some versions, the `/KEEP` flag allows you to specify a number of versions to keep. To keep the 5 last versions, specify `/KEEP=5`.
+If you do want to keep some versions, the `/KEEP` flag allows you to specify a
+number of versions to keep. To keep the 5 last versions, specify `/KEEP=5`.
 
-The `/LOG` flag shows you the result, thus which files were removed. By default no output is logged.
+The `/LOG` flag shows you the result, thus which files were removed. By default
+no output is logged.
 
 So for my poem, to remove all versions but the last:
 
@@ -157,7 +186,9 @@ So for my poem, to remove all versions but the last:
 
 #### Create a directory with version limits
 
-Using the `/VERSION_LIMIT` flag when creating a folder limits the amount of versions that will be kept. By default it is unlimited. To create a folder named `THREE` where at max 3 versions are kept, use the following command:
+Using the `/VERSION_LIMIT` flag when creating a folder limits the amount of
+versions that will be kept. By default it is unlimited. To create a folder named
+`THREE` where at max 3 versions are kept, use the following command:
 
 	 $ CREATE /DIRECTORY /VERSION_LIMIT=3 [.THREE]
 	 $ SET DEF [.THREE] 
@@ -182,8 +213,8 @@ Now after a new edit, version 1 of the file will be gone:
 
 To create a folder without versioning, specify `/VERSION_LIMIT=1`.
 
-
-Combining that with the previous section, if I wanted to keep the two last versions, I would use the following command:
+Combining that with the previous section, if I wanted to keep the two last
+versions, I would use the following command:
 
 	 $ PURGE /LOG /KEEP=2 REMY.DAT
 	%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE.THREE]REMY.DAT;2 deleted (3 blocks)
@@ -201,14 +232,20 @@ Let's check if versions 3 and 4 are still there:
 
 ### DELETE
 
-You can read most of my delete adventures [here when I tried to remove a folder](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html).
+You can read most of my delete adventures [here when I tried to remove a
+folder](https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html).
 
-[Reading the documentation](http://web.archive.org/web/20180415131447/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html) on `DELETE`, the same usefull flags like `/BEFORE` and `/SINCE` can be used. However, they will not remove previous versions, but all previous files and must be used with wildcards:
+[Reading the documentation](http://web.archive.org/web/20180415131447/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html) on `DELETE`, the same usefull flags 
+like `/BEFORE` and `/SINCE` can be used. However, they will not remove previous 
+versions, but all previous files and must be used with wildcards:
 
 	/BEFORE[=time]
 	Selects only those files dated prior to the specified time. You can specify time as absolute time, as a combination of absolute and delta times, or as one of the following keywords: BOOT, LOGIN, TODAY (default), TOMORROW, or YESTERDAY.
 
-Even back then they were already not actually removing a file, but just marking the location as usable again. The `/ERASE` flag also overwrites the files with something so that the data actually is not on the disk and not recoverable anymore:
+Even back then they were already not actually removing a file, but just marking
+the location as usable again. The `/ERASE` flag also overwrites the files with
+something so that the data actually is not on the disk and not recoverable
+anymore:
 
 	/ERASE
 	/NOERASE (default)
@@ -234,9 +271,11 @@ When a version is specified it does work:
 
 ### Conclusion
 
-In this article we covered the different ways to cleanup versions of files, in the other article we covered the removal of directories.
+In this article we covered the different ways to cleanup versions of files, in
+the other article we covered the removal of directories.
 
-We also know now how to create a folder with limits on the amount of versions that are kept.
+We also know now how to create a folder with limits on the amount of versions
+that are kept.
 
 
 

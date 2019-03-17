@@ -11,11 +11,16 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/installatron.png" alt="installatron" />
 
-One of the servers I use to host email and a few small websites for friend and family comes with Installatron installed by default. It is a way to easily install web applications and keep them up to date automatically. 
+One of the servers I use to host email and a few small websites for friend and
+family comes with Installatron installed by default. It is a way to easily
+install web applications and keep them up to date automatically. 
 
-It is a paid service, but it is free for one domain. It can be confusing for some users on the server since the button is in the controlpanel.
+It is a paid service, but it is free for one domain. It can be confusing for
+some users on the server since the button is in the controlpanel.
 
-I decided to remove Installatron from the machine. First remove the plugin from Directadmin (or other) controlpanel. Then execute the following commands. Remove the RPM (if CentOS):
+I decided to remove Installatron from the machine. First remove the plugin from
+Directadmin (or other) controlpanel. Then execute the following commands. Remove
+the RPM (if CentOS):
 
     rpm -e installatron-plugin-directadmin 
 

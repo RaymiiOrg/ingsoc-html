@@ -78,13 +78,22 @@
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>I&#39;m playing around with OpenVMS on Alpha using <a href="https://raymii.org/s/blog/The_sad_state_of_Alpha_emulators_for_OpenVMS.html">an emulator</a>, but was not able to copy paste in my Hobbyist License. I suspect Putty pasting too quickly, so I had to get the license script on the OpenVMS, without using the network. In this article you&#39;ll learn some OpenVMS filesystem history, how OpenVMS handles line endings and in the end I get my license installed by creating an ISO with the script on it.</p>
+<p>I&#39;m playing around with OpenVMS on Alpha using <a href="https://raymii.org/s/blog/The_sad_state_of_Alpha_emulators_for_OpenVMS.html">an
+emulator</a>,
+but was not able to copy paste in my Hobbyist License. I suspect Putty pasting
+too quickly, so I had to get the license script on the OpenVMS, without using
+the network. In this article you&#39;ll learn some OpenVMS filesystem history, how
+OpenVMS handles line endings and in the end I get my license installed by
+creating an ISO with the script on it.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
+<p>[If you like this article, consider sponsoring me by trying out a Digital Ocean
+[VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">credit). (referral link)</a></p>
 
 <h3>-SYSTEM-W-DATAOVERUN, data overrun</h3>
 
-<p>When pasting in my ISO using simh and a VAX system, I had no issues. When trying it on the Alpha and putty, it errors out:</p>
+<p>When pasting in my ISO using simh and a VAX system, I had no issues. When trying
+it on the Alpha and putty, it errors out:</p>
 
 <pre><code>%DCL-W-IVVERB, unrecognized command verb - check validity and spelling
  \$\
@@ -95,18 +104,27 @@ $ /AUTHORIZATION=H
 -SYSTEM-W-DATAOVERUN, data overrun
 </code></pre>
 
-<p>On a few forums it was suggested to create an ISO with the license script on it, mount that and execute the script from there. Since the installed system has no network yet (I&#39;m having a lot of issues with Windows and bridging in Virtualbox) I cannot just copy over the file via FTP.</p>
+<p>On a few forums it was suggested to create an ISO with the license script on it,
+mount that and execute the script from there. Since the installed system has no
+network yet (I&#39;m having a lot of issues with Windows and bridging in Virtualbox)
+I cannot just copy over the file via FTP.</p>
 
 <h3>Create the ISO</h3>
 
-<p>On Ubuntu and Debian you can <code>apt-get install genisoimage</code>. Place the License PAK script in a new folder, in my case the folder is named <code>license</code>. The PAK script is named <code>a.com</code>. Generate the ISO:</p>
+<p>On Ubuntu and Debian you can <code>apt-get install genisoimage</code>. Place the License
+PAK script in a new folder, in my case the folder is named <code>license</code>. The PAK
+script is named <code>a.com</code>. Generate the ISO:</p>
 
 <pre><code>genisoimage -V license -o a.iso license
 </code></pre>
 
 <p><code>-V license</code> is so that the ISO label is <code>license</code>.</p>
 
-<p>Using your favorite emulator, couple this ISO to your OpenVMS installation and boot up. I&#39;m using a trial version of <a href="https://raymii.org/s/blog/The_sad_state_of_Alpha_emulators_for_OpenVMS.html">AlphaVM Basic</a>, but FreeAXP is available as well as is <a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40</a>. </p>
+<p>Using your favorite emulator, couple this ISO to your OpenVMS installation and
+boot up. I&#39;m using a trial version of <a href="https://raymii.org/s/blog/The_sad_state_of_Alpha_emulators_for_OpenVMS.html">AlphaVM
+Basic</a>,
+but FreeAXP is available as well as is
+<a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40</a>.</p>
 
 <p>In the case of AlphaVM the disk drive is <code>DKA400</code>. </p>
 
@@ -150,7 +168,8 @@ Disk REMY1$DKA400:, device type EmuVM CDROM ISO image, is online, file-oriented
     Total cylinders                1    Tracks per cylinder                   2
 </code></pre>
 
-<p>Let&#39;s try my linux-mindedness and see if mounting is the same. First create a folder to mount the device on:</p>
+<p>Let&#39;s try my linux-mindedness and see if mounting is the same. First create a
+folder to mount the device on:</p>
 
 <pre><code>$ CREATE /DIR [.MNT]
 </code></pre>
@@ -221,9 +240,11 @@ Disk REMY1$DKA400:, device type EmuVM CDROM ISO image, is online, allocated,
   Members of this volume set are REMY1$DKA400: (rvn 1).
 </code></pre>
 
-<p>So now for the easy part right? Go into the device folder and execute the script. Can&#39;t go wrong here.</p>
+<p>So now for the easy part right? Go into the device folder and execute the
+script. Can&#39;t go wrong here.</p>
 
-<p>But oh yes we can go wrong. Lets see what happens if we <code>cd</code> (<code>SET DEFAULT</code> on OpenVMS) into the device:</p>
+<p>But oh yes we can go wrong. Lets see what happens if we <code>cd</code> (<code>SET DEFAULT</code> on
+OpenVMS) into the device:</p>
 
 <pre><code>$ SET DEFAULT _REMY1$DKA400:
 $ DIR
@@ -232,13 +253,20 @@ $ DIR
 -SYSTEM-W-BADIRECTORY, bad directory file format
 </code></pre>
 
-<p>Again an OpenVMS error message. Not sure why, but I guess I did something wrong. </p>
+<p>Again an OpenVMS error message. Not sure why, but I guess I did something wrong.</p>
 
 <h3>[000000], the Master File Directory</h3>
 
-<p>Diving into some history <a href="https://books.google.nl/books?id=y0qhFDfU0iUC&amp;lpg=PA97&amp;ots=Ay0-FB1rD7&amp;dq=%5B000000%5D%20openvms&amp;hl=nl&amp;pg=PA97#v=onepage&amp;q=%5B000000%5D%20openvms&amp;f=false"></a> we find more on why our previous command did not work. We did not execute it in the root directory of the device. On OpenVMS a filesystem&#39;s root directory is <code>[000000]</code>.</p>
+<p>Diving into some history
+<a href="https://books.google.nl/books?id=y0qhFDfU0iUC&amp;lpg=PA97&amp;ots=Ay0-FB1rD7&amp;dq=%5B000000%5D%20openvms&amp;hl=nl&amp;pg=PA97#v=onepage&amp;q=%5B000000%5D%20openvms&amp;f=false"></a>
+we find more on why our previous command did not work. We did not execute it in
+the root directory of the device. On OpenVMS a filesystem&#39;s root directory is
+<code>[000000]</code>.</p>
 
-<p>The HP documentation is not very helpfull on this part. I had to go on my local ebook seller and buy this book since Google Books doesn&#39;t allow copy pasting. But, reading through it, it seems to be a good book for me. Shame it cost me EUR 30. A few hours of reading later I realised I was busy with an ISO mount. </p>
+<p>The HP documentation is not very helpfull on this part. I had to go on my local
+ebook seller and buy this book since Google Books doesn&#39;t allow copy pasting.
+But, reading through it, it seems to be a good book for me. Shame it cost me EUR
+30. A few hours of reading later I realised I was busy with an ISO mount. </p>
 
 <p>Quoting verbatim:</p>
 
@@ -268,7 +296,8 @@ $ DIR
   for DIRECTORY [000000] if you have the appropriate privileges.)</p>
 </blockquote>
 
-<p>(Duffy, M. (2003). Getting started with openVMS system management: a guide for new users. Boston: Digital Press, p. 76-78) </p>
+<p>(Duffy, M. (2003). Getting started with openVMS system management: a guide for
+(new users. Boston: Digital Press, p. 76-78) </p>
 
 <p>When we execute the command in the correct folder it does show my script:</p>
 
@@ -311,13 +340,18 @@ $\
  \APR\
 </code></pre>
 
-<p>I re-downloaded my license PAK and created a new ISO. That did not help. I suspected it had something to do with line endings as I was using Windows to create the text file. Opening the file with <code>EDIT</code> comfirmed my suspicion:</p>
+<p>I re-downloaded my license PAK and created a new ISO. That did not help. I
+suspected it had something to do with line endings as I was using Windows to
+create the text file. Opening the file with <code>EDIT</code> comfirmed my suspicion:</p>
 
 <p><img src="https://raymii.org/s/inc/img/openvms-license.png"></p>
 
 <h3>Line endings</h3>
 
-<p>A search around the web lead me to the <a href="https://web.archive.org/web/20180507190424/http://h41379.www4.hpe.com/wizard/wiz_3707.html">OpenVMS Wizard</a>. Read the page for the full answer and explanation. I&#39;ve snipped the relevant parts here:</p>
+<p>A search around the web lead me to the <a href="https://web.archive.org/web/20180507190424/http://h41379.www4.hpe.com/wizard/wiz_3707.html">OpenVMS
+Wizard</a>.
+Read the page for the full answer and explanation. I&#39;ve snipped the relevant
+parts here:</p>
 
 <pre><code>This depends on the current format of the file.  The OpenVMS Wizard
 assumes that the reason for the CR characters is that this is a STREAM
@@ -454,7 +488,9 @@ X500-ADMIN-FACILIT DEC             0  0     100    0.0  (none)       1-APR-2019
 X500-DIRECTORY-SER DEC             0  0     100    0.0  (none)       1-APR-2019
 </code></pre>
 
-<p>When it&#39;s not DNS it&#39;s line endings. In this small adventure I learned the OpenVMS mount command with a few options. Furthermore, it&#39;s not only between Windows and Linux that line-endings cause issues, even in OpenVMS. </p>
+<p>When it&#39;s not DNS it&#39;s line endings. In this small adventure I learned the
+OpenVMS mount command with a few options. Furthermore, it&#39;s not only between
+Windows and Linux that line-endings cause issues, even in OpenVMS. </p>
 </div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/es40.html" class="link">es40 &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

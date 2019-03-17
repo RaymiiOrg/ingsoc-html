@@ -14,43 +14,85 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/chrome_68.png">
 
-In 2014 I [published an article on HPKP](https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html), http public key pinning. It allows a site operator to send a public key in an http header, forcing the browser to only connect when that header is found. It was ment to redice the risk of a compromised certificate authority (since any CA can create a certificate for any website). Quite secure, but it was often wrongly configured, forgotten until certificates expired and there were some security issues like a false pin. Late 2017 Google announced that HPKP would be removed in Chrome 68 and that version is released now, so HPKP is no longer supported.
+In 2014 I [published an article on
+HPKP](https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html),
+http public key pinning. It allows a site operator to send a public key in an
+http header, forcing the browser to only connect when that header is found. It
+was ment to redice the risk of a compromised certificate authority (since any CA
+can create a certificate for any website). Quite secure, but it was often
+wrongly configured, forgotten until certificates expired and there were some
+security issues like a false pin. Late 2017 Google announced that HPKP would be
+removed in Chrome 68 and that version is released now, so HPKP is no longer
+supported.
 
-A certificate authority, like Comodo, because they are trusted by every browser, can issue a certificate for any site (so google.com, raymii.org). But, the Netherlands Government ([Staat der Nederlanden](https://en.wikipedia.org/wiki/PKIoverheid)) or the [Hong Kong Post office](https://bugzilla.mozilla.org/show_bug.cgi?id=408949) (China government) are trusted as well, thus are also able to issue a certificate for google.com. Now, there are all kinds of rules prohibiting that, but as [I've shown](https://raymii.org/s/blog/How_I_got_a_valid_SSL_certificate_for_my_ISPs_main_website.html) by getting a certificate for a website I don't own, just as [this guy for Microsoft Live.fi](http://web.archive.org/web/20180612111006/https://arstechnica.com/information-technology/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/), that it is prohibited by rules doesn't mean it is not technically possible. HPKP was meant to prevent that, by hardcoding a certificate for your site into a browser.
+A certificate authority, like Comodo, because they are trusted by every browser,
+can issue a certificate for any site (so google.com, raymii.org). But, the
+Netherlands Government ([Staat der
+Nederlanden](https://en.wikipedia.org/wiki/PKIoverheid)) or the [Hong Kong Post
+office](https://bugzilla.mozilla.org/show_bug.cgi?id=408949) (China government)
+are trusted as well, thus are also able to issue a certificate for google.com.
+Now, there are all kinds of rules prohibiting that, but as [I've
+shown](https://raymii.org/s/blog/How_I_got_a_valid_SSL_certificate_for_my_ISPs_main_website.html)
+by getting a certificate for a website I don't own, just as [this guy for
+Microsoft
+Live.fi](http://web.archive.org/web/20180612111006/https://arstechnica.com/information-technology/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/),
+that it is prohibited by rules doesn't mean it is not technically possible. HPKP
+was meant to prevent that, by hardcoding a certificate for your site into a
+browser.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
-The [Google development announcement can be found here](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/he9tr7p3rZ8/eNMwKPmUBAAJ), where they describe and discuss the intent to remove the feature from chrome.
+The [Google development announcement can be found
+here](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/he9tr7p3rZ8/eNMwKPmUBAAJ),
+where they describe and discuss the intent to remove the feature from chrome.
 
-[ZDNET](http://web.archive.org/web/20180612110541/https://www.zdnet.com/article/google-chrome-is-backing-away-from-public-key-pinning-and-heres-why/) has an article going into more detail on what goes wrong when you forgot about Key Pinning when a certificate expires:
+[ZDNET](http://web.archive.org/web/20180612110541/https://www.zdnet.com/article/google-chrome-is-backing-away-from-public-key-pinning-and-heres-why/) has an article going into more 
+detail on what goes wrong when you forgot about Key Pinning when a certificate expires:
 
 > This scenario happened to [Smashing Magazine](https://www.smashingmagazine.com/be-afraid-of-public-key-pinning/) when it was updating an expiring SSL certificate. It enabled HPKP and set the policy for 365 days. After rolling out new valid certificates, all browsers with the old HPKP policy couldn't visit the site. Also, the new HPKP policy did nothing to update the old one.
 
 
 ### Replacement for HPKP, Expect-CT header?
 
-Google wants the [Expect-CT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT) header to replace HPKP. This header allows web host operators to instruct user agents (browsers) to expect valid Signed Certificate Timestamps (SCTs) to be served on connections to these hosts. When configured in enforcement mode, user agents (UAs) will remember that hosts expect SCTs and will refuse connections that do not conform to the UAs Certificate Transparency policy. 
+Google wants the
+[Expect-CT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT)
+header to replace HPKP. This header allows web host operators to instruct user
+agents (browsers) to expect valid Signed Certificate Timestamps (SCTs) to be
+served on connections to these hosts. When configured in enforcement mode, user
+agents (UAs) will remember that hosts expect SCTs and will refuse connections
+that do not conform to the UAs Certificate Transparency policy. 
 
-There is no automatic detection of invalid certificates or rouge certificates. As far as I understand you must configure and monitor the CT logs yourself to find rouge certificates. I use [this site](https://ctadvisor.lolware.net/) and get emails when a certificate for a certain domain is found.
+There is no automatic detection of invalid certificates or rouge certificates.
+As far as I understand you must configure and monitor the CT logs yourself to
+find rouge certificates. I use [this site](https://ctadvisor.lolware.net/) and
+get emails when a certificate for a certain domain is found.
 
 [This page](http://web.archive.org/web/20180612100401/https://threatpost.com/google-to-ditch-public-key-pinning-in-chrome/128679/) has a little bit more on the replacement:
 
 > By combining Expect-CT with active monitoring for relevant domains, which a growing number of CAs and third-parties now provide, site operators can proactively detect misissuance in a way that HPKP does not achieve, while also reducing the risk of misconfiguration and avoiding the risk of hostile pinning, (Chris) Palmer said.
 
-Google's Certificate Transparency project is an open framework for monitoring and auditing SSL certificates. The goal behind the project is detection of mis-issued/malicious certificates and identification of rogue Certificate Authorities.
+Google's Certificate Transparency project is an open framework for monitoring
+and auditing SSL certificates. The goal behind the project is detection of
+mis-issued/malicious certificates and identification of rogue Certificate
+Authorities.
 
 
-Read more about the [Expect-CT header in the RFC](http://web.archive.org/web/20180612095804/http://httpwg.org/http-extensions/expect-ct.html). To read more about Certificate Transparency, [check the site here](http://www.certificate-transparency.org/how-ct-works).
+Read more about the [Expect-CT header in the
+RFC](http://web.archive.org/web/20180612095804/http://httpwg.org/http-extensions/expect-ct.html).
+To read more about Certificate Transparency, [check the site
+here](http://www.certificate-transparency.org/how-ct-works).
 
 
-As I'm unsure on how the actual header works, for example what defines when an error is given, I'm not recommending it yet, until I've done more research.
+As I'm unsure on how the actual header works, for example what defines when an
+error is given, I'm not recommending it yet, until I've done more research.
 
-
- 
 ### Removing HPKP on raymii.org
 
-
-I removed HPKP about half a year ago from the servers [hosting raymii.org](https://raymii.org/s/software/Sparkling_Network.html). First by setting the `max-age` portion of the header to `0`, that tells existing browsers that have HPKP cached to invalidate the known time. Otherwise, when changing the certificate, the browser would still have old information thus giving errors.
+I removed HPKP about half a year ago from the servers [hosting
+raymii.org](https://raymii.org/s/software/Sparkling_Network.html). First by
+setting the `max-age` portion of the header to `0`, that tells existing browsers
+that have HPKP cached to invalidate the known time. Otherwise, when changing the
+certificate, the browser would still have old information thus giving errors.
 
 After 4 months, I actually changed the webserver configuration to remove the HPKP headers:
 
@@ -76,7 +118,8 @@ After 4 months, I actually changed the webserver configuration to remove the HPK
 	accept-ranges: bytes
 
 
-As you can see, no `Public-Key-Pins` header. If you have HPKP and want to remove it, make sure to first set the time to `0` and let that run for a few months. 
+As you can see, no `Public-Key-Pins` header. If you have HPKP and want to remove
+it, make sure to first set the time to `0` and let that run for a few months. 
 
 ---
 

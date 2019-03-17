@@ -76,11 +76,17 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/transmission.png" alt="transmission" /></p>
 
-<p>One of my Raspberry Pi&#39;s was running a test setup of the Citadel groupware service. The test was sucessfull, so I set up a real world setup. The Raspberry Pi would serve another purpose, namely, a Linux Torrent seedbox. As in, to seed Linux torrents from <a href="http://linuxtracker.org">linuxtracker.org</a>.</p>
+<p>One of my Raspberry Pi&#39;s was running a test setup of the Citadel groupware
+service. The test was sucessfull, so I set up a real world setup. The Raspberry
+Pi would serve another purpose, namely, a Linux Torrent seedbox. As in, to seed
+Linux torrents from <a href="http://linuxtracker.org">linuxtracker.org</a>.</p>
 
-<p>I choose Transmission for this, because it is simple, fast and stable. Transmission has a good webinterface, plus it allows access from remote clients with the transmission-remote gui packages.</p>
+<p>I choose Transmission for this, because it is simple, fast and stable.
+Transmission has a good webinterface, plus it allows access from remote clients
+with the transmission-remote gui packages.</p>
 
-<p>My Pi&#39;s run Arch Linux, so setup of Transmission is fairly easy. First install it with pacman:</p>
+<p>My Pi&#39;s run Arch Linux, so setup of Transmission is fairly easy. First install
+it with pacman:</p>
 
 <pre><code>sudo pacman -Syu transmission-cli
 </code></pre>
@@ -95,21 +101,25 @@
 <pre><code>sudo systemctl start transmission
 </code></pre>
 
-<p>Now create a folder where your user and the transmission group (where the transmission user belongs to) can read and write:</p>
+<p>Create a folder where your user and the transmission group (where the
+transmission user belongs to) can read and write:</p>
 
 <pre><code>sudo mkdir -p /mnt/data/torrents/{incomplete,complete,torrentfiles}
 sudo chown -R remy:transmission /mnt/data/torrents
 sudo chmod -R 775 /mnt/data/torrents
 </code></pre>
 
-<p>In my example the folder <code>/mnt/data/torrents</code> is an external USB harddrive which is mounted via <code>/etc/fstab</code> at boot. Remember to change <code>remy</code> to your Pi username.</p>
+<p>In my example the folder <code>/mnt/data/torrents</code> is an external USB harddrive which
+is mounted via <code>/etc/fstab</code> at boot. Remember to change <code>remy</code> to your Pi
+username.</p>
 
 <p>Stop the daemon to make sure the config file edits stick:</p>
 
 <pre><code>sudo systemctl stop transmission
 </code></pre>
 
-<p>Edit the default config file to allow remote access to the daemon (or do not do that and use an ssh tunnel every time) and update the downloads path:</p>
+<p>Edit the default config file to allow remote access to the daemon (or do not do
+that and use an ssh tunnel every time) and update the downloads path:</p>
 
 <pre><code>sudo vim /var/lib/transmission/.config/transmission-daemon/settings.json
 </code></pre>
@@ -137,7 +147,9 @@ sudo chmod -R 775 /mnt/data/torrents
     &quot;rpc-whitelist&quot;: &quot;*.*.*.*&quot;,
 </code></pre>
 
-<p>This sets the correct download folders and allows access from everywhere to the transmission webinterface. You can also list a range there (192.168.1.0/24) or just one IP address.</p>
+<p>This sets the correct download folders and allows access from everywhere to the
+transmission webinterface. You can also list a range there (192.168.1.0/24) or
+just one IP address.</p>
 
 <p>If you do not udate the ACL you get a nice error message when connecting:</p>
 
@@ -152,9 +164,11 @@ If you&#39;re editing settings.json, see the &#39;rpc-whitelist&#39; and &#39;rp
 If you&#39;re still using ACLs, use a whitelist instead. See the transmission-daemon manpage for details.
 </code></pre>
 
-<p>If all went well you should be able to connect to <code>http://YOUR-PI-IP:9091</code> and see the nice transmission webinterface.</p>
+<p>If all went well you should be able to connect to <code>http://YOUR-PI-IP:9091</code> and
+see the nice transmission webinterface.</p>
 
-<p>If you are going to download copyrighted material you might want to enable a blocklist, see <a href="https://www.iblocklist.com/lists.php">iblocklist.com</a> for more info on that.</p>
+<p>If you are going to download copyrighted material you might want to enable a
+blocklist, see <a href="https://www.iblocklist.com/lists.php">iblocklist.com</a> for more info on that.</p>
 
 <p>If you want more info on Transmission on Arch Linux, read up on <a href="https://wiki.archlinux.org/index.php/Transmission">the arch wiki</a>.</p>
 </div><hr>Tags: <a href="../tags/arch.html" class="link">arch &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/linux.html" class="link">linux &nbsp;</a><a href="../tags/linuxtracker.html" class="link">linuxtracker &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><a href="../tags/systemd.html" class="link">systemd &nbsp;</a><a href="../tags/torrent.html" class="link">torrent &nbsp;</a><a href="../tags/torrents.html" class="link">torrents &nbsp;</a><a href="../tags/transmission.html" class="link">transmission &nbsp;</a><div class="footer">

@@ -23,22 +23,6 @@
             </item>
     
             <item>
-                <title>Recap of week 52, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_52_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_52_2015.html</guid>
-                <description>Recap of week 52, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 26 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
-                <title>Recap of week 51, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_51_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_51_2015.html</guid>
-                <description>Recap of week 51, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Sat, 19 Dec 2015 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>HP ILO - Quickly gather ILO version and firmware information via CURL</title> 
                 <link>https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html</link> 
                 <guid>https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html</guid>

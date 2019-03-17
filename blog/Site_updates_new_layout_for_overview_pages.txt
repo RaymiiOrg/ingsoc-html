@@ -9,16 +9,26 @@ Format   : 	Markdown/HTML
 
 
 
-This site is generated with my [self-written open source static site generator named ingsoc](https://raymii.org/s/software/ingsoc.html) (named after 1984). I've updated the overview pages with a new layout so that items are sorted by their publishing date instead of alphabetically. I've also rewritten some internal logic regarding tags and categories. This article shows the difference before and after and includes some old screenshots of raymii.org
+This site is generated with my [self-written open source static site generator
+named ingsoc](https://raymii.org/s/software/ingsoc.html) (named after 1984).
+I've updated the overview pages with a new layout so that items are sorted by
+their publishing date instead of alphabetically. I've also rewritten some
+internal logic regarding tags and categories. This article shows the difference
+before and after and includes some old screenshots of raymii.org
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
 
 ### Semantics
 
-The software suite is named `ingsoc`, the actual site generator is named `newspeak.py`. Read more on it [here](https://raymii.org/s/software/ingsoc.html). Before the generator this was a PHP site, but who needs a dynamic scripting language if all you do is host non-dynamic content.
+The software suite is named `ingsoc`, the actual site generator is named
+`newspeak.py`. Read more on it
+[here](https://raymii.org/s/software/ingsoc.html). Before the generator this was
+a PHP site, but who needs a dynamic scripting language if all you do is host
+non-dynamic content.
 
-`ingsoc` has the concept of categories. My site is divided into the following categories:
+`ingsoc` has the concept of categories. My site is divided into the following
+categories:
 
 - [Software](https://raymii.org/s/software/)
 - [Tutorials](https://raymii.org/s/tutorials/)
@@ -26,15 +36,30 @@ The software suite is named `ingsoc`, the actual site generator is named `newspe
 - [Articles](https://raymii.org/s/articles/)
 - [Blog](https://raymii.org/s/blog/)
 
-If I want I can add any number of categories. When I started twelve years ago the site it seemed that that division into categories was enough. But soon I wanted to be able to have more options to categorize an article. A tutorial about a VPN can be on Ubuntu or CentOS or IPSEC or OpenVPN and I wanted to be able to group similar articles. I did not want a million categories since that would not fit the target, an article can only have one category.
+If I want I can add any number of categories. When I started twelve years ago
+the site it seemed that that division into categories was enough. But soon I
+wanted to be able to have more options to categorize an article. A tutorial
+about a VPN can be on Ubuntu or CentOS or IPSEC or OpenVPN and I wanted to be
+able to group similar articles. I did not want a million categories since that
+would not fit the target, an article can only have one category.
 
-Tags to the rescue. I built in tags to the generator and created seperate RSS feeds per tag and an overview page for each tag listing the articles per tag. Like categories, but way more. 
+Tags to the rescue. I built in tags to the generator and created seperate RSS
+feeds per tag and an overview page for each tag listing the articles per tag.
+Like categories, but way more. 
 
 Tags are cheap, the current site has 927 tags, v.s. 5 categories.
 
-So why not ditch the categories all together? Well, they are used in the URL and it is good to have one 'main' category for an article to fall under. That is has multiple tags, is in my opinion, different. A tutorial is still a tutorial no matter which OS it applies to.
+So why not ditch the categories all together? Well, they are used in the URL and
+it is good to have one 'main' category for an article to fall under. That is has
+multiple tags, is in my opinion, different. A tutorial is still a tutorial no
+matter which OS it applies to.
 
-The front page has a configurable number of items listed with a summary per item. A year ago I added the 'everything' page, which houses all items sorted by date. Looking at the statistics, both that page as well as the tag overview pages are the most visited parts of the site next to the articles. I got some feedback recently that the sorting was off and the person that emailed me thought it was more logical to sort it by date. Which I agreed with
+The front page has a configurable number of items listed with a summary per
+item. A year ago I added the 'everything' page, which houses all items sorted by
+date. Looking at the statistics, both that page as well as the tag overview
+pages are the most visited parts of the site next to the articles. I got some
+feedback recently that the sorting was off and the person that emailed me
+thought it was more logical to sort it by date. Which I agreed with
 
 So off to the Python code it was.
 
@@ -44,7 +69,9 @@ Oh if you are wondering, this is how the code output looks during a deploy:
 
 ### Before and after
 
-Before, tag pages, category pages and the All Items page were three different methods in my pyhton code. Different looks and layouts, thus less simple to maintain or change. Look at what they are now with the pictures below.
+Before, tag pages, category pages and the All Items page were three different
+methods in my pyhton code. Different looks and layouts, thus less simple to
+maintain or change. Look at what they are now with the pictures below.
 
 #### Tags 
 
@@ -56,7 +83,9 @@ This is the new 'tag' view:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/after_tag_openvms.png">
 
-As you can see, the date is added and sorting is on that date now. If I want I can later on easily add some javascript to make that table sortable ascending or descending, but that is for a later time.
+As you can see, the date is added and sorting is on that date now. If I want I
+can later on easily add some javascript to make that table sortable ascending or
+descending, but that is for a later time.
 
 #### Categories 
 
@@ -68,7 +97,10 @@ This is the new 'category' view:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/after_category_blog.png">
 
-As you might notice, it looks very similar to a tag page. That is because it is a tag page, not a category page. I added the category as a tag to all pages, so that the layout and code is the same. I removed the category view and made those into redirects. Instead of two code paths, I now have only one.
+As you might notice, it looks very similar to a tag page. That is because it is
+a tag page, not a category page. I added the category as a tag to all pages, so
+that the layout and code is the same. I removed the category view and made those
+into redirects. Instead of two code paths, I now have only one.
 
 #### Everything
 
@@ -80,11 +112,18 @@ This is the new 'everything' page:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/after_all.png">
 
-Here again, you might notice it looks like a tag page as well. Again, it is. I sneakily add the `all` tag to all items and filter it out in the HTML. It is used here, and it saves me another code path. This way my python code is more simple and more easy to maintain. This page before was already sorted on the date, but it was not visible. It is now to have a better overview of the timeframe.
+Here again, you might notice it looks like a tag page as well. Again, it is. I
+sneakily add the `all` tag to all items and filter it out in the HTML. It is
+used here, and it saves me another code path. This way my python code is more
+simple and more easy to maintain. This page before was already sorted on the
+date, but it was not visible. It is now to have a better overview of the
+timeframe.
 
 ### Conclusion and old screenshots
 
-By reducing the code paths it is both simpler for me to maintain and change the code and the layout is the same in all three cases. Plus it was fun to go into my code and add sorting with `DateTime`. 
+By reducing the code paths it is both simpler for me to maintain and change the
+code and the layout is the same in all three cases. Plus it was fun to go into
+my code and add sorting with `DateTime`. 
 
 If you are wondering how this site has looked before, here are screenshots.
 
@@ -106,14 +145,15 @@ An overview page:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/2010-category.png">
 
-The links page, with a dynamic thumbnailer that also did borders and site screenshots (in PHP with gd):
+The links page, with a dynamic thumbnailer that also did borders and site
+screenshots (in PHP with gd):
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/2010-links.png">
 
 #### 2012, PHP
 
-Still PHP, but a new layout. Notice the modern "Metro" look before Microsoft did it.
-
+Still PHP, but a new layout. Notice the modern "Metro" look before Microsoft did
+it.
 
 The frontpage:
 
@@ -128,13 +168,16 @@ An article:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/2012-page.png">
 
-I had a special text-only version of the articles for text based browsers and mobile phones:
+I had a special text-only version of the articles for text based browsers and
+mobile phones:
 
 <img src="https://raymii.org/s/inc/img/raymiiorg/2012-text-only.png">
 
 #### 2014, static site and themes
 
-In 2014 the static site came around. I had cool dynamic CSS to create both a dark and a light theme (like Solarized). The dark theme was removed late 2016. This layout and site is still mostly in use today.
+In 2014 the static site came around. I had cool dynamic CSS to create both a
+dark and a light theme (like Solarized). The dark theme was removed late 2016.
+This layout and site is still mostly in use today.
 
 The 'Dark' frontpage:
 

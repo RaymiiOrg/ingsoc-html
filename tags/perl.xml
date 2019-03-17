@@ -23,14 +23,6 @@
             </item>
     
             <item>
-                <title>Recap of week 53, 2015</title> 
-                <link>https://raymii.org/s/blog/Recap_of_week_53_2015.html</link> 
-                <guid>https://raymii.org/s/blog/Recap_of_week_53_2015.html</guid>
-                <description>Recap of week 53 of 2015, covering open source and sysadmin related news, articles, guides, talks, discussions and fun stuff.</description> 
-                <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Strip all non-ascii characters from a file</title> 
                 <link>https://raymii.org/s/snippets/Strip_all_non-ascii_characters_from_a_file.html</link> 
                 <guid>https://raymii.org/s/snippets/Strip_all_non-ascii_characters_from_a_file.html</guid>

@@ -42,7 +42,8 @@ This is because the UI settings changed for vim, as `make showconfig` shows:
 	     MOTIF=off: Motif widget library support
 	     X11=off: X11 (graphics) support
 
-Digging through the [FreeBSD Handbook][1], in section "5.5.1.1. Customizing Ports Installation" we find the following little snippet:
+Digging through the [FreeBSD Handbook][1], in section "5.5.1.1. Customizing
+Ports Installation" we find the following little snippet:
 
 > There are several ways to revisit a port's build options menu in order to add, remove, or change these options after a port has been built. One method is to cd into the directory containing the port and type make config. Another option is to use make showconfig. Another option is to execute make rmconfig which will remove all selected options and allow you to start over. All of these options, and others, are explained in great detail in ports(7).
 

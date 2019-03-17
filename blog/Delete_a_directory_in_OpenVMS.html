@@ -78,17 +78,26 @@
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>My OpenVMS adventure continues, in this small item I talk about the removal of folders on OpenVMS. As you might expect, different than on linux. </p>
+<p>My OpenVMS adventure continues, in this small item I talk about the removal of
+folders on OpenVMS. As you might expect, different than on linux. </p>
 
-<p>I tried to set up SSH public key authentication so that I can use my regular SSH key instead of typing my password on the DECUServe system. I found <a href="https://web.archive.org/web/20180403184752/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">a guide</a> for that in the HPe documentation. That however required the creation of some files and folders and I made a typo in the creation of a folder. Of course I noticed that way too late so there were files in there as well. </p>
+<p>I tried to set up SSH public key authentication so that I can use my regular SSH
+key instead of typing my password on the DECUServe system. I found <a href="https://web.archive.org/web/20180403184752/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">a
+guide</a>
+for that in the HPe documentation. That however required the creation of some
+files and folders and I made a typo in the creation of a folder. Of course I
+noticed that way too late so there were files in there as well. </p>
 
-<p>As you might have guessed, I went down a different rabbit hole to remove this folder, SSH public key authentication does not work yet. The <a href="http://decus.org">DECUServe</a> system allows SSH login with a password initially.</p>
+<p>As you might have guessed, I went down a different rabbit hole to remove this
+folder, SSH public key authentication does not work yet. The
+<a href="http://decus.org">DECUServe</a> system allows SSH login with a password initially.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
 
 <h3>DIR [.SSH]</h3>
 
-<p>The folder I created is named <code>SSH</code>, but it should be named <code>SSH2</code>. This is what&#39;s in the folder:</p>
+<p>The folder I created is named <code>SSH</code>, but it should be named <code>SSH2</code>. This is
+what&#39;s in the folder:</p>
 
 <pre><code> $ dir [.SSH]
 
@@ -99,9 +108,11 @@ AUTHORIZATION.;3    REMY-GATEWAY.PUB;1
 Total of 2 files.
 </code></pre>
 
-<p>OpenVMS seperates folders with the period (<code>.</code>) and they must be enclosed in square brackets. The first period expands to the current folder.</p>
+<p>OpenVMS seperates folders with the period (<code>.</code>) and they must be enclosed in
+square brackets. The first period expands to the current folder.</p>
 
-<p>After creating the correct folder (<code>CREATE /DIRECTORY [.SSH2]</code>) and copying the files over:</p>
+<p>After creating the correct folder (<code>CREATE /DIRECTORY [.SSH2]</code>) and copying the
+files over:</p>
 
 <pre><code> $ copy [.SSH]*.*;* [.SSH2]
  $ 
@@ -111,7 +122,8 @@ Total of 2 files.
 
 <h3>rm -rf [.SSH]?</h3>
 
-<p>Let&#39;s try to apply some logic here. <code>CREATE</code> is the command to create files and folders. So would <code>REMOVE</code> then remove a folder?</p>
+<p>Let&#39;s try to apply some logic here. <code>CREATE</code> is the command to create files and
+folders. So would <code>REMOVE</code> then remove a folder?</p>
 
 <pre><code> $ REMOVE [.SSH]
 %DCL-W-IVVERB, unrecognized command verb - check validity and spelling
@@ -151,7 +163,8 @@ _File:
 Interrupt
 </code></pre>
 
-<p>That at least asks for a filename. Let&#39;s see if we can get the directory syntax right:</p>
+<p>That at least asks for a filename. Let&#39;s see if we can get the directory syntax
+right:</p>
 
 <p>This all failed, syntax wise not the correct format to specify a folder:</p>
 
@@ -180,7 +193,8 @@ Interrupt
  -SYSTEM-W-NOSUCHFILE, no such file
 </code></pre>
 
-<p>At this point in time I thought that maybe I had to remove all the files first inside the folder. One by one I tried:</p>
+<p>At this point in time I thought that maybe I had to remove all the files first
+inside the folder. One by one I tried:</p>
 
 <pre><code> $ DIR [.SSH]
 
@@ -208,7 +222,9 @@ Total of 2 files.
 %DELETE-E-DELVER, explicit version number or wild card required
 </code></pre>
 
-<p>Sadly not. Reading through the <a href="https://web.archive.org/web/20180403191730/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">docs</a> I figured out the correct command to recursively delete all files in a folder:</p>
+<p>Sadly not. Reading through the
+<a href="https://web.archive.org/web/20180403191730/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">docs</a>
+I figured out the correct command to recursively delete all files in a folder:</p>
 
 <pre><code>   $ DEL [.SSH]*.*;*
    $
@@ -221,14 +237,16 @@ Total of 2 files.
 -RMS-E-FNF, file not found
 </code></pre>
 
-<p>If you happen to have subfolders, add the <code>/ERASE</code> flag to recursively delete everything:</p>
+<p>If you happen to have subfolders, add the <code>/ERASE</code> flag to recursively delete
+everything:</p>
 
 <pre><code>$ DEL /ERASE [.SSH]*.*;*
 </code></pre>
 
 <h3>Finally the correct DEL syntax, permission error!</h3>
 
-<p>Reading the documentation page some more I figured out the correct syntax, no brackets and no leading perion:</p>
+<p>Reading the documentation page some more I figured out the correct syntax, no
+brackets and no leading perion:</p>
 
 <pre><code> $ DEL SSH.DIR;1
 %DELETE-W-FILNOTDEL, error deleting EISNER$DRA3:[DECUSERVE_USER.EXAMPLE]SSH.DIR;1
@@ -241,9 +259,14 @@ Total of 2 files.
 <p>This command requires delete (D) access to the file and write (W) access to the parent directory. </p>
 </blockquote>
 
-<p>Reading, again, the excellent <a href="https://web.archive.org/web/20180403192635/http://h41379.www4.hpe.com/doc/84final/ba554_90015/ch04s09.html">documentation</a> shows me that there is an <code>ACL</code> system and a permission system. For now I tried the permission system first.</p>
+<p>Reading, again, the excellent
+<a href="https://web.archive.org/web/20180403192635/http://h41379.www4.hpe.com/doc/84final/ba554_90015/ch04s09.html">documentation</a>
+shows me that there is an <code>ACL</code> system and a permission system. For now I tried
+the permission system first.</p>
 
-<p>I figured out that <code>SHOW SECURITY</code> is the command to see the permissions. Permissions on OpenVMS are very different as well from your standard *NIX permissions.</p>
+<p>I figured out that <code>SHOW SECURITY</code> is the command to see the permissions.
+Permissions on OpenVMS are very different as well from your standard *NIX
+permissions.</p>
 
 <pre><code> $ SHOW SECURITY SSH.DIR;1
 
@@ -253,7 +276,8 @@ EISNER$DRA3:[DECUSERVE_USER.EXAMPLE]SSH.DIR;1 object of class FILE
      Access Control List: &lt;empty&gt;
 </code></pre>
 
-<p>Using the <code>SET FILE</code> command we can explicitly add the <code>D</code> permission for the <code>O</code> (Owner) , which is for deletion:</p>
+<p>Using the <code>SET FILE</code> command we can explicitly add the <code>D</code> permission for the
+<code>O</code> (Owner) , which is for deletion:</p>
 
 <pre><code>$ SET FILE/PROTECTION=O:RWED SSH.DIR;1
 $

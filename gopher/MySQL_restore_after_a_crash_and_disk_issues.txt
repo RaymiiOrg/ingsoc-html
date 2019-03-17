@@ -10,13 +10,22 @@ Format   : 	Markdown/HTML
 
 
 
-Recently I had to restore a MySQL server. The hardware had issues with the storage and required some FSCK's, disk replacements and a lot of RAID and LVM love to get working again. Which was the easy part. MySQL was a bit harder to fix. This post describes the proces I used to get MySQL working again with a recent backup. In this case it was a replicated setup so the client had no actual downtime. 
+Recently I had to restore a MySQL server. The hardware had issues with the
+storage and required some FSCK's, disk replacements and a lot of RAID and LVM
+love to get working again. Which was the easy part. MySQL was a bit harder to
+fix. This post describes the proces I used to get MySQL working again with a
+recent backup. In this case it was a replicated setup so the client had no
+actual downtime. 
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
-The proces requires a backup, preferably a recent one. What I did was remove everything and start fresh, restoring the backups.
+The proces requires a backup, preferably a recent one. What I did was remove
+everything and start fresh, restoring the backups.
 
-MySQL was not starting and the `hostname.err` log file had stack trace errors like [in this post](https://dba.stackexchange.com/questions/46657/mysql-died-with-stack-trace). The server uses InnoDB, so no MyISAM recovery. Although my experience with that is not very good as well. But still, error messages like:
+MySQL was not starting and the `hostname.err` log file had stack trace errors
+like [in this post](https://dba.stackexchange.com/questions/46657/mysql-died-with-stack-trace).
+The server uses InnoDB, so no MyISAM recovery. Although my experience with that
+is not very good as well. But still, error messages like:
 
     Attempting backtrace. You can use the following information to find out
     where mysqld died. If you see no messages after this, something went
@@ -33,7 +42,10 @@ Recreate the folder and make sure the correct permissions are set up:
     mkdir -p /var/lib/mysql
     chown mysql:mysql /var/lib/mysql
 
-Now restore your backup so that you have the dumps available somewhere. In my case that's in `/var/restore.10219/` and the files are compressed with `gzip`. They all have an `.sql.gz` extension and their filename is the name of the database. The below steps do require that format.
+Now restore your backup so that you have the dumps available somewhere. In my
+case that's in `/var/restore.10219/` and the files are compressed with `gzip`.
+They all have an `.sql.gz` extension and their filename is the name of the
+database. The below steps do require that format.
 
 
 Start up MySQL and make sure we can login without a password:
@@ -41,14 +53,18 @@ Start up MySQL and make sure we can login without a password:
 
     mysqld_safe --skip-grant-tables &
 
-Restore the MySQL [system database](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) first. This database contains data MySQL requires to function. For example, the grants (users and permisions), stored procedures, logging, time zone information, replication information and other miscellaneous system tables. 
+Restore the MySQL [system database](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) first.
+This database contains data MySQL requires to function. For example, the grants
+(users and permisions), stored procedures, logging, time zone information,
+replication information and other miscellaneous system tables. 
 
     gunzip /var/restore.10219/mysql.sql.gz
     cd /var/restore.10219/
     # Note that I always chuckle when typing this command. 
     mysql mysql < mysql.sql
 
-Since the grants are now reset, you need to (re)set a root password. Or, any other administrative user (`da_admin` for DirectAdmin):
+Since the grants are now reset, you need to (re)set a root password. Or, any
+other administrative user (`da_admin` for DirectAdmin):
 
     mysql -e 'use mysql; update user set password=PASSWORD("password") where User="root";'
 
@@ -60,7 +76,8 @@ Start it up via the system init script:
 
     service mysqld restart # (or systemctl if that floats your boat)
 
-Check if the service starts up normally now. It should, if not then your backup probably is corrupt as well. You might need to recreate all users by hand.
+Check if the service starts up normally now. It should, if not then your backup
+probably is corrupt as well. You might need to recreate all users by hand.
 
 Move the `mysql` database backup out of the restore folder:
 
@@ -70,12 +87,15 @@ Unpack all the databases in the restore folder:
 
     gunzip /var/restore.10219/*.gz
 
-The below script takes all `.sql` files from the restore folder and does the following:
+The below script takes all `.sql` files from the restore folder and does the
+following:
 
 - Creates a database with the name of the file (without the `.sql` extension)
 - Restores the dump to that database
 
-It doesn't take into account stuff like existing datbases, they are just overwritten. You can copy and paste it in the shell, but saving it to a `.sh` file and running that is better:
+It doesn't take into account stuff like existing datbases, they are just
+overwritten. You can copy and paste it in the shell, but saving it to a `.sh`
+file and running that is better:
 
     for backupfile in /var/restore.10219/*.sql; do 
       FULLFILE="$(basename $backupfile)";
@@ -89,13 +109,20 @@ It doesn't take into account stuff like existing datbases, they are just overwri
 
 Depending on the size of the database it could take a while to restore all the backups. 
 
-Afterwards, you might also want to check the replication if you had any setup. The master/slave settings should be restored via the `mysql` database, but the log position might be off or there might be duplicates or other errors.
+Afterwards, you might also want to check the replication if you had any setup.
+The master/slave settings should be restored via the `mysql` database, but the
+log position might be off or there might be duplicates or other errors.
 
-Just to be sure, check, repair and optimize all databases. If you had any errors with the above script, you will get those here as well.
+Just to be sure, check, repair and optimize all databases. If you had any errors
+with the above script, you will get those here as well.
 
     mysqlcheck -uroot -ppassword --auto-repair  --optimize --all-databases
 
-In my case there were no databases that were corrupt in the backup and couldn't be restored in this case. I did have cases were I had one or more databases fail because of corrupt backups. So make sure you do not only set up and monitor your backup process, also set a recurring event every month or so to do a test restore, just to be sure. 
+In my case there were no databases that were corrupt in the backup and couldn't
+be restored in this case. I did have cases were I had one or more databases fail
+because of corrupt backups. So make sure you do not only set up and monitor your
+backup process, also set a recurring event every month or so to do a test
+restore, just to be sure. 
 
 ---
 

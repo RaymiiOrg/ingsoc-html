@@ -10,7 +10,13 @@ Format   : 	Markdown/HTML
 
 
 
-I'm working on a Nitrokey/SmartCard-HSM cluster article and therefore I needed three identical computers. The current version of Raspbian (2016-05-27) is based on Debian Jessie and comes with a version of OpenSC that is too old (0.14) to work with the Nitrokey/SmartCard-HSM. Since there is no Ubuntu 16.04 official image yet I decided to upgrade Raspbian to Debian Testing. Since I don't want to answer yes to any config file changes or service restarts I figured out how to do an unattended dist-upgrade. 
+I'm working on a Nitrokey/SmartCard-HSM cluster article and therefore I needed
+three identical computers. The current version of Raspbian (2016-05-27) is based
+on Debian Jessie and comes with a version of OpenSC that is too old (0.14) to
+work with the Nitrokey/SmartCard-HSM. Since there is no Ubuntu 16.04 official
+image yet I decided to upgrade Raspbian to Debian Testing. Since I don't want to
+answer yes to any config file changes or service restarts I figured out how to
+do an unattended dist-upgrade. 
 
 <img src="https://raymii.org/s/inc/img/hsmcluster.jpg" >
 
@@ -18,17 +24,36 @@ I'm working on a Nitrokey/SmartCard-HSM cluster article and therefore I needed t
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
 
-The [Nitrokey HSM](http://nitrokey.com) is an open hardware and open software device. It is a USB version of the [SmartCard-HSM](http://www.smartcard-hsm.com/). Both the [SmartCard-HSM](http://www.smartcard-hsm.com/opensource.html) as the [Nitrokey HSM](https://github.com/nitrokey) have sources available and are fully supported by the [OpenSC](https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM) project.
+The [Nitrokey HSM](http://nitrokey.com) is an open hardware and open software
+device. It is a USB version of the [SmartCard-HSM](http://www.smartcard-hsm.com/). 
+Both the [SmartCard-HSM](http://www.smartcard-hsm.com/opensource.html) as the [Nitrokey
+HSM](https://github.com/nitrokey) have sources available and are fully supported
+by the [OpenSC](https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM) project.
 
-I have multiple [articles on](https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html) the [Nitrokey HSM/SmartCard-HSM](https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html). I also have a lot of professional experience with large expensive HSM hardware. 
+I have multiple [articles on](https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html) the [Nitrokey HSM/SmartCard-HSM](https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html). 
+I also have a lot of professional experience with large expensive HSM hardware. 
 
 ### ARM repositories
 
-Since Raspbian is a fork of Debian I first checked if there were any testing repositories in [the mirrors](http://mirrordirector.raspbian.org/raspbian/dists/) and as it turns out, [there are](http://mirrordirector.raspbian.org/raspbian/dists/testing/). Since the current version ships with `OpenSC 0.14` and there is a `0.16` package in the repo [here](http://mirrordirector.raspbian.org/raspbian/pool/main/o/opensc/) I suspected that that was the testing package. Installing it on Jessie failed however, so a `dist-upgrade` it was.
+Since Raspbian is a fork of Debian I first checked if there were any testing
+repositories in [the mirrors](http://mirrordirector.raspbian.org/raspbian/dists/) and as it turns
+out, [there are](http://mirrordirector.raspbian.org/raspbian/dists/testing/).
+Since the current version ships with `OpenSC 0.14` and there is a `0.16` package
+in the repo
+[here](http://mirrordirector.raspbian.org/raspbian/pool/main/o/opensc/) I
+suspected that that was the testing package. Installing it on Jessie failed
+however, so a `dist-upgrade` it was.
 
 ### dist-upgrade
 
-A regular repository change in `sources.list` and a `dist-upgrade` are very interactive. It involves manual editing and the `apt` upgrade asks a lot of questions, for example, retain a config file, restart services, changelogs, etc. Since I tend to reinstall Pi SD cards often I don't want to do that manual process every time. So here are the commands to do an unattended upgrade to `testing`. Which in my case works the 7 times I tried now, without asking questions. Do note that in your case it might hose your Pi and destroy all data and projects on it, **so make sure you have a tested working backup**.
+A regular repository change in `sources.list` and a `dist-upgrade` are very
+interactive. It involves manual editing and the `apt` upgrade asks a lot of
+questions, for example, retain a config file, restart services, changelogs, etc.
+Since I tend to reinstall Pi SD cards often I don't want to do that manual
+process every time. So here are the commands to do an unattended upgrade to
+`testing`. Which in my case works the 7 times I tried now, without asking
+questions. Do note that in your case it might hose your Pi and destroy all data
+and projects on it, **so make sure you have a tested working backup**.
 
 Place this in a file named `upgrade.sh`:
 
@@ -57,7 +82,11 @@ Save it and then run it to start the upgrade:
 
 ### Debian upgrade, unattended explanation
 
-Debian packages can prompt a user during install to generate custom configuration, or in the case of MySQL, set a root password. It can also have messages with different priorities. The `critical` priority is (almost) never used so it won't prompt you. The `noninteractive` frontend tells the terminal that you're not able to answer any questions.
+Debian packages can prompt a user during install to generate custom
+configuration, or in the case of MySQL, set a root password. It can also have
+messages with different priorities. The `critical` priority is (almost) never
+used so it won't prompt you. The `noninteractive` frontend tells the terminal
+that you're not able to answer any questions.
 
 The two `Dpkg::Options` mean the following:
 
@@ -65,14 +94,18 @@ The two `Dpkg::Options` mean the following:
 - `--force-confdef`: upgrade the configuration file if there are no local changes
 - `--force-confold`: otherwise, preserve the existing configuration file
 
-If you supply `--force-confnew` instead of `--force-confold` it will overwrite any changes by the new config file. 
+If you supply `--force-confnew` instead of `--force-confold` it will overwrite
+any changes by the new config file. 
 
-If you want to install a package unattended you know will ask questions (like MySQL), then you can use `debconf` to set the answer to those questions beforehand (scriptable, yay). In the case of MySQL on 12.04:
+If you want to install a package unattended you know will ask questions (like
+MySQL), then you can use `debconf` to set the answer to those questions
+beforehand (scriptable, yay). In the case of MySQL on 12.04:
 
     echo mysql-server-5.5 mysql-server/root_password password P@ssw0rd | debconf-set-selections
     echo mysql-server-5.5 mysql-server/root_password_again password P@ss0wrd | debconf-set-selections
 
-You can view all possible selections (questions) with the `debconf-get-selections` command:
+You can view all possible selections (questions) with the
+`debconf-get-selections` command:
 
     debconf-get-selections | grep mysql-server
 

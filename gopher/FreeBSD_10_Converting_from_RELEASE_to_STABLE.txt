@@ -9,17 +9,27 @@ Format   : 	Markdown/HTML
 
 
 
-Because of a [bug in  mpd][1] which is fixed in 10-STABLE I wanted to move one of my FreeBSD machines from 10.0-RELEASE to 10.0-STABLE. The process to do so is fairly simple. Basically, you check out the new source code, build the world, build the kernel, install the kernel, install the world, merge some stuff and reboot.
+Because of a [bug in  mpd][1] which is fixed in 10-STABLE I wanted to move one
+of my FreeBSD machines from 10.0-RELEASE to 10.0-STABLE. The process to do so is
+fairly simple. Basically, you check out the new source code, build the world,
+build the kernel, install the kernel, install the world, merge some stuff and
+reboot.
 
 Make sure you have a backup of important stuff on the system. 
 
 ### Stable?
 
-The name "-STABLE" is frequently misunderstood. It does not mean solid or steady. -STABLE means that while code can change, the ABI (Application Binary Interface) will remain stable and not change. Programs compiled to run on FreeBSD 9.0-RELEASE, or 9.1-RELEASE, or 9.2-RELEASE will continue to work on FreeBSD 9-STABLE. Effectively, -STABLE is the latest version of FreeBSD you can get without breaking installed software. [[source]][4]
+The name "-STABLE" is frequently misunderstood. It does not mean solid or
+steady. -STABLE means that while code can change, the ABI (Application Binary
+Interface) will remain stable and not change. Programs compiled to run on
+FreeBSD 9.0-RELEASE, or 9.1-RELEASE, or 9.2-RELEASE will continue to work on
+FreeBSD 9-STABLE. Effectively, -STABLE is the latest version of FreeBSD you can
+get without breaking installed software. [[source]][4]
 
 ### Procedure
 
-Move the current source code to a backup folder to be sure to get only -STABLE code:
+Move the current source code to a backup folder to be sure to get only -STABLE
+code:
 
 	mv /usr/src /usr/src-RELEASE
 
@@ -27,7 +37,8 @@ Do the same thing for the ports tree:
 	
 	mv /usr/ports /usr/ports-RELEASE
 
-When I did not moved the `/usr/src` folder and continued this article, everytime I would be back in 10.0-RELEASE...
+When I did not moved the `/usr/src` folder and continued this article, everytime
+I would be back in 10.0-RELEASE...
 
 Check out the STABLE source code:
 
@@ -45,7 +56,8 @@ Build the world:
 
 	make buildworld -j4
 
-The `-j 4` part means that it should run 4 jobs at once. I have a quad core CPU so all the cores will be used.
+The `-j 4` part means that it should run 4 jobs at once. I have a quad core CPU
+so all the cores will be used.
 
 
 Build the kernel:
@@ -98,7 +110,8 @@ However, `mergemaster -p` did not create the user:
 
 	*** /var/tmp/temproot is empty, deleting
 
-I already am on FreeBSD 10, but this box is updated from 8 to 9 to 10, so maybe that didn't work out quite well. Installing unbound via pkg did work:
+I already am on FreeBSD 10, but this box is updated from 8 to 9 to 10, so maybe
+that didn't work out quite well. Installing unbound via pkg did work:
 
 	pkg install unbound
 
@@ -161,7 +174,8 @@ Remove old files and libraries:
 	>>> Old libraries removed
 
 
-Note that freebsd-update does not work with the STABLE branch. Therefore this process is required...
+Note that freebsd-update does not work with the STABLE branch. Therefore this
+process is required.
 
 
 That's it. Run `freebsd-version` to see that you are now on stable:
