@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/python.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Simple pygopherd log analyzer</title> 
+                <link>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</link> 
+                <guid>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</guid>
+                <description>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics. If you ever used Logwatch you'll feel at home.</description> 
+                <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>Site updates, raymii.org now also available on Gopher</title> 
                 <link>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</link> 
                 <guid>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</guid>

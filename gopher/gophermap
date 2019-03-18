@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-03-18T08:06:42	/	localhost	70
+i            2019-03-18T13:47:15	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Simple pygopherd log analyzer (20-03-2019)	Simple_pygopherd_log_analyzer.txt	raymii.org	70
 0Disable motd news or (parts of) the dynamic motd on Ubuntu (18-03-2019)	Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.txt	raymii.org	70
 0Site updates, raymii.org now also available on Gopher (10-03-2019)	Site_updates_raymii.org_now_on_gopher.txt	raymii.org	70
 0SpaceCat Launchpad v2, an awesome cool little macropad (05-03-2019)	SpaceCat_Launchpad_v2_an_awesome_little_macropad.txt	raymii.org	70
@@ -325,8 +326,8 @@ i 	/	localhost	70
 0Python script to monitor a file for changes and then mail the report with the file attached. (21-12-2012)	Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.txt	raymii.org	70
 0Exchange 2010 - OWA - Lock user after x amount of failed logins (19-12-2012)	Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.txt	raymii.org	70
 0Restore iptables rules after a reboot on debian (12-12-2012)	Restore-iptables-rules-after-a-reboot-on-debian.txt	raymii.org	70
-0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
 0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
+0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
 0Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice) (08-12-2012)	Munin_optimalization_on_Debian.txt	raymii.org	70
 0Set OS X hostname from the commandline (05-12-2012)	OS-X-Change-Hostname.txt	raymii.org	70
 0ClamAV installation and daily scan + report on Ubuntu (01-12-2012)	ClamAV.txt	raymii.org	70
