@@ -216,12 +216,9 @@ motd-news.timer                        enabled
 <p>But the manpage states that <code>pam</code> is responsible for the motd so let&#39;s check there:</p>
 
 <pre><code>grep motd /etc/pam.d/*
-/etc/pam.d/login:# This includes a dynamically generated part from /run/motd.dynamic
-/etc/pam.d/login:# and a static (admin-editable) part from /etc/motd.
 /etc/pam.d/login:session    optional   pam_motd.so motd=/run/motd.dynamic
 /etc/pam.d/login:session    optional   pam_motd.so noupdate
-/etc/pam.d/sshd:# This includes a dynamically generated part from /run/motd.dynamic
-/etc/pam.d/sshd:# and a static (admin-editable) part from /etc/motd.
+[...]
 /etc/pam.d/sshd:session    optional     pam_motd.so  motd=/run/motd.dynamic
 /etc/pam.d/sshd:session    optional     pam_motd.so noupdate
 </code></pre>

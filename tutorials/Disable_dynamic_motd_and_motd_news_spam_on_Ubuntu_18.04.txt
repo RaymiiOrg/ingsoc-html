@@ -144,12 +144,9 @@ and on my system there was no actual `/etc/motd` file, just the dynamic scripts.
 But the manpage states that `pam` is responsible for the motd so let's check there:
 
     grep motd /etc/pam.d/*
-    /etc/pam.d/login:# This includes a dynamically generated part from /run/motd.dynamic
-    /etc/pam.d/login:# and a static (admin-editable) part from /etc/motd.
     /etc/pam.d/login:session    optional   pam_motd.so motd=/run/motd.dynamic
     /etc/pam.d/login:session    optional   pam_motd.so noupdate
-    /etc/pam.d/sshd:# This includes a dynamically generated part from /run/motd.dynamic
-    /etc/pam.d/sshd:# and a static (admin-editable) part from /etc/motd.
+    [...]
     /etc/pam.d/sshd:session    optional     pam_motd.so  motd=/run/motd.dynamic
     /etc/pam.d/sshd:session    optional     pam_motd.so noupdate
 
