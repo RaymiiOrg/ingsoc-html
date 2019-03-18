@@ -1,0 +1,305 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Disable motd news or (parts of) the dynamic motd on Ubuntu - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link href="inc/img/icons/iphone.png" rel="apple-touch-icon" />
+        <link href="inc/img/icons/ipad.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="inc/img/icons/iphone-retina.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="inc/img/icons/ipad-retina.png" rel="apple-touch-icon" sizes="152x152" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Disable motd news or (parts of) the dynamic motd on Ubuntu</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html" class="link">Disable motd news or (parts of) the dynamic motd on Ubuntu</a></li></ul><p><small>18-03-2019</small> | <small>Remy van Elst</small> | <a href="Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On Ubuntu 18.04 and up, when you login via SSH you are greeted with some news
+via <code>motd</code> (message of the day) that includes advertisements and messages 
+from Canonical (via <code>motd.ubuntu.com</code>). This small guide shows you how to 
+disable news, (parts of) the dynamic motd or just revert back to a plain old
+<code>/etc/motd</code> file.</p>
+
+<h3>(Dynamic) motd</h3>
+
+<p>Since 2009 Ubuntu has had a dynamic <code>motd</code>. It uses a bunch of files and scripts
+in <code>/etc/update-motd/</code> to construct a message. I think since Ubuntu 17.04, but 
+I&#39;m not sure, the online service was introduced. It&#39;s just a webpage that your
+server <a href="https://bugs.launchpad.net/ubuntu/+source/base-files/+bug/1701068/comments/11">checks every 12 hours and puts in a file</a> that ends up in your <code>motd</code>. 
+<a href="https://motd.ubuntu.com">You can visist motd.ubuntu.com in your browser</a> to 
+check the current news. (But why would you when it&#39;s in your face when you login)</p>
+
+<p><img src="https://raymii.org/s/inc/img/motd-ubuntu.png"></p>
+
+<blockquote>
+<p>The dynamic motd page in a browser</p>
+</blockquote>
+
+<p>Here&#39;s what it currently looks like:</p>
+
+<pre><code>Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Mar 18 05:58:11 UTC 2019
+
+  System load:  0.11               Processes:           100
+  Usage of /:   40.1% of 24.06GB   Users logged in:     0
+  Memory usage: 45%                IP address for eth0: 10.184.24.87
+  Swap usage:   0%                 
+
+  =&gt; There is 1 zombie process.
+
+ * Ubuntu&#39;s Kubernetes 1.14 distributions can bypass Docker and use containerd
+   directly, see https://bit.ly/ubuntu-containerd or try it now with
+
+     snap install microk8s --channel=1.14/beta --classic
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+0 packages can be updated.
+0 updates are security updates.
+</code></pre>
+
+<p>Lot&#39;s of useful information (load, zombie processes, reboot required, updates),
+but also stuff I&#39;m not interested in (Canonical live patching, support kubernetes).</p>
+
+<p>It&#39;s also a way for canonical to measure how many ubuntu servers there are active.
+If every server connects at least every 12 hours back to the mothership, they
+will be able to get measurements on when and where Ubuntu is used. Nothing wrong
+with that, but I don&#39;t like the fact that they shoved it in via the <code>motd</code>. Yes
+it could be useful for a <code>heartbleed</code> scale problem but my guess is that this
+was aimed at metrics for Canonical first and they sought an excuse why users
+might want it later. But again, nothing wrong with that. They let you disable 
+it and are open about it. </p>
+
+<h3>Disabling motd news</h3>
+
+<p>Disabling the news part (the pingback to canonical) is simple. Edit the following
+file:</p>
+
+<pre><code>vim /etc/default/motd-news
+</code></pre>
+
+<p>Change <code>ENABLED=1</code> to <code>ENABLED=0</code>.</p>
+
+<p>That&#39;s it for the small news part. If you dont want to see the other messages 
+you need to disable those as well.</p>
+
+<h3>Disabling parts of the dynamic motd</h3>
+
+<p>In <code>/etc/update-motd.d</code> there are a bunch of scripts:</p>
+
+<pre><code>ls /etc/update-motd.d/
+00-header             50-motd-news   80-livepatch          95-hwe-eol         98-reboot-required
+10-help-text          51-cloudguest  90-updates-available  97-overlayroot
+50-landscape-sysinfo  80-esm         91-release-upgrade    98-fsck-at-reboot
+</code></pre>
+
+<p>Some of them are useful for system information or to see if your ubuntu version
+is still supported, but a few are, if you&#39;re not using canonical services, IMHO
+not useful. These scripts must be executable <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">according to the manpage</a>. 
+By removing the execute bit you can have some scripts not shown in your dynamic
+motd:</p>
+
+<pre><code>chmod -x /etc/update-motd.d/80-livepatch
+chmod -x /etc/update-motd.d/51-cloudguest
+chmod -x /etc/update-motd.d/10-help-text
+</code></pre>
+
+<p>I do find it usefull to have some information in my motd, so with these three
+disabled, the canonical spam is gone and actual information remains:</p>
+
+<pre><code>Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-43-generic x86_64)
+
+  System information as of Mon Mar 18 06:27:15 UTC 2019
+
+  System load:  0.12               Processes:           101
+  Usage of /:   40.0% of 24.06GB   Users logged in:     0
+  Memory usage: 42%                IP address for eth0: 10.184.24.87
+  Swap usage:   0%                 
+
+  =&gt; There is 1 zombie process.
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Mon Mar 18 06:27:00 2019 from 192.10.20.30
+</code></pre>
+
+<h3>Disabling dynamic motd entirely</h3>
+
+<p>I&#39;m unsure how to actually do this since the documentation is not that clear
+about it. The manpage for <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">dynamic motd</a> refers to the manpage for 
+<a href="http://manpages.ubuntu.com/manpages/bionic/man8/pam_motd.8.html">pam_motd</a> and both 
+are unclear. </p>
+
+<p>There seems to be not dynamic motd systemd service:</p>
+
+<pre><code>systemctl list-unit-files | grep motd
+motd-news.service                      static
+motd.service                           masked
+motd-news.timer                        enabled
+</code></pre>
+
+<p>and on my system there was no actual <code>/etc/motd</code> file, just the dynamic scripts.</p>
+
+<p>But the manpage states that <code>pam</code> is responsible for the motd so let&#39;s check there:</p>
+
+<pre><code>grep motd /etc/pam.d/*
+/etc/pam.d/login:# This includes a dynamically generated part from /run/motd.dynamic
+/etc/pam.d/login:# and a static (admin-editable) part from /etc/motd.
+/etc/pam.d/login:session    optional   pam_motd.so motd=/run/motd.dynamic
+/etc/pam.d/login:session    optional   pam_motd.so noupdate
+/etc/pam.d/sshd:# This includes a dynamically generated part from /run/motd.dynamic
+/etc/pam.d/sshd:# and a static (admin-editable) part from /etc/motd.
+/etc/pam.d/sshd:session    optional     pam_motd.so  motd=/run/motd.dynamic
+/etc/pam.d/sshd:session    optional     pam_motd.so noupdate
+</code></pre>
+
+<p>The manpage says the following:</p>
+
+<pre><code>pam_motd is a PAM module that can be used to display arbitrary motd (message of the day)
+   files after a successful login. By default the /etc/motd file is shown
+[...]
+ The suggested usage for /etc/pam.d/login is:
+       session  optional  pam_motd.so  motd=/etc/motd
+[...]
+noupdate
+           Don&#39;t run the scripts in /etc/update-motd.d to refresh the motd file.
+</code></pre>
+
+<p>Comment out the first line from the two <code>pam.d</code> files:</p>
+
+<pre><code>#session    optional     pam_motd.so  motd=/run/motd.dynamic
+</code></pre>
+
+<p>Place something in the <code>/etc/motd</code> file to test:</p>
+
+<pre><code>echo &quot;Can&#39;t touch this!&quot; &gt; /etc/motd
+</code></pre>
+
+<p>Try logging in now. On my system, I got the message twice on my terminal. Why?
+Because <code>OpenSSH</code>, by default sets the <code>PrintMotd</code> option to <code>yes</code>:</p>
+
+<pre><code>PrintMotd
+   Specifies whether sshd(8) should print /etc/motd when a user logs in interactively.
+   (On some systems it is also printed by the shell, /etc/profile, or equivalent.)  The
+   default is &quot;yes&quot;.
+</code></pre>
+
+<p>Change that to <code>no</code> to have <code>pam</code> do the motd printing. </p>
+
+<h3>Conclusion</h3>
+
+<p>Disabling the entire <code>dynamic-motd</code> can be done by commenting out two lines
+in <code>/etc/pam.d/sshd</code>:</p>
+
+<pre><code>session    optional     pam_motd.so  motd=/run/motd.dynamic
+session    optional     pam_motd.so noupdate
+</code></pre>
+
+<p>and letting <code>OpenSSH</code> handle the <code>motd</code>. You need to put stuff in <code>/etc/motd</code> 
+yourself for that to work. <code>OpenSSH</code> does this by default if that file exists.</p>
+
+<p>Disabling specific parts of the dynamic motd can be done by removing scripts 
+(or making them not executable) in <code>/etc/update-motd.d/</code>.</p>
+
+<p>Disabling the pingback to the canonical mothership, the <code>motd-news</code> part can
+be done by changing <code>ENABLED=1</code> to <code>ENABLED=0</code> in <code>/etc/default/motd-news</code>.</p>
+
+<p>Never thought that a simple message on your console could be so complex and
+used for statistics and spam.</p>
+</div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/canonical.html" class="link">canonical &nbsp;</a><a href="../tags/dynamic-motd.html" class="link">dynamic-motd &nbsp;</a><a href="../tags/motd.html" class="link">motd &nbsp;</a><a href="../tags/openssh.html" class="link">openssh &nbsp;</a><a href="../tags/pam.html" class="link">pam &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    
