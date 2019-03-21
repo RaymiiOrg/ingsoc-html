@@ -201,6 +201,19 @@ On Ubuntu I installed the Arduino IDE and used `avrdude` to flash the compiled `
 I do need to look into QMK more to program macro's and explore all other cool
 features for this Macro pad.
 
+#### Update 2019-03-21
+
+I've made my own keymap with QMK, [see the code here](https://github.com/RaymiiOrg/qmk_firmware/blob/master/keyboards/launchpad/keymaps/raymii/keymap.c).
+
+     ,-------------------------.
+     | RUN DEBUG  | RUN TARGET |
+     |------------+------------|
+     | STEP OVER  | STEP INTO  |
+     |------------+------------|
+     | STEP OUT   | RESUME     |
+     |------------+------------|
+     | PLAY/PAUSE | LOCK       |
+     `-------------------------'
 
 After flashing the first keymap, flashing the second and latter firmwares is
 harder. You need to press the reset switch twice quickly. The Arduino goes into

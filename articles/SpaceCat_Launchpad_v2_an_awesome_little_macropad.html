@@ -286,6 +286,21 @@ snap install arduino-mhall119
 <p>I do need to look into QMK more to program macro&#39;s and explore all other cool
 features for this Macro pad.</p>
 
+<h4>Update 2019-03-21</h4>
+
+<p>I&#39;ve made my own keymap with QMK, <a href="https://github.com/RaymiiOrg/qmk_firmware/blob/master/keyboards/launchpad/keymaps/raymii/keymap.c">see the code here</a>.</p>
+
+<pre><code> ,-------------------------.
+ | RUN DEBUG  | RUN TARGET |
+ |------------+------------|
+ | STEP OVER  | STEP INTO  |
+ |------------+------------|
+ | STEP OUT   | RESUME     |
+ |------------+------------|
+ | PLAY/PAUSE | LOCK       |
+ `-------------------------&#39;
+</code></pre>
+
 <p>After flashing the first keymap, flashing the second and latter firmwares is
 harder. You need to press the reset switch twice quickly. The Arduino goes into
 firmware programming mode for 8 seconds. If you just press reset once, it will

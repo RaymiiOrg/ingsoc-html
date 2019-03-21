@@ -192,7 +192,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 */5 * * * * root /root/scripts/client.sh | sed &#39;:a;N;$!ba;s/n//g&#39; &gt; /var/www/stat.json
 </code></pre>
 
-<p>In my case, the client script is in <em>/root/scripts</em>, and my webserver directory is <em>/var/www</em>. Change this to your own setup. Also, you might want to change the time interval. */5 executes every 5 minutes. The sed line is in there to remove the newlines, this creates a shorter JSOn file, saves some KB&#39;s. The <em>root</em> after the cron time is special for a file in <em>/etc/cron.d/</em>, it tells cron as which user it has to execute the crontab file.</p>
+<p>In my case, the client script is in <em>/root/scripts</em>, and my webserver directory is <em>/var/www</em>. Change this to your own setup. Also, you might want to change the time interval. <em>/5 executes every 5 minutes. The sed line is in there to remove the newlines, this creates a shorter JSOn file, saves some KB&#39;s. The *root</em> after the cron time is special for a file in <em>/etc/cron.d/</em>, it tells cron as which user it has to execute the crontab file.</p>
 
 <p>When this is setup you should get a stat.json file in the /var/www/ folder containing the status json. If so, the client is setup correctly.</p>
 
