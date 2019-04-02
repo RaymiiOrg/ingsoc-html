@@ -33,7 +33,7 @@ Your dropear style private key will be located
 in `~/.ssh/id_rsa ~/.ssh/id_rsa_dropbear`.
 
 Do note that your private key cannot be protected with a passphrase. 
-Dropbear does not supprot this.
+Dropbear does not support this.
 
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. 
