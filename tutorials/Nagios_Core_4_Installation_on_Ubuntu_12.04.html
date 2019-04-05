@@ -91,7 +91,13 @@ w.nagios.org/projects/nagioscore</a>.</p>
 
 <p>The description of Nagios Core from their website:</p>
 
-<pre><code>Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built. It serves as the basic event scheduler, event processor, and alert manager for elements that are monitored. It features several APIs that are used to extend its capabilities to perform additional tasks, is implemented as a daemon written in C for performance reasons, and is designed to run native on Linux/*nix systems.
+<pre><code>Nagios Core is the monitoring and alerting engine that serves as the
+primary application around which hundreds of Nagios projects are built. It
+serves as the basic event scheduler, event processor, and alert manager
+for elements that are monitored. It features several APIs that are used to
+extend its capabilities to perform additional tasks, is implemented as a
+daemon written in C for performance reasons, and is designed to run native
+on Linux/*nix systems.
 </code></pre>
 
 <h3>Contents</h3>
@@ -122,15 +128,33 @@ monitor the health of Nagios.</p>
 <p><strong>Major performance increases</strong>:  </p>
 
 <ul>
-<li>Core Workers - Core workers are lightweight processes whose only job is to perform checks. Because they are smaller they spawn much more quickly than the the old process which forked the full Nagios Core. In addition, they communicate with the main Nagios Core process using in-memory techniques, eliminating the disk I/O latencies that could previously slow things down, especially in large installations.</li>
-<li>Configuration Verification - Configuration verification has been improved so that each configuration item is verified only once. Previously configuration verification was an O(n2) operation.</li>
-<li>Event Queue - The event queue now uses a data structure that has O(log n) insertion times versus the O(n) insertion time previously. This means that inserting events into the queue uses much less CPU than in Nagios Core 3. </li>
+<li><p>Core Workers - Core workers are lightweight processes whose only job is to
+perform checks. Because they are smaller they spawn much more quickly than the
+the old process which forked the full Nagios Core. In addition, they
+communicate with the main Nagios Core process using in-memory techniques,
+eliminating the disk I/O latencies that could previously slow things down,
+especially in large installations.</p></li>
+<li><p>Configuration Verification - Configuration verification has been improved so
+that each configuration item is verified only once. Previously configuration
+verification was an O(n2) operation.</p></li>
+<li><p>Event Queue - The event queue now uses a data structure that has O(log n)
+insertion times versus the O(n) insertion time previously. This means that
+inserting events into the queue uses much less CPU than in Nagios Core 3.</p></li>
 </ul>
 
-<p><strong>Other nice changes</strong>:<br>
-- The host address attribute is now optional. The address attribute is set to the host name when it is absent. Most configurations set the host name attribute to the DNS host name making the address attribute redundant. 
-- Both hosts and services now support an hourly value attribute. The hourly value attribute is intended to represent the value of a host or service to an organization and is used by the new minimum value contact attribute.
-- Services now support a parents attribute. A service parent performs a function similar to host parents and can be used in place of service dependencies in simple circumstances.</p>
+<p><strong>Other nice changes</strong>:  </p>
+
+<ul>
+<li><p>The host address attribute is now optional. The address attribute is set to
+the host name when it is absent. Most configurations set the host name
+attribute to the DNS host name making the address attribute redundant.</p></li>
+<li><p>Both hosts and services now support an hourly value attribute. The hourly
+value attribute is intended to represent the value of a host or service to an
+organization and is used by the new minimum value contact attribute.</p></li>
+<li><p>Services now support a parents attribute. A service parent performs a function
+similar to host parents and can be used in place of service dependencies in
+simple circumstances.</p></li>
+</ul>
 
 <p><strong>No more embedded perl</strong>: </p>
 
