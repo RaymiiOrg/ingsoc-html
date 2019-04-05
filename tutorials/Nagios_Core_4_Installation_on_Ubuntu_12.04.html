@@ -170,8 +170,7 @@ variables that were related to embedded Perl have been obsoleted:
 use<em>embedded</em>perl<em>implicitly, enable</em>embedded<em>perl, p1</em>file.</li>
 </ul>
 
-<p>[See this page for the full listing of new stuff in Nagios 4: http://nagios.so
-<a href="http://nagios.sourceforge.n%0A%5Bet/docs/nagioscore/4/en/whatsnew.html">urceforge.net/docs/nagioscore/4/en/whatsnew.html</a></p>
+<p><a href="http://nagios.sourceforge.n%0Aet/docs/nagioscore/4/en/whatsnew.html">See this page for the full listing of new stuff in Nagios 4</a></p>
 
 <h3>Note about currently installed Nagios versions</h3>
 
@@ -201,7 +200,12 @@ changed.</p>
 
 <p>Install the packages required for compilation, apache and mail functionality:</p>
 
-<pre><code>apt-get install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev libssl-dev sendmail-bin sendmail heirloom-mailx wget apache2-utils curl daemon apt-file libnet-snmp-perl libperl5.14 libpq5 libradius1 libsensors4 libsnmp-base libtalloc2 libtdb1 libwbclient0 samba-common samba-common-bin smbclient snmp whois mrtg libmysqlclient15-dev libcgi-pm-perl librrds-perl libgd-gd2-perl
+<pre><code>apt-get install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev
+libssl-dev sendmail-bin sendmail heirloom-mailx wget apache2-utils curl
+daemon apt-file libnet-snmp-perl libperl5.14 libpq5 libradius1 libsensors4
+libsnmp-base libtalloc2 libtdb1 libwbclient0 samba-common samba-common-bin
+smbclient snmp whois mrtg libmysqlclient15-dev libcgi-pm-perl librrds-perl
+libgd-gd2-perl
 </code></pre>
 
 <h3>Create the Nagios user</h3>
@@ -248,7 +252,9 @@ cd nagios-4.2.1
 
 <p>Now start the compilation process. First configure:</p>
 
-<pre><code>./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd
+<pre><code>./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-
+./nagios-group=nagios --with-command-user=nagios --with-command-
+./group=nagcmd
 </code></pre>
 
 <p>Output should look like this:</p>

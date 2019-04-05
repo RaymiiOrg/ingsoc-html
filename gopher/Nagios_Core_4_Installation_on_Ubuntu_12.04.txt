@@ -105,9 +105,8 @@ worker to persistently load and run Perl plugins. The following configuration
 variables that were related to embedded Perl have been obsoleted:
 use_embedded_perl_implicitly, enable_embedded_perl, p1_file.
 
-[See this page for the full listing of new stuff in Nagios 4: http://nagios.so
-[urceforge.net/docs/nagioscore/4/en/whatsnew.html](http://nagios.sourceforge.n
-[et/docs/nagioscore/4/en/whatsnew.html)
+[See this page for the full listing of new stuff in Nagios 4](http://nagios.sourceforge.n
+et/docs/nagioscore/4/en/whatsnew.html)
 
 ### Note about currently installed Nagios versions
 
@@ -137,7 +136,12 @@ changed.
 
 Install the packages required for compilation, apache and mail functionality:
 
-    apt-get install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev libssl-dev sendmail-bin sendmail heirloom-mailx wget apache2-utils curl daemon apt-file libnet-snmp-perl libperl5.14 libpq5 libradius1 libsensors4 libsnmp-base libtalloc2 libtdb1 libwbclient0 samba-common samba-common-bin smbclient snmp whois mrtg libmysqlclient15-dev libcgi-pm-perl librrds-perl libgd-gd2-perl
+    apt-get install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev
+    libssl-dev sendmail-bin sendmail heirloom-mailx wget apache2-utils curl
+    daemon apt-file libnet-snmp-perl libperl5.14 libpq5 libradius1 libsensors4
+    libsnmp-base libtalloc2 libtdb1 libwbclient0 samba-common samba-common-bin
+    smbclient snmp whois mrtg libmysqlclient15-dev libcgi-pm-perl librrds-perl
+    libgd-gd2-perl
 
 ### Create the Nagios user
 
@@ -177,7 +181,9 @@ Create a few folders:
 
 Now start the compilation process. First configure:
 
-    ./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd
+    ./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-
+    ./nagios-group=nagios --with-command-user=nagios --with-command-
+    ./group=nagcmd
 
 Output should look like this:
 
