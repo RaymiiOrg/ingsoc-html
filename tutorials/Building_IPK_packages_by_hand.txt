@@ -9,7 +9,7 @@ Format   : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/var-som-mx6.png">
+![VAR-SOM-MX6](https://raymii.org/s/inc/img/var-som-mx6.png)
 > Variscite VAR-SOM-MX6 - a high-performance ARM System on Module that can run Yocto
 
 `.ipk` packages are used by a variety of embedded linux systems, like routers running OpenWRT and 

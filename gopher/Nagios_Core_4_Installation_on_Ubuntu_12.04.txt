@@ -9,7 +9,7 @@ Format   : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/img/nagios4.0.8.png" alt="nagios 4" />
+![Nagios 4](https://raymii.org/s/ing/img/nagios4.0.8.png)
 
 This is a guide on installing the latest Nagios Core (4.2.1) on Ubuntu 12.04 and 14.04. Nagios is an open source computer system monitoring, network monitoring and infrastructure monitoring software application. Nagios offers monitoring and alerting services for servers, switches, applications, and services. It alerts the users when things go wrong and alerts them a second time when the problem has been resolved. The version in the Ubuntu 12.04 repositories is quite old, it is still the in the 3 branch. This guide helps to fix that by using the latest Nagios version. We also install Nagiosgraph, a plugin for Nagios which gives you graps of the metrics.
 
@@ -528,7 +528,7 @@ We need to include the Nagios Graph Javascript in Nagios to make sure the mouseo
 
 Place the following in there:
 
-    <script type="text/javascript" src="/nagiosgraph/nagiosgraph.js"></script>
+    script type="text/javascript" src="/nagiosgraph/nagiosgraph.js"></script
 
 Now save and reload Nagios:
 

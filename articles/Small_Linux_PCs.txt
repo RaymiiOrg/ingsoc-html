@@ -187,7 +187,6 @@ $135
 <a id="pandora"></a>
 
 #### Pandora 
-![Open Pandora Console](https://raymii.org/s/inc/img/small-pcs/pandora.jpg)
 
 ##### Goal / Info
 *designed to take advantage of existing open source software and to be a target for homebrew development and emulation. *
