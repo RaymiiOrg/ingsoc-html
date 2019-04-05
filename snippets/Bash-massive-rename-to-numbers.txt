@@ -9,11 +9,19 @@ Format   : 	Markdown/HTML
 
 
 
-And here is another nice little script for a problem I have.   
-I use awesome as window manager, and in my rc.lua file i've setup some nice tweaks so that my wallpaper changes every 5 minutes to a new one randomly chosen from /usr/share/wallpapers/.  
-(done by: *awsetbg -r '/usr/share/wallpapers'* on a crontab.)   
-But I have a lot of wallpapers, now my collection has over 1500. But awsetbg/feh has some problems with filenames and so once in a while I got this annoying message from feh, and I hate annoying messages.  
-So I fixed it. With a nice little bash script. It renames all the jpg files to a number. Instead of having Beach.jpg, Clouds.jpg and Tux.jpeg you will then have 1.jpg, 2.jpg and 3.jpg.   
+And here is another nice little script for a problem I have. I use awesome as
+window manager, and in my rc.lua file i've setup some nice tweaks so that my
+wallpaper changes every 5 minutes to a new one randomly chosen from
+`/usr/share/wallpapers/`.
+
+(done by: `awsetbg -r '/usr/share/wallpapers'` in a crontab.)
+
+I have a lot of wallpapers, over 1500. `awsetbg/feh` has some problems with
+filenames and so once in a while I got an error message from `feh`,
+
+This scripts renames all the jpg files in a folder to a number. Instead of
+having `Beach.jpg`, `Clouds.jpg` and `Tux.jpg` you will have `1.jpg`, `2.jpg`
+and `3.jpg`.
 
 #### Script:
 
@@ -32,8 +40,8 @@ So I fixed it. With a nice little bash script. It renames all the jpg files to a
 
 If you get an error like: 
 
-*mv: cannot stat `*.jpeg': No such file or directory* then it means that there are no jpeg files to rename. 
-**And remember, all on your own risk ;).**
+`mv: cannot stat '*.jpeg': No such file or directory` then it means that there
+are no jpeg files to rename.
 
 
 ---

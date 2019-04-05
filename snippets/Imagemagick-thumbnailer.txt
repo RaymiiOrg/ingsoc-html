@@ -9,8 +9,12 @@ Format   : 	Markdown/HTML
 
 
 
-Below you'll find the script that makes nice thumbnails from a bunch of images. I've used it on the links page on this website. (Which is not around anymore).  
-First I made screenshots of the website's I wanted, with the firefox add-on screengrab. It also works with pictures, but then you'll have to change the png to jpg in the script. The script also makes a HTML page with a 2 collumn table witth the thumbs in it. 
+Below you'll find the script that makes nice thumbnails from a bunch of
+images. I've used it on the links page on this website. (Which is not around
+anymore).   First I made screenshots of the website's I wanted, with the
+firefox add-on screengrab. It also works with pictures, but then you'll have
+to change the png to jpg in the script. The script also makes a HTML page with
+a 2 collumn table witth the thumbs in it.
 
 Make sure you have imagemagick installed:
 

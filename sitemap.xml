@@ -2136,12 +2136,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tutorials/SSH-Key-Restrictions.html</loc>
-            <lastmod>2009-02-15</lastmod>
-            <changefreq>monthly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/snippets/Bash-massive-rename-to-numbers.html</loc>
             <lastmod>2008-09-14</lastmod>
             <changefreq>monthly</changefreq>
@@ -5575,12 +5569,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/tls.html</loc>
-            <lastmod>2019-03-29</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/restrictions.html</loc>
             <lastmod>2019-03-29</lastmod>
             <changefreq>weekly</changefreq>
         </url>

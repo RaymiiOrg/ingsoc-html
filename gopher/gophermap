@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-04-05T11:47:10	/	localhost	70
+i            2019-04-05T11:56:10	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -374,7 +374,6 @@ i 	/	localhost	70
 0SSHdialog (26-10-2009)	SSHDialog.txt	raymii.org	70
 0Clonezilla Backup Script v0.2 (18-05-2009)	Clonezilla-custom-backup-script.txt	raymii.org	70
 0Postfix: log message from, to and subject (28-03-2009)	Postfix_Log_message_from_to_and_subject_headers.txt	raymii.org	70
-0SSH: Key and user restrictions (15-02-2009)	SSH-Key-Restrictions.txt	raymii.org	70
 0Bash script for massive rename to numbers (14-09-2008)	Bash-massive-rename-to-numbers.txt	raymii.org	70
 0Javascript tricks (08-07-2008)	Javascript-tricks.txt	raymii.org	70
 0Convert FLV's to MP3 (15-06-2008)	Convert-all-flv-files-in-a-folder-to-mp3.txt	raymii.org	70
