@@ -37,7 +37,6 @@ Note that you'll need zenity and ffmpeg:
     
     sudo apt-get install zenity ffmpeg 
 
-
 ### Script
 
     #!/bin/bash
