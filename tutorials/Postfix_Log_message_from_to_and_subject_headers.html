@@ -69,7 +69,10 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a little trick for Postfix, it lets you log the subject, from and to of all the emails postfix sends (or which pass through it if you run it as a relay). It comes in handy when you need to debug an email issue and need to confirm your mailserver has sent the message.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a little trick for Postfix, it lets you log the <code>subject</code>, <code>from</code> and <code>to</code>
+of all the emails postfix sends (or which pass through it if you run it as a
+relay). It comes in handy when you need to debug an email issue and need to
+confirm your mailserver has sent the message.</p>
 
 <p>First create the file <code>/etc/postfix/header_checks</code> and insert this into it:</p>
 
@@ -88,12 +91,14 @@
 
 <p>And restart postfix:</p>
 
-<pre><code>/etc/init.d/postfix restart
+<pre><code>service postfix restart
 </code></pre>
 
 <p>You will hopefully now get log items like below, and if not you have a problem with your mailserver:</p>
 
-<pre><code>Dec  4 08:23:05 localhost postfix/cleanup[2278]: 90CA714: warning: header Subject: This is a testmail which gets logged from localhost[127.0.0.1]; from=&lt;root@localhost&gt; to=&lt;root@localhost&gt; proto=ESMTP helo=&lt;localhost&gt;
+<pre><code>Dec  4 08:23:05 localhost postfix/cleanup[2278]: 90CA714: warning: header
+Subject: This is a testmail which gets logged from localhost[127.0.0.1];
+from=&lt;root@localhost&gt; to=&lt;root@localhost&gt; proto=ESMTP helo=&lt;localhost&gt;
 </code></pre>
 </div><hr>Tags: <a href="../tags/logging.html" class="link">logging &nbsp;</a><a href="../tags/mail.html" class="link">mail &nbsp;</a><a href="../tags/mta.html" class="link">mta &nbsp;</a><a href="../tags/postfix.html" class="link">postfix &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>

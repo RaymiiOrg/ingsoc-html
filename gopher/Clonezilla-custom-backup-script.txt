@@ -9,25 +9,29 @@ Format   : 	Markdown/HTML
 
 
 
-Clonezilla is wonderfull software. At work we use it daily to image laptops. We have a windows PC with a big hard drive, which is shared via samba.  
-Because we image an average of 10 laptops every morning, I decided to customize the script. So together with a colleague we made a script which automatically grabs our latest image from the share and restores it.  
-Our images are named schoon#.   
-It restores the image to /dev/sda. But you can change the clonezilla command.   
-Make sure your share is writable.  
-It gets network from dhcp on eth0.  
-So, the steps to get the script in clonezilla:
+Clonezilla is wonderful software. At work we use it daily to image laptops.
+We have a windows PC with a big hard drive, which is shared via samba.
+Because we image an average of 10 laptops every morning, I decided to
+customize the script. So together with a colleague we made a script which
+automatically grabs our latest image from the share and restores it.   
+
+Our images are named `schoon#`. It restores the image to `/dev/sda`, you
+can change the clonezilla command. Make sure your share is writable. It
+gets network from dhcp on eth0. The steps to get the script in
+clonezilla:
 
 * Install the squashfs-tools for your distro, this is important.  
 * Unetbootin the ISO to a USB. 
 * Copy the files to a dir on your pc and open a terminal in the dir. 
 
-Then do this
+Execute this command: 
 
      cd live
      sudo unsquashfs -f ./filesystem.squashfs 
 
 
-Now make a dir in de squashfs-root. Put the scripts in there, change them or not, and chmod them so that they are executable. 
+Now make a dir in the `squashfs-root`. Put the scripts in there, change them
+or not, and chmod them so that they are executable.
 
   
 Don't forget to change the path in the launcher script, else it won't work.  
@@ -51,14 +55,12 @@ Now, here are the scripts: backup-schoon.sh (this makes a backup image)
     clear
     echo "################################"
     echo "# Daniel Imager for Erasmus MC #"
-    echo "#      By Raymii && David       #"
-    echo "#     Based on Clonezilla      #"
     echo "################################"
     echo
     echo
     echo "Mounting the image share. If asked for a password, enter 1234"
     echo
-    mount -t cifs -o username="administrator",password="emcdaniel" //192.168.1.2/image /home/partimag
+    mount -t cifs -o username="example",password="example" //192.168.1.2/image /home/partimag
     echo
     #clear
     cd /home/partimag
@@ -92,7 +94,7 @@ Now, here are the scripts: backup-schoon.sh (this makes a backup image)
     #    echo "I: $I  J: $GEZOCHTE_GETAL"
     fi
     done
-    
+     
     # Als GROOTSTE_GETAL groter is dan nul is er een schone backup aanwezig en 
     # hogen we GROOTSTE_GETAL met een op maken we een nieuwe schone backup: schoon(GROOTSTE_GETAL+1)
     # Zo niet dan nieuwe schone backup: schoon01
@@ -115,15 +117,13 @@ restore-schoon.sh (this restores the image)
     clear
     echo "################################"
     echo "# Daniel Imager for Erasmus MC #"
-    echo "#      By Raymii && David       #"
-    echo "#     Based on Clonezilla      #"
     echo "#       Made on 01-04-10       #"
     echo "################################"
     echo
     echo
     echo "Mounting the image share. If asked for a password, enter 1234"
     echo
-    mount -t cifs -o username="administrator",password="emcdaniel" //192.168.1.2/image /home/partimag
+    mount -t cifs -o username="example",password="example" //192.168.1.2/image /home/partimag
     #clear
     cd /home/partimag
     echo "We zitten in map:"
@@ -155,7 +155,7 @@ restore-schoon.sh (this restores the image)
     fi
     fi
     done
-    
+     
     # Als GROOTSTE_GETAL groter is dan nul is er een schone backup aanwezig en 
     # kunnen we met de restore beginnen. Zo niet dan geven we de error terug
     if (( $GROOTSTE_GETAL > 0 ))
@@ -169,19 +169,16 @@ restore-schoon.sh (this restores the image)
     echo "Selecteer dadelijk de optie Start Over."
     fi
 
-start.sh (bootstrapper for backup script) 
+`start.sh` (bootstrapper for backup script):
     
      #!/bin/sh
      sudo su -c /laptop03/backup-schoon.sh
 
-startr.sh (bootstrapper for restore script) 
+`startr.sh` (bootstrapper for restore script):
     
      #!/bin/sh
      sudo su -c /laptop03/restore-schoon.sh
 
-Note that this is all on your own risk, no warranty or purpose for any target and all the regular bla-bla. 
-
-Good luck with the scripts and clonezilla! 
 
 
 ---

@@ -11,8 +11,8 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/sshdialog.png">
 
-As I manage a lot of linux servers I have to use ssh a lot.   
-I am to lazy to remember all the hosts, so I wrote a script which combines dialog, awk and bash to make a nifty ssh script. First of, copy this script to your pc: 
+I wrote a script which combines dialog, awk and bash to make a nifty ssh
+script. First of, copy this script to your pc:
 
 #### SSHdialog 
 
@@ -116,12 +116,9 @@ I am to lazy to remember all the hosts, so I wrote a script which combines dialo
     
 Now comes the hard part, creating your hosts file.
 
-  
-The script wants it to be in the same directory as the script with the name "hosts".  
-This requires a special syntax to make it work.  
-It has to be like below: 
+The script wants it to be in the same directory as the script with the name
+`hosts`. This is the syntax:
 
-### hosts file
 
     ID,Friendly name,username,host or ip,port
     1,VPS 1,-,vps.example.org,22
@@ -130,11 +127,10 @@ It has to be like below:
     4,Homeserver,-,192.168.1.10,22
     5,Work,ceo,my.work.com,22 
 
-If you want the current user to be used as the username then use a - (dash) as username.
+If you want the current user to be used as the username then use a `-` (dash) as username.
 
-  
 Please double check your comma's and your numbers, if something is wrong the script can give strange errors.  
-If you like the script or have suggestions the please leave a comment below.
+
 
 
 ---
