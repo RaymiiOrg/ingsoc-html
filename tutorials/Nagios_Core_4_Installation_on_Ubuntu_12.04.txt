@@ -22,9 +22,9 @@ to fix that by using the latest Nagios version. We also install Nagiosgraph, a
 plugin for Nagios which gives you graps of the metrics.
 
 [If you like this article, consider sponsoring this site by trying out a
-[Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as
-[in, you get $10 credit). (referral
-[link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as
+in, you get $10 credit). (referral
+link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
 You can find more information about Nagios on the official website: [http://ww
 w.nagios.org/projects/nagioscore](http://www.nagios.org/projects/nagioscore).
