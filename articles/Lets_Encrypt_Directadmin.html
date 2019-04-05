@@ -131,25 +131,27 @@
 <li>Rate limit on certificates per Domain: 5 per 7 days</li>
 </ul>
 
-<del>Read the article here on the beta program: [https://community.letsencrypt.org/t/beta-program-announcements/1631](https://community.letsencrypt.org/t/beta-program-announcements/1631) and follow the instructions to sign up. I've got my invitation about 3 days after I signed up, yours might be faster.<del>
+<p><del>Read the article here on the beta program: <a href="https://community.letsencrypt.org/t/beta-program-announcements/1631">https://community.letsencrypt.org/t/beta-program-announcements/1631</a> and follow the instructions to sign up. I&#39;ve got my invitation about 3 days after I signed up, yours might be faster.<del></p>
 
-### Installing the Let's Encrypt Client
+<h3>Installing the Let&#39;s Encrypt Client</h3>
 
-The installation is pretty straightforward. It does require SSH access to your Directadmin host, so that might not be available if you're on a shared hosting server. There is a manual way to authenticate the domain, that is also explained. You can run the client somewhere else and place the result, via SFTP, on your shared hosting account to complete the challenge.
+<p>The installation is pretty straightforward. It does require SSH access to your Directadmin host, so that might not be available if you&#39;re on a shared hosting server. There is a manual way to authenticate the domain, that is also explained. You can run the client somewhere else and place the result, via SFTP, on your shared hosting account to complete the challenge.</p>
 
-First make sure you have git installed:
+<p>First make sure you have git installed:</p>
 
-    # ubuntu & debian
-    apt-get install git
-    # centos & redhat
-    yum install git
+<pre><code># ubuntu &amp; debian
+apt-get install git
+# centos &amp; redhat
+yum install git
+</code></pre>
 
-Clone the Let's Encrypt code:
+<p>Clone the Let&#39;s Encrypt code:</p>
 
-    git clone https://github.com/letsencrypt/letsencrypt
-    cd letsencrypt
+<pre><code>git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+</code></pre>
 
-Since December 2015 the client supports the `--webroot` option, so your webserver doesn't need to be brought down. 
+<p>Since December 2015 the client supports the <code>--webroot</code> option, so your webserver doesn&#39;t need to be brought down. </p>
 
 <!-- The below part doesn't apply anymore.
 
@@ -157,11 +159,10 @@ Since December 2015 the client supports the `--webroot` option, so your webserve
 
 <del>Directadmin also has a service monitor where we must indicate that HTTPD is offline, otherwise it will restart it and the process might fail:</del>
 
-<pre><code>sed -i &#39;s/httpd=ON/httpd=OFF/g&#39; /usr/local/directadmin/data/admin/services.status
-service httpd stop
-</code></pre>
+    sed -i 's/httpd=ON/httpd=OFF/g' /usr/local/directadmin/data/admin/services.status
+    service httpd stop
 
-<p><del>If you don&#39;t want or are not able to take down all sites or bind to port 80, scroll down below for a manual command.</del> --&gt;</p>
+<del>If you don't want or are not able to take down all sites or bind to port 80, scroll down below for a manual command.</del> -->
 
 <p>If you are not able to execute the client on the actual webserver, a shared hosting account without ssh or are behind a firewall or loadbalancer, read on below for a manual method.</p>
 

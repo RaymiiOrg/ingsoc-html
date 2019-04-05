@@ -359,7 +359,7 @@ DRBD CRITICAL: Device 0 WFConnection UpToDate
 
 <h5>Ceph</h5>
 
-<p>Ceph is the best thing for high-available storage since sliced bread. <a href="https://en.wikipedia.org/wiki/Ceph_(software)">Wikipedia</a> has the best description, so I&#39;m not going to cover it here.</p>
+<p>Ceph is the best thing for high-available storage since sliced bread. <a href="https://en.wikipedia.org/wiki/Ceph_(software">Wikipedia</a>) has the best description, so I&#39;m not going to cover it here.</p>
 
 <p>The checks I run on a ceph cluster are checks of the different components (<code>mon</code>, <code>mds</code> and <code>osd</code>). The OSD check, basically all the disks underneath Ceph:</p>
 
@@ -624,7 +624,7 @@ INFO: tcp connections for dst 172.32.173.163 reached WARN 137442 &gt; 65536
 
 <h4>Disk stats, IO wait and IOPS</h4>
 
-<p><a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/Storage-Subsystem/check_diskstat/details">check_diskstat</a>, <a href="https://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/check_iostat--2D-I-2FO-statistics/details">check_iostat</a> and <a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/File-System/Check-IO-Wait-(by-Nestor@Toronto)/details">check_iowait</a> are just like the connection sockets checks usefull to graph and get insight in the performance of your environment. Good to kick your VM provider if their platform has issues with IO performance, especially when you&#39;re able to show what stats are normal.</p>
+<p><a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/Storage-Subsystem/check_diskstat/details">check_diskstat</a>, <a href="https://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/check_iostat--2D-I-2FO-statistics/details">check_iostat</a> and <a href="https://exchange.nagios.org/directory/Plugins/System-Metrics/File-System/Check-IO-Wait-(by-Nestor@Toronto">check_iowait</a>/details) are just like the connection sockets checks usefull to graph and get insight in the performance of your environment. Good to kick your VM provider if their platform has issues with IO performance, especially when you&#39;re able to show what stats are normal.</p>
 
 <p>check_diskstat:</p>
 

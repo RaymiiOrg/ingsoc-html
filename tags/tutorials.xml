@@ -7,6 +7,14 @@
             <atom:link href="https://raymii.org/s/tags/tutorials.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Building opkg .ipk packages by hand (for OpenEmbedded/Yocto/OpenWRT)</title> 
+                <link>https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html</link> 
+                <guid>https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html</guid>
+                <description>.ipk packages are used by a variety of embedded linux systems, like routers running OpenWRT and appliances running on OpenEmbedded (Yocto). The opkg command installs these packages and OpenEmbedded comes with a set of tools to build .ipk packages. Recently I had to create ipk packages in a scripted fashion for a few hundred systems, all unique per system. The .ipk packages includes a few software changes for debugging, a systemd service and one precompiled binary. The yocto build tools were not available on the machine where these packages would be made so I had to figure out how to make them by hand, which means, automatically. The packages are actually just compressed files containing a few control files and the data to be extracted on the filesystem. This article will walk you through the steps of creating these packages by hand.</description> 
+                <pubDate>Fri, 05 Apr 2019 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
                 <title>Disable motd news or (parts of) the dynamic motd on Ubuntu</title> 
                 <link>https://raymii.org/s/tutorials/Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html</link> 
                 <guid>https://raymii.org/s/tutorials/Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html</guid>
@@ -839,18 +847,18 @@
             </item>
     
             <item>
-                <title>Ansible - pure ssh based configuration management and deployment</title> 
-                <link>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</link> 
-                <guid>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</guid>
-                <description>This tutorial will get you started with Ansible. Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</description> 
-                <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Screenfetch installation tutorial</title> 
                 <link>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</link> 
                 <guid>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</guid>
                 <description>This tutorial will show you how to install screenfetch, a bash information tool. It displays handy system information at login, including distro name, kernel, uptime, cpu, ram and nice distro-based artwork. The tutorial includes support for bash and zsh, for every supported linux OS (ubuntu, centos, arch, redhat, solusOS, linux mint and more.)</description> 
+                <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
+            </item>
+    
+            <item>
+                <title>Ansible - pure ssh based configuration management and deployment</title> 
+                <link>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</link> 
+                <guid>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</guid>
+                <description>This tutorial will get you started with Ansible. Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
             </item>
     

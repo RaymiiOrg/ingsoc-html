@@ -16,6 +16,10 @@ feel at home.
 [Github repository here](https://github.com/RaymiiOrg/pygopherdstats) or just
 [the script here](https://raymii.org/s/inc/software/pygopherstats.sh).
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. 
+With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). 
+(referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+
 ### Requirements
 
 - pygopherd (tested with 2.0.18)
