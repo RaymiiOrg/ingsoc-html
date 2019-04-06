@@ -8,30 +8,64 @@ Format   : 	Markdown/HTML
 ---
 
 
-Hi there! I'm Remy, a Linux/UNIX sysadmin; my primary focus is on **building high-available cloud environments in OpenStack, Azure or on premise with Ansible and Terraform** (or any other configuration management tool). My keywords are OpenStack, cloud, virtualization, high-availability, scaling and clustering, security, (Open)SSL, Python, Powershell, Bash and general linux/UNIX system administration. Besides that I also develop [software](https://github.com/raymiiorg/).
 
-I currently work for [VolkerWessels](https://en.wikipedia.org/wiki/VolkerWessels), the largest Dutch civil engineering construction company as an (Azure) cloud specialist.
 
-I've worked as a sysadmin (in a devops role) for [the Erasmus University Medical Center](https://en.wikipedia.org/wiki/Erasmus_MC) (a large hospital and medical university in Rotterdam), [Digidentity](https://www.digidentity.eu/) (a Dutch [certificate authority](https://en.wikipedia.org/wiki/PKIoverheid), the company that develops [DigiD](https://en.wikipedia.org/wiki/DigiD) and other Ruby on Rails applications), [CloudVPS](https://www.cloudvps.com/about-cloudvps) (an OpenStack cloud provider) and a few other smaller companies. I like to design, build, document and manage large, complex and high-available systems. I'm a team player that loves to work with configuration management tools and version control systems. If I do something more than three times, I automate it. **Planning, documentation, monitoring and backups are things I do first, not when the time allows it later.** Last but not least I have an interest in legacy systems like the PDP-11, PDP-8 and operating systems like OpenVMS, HP-UX and old UNIX systems.
+Hi there! I'm Remy, a Linux/UNIX sysadmin; my primary focus is on **building
+high-available cloud environments in OpenStack, Azure or on premise with Ansible
+and Terraform** (or any other configuration management tool). My keywords are
+OpenStack, cloud, virtualization, high-availability, scaling and clustering,
+security, (Open)SSL, Python, Powershell, Bash and general linux/UNIX system
+administration. Besides that I also develop
+[software](https://github.com/raymiiorg/).
+
+I currently work for
+[VolkerWessels](https://en.wikipedia.org/wiki/VolkerWessels), the largest Dutch
+civil engineering construction company as an (Azure) cloud specialist.
+
+I've worked as a sysadmin (in a devops role) for [the Erasmus University Medical
+Center](https://en.wikipedia.org/wiki/Erasmus_MC) (a large hospital and medical
+university in Rotterdam), [Digidentity](https://www.digidentity.eu/) (a Dutch
+[certificate authority](https://en.wikipedia.org/wiki/PKIoverheid), the company
+that develops [DigiD](https://en.wikipedia.org/wiki/DigiD) and other Ruby on
+Rails applications), [CloudVPS](https://www.cloudvps.com/about-cloudvps) (an
+OpenStack cloud provider) and a few other smaller companies. I like to design,
+build, document and manage large, complex and high-available systems. I'm a team
+player that loves to work with configuration management tools and version
+control systems. If I do something more than three times, I automate it.
+**Planning, documentation, monitoring and backups are things I do first, not
+when the time allows it later.** Last but not least I have an interest in legacy
+systems like the PDP-11, PDP-8 and operating systems like OpenVMS, HP-UX and old
+UNIX systems.
 
 To get in touch, [click here](https://raymii.org/s/static/About.html).  
 
-This is my personal website, please do note that these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.
+This is my personal website, please do note that these articles do not reflect
+or are based on work, opinions or policies of any of my (previous) employers.
+Any resemblance to reality is pure coincidence.
 
-This site started in 2006 as my form of (public) documentation. It has grown to include software, tutorials, snippets and articles on linux/UNIX, system administration and everything related with over 10.000 unique visitors a day as of [2018-06](https://raymii.org/s/inc/img/hits-2018.png). The URL is the phonetic way you say my name (Ray-Mii), since non-Dutch speakers always have trouble with the correct pronunciation.
+This site started in 2006 as my form of (public) documentation. It has grown to
+include software, tutorials, snippets and articles on linux/UNIX, system
+administration and everything related with over 10.000 unique visitors a day as
+of [2018-06](https://raymii.org/s/inc/img/hits-2018.png). The URL is the
+phonetic way you say my name (Ray-Mii), since non-Dutch speakers always have
+trouble with the correct pronunciation.
     
 
-If you want to send me feedback, emails or comments, see below for the contact details.
+If you want to send me feedback, emails or comments, see below for the contact
+details.
 
 ### Resume
 
-If you want my full resume including all (previous) jobs, experience and education, please send me an email.
+If you want my full resume including all (previous) jobs, experience and
+education, please send me an email.
 
 <a id="contact"></a>
 ### Contact
 
-You can reach me by email, try mailing "contact" "at" "relst" "dot" "nl".  
-I'm not on any social networks, not on facebook, not on linkedin, not on twitter, not on identica, not on diaspora, mastodont, nowhere. Every profile on a social network claiming to be me is false.  
+You can reach me by email, try mailing "contact" "at" "relst" "dot" "nl".   I'm
+not on any social networks, not on facebook, not on linkedin, not on twitter,
+not on identica, not on diaspora, mastodont, nowhere. Every profile on a social
+network claiming to be me is false.  
 
 This is my public S/MIME certificate for email:
 
@@ -99,16 +133,25 @@ This is my GPG public key ([1B7F88DC](http://pool.sks-keyservers.net/pks/lookup?
     =oFJR
     -----END PGP PUBLIC KEY BLOCK-----
 
-Other GPG keys floating around older than this date or with another ID, are false, fake, or used for experimentation. Do not use those.
+Other GPG keys floating around older than this date or with another ID, are
+false, fake, or used for experimentation. Do not use those.
 
 
 ### Disclaimer
 
-All  the  text on this website is free as in freedom unless stated otherwise. This means you can use it in any way you want, you can copy it, change it the way you like and republish it, *as long as you release the (modified) content under the same license* to give others the same freedoms you've got and place my name and a link to this site with the article as source.
+All  the  text on this website is free as in freedom unless stated otherwise.
+This means you can use it in any way you want, you can copy it, change it the
+way you like and republish it, *as long as you release the (modified) content
+under the same license* to give others the same freedoms you've got and place my
+name and a link to this site with the article as source.
 
-This site uses Google Analytics for statistics and Google Adwords for advertisements. You are tracked and Google knows everything about you. Use an adblocker like ublock-origin if you don't want it.
+This site uses Google Analytics for statistics and Google Adwords for
+advertisements. You are tracked and Google knows everything about you. Use an
+adblocker like ublock-origin if you don't want it.
 
-All the code on this website is licensed under the GNU GPL v3 license unless already licensed under a license which does not allows this form of licensing or if another license is stated on that page / in that software:
+All the code on this website is licensed under the GNU GPL v3 license unless
+already licensed under a license which does not allows this form of licensing or
+if another license is stated on that page / in that software:
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -123,7 +166,10 @@ All the code on this website is licensed under the GNU GPL v3 license unless alr
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
-Just to be clear, the information on this website is for ment for educational purposes and you use it at your own risk. I do not take responsibility if you screw something up. Use common sense, do not `rm -rf /` as root for example. If you have any questions then do not hesitate to contact me.  
+Just to be clear, the information on this website is for ment for educational
+purposes and you use it at your own risk. I do not take responsibility if you
+screw something up. Use common sense, do not `rm -rf /` as root for example. If
+you have any questions then do not hesitate to contact me.  
 
 
 
