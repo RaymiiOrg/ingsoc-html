@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html</guid>
                 <description>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</description> 
                 <pubDate>Fri, 09 Jan 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 09 Jan 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/KVM_add_disk_image_or_swap_image_to_virtual_machine_with_virsh.html</guid>
                 <description>This tutorial shows you how to create and add a disk image to a KVM vm using virsh. This is useful when you for example want to expand the disk space of your virtual machine when it is using LVM, or if you want to add a swap disk to a virtual machine.</description> 
                 <pubDate>Sun, 23 Feb 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 23 Feb 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

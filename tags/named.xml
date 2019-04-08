@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Get_DNS_server_version_and_hide_it_in_BIND.html</guid>
                 <description>The BIND nameserver (and many others) return their version number when queried a special DNS query. This tutorial shows you how to query the BIND version and how to stop your own BIND server sending its version out.</description> 
                 <pubDate>Wed, 08 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 08 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

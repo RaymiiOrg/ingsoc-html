@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Strip_all_non-ascii_characters_from_a_file.html</guid>
                 <description>This snippet strips all non-ascii characters from a file. It backs up the original file. This is handy if you have input for programs that bork on non-ascii input like older mainframes and such.</description> 
                 <pubDate>Thu, 27 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 27 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

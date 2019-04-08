@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Self_Hosted_CryptoCat_-_Secure_Self_Hosted_Multiuser_Webchat.html</guid>
                 <description>This is a guide on setting up a self hosted secure multiuser webchat service with CryptoCat. It covers the set up of ejabberd, nginx and the web interface for CryptoCat. It supports secure encrypted group chat, secure encrypted private chat and file and photo sharing.</description> 
                 <pubDate>Sat, 09 Nov 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 09 Nov 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

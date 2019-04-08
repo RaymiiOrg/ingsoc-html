@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/rc.local_support_on_Arch_Linux_and_systemd.html</guid>
                 <description>This is a simple tutorial on how to get /etc/rc.local support back in Arch Linux or any distro with systemd. Arch Linux uses systemd. Therefore, init functions like rc.local are not supported anymore. This systemd service allows you to have support for `/etc/rc.local`.</description> 
                 <pubDate>Mon, 13 Jan 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 13 Jan 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

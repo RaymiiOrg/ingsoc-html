@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/haproxy_restrict_specific_urls_to_specific_ip_addresses.html</guid>
                 <description>This snippet shows you how to use haproxy to restrict certain URLs to certain IP addresses. For example, to make sure your admin interface can only be accessed from your company IP address. It also includes an example to prompt for a password if the visitor is from a different network.</description> 
                 <pubDate>Sun, 04 Mar 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 04 Mar 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

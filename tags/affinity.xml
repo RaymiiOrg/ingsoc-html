@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Openstack_Affinity_Groups-make-sure-instances-are-on-the-same-or-a-different-hypervisor-host.html</guid>
                 <description>This guide shows you how to use Openstack Affinity groups. Affinity or Anti-Affinity groups allow you to make sure instances (VM/VPS) are on the same hypervisor host or on a different one. There are cases when you want two instances on different compute nodes, for example, when they are clustered servers like a load balancer or a database master-master setup. All VMs in each Affinity group are hosted in the same hypervisor, while no two VMs of a same Anti-Affinity group are hosted in the same hypervisor.</description> 
                 <pubDate>Sat, 29 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 29 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

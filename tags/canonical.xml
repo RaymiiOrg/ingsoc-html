@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html</guid>
                 <description>On Ubuntu 18.04 and up, when you login via SSH you are greeted with some news via motd (message of the day) that includes advertisements and messages from Canonical (via motd.ubuntu.com). This small guide shows you how to disable news, (parts of) the dynamic motd or just revert back to a plain old /etc/motd file.</description> 
                 <pubDate>Mon, 18 Mar 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 18 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Local_W3C_HTML5_Validator_Server.html</guid>
                 <description>This tutorial shows you how to set up a local instance of the w3c html validator, including HTML5 validation support via a local instance of the Validator.nu HTML5 validator. The online w3 validator has strict limits and will ban you for some time if you validate to often. So if you for example have a local unit test to check a website you will get banned a lot. Which is understandable of course, it is a free service. They provide all source code plus it is in the debian repositories, it is dead simple to set up one yourself.</description> 
                 <pubDate>Fri, 27 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 27 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/Nopriv-IMAP-backup.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password. This release has a few major new features, namely support to backup all available folders in one go and a conversion from HTML Kickstart to Bootstrap.</description> 
                 <pubDate>Sun, 17 Nov 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 17 Nov 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/software/Nopriv.py.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I won't steal your password.</description> 
                 <pubDate>Fri, 01 Jan 2010 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 01 Jan 2010 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

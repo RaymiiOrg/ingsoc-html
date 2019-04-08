@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Linux_Containers.html</guid>
                 <description>This article goes over Linux Containers. It touches both bare linux cgroups and namespaces and goes over LXC (linux conrainers).</description> 
                 <pubDate>Thu, 12 Nov 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 12 Nov 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

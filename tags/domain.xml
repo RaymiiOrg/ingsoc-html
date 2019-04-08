@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html</guid>
                 <description>This is a collection of Powershell snippets to install Active Directory, create a new Active Directory Domain, join an existing Active Directory domain and to install Microsoft Exchange 2013. The snippets were tested on Windows Server 2012 R2.</description> 
                 <pubDate>Sat, 27 Feb 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Feb 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

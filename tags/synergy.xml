@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Synergy_no_mouse_cursor_on_Ubuntu_17.10.html</guid>
                 <description>Synergy is an application to control remote screens with your local mouse and keyboard over the network, cross platform. You could use Linux as your main OS and have a seperate box with Windows next to it, and use your Linux mouse to control windows. On Ubuntu 17.10 the mouse cursor is not visible, but does work. This snippet provides a fix. Hint, wayland is in the way.</description> 
                 <pubDate>Wed, 11 Apr 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 11 Apr 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

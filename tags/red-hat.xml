@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html</guid>
                 <description>Not available.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/Dogtag_Red_Hat_Certificate_System_Reset_Admin_pkiconsole_Password.html</guid>
                 <description>This tutorial shows you how to reset the password for the PKI Console within the Red Hat Certificate System (Dogtag).</description> 
                 <pubDate>Wed, 19 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 19 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

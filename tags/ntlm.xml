@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Use_Ubuntu_behind_a_Microsoft_ForeFront_TMG_proxy_with_cntlm.html</guid>
                 <description>Recently I had to deploy a few machines in a network where outgoing network access was forced through a Microsoft Forefront TMG proxy. For all the Windows clients this went automatically due to domain policies, for Linux this has to be set up manually. Defining the proxy in /etc/environment was not enough since NTML authentication is required, which is not supported by default. I found cntlm, a piece of software which acts as a local proxy, translating all requests to authenticated NTLM requests to your upstream proxy. This guide covers the (offline) installation, setup, getting the correct password hash and system-wide configuration. It should work on a desktop as well, but I did not test that.</description> 
                 <pubDate>Sat, 27 Oct 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Oct 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

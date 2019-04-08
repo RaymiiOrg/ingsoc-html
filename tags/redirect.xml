@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/haproxy_redirect_to_ssl_or_any_other_website.html</guid>
                 <description>This snippet shows you how to use haproxy to redirect http traffic to https or any other website</description> 
                 <pubDate>Mon, 09 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 09 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

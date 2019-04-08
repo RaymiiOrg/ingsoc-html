@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Set_up_your_own_truly_secure_encrypted_shared_storage_aka_Dropbox_clone.html</guid>
                 <description>This article describes my truly secure, encrypted file synchronization service. It used EncFS and dvcs-autosync which lets me share only the encrypted data and mount that locally to get the plaintext. It works on OS X, Linux and ARM linux. This article has setup instructions for all those platforms.</description> 
                 <pubDate>Tue, 15 Oct 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 15 Oct 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html</guid>
                 <description>Ray-Mon is a linux server monitoring script written in PHP and Bash, utilizing JSON as data storage. It requires only bash and a webserver on the client side, and only php on the server side. The client currently supports monitoring processes, uptime, updates, amount of users logged in, disk usage, RAM usage and network traffic.</description> 
                 <pubDate>Mon, 22 Oct 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 22 Oct 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

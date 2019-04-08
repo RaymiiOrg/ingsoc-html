@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
                 <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

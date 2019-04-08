@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/blog/How_I_got_a_valid_SSL_certificate_for_my_ISPs_main_website.html</guid>
                 <description>I got a valid SSL certificate for a domain that is not mine by creating an email alias. In this article I'll explain what happened, why that was possible and how we all can prevent this.</description> 
                 <pubDate>Sat, 21 Mar 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 21 Mar 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

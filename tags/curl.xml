@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_json_value_with_sed.html</guid>
                 <description>Recently I was asked to get one value from a json object using only shell tools. The json in question is from a dutch radio station and it lists the current song that is played. Using this together with a few shell commands and notify-send we can show the current song when it changes as a desktop notification. I'd rather use Python or jq if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.</description> 
                 <pubDate>Tue, 26 Feb 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 26 Feb 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/snippets/Check_HTTP_status_code_for_a_page_on_all_DNS_records.html</guid>
                 <description>This is a small snippet using curl to check the status code of a given URL on all DNS records for a given domain. This site has a few A records in round robin mode, and sometimes the automatic deployment fails. Using this query I can check which server is the culprit and fix it manually.</description> 
                 <pubDate>Sun, 09 Apr 2017 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 09 Apr 2017 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html</guid>
                 <description>Have a lot of HP servers with ILO cards, and want to gather information from them quicly? By default you can get some information in XML format, for ILO, ILO2, ILO3 and ILO4, with curl.</description> 
                 <pubDate>Sat, 13 Apr 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 13 Apr 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

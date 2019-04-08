@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_-_Incremental_History_Search_Autocomplete.html</guid>
                 <description>This little snippet for your .bashrc or your .inputrc changes the Up/Down arrow behavior to autocomplete what is already typed instead of just go back in history.</description> 
                 <pubDate>Wed, 26 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 26 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

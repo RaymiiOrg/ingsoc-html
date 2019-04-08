@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Uninstall_OSSEC.html</guid>
                 <description>This small tutorial shows you how to remove an OSSEC installation. OSSEC is installed from source (via a script), so you have to remove all the things manually instead of with your package manager.</description> 
                 <pubDate>Tue, 01 Oct 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 01 Oct 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

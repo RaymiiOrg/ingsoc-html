@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Nagios_plugin_to_check_CRL_expiry.html</guid>
                 <description>This is a nagios plugin which you can use to check if a CRL (Certificate Revocation List, public list with revoked certificates) is still valid.</description> 
                 <pubDate>Thu, 02 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 02 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

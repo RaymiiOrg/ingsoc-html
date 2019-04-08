@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Send_email_with_multiple_inline_images_via_bash.html</guid>
                 <description>Recently I had a request from a user that whished to receive a scheduled email with two screenshots. The screenshots were automated via AutoIt on a network share, the user manually logged in every evening to check the pictures. With bash and postfix/sendmail we can automate this process, the user now doesn't have to login but can just check their email. There are a lot of snippets and guides to attach emails via the shell, but displaying multiple images inline as an HTML mail was something I had to figure out. You cannot embed the image in base64 HTML because Outlook doesn't show that, you must use the Content-ID style embed. Like UUENCODE, but more complicated. (The next step in this process with the user is to automate the reason why they have to check those screenshots every night, that is something for another article)</description> 
                 <pubDate>Mon, 23 Jul 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 23 Jul 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

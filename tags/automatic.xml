@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Silent-automatic-apt-get-upgrade.html</guid>
                 <description>This tutorial will show you how to setup completely silent apt-get upgrade via cron. It also defaults to not overwriting config files if a package has a newer version.</description> 
                 <pubDate>Sat, 30 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 30 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/CentOS_Save_iptables_restorecon_error.html</guid>
                 <description>On a default CentOS installation, when trying to execute the iptables save command you can get an error like iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found. Read this article to find out how to fix it.</description> 
                 <pubDate>Wed, 23 Jan 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 23 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

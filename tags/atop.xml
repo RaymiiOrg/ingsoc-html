@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/atop_is_broken_on_Ubuntu_16.04.html</guid>
                 <description>Recently a few of my Ubuntu 16.04 machines had issues and I was troubleshooting them, noticing `atop` logs missing. atop is a very handy tool which can be setup to record system state every X minutes, and we set it up to run every 5 minutes. You can then at a later moment see what the server was doing, even sorting by disk, memory, cpu or network usage. This post discusses the error and a quick fix.</description> 
                 <pubDate>Mon, 18 Sep 2017 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 18 Sep 2017 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

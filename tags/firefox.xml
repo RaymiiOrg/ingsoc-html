@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Firefox_History_Stats_with_Bash.html</guid>
                 <description>This is a small script to gather some statistics from your Firefox history. First we use sqlite3 to parse the Firefox history database and get the last three months, then we remove all the IP addresses and port numbers and finally we sort and count it.</description> 
                 <pubDate>Sun, 25 Sep 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 25 Sep 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/snippets/Get_the_current_or_all_Firefox_tab_urls_in_Bash.html</guid>
                 <description>This snippets gets the current firefox tab url or all the firefox tab url's. It uses the sessionstore.js file in your profile folder.</description> 
                 <pubDate>Mon, 01 Sep 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Sep 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

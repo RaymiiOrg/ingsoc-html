@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Exchange_2007_2010_Autodiscovery_DNS_SRV_record_for_BIND.html</guid>
                 <description>This is a BIND configuration example to set up Exchange Autodiscovery. Autodiscovery is the ability for Outlook to automatically configure itself to an Exchange 2007/2010 server. The main benefit is for remote users to use Outlook on the Internet as if it was connected on the LAN, this is called Outlook Anywhere or Outlook RPC over HTTP. This is very easily accomplished by having a specific DNS record available for the domain. However, the only examples Microsoft gives you are for their own software. This is the BIND version of the record.</description> 
                 <pubDate>Thu, 09 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 09 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

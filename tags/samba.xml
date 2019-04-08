@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/SAMBA_Share_with_Active_Directory_Login_on_Ubuntu_12.04.html</guid>
                 <description>This tutorial shows you how to set up a SAMBA server which authenticates all users to an Active Directory, including group based permissions. It uses Samba, Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving files via SMB, where your authentication and autorization for the files and folders is done via Active Directory.</description> 
                 <pubDate>Thu, 27 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 27 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

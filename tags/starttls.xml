@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Ejabberd_SSL_Certificate.html</guid>
                 <description>This tutorial shows you how to set up an SSL Certificate for use with Ejabberd. It covers both the creation of the Certificate Signing Request, the preparing of the certificate for use with Ejabberd and the installation of the certificate.</description> 
                 <pubDate>Thu, 13 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 13 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

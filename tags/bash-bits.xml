@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_json_value_with_sed.html</guid>
                 <description>Recently I was asked to get one value from a json object using only shell tools. The json in question is from a dutch radio station and it lists the current song that is played. Using this together with a few shell commands and notify-send we can show the current song when it changes as a desktop notification. I'd rather use Python or jq if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.</description> 
                 <pubDate>Tue, 26 Feb 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 26 Feb 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Simple_Command_Line_Arguments.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add command line arguments to your script. It is very simple, non-positional and does not use getopts.</description> 
                 <pubDate>Mon, 30 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 30 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Check_If_Item_Is_In_Array.html</guid>
                 <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how find out if an array has an item.</description> 
                 <pubDate>Sat, 21 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 21 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Add_Color_Output_To_Your_Scripts.html</guid>
                 <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to add coloured output to your scripts</description> 
                 <pubDate>Wed, 18 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 18 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -44,6 +48,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Debug_Logging.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add debug logging to a bash script.</description> 
                 <pubDate>Sun, 15 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 15 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -52,6 +57,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Trap_Control_C_SIGTERM.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to capture a Control C signal in a bash script, for example, to clean up any temp or pid files when your script is killed or closed.</description> 
                 <pubDate>Sat, 14 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 14 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

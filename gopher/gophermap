@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-04-06T16:38:55	/	localhost	70
+i            2019-04-08T11:37:17	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -32,8 +32,6 @@ i 	/	localhost	70
 0Sparkling Network (12-01-2019)	Sparkling_Network.txt	raymii.org	70
 0SSH on Windows Server 2019 (including how to sudo) (18-12-2018)	SSH_on_Windows_Server_2019.txt	raymii.org	70
 0OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation (17-12-2018)	OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt	raymii.org	70
-0Ansible - Only do action if on specific distribution (Debian, Ubuntu, CentOS or RHEL) or distribution version (ubuntu precise, ubuntu trusty) (16-12-2018)	Ansible_-_Only_if_on_specific_distribution_or_distribution_version.txt	raymii.org	70
-0Ansible - Only do something if another action changed (15-12-2018)	Ansible_-_Only-do-something-if-another-action-changed.txt	raymii.org	70
 0Ansible - Add an apt-repository on Debian and Ubuntu (14-12-2018)	Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt	raymii.org	70
 0Line total (up+down sum) in PHP Network Weathermap (13-11-2018)	Line_total_up_down_sum_in_php_weathermap.txt	raymii.org	70
 0Three new NitroKeys! Nitrokey Pro 2, Storage 2 and a FIDO-U2F Nitrokey (08-11-2018)	Three_New_Nitrokeys_Pro_2_Storage_2_and_Fido_u2f.txt	raymii.org	70
@@ -187,6 +185,7 @@ i 	/	localhost	70
 0Ansible - Only if host is also in other hostgroup (25-11-2014)	Ansible_-_Only_if_host_is_also_in_other_hostgroup.txt	raymii.org	70
 0Build a FreeBSD 10.1-release Openstack Image with bsd-cloudinit (23-11-2014)	FreeBSD_10.1-release_Openstack_Image.txt	raymii.org	70
 0OpenSSL Decoder Script (15-11-2014)	OpenSSL_Decoder.txt	raymii.org	70
+0Ansible - Only do action if on specific distribution (Debian, Ubuntu, CentOS or RHEL) or distribution version (ubuntu precise, ubuntu trusty) (09-11-2014)	Ansible_-_Only_if_on_specific_distribution_or_distribution_version.txt	raymii.org	70
 0OpenSSL Command Generator (08-11-2014)	OpenSSL_Command_Generator.txt	raymii.org	70
 0Olimex OlinuXino a10 Lime Minimal Debian 7 Image (31-10-2014)	Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.txt	raymii.org	70
 0Keepalived notify script, execute action on failover (26-10-2014)	Keepalived_notify_script_execute_action_on_failover.txt	raymii.org	70
@@ -206,8 +205,8 @@ i 	/	localhost	70
 0CentOS 5 CA Certificate Bundle Update (06-07-2014)	CentOS_5_CA_Certificate_Bundle_Update.txt	raymii.org	70
 0Traceroute to Smokeping Target config (28-06-2014)	Traceroute_to_Smokeping_Target_Config.txt	raymii.org	70
 0Simple keepalived failover setup on Ubuntu 14.04 (13-06-2014)	Keepalived-Simple-IP-failover-on-Ubuntu.txt	raymii.org	70
-0Build a FreeBSD 10.0-release Openstack Image with bsd-cloudinit (11-06-2014)	FreeBSD_10.0-release_Openstack_Image.txt	raymii.org	70
 0OSSEC 2.8 Server, Client, Web UI and Analogi Dashboard Installation tutorial (11-06-2014)	OSSEC_2.8.0_Server_Client_and_Analogi_Dashboard_on_Ubuntu.txt	raymii.org	70
+0Build a FreeBSD 10.0-release Openstack Image with bsd-cloudinit (11-06-2014)	FreeBSD_10.0-release_Openstack_Image.txt	raymii.org	70
 0Openstack Horizon installation with SSL on Ubuntu (29-05-2014)	Openstack-Set-Up-Horizon-Dashboard-on-Ubuntu.txt	raymii.org	70
 0Openstack Swift Objectstore Access via FTP (25-05-2014)	Openstack-Swift-Objectstore-FTP-Access.txt	raymii.org	70
 0Encrypted Duplicity Backups to Openstack Swift Objectstore (19-05-2014)	Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.txt	raymii.org	70
@@ -237,6 +236,7 @@ i 	/	localhost	70
 0Bash Bits: Simple command line arguments (30-12-2013)	Bash_Bits_Simple_Command_Line_Arguments.txt	raymii.org	70
 0Ansible - Playbook Testing (29-12-2013)	Ansible_-_Playbook_Testing.txt	raymii.org	70
 0Local W3C HTML5 Validator Server (27-12-2013)	Local_W3C_HTML5_Validator_Server.txt	raymii.org	70
+0Ansible - Only do something if another action changed (22-12-2013)	Ansible_-_Only-do-something-if-another-action-changed.txt	raymii.org	70
 0Ansible - Sudo sometimes (21-12-2013)	Ansible_-_Better_sudo_control.txt	raymii.org	70
 0haproxy: client side ssl certificates (18-12-2013)	haproxy_client_side_ssl_certificates.txt	raymii.org	70
 0Apache access/error log to syslog (15-12-2013)	Apache_access_and_error_log_to_syslog.txt	raymii.org	70
@@ -304,8 +304,8 @@ i 	/	localhost	70
 0NGINX: Proxy folders to different root (04-04-2013)	NGINX_proxy_folder_to_different_root.txt	raymii.org	70
 0Silent unatended apt-get upgrade (30-03-2013)	Silent-automatic-apt-get-upgrade.txt	raymii.org	70
 0Ansible - sudoers safety and sanity checking in playbook (23-03-2013)	Ansible_-_Sudo_Safety_and_Sanity_Checks.txt	raymii.org	70
-0NGINX: Catch all error codes (13-03-2013)	NGINX_Catch_all_error_codes.txt	raymii.org	70
 0NGINX: Hide / Block .git and .svn folders (13-03-2013)	NGINX_Block_access_to_.git_or_.svn_project_folders.txt	raymii.org	70
+0NGINX: Catch all error codes (13-03-2013)	NGINX_Catch_all_error_codes.txt	raymii.org	70
 0Ansible - pure ssh based configuration management and deployment (09-03-2013)	Ansible_Deployment_Framework.txt	raymii.org	70
 0Hosted Piwik (09-03-2013)	Hosted_Piwik.txt	raymii.org	70
 0Screenfetch installation tutorial (09-03-2013)	Screenfetch_installation_tutorial.txt	raymii.org	70
@@ -319,8 +319,8 @@ i 	/	localhost	70
 0Munin - Fix MySQL plugin on Ubuntu 12.04 and Debian 6 (02-02-2013)	Munin-Fix-MySQL-Plugin-on-Ubuntu-12.04.txt	raymii.org	70
 0Munin - Set up the NGINX status plugin on Ubuntu 12.04 (31-01-2013)	Munin-NGINX-Status-Plugin-Ubuntu-12.04.txt	raymii.org	70
 0Exploring /proc/ - tips and tricks for the procfs (28-01-2013)	Procfs_tips_and_tricks.txt	raymii.org	70
-0OpenSSL one liner to get expiry date from SSL Certificate of any website (23-01-2013)	OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.txt	raymii.org	70
 0Fix CentOS IPTables rule saving (iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found) (23-01-2013)	CentOS_Save_iptables_restorecon_error.txt	raymii.org	70
+0OpenSSL one liner to get expiry date from SSL Certificate of any website (23-01-2013)	OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.txt	raymii.org	70
 0Restrict SSH (20-01-2013)	Restrict_SSH.txt	raymii.org	70
 0RT (Request Tracker) - find and delete big attachments (17-01-2013)	RT_find__and_delete_big_attachments.txt	raymii.org	70
 0Install python 2.7 or 3 under Debian 6 (15-01-2013)	Install_Python_2.7_or_3_on_debian_6.txt	raymii.org	70
@@ -328,8 +328,8 @@ i 	/	localhost	70
 0Python script to monitor a file for changes and then mail the report with the file attached. (21-12-2012)	Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.txt	raymii.org	70
 0Exchange 2010 - OWA - Lock user after x amount of failed logins (19-12-2012)	Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.txt	raymii.org	70
 0Restore iptables rules after a reboot on debian (12-12-2012)	Restore-iptables-rules-after-a-reboot-on-debian.txt	raymii.org	70
-0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
+0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice) (08-12-2012)	Munin_optimalization_on_Debian.txt	raymii.org	70
 0Set OS X hostname from the commandline (05-12-2012)	OS-X-Change-Hostname.txt	raymii.org	70
 0ClamAV installation and daily scan + report on Ubuntu (01-12-2012)	ClamAV.txt	raymii.org	70

@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Nopriv-IMAP-backup.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password. This release has a few major new features, namely support to backup all available folders in one go and a conversion from HTML Kickstart to Bootstrap.</description> 
                 <pubDate>Sun, 17 Nov 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 17 Nov 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/Nopriv.py.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I won't steal your password.</description> 
                 <pubDate>Fri, 01 Jan 2010 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 01 Jan 2010 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

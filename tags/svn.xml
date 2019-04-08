@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
                 <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

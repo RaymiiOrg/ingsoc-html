@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Sign_and_verify_text_files_to_public_keys_via_the_OpenSSL_Command_Line.html</guid>
                 <description>This small guide will shows you how to use the OpenSSL Command Line to sign a file, and how to verify the signing of this file. You can do this to prove ownership of a key, or to prove that a file hasn't been modified since you signed it. This works both with small text files as well as huge photo's, documents or PDF files.</description> 
                 <pubDate>Mon, 09 Nov 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 09 Nov 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

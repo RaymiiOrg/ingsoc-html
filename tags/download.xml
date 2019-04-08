@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Openstack_Glance_Image_Download.html</guid>
                 <description>This guide shows you how download Openstack Images to your local machine using the command line Glance client. You can use this, for example, to download a copy of an image created from a VM, or to download the images your Openstack provider provides and adapt those.</description> 
                 <pubDate>Wed, 25 Feb 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 25 Feb 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

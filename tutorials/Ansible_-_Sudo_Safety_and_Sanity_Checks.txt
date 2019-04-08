@@ -9,11 +9,21 @@ Format   : 	Markdown/HTML
 
 
 
-Using Ansible to manage the /etc/sudoers file is fine, except when you have a syntax error in your template. This method helps you to only deploy a correct sudoers file. 
+Using Ansible to manage the /etc/sudoers file is fine, except when you have a
+syntax error in your template. This method helps you to only deploy a correct
+sudoers file. 
 
-This example is tested on Ansible 1.0 and on a Digital Ocean VPS. If you like this tutorial and want to support my website, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+This example is tested on Ansible 1.0 and on a Digital Ocean VPS. If you like 
+this tutorial and want to support my website, use this link to order a Digital 
+Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
 
-I manage the `sudo` config (`/etc/sudoers/`) via Ansible. My sudo playbook creates an admin group, adds me to that admin group, and sets some variables in `/etc/sudoers/`. I do not have a sudoers template file, because I created the playbook at a client which has various different sudoers files, which they do not want to have changed ,because of different nagios checks that needed sudo on different hosts. However, if you start of clean, then a template file for `/etc/sudoers` is the best choice.
+I manage the `sudo` config (`/etc/sudoers/`) via Ansible. My sudo playbook
+creates an admin group, adds me to that admin group, and sets some variables in
+`/etc/sudoers/`. I do not have a sudoers template file, because I created the
+playbook at a client which has various different sudoers files, which they do
+not want to have changed ,because of different nagios checks that needed sudo on
+different hosts. However, if you start of clean, then a template file for
+`/etc/sudoers` is the best choice.
 
 This is the playbook:
 
@@ -49,13 +59,19 @@ This is the playbook:
               shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
 
 
-- We create the `admins` group, to which all users that need sudo are added by other playbooks.  
-- We copy the remote sudoers file to a temp one and perform all actions on the temp sudoers file. We also back up the sudoers file.
+- We create the `admins` group, to which all users that need sudo are added by 
+other playbooks.  
+- We copy the remote sudoers file to a temp one and perform all actions on the 
+temp sudoers file. We also back up the sudoers file.
 - We enable the `admins` group to sudo
-- We make sure `ssh-agent` works via sudo. This was used for a git repository on the root user account, to show our own names in the commits.
-- Finally we use `visudo` to check if the file is correct, and if so we copy the file over the "original" sudos file.
+- We make sure `ssh-agent` works via sudo. This was used for a git repository on 
+the root user account, to show our own names in the commits.
+- Finally we use `visudo` to check if the file is correct, and if so we copy the 
+file over the "original" sudos file.
 
-By using the temp file we make sure we don't have any syntax errors and lock ourselves out of machines, needing to use ILO/DRAC to reset passwords and such. Been there, done that, not funny at all.
+By using the temp file we make sure we don't have any syntax errors and lock
+ourselves out of machines, needing to use ILO/DRAC to reset passwords and such.
+Been there, done that, not funny at all.
 
 
 ---

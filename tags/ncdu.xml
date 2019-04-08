@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/ncdu_-_for_troubleshooting_diskspace_and_inode_issues.html</guid>
                 <description>In my box of sysadmin tools there are multiple gems I use for troubleshooting servers. Since I work at a cloud provider sometimes I have to fix servers that are not mine. One of those tools is `ncdu`. It's a very usefull tool when a server has a full disk, both full of used space or full of used inodes. This article covers ncdu and shows the process of finding the culprit when you're out of disk space or inodes.</description> 
                 <pubDate>Sun, 29 Oct 2017 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 29 Oct 2017 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

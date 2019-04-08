@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Website-and-database-backup-with-Duplicity.html</guid>
                 <description>This tutorial will help you backup your website and database with Duplicity. You can safely backup your MySQL, MongoDB, website and other data to an off-site location.</description> 
                 <pubDate>Fri, 15 Feb 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 15 Feb 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

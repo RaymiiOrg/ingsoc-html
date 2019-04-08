@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Viewing_PDF_docx_and_odt_files_in_Mutt.html</guid>
                 <description>mutt is my email client at work. I like the simple interface, the speed and the ability to customize the workflow. Email is synced with offlineimap and sent via msmtp, addresses are in abook, and calcurse is the Calendar for meetings, no complicated setup there. One aspect I especially like is the ability to view attachments on the command line right from mutt itself. Some departments at work send emails with an attached PDF or .docx file that contains the actual message, instead of just putting the text in the email itself. Using pandoc and pdftotext in mutt, the text of the attachments is displayed as a regular mail, no interruptions in my workflow by opening an external program. This article explains how to set up your .muttrc and .mailcap to use pandoc and pdf2text to view attachments as text in mutt.</description> 
                 <pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 03 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/SSH_on_Windows_Server_2019.html</guid>
                 <description>On hackernews I saw a Microsoft blog post stating that Windows Server 2019 now includes OpenSSH. In this post I'll try out both the client and server on a Windows 2019 server, including how to login as a Active Directory Domain user and how to generate and place and SSH keypair. The bonus this time is how to elevate permissions via SSH on Windows, sudo but way more complicated. This guide is also applicable on Windows 10, build 1809 and up.</description> 
                 <pubDate>Tue, 18 Dec 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 18 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/tutorials/Use_Ubuntu_behind_a_Microsoft_ForeFront_TMG_proxy_with_cntlm.html</guid>
                 <description>Recently I had to deploy a few machines in a network where outgoing network access was forced through a Microsoft Forefront TMG proxy. For all the Windows clients this went automatically due to domain policies, for Linux this has to be set up manually. Defining the proxy in /etc/environment was not enough since NTML authentication is required, which is not supported by default. I found cntlm, a piece of software which acts as a local proxy, translating all requests to authenticated NTLM requests to your upstream proxy. This guide covers the (offline) installation, setup, getting the correct password hash and system-wide configuration. It should work on a desktop as well, but I did not test that.</description> 
                 <pubDate>Sat, 27 Oct 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Oct 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/blog/Linux_on_Microsoft_Azure_Disable_this_built_in_root_access_backdoor.html</guid>
                 <description>Are you running Linux on Microsoft Azure? Then by default anyone with access to your Azure portal can run commands as root in your VM, reset SSH keys, user passwords and SSH configuration. This article explains what the backdoor (wa-linux-agent) is, what it is meant to do, how it can be disabled and removed and what the implications are. OpenStack/QEMU also have an agent/backdoor which is covered in this article as well.</description> 
                 <pubDate>Wed, 22 Aug 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 22 Aug 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -44,6 +48,7 @@
                 <guid>https://raymii.org/s/tutorials/Windows_7_Installer_on_KVM_Linux_VPS_Digital_Ocean.html</guid>
                 <description>For fun I wanted to install Windows 7 on a KVM Linux VPS (on [Digital Ocean) but it should work for any KVM or XEN-HVM VPS with console access). I was experimenting with Grub2 and ISO booting, since grub2 can natively boot a linux ISO. For Windows this is not possible, the installer needs to be extracted on a FAT32 partition from which you boot. On a normal system I would repartition the disk using a live CD, but on a VPS where an ISO cannot be booted this is troublesome. If I could boot from an ISO I would use that to install Windows, but where's the fun in that? I had to figure out how to shrink an EXT4 filesystem from a running Ubuntu VPS, which is possible, however very risky, with pivot_root. Next the partiton table can be converted to MBR, the partition can be resized, a FAT32 partiton and filesystem can be created, the Windows Installer files copied onto that, some Grub config and a reboot later, you're in the Windows 7 Installer.</description> 
                 <pubDate>Sun, 01 Jul 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 01 Jul 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -52,6 +57,7 @@
                 <guid>https://raymii.org/s/articles/Active_Directory_Exchange_Powershell_Snippets.html</guid>
                 <description>This is a collection of Powershell snippets to install Active Directory, create a new Active Directory Domain, join an existing Active Directory domain and to install Microsoft Exchange 2013. The snippets were tested on Windows Server 2012 R2.</description> 
                 <pubDate>Sat, 27 Feb 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Feb 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -60,6 +66,7 @@
                 <guid>https://raymii.org/s/tutorials/Office_2013_and_2010_on_Linux.html</guid>
                 <description>This guide shows you how to run Microsoft Office 2013 and 2010 on Linux using CrossOver. It guides you through the installation and gives a review on what parts of the Office suite work with Linux.</description> 
                 <pubDate>Sat, 02 Jan 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 02 Jan 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -68,6 +75,7 @@
                 <guid>https://raymii.org/s/software/Microsoft_Exchange_Powershell_Script_User_Password_Expiry.html</guid>
                 <description>This is a small PowerShell script which emails your users that their password is going to expire in X days. This is needed when you have an Active Directory and Exchange Environment, but your users do not log in to a Windows machine bound to the Active Directory, but for example a Mac OS X or Linux machine with Full Disk Encryption enabled. Then they are not notified that their password is about to expire. This script can run as a scheduled task and scan and email your users that their password is about to expire.</description> 
                 <pubDate>Thu, 08 Aug 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 08 Aug 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -76,6 +84,7 @@
                 <guid>https://raymii.org/s/tutorials/SAMBA_Share_with_Active_Directory_Login_on_Ubuntu_12.04.html</guid>
                 <description>This tutorial shows you how to set up a SAMBA server which authenticates all users to an Active Directory, including group based permissions. It uses Samba, Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving files via SMB, where your authentication and autorization for the files and folders is done via Active Directory.</description> 
                 <pubDate>Thu, 27 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 27 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -84,6 +93,7 @@
                 <guid>https://raymii.org/s/tutorials/Ejabberd_Active_Directory_LDAP_Login.html</guid>
                 <description>This tutorial shows you how to set up ejabberd to authenticate to an Active Directory LDAP.</description> 
                 <pubDate>Wed, 12 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 12 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -92,6 +102,7 @@
                 <guid>https://raymii.org/s/tutorials/Gitlab_and_Active_Directory_LDAP_Authentication.html</guid>
                 <description>Gitlab is a self hosted git based source control application similar to Github, written in Ruby on Rails. It is used by many organisations and is a wonderfull piece of software. It supports LDAP Authentication (via the OmniAuth Gem), but it is tricky to set up with Active Directory and Windows Server 2003/2008/2012. This tutorials shows you how to set up Gitlab to authenticate against Active Directory LDAP.</description> 
                 <pubDate>Tue, 28 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 28 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -100,6 +111,7 @@
                 <guid>https://raymii.org/s/tutorials/Exchange_2007_2010_Autodiscovery_DNS_SRV_record_for_BIND.html</guid>
                 <description>This is a BIND configuration example to set up Exchange Autodiscovery. Autodiscovery is the ability for Outlook to automatically configure itself to an Exchange 2007/2010 server. The main benefit is for remote users to use Outlook on the Internet as if it was connected on the LAN, this is called Outlook Anywhere or Outlook RPC over HTTP. This is very easily accomplished by having a specific DNS record available for the domain. However, the only examples Microsoft gives you are for their own software. This is the BIND version of the record.</description> 
                 <pubDate>Thu, 09 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 09 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -108,6 +120,7 @@
                 <guid>https://raymii.org/s/tutorials/Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.html</guid>
                 <description>This is a tutorial to set up automatic user lockout in Exchange 2010 - Outlook Web Acces (OWA). When a user does 5 wrong login attempts, he/she is locked out from the webinterface. After for example 5 minutes he or she is unlocked again automatically. This helps you mitigate brute force attacks, since an attacker can only try 1 password/minute, but the user will not be blocked for to long. Exchange 2010 has some special register settings to make IIS stop caching, otherwise it would not work. As a bonus you get an LDAP saved search query to view locked out users</description> 
                 <pubDate>Wed, 19 Dec 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 19 Dec 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

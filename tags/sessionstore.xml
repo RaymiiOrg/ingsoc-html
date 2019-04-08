@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_the_current_or_all_Firefox_tab_urls_in_Bash.html</guid>
                 <description>This snippets gets the current firefox tab url or all the firefox tab url's. It uses the sessionstore.js file in your profile folder.</description> 
                 <pubDate>Mon, 01 Sep 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Sep 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

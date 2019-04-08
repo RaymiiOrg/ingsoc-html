@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Simple_Command_Line_Arguments.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add command line arguments to your script. It is very simple, non-positional and does not use getopts.</description> 
                 <pubDate>Mon, 30 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 30 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

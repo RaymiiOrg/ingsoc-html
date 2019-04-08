@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html</guid>
                 <description>Have a lot of HP servers with ILO cards, and want to gather information from them quicly? By default you can get some information in XML format, for ILO, ILO2, ILO3 and ILO4, with curl.</description> 
                 <pubDate>Sat, 13 Apr 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 13 Apr 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/Autossh_persistent_tunnels.html</guid>
                 <description>Not available.</description> 
                 <pubDate>Fri, 05 Oct 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 05 Oct 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/bdsh.html</guid>
                 <description>A shell where you whitelist commands and only those commands can be executed. Either via ssh, as an interactive shell or launched with commands. Logs everything and escapes dangerous characters. bdsh stands for Boa Diminish SHell. You can probably guess why. It might have to to with snakes and restricting users, no pun intended.</description> 
                 <pubDate>Sat, 29 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 29 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

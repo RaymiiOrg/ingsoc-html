@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/PHP-task-list-v2.html</guid>
                 <description>This is a task/todo list written in PHP. It uses a JSON text file for the tasks, and the visual side is created with the HTML5 Kickstart framework by Joshua Gatcke.</description> 
                 <pubDate>Wed, 12 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 12 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

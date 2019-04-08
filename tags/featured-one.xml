@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</guid>
                 <description>This tutorial will get you started with Ansible. Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 09 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/articles/Small_Linux_PCs.html</guid>
                 <description>This is an overview of small linux computers, mostly ARM based.</description> 
                 <pubDate>Wed, 07 Nov 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 07 Nov 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

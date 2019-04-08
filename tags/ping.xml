@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/tping_ping_with_a_timestamp.html</guid>
                 <description>tping is a bash alias I once got from an old co-worker. It's ping, but with a timestamp. Instead of looking at the increased icmp_seq number you now have a timestamp.</description> 
                 <pubDate>Mon, 03 Sep 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 03 Sep 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

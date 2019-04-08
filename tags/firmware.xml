@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/articles/Dell_PowerEdge_firmware_upgrades_via_iDrac.html</guid>
                 <description>The recent spectre and meltdown vulnerabilities require BIOS and firmware updates. Dell provides binaries for Windows and Linux, but just for Red Hat and SUSE. Some firmware updates can be run on Ubuntu or Debian, but some fail with the error that RPM could not be found. Which is correct since it's not Red Hat. In this small article I'll show you how to upgrade the firmware via the iDrac, which I recently discovered.</description> 
                 <pubDate>Fri, 26 Jan 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 26 Jan 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

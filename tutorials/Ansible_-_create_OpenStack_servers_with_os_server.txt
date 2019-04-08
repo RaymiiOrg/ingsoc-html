@@ -9,17 +9,33 @@ Format   : 	Markdown/HTML
 
 
 
-I regularly deploy clusters and single servers on OpenStack with Ansible. However, Ansible 2.0 comes with new OpenStack modules my playbooks still used the old ones. I reserved some time to convert these playbooks to the new modules and ansible 2. This article shows a very simple example, it creates three servers in OpenStack and adds them to different hostgroups based on variables. For example, to create one loadbalancer and two appservers and run specific playbooks on those hosts based on their role.
+I regularly deploy clusters and single servers on OpenStack with Ansible.
+However, Ansible 2.0 comes with new OpenStack modules my playbooks still used
+the old ones. I reserved some time to convert these playbooks to the new modules
+and ansible 2. This article shows a very simple example, it creates three
+servers in OpenStack and adds them to different hostgroups based on variables.
+For example, to create one loadbalancer and two appservers and run specific
+playbooks on those hosts based on their role.
 
-Since Ansible 2 the OpenStack modules are renewed. The old `nova_*` modules are replaced by the `os_server` modules. Ansible 2 also changed some deperecated stuff regarding `yaml` parsing and variable concatination. Therefore some of my old playbooks were not working anymore and I had to figure out how to get it working with the new versions.
+Since Ansible 2 the OpenStack modules are renewed. The old `nova_*` modules are
+replaced by the `os_server` modules. Ansible 2 also changed some deperecated
+stuff regarding `yaml` parsing and variable concatination. Therefore some of my
+old playbooks were not working anymore and I had to figure out how to get it
+working with the new versions.
 
-I've written about [Ansible before](https://raymii.org/s/tags/ansible.html), click that link to get all the articles about Ansible.
+I've written about [Ansible before](https://raymii.org/s/tags/ansible.html),
+click that link to get all the articles about Ansible.
 
 <img src="https://raymii.org/s/inc/img/ansible_meme.jpg" alt=ansible>
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
 
-I [found](http://blog.oddbit.com/2015/10/26/ansible-20-new-openstack-modules/) documentation on the new modules but that just created a single instance. I need to spawn multiple instances and add those to specific hostgroups based on variables, so this guide wasn't complete enough for me. 
+I [found](http://blog.oddbit.com/2015/10/26/ansible-20-new-openstack-modules/)
+documentation on the new modules but that just created a single instance. I need
+to spawn multiple instances and add those to specific hostgroups based on
+variables, so this guide wasn't complete enough for me. 
 
 This is my folder structure:
 
@@ -45,10 +61,17 @@ This is my folder structure:
     |           `-- main.yml
     `-- site.yml
 
-`site.yml` is the main playbook and `create-instances` and `appservers` are the specific roles. [Create](https://raymii.org/s/snippets/Ansible_-_create_playbooks_and_role_file_and_folder_structure.html) the folder structure if you're starting from zero.
+`site.yml` is the main playbook and `create-instances` and `appservers` are the
+specific roles.
+[Create](https://raymii.org/s/snippets/Ansible_-_create_playbooks_and_role_file_and_folder_structure.html)
+the folder structure if you're starting from zero.
 
 
-On the local host you need the OpenStack tools and some python modules installed. The [os_server](https://docs.ansible.com/ansible/os_server_module.html) page lists all the requirements. You also need an `openstackrc` file with credentials in your environment:
+On the local host you need the OpenStack tools and some python modules
+installed. The
+[os_server](https://docs.ansible.com/ansible/os_server_module.html) page lists
+all the requirements. You also need an `openstackrc` file with credentials in
+your environment:
 
     $ cat openstackrc
     export OS_AUTH_URL="https://identity.stack.cloudvps.com/v2.0"
@@ -63,9 +86,13 @@ Source it before running the playbooks:
 
 ### Main playbook
 
-The `site.yml` playbook first runs on `locahost` and creates the OpenStack instances. It also adds them to the specific hostgroups. Those hostgroups are only available when you run this playbook.
+The `site.yml` playbook first runs on `locahost` and creates the OpenStack
+instances. It also adds them to the specific hostgroups. Those hostgroups are
+only available when you run this playbook.
 
-Then it starts a new `play` (if that is how you call multiple runs) to the first newly created hostgroup (loadbalancers) and you can add a new `play` to run on the appservers as well.
+Then it starts a new `play` (if that is how you call multiple runs) to the first
+newly created hostgroup (loadbalancers) and you can add a new `play` to run on
+the appservers as well.
 
 
     ---
@@ -85,7 +112,8 @@ Then it starts a new `play` (if that is how you call multiple runs) to the first
 
 ### Instance creation playbook
 
-The first playbook, `roles/create-instances/tasks/main.yml` runs on localhost and creates the OpenStack instances:
+The first playbook, `roles/create-instances/tasks/main.yml` runs on localhost
+and creates the OpenStack instances:
 
 		---
 		- name: launch instances
@@ -108,16 +136,22 @@ The first playbook, `roles/create-instances/tasks/main.yml` runs on localhost an
 		    ansible_host: "{{ item.openstack.accessIPv4 }}"
 		  with_items: "{{ os_hosts.results }}"
 
-Based on the name we defined and the group we gave it also is adds the hosts to a new hostgroup. That hostgroup is only active within this playbook run.
+Based on the name we defined and the group we gave it also is adds the hosts to
+a new hostgroup. That hostgroup is only active within this playbook run.
 
-The parameters we used to create the instances are also available in the `result` of that action. It's a 
-`dict`, so you can access all three the servers we created. That is were we get the `group` value from.
+The parameters we used to create the instances are also available in the
+`result` of that action. It's a  `dict`, so you can access all three the servers
+we created. That is were we get the `group` value from.
 
-If you're using a `jumphost` and other machines with private IP's you need to use a different `ansible_ssh_host`, but you can achieve that by adding extra data to the variables. The `debug` module is your friend here.
+If you're using a `jumphost` and other machines with private IP's you need to
+use a different `ansible_ssh_host`, but you can achieve that by adding extra
+data to the variables. The `debug` module is your friend here.
 
-If the instances are already created, it will not create them again but it will add then to the hostgroup again.
+If the instances are already created, it will not create them again but it will
+add then to the hostgroup again.
 
-The variables required for this playbook are the following (`roles/create-instances/vars/main.yml`):
+The variables required for this playbook are the following
+(`roles/create-instances/vars/main.yml`):
 
     ---
     prefix: demo
@@ -147,11 +181,16 @@ The variables required for this playbook are the following (`roles/create-instan
         meta: 
           group: appservers
 
-The `prefix` is used in the servername and can be used to create different pseudo-groups in the same tenant/project. I do recommend to create different projects/tenants per environment (accept/staging etc) instead of prefixes, since you can then manage the rights more fine grained.
+The `prefix` is used in the servername and can be used to create different
+pseudo-groups in the same tenant/project. I do recommend to create different
+projects/tenants per environment (accept/staging etc) instead of prefixes, since
+you can then manage the rights more fine grained.
  
 ### Role specific playbooks
 
-The role specific playbooks are just regular playbook roles you would run. For the guide you can use an example play which just does a ping (`roles/ping/tasks/main.yml`):
+The role specific playbooks are just regular playbook roles you would run. For
+the guide you can use an example play which just does a ping
+(`roles/ping/tasks/main.yml`):
 
     ---
     - name: ping instances
@@ -168,15 +207,27 @@ The full play then results in:
         TASK [setup] *******************************************************************
         ok: [localhost]
 
-        TASK [create_instances : launch instances] *************************************
-        changed: [localhost] => (item={u'name': u'lb1', u'availability_zone': u'NL1', u'nics': u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS Ubuntu 16.04', u'meta': {u'group': u'loadbalancers'}, u'key': u'SSH-Key', u'flavor': u'Standard 2'})
-        changed: [localhost] => (item={u'name': u'app1', u'availability_zone': u'NL1', u'nics': u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS Ubuntu 16.04', u'meta': {u'group': u'appservers'}, u'key': u'SSH-Key', u'flavor': u'Standard 2'})
-        changed: [localhost] => (item={u'name': u'app2', u'availability_zone': u'NL1', u'nics': u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS Ubuntu 16.04', u'meta': {u'group': u'appservers'}, u'key': u'SSH-Key', u'flavor': u'Standard 2'})
+        TASK [create_instances : launch instances]
+        ************************************* changed: [localhost] =>
+        (item={u'name': u'lb1', u'availability_zone': u'NL1', u'nics':
+        u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS
+        Ubuntu 16.04', u'meta': {u'group': u'loadbalancers'}, u'key':
+        u'SSH-Key', u'flavor': u'Standard 2'}) changed: [localhost] =>
+        (item={u'name': u'app1', u'availability_zone': u'NL1', u'nics':
+        u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS
+        Ubuntu 16.04', u'meta': {u'group': u'appservers'}, u'key': u'SSH-Key',
+        u'flavor': u'Standard 2'}) changed: [localhost] => (item={u'name':
+        u'app2', u'availability_zone': u'NL1', u'nics':
+        u'net-id=00000000-0000-0000-0000-000000000000', u'image': u'CloudVPS
+        Ubuntu 16.04', u'meta': {u'group': u'appservers'}, u'key': u'SSH-Key',
+        u'flavor': u'Standard 2'})
 
-        TASK [create_instances : add hosts to inventory] *******************************
-        changed: [localhost] => (item={u'changed': True, '_ansible_no_log': False, '_ansible_item_result': True, u'server': 
-        [...] # a lot of json
-        u'volumes': [], u'metadata': {}, u'human_id': u'demo-app2'}, u'id': u'eff00345-977f-4c72-4684-4aa22d1dfc9f'})
+        TASK [create_instances : add hosts to inventory]
+        ******************************* changed: [localhost] =>
+        (item={u'changed': True, '_ansible_no_log': False,
+        '_ansible_item_result': True, u'server':  [...] # a lot of json
+        u'volumes': [], u'metadata': {}, u'human_id': u'demo-app2'}, u'id':
+        u'eff00345-977f-4c72-4684-4aa22d1dfc9f'})
 
         PLAY [ping instances] **********************************************************
 

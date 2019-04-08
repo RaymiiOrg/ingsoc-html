@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Restrict_SSH.html</guid>
                 <description>restrict_ssh.sh is a bash script which restricts ssh for a user to a set of commands via .ssh/authorized_keys, and log it verbosely.</description> 
                 <pubDate>Sun, 20 Jan 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 20 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

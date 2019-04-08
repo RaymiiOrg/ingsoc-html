@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</guid>
                 <description>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics. If you ever used Logwatch you'll feel at home.</description> 
                 <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 20 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html</guid>
                 <description>I've made some new improvements to this website, you can now view raymii.org on Gopher! Building on the last site improvement, every article being available as plain text, it was easy to generate a gophermap file and bind it all together with pygopherd.</description> 
                 <pubDate>Sun, 10 Mar 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 10 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

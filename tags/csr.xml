@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/OpenSSL_Decoder.html</guid>
                 <description>This is a simple PHP script which decodes a certificate, csr or connection and displays the information it finds.</description> 
                 <pubDate>Sat, 15 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 15 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/OpenSSL_Command_Generator.html</guid>
                 <description>This is a simple page with a form which you can use to generate OpenSSL commands to, for example, create a key, certificate and a CSR.</description> 
                 <pubDate>Sat, 08 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 08 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/snippets/OpenSSL_One_line_to_create_self_signed_certificate.html</guid>
                 <description>This is a one-liner for OpenSSL to generate a self signed certificate and private key.</description> 
                 <pubDate>Wed, 09 Oct 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 09 Oct 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/snippets/OpenSSL_generate_CSR_non-interactive.html</guid>
                 <description>This is a short command to generate a CSR (certificate signing request) with openssl without being prompted for the values which go in the certificate's Subject field.</description> 
                 <pubDate>Sat, 09 Feb 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 09 Feb 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

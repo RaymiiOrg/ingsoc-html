@@ -69,30 +69,51 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how I built a real world object in OpenSCAD and how I got it 3D printed. OpenSCAD is a Solid 3D modeling based on the Computational Geometry Algorithms Library. It is not like Blender, AutoCAD or Maya, who allow you to visually create and manipulate something. OpenSCAD allows you to program the entire thing. Want a cube? Type cube([10,10,10]) and you have a cube. I have no previous experience in 3D modeling or OpenSCAD, however, in about three hours I had my thing ready made.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how I built a real world object in OpenSCAD and how I got
+it 3D printed. OpenSCAD is a Solid 3D modeling based on the Computational
+Geometry Algorithms Library. It is not like Blender, AutoCAD or Maya, who allow
+you to visually create and manipulate something. OpenSCAD allows you to program
+the entire thing. Want a cube? Type cube([10,10,10]) and you have a cube. I have
+no previous experience in 3D modeling or OpenSCAD, however, in about three hours
+I had my thing ready made.</p>
 
 <h3>The Thing</h3>
 
-<p><img src="https://raymii.org/s/inc/img/3d/sleutel.png" alt="sleutel" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/sleutel.png" alt="sleutel"></p>
 
-<p>This is a key used by the Dutch Railways (NS) staff. A <a href="http://en.wikipedia.org/wiki/Conductor_%28transportation%29">conductor</a> uses it to close all the doors when a train is about to depart. They put the key in a panel like this:  </p>
+<p>This is a key used by the Dutch Railways (NS) staff. A <a href="http://en.wikipedia.org/wiki/Conductor_%28transportation%29">conductor</a> uses it to
+close all the doors when a train is about to depart. They put the key in a panel
+like this:  </p>
 
 <p><img src="https://raymii.org/s/inc/img/3d/deurbedieningstableau.jpg" alt="deurbedieningstableau" /></p>
 
-<p>turn the key to the left which closes all the other doors, then press the blue button which closes their door and sends a signal to the train driver that he is allowed to drive away.</p>
+<p>turn the key to the left which closes all the other doors, then press the blue
+button which closes their door and sends a signal to the train driver that he is
+allowed to drive away.</p>
 
-<p>I&#39;ve got multiple train drivers and conductors in my family so I have access to these keys. Therefore it was a nice and simple &quot;thing&quot; to get started with.</p>
+<p>I&#39;ve got multiple train drivers and conductors in my family so I have access to
+these keys. Therefore it was a nice and simple &quot;thing&quot; to get started with.</p>
 
 <p><img src="https://raymii.org/s/inc/img/3d/full-key.png" alt="end result" />
 This is a picture of the end result. The full key in top, right, left and diagonal viewport. </p>
 
-<p>The <a href="https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language">OpenSCAD Manual</a> was a great help to me. The <a href="http://hackaday.com/2013/12/11/3d-printering-making-a-thing-with-openscad/">making a Thing with OpenSCAD</a> from Hack a Day was what got me started with OpenSCAD.</p>
+<p>The <a href="https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language">OpenSCAD
+Manual</a>
+was a great help to me. The <a href="http://hackaday.com/2013/12/11/3d-printering-making-a-thing-with-openscad/">making a Thing with
+OpenSCAD</a>
+from Hack a Day was what got me started with OpenSCAD.</p>
 
 <h3>The left piece</h3>
 
-<p>I started with the left piece because it is a very simple cylinder with a cube extruded. The radius of the cylinder is 7.5 mm, the height is 35mm.</p>
+<p>I started with the left piece because it is a very simple cylinder with a cube
+extruded. The radius of the cylinder is 7.5 mm, the height is 35mm.</p>
 
-<p>OpenSCAD has no notice of units like centimeters, millimeters or inches. If you define a <code>cube([10,10,10])</code> you don&#39;t get a cube of 10 by 10 by 10 cm or mm, you just get a cube of 10 by 10 by 10. It is up to the 3D printing company to decide what those units mean. Shapeways lets you select it when you upload the model, in the order email to my <a href="http://ridix.nl">3D printing company</a> I state that I want the units to be mm. </p>
+<p>OpenSCAD has no notice of units like centimeters, millimeters or inches. If you
+define a <code>cube([10,10,10])</code> you don&#39;t get a cube of 10 by 10 by 10 cm or mm, you
+just get a cube of 10 by 10 by 10. It is up to the 3D printing company to decide
+what those units mean. Shapeways lets you select it when you upload the model,
+in the order email to my <a href="http://ridix.nl">3D printing company</a> I state that I
+want the units to be mm. </p>
 
 <pre><code>$fn=100
 
@@ -109,13 +130,25 @@ left_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/left-1.png" alt="left1" /></p>
 
-<p>Now press <code>F5</code> and see your first part of the key be created. We created a cylinder with a height of 35 and a radius of 7.5. The <code>difference</code> operation, as you might expect, substracts the cube from the cylinder, this giving us a cylinder with a little square hole in it. As you also noticed, line comments start with <code>//</code>.</p>
+<p>Now press <code>F5</code> and see your first part of the key be created. We created a
+cylinder with a height of 35 and a radius of 7.5. The <code>difference</code> operation, as
+you might expect, substracts the cube from the cylinder, this giving us a
+cylinder with a little square hole in it. As you also noticed, line comments
+start with <code>//</code>.</p>
 
-<p>The <code>$fn=100</code> is the resolution of sphere and cylinder objects. Put it at the top of your OpenSCAD document.</p>
+<p>The <code>$fn=100</code> is the resolution of sphere and cylinder objects. Put it at the
+top of your OpenSCAD document.</p>
 
-<p>As you might have noticed on the photo, the left piece also has a little hole in it. This is used to put a key ring in. Lets add that hole. We&#39;ll have to to substract a small cylinder from the cylinder. However, this time we need the hole to be rotated about 90 degrees, otherwise it would be from the top to the bottom. We don&#39;t want that, we want it to go from left to right. We also want it to be a bit on top, not like the cube which is on the bottom.</p>
+<p>As you might have noticed on the photo, the left piece also has a little hole in
+it. This is used to put a key ring in. Lets add that hole. We&#39;ll have to to
+substract a small cylinder from the cylinder. However, this time we need the
+hole to be rotated about 90 degrees, otherwise it would be from the top to the
+bottom. We don&#39;t want that, we want it to go from left to right. We also want it
+to be a bit on top, not like the cube which is on the bottom.</p>
 
-<p>We therefore use two operations, First the <code>translate</code> operation, which moves objects in the 3d space by the given axis. Then the <code>rotate</code> operation, which rotates objects:</p>
+<p>We therefore use two operations, First the <code>translate</code> operation, which moves
+objects in the 3d space by the given axis. Then the <code>rotate</code> operation, which
+rotates objects:</p>
 
 <pre><code>module left_piece() {
     difference() {
@@ -136,17 +169,27 @@ left_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/left-2.png" alt="left2" /></p>
 
-<p>We first create a cylinder with a height of 30 (which should be more than long enough to provide a full hole in our key piece) and a radius of 2.5. This radius was measured on the original key. Then we move it by 15 on the Y-axis and by 30 on the Z-axis. </p>
+<p>We first create a cylinder with a height of 30 (which should be more than long
+enough to provide a full hole in our key piece) and a radius of 2.5. This radius
+was measured on the original key. Then we move it by 15 on the Y-axis and by 30
+on the Z-axis. </p>
 
-<p>If you want to get a more visual understanding of what is happening here, try to change the <code>difference()</code> operation at the top to <code>union()</code>. Instead of substracting the primitives from each other, this combines all the objects. It looks like this:</p>
+<p>If you want to get a more visual understanding of what is happening here, try to
+change the <code>difference()</code> operation at the top to <code>union()</code>. Instead of
+substracting the primitives from each other, this combines all the objects. It
+looks like this:</p>
 
 <p><img src="https://raymii.org/s/inc/img/3d/left-3.png" alt="left3" /></p>
 
-<p>This is our full left piece right now. Leave the code up there, except for the last line <code>left_piece();</code>. We are going to work on our right piece, and will put it all together later on.</p>
+<p>This is our full left piece right now. Leave the code up there, except for the
+last line <code>left_piece();</code>. We are going to work on our right piece, and will put
+it all together later on.</p>
 
 <h3>Right piece</h3>
 
-<p>The right piece is also quite simple. OpenSCAD has the <code>hull</code> operation, which combines one or more shapes together to a solid. We are going to place a small square and a larger square and connect those together:</p>
+<p>The right piece is also quite simple. OpenSCAD has the <code>hull</code> operation, which
+combines one or more shapes together to a solid. We are going to place a small
+square and a larger square and connect those together:</p>
 
 <pre><code>module right_piece(){
     hull() {
@@ -165,15 +208,20 @@ right_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/right-1.png" alt="image" /></p>
 
-<p>If you want to see more visually what the <code>hull</code> operation does, try changing it again to <code>union</code>. It then looks like this:</p>
+<p>If you want to see more visually what the <code>hull</code> operation does, try changing it
+again to <code>union</code>. It then looks like this:</p>
 
 <p><img src="https://raymii.org/s/inc/img/3d/right-2.png" alt="image" /></p>
 
-<p>We are done with the right piece right now. Later on we will build a connecting piece which will hold the right, left and bottom piece together. Remove the last <code>right_piece();</code> line and move on to the bottom part.</p>
+<p>We are done with the right piece right now. Later on we will build a connecting
+piece which will hold the right, left and bottom piece together. Remove the last
+<code>right_piece();</code> line and move on to the bottom part.</p>
 
 <h3>Bottom piece</h3>
 
-<p>The bottom piece consists out of a few things, a cylinder with a triangle taken out. There are two large holes and one smaller hole, plus a cube at the end of the cylinder. Let&#39;s start with the cylinder and the triangle.</p>
+<p>The bottom piece consists out of a few things, a cylinder with a triangle taken
+out. There are two large holes and one smaller hole, plus a cube at the end of
+the cylinder. Let&#39;s start with the cylinder and the triangle.</p>
 
 <pre><code>module bottom_piece() {
     difference() {
@@ -194,9 +242,14 @@ bottom_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/bottom-1.png" alt="image" /></p>
 
-<p>First we create a cylinder with a height of 50 and a radius of 6. We then create a triangle using the <code>polygon</code> primitive. The <code>points</code> specify the corner points of the triangle, which are measured up with a ruler. </p>
+<p>First we create a cylinder with a height of 50 and a radius of 6. We then create
+a triangle using the <code>polygon</code> primitive. The <code>points</code> specify the corner points
+of the triangle, which are measured up with a ruler. </p>
 
-<p>Let&#39;s add the little cube at the bottom. It does not need to be in the above <code>difference</code> operation, it just needs to be placed at the bottom of the cylinder. We&#39;ll create a small 3x4x3 cube and use <code>translate</code> to place it at the bottom of the piece:</p>
+<p>Let&#39;s add the little cube at the bottom. It does not need to be in the above
+<code>difference</code> operation, it just needs to be placed at the bottom of the
+cylinder. We&#39;ll create a small 3x4x3 cube and use <code>translate</code> to place it at the
+bottom of the piece:</p>
 
 <pre><code>module bottom_piece() {
     difference() {
@@ -220,7 +273,9 @@ bottom_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/bottom-2.png" alt="image" /></p>
 
-<p>We now just need to add the three holes. Because we have two of the same holes, we are going to make a module of the holes. That means we make a &quot;solid&quot; hole module and difference it with the cylinder.</p>
+<p>We now just need to add the three holes. Because we have two of the same holes,
+we are going to make a module of the holes. That means we make a &quot;solid&quot; hole
+module and difference it with the cylinder.</p>
 
 <p>The <code>short_hole_in_bottom_piece</code> is a simple cylinder rotated to the right position:</p>
 
@@ -251,7 +306,9 @@ bottom_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/bottom-4.png" alt="image" /></p>
 
-<p>The first translate is required to place the cylinder above the other for the <code>hull</code> operation. If we change the <code>hull</code> operation to a <code>union</code> like we did before, it looks like this:</p>
+<p>The first translate is required to place the cylinder above the other for the
+<code>hull</code> operation. If we change the <code>hull</code> operation to a <code>union</code> like we did
+before, it looks like this:</p>
 
 <p><img src="https://raymii.org/s/inc/img/3d/bottom-5.png" alt="image" /></p>
 
@@ -294,7 +351,9 @@ bottom_piece();
 
 <h3>Connecting piece</h3>
 
-<p>The connecting piece was the hardest piece to figure out and measure up. It is a cube with a cylinder, plus a hole at the top. It also needs to match the holes the <code>bottom_piece</code> has. Let&#39;s start with the cube and the cylinder hole:</p>
+<p>The connecting piece was the hardest piece to figure out and measure up. It is
+a cube with a cylinder, plus a hole at the top. It also needs to match the
+holes the <code>bottom_piece</code> has. Let&#39;s start with the cube and the cylinder hole:</p>
 
 <pre><code>module connecting_block_left_piece() {
     difference(){
@@ -312,7 +371,8 @@ bottom_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/connect-1.png" alt="image" /></p>
 
-<p>The next thing we are going to add is the circle which will match the <code>left_piece</code>:</p>
+<p>The next thing we are going to add is the circle which will match the
+<code>left_piece</code>:</p>
 
 <pre><code>module connecting_block_left_piece() {
     translate([0,0,-16]) {
@@ -335,7 +395,8 @@ bottom_piece();
 
 <p><img src="https://raymii.org/s/inc/img/3d/connect-2.png" alt="image" /></p>
 
-<p>Last but not least we need to put the first <code>long_hole_in_upper_key</code> in this block, otherwise it will look ugly:</p>
+<p>Last but not least we need to put the first <code>long_hole_in_upper_key</code> in this
+block, otherwise it will look ugly:</p>
 
 <pre><code>module connecting_block_left_piece() {
     translate([0,0,-16]) {
@@ -363,11 +424,15 @@ bottom_piece();
 }
 </code></pre>
 
-<p>That&#39;s it. It took me quite a while to get the measurements right, but a ruler is your friend in this case.</p>
+<p>That&#39;s it. It took me quite a while to get the measurements right, but a ruler
+is your friend in this case.</p>
 
 <h3>Putting it all together</h3>
 
-<p>We now have made four individual components of the key. We of course want to put them all together so we have a good model. Let&#39;s start first with the upper part of the key, connecting the <code>left_piece</code>, the <code>right_piece</code> and the <code>connecting_block_left_piece</code>.</p>
+<p>We now have made four individual components of the key. We of course want to
+put them all together so we have a good model. Let&#39;s start first with the
+upper part of the key, connecting the <code>left_piece</code>, the <code>right_piece</code> and the
+<code>connecting_block_left_piece</code>.</p>
 
 <pre><code>module full_upper_piece(){
     translate([3,0,-4]) {
@@ -412,7 +477,12 @@ bottom_piece();
 
 <h3>3D printing</h3>
 
-<p>I&#39;ve let my 3D models print by <a href="https://ridix.nl">Ridix</a> in Rotterdam. They&#39;ve print it on a Dimension SST 1200es with ABS+ material. This (it what they&#39;ve told me) is stronger than regular ABS. The quality and especially sturdiness is very well. I&#39;ve tested the key over 90 times in a panel like above, and it still works. They&#39;re very friendly and fast with printing, mostly overnight, and if you&#39;re early with sending sometimes the same day.</p>
+<p>I&#39;ve let my 3D models print by <a href="https://ridix.nl">Ridix</a> in Rotterdam. They&#39;ve
+print it on a Dimension SST 1200es with ABS+ material. This (it what they&#39;ve
+told me) is stronger than regular ABS. The quality and especially sturdiness
+is very well. I&#39;ve tested the key over 90 times in a panel like above, and it
+still works. They&#39;re very friendly and fast with printing, mostly overnight,
+and if you&#39;re early with sending sometimes the same day.</p>
 </div><hr>Tags: <a href="../tags/3d.html" class="link">3d &nbsp;</a><a href="../tags/3d-modeling.html" class="link">3d-modeling &nbsp;</a><a href="../tags/3d-printer.html" class="link">3d-printer &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/cad.html" class="link">cad &nbsp;</a><a href="../tags/openscad.html" class="link">openscad &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

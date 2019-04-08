@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Create_etc_shadow_crypted_password_entries.html</guid>
                 <description>These small snippets create password strings you can put in /etc/shadow when you need to reset a password on a system.</description> 
                 <pubDate>Fri, 23 Sep 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 23 Sep 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

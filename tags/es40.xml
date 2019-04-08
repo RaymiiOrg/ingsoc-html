@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/blog/OpenVMS_Mount_ISO_and_execute_scripts.html</guid>
                 <description>I'm playing around with OpenVMS on Alpha using a trial of AlphaVM Basic, but was not able to copy paste in my Hobbyist License. I suspect Putty pasting too quickly, so I had to get the license script on the OpenVMS, without using the network. In this article you'll learn some OpenVMS filesystem history, how OpenVMS handles line endings and in the end I get my license installed by creating an ISO with the script on it.</description> 
                 <pubDate>Tue, 08 May 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 08 May 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/blog/File_locking_grep_and_process_killing_on_OpenVMS.html</guid>
                 <description>On the DECUS OpenVMS system there is no curl or wget installed. I wanted to download a remote `C` file to play around with the compiler and some simple Hello World code, to get a feel of the build system. After a bit of searching around the internet I was not able to find a command like curl or wget to download a remote file. But, the searches led me to the OpenVMS port of curl, which, I hoped, might be able to run on the DECUS system. Just like on a linux system, running the binary under my user account, not install it system wide. This ended up to be another adventure in which I figured out how to trace a locked file to a process, grep the output of a process on OpenVMS and kill a process. I did not get curl to work or compile my code, yet.</description> 
                 <pubDate>Sun, 06 May 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 06 May 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/blog/The_sad_state_of_Alpha_emulators_for_OpenVMS.html</guid>
                 <description>OpenVMS 7.3 was the last version for the VAX architecture. All later versions (like 8.4) are only available for the Alpha CPU architecture or Intel's Itanium platform. Since I don't want hardware running, which is suprisingly hard to get in The Netherlands, Alpha machines, I want to be able to run it in an emulator. simh is the best open source VAX emulator, but it does not support Alpha. My adventure with es40, the only open source Alpha emulator (development halted 10 years ago) ended prematurely since it crashes all the time. The only other available options are FreeAXP, Charon-AXP, vtAlpha and EmuVM AlphaVM. Only FreeAXP is available as a free (but not open source) download, Charon had a personal version but that is nowhere to be found nowdays, vtAlpha doesn't offer a trial or free version and EmuVM Alphaserver also stopped with their free version. In this article I'll go over my adventure with FreeAXP and EmuVM.</description> 
                 <pubDate>Mon, 30 Apr 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 30 Apr 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html</guid>
                 <description>OpenVMS 7.3 is the latest version of OpenVMS for the VAX architecture. Since the DECUS system uses OpenVMS 8.4 there were some version differences. I could not set my 'BACKSPACE=DELETE' on 7.3. The hobbyist license also covers the Alpha and Itanium versions of OpenVMS so I want to try the Alpha version, which is consequently also 8.4, the latest release. This article describes my attempt to compile and install the es40 open source Alpha emulator on Ubuntu 16.04 and subsequently the installation of OpenVMS Alpha. The emulator is not under active development since 2008, and the installation of OpenVMS fails. OpenVMS does boot however, very very slowly. </description> 
                 <pubDate>Tue, 24 Apr 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 24 Apr 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

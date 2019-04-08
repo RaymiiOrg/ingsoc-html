@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html</guid>
                 <description>Ray-Mon is a linux server monitoring script written in PHP and Bash, utilizing JSON as data storage. It requires only bash and a webserver on the client side, and only php on the server side. The client currently supports monitoring processes, uptime, updates, amount of users logged in, disk usage, RAM usage and network traffic.</description> 
                 <pubDate>Mon, 22 Oct 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 22 Oct 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

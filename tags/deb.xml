@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html</guid>
                 <description>.ipk packages are used by a variety of embedded linux systems, like routers running OpenWRT and appliances running on OpenEmbedded (Yocto). The opkg command installs these packages and OpenEmbedded comes with a set of tools to build .ipk packages. Recently I had to create ipk packages in a scripted fashion for a few hundred systems, all unique per system. The .ipk packages includes a few software changes for debugging, a systemd service and one precompiled binary. The yocto build tools were not available on the machine where these packages would be made so I had to figure out how to make them by hand, which means, automatically. The packages are actually just compressed files containing a few control files and the data to be extracted on the filesystem. This article will walk you through the steps of creating these packages by hand.</description> 
                 <pubDate>Fri, 05 Apr 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 05 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -19,7 +20,8 @@
                 <link>https://raymii.org/s/tutorials/Ansible_-_Only_if_on_specific_distribution_or_distribution_version.html</link> 
                 <guid>https://raymii.org/s/tutorials/Ansible_-_Only_if_on_specific_distribution_or_distribution_version.html</guid>
                 <description>This ansible playbook example helps you execute actions only if you are on a certain distribution. You might have a mixed environment with CentOS and Debian, when using ansible to execute actions on different servers you don't need to run yum on debian, or apt on CentOS. Some package names are different and such, so this helps you with a when statement to select a specific distribution. As a bonus, you also get a when for specific distribution versions, like Ubuntu precise (12.04 LTS) or Ubuntu trusty (14.04 LTS).</description> 
-                <pubDate>Sun, 16 Dec 2018 00:00:00 GMT</pubDate>
+                <pubDate>Sun, 09 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 16 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html</guid>
                 <description>This is a guide that shows you how to add an apt repository to Debian and Ubuntu using Ansible. It includes both the old way, when the apt modules only worked on Ubuntu, and the new way, now that the apt-modules also support Debian, plus some other tricks.</description> 
                 <pubDate>Fri, 14 Dec 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 14 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/software/Software_packages.html</guid>
                 <description>Some software I encounter does not have a debian .deb package available. Via the ./configure, make, sudo checkinstall I compile them into a package and put it up here for download.</description> 
                 <pubDate>Sun, 02 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 02 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

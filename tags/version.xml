@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/blog/FreeBSD_10_Converting_from_RELEASE_to_STABLE.html</guid>
                 <description>Because of a [bug in  mpd][1] which is fixed in 10-STABLE I wanted to move one of my FreeBSD machines from 10.0-RELEASE to 10.0-STABLE. The process to do so is fairly simple. Basically, you check out the new source code, build the world, build the kernel, install the kernel, install the world, merge some stuff and reboot. Read on to see the entire process</description> 
                 <pubDate>Thu, 17 Apr 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 17 Apr 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/Get_DNS_server_version_and_hide_it_in_BIND.html</guid>
                 <description>The BIND nameserver (and many others) return their version number when queried a special DNS query. This tutorial shows you how to query the BIND version and how to stop your own BIND server sending its version out.</description> 
                 <pubDate>Wed, 08 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 08 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

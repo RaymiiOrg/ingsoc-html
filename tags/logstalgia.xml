@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Software_packages.html</guid>
                 <description>Some software I encounter does not have a debian .deb package available. Via the ./configure, make, sudo checkinstall I compile them into a package and put it up here for download.</description> 
                 <pubDate>Sun, 02 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 02 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

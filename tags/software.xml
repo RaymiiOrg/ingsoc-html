@@ -7,19 +7,21 @@
             <atom:link href="https://raymii.org/s/tags/software.xml" rel="self" type="application/rss+xml" />
     
             <item>
-                <title>Simple pygopherd log analyzer</title> 
-                <link>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</link> 
-                <guid>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</guid>
-                <description>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics. If you ever used Logwatch you'll feel at home.</description> 
-                <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
-            </item>
-    
-            <item>
                 <title>Sparkling Network</title> 
                 <link>https://raymii.org/s/software/Sparkling_Network.html</link> 
                 <guid>https://raymii.org/s/software/Sparkling_Network.html</guid>
                 <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes.</description> 
                 <pubDate>Sat, 12 Jan 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 07 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Simple pygopherd log analyzer</title> 
+                <link>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</link> 
+                <guid>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</guid>
+                <description>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics. If you ever used Logwatch you'll feel at home.</description> 
+                <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 20 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/software/Python_script_to_talk_to_LibreNMS_API_and_get_alerts_and_hosts.html</guid>
                 <description>This script talks to the LibreNMS API to receive a list of down devices and alerts. The LibreNMS dashboard provides widgets for alerts and host statusses, but there is no easy way to access that output via the API. Using Python I was able to get certain information and output it as HTML or text using PrettyTable. It can be included in other systems or be used in a chain of monitoring customizations. z</description> 
                 <pubDate>Wed, 08 Aug 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 08 Aug 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/software/log_vcs_-_Ansible_Callback_plugin_that_creates_git_branches_for_every_ansible_run.html</guid>
                 <description>This Ansible callback plugin creates a VCS branch every time you run Ansible. If you ever need to go back to a certain state or environment, check out that branch and be sure nothing has changed. This is useful when you have multiple environments or multiple people deploying and continually develop your Ansible. When you often deploy to test / acceptance and less often to production, you can checkout the last branch that deployed to production if a hotfix or other maintenance is required, without having to search back in your commits and logs. I would recommend to develop infrastructure features in feature branches and have the master branch always deployable to production. However, reality learns that that is not always the case and this is a nice automatic way to have a fallback.</description> 
                 <pubDate>Tue, 10 Jul 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 10 Jul 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -44,6 +48,7 @@
                 <guid>https://raymii.org/s/software/Ansible_role_for_GoAccess_Log_Analyzer.html</guid>
                 <description>This is a small Ansible playbook to deploy the GoAccess log analyzer on Debian based systems. Next to Piwik, I use goaccess myself to get better insights in who and what visits my servers. This role is ment to be included in your webserver playbooks.</description> 
                 <pubDate>Sun, 17 Jan 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 17 Jan 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -52,6 +57,7 @@
                 <guid>https://raymii.org/s/software/Recursively_find_all_installed_package_dependencies.html</guid>
                 <description>This small script shows you all packages [installed] that are a dependency from a package, and the dependencies of those packages. I installed the build-essential package, but apt-get remove-ing that package doens't remove the development tools. So I was wondering what packages were installed, including those dependencies, to remove the ones I didn't want. This small script shows you all packages that are dependencies of a package, and repeats that for those packages.</description> 
                 <pubDate>Thu, 31 Dec 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 31 Dec 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -60,6 +66,7 @@
                 <guid>https://raymii.org/s/software/OpenVZ_Proxmox_-_pre-backup_all_container_dump_script.html</guid>
                 <description>This simple script creates a vzdump of all the OpenVZ containers on a machine. It can be used before an actual backup, in my case the actual backup excludes the container path /var/lib/vz/private. This because a dump is easier to backup because it has much less files in it.</description> 
                 <pubDate>Sun, 18 Jan 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 18 Jan 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -68,6 +75,7 @@
                 <guid>https://raymii.org/s/software/ingsoc.html</guid>
                 <description>ingsoc is a static site generator written in Python with the purpose of generating raymii.org. It differs from other static site generators because it does not create a blog-like site, but it is focused on pages and structure. It also does not use a template engine. It generates categories, pages, tags, an XML sitemap and a RSS feed. It takes markdown files with a yaml config header as input, and outputs html.</description> 
                 <pubDate>Tue, 02 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 02 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -76,6 +84,7 @@
                 <guid>https://raymii.org/s/software/OpenSSL_Decoder.html</guid>
                 <description>This is a simple PHP script which decodes a certificate, csr or connection and displays the information it finds.</description> 
                 <pubDate>Sat, 15 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 15 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -84,6 +93,7 @@
                 <guid>https://raymii.org/s/software/OpenSSL_Command_Generator.html</guid>
                 <description>This is a simple page with a form which you can use to generate OpenSSL commands to, for example, create a key, certificate and a CSR.</description> 
                 <pubDate>Sat, 08 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 08 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -92,6 +102,7 @@
                 <guid>https://raymii.org/s/software/foaas.sh_-_Command_Line_FOAAS_Client.html</guid>
                 <description>foaas.sh is a command line [Fuck Off as a Service client](http://foaas.com/). It is written is bash and supports multiple forms of API interaction. It also supports `xclip`, when available, the result of an interaction is copied to the clipboard for later use.</description> 
                 <pubDate>Mon, 08 Sep 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 08 Sep 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -100,6 +111,7 @@
                 <guid>https://raymii.org/s/software/Ansible__Dynamic_Inventory_From_VMware_vCenter.html</guid>
                 <description>This is a simple script which lets you use VMWare vCenter as a dynamic inventory for Ansible.</description> 
                 <pubDate>Mon, 06 Jan 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 06 Jan 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -108,6 +120,7 @@
                 <guid>https://raymii.org/s/software/Nopriv-IMAP-backup.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password. This release has a few major new features, namely support to backup all available folders in one go and a conversion from HTML Kickstart to Bootstrap.</description> 
                 <pubDate>Sun, 17 Nov 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 17 Nov 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -116,6 +129,7 @@
                 <guid>https://raymii.org/s/software/OS-X-Applescript-To-Lock-Date-Time-Settings-Panel-for-Sudo-Exploit.html</guid>
                 <description>This applescript locks the OS X Date and Time Preference Panel. It can be run via Apple Remote Desktop. This is related to CVE-2013-1775, a local sudo root exploit on OS X. If the date and time preference panel is locked, setting the date and time also requires a sudo password</description> 
                 <pubDate>Mon, 02 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 02 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -124,6 +138,7 @@
                 <guid>https://raymii.org/s/software/Bind-GNUPlot-DNS-Bar-Graph.html</guid>
                 <description>This is a very simple script which uses GNUplot to create graphs of Bind Query logs.</description> 
                 <pubDate>Tue, 13 Aug 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 13 Aug 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -132,6 +147,7 @@
                 <guid>https://raymii.org/s/software/Microsoft_Exchange_Powershell_Script_User_Password_Expiry.html</guid>
                 <description>This is a small PowerShell script which emails your users that their password is going to expire in X days. This is needed when you have an Active Directory and Exchange Environment, but your users do not log in to a Windows machine bound to the Active Directory, but for example a Mac OS X or Linux machine with Full Disk Encryption enabled. Then they are not notified that their password is about to expire. This script can run as a scheduled task and scan and email your users that their password is about to expire.</description> 
                 <pubDate>Thu, 08 Aug 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 08 Aug 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -140,6 +156,7 @@
                 <guid>https://raymii.org/s/software/bdsh.html</guid>
                 <description>A shell where you whitelist commands and only those commands can be executed. Either via ssh, as an interactive shell or launched with commands. Logs everything and escapes dangerous characters. bdsh stands for Boa Diminish SHell. You can probably guess why. It might have to to with snakes and restricting users, no pun intended.</description> 
                 <pubDate>Sat, 29 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 29 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -148,6 +165,7 @@
                 <guid>https://raymii.org/s/software/OS_X_Create_Hardware_report_spx_and_save_it_to_a_AFP_share.html</guid>
                 <description>This script creates a OS X hardware report (an SPX file) and saves it to a AFP share. This is usefull when you are rolling out new machines. Run this script via Apple Remote Desktop and you have all your administration in your AFP share, which you can later put in your CMDB. The report has all the hardware data, from firmware, serial number, model, MAC addresses, disk and memory information, in short everything you need for your CMDB and support contracts.</description> 
                 <pubDate>Sun, 02 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 02 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -156,6 +174,7 @@
                 <guid>https://raymii.org/s/software/Nagios_plugin_to_check_OCSP.html</guid>
                 <description>This is a nagios plugin to check an OCSP server. You can give it a hard coded certificate or your own one. This is sent to the OCSP server and the response is then parsed to give the correct nagios result. It is targeted at administrators who have their own OCSP and need to know when it is not working.</description> 
                 <pubDate>Mon, 06 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 06 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -164,6 +183,7 @@
                 <guid>https://raymii.org/s/software/Nagios_Plugin_to_check_a_Safenet_HSM.html</guid>
                 <description>This is a nagios plugin which checks a Safenet Protectserver External HSM via the Safenet tools.</description> 
                 <pubDate>Fri, 03 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 03 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -172,6 +192,7 @@
                 <guid>https://raymii.org/s/software/Nagios_plugin_to_check_CRL_expiry.html</guid>
                 <description>This is a nagios plugin which you can use to check if a CRL (Certificate Revocation List, public list with revoked certificates) is still valid.</description> 
                 <pubDate>Thu, 02 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 02 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -180,6 +201,7 @@
                 <guid>https://raymii.org/s/software/Munin_plugin_Logstash_Kibana_messages_per_hour.html</guid>
                 <description>This is a simple munin plugin which shows you the amount of log messages your logstash/kibana server receives per hour.</description> 
                 <pubDate>Fri, 12 Apr 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 12 Apr 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -188,6 +210,7 @@
                 <guid>https://raymii.org/s/software/Hosted_Piwik.html</guid>
                 <description>Piwik is an open source alternative to Google Analytics. I used to provide a free hosted version at hosted-oswa.org, but as of 2018 that is no longer the case. Be warned.</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 09 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -196,6 +219,7 @@
                 <guid>https://raymii.org/s/software/Restrict_SSH.html</guid>
                 <description>restrict_ssh.sh is a bash script which restricts ssh for a user to a set of commands via .ssh/authorized_keys, and log it verbosely.</description> 
                 <pubDate>Sun, 20 Jan 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 20 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -204,6 +228,7 @@
                 <guid>https://raymii.org/s/software/Ruby_script_to_upload_or_convert_a_Maildir_Inbox_to_an_IMAP_Server.html</guid>
                 <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes...</description> 
                 <pubDate>Tue, 01 Jan 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 01 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -212,6 +237,7 @@
                 <guid>https://raymii.org/s/software/Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.html</guid>
                 <description>This is a script which checks a file's md5 hash, compares it to a previous (or given) hash and mails a report with the option of attaching the file with the email. I wrote it because I use AIDE on some systems, and I let it auto update the database. This script runs via cron before and after the AIDE run, so I have an archive of databases. But it can be used for all kind of files, not just for the AIDE database.</description> 
                 <pubDate>Fri, 21 Dec 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 21 Dec 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -220,6 +246,7 @@
                 <guid>https://raymii.org/s/software/CIDR-Cheatsheet.html</guid>
                 <description>This is a handy CIDR cheatsheet.</description> 
                 <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 11 Dec 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -228,6 +255,7 @@
                 <guid>https://raymii.org/s/software/Git-clean.html</guid>
                 <description>git-clean - bash script to find big (binary) files in a git repo and history, and clean them</description> 
                 <pubDate>Thu, 08 Nov 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 08 Nov 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -236,6 +264,7 @@
                 <guid>https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html</guid>
                 <description>Ray-Mon is a linux server monitoring script written in PHP and Bash, utilizing JSON as data storage. It requires only bash and a webserver on the client side, and only php on the server side. The client currently supports monitoring processes, uptime, updates, amount of users logged in, disk usage, RAM usage and network traffic.</description> 
                 <pubDate>Mon, 22 Oct 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 22 Oct 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -244,6 +273,7 @@
                 <guid>https://raymii.org/s/software/Codename_Geld.html</guid>
                 <description>Codename Geld is a finance manager written in PHP. It uses a JSON text file for the values and the visual side is created with the excellent HTML5 Kickstart framework by Joshua Gatcke. It is not as fancy as mint.com or gnucash, so if you need advanced features (multiple accounts for example) you might want to use another piece of software. Also, the code is quite messy.</description> 
                 <pubDate>Mon, 15 Oct 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 15 Oct 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -252,6 +282,7 @@
                 <guid>https://raymii.org/s/software/Nagios_check_local_certificate_files.html</guid>
                 <description>This is a nagios plugin to check local ssl certifcates for expiry.</description> 
                 <pubDate>Mon, 24 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 24 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -260,6 +291,7 @@
                 <guid>https://raymii.org/s/software/NutsManager.html</guid>
                 <description>NutsManager is a power/gas/water usage tracker written in PHP. It uses a JSON text file for the values and the visual side is created with the excellent HTML5 Kickstart framework by Joshua Gatcke. The graphs are made with the flot framework. It helps me to keep track of my power usage, and shows me on which days I use a lot, and on which days I do not. That way, I know that a LAN party costs me a lot. Also, the code is quite messy.</description> 
                 <pubDate>Sat, 15 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 15 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -268,6 +300,7 @@
                 <guid>https://raymii.org/s/software/PHP-task-list-v2.html</guid>
                 <description>This is a task/todo list written in PHP. It uses a JSON text file for the tasks, and the visual side is created with the HTML5 Kickstart framework by Joshua Gatcke.</description> 
                 <pubDate>Wed, 12 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 12 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -276,6 +309,7 @@
                 <guid>https://raymii.org/s/software/Software_packages.html</guid>
                 <description>Some software I encounter does not have a debian .deb package available. Via the ./configure, make, sudo checkinstall I compile them into a package and put it up here for download.</description> 
                 <pubDate>Sun, 02 Sep 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 02 Sep 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -284,6 +318,7 @@
                 <guid>https://raymii.org/s/software/Wallbase.cc_Command_line_script.html</guid>
                 <description>This is a script to download wallpapers from wallbase.cc with bash and wget.</description> 
                 <pubDate>Sun, 22 Jul 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 22 Jul 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -292,6 +327,7 @@
                 <guid>https://raymii.org/s/software/ProxBash.html</guid>
                 <description>ProxMox VE is a very nice piece of software to setup a VM host very fast, which also is easy manageable via a webinterface. It supports both OpenVZ and KVM. I use it to manage a few VM's to test stuff on and it works really great. However, I'm a command line lover, and I thought it would be nice to be able to 'Manage' Proxmox VE from a bash shell. And I've written a script to do just that. </description> 
                 <pubDate>Thu, 28 Jun 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 28 Jun 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -300,6 +336,7 @@
                 <guid>https://raymii.org/s/software/Ubuntu_update_mailer.html</guid>
                 <description>This is a bash script for Ubuntu and Debian, to be run by cron on a set interval. It checks if there are apt-updates, and if so, mails an overview of the packages which can be updated, whith their local version, the version available and an URL to the Ubuntu package site where you can see the changelog. I wrote this as an addition for my Nagios monitoring, that only shows how many updates there are, this is a lot more verbose. It also runs on Debian since 1 Nov 2012. Only the links don't work then, because the packages are different.</description> 
                 <pubDate>Sun, 10 Jun 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 10 Jun 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -308,6 +345,7 @@
                 <guid>https://raymii.org/s/software/Terrible-start.html</guid>
                 <description>This is a python based Linux start/welcome screen written for Terrible Linux</description> 
                 <pubDate>Thu, 07 Jun 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 07 Jun 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -316,6 +354,7 @@
                 <guid>https://raymii.org/s/software/List-all-changed-files-in-a-certain-period.html</guid>
                 <description>This is a little script I wrote and use to get a daily report of all the files that have changed on my servers. What it does is list all the files that are modified within a certain time period from a given directory. It can also be run from a desktop machine, or any machine which runs bash, find and ls. Usage is simple, save the script, chmod +x it, then run (./report.sh). If you want a specific directory to be scanned run it like ./report.sh /var/www/my/dir</description> 
                 <pubDate>Sun, 13 May 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 13 May 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -324,6 +363,7 @@
                 <guid>https://raymii.org/s/software/Nursecalc-o2.html</guid>
                 <description>This script will help you with nursing-related oxygen calculations. Available as bash script and as online HTML5 application.</description> 
                 <pubDate>Sun, 12 Feb 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 12 Feb 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -332,6 +372,7 @@
                 <guid>https://raymii.org/s/software/Nursecalc-Infuus.html</guid>
                 <description>This script will help you with nursing-related infusion and drip speed calculations. Available as bash script and as online HTML5 application.</description> 
                 <pubDate>Wed, 01 Feb 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 01 Feb 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -340,6 +381,7 @@
                 <guid>https://raymii.org/s/software/Magicprog.html</guid>
                 <description>I'm a fervent [Magic the Gathering][7] player. If you do not know what magic is, scroll down for an explanation. I play it a lot in my free time, and I participate in bootserdrafts and casual tournaments here locally. I've developed a program to keep the life in a 2 player game. It's called MagicProg. It will also work for TGC's like pokemon, yu-gi-oh, WoW TCG or any other TGC. And it has a note area.</description> 
                 <pubDate>Tue, 27 Dec 2011 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 27 Dec 2011 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -348,6 +390,7 @@
                 <guid>https://raymii.org/s/software/Nopriv.py.html</guid>
                 <description>NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I won't steal your password.</description> 
                 <pubDate>Fri, 01 Jan 2010 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 01 Jan 2010 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -356,6 +399,7 @@
                 <guid>https://raymii.org/s/software/Easyconverter.html</guid>
                 <description>Zenity wrapper around ffmpeg to convert media files</description> 
                 <pubDate>Wed, 23 Dec 2009 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 23 Dec 2009 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -364,6 +408,7 @@
                 <guid>https://raymii.org/s/software/SSHDialog.html</guid>
                 <description>SSHdialog - Small command line SSH helper</description> 
                 <pubDate>Mon, 26 Oct 2009 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 26 Oct 2009 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -372,6 +417,7 @@
                 <guid>https://raymii.org/s/software/Clonezilla-custom-backup-script.html</guid>
                 <description>Clonezilla is wonderfull software. At work we use it daily to image laptops. We have a windows PC with a big hard drive, which is shared via samba. Because we image an average of 10 laptops every morning, I decided to customize the script. So together with a colleague we made a script which automatically grabs our latest image from the share and restores it. </description> 
                 <pubDate>Mon, 18 May 2009 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 18 May 2009 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

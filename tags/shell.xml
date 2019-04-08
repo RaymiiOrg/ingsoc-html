@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_json_value_with_sed.html</guid>
                 <description>Recently I was asked to get one value from a json object using only shell tools. The json in question is from a dutch radio station and it lists the current song that is played. Using this together with a few shell commands and notify-send we can show the current song when it changes as a desktop notification. I'd rather use Python or jq if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.</description> 
                 <pubDate>Tue, 26 Feb 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 26 Feb 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/snippets/Find_files_in_tar_archives_and_extract_them.html</guid>
                 <description>This is a small tip, to find specific files in tar archives and how to extract those specific files from said archive.</description> 
                 <pubDate>Wed, 17 Oct 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 17 Oct 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -28,6 +30,7 @@
                 <guid>https://raymii.org/s/snippets/tping_ping_with_a_timestamp.html</guid>
                 <description>tping is a bash alias I once got from an old co-worker. It's ping, but with a timestamp. Instead of looking at the increased icmp_seq number you now have a timestamp.</description> 
                 <pubDate>Mon, 03 Sep 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 03 Sep 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -36,6 +39,7 @@
                 <guid>https://raymii.org/s/snippets/Send_email_with_multiple_inline_images_via_bash.html</guid>
                 <description>Recently I had a request from a user that whished to receive a scheduled email with two screenshots. The screenshots were automated via AutoIt on a network share, the user manually logged in every evening to check the pictures. With bash and postfix/sendmail we can automate this process, the user now doesn't have to login but can just check their email. There are a lot of snippets and guides to attach emails via the shell, but displaying multiple images inline as an HTML mail was something I had to figure out. You cannot embed the image in base64 HTML because Outlook doesn't show that, you must use the Content-ID style embed. Like UUENCODE, but more complicated. (The next step in this process with the user is to automate the reason why they have to check those screenshots every night, that is something for another article)</description> 
                 <pubDate>Mon, 23 Jul 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 23 Jul 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -44,6 +48,7 @@
                 <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
                 <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
                 <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 22 Mar 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -52,6 +57,7 @@
                 <guid>https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html</guid>
                 <description>This article shows you how to manually verfify a certificate against an OCSP server. OCSP stands for the Online Certificate Status Protocol and is one way to validate a certificate status. It is an alternative to the CRL, certificate revocation list. This article shows you how to manually validate a certificate against an OCSP server.</description> 
                 <pubDate>Mon, 07 Apr 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 07 Apr 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -60,6 +66,7 @@
                 <guid>https://raymii.org/s/articles/OpenSSL_-_Get_all_certificates_from_a_website_in_plain_text.html</guid>
                 <description>This article shows you how to get all certificates of a website in plain text. With a few OpenSSL commands one can get the website certificate plus intermediate certificates, however, if you feed that output to OpenSSL it only works on the first certificate. Using a bit of sed and bash magic we can feed all certificates one by one to OpenSSL.</description> 
                 <pubDate>Tue, 04 Feb 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 04 Feb 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -68,6 +75,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Simple_Command_Line_Arguments.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add command line arguments to your script. It is very simple, non-positional and does not use getopts.</description> 
                 <pubDate>Mon, 30 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 30 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -76,6 +84,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Check_If_Item_Is_In_Array.html</guid>
                 <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how find out if an array has an item.</description> 
                 <pubDate>Sat, 21 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 21 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -84,6 +93,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Add_Color_Output_To_Your_Scripts.html</guid>
                 <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to add coloured output to your scripts</description> 
                 <pubDate>Wed, 18 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 18 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -92,6 +102,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Debug_Logging.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add debug logging to a bash script.</description> 
                 <pubDate>Sun, 15 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 15 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -100,6 +111,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_Bits_Trap_Control_C_SIGTERM.html</guid>
                 <description>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to capture a Control C signal in a bash script, for example, to clean up any temp or pid files when your script is killed or closed.</description> 
                 <pubDate>Sat, 14 Sep 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 14 Sep 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -108,6 +120,7 @@
                 <guid>https://raymii.org/s/software/bdsh.html</guid>
                 <description>A shell where you whitelist commands and only those commands can be executed. Either via ssh, as an interactive shell or launched with commands. Logs everything and escapes dangerous characters. bdsh stands for Boa Diminish SHell. You can probably guess why. It might have to to with snakes and restricting users, no pun intended.</description> 
                 <pubDate>Sat, 29 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 29 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -116,6 +129,7 @@
                 <guid>https://raymii.org/s/snippets/Bash_-_Incremental_History_Search_Autocomplete.html</guid>
                 <description>This little snippet for your .bashrc or your .inputrc changes the Up/Down arrow behavior to autocomplete what is already typed instead of just go back in history.</description> 
                 <pubDate>Wed, 26 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 26 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -124,6 +138,7 @@
                 <guid>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</guid>
                 <description>This tutorial will show you how to install screenfetch, a bash information tool. It displays handy system information at login, including distro name, kernel, uptime, cpu, ram and nice distro-based artwork. The tutorial includes support for bash and zsh, for every supported linux OS (ubuntu, centos, arch, redhat, solusOS, linux mint and more.)</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 09 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -132,6 +147,7 @@
                 <guid>https://raymii.org/s/tutorials/Better_cron_env_and_shell_control_with_the_SHELL_variale.html</guid>
                 <description>Have better control over env variables and shell settings in cron via the SHELL variable and a few scripts.</description> 
                 <pubDate>Fri, 08 Mar 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 08 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

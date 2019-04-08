@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/OpenVZ_dnsmasq_set_capabilities_failed_fix.html</guid>
                 <description>When running dnsmasq under OpenVZ I sometimes get an error when restarting: set capabilities failed. This is because dnsmasq starts as root, then does privileged stuff and then drops to the configured run user. In OpenVZ these permissions are not passed to the VPS, sadly. These three commands fix the problem.</description> 
                 <pubDate>Wed, 14 Aug 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 14 Aug 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/tutorials/Get_DNS_server_version_and_hide_it_in_BIND.html</guid>
                 <description>The BIND nameserver (and many others) return their version number when queried a special DNS query. This tutorial shows you how to query the BIND version and how to stop your own BIND server sending its version out.</description> 
                 <pubDate>Wed, 08 May 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 08 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

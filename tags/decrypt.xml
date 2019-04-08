@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Encrypt_and_decrypt_files_to_public_keys_via_the_OpenSSL_Command_Line.html</guid>
                 <description>This small tutorial will show you how to use the openssl command line to encrypt and decrypt a file using a public key. We will first generate a random key, encrypt that random key against the public key of the other person and use that random key to encrypt the actual file with using symmetric encryption.</description> 
                 <pubDate>Thu, 25 Oct 2018 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 25 Oct 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

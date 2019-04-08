@@ -9,13 +9,23 @@ Format   : 	Markdown/HTML
 
 
 
-This Ansible tutorial shows you how run some actions via sudo and some not. It also shows you how to run an entire role via sudo or not.
+This Ansible tutorial shows you how run some actions via sudo and some not. It
+also shows you how to run an entire role via sudo or not.
 
-This example is tested on Ansible 1.4 and on a Digital Ocean VPS. If you like this tutorial and want to support my website, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+This example is tested on Ansible 1.4 and on a Digital Ocean VPS. If you like
+this tutorial and want to support my website, use this link to order a Digital
+Ocean VPS:
+[https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)
+  
 
-Ansible has the option to run playbooks via sudo. You can setup passwordless sudo, but also execute a playbook with the extra `--ask-sudo-pass` / `-K` option so that Ansible asks you for the sudo password. However, you can also have very specific control over how and when sudo is used in a playbook. 
+Ansible has the option to run playbooks via sudo. You can setup passwordless
+sudo, but also execute a playbook with the extra `--ask-sudo-pass` / `-K` option
+so that Ansible asks you for the sudo password. However, you can also have very
+specific control over how and when sudo is used in a playbook. 
 
-I have a playbook with a few roles which I use to bootstrap a new debian server. It installs software, sets up ssh, sets up sudo and places a few config files. It is organized in roles, the main playbook looks like this:
+I have a playbook with a few roles which I use to bootstrap a new debian server.
+It installs software, sets up ssh, sets up sudo and places a few config files.
+It is organized in roles, the main playbook looks like this:
 
 	---
 	- hosts: new-servers
@@ -33,9 +43,16 @@ I have a playbook with a few roles which I use to bootstrap a new debian server.
 	    - { role: postfix, sudo: yes }
 	    - { role: vnstat, sudo: yes }
 
-As you can see, I have a few playbooks run with sudo on, and a few with sudo off. The `git-setup`, `vim`, `screen` and `bash` playbooks all do basically the same, they install software and place a configuration file. However, if the entire playbook is run as root, the configuration files placed would be owned by root. If the playbook is not run via sudo, the software cannot be installed.
+As you can see, I have a few playbooks run with sudo on, and a few with sudo
+off. The `git-setup`, `vim`, `screen` and `bash` playbooks all do basically the
+same, they install software and place a configuration file. However, if the
+entire playbook is run as root, the configuration files placed would be owned by
+root. If the playbook is not run via sudo, the software cannot be installed.
 
-Note that in the first case Ansible also supports setting file permissions on files. This however is not the case when configuration files are cloned from a git repository. The git module does not support setting permissions, and I don't like recursive `chmod`'s.
+Note that in the first case Ansible also supports setting file permissions on
+files. This however is not the case when configuration files are cloned from a
+git repository. The git module does not support setting permissions, and I don't
+like recursive `chmod`'s.
 
 Here is the `vim` playbook:
 
@@ -64,9 +81,17 @@ Here is the `vim` playbook:
 	    owner: {{ user }}
 	  sudo: no
 
-This playbook makes sure both `vim` and `git` are installed. It uses sudo for that action. It then clones the git repository with my personal dotfiles, without using sudo. If this action would use sudo, the git repository in my home folder would me owned by root and I could not update it later on without using sudo. The last action symlinks the `.vimrc` file from the repo to the correct location. If that would be done with sudo I could not remove the file without root access.
+This playbook makes sure both `vim` and `git` are installed. It uses sudo for
+that action. It then clones the git repository with my personal dotfiles,
+without using sudo. If this action would use sudo, the git repository in my home
+folder would me owned by root and I could not update it later on without using
+sudo. The last action symlinks the `.vimrc` file from the repo to the correct
+location. If that would be done with sudo I could not remove the file without
+root access.
 
-If you define a role with sudo, like in the above example the `postfix` role, then you can use the `sudo: no` option in that playbook to make sure one or more actions are not executed with sudo. 
+If you define a role with sudo, like in the above example the `postfix` role,
+then you can use the `sudo: no` option in that playbook to make sure one or more
+actions are not executed with sudo. 
 
 
 [Ansible documentation regarding sudo](http://www.ansibleworks.com/docs/playbooks.html)

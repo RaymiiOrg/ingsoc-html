@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/OpenSSL_Command_Generator.html</guid>
                 <description>This is a simple page with a form which you can use to generate OpenSSL commands to, for example, create a key, certificate and a CSR.</description> 
                 <pubDate>Sat, 08 Nov 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 08 Nov 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/snippets/Javascript-tricks.html</guid>
                 <description>Not available.</description> 
                 <pubDate>Tue, 08 Jul 2008 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 08 Jul 2008 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

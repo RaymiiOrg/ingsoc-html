@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Install_the_Lastest_ZNC_from_Source_in_Ubuntu.html</guid>
                 <description>This tutorial will show you how to install the latest (1.0) version of ZNC (an advanced IRC bouncer) on Ubuntu from source. Why from source? The package in the repositories is quite old and missing features like multiple IRC networks. It also includes an upstart script, and an example config for ZNC. ZNC is an advanced IRC bouncer that is left connected so an IRC client can disconnect/reconnect without losing the chat session.</description> 
                 <pubDate>Fri, 25 Oct 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 25 Oct 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

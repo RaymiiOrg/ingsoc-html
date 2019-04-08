@@ -11,15 +11,35 @@ Format   : 	Markdown/HTML
 
 <img src="https://raymii.org/s/inc/img/ansible-logo.png">
 
-This guide shows you how to access group variables for a group the current host is not a member of. In Ansible you can access other host variables using `hostvars['hostname']` but not group variables. The way described here is workable, but do I consider it a dirty hack. So why did I need this? I have a setup where ssl is offloaded by haproxy servers, but the virtual hosts and ssl configuration are defined in Apache servers. The loadbalancers and appservers are two different hostgroups, the ssl settings are in the appserver group_vars, which the hosts in the loadbalancer group need to access. The best way to do this is change the haproxy playbooks and configuration and define the certificates there, but in this specific case that wasn't a workable solution. Editing two yaml files (one for the appservers and one for the loadbalancers) was not an option in this situation.
+This guide shows you how to access group variables for a group the current host
+is not a member of. In Ansible you can access other host variables using
+`hostvars['hostname']` but not group variables. The way described here is
+workable, but do I consider it a dirty hack. So why did I need this? I have a
+setup where ssl is offloaded by haproxy servers, but the virtual hosts and ssl
+configuration are defined in Apache servers. The loadbalancers and appservers
+are two different hostgroups, the ssl settings are in the appserver group_vars,
+which the hosts in the loadbalancer group need to access. The best way to do
+this is change the haproxy playbooks and configuration and define the
+certificates there, but in this specific case that wasn't a workable solution.
+Editing two yaml files (one for the appservers and one for the loadbalancers)
+was not an option in this situation.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
-This is applicable for other scenario's as well. In templates this can be worked around by looping over all the groups, then over all the hosts in the specific group, then if the host is the first in the loop, go over all the hostvars for that host and then access the group var you want. [This stackoverflow](https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars) post goes over that. In my case I needed to access it in a playbook, the looping construction woudln't work there.
+This is applicable for other scenario's as well. In templates this can be worked
+around by looping over all the groups, then over all the hosts in the specific
+group, then if the host is the first in the loop, go over all the hostvars for
+that host and then access the group var you want. [This
+stackoverflow](https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars)
+post goes over that. In my case I needed to access it in a playbook, the looping
+construction woudln't work there.
 
 ### The inventory
 
-In the inventory file I created a new group. This group has the two other groups, `appservers` and `loadbalancers` in them and nothing else. Like so:
+In the inventory file I created a new group. This group has the two other
+groups, `appservers` and `loadbalancers` in them and nothing else. Like so:
 
     [appserver]
     app1.cluster   
@@ -33,16 +53,20 @@ In the inventory file I created a new group. This group has the two other groups
     loadbalancer
     appserver
 
-The shortnames expand to specifc SSH configuration. The `ssl` hostgroup effectively includes the following hosts:
+The shortnames expand to specifc SSH configuration. The `ssl` hostgroup
+effectively includes the following hosts:
 
 - app1
 - app2
 - lb1
 - lb2
 
-However, we do need to modify the playbook that modifies the vhosts  to only place the certificates on the loadbalancers, and do nothing with the certificates on the appservers. The playbook should still do it's normal thing, configuring the vhosts, on the appservers, but not on the loadbalancers.
+However, we do need to modify the playbook that modifies the vhosts  to only
+place the certificates on the loadbalancers, and do nothing with the
+certificates on the appservers. The playbook should still do it's normal thing,
+configuring the vhosts, on the appservers, but not on the loadbalancers.
 
-[The documentation](https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-and-group-variables) has more information on hostgroups based on other groups.
+[The documentation][0] has more information on hostgroups based on other groups.
 
 ### The playbook
 
@@ -54,7 +78,9 @@ The playbook (`deploy-vhosts.yml`) first was this:
       roles:
         - apache-vhost
 
-After changing the hostgroup we need to add the specific role that deploys the certificates. We also put a `when` in place to make sure the two roles only run on the hosts where they should and not the other hosts:
+After changing the hostgroup we need to add the specific role that deploys the
+certificates. We also put a `when` in place to make sure the two roles only run
+on the hosts where they should and not the other hosts:
 
     ---
 
@@ -66,7 +92,8 @@ After changing the hostgroup we need to add the specific role that deploys the c
 
 ### The group vars
 
-The group vars for the appservers contain the following information to configure the virtual hosts:
+The group vars for the appservers contain the following information to configure
+the virtual hosts:
 
 
     ---
@@ -87,11 +114,16 @@ The group vars for the appservers contain the following information to configure
         serveraliases:
           - www.example2.cluster.nl
 
-The problem is that, when the deploy vhosts playbook in run on the loadbalancers, they cannot access these variables since they are not in the same group.
+The problem is that, when the deploy vhosts playbook in run on the
+loadbalancers, they cannot access these variables since they are not in the same
+group.
 
 ### The role
 
-The role `sslcerts` has one task file and one handler (`restart haproxy`). It makes sure the folder for the certificates exists and it places the certificate files there. There are extra when statements to make sure it only runs on the loadbalancers.
+The role `sslcerts` has one task file and one handler (`restart haproxy`). It
+makes sure the folder for the certificates exists and it places the certificate
+files there. There are extra when statements to make sure it only runs on the
+loadbalancers.
 
     - name: create ssl folder
       file:
@@ -113,16 +145,23 @@ The role `sslcerts` has one task file and one handler (`restart haproxy`). It ma
 
 ### The crux
 
-Even after configuring the special playbook that runs on all the hosts, the loadbalancers still cannot access the group variables from the appservers. The dirty hack part is that we symlink the group vars from the `appserver` folder to the `loadbalancer` folder:
+Even after configuring the special playbook that runs on all the hosts, the
+loadbalancers still cannot access the group variables from the appservers. The
+dirty hack part is that we symlink the group vars from the `appserver` folder to
+the `loadbalancer` folder:
 
-    ln -s /home/deploy/ansible/group_vars/appserver/apache-vhost.yml /home/deploy/ansible/group_vars/loadbalancer/apache-vhost-symlink.yml
+    ln -s /home/deploy/ansible/group_vars/appserver/apache-vhost.yml 
+    /home/deploy/ansible/group_vars/loadbalancer/apache-vhost-symlink.yml
 
-Now, the loadbalancers have the group variable `apache_vhost` as well, and when the file in the `appserver` folder is changed, the `loadbalancer` file is as well because it's a symlink. 
+Now, the loadbalancers have the group variable `apache_vhost` as well, and when
+the file in the `appserver` folder is changed, the `loadbalancer` file is as
+well because it's a symlink. 
 
 
 ### haproxy
 
-haproxy in this case has one frontend where all traffic comes into, the appservers handle the different virtual hosts:
+haproxy in this case has one frontend where all traffic comes into, the
+appservers handle the different virtual hosts:
 
     frontend https-in
           mode http
@@ -137,11 +176,18 @@ haproxy in this case has one frontend where all traffic comes into, the appserve
           reqadd X-Forwarded-Proto:\ https
           default_backend appserver
 
-haproxy handles `sni` transparantly based on the requested hostname, if it finds the certificate in the folder `/etc/ssl/cluster/`. The files there are a concatenation of the public key, the private key and if needed the certificate chain. 
+haproxy handles `sni` transparantly based on the requested hostname, if it finds
+the certificate in the folder `/etc/ssl/cluster/`. The files there are a
+concatenation of the public key, the private key and if needed the certificate
+chain. 
 
 ### Conclusion
 
-In this case it might be better to change the haproxy playbook to handle this, or to change the group_vars to `all`. However, this environment has certain constraints set, so this 'suboptimal' workaround works. 
+In this case it might be better to change the haproxy playbook to handle this,
+or to change the group_vars to `all`. However, this environment has certain
+constraints set, so this 'suboptimal' workaround works. 
+
+[0]: https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-and-group-variables
 
 ---
 

@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/foaas.sh_-_Command_Line_FOAAS_Client.html</guid>
                 <description>foaas.sh is a command line [Fuck Off as a Service client](http://foaas.com/). It is written is bash and supports multiple forms of API interaction. It also supports `xclip`, when available, the result of an interaction is copied to the clipboard for later use.</description> 
                 <pubDate>Mon, 08 Sep 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 08 Sep 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

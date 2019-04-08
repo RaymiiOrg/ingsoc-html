@@ -9,20 +9,49 @@ Format   : 	Markdown/HTML
 
 
 
-This Ansible playbook example helps you execute actions only if a file exists or does not exist. If you for example have a command you need to run to generate a certificate (or Diffie Hellman parameters for nginx) you only want to do that once. The command itself is not convergent so it will run with every ansible run. However, the command creates a file and Ansible is able to check if that file exists. If the file exists, it will not execute the action. The same goes for checking if a file does exist and only executing the action if it exists. (The action you want to do will remove that file).
+This Ansible playbook example helps you execute actions only if a file exists or
+does not exist. If you for example have a command you need to run to generate a
+certificate (or Diffie Hellman parameters for nginx) you only want to do that
+once. The command itself is not convergent so it will run with every ansible
+run. However, the command creates a file and Ansible is able to check if that
+file exists. If the file exists, it will not execute the action. The same goes
+for checking if a file does exist and only executing the action if it exists.
+(The action you want to do will remove that file).
 
-The below example command will generate [Diffi Hellman parameters for NGINX ssl](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html). This command creates the file `/etc/ssl/certs/dhparam.pem`. It should run only if that file does not exist (because only newly deployed servers will not have the file), if the file exist there is no need to run again.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+
+The below example command will generate [Diffi Hellman parameters for NGINX
+ssl](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html). This
+command creates the file `/etc/ssl/certs/dhparam.pem`. It should run only if
+that file does not exist (because only newly deployed servers will not have the
+file), if the file exist there is no need to run again.
 
 	- name: generate dh params
     command: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 
     args: 
       creates: /etc/ssl/certs/dhparam.pem
 
-Ansible has the `creates` option in the `command` module. Give it a filename (directories will not work) and if it already exists Ansible will skip the action.
+Ansible has the `creates` option in the `command` module. Give it a filename
+(directories will not work) and if it already exists Ansible will skip the
+action.
 
-The same goes for only executing an action if a file exists. The command you are using will remove that file, so only if the file is there the action should be executed. Just as the `creates` option, there is the `removes` option. For the `removes` option, you need at least Ansible 0.8.
+The same goes for only executing an action if a file exists. The command you are
+using will remove that file, so only if the file is there the action should be
+executed. Just as the `creates` option, there is the `removes` option. For the
+`removes` option, you need at least Ansible 0.8.
 
-The below example is for a custom piece of software one of my clients uses. If we deploy a new version, we check out the code repository and run a script to install a new version. That script will only run when the configuration file is renamed to `software.conf.upgrade`. After the upgrade it renamed that config file to the original `software.conf` and also puts the config in its database. It is sadly proprietary software and the manufacturer has stated they are not changing the behavior to a more sane default. The below example will only run the upgrade script when the file `/etc/software/software.conf.upgrade` exists. Since the script removes it, the next time Ansible runs it does not try to upgrade the software. 
+The below example is for a custom piece of software one of my clients uses. If
+we deploy a new version, we check out the code repository and run a script to
+install a new version. That script will only run when the configuration file is
+renamed to `software.conf.upgrade`. After the upgrade it renamed that config
+file to the original `software.conf` and also puts the config in its database.
+It is sadly proprietary software and the manufacturer has stated they are not
+changing the behavior to a more sane default. The below example will only run
+the upgrade script when the file `/etc/software/software.conf.upgrade` exists.
+Since the script removes it, the next time Ansible runs it does not try to
+upgrade the software. 
 
 	- name: upgrade software
     command: /opt/software/bin/upgrade 
@@ -31,14 +60,18 @@ The below example is for a custom piece of software one of my clients uses. If w
 
 [Documentation for the Command Module](http://docs.ansible.com/command_module.html)
 
-If you have other commands which do not support the `creates` option, you need to first use the `stat` module and register the result of that. This example is for the Shorewall firewall. We first check if the rules file exists:
+If you have other commands which do not support the `creates` option, you need
+to first use the `stat` module and register the result of that. This example is
+for the Shorewall firewall. We first check if the rules file exists:
 
     - name: check if rules file exists
       stat: 
         path: /etc/shorewall/rules
       register: shorewall_rules
 
-We fill the `shorewall_rules` variable with the result of this action. The next two actions add a rule to the rules file and restart the firewall, but only if the rules file exists:
+We fill the `shorewall_rules` variable with the result of this action. The next
+two actions add a rule to the rules file and restart the firewall, but only if
+the rules file exists:
 
 
     - name: add firewall rule for ssh
@@ -53,7 +86,8 @@ We fill the `shorewall_rules` variable with the result of this action. The next 
       command: "shorewall restart"
       when: shorewall_rules.stat.exists == True
 
-If you want to do stuff when a file is not present, you can check if the result is `False`, like so:
+If you want to do stuff when a file is not present, you can check if the result
+is `False`, like so:
     
     - action: example
       when: stat_result.stat.exists == False

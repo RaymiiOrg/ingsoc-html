@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_all_IP_ranges_from_an_AS_number.html</guid>
                 <description>One of my clients wanted to block a few social networking websites. Since they have no IPv6 (yet) I figured the simplest way was to block access to the entire IP range. This won't work for all the CDN networks they use, but it does get you started. To find all the ranges beloning to an AS number you can query the whois.radb.net server with the AS number.</description> 
                 <pubDate>Sun, 04 Jan 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 04 Jan 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

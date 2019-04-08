@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/OS_X_Turn_off_sleep_from_the_command_line.html</guid>
                 <description>This little snippet turns off Sleep on an OS X machine, either iMac or Macbook. Normally when a Mac is not used it goes in sleep mode, this turns that off.</description> 
                 <pubDate>Mon, 03 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 03 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/OS_X_Create_Hardware_report_spx_and_save_it_to_a_AFP_share.html</guid>
                 <description>This script creates a OS X hardware report (an SPX file) and saves it to a AFP share. This is usefull when you are rolling out new machines. Run this script via Apple Remote Desktop and you have all your administration in your AFP share, which you can later put in your CMDB. The report has all the hardware data, from firmware, serial number, model, MAC addresses, disk and memory information, in short everything you need for your CMDB and support contracts.</description> 
                 <pubDate>Sun, 02 Jun 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 02 Jun 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

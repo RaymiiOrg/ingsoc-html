@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Apache_access_and_error_log_to_syslog.html</guid>
                 <description>This snippet shows you how to redirect the Apache access log to syslog using the Customlog statement, and the Error log to syslog via the ErrorLog statement.</description> 
                 <pubDate>Sun, 15 Dec 2013 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 15 Dec 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>

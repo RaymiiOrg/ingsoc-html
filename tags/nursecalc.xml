@@ -12,6 +12,7 @@
                 <guid>https://raymii.org/s/software/Nursecalc-o2.html</guid>
                 <description>This script will help you with nursing-related oxygen calculations. Available as bash script and as online HTML5 application.</description> 
                 <pubDate>Sun, 12 Feb 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 12 Feb 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -20,6 +21,7 @@
                 <guid>https://raymii.org/s/software/Nursecalc-Infuus.html</guid>
                 <description>This script will help you with nursing-related infusion and drip speed calculations. Available as bash script and as online HTML5 application.</description> 
                 <pubDate>Wed, 01 Feb 2012 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 01 Feb 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>
