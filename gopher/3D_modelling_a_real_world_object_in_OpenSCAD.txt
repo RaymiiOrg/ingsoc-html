@@ -301,7 +301,7 @@ holes the `bottom_piece` has. Let's start with the cube and the cylinder hole:
 		}
 	}
 
-<img src="https://raymii.org/s/inc/img/3d/connect-1.png" alt="image" />
+![connect 1][18]
 
 The next thing we are going to add is the circle which will match the
 `left_piece`:
@@ -324,7 +324,7 @@ The next thing we are going to add is the circle which will match the
 		}
 	}
 
-<img src="https://raymii.org/s/inc/img/3d/connect-2.png" alt="image" />
+![connect2][19]
 
 Last but not least we need to put the first `long_hole_in_upper_key` in this
 block, otherwise it will look ugly:
@@ -379,9 +379,9 @@ upper part of the key, connecting the `left_piece`, the `right_piece` and the
 
 This looks like so:
 
-<img src="https://raymii.org/s/inc/img/3d/upper-full-1.png" alt="image" />  
+![full1][20]
 
-<img src="https://raymii.org/s/inc/img/3d/upper-full-2.png" alt="image" />
+![full2][21]
 
 Now add the `bottom_piece` to the `full_upper_piece`:
 
@@ -393,7 +393,7 @@ Now add the `bottom_piece` to the `full_upper_piece`:
 		full_upper_piece();
 	}
 
-<img src="https://raymii.org/s/inc/img/3d/full-key-2.png" alt="image" />	
+![full3][22]
 
 There you have your full key. Render it:
 
@@ -405,7 +405,7 @@ And you're done.
 
 ### 3D printing
 
-I've let my 3D models print by [Ridix](https://ridix.nl) in Rotterdam. They've
+I've let my 3D models print by Ridix in Rotterdam. They've
 print it on a Dimension SST 1200es with ABS+ material. This (it what they've
 told me) is stronger than regular ABS. The quality and especially sturdiness
 is very well. I've tested the key over 90 times in a panel like above, and it
@@ -431,9 +431,11 @@ and if you're early with sending sometimes the same day.
 [15]: https://raymii.org/s/inc/img/3d/bottom-5.png
 [16]: https://raymii.org/s/inc/img/3d/bottom-6.png
 [17]: https://raymii.org/s/inc/img/3d/bottom-7.png
-[18]: 
-[19]: 
-[20]: 
+[18]: https://raymii.org/s/inc/img/3d/connect-1.png
+[19]: https://raymii.org/s/inc/img/3d/connect-2.png
+[20]: https://raymii.org/s/inc/img/3d/upper-full-1.png
+[21]: https://raymii.org/s/inc/img/3d/upper-full-2.png
+[22]: https://raymii.org/s/inc/img/3d/full-key-2.png
 
 
 
