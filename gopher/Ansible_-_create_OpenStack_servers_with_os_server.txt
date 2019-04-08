@@ -23,19 +23,19 @@ stuff regarding `yaml` parsing and variable concatination. Therefore some of my
 old playbooks were not working anymore and I had to figure out how to get it
 working with the new versions.
 
-I've written about [Ansible before](https://raymii.org/s/tags/ansible.html),
+I've written about [Ansible before][1],
 click that link to get all the articles about Ansible.
 
 <img src="https://raymii.org/s/inc/img/ansible_meme.jpg" alt=ansible>
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
 
-I [found](http://blog.oddbit.com/2015/10/26/ansible-20-new-openstack-modules/)
-documentation on the new modules but that just created a single instance. I need
-to spawn multiple instances and add those to specific hostgroups based on
-variables, so this guide wasn't complete enough for me. 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+I [found][2] documentation on the new modules but that just created a single
+instance. I need to spawn multiple instances and add those to specific
+hostgroups based on variables, so this guide wasn't complete enough for me. 
 
 This is my folder structure:
 
@@ -62,16 +62,12 @@ This is my folder structure:
     `-- site.yml
 
 `site.yml` is the main playbook and `create-instances` and `appservers` are the
-specific roles.
-[Create](https://raymii.org/s/snippets/Ansible_-_create_playbooks_and_role_file_and_folder_structure.html)
-the folder structure if you're starting from zero.
+specific roles. [Create][3] the folder structure if you're starting from zero.
 
 
 On the local host you need the OpenStack tools and some python modules
-installed. The
-[os_server](https://docs.ansible.com/ansible/os_server_module.html) page lists
-all the requirements. You also need an `openstackrc` file with credentials in
-your environment:
+installed. The [os_server][4] page lists all the requirements. You also need an
+`openstackrc` file with credentials in your environment:
 
     $ cat openstackrc
     export OS_AUTH_URL="https://identity.stack.cloudvps.com/v2.0"
@@ -244,6 +240,10 @@ The full play then results in:
         demo-app2            : ok=2    changed=0    unreachable=0    failed=0   
         localhost            : ok=3    changed=2    unreachable=0    failed=0   
 
+[1]: https://raymii.org/s/tags/ansible.html
+[2]: http://blog.oddbit.com/2015/10/26/ansible-20-new-openstack-modules/
+[3]: https://raymii.org/s/snippets/Ansible_-_create_playbooks_and_role_file_and_folder_structure.html
+[4]: https://docs.ansible.com/ansible/os_server_module.html
 
 
 ---

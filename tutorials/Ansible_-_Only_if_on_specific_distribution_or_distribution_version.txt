@@ -18,9 +18,10 @@ helps you with an only if statement to select a specific distribution. As a
 bonus, you also get an `only_if` for specific distribution versions, like Ubuntu
  precise (12.04 LTS) or Ubuntu Trusty (14.04 LTS).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 - 2018-12-16: update ansible syntax to version 2.5, use become
 - 2015-09-24: Added `package` module, changed only_if to when
@@ -141,8 +142,9 @@ Debian and CentOS, you can now just do the following:
 If a package has different names on different distributions, like Apache
 (apache2 on ubuntu, httpd on CentOS) you still need to use a when statement.
 
-Read more about the package module on [the ansible Docs
-website](https://docs.ansible.com/ansible/package_module.html)
+Read more about the package module on [the ansible Docs website][1].
+
+[1]: https://docs.ansible.com/ansible/package_module.html
 
 ---
 

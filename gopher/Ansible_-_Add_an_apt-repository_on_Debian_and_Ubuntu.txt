@@ -15,11 +15,9 @@ using Ansible. It includes both the old way, when the apt modules only worked on
 Ubuntu, and the new way, now that the apt-modules also support Debian, plus some
 other tricks.
 
-<img src="https://raymii.org/s/inc/img/ansible_meme.jpg" alt=ansible>
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
 
 - 14-12-2018: updated ansible syntax to 2.5
 - 15-05-2016: initial article
@@ -141,19 +139,18 @@ This is not the recommended way, but it still works just fine. If you add
 repositories this way, no problem, but you might want to consider rewriting the
 playbooks to the newer way.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
 
 ### More documentation
 
-The official documentation for the two modules can be found on the Ansible docs
-site:
-[apt_repository](https://docs.ansible.com/ansible/apt_repository_module.html)
-and [apt_key](https://docs.ansible.com/ansible/apt_key_module.html). 
+The official documentation for the two modules can be found on the Ansible docs site: [apt_repository][1] and [apt_key][2]. 
 
-You can also check out my other [Ansible
-articles](https://raymii.org/s/tags/ansible.html)
+You can also check out my other [Ansible articles][3].
+
+[1]: https://docs.ansible.com/ansible/apt_repository_module.html
+[2]: https://docs.ansible.com/ansible/apt_key_module.html
+[3]: https://raymii.org/s/tags/ansible.html
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

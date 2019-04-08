@@ -16,9 +16,10 @@ signing but only executes the apt-add command if the key has changed. Or a
 playbook which clones a git repository and only restarts a service if the git
 repository has changed.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 - 15-12-2018: Updated ansible syntax to 2.5
 - 22-12-2013: initial article
@@ -51,7 +52,7 @@ if the key changed or did not exist yet:
 	    update_cache: yes
 	  when: aptkey.changed
 
-[This is an older article, there is an ansible module to add apt-keys now](https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html).
+[This is an older article, there is an ansible module to add apt-keys now][1].
 
 It is part of one of my playbooks which installs and configures NGINX. I want to
 use the latest stable version provided by the NGINX project. They sign their
@@ -119,10 +120,11 @@ initialized once.
 
 
 You can also go very advanced with error handling and defining when something
-changes or fails. The [ansible documentation covers that fairly well:
-http://www.ansibleworks.com/docs/playbooks_error_handling.html](http://www.ansibleworks.com/docs/playbooks_error_handling.html).
+changes or fails. The [ansible documentation covers that fairly well][2].
 
 
+[1]: https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
+[2]: http://www.ansibleworks.com/docs/playbooks_error_handling.html
 
 ---
 
