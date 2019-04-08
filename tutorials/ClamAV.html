@@ -69,21 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>ClamAV is a virus scanner for Linux/Unix like systems. This tutorial will show you how to install it and how to set it up to auto-update and do a daily scan. It will only report if threats are found. It is tested on Ubuntu 10.04 and up. It also covers if, and why you might need a virus scanner for Linux/Unix. As an extra, it also covers scans for specific folders which remove infected files automatically.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>ClamAV is a virus scanner for Linux/Unix like systems. This tutorial will show
+you how to install it and how to set it up to auto-update and do a daily scan.
+It will only report if threats are found. It is tested on Ubuntu 10.04 and up.
+It also covers if, and why you might need a virus scanner for Linux/Unix. As an
+extra, it also covers scans for specific folders which remove infected files
+automatically.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)</a> </p>
 
 <h4>Do you need a virus scanner on Linux/Unix?</h4>
 
 <p>Short answer, it depends on your situation.</p>
 
-<p>Long answer:<br>
-You might want to run a virus scanner on a server where files are uploaded, or where users login and manipulate files.<br>
-Lets say you host a file upload site, you want to run a scan on the upload folder which auto removes infected files.<br>
-It can also be that your mailserver runs Linux, but people sometimes mail executables or infected pdf files. Then you also want a scanner.<br>
-Or you might run a source control server (gitolite, mercurial) where sometimes binary files are checked in. (although ClamAV might not find things in bare-git repositories, only in working directories.)</p>
+<p>Long answer:   You might want to run a virus scanner on a server where files are
+uploaded, or where users login and manipulate files.   Lets say you host a file
+upload site, you want to run a scan on the upload folder which auto removes
+infected files.   It can also be that your mailserver runs Linux, but people
+sometimes mail executables or infected pdf files. Then you also want a scanner. 
+ Or you might run a source control server (gitolite, mercurial) where sometimes
+binary files are checked in. (although ClamAV might not find things in bare-git
+repositories, only in working directories.)</p>
 
-<p>If you however only run a static HTML website, or an rsync backup server, or a Rougelike via telnet, where there are no uploads or like, you might be wasting resources.</p>
+<p>If you however only run a static HTML website, or an rsync backup server, or a
+Rougelike via telnet, where there are no uploads or like, you might be wasting
+resources.</p>
 
-<p>My advice is to look at your situation and then decide if you need ClamAV, and if you only need to scan a few folders, the entire system and if you want to auto-remove the virusses or not. </p>
+<p>My advice is to look at your situation and then decide if you need ClamAV, and
+if you only need to scan a few folders, the entire system and if you want to
+auto-remove the virusses or not. </p>
 
 <h4>Install ClamAV</h4>
 
@@ -97,16 +112,19 @@ Or you might run a source control server (gitolite, mercurial) where sometimes b
 <pre><code>sudo apt-get install clamav clamav-daemon clamav-freshclam
 </code></pre>
 
-<p>You can also install the clamav-data package, but the clamav-freshclam package is another (easier) way to update your virus definitions.</p>
+<p>You can also install the clamav-data package, but the clamav-freshclam package
+is another (easier) way to update your virus definitions.</p>
 
-<p>On RHEL, CentOS or Scientific Linux, you only need to install the <code>clamav</code> package:</p>
+<p>On RHEL, CentOS or Scientific Linux, you only need to install the <code>clamav</code>
+package:</p>
 
 <pre><code>yum install clamav
 </code></pre>
 
 <h4>Update the database</h4>
 
-<p>The below two commands will restart the freshclam daemon (which auto updates the database) and then does a manual update of the definitions.</p>
+<p>The below two commands will restart the freshclam daemon (which auto updates the
+database) and then does a manual update of the definitions.</p>
 
 <pre><code>sudo /etc/init.d/clamav-freshclam restart
 sudo /usr/bin/freshclam
@@ -114,15 +132,21 @@ sudo /usr/bin/freshclam
 
 <h4>The daily scan</h4>
 
-<p>The below cronjob will run a virus database definition update (so that the scan always has the most recent definitions) and afterwards run a full scan which will only report when there are infected files on the system. It also does not remove the infected files automatically, you have to do this manually. This way you make sure that it does not delete /bin/bash by accident.</p>
+<p>The below cronjob will run a virus database definition update (so that the scan
+always has the most recent definitions) and afterwards run a full scan which
+will only report when there are infected files on the system. It also does not
+remove the infected files automatically, you have to do this manually. This way
+you make sure that it does not delete /bin/bash by accident.</p>
 
-<pre><code>## This should be a root cronjob.
-30 01 * * * /usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected / 2&gt;/dev/null
+<pre><code>## This should be a root cronjob. 30 01 * * * /
+usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected / 2&gt;/dev/null
 </code></pre>
 
-<p>The <code>2&gt;/dev/null</code> options keeps the /proc and such access denied errors out of the report. The infected files however are still found and reported.</p>
+<p>The <code>2&gt;/dev/null</code> options keeps the /proc and such access denied errors out of
+the report. The infected files however are still found and reported.</p>
 
-<p>Also make sure that your cron is configured so that it mails you the output of the cronjobs. The manual page will help you with that.</p>
+<p>Also make sure that your cron is configured so that it mails you the output of
+the cronjobs. The manual page will help you with that.</p>
 
 <p>This is how a sample email looks if you have an infection:</p>
 
@@ -132,7 +156,10 @@ sudo /usr/bin/freshclam
 
 <h4>Extra: the targeted scan</h4>
 
-<p>The below cronjob is an example and you should adapt it. It updates the virus definitions and scans the folder <code>/var/www/sites/uploader.com/public-html/uploads/</code> two times per hour, and if it found any files it removes them. </p>
+<p>The below cronjob is an example and you should adapt it. It updates the virus
+definitions and scans the folder
+<code>/var/www/sites/uploader.com/public-html/uploads/</code> two times per hour, and if it
+found any files it removes them. </p>
 
 <pre><code>    ## This should be a root cronjob.
     */29 * * * * /usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected --remove /var/www/sites/uploader.com/public-html/uploads 2&gt;/dev/null
@@ -145,9 +172,6 @@ sudo /usr/bin/freshclam
 /var/www/sites/uploader.com/public-html/uploads/eicar.com: Eicar-Test-Signature FOUND
 /var/www/sites/uploader.com/public-html/uploads/eicar.com: Removed.
 </code></pre>
-
-<p>raymii.org
-romeo alpha yankee mike india india dot org</p>
 </div><hr>Tags: <a href="../tags/anti-virus.html" class="link">anti-virus &nbsp;</a><a href="../tags/clamav.html" class="link">clamav &nbsp;</a><a href="../tags/malware.html" class="link">malware &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><a href="../tags/virus.html" class="link">virus &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

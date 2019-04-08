@@ -9,14 +9,22 @@ Format      : 	Markdown/HTML
 
 
 
-As all my servers run on Debian and I like to keep things clean, here are some handy commands:
+As all my servers run on Debian and I like to keep things clean, here are some
+handy commands.
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ##### Find large packages
 
     dpkg --get-selections | cut -f1 | while read pkg; do dpkg -L $pkg | xargs -I'{}' bash -c 'if [ ! -d "{}" ]; then echo "{}"; fi' | tr '\n' '\000' | du -c --files0-from - | tail -1 | sed "s/total/$pkg/"; done | sort -rn > ~/packages.log.txt
 
   
-If you run this as root, when its finished you will have a file in /root called packages.log.txt which has all the packages from your system in it with the size of the package and the files it uses:
+If you run this as root, when its finished you will have a file in /root called
+packages.log.txt which has all the packages from your system in it with the size
+of the package and the files it uses:
 
     15312 perl-modules
     14192 php5-cgi
@@ -34,7 +42,11 @@ You can also use something like
 but this also takes the size of databases and extra files. 
 
 ##### Remove config files  
-If you uninstall stuff with apt-get remove sometimes debian does not removes config files and they also take up space. Now you can just use apt-get purge but I tend to forget that every time. This command lists all the packages which are removed but still have config files on your system:
+
+If you uninstall stuff with apt-get remove sometimes debian does not removes
+config files and they also take up space. Now you can just use apt-get purge but
+I tend to forget that every time. This command lists all the packages which are
+removed but still have config files on your system:
 
     dpkg --list | grep '^rc '
 
@@ -45,19 +57,24 @@ If you uninstall stuff with apt-get remove sometimes debian does not removes con
     rc fakeroot     1.14.4-1            Gives a fake root environment
 
   
-Now, just to make sure check the output and then remove the config files with this command:
+Now, just to make sure check the output and then remove the config files with
+this command:
 
     dpkg --list | grep '^rcb' | awk '{ print $2 }' | xargs dpkg -P
 
 ##### Cleanup afterwards
+
 To save up some space via apt get you can use these commands:
 
     apt-get autoremove
     apt-get clean 
     
-autoremove removes unused dependencies, packages which were installed by other packeges but which are no longer needed by your system.  
-clean just removes all the packages in the apt cache. You can also use autoclean but clean frees up more space.  
-This handy command shows all the packages which are installed on your system because some package recommends it, but they are not actually dependencies of packages:
+autoremove removes unused dependencies, packages which were installed by other
+packeges but which are no longer needed by your system.   clean just removes all
+the packages in the apt cache. You can also use autoclean but clean frees up
+more space.   This command shows all the packages which are installed on
+your system because some package recommends it, but they are not actually
+dependencies of packages:
 
     aptitude search '?and( ?automatic(?reverse-recommends(?installed)), ?not(?automatic(?reverse-depends(?installed))) )' 
 
@@ -73,23 +90,12 @@ Check the output and if needed remove them all:
     aptitude search '?and( ?automatic(?reverse-recommends(?installed)), ?not(?automatic(?reverse-depends(?installed))) )' | awk '{ print $3 }' | xargs dpkg -P
 
   
-Then we have the all time favorites to see sizes:
+Here are some commands to sort files by size:
 
-    df -h
+
     du -h | grep ^[0-9.]*M | sort -rn
     du -h | grep ^[0-9.]*G | sort -rn
 
-With these commands I keep my servers clean and lean, but if you do something wrong or remove a package like libc6, sysv-rc, apt ore coreutils you'll have to spend your free evening to fix it up :P. 
-
-Note that I ran everything as root. If you get strange errors about permissions then try again as root.
-
-Thanks to:
-
-[http://www.debian-administration.org/users/fsateler/weblog][1]  
-[Command Line Fu][2] 
-
- [1]: http://www.debian-administration.org
- [2]: http://commandlinefu.com
 
 
 ---

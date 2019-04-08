@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-![VAR-SOM-MX6](https://raymii.org/s/inc/img/var-som-mx6.png)
+![VAR-SOM-MX6][1]
 > Variscite VAR-SOM-MX6 - a high-performance ARM System on Module that can run Yocto
 
 `.ipk` packages are used by a variety of embedded linux systems, like routers running OpenWRT and 
@@ -24,9 +24,10 @@ compressed files containing a few control files and the data to be extracted on 
 
 This article will walk you through the steps of creating these packages by hand.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. 
-With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). 
-(referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 All steps are executed as the root user. The system the packages are built on is running Ubuntu 18.04. 
 If you haven't got `ar` installed, make sure to 
@@ -224,7 +225,7 @@ Output:
 	a - ./data.tar.gz
 	a - ./control.tar.gz
 
-
+[1]: https://raymii.org/s/inc/img/var-som-mx6.png
 
 ---
 

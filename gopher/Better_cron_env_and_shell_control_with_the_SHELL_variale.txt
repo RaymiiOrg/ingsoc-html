@@ -9,9 +9,12 @@ Format      : 	Markdown/HTML
 
 
 
-> original article from: [http://shtylman.com/post/cron-shell-power/](http://shtylman.com/post/cron-shell-power/) - archived for importance.
+> original article from: [http://shtylman.com/post/cron-shell-power/][10] - archived for importance.
 
-* * *
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 If you don't know what [cron][1] is this post is not for you.
 
@@ -89,12 +92,12 @@ Go forth and update your dirty crontabs!
 
 *[- home -][5]*
 
- [1]: http://en.wikipedia.org/wiki/Cron
- [2]: https://github.com/creationix/nvm
- [3]: https://rvm.io/
- [4]: https://pypi.python.org/pypi/virtualenv
- [5]: http://shtylman.com/  
-
+[1]: http://en.wikipedia.org/wiki/Cron
+[2]: https://github.com/creationix/nvm
+[3]: https://rvm.io/
+[4]: https://pypi.python.org/pypi/virtualenv
+[5]: http://shtylman.com/  
+[10]: http://shtylman.com/post/cron-shell-power/
 
 ---
 

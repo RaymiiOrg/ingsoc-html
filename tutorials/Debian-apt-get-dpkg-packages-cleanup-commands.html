@@ -69,14 +69,20 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>As all my servers run on Debian and I like to keep things clean, here are some handy commands:</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>As all my servers run on Debian and I like to keep things clean, here are some
+handy commands.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)</a> </p>
 
 <h5>Find large packages</h5>
 
 <pre><code>dpkg --get-selections | cut -f1 | while read pkg; do dpkg -L $pkg | xargs -I&#39;{}&#39; bash -c &#39;if [ ! -d &quot;{}&quot; ]; then echo &quot;{}&quot;; fi&#39; | tr &#39;\n&#39; &#39;\000&#39; | du -c --files0-from - | tail -1 | sed &quot;s/total/$pkg/&quot;; done | sort -rn &gt; ~/packages.log.txt
 </code></pre>
 
-<p>If you run this as root, when its finished you will have a file in /root called packages.log.txt which has all the packages from your system in it with the size of the package and the files it uses:</p>
+<p>If you run this as root, when its finished you will have a file in /root called
+packages.log.txt which has all the packages from your system in it with the size
+of the package and the files it uses:</p>
 
 <pre><code>15312 perl-modules
 14192 php5-cgi
@@ -97,7 +103,10 @@
 
 <h5>Remove config files</h5>
 
-<p>If you uninstall stuff with apt-get remove sometimes debian does not removes config files and they also take up space. Now you can just use apt-get purge but I tend to forget that every time. This command lists all the packages which are removed but still have config files on your system:</p>
+<p>If you uninstall stuff with apt-get remove sometimes debian does not removes
+config files and they also take up space. Now you can just use apt-get purge but
+I tend to forget that every time. This command lists all the packages which are
+removed but still have config files on your system:</p>
 
 <pre><code>dpkg --list | grep &#39;^rc &#39;
 
@@ -108,7 +117,8 @@ rc erlang-base  1:14.a-dfsg-2       Erlang/OTP virtual machine and base applicat
 rc fakeroot     1.14.4-1            Gives a fake root environment
 </code></pre>
 
-<p>Now, just to make sure check the output and then remove the config files with this command:</p>
+<p>Now, just to make sure check the output and then remove the config files with
+this command:</p>
 
 <pre><code>dpkg --list | grep &#39;^rcb&#39; | awk &#39;{ print $2 }&#39; | xargs dpkg -P
 </code></pre>
@@ -121,9 +131,12 @@ rc fakeroot     1.14.4-1            Gives a fake root environment
 apt-get clean 
 </code></pre>
 
-<p>autoremove removes unused dependencies, packages which were installed by other packeges but which are no longer needed by your system.<br>
-clean just removes all the packages in the apt cache. You can also use autoclean but clean frees up more space.<br>
-This handy command shows all the packages which are installed on your system because some package recommends it, but they are not actually dependencies of packages:</p>
+<p>autoremove removes unused dependencies, packages which were installed by other
+packeges but which are no longer needed by your system.   clean just removes all
+the packages in the apt cache. You can also use autoclean but clean frees up
+more space.   This command shows all the packages which are installed on
+your system because some package recommends it, but they are not actually
+dependencies of packages:</p>
 
 <pre><code>aptitude search &#39;?and( ?automatic(?reverse-recommends(?installed)), ?not(?automatic(?reverse-depends(?installed))) )&#39; 
 </code></pre>
@@ -141,21 +154,11 @@ i A heirloom-mailx      -   feature-rich BSD mail(1)
 <pre><code>aptitude search &#39;?and( ?automatic(?reverse-recommends(?installed)), ?not(?automatic(?reverse-depends(?installed))) )&#39; | awk &#39;{ print $3 }&#39; | xargs dpkg -P
 </code></pre>
 
-<p>Then we have the all time favorites to see sizes:</p>
+<p>Here are some commands to sort files by size:</p>
 
-<pre><code>df -h
-du -h | grep ^[0-9.]*M | sort -rn
+<pre><code>du -h | grep ^[0-9.]*M | sort -rn
 du -h | grep ^[0-9.]*G | sort -rn
 </code></pre>
-
-<p>With these commands I keep my servers clean and lean, but if you do something wrong or remove a package like libc6, sysv-rc, apt ore coreutils you&#39;ll have to spend your free evening to fix it up :P. </p>
-
-<p>Note that I ran everything as root. If you get strange errors about permissions then try again as root.</p>
-
-<p>Thanks to:</p>
-
-<p><a href="http://www.debian-administration.org">http://www.debian-administration.org/users/fsateler/weblog</a><br>
-<a href="http://commandlinefu.com">Command Line Fu</a> </p>
 </div><hr>Tags: <a href="../tags/apt-get.html" class="link">apt-get &nbsp;</a><a href="../tags/aptitude.html" class="link">aptitude &nbsp;</a><a href="../tags/cleanup.html" class="link">cleanup &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/df.html" class="link">df &nbsp;</a><a href="../tags/dpkg.html" class="link">dpkg &nbsp;</a><a href="../tags/size.html" class="link">size &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

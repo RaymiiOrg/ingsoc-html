@@ -36,9 +36,9 @@ This is how I do it:
     
 
 Now the 2 filesystems are being put together.  
-The next time, mount it again, make a new directory (say clondir2) and  
-cp all the scripts from clondir1 into clondir2, and edit them from there.  
-Also change your root launch script to the new dir.
+The next time, mount it again, make a new directory (say clondir2) and   cp all
+the scripts from clondir1 into clondir2, and edit them from there.   Also change
+your root launch script to the new dir.
 
 Now edit the isolinux/isolinux.cfg file. To start a script as root,  
 make a link to it as described earlier. Here is my setup:
@@ -59,18 +59,23 @@ make a link to it as described earlier. Here is my setup:
     ENDTEXT  
     *  
 
-Note this part: ocs\_live\_run="/path/to/your/root/launcher/script.sh". Change that every time you make a change to the script. (For every change to the script you make you must make a new directory and change your root launcher script. This is because your merging a read only file system. And read only cannot be overwritten.)
-Now make an ISO of it again. (At work I need to use the tool  
+Note this part: ocs\_live\_run="/path/to/your/root/launcher/script.sh". Change
+that every time you make a change to the script. (For every change to the script
+you make you must make a new directory and change your root launcher script.
+This is because your merging a read only file system. And read only cannot be
+overwritten.) Now make an ISO of it again. (At work I need to use the tool  
 folder2iso [which can be downloaded here.][2]
 
 after you made the ISO, unetbootin it to USB or burn it to CD.
 
-You can remove the USB stick or CD when clonezilla is imaging, because this boot script loads it into the ram.
+You can remove the USB stick or CD when clonezilla is imaging, because this boot
+script loads it into the ram.
 
-If this can be done with less work, please post it in a comment, I  
-hate this way... (first start fcking vista, then virtualbox a mint,  
-then share a folder, then mount and edit, then folder2iso and at last  
-unetbootin...)... And thanks to the people of clonezilla for making such a wonderfull alternative to ghost and acronis ^.^ 
+If this can be done with less work, please post it in a comment, I   hate this
+way... (first start fcking vista, then virtualbox a mint,   then share a folder,
+then mount and edit, then folder2iso and at last   unetbootin...)... And thanks
+to the people of clonezilla for making such a wonderfull alternative to ghost
+and acronis ^.^ 
 
 <a id="example"></a> 
  

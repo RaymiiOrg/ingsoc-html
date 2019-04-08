@@ -69,13 +69,24 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up a collectd client for use with a collectd server. What is collectd? collectd gathers statistics about the system it is running on and stores this information. Those statistics can then be used to find current performance bottlenecks (i.e. performance analysis) and predict future system load (i.e. capacity planning). Or if you just want pretty graphs of your private server and are fed up with some homegrown solution you&#39;re at the right place, too ;).</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up a collectd client for use with a collectd
+server. What is collectd? collectd gathers statistics about the system it is
+running on and stores this information. Those statistics can then be used to
+find current performance bottlenecks (i.e. performance analysis) and predict
+future system load (i.e. capacity planning). Or if you just want pretty graphs
+of your private server and are fed up with some homegrown solution you&#39;re at the
+right place, too ;).</p>
 
-<p>You need a collectd server set up to fully use this tutorial, but I also have written a tutorial to do that.</p>
+<p>You need a collectd server set up to fully use this tutorial, but I also have
+written a tutorial to do that.</p>
 
-<p><a href="https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html">The collectd server tutorial can be found here</a> and a <a href="http://ansible.cc">Ansible</a> playbook to set this all up can be found <a href="http://github.com/RaymiiOrg/ansible/">here</a></p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)</a> </p>
 
-<p>The collectd client is much easier to set up than the server with web frontend. It only requires installation and configuring the client.</p>
+<p><a href="https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html">The collectd server tutorial can be found here</a>.</p>
+
+<p>The collectd client is much easier to set up than the server with web frontend.
+It only requires installation and configuring the client.</p>
 
 <h4>Installing Collectd</h4>
 
@@ -86,7 +97,8 @@
 
 <h4>Configuring Collectd to talk to our server</h4>
 
-<p>Open your favorite editor and edit the <code>/etc/collectd/collectd.conf</code> file. Read it, then remove it all and make sure it looks like the below config file:</p>
+<p>Open your favorite editor and edit the <code>/etc/collectd/collectd.conf</code> file. Read
+it, then remove it all and make sure it looks like the below config file:</p>
 
 <pre><code>## /etc/collectd/collectd.conf generated for vps3.sparklingclouds.nl by Ansible
 ## Config Type: CollectD Client
@@ -139,13 +151,20 @@ Include &quot;/etc/collectd/plugins.conf&quot;
 Include &quot;/etc/collectd/thresholds.conf&quot;
 </code></pre>
 
-<p>The configuration file is relatively simple. Make sure to replace $VARIABLE$ by the correct on for your server. You load plugins via <code>&quot;LoadPlugin $name&quot;</code>. The network part is important, this configures our client to send its data to our server. Replace $COLLECT SERVER IP with your collectd server IP. </p>
+<p>The configuration file is relatively simple. Make sure to replace $VARIABLE$ by
+the correct on for your server. You load plugins via <code>&quot;LoadPlugin $name&quot;</code>. The
+network part is important, this configures our client to send its data to our
+server. Replace $COLLECT SERVER IP with your collectd server IP. </p>
 
-<p><em>Make sure the file has a blank newline at the end. If it has not, collectd will fail to start/run correctly</em>.</p>
+<p><em>Make sure the file has a blank newline at the end. If it has not, collectd will
+*fail to start/run correctly</em>.</p>
 
 <h4>Configure collectd plugins</h4>
 
-<p>Now create the following file: <code>/etc/collectd/plugins.conf</code>, it doesn&#39;t exist by default. This will house the plugin config. Add the following content to it, but make sure it matches your LoadPlugin settings above. If you don&#39;t have the ping plugin, you also don&#39;t need the config for it.</p>
+<p>Now create the following file: <code>/etc/collectd/plugins.conf</code>, it doesn&#39;t exist by
+default. This will house the plugin config. Add the following content to it, but
+make sure it matches your LoadPlugin settings above. If you don&#39;t have the ping
+plugin, you also don&#39;t need the config for it.</p>
 
 <pre><code>## /etc/collectd/plugins.conf 
 
@@ -191,18 +210,23 @@ Include &quot;/etc/collectd/thresholds.conf&quot;
 &lt;/Plugin&gt;
 </code></pre>
 
-<p>Collectd server is now set up in &quot;client&quot; mode. To test it we restart the service:</p>
+<p>Collectd server is now set up in &quot;client&quot; mode. To test it we restart the
+service:</p>
 
 <pre><code>/etc/init.d/collectd restart
 </code></pre>
 
-<p>And then check the <code>/var/lib/collectd/rrd/</code> folder and you should see some files and folders (rrd libraries). If not then your collectd is setup wrong, see syslog for more info.</p>
+<p>And then check the <code>/var/lib/collectd/rrd/</code> folder and you should see some files
+and folders (rrd libraries). If not then your collectd is setup wrong, see
+syslog for more info.</p>
 
-<p>We also should see these files on the collectd server, in the <code>/var/lib/collectd/rrd</code> folder. If you see them there, you have done it correctly.</p>
+<p>We also should see these files on the collectd server, in the
+<code>/var/lib/collectd/rrd</code> folder. If you see them there, you have done it
+correctly.</p>
 
 <p>Remember to add the IP to the collectd server firewall.</p>
 
-<p>Now you have a fully working collectd client set up. <a href="https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html">The collectd server tutorial can be found here</a>, and a <a href="http://ansible.cc">Ansible</a> playbook to set this up can be found <a href="http://github.com/RaymiiOrg/ansible/">here</a></p>
+<p>Now you have a fully working collectd client set up. </p>
 </div><hr>Tags: <a href="../tags/collectd.html" class="link">collectd &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/munin.html" class="link">munin &nbsp;</a><a href="../tags/rrd.html" class="link">rrd &nbsp;</a><a href="../tags/rrdtool.html" class="link">rrdtool &nbsp;</a><a href="../tags/statistics.html" class="link">statistics &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

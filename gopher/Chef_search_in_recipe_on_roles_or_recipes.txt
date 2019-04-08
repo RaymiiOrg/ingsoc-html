@@ -11,9 +11,14 @@ Format      : 	Markdown/HTML
 
 Chef supports a very powerfull search syntax which allows you for example to search all nodes with the graphite-server role and get their IP addresses. This tutorial shows you how to search based on a role a node has or a recipe a node has, plus an example config file with erb syntax. It has an example cookbook which sets up collectd as client and graphite as server. It shows you how to use the search function of Chef to get the IP addresses of the graphite servers and place those in the collectd config files. This technique is applicable to all kinds of services that use a client-server model, for example, munin, haproxy, zabbix and many more.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Lets say you want to build a graphite server which gets data from a lot of collectd clients. You can hard code it in the `collectd.conf` file, but this is not preferred, what if your graphite server changes? What if you want to add a graphite server and have all your clients automagically also send data to that server? Here is where the following comes in handy.
 
-You can use [this graphite cookbook](https://github.com/hw-cookbooks/graphite). If you add the `graphite` recipe to a node, it will install everything needed for a graphite server, including the web ui. Now, you can also create a role `graphite_server` and add the recipe to that, then add the role to a node. This way you have a graphite server running.
+You can use [this graphite cookbook][1]. If you add the `graphite` recipe to a node, it will install everything needed for a graphite server, including the web ui. Now, you can also create a role `graphite_server` and add the recipe to that, then add the role to a node. This way you have a graphite server running.
 
 collectd 5.1 or higher is required for graphite support. My environment currently runs mostly on Ubuntu 12.04 LTS, which has collectd 4 in the repositories. Therefore I build a package myself, but there are also PPA's available. I also run my own repositories, so I can just use the `collectd-core` package, if you don't have a collectd 5.1 or higher package then the following example won't work for you.
 
@@ -112,6 +117,7 @@ This will result in a config file with all the graphite servers you have in your
 
 This technique is very applicable to other client-server models, like Munin. Or, any other setup like this.
 
+[1]: https://github.com/hw-cookbooks/graphite
 
 ---
 

@@ -9,18 +9,32 @@ Format      : 	Markdown/HTML
 
 
 
-With Corosync/Pacemaker there is no easy way to simply run a script on failover. There are good reasons for this, but sometimes you want to do something simple. This tutorial describes how to change the Dummy OCF resource to execute a script on failover.
+With Corosync/Pacemaker there is no easy way to simply run a script on failover.
+There are good reasons for this, but sometimes you want to do something simple.
+This tutorial describes how to change the Dummy OCF resource to execute a script
+on failover.
 
-In this example it is a script which triggers a few SNMP traps, sends an alert to Nagios and sends some data to Graphite. SNMP alone could be done with the `ocf:heartbeat:ClusterMon` resource, but the other stuff not.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
 
-This is a very very simple way of doing it, I find it more a quick hack. For example, the script path is hard coded. For me that is not a problem because both the script as the Dummy resource are managed via Ansible, so I can change them any time.
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-Start by copying the Dummy resource over to a new resource. On Ubuntu the resource files are located here:
+In this example it is a script which triggers a few SNMP traps, sends an alert
+to Nagios and sends some data to Graphite. SNMP alone could be done with the
+`ocf:heartbeat:ClusterMon` resource, but the other stuff not.
+
+This is a very very simple way of doing it, I find it more a quick hack. For
+example, the script path is hard coded. For me that is not a problem because
+both the script as the Dummy resource are managed via Ansible, so I can change
+them any time.
+
+Start by copying the Dummy resource over to a new resource. On Ubuntu the
+resource files are located here:
 
 	/usr/lib/ocf/resource.d/heartbeat/
 
-In there, copy the `Dummy` file to a new resource, for example `FailOverScript`.   
-If you don't have the Dummy resource, you can also find it here: [https://github.com/ClusterLabs/resource-agents/blob/master/heartbeat/Dummy](https://github.com/ClusterLabs/resource-agents/blob/master/heartbeat/Dummy)
+In there, copy the `Dummy` file to a new resource, for example `FailOverScript`.
+If you don't have the Dummy resource, you can also find it [here][1].
 
 Edit the name and description:
 
@@ -41,9 +55,12 @@ Description:
 	<shortdesc lang="en">Script ran on Failover</shortdesc>
 
 
-Make sure the script you want to execute is placed on the host, and is executable (`chmod +x /usr/local/bin/script`). 
+Make sure the script you want to execute is placed on the host, and is
+executable (`chmod +x /usr/local/bin/script`). 
 
-A bit lower in the file, edit the `dummy_start` function. Add the script path below the `if [ $? =  $OCF_SUCCESS ]; then` and above the `return $OCF_SUCCESS` lines. Like so:
+A bit lower in the file, edit the `dummy_start` function. Add the script path
+below the `if [ $? =  $OCF_SUCCESS ]; then` and above the `return $OCF_SUCCESS`
+lines. Like so:
 
 	dummy_start() {
 	    dummy_monitor
@@ -54,7 +71,8 @@ A bit lower in the file, edit the `dummy_start` function. Add the script path be
 	    touch ${OCF_RESKEY_state}
 	}
 
-After that has been done, replace all instances of Dummy and dummy with your name of choice:
+After that has been done, replace all instances of Dummy and dummy with your
+name of choice:
 
 	sed -i 's/Dummy/FailOverScript' /usr/lib/ocf/resource.d/heartbeat/FailOverScript
 	sed -i 's/dummy/failoverscript' /usr/lib/ocf/resource.d/heartbeat/FailOverScript
@@ -88,7 +106,8 @@ Test again, you'll see it will pass:
 	* Your agent does not support master/slave (optional)
 	/usr/lib/ocf/resource.d/heartbeat/FailOverScript passed all tests
 
-As an extra test, to see if the script you've created is correctly executed, you can do a test start of the resource:
+As an extra test, to see if the script you've created is correctly executed, you
+can do a test start of the resource:
 
 	 export OCF_ROOT=/usr/lib/ocf
 	 bash -x /usr/lib/ocf/resource.d/heartbeat/FailOverScript start
@@ -98,9 +117,10 @@ To use this resource, add it like so:
 
 	crm configure primitive script ocf:heartbeat:FailOverScript op monitor interval="30"
 
-If you want to test it, you can for example let the script send you an email. Put a node in standby and see if you get an email. 
+If you want to test it, you can for example let the script send you an email.
+Put a node in standby and see if you get an email. 
 
-
+[1]: https://github.com/ClusterLabs/resource-agents/blob/master/heartbeat/Dummy
 
 ---
 
