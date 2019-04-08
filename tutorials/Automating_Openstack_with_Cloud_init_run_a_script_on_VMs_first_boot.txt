@@ -15,11 +15,14 @@ This tutorial will show you how to create a VM in Openstack and execute a script
 
 This tutorial will also give you a few example scripts to use with `cloud-init` and to create Openstack virtual machines from the command line. 
 
-You can see all my [Openstack related articles here](https://raymii.org/s/tags/openstack.html). For example, how to build [an automated High Available website cluster with Ansible and Openstack](https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html).
+You can see all my [Openstack related articles here][1]. For example, how to build [an automated High Available website cluster with Ansible and Openstack][2].
 
-If you like this article and want to support it AND get $10 Digital Ocean credit (free VPS for 2 months), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
 
-For this tutorial I've used the [CloudVPS Openstack platform](https://cloudvps.com). It will also work with any other openstack or cloud provider/software that supports `cloud-init` and the specific `user_data` feature. If you build your own images then make sure they have `cloud-init` enabled to support this.
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+For this tutorial I've used the [CloudVPS Openstack platform][3]. It will also work with any other openstack or cloud provider/software that supports `cloud-init` and the specific `user_data` feature. If you build your own images then make sure they have `cloud-init` enabled to support this.
 
 Note that this article is not sponsored nor endorsed by CloudVPS, nor am I speaking for or as CloudVPS.
 
@@ -46,7 +49,7 @@ This tutorial was tested with `cloud-init` versions 0.7.4 up to 0.7.7. The `/etc
 
 To provide the `user_data` script to a new VM you need to place your `user_data` script in a file, in this example `user_data.file`. See below for an example script
 
-Make sure you have the [Openstack Command Line Tools](http://docs.openstack.org/user-guide/content/install_clients.html) installed. For convinience, also create a `computerc` file which holds your credentials and `source` it in your shell.
+Make sure you have the [Openstack Command Line Tools][4] installed. For convinience, also create a `computerc` file which holds your credentials and `source` it in your shell.
 
 The parameter to supply the user data is `--user-data $filename`. To boot up a small Ubuntu machine at CloudVPS with our `user_data` file we can use this command:
 
@@ -163,6 +166,11 @@ You do need to place a credentials file named `computerc` in your home folder.
 
     done
 
+
+[1]: https://raymii.org/s/tags/openstack.html
+[2]: https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html
+[3]: https://cloudvps.com
+[4]: http://docs.openstack.org/user-guide/content/install_clients.html
 
 ---
 

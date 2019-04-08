@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/ansible-logo.png">
+![ansible logo][1]
 
 This guide shows you how to access group variables for a group the current host
 is not a member of. In Ansible you can access other host variables using
@@ -24,15 +24,15 @@ certificates there, but in this specific case that wasn't a workable solution.
 Editing two yaml files (one for the appservers and one for the loadbalancers)
 was not an option in this situation.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
-credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This is applicable for other scenario's as well. In templates this can be worked
 around by looping over all the groups, then over all the hosts in the specific
 group, then if the host is the first in the loop, go over all the hostvars for
-that host and then access the group var you want. [This
-stackoverflow](https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars)
+that host and then access the group var you want. [This stackoverflow][2]
 post goes over that. In my case I needed to access it in a playbook, the looping
 construction woudln't work there.
 
@@ -188,6 +188,8 @@ or to change the group_vars to `all`. However, this environment has certain
 constraints set, so this 'suboptimal' workaround works. 
 
 [0]: https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-and-group-variables
+[1]: https://raymii.org/s/inc/img/ansible-logo.png
+[2]: https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars
 
 ---
 

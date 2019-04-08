@@ -13,9 +13,10 @@ Using Ansible to manage the /etc/sudoers file is fine, except when you have a
 syntax error in your template. This method helps you to only deploy a correct
 sudoers file. 
 
-This example is tested on Ansible 1.0 and on a Digital Ocean VPS. If you like 
-this tutorial and want to support my website, use this link to order a Digital 
-Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 I manage the `sudo` config (`/etc/sudoers/`) via Ansible. My sudo playbook
 creates an admin group, adds me to that admin group, and sets some variables in

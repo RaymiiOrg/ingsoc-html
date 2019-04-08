@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
+you get $10 credit). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 #### How do I use Ansible
 I used chef to deploy and manage all my vps servers which host the cluster on which raymii.org is hosted. 
 I've written a chef-bootstrap script to make sure all the packages to build and compile rvm, ruby and chef are installed, and I've got my entire cluster in chef cookbooks. 
@@ -21,7 +26,7 @@ I discovered Ansible via reddit, and I'm sold. I've converted the scripts I used
 *Update 2013-03-09*
 I've also contributed a few pieces of code to Ansible, namely for the apt and yum modules. It is such a great project!
 
-[You can find more about Ansible on their website](http://ansible.github.com/).
+[You can find more about Ansible on their website][2].
 
 Below I'll explain how to install and setup ansible (on debian 6), and I'll give some examples on how to use it.
 
@@ -151,7 +156,7 @@ Install package python-apt manually using the "apt-get -y install python-apt" co
 
 ### My Playbooks
 
-[I've got my playbooks on my github account. You can see them and use them as reference, and if you want, improve them.](https://github.com/RaymiiOrg/ansible).
+[I've got my playbooks on my github account. You can see them and use them as reference, and if you want, improve them.][1].
 
 #### Playbook tips
 
@@ -204,7 +209,8 @@ Now in a template (example for nginx):
 
 This makes sure nginx runs on non-ipv6 nodes. 
 
-
+[1]: https://github.com/RaymiiOrg/ansible
+[2]: http://ansible.github.com/
 
 ---
 
