@@ -124,15 +124,6 @@
             </item>
     
             <item>
-                <title>Ansible - Add an apt-repository on Debian and Ubuntu</title> 
-                <link>gopher://raymii.org/0/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt</link> 
-                <guid>gopher://raymii.org/0/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt</guid>
-                <description>This is a guide that shows you how to add an apt repository to Debian and Ubuntu using Ansible. It includes both the old way, when the apt modules only worked on Ubuntu, and the new way, now that the apt-modules also support Debian, plus some other tricks.</description> 
-                <pubDate>Fri, 14 Dec 2018 00:00:00 GMT</pubDate>
-                <lastBuildDate>Fri, 14 Dec 2018 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>Line total (up+down sum) in PHP Network Weathermap</title> 
                 <link>gopher://raymii.org/0/Line_total_up_down_sum_in_php_weathermap.txt</link> 
                 <guid>gopher://raymii.org/0/Line_total_up_down_sum_in_php_weathermap.txt</guid>
@@ -877,6 +868,15 @@
                 <description>In this guide I'll show you how to toggle in a simple program on the DEC PDP-8 or the PiDP-8, or in a front-panel simulator named BlinkenBone if you lack the hardware. I have a replica of the PDP-8/I (the PiDP-8) but lacked the actual knowledge on the front panel and switches to get started and do something cool. This guide has step by step instructons, with pictures, and basic explanation. After all, what is an expensive blinking light panel without fun stuff to toggle in?</description> 
                 <pubDate>Wed, 08 Jun 2016 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 08 Jun 2016 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Ansible - Add an apt-repository on Debian and Ubuntu</title> 
+                <link>gopher://raymii.org/0/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt</link> 
+                <guid>gopher://raymii.org/0/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt</guid>
+                <description>This is a guide that shows you how to add an apt repository to Debian and Ubuntu using Ansible. It includes both the old way, when the apt modules only worked on Ubuntu, and the new way, now that the apt-modules also support Debian, plus some other tricks.</description> 
+                <pubDate>Sun, 15 May 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 14 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

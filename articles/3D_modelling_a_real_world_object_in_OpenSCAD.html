@@ -85,7 +85,7 @@ I had my thing ready made.</p>
 close all the doors when a train is about to depart. They put the key in a panel
 like this:  </p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/deurbedieningstableau.jpg" alt="deurbedieningstableau" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/deurbedieningstableau.jpg" alt="deurbedieningstableau"></p>
 
 <p>turn the key to the left which closes all the other doors, then press the blue
 button which closes their door and sends a signal to the train driver that he is
@@ -94,8 +94,9 @@ allowed to drive away.</p>
 <p>I&#39;ve got multiple train drivers and conductors in my family so I have access to
 these keys. Therefore it was a nice and simple &quot;thing&quot; to get started with.</p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/full-key.png" alt="end result" />
-This is a picture of the end result. The full key in top, right, left and diagonal viewport. </p>
+<p><img src="https://raymii.org/s/inc/img/3d/full-key.png" alt="end result"></p>
+
+<p>This is a picture of the end result. The full key in top, right, left and diagonal viewport. </p>
 
 <p>The <a href="https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language">OpenSCAD
 Manual</a>
@@ -112,7 +113,7 @@ extruded. The radius of the cylinder is 7.5 mm, the height is 35mm.</p>
 define a <code>cube([10,10,10])</code> you don&#39;t get a cube of 10 by 10 by 10 cm or mm, you
 just get a cube of 10 by 10 by 10. It is up to the 3D printing company to decide
 what those units mean. Shapeways lets you select it when you upload the model,
-in the order email to my <a href="http://ridix.nl">3D printing company</a> I state that I
+in the order email to my 3D printing company I state that I
 want the units to be mm. </p>
 
 <pre><code>$fn=100
@@ -128,7 +129,7 @@ module left_piece() {
 left_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/left-1.png" alt="left1" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/left-1.png" alt="left 1"></p>
 
 <p>Now press <code>F5</code> and see your first part of the key be created. We created a
 cylinder with a height of 35 and a radius of 7.5. The <code>difference</code> operation, as
@@ -167,7 +168,7 @@ rotates objects:</p>
 left_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/left-2.png" alt="left2" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/left-2.png" alt="left 2"></p>
 
 <p>We first create a cylinder with a height of 30 (which should be more than long
 enough to provide a full hole in our key piece) and a radius of 2.5. This radius
@@ -179,7 +180,7 @@ change the <code>difference()</code> operation at the top to <code>union()</code
 substracting the primitives from each other, this combines all the objects. It
 looks like this:</p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/left-3.png" alt="left3" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/left-3.png" alt="left 3"></p>
 
 <p>This is our full left piece right now. Leave the code up there, except for the
 last line <code>left_piece();</code>. We are going to work on our right piece, and will put
@@ -206,12 +207,12 @@ square and a larger square and connect those together:</p>
 right_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/right-1.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/right-1.png" alt="right 1"></p>
 
 <p>If you want to see more visually what the <code>hull</code> operation does, try changing it
 again to <code>union</code>. It then looks like this:</p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/right-2.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/right-2.png" alt="right 2"></p>
 
 <p>We are done with the right piece right now. Later on we will build a connecting
 piece which will hold the right, left and bottom piece together. Remove the last
@@ -240,7 +241,7 @@ the cylinder. Let&#39;s start with the cylinder and the triangle.</p>
 bottom_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-1.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-1.png" alt="bottom 1"></p>
 
 <p>First we create a cylinder with a height of 50 and a radius of 6. We then create
 a triangle using the <code>polygon</code> primitive. The <code>points</code> specify the corner points
@@ -271,7 +272,7 @@ bottom of the piece:</p>
 bottom_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-2.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-2.png" alt="bottom 2"></p>
 
 <p>We now just need to add the three holes. Because we have two of the same holes,
 we are going to make a module of the holes. That means we make a &quot;solid&quot; hole
@@ -288,7 +289,7 @@ module and difference it with the cylinder.</p>
 }
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-3.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-3.png" alt="bottom 3"></p>
 
 <p>You should be able to understand what we are doing in the above code by now.</p>
 
@@ -304,13 +305,13 @@ module and difference it with the cylinder.</p>
 }
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-4.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-4.png" alt="bottom 4"></p>
 
 <p>The first translate is required to place the cylinder above the other for the
 <code>hull</code> operation. If we change the <code>hull</code> operation to a <code>union</code> like we did
 before, it looks like this:</p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-5.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-5.png" alt="bottom 5"></p>
 
 <p>We&#39;ll use a few translate operations to place the holes in the earlier created <code>difference</code> operation:</p>
 
@@ -343,11 +344,11 @@ before, it looks like this:</p>
 bottom_piece();
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-6.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-6.png" alt="bottom 6"></p>
 
 <p>For reference, here is the same code as above with the <code>difference</code> replaced by <code>union</code>:</p>
 
-<p><img src="https://raymii.org/s/inc/img/3d/bottom-7.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/3d/bottom-7.png" alt="bottom 7"></p>
 
 <h3>Connecting piece</h3>
 
@@ -483,6 +484,8 @@ told me) is stronger than regular ABS. The quality and especially sturdiness
 is very well. I&#39;ve tested the key over 90 times in a panel like above, and it
 still works. They&#39;re very friendly and fast with printing, mostly overnight,
 and if you&#39;re early with sending sometimes the same day.</p>
+
+<p>[20]: </p>
 </div><hr>Tags: <a href="../tags/3d.html" class="link">3d &nbsp;</a><a href="../tags/3d-modeling.html" class="link">3d-modeling &nbsp;</a><a href="../tags/3d-printer.html" class="link">3d-printer &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/cad.html" class="link">cad &nbsp;</a><a href="../tags/openscad.html" class="link">openscad &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-04-08T11:50:00	/	localhost	70
+i            2019-04-08T12:00:35	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -32,7 +32,6 @@ i 	/	localhost	70
 0Sparkling Network (12-01-2019)	Sparkling_Network.txt	raymii.org	70
 0SSH on Windows Server 2019 (including how to sudo) (18-12-2018)	SSH_on_Windows_Server_2019.txt	raymii.org	70
 0OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation (17-12-2018)	OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt	raymii.org	70
-0Ansible - Add an apt-repository on Debian and Ubuntu (14-12-2018)	Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt	raymii.org	70
 0Line total (up+down sum) in PHP Network Weathermap (13-11-2018)	Line_total_up_down_sum_in_php_weathermap.txt	raymii.org	70
 0Three new NitroKeys! Nitrokey Pro 2, Storage 2 and a FIDO-U2F Nitrokey (08-11-2018)	Three_New_Nitrokeys_Pro_2_Storage_2_and_Fido_u2f.txt	raymii.org	70
 0Use Ubuntu behind a Microsoft ForeFront TMG proxy with cntlm (27-10-2018)	Use_Ubuntu_behind_a_Microsoft_ForeFront_TMG_proxy_with_cntlm.txt	raymii.org	70
@@ -116,6 +115,7 @@ i 	/	localhost	70
 0Get started with the Nitrokey HSM or SmartCard-HSM (19-06-2016)	Get_Started_With_The_Nitrokey_HSM.txt	raymii.org	70
 0HTTP Strict Transport Security for Apache, NGINX and Lighttpd (17-06-2016)	HTTP_Strict_Transport_Security_for_Apache_NGINX_and_Lighttpd.txt	raymii.org	70
 0Toggling in a simple program DEC PDP-8 and PiDP-8 using the switch register (08-06-2016)	Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.txt	raymii.org	70
+0Ansible - Add an apt-repository on Debian and Ubuntu (15-05-2016)	Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.txt	raymii.org	70
 0Migrating personal webapps and services (05-05-2016)	Migrating_personal_services_and_webapps.txt	raymii.org	70
 0Build a FreeBSD 10.3-release Openstack Image with bsd-cloudinit (27-04-2016)	FreeBSD_10.3-release_Openstack_Image.txt	raymii.org	70
 0IPv6 in a Docker container on a non-ipv6 network (12-04-2016)	IPv6_in_a_Docker_container_on_a_non-ipv6_network.txt	raymii.org	70

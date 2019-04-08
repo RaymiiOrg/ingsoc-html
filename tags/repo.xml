@@ -11,7 +11,7 @@
                 <link>https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html</link> 
                 <guid>https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html</guid>
                 <description>This is a guide that shows you how to add an apt repository to Debian and Ubuntu using Ansible. It includes both the old way, when the apt modules only worked on Ubuntu, and the new way, now that the apt-modules also support Debian, plus some other tricks.</description> 
-                <pubDate>Fri, 14 Dec 2018 00:00:00 GMT</pubDate>
+                <pubDate>Sun, 15 May 2016 00:00:00 GMT</pubDate>
                 <lastBuildDate>Fri, 14 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     

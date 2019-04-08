@@ -25,7 +25,7 @@ This is a key used by the Dutch Railways (NS) staff. A [conductor][0] uses it to
 close all the doors when a train is about to depart. They put the key in a panel
 like this:  
 
-<img src="https://raymii.org/s/inc/img/3d/deurbedieningstableau.jpg" alt="deurbedieningstableau" />
+![deurbedieningstableau][2]
 
 turn the key to the left which closes all the other doors, then press the blue
 button which closes their door and sends a signal to the train driver that he is
@@ -34,13 +34,14 @@ allowed to drive away.
 I've got multiple train drivers and conductors in my family so I have access to
 these keys. Therefore it was a nice and simple "thing" to get started with.
 
-<img src="https://raymii.org/s/inc/img/3d/full-key.png" alt="end result" />
+![end result][3]
+
 This is a picture of the end result. The full key in top, right, left and diagonal viewport. 
 
 The [OpenSCAD
-Manual](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language)
+Manual][5]
 was a great help to me. The [making a Thing with
-OpenSCAD](http://hackaday.com/2013/12/11/3d-printering-making-a-thing-with-openscad/)
+OpenSCAD][4]
 from Hack a Day was what got me started with OpenSCAD.
 
 ### The left piece
@@ -52,7 +53,7 @@ OpenSCAD has no notice of units like centimeters, millimeters or inches. If you
 define a `cube([10,10,10])` you don't get a cube of 10 by 10 by 10 cm or mm, you
 just get a cube of 10 by 10 by 10. It is up to the 3D printing company to decide
 what those units mean. Shapeways lets you select it when you upload the model,
-in the order email to my [3D printing company](http://ridix.nl) I state that I
+in the order email to my 3D printing company I state that I
 want the units to be mm. 
 
 	$fn=100
@@ -67,7 +68,7 @@ want the units to be mm.
 	}
 	left_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/left-1.png" alt="left1" />
+![left 1][6]
 
 Now press `F5` and see your first part of the key be created. We created a
 cylinder with a height of 35 and a radius of 7.5. The `difference` operation, as
@@ -105,7 +106,7 @@ rotates objects:
 
 	left_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/left-2.png" alt="left2" />
+![left 2][7]
 
 We first create a cylinder with a height of 30 (which should be more than long
 enough to provide a full hole in our key piece) and a radius of 2.5. This radius
@@ -117,7 +118,7 @@ change the `difference()` operation at the top to `union()`. Instead of
 substracting the primitives from each other, this combines all the objects. It
 looks like this:
 
-<img src="https://raymii.org/s/inc/img/3d/left-3.png" alt="left3" />
+![left 3][8]
 
 This is our full left piece right now. Leave the code up there, except for the
 last line `left_piece();`. We are going to work on our right piece, and will put
@@ -143,12 +144,12 @@ square and a larger square and connect those together:
 
 	right_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/right-1.png" alt="image" />
+![right 1][9]
 
 If you want to see more visually what the `hull` operation does, try changing it
 again to `union`. It then looks like this:
 
-<img src="https://raymii.org/s/inc/img/3d/right-2.png" alt="image" />
+![right 2][10]
 
 We are done with the right piece right now. Later on we will build a connecting
 piece which will hold the right, left and bottom piece together. Remove the last
@@ -176,7 +177,7 @@ the cylinder. Let's start with the cylinder and the triangle.
 
 	bottom_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-1.png" alt="image" />
+![bottom 1][11]
 
 First we create a cylinder with a height of 50 and a radius of 6. We then create
 a triangle using the `polygon` primitive. The `points` specify the corner points
@@ -206,7 +207,7 @@ bottom of the piece:
 
 	bottom_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-2.png" alt="image" />
+![bottom 2][12]
 
 We now just need to add the three holes. Because we have two of the same holes,
 we are going to make a module of the holes. That means we make a "solid" hole
@@ -222,7 +223,7 @@ The `short_hole_in_bottom_piece` is a simple cylinder rotated to the right posit
 		}
 	}
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-3.png" alt="image" />
+![bottom 3][13]
 
 You should be able to understand what we are doing in the above code by now.
 
@@ -237,13 +238,13 @@ The `long_hole_in_bottom_piece` will consist out of two `short_hole_in_bottom_pi
 		}
 	}
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-4.png" alt="image" />
+![bottom 4][14]
 
 The first translate is required to place the cylinder above the other for the
 `hull` operation. If we change the `hull` operation to a `union` like we did
 before, it looks like this:
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-5.png" alt="image" />
+![bottom 5][15]
 
 We'll use a few translate operations to place the holes in the earlier created `difference` operation:
 
@@ -275,11 +276,11 @@ We'll use a few translate operations to place the holes in the earlier created `
 
 	bottom_piece();
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-6.png" alt="image" />
+![bottom 6][16]
 
 For reference, here is the same code as above with the `difference` replaced by `union`:
 
-<img src="https://raymii.org/s/inc/img/3d/bottom-7.png" alt="image" />
+![bottom 7][17]
 
 ### Connecting piece
 
@@ -414,6 +415,42 @@ and if you're early with sending sometimes the same day.
 
 [0]: http://en.wikipedia.org/wiki/Conductor_%28transportation%29
 [1]: https://raymii.org/s/inc/img/3d/sleutel.png
+[2]: https://raymii.org/s/inc/img/3d/deurbedieningstableau.jpg
+[3]: https://raymii.org/s/inc/img/3d/full-key.png
+[4]: http://hackaday.com/2013/12/11/3d-printering-making-a-thing-with-openscad/
+[5]: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language
+[6]: https://raymii.org/s/inc/img/3d/left-1.png
+[7]: https://raymii.org/s/inc/img/3d/left-2.png
+[8]: https://raymii.org/s/inc/img/3d/left-3.png
+[9]: https://raymii.org/s/inc/img/3d/right-1.png
+[10]: https://raymii.org/s/inc/img/3d/right-2.png
+[11]: https://raymii.org/s/inc/img/3d/bottom-1.png
+[12]: https://raymii.org/s/inc/img/3d/bottom-2.png
+[13]: https://raymii.org/s/inc/img/3d/bottom-3.png
+[14]: https://raymii.org/s/inc/img/3d/bottom-4.png
+[15]: https://raymii.org/s/inc/img/3d/bottom-5.png
+[16]: https://raymii.org/s/inc/img/3d/bottom-6.png
+[17]: https://raymii.org/s/inc/img/3d/bottom-7.png
+[18]: 
+[19]: 
+[20]: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
