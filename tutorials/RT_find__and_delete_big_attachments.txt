@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	RT (Request Tracker) - find and delete big attachments
-Author   : 	Remy van Elst
-Date     : 	17-01-2013
-URL      : 	https://raymii.org/s/tutorials/RT_find__and_delete_big_attachments.html
-Format   : 	Markdown/HTML
+Title       : 	RT (Request Tracker) - find and delete big attachments
+Author      : 	Remy van Elst
+Date        : 	17-01-2013
+URL         : 	https://raymii.org/s/tutorials/RT_find__and_delete_big_attachments.html
+Format      : 	Markdown/HTML
 ---
 
 

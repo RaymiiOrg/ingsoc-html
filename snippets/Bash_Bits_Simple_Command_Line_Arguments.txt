@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Bash Bits: Simple command line arguments
-Author   : 	Remy van Elst
-Date     : 	30-12-2013
-URL      : 	https://raymii.org/s/snippets/Bash_Bits_Simple_Command_Line_Arguments.html
-Format   : 	Markdown/HTML
+Title       : 	Bash Bits: Simple command line arguments
+Author      : 	Remy van Elst
+Date        : 	30-12-2013
+URL         : 	https://raymii.org/s/snippets/Bash_Bits_Simple_Command_Line_Arguments.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Set up a local Ubuntu (apt) repository with apt-mirror
-Author   : 	Remy van Elst
-Date     : 	28-03-2012
-URL      : 	https://raymii.org/s/tutorials/Set_up_a_local_Ubuntu_debian_apt_mirror.html
-Format   : 	Markdown/HTML
+Title       : 	Set up a local Ubuntu (apt) repository with apt-mirror
+Author      : 	Remy van Elst
+Date        : 	28-03-2012
+URL         : 	https://raymii.org/s/tutorials/Set_up_a_local_Ubuntu_debian_apt_mirror.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Example
-Author   : 	Example
-Date     : 	08-03-2015
-URL      : 	https://raymii.org/s/tutorials/Python_build_dynamic_web_pages.html
-Format   : 	Markdown/HTML
+Title       : 	Example
+Author      : 	Example
+Date        : 	08-03-2015
+URL         : 	https://raymii.org/s/tutorials/Python_build_dynamic_web_pages.html
+Format      : 	Markdown/HTML
 ---
 
 

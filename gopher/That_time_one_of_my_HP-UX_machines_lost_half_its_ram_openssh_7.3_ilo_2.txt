@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))
-Author   : 	Remy van Elst
-Date     : 	06-06-2018
-URL      : 	https://raymii.org/s/blog/That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.html
-Format   : 	Markdown/HTML
+Title       : 	That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))
+Author      : 	Remy van Elst
+Date        : 	06-06-2018
+URL         : 	https://raymii.org/s/blog/That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.html
+Format      : 	Markdown/HTML
 ---
 
 

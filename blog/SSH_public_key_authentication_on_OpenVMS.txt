@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	SSH public key authentication on OpenVMS
-Author   : 	Remy van Elst
-Date     : 	05-04-2018
-URL      : 	https://raymii.org/s/blog/SSH_public_key_authentication_on_OpenVMS.html
-Format   : 	Markdown/HTML
+Title       : 	SSH public key authentication on OpenVMS
+Author      : 	Remy van Elst
+Date        : 	05-04-2018
+URL         : 	https://raymii.org/s/blog/SSH_public_key_authentication_on_OpenVMS.html
+Format      : 	Markdown/HTML
 ---
 
 

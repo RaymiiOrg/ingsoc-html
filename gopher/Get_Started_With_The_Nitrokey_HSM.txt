@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Get started with the Nitrokey HSM or SmartCard-HSM
-Author   : 	Remy van Elst
-Date     : 	19-06-2016
-URL      : 	https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html
-Format   : 	Markdown/HTML
+Title       : 	Get started with the Nitrokey HSM or SmartCard-HSM
+Author      : 	Remy van Elst
+Date        : 	19-06-2016
+URL         : 	https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html
+Format      : 	Markdown/HTML
 ---
 
 

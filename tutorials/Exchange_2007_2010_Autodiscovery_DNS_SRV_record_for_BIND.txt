@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Exchange 2007 and 2010 Autodiscovery DNS SRV record for BIND
-Author   : 	Remy van Elst
-Date     : 	09-05-2013
-URL      : 	https://raymii.org/s/tutorials/Exchange_2007_2010_Autodiscovery_DNS_SRV_record_for_BIND.html
-Format   : 	Markdown/HTML
+Title       : 	Exchange 2007 and 2010 Autodiscovery DNS SRV record for BIND
+Author      : 	Remy van Elst
+Date        : 	09-05-2013
+URL         : 	https://raymii.org/s/tutorials/Exchange_2007_2010_Autodiscovery_DNS_SRV_record_for_BIND.html
+Format      : 	Markdown/HTML
 ---
 
 

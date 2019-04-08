@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Ansible - add apt_key inline
-Author   : 	Remy van Elst
-Date     : 	19-04-2018
-URL      : 	https://raymii.org/s/snippets/Ansible_-_add_apt_key_inline.html
-Format   : 	Markdown/HTML
+Title       : 	Ansible - add apt_key inline
+Author      : 	Remy van Elst
+Date        : 	19-04-2018
+URL         : 	https://raymii.org/s/snippets/Ansible_-_add_apt_key_inline.html
+Format      : 	Markdown/HTML
 ---
 
 

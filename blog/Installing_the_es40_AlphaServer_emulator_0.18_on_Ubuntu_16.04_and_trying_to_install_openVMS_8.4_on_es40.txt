@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Installing the es40 AlphaServer emulator 0.18 on Ubuntu 16.04, and trying to install OpenVMS 8.4 on es40
-Author   : 	Remy van Elst
-Date     : 	24-04-2018
-URL      : 	https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html
-Format   : 	Markdown/HTML
+Title       : 	Installing the es40 AlphaServer emulator 0.18 on Ubuntu 16.04, and trying to install OpenVMS 8.4 on es40
+Author      : 	Remy van Elst
+Date        : 	24-04-2018
+URL         : 	https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html
+Format      : 	Markdown/HTML
 ---
 
 

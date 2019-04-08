@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Fix CentOS IPTables rule saving (iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found)
-Author   : 	Remy van Elst
-Date     : 	23-01-2013
-URL      : 	https://raymii.org/s/snippets/CentOS_Save_iptables_restorecon_error.html
-Format   : 	Markdown/HTML
+Title       : 	Fix CentOS IPTables rule saving (iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found)
+Author      : 	Remy van Elst
+Date        : 	23-01-2013
+URL         : 	https://raymii.org/s/snippets/CentOS_Save_iptables_restorecon_error.html
+Format      : 	Markdown/HTML
 ---
 
 

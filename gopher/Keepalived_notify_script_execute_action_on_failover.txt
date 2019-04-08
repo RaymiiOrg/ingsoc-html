@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Keepalived notify script, execute action on failover
-Author   : 	Remy van Elst
-Date     : 	26-10-2014
-URL      : 	https://raymii.org/s/tutorials/Keepalived_notify_script_execute_action_on_failover.html
-Format   : 	Markdown/HTML
+Title       : 	Keepalived notify script, execute action on failover
+Author      : 	Remy van Elst
+Date        : 	26-10-2014
+URL         : 	https://raymii.org/s/tutorials/Keepalived_notify_script_execute_action_on_failover.html
+Format      : 	Markdown/HTML
 ---
 
 

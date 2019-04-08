@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Linux on Microsoft Azure? Disable this built-in root-access backdoor (wa-linux-agent)
-Author   : 	Remy van Elst
-Date     : 	22-08-2018
-URL      : 	https://raymii.org/s/blog/Linux_on_Microsoft_Azure_Disable_this_built_in_root_access_backdoor.html
-Format   : 	Markdown/HTML
+Title       : 	Linux on Microsoft Azure? Disable this built-in root-access backdoor (wa-linux-agent)
+Author      : 	Remy van Elst
+Date        : 	22-08-2018
+URL         : 	https://raymii.org/s/blog/Linux_on_Microsoft_Azure_Disable_this_built_in_root_access_backdoor.html
+Format      : 	Markdown/HTML
 ---
 
 

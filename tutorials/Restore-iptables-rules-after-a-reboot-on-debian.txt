@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Restore iptables rules after a reboot on debian
-Author   : 	Remy van Elst
-Date     : 	12-12-2012
-URL      : 	https://raymii.org/s/tutorials/Restore-iptables-rules-after-a-reboot-on-debian.html
-Format   : 	Markdown/HTML
+Title       : 	Restore iptables rules after a reboot on debian
+Author      : 	Remy van Elst
+Date        : 	12-12-2012
+URL         : 	https://raymii.org/s/tutorials/Restore-iptables-rules-after-a-reboot-on-debian.html
+Format      : 	Markdown/HTML
 ---
 
 

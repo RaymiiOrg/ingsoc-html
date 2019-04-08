@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Remove unused Ubuntu kernels
-Author   : 	Remy van Elst
-Date     : 	28-10-2013
-URL      : 	https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html
-Format   : 	Markdown/HTML
+Title       : 	Remove unused Ubuntu kernels
+Author      : 	Remy van Elst
+Date        : 	28-10-2013
+URL         : 	https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html
+Format      : 	Markdown/HTML
 ---
 
 

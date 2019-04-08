@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Nitrokey gnuk firmware update via DFU
-Author   : 	Remy van Elst
-Date     : 	11-10-2016
-URL      : 	https://raymii.org/s/tutorials/Nitrokey_gnuk_firmware_update_via_DFU.html
-Format   : 	Markdown/HTML
+Title       : 	Nitrokey gnuk firmware update via DFU
+Author      : 	Remy van Elst
+Date        : 	11-10-2016
+URL         : 	https://raymii.org/s/tutorials/Nitrokey_gnuk_firmware_update_via_DFU.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Simple pygopherd log analyzer
-Author   : 	Remy van Elst
-Date     : 	20-03-2019
-URL      : 	https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html
-Format   : 	Markdown/HTML
+Title       : 	Simple pygopherd log analyzer
+Author      : 	Remy van Elst
+Date        : 	20-03-2019
+URL         : 	https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html
+Format      : 	Markdown/HTML
 ---
 
 

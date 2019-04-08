@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Terrible Start
-Author   : 	Remy van Elst
-Date     : 	07-06-2012
-URL      : 	https://raymii.org/s/software/Terrible-start.html
-Format   : 	Markdown/HTML
+Title       : 	Terrible Start
+Author      : 	Remy van Elst
+Date        : 	07-06-2012
+URL         : 	https://raymii.org/s/software/Terrible-start.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Chef: chef_gem vs gem_package and ORDER
-Author   : 	Remy van Elst
-Date     : 	01-04-2014
-URL      : 	https://raymii.org/s/articles/Chef_-_chef_gem_vs_gem_package_and_ORDER.html
-Format   : 	Markdown/HTML
+Title       : 	Chef: chef_gem vs gem_package and ORDER
+Author      : 	Remy van Elst
+Date        : 	01-04-2014
+URL         : 	https://raymii.org/s/articles/Chef_-_chef_gem_vs_gem_package_and_ORDER.html
+Format      : 	Markdown/HTML
 ---
 
 

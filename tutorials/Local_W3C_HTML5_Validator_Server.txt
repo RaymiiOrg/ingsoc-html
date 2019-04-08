@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Local W3C HTML5 Validator Server
-Author   : 	Remy van Elst
-Date     : 	27-12-2013
-URL      : 	https://raymii.org/s/tutorials/Local_W3C_HTML5_Validator_Server.html
-Format   : 	Markdown/HTML
+Title       : 	Local W3C HTML5 Validator Server
+Author      : 	Remy van Elst
+Date        : 	27-12-2013
+URL         : 	https://raymii.org/s/tutorials/Local_W3C_HTML5_Validator_Server.html
+Format      : 	Markdown/HTML
 ---
 
 

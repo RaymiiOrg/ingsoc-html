@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Burn in testing for new Hypervisor and Storage server hardware
-Author   : 	Remy van Elst
-Date     : 	08-04-2017
-URL      : 	https://raymii.org/s/blog/Burn_in_testing_for_Hypervisor_and_Storage_servers.html
-Format   : 	Markdown/HTML
+Title       : 	Burn in testing for new Hypervisor and Storage server hardware
+Author      : 	Remy van Elst
+Date        : 	08-04-2017
+URL         : 	https://raymii.org/s/blog/Burn_in_testing_for_Hypervisor_and_Storage_servers.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	OSSEC Server, Client, Web UI and Analogi Dashboard Installation tutorial
-Author   : 	Remy van Elst
-Date     : 	07-09-2013
-URL      : 	https://raymii.org/s/tutorials/OSSEC_and_webui_and_analogi_dashboard_installation_on_Ubuntu.html
-Format   : 	Markdown/HTML
+Title       : 	OSSEC Server, Client, Web UI and Analogi Dashboard Installation tutorial
+Author      : 	Remy van Elst
+Date        : 	07-09-2013
+URL         : 	https://raymii.org/s/tutorials/OSSEC_and_webui_and_analogi_dashboard_installation_on_Ubuntu.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Let's Encrypt with DirectAdmin, now built in!
-Author   : 	Remy van Elst
-Date     : 	24-02-2016
-URL      : 	https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html
-Format   : 	Markdown/HTML
+Title       : 	Let's Encrypt with DirectAdmin, now built in!
+Author      : 	Remy van Elst
+Date        : 	24-02-2016
+URL         : 	https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html
+Format      : 	Markdown/HTML
 ---
 
 

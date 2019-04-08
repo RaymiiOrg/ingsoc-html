@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Synergy, no mouse cursor on Ubuntu 17.10
-Author   : 	Remy van Elst
-Date     : 	11-04-2018
-URL      : 	https://raymii.org/s/snippets/Synergy_no_mouse_cursor_on_Ubuntu_17.10.html
-Format   : 	Markdown/HTML
+Title       : 	Synergy, no mouse cursor on Ubuntu 17.10
+Author      : 	Remy van Elst
+Date        : 	11-04-2018
+URL         : 	https://raymii.org/s/snippets/Synergy_no_mouse_cursor_on_Ubuntu_17.10.html
+Format      : 	Markdown/HTML
 ---
 
 

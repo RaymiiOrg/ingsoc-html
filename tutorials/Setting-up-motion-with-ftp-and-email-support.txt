@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Setting up Motion with FTP and Email! support
-Author   : 	Remy van Elst
-Date     : 	09-04-2008
-URL      : 	https://raymii.org/s/tutorials/Setting-up-motion-with-ftp-and-email-support.html
-Format   : 	Markdown/HTML
+Title       : 	Setting up Motion with FTP and Email! support
+Author      : 	Remy van Elst
+Date        : 	09-04-2008
+URL         : 	https://raymii.org/s/tutorials/Setting-up-motion-with-ftp-and-email-support.html
+Format      : 	Markdown/HTML
 ---
 
 

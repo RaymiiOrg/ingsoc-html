@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	3D modeling a real world object in OpenSCAD
-Author   : 	Remy van Elst
-Date     : 	02-03-2014
-URL      : 	https://raymii.org/s/articles/3D_modelling_a_real_world_object_in_OpenSCAD.html
-Format   : 	Markdown/HTML
+Title       : 	3D modeling a real world object in OpenSCAD
+Author      : 	Remy van Elst
+Date        : 	02-03-2014
+URL         : 	https://raymii.org/s/articles/3D_modelling_a_real_world_object_in_OpenSCAD.html
+Format      : 	Markdown/HTML
 ---
 
 

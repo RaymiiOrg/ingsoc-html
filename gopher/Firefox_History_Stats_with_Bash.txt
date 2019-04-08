@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Firefox History stats with Bash
-Author   : 	Remy van Elst
-Date     : 	25-09-2016
-URL      : 	https://raymii.org/s/snippets/Firefox_History_Stats_with_Bash.html
-Format   : 	Markdown/HTML
+Title       : 	Firefox History stats with Bash
+Author      : 	Remy van Elst
+Date        : 	25-09-2016
+URL         : 	https://raymii.org/s/snippets/Firefox_History_Stats_with_Bash.html
+Format      : 	Markdown/HTML
 ---
 
 

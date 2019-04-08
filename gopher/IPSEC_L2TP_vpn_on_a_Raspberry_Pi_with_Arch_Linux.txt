@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	IPSEC L2TP VPN on Arch Linux on a Raspberry Pi with OpenSwan, xl2tpd and ppp
-Author   : 	Remy van Elst
-Date     : 	01-12-2014
-URL      : 	https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html
-Format   : 	Markdown/HTML
+Title       : 	IPSEC L2TP VPN on Arch Linux on a Raspberry Pi with OpenSwan, xl2tpd and ppp
+Author      : 	Remy van Elst
+Date        : 	01-12-2014
+URL         : 	https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html
+Format      : 	Markdown/HTML
 ---
 
 

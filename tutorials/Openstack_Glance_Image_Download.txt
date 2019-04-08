@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Openstack Glance Image Download, download Openstack images
-Author   : 	Remy van Elst
-Date     : 	25-02-2015
-URL      : 	https://raymii.org/s/tutorials/Openstack_Glance_Image_Download.html
-Format   : 	Markdown/HTML
+Title       : 	Openstack Glance Image Download, download Openstack images
+Author      : 	Remy van Elst
+Date        : 	25-02-2015
+URL         : 	https://raymii.org/s/tutorials/Openstack_Glance_Image_Download.html
+Format      : 	Markdown/HTML
 ---
 
 

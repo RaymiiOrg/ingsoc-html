@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Nagios plugin to check an OCSP server
-Author   : 	Remy van Elst
-Date     : 	06-05-2013
-URL      : 	https://raymii.org/s/software/Nagios_plugin_to_check_OCSP.html
-Format   : 	Markdown/HTML
+Title       : 	Nagios plugin to check an OCSP server
+Author      : 	Remy van Elst
+Date        : 	06-05-2013
+URL         : 	https://raymii.org/s/software/Nagios_plugin_to_check_OCSP.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	OS X: Remove all Apple Remote Dekstop settings
-Author   : 	Remy van Elst
-Date     : 	14-03-2014
-URL      : 	https://raymii.org/s/snippets/OS_X-Remove_all_Apple_Remote_Desktop_settings.html
-Format   : 	Markdown/HTML
+Title       : 	OS X: Remove all Apple Remote Dekstop settings
+Author      : 	Remy van Elst
+Date        : 	14-03-2014
+URL         : 	https://raymii.org/s/snippets/OS_X-Remove_all_Apple_Remote_Desktop_settings.html
+Format      : 	Markdown/HTML
 ---
 
 

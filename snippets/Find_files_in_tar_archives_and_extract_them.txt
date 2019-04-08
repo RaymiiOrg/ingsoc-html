@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Find files in tar archives and extract specific files from tar archives
-Author   : 	Remy van Elst
-Date     : 	17-10-2018
-URL      : 	https://raymii.org/s/snippets/Find_files_in_tar_archives_and_extract_them.html
-Format   : 	Markdown/HTML
+Title       : 	Find files in tar archives and extract specific files from tar archives
+Author      : 	Remy van Elst
+Date        : 	17-10-2018
+URL         : 	https://raymii.org/s/snippets/Find_files_in_tar_archives_and_extract_them.html
+Format      : 	Markdown/HTML
 ---
 
 

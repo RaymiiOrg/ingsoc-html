@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Install extra software in the VMWare vCenter Appliance (VCSA)
-Author   : 	Remy van Elst
-Date     : 	05-02-2014
-URL      : 	https://raymii.org/s/tutorials/VMWare_vCenter_Appliance_Install_Extra_Software.html
-Format   : 	Markdown/HTML
+Title       : 	Install extra software in the VMWare vCenter Appliance (VCSA)
+Author      : 	Remy van Elst
+Date        : 	05-02-2014
+URL         : 	https://raymii.org/s/tutorials/VMWare_vCenter_Appliance_Install_Extra_Software.html
+Format      : 	Markdown/HTML
 ---
 
 

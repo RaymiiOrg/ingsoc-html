@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	OpenStack: Quick and automatic instance snapshot backup and restore (and before an apt upgrade) with nova backup
-Author   : 	Remy van Elst
-Date     : 	20-12-2016
-URL      : 	https://raymii.org/s/tutorials/OpenStack_Quick_and_automatic_instance_snapshot_backups.html
-Format   : 	Markdown/HTML
+Title       : 	OpenStack: Quick and automatic instance snapshot backup and restore (and before an apt upgrade) with nova backup
+Author      : 	Remy van Elst
+Date        : 	20-12-2016
+URL         : 	https://raymii.org/s/tutorials/OpenStack_Quick_and_automatic_instance_snapshot_backups.html
+Format      : 	Markdown/HTML
 ---
 
 

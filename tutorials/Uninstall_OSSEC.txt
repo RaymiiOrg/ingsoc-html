@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Uninstall and Remove OSSEC
-Author   : 	Remy van Elst
-Date     : 	01-10-2013
-URL      : 	https://raymii.org/s/tutorials/Uninstall_OSSEC.html
-Format   : 	Markdown/HTML
+Title       : 	Uninstall and Remove OSSEC
+Author      : 	Remy van Elst
+Date        : 	01-10-2013
+URL         : 	https://raymii.org/s/tutorials/Uninstall_OSSEC.html
+Format      : 	Markdown/HTML
 ---
 
 

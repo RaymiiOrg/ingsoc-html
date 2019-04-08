@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Set up your own truly secure, encrypted and shared file synchronization, aka Dropbox clone
-Author   : 	Remy van Elst
-Date     : 	15-10-2013
-URL      : 	https://raymii.org/s/articles/Set_up_your_own_truly_secure_encrypted_shared_storage_aka_Dropbox_clone.html
-Format   : 	Markdown/HTML
+Title       : 	Set up your own truly secure, encrypted and shared file synchronization, aka Dropbox clone
+Author      : 	Remy van Elst
+Date        : 	15-10-2013
+URL         : 	https://raymii.org/s/articles/Set_up_your_own_truly_secure_encrypted_shared_storage_aka_Dropbox_clone.html
+Format      : 	Markdown/HTML
 ---
 
 

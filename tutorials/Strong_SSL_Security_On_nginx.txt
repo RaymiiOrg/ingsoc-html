@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Strong SSL Security on nginx
-Author   : 	Remy van Elst
-Date     : 	14-06-2015
-URL      : 	https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-Format   : 	Markdown/HTML
+Title       : 	Strong SSL Security on nginx
+Author      : 	Remy van Elst
+Date        : 	14-06-2015
+URL         : 	https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+Format      : 	Markdown/HTML
 ---
 
 

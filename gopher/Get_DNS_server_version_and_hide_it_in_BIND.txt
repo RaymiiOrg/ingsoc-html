@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Hide or determine BIND version number
-Author   : 	Remy van Elst
-Date     : 	08-05-2013
-URL      : 	https://raymii.org/s/tutorials/Get_DNS_server_version_and_hide_it_in_BIND.html
-Format   : 	Markdown/HTML
+Title       : 	Hide or determine BIND version number
+Author      : 	Remy van Elst
+Date        : 	08-05-2013
+URL         : 	https://raymii.org/s/tutorials/Get_DNS_server_version_and_hide_it_in_BIND.html
+Format      : 	Markdown/HTML
 ---
 
 

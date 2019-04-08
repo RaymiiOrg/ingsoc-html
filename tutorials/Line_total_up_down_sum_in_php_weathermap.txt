@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Line total (up+down sum) in PHP Network Weathermap
-Author   : 	Remy van Elst
-Date     : 	13-11-2018
-URL      : 	https://raymii.org/s/tutorials/Line_total_up_down_sum_in_php_weathermap.html
-Format   : 	Markdown/HTML
+Title       : 	Line total (up+down sum) in PHP Network Weathermap
+Author      : 	Remy van Elst
+Date        : 	13-11-2018
+URL         : 	https://raymii.org/s/tutorials/Line_total_up_down_sum_in_php_weathermap.html
+Format      : 	Markdown/HTML
 ---
 
 

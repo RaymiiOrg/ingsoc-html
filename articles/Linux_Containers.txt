@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Linux Containers
-Author   : 	Jonathan Robe
-Date     : 	12-11-2015
-URL      : 	https://raymii.org/s/articles/Linux_Containers.html
-Format   : 	Markdown/HTML
+Title       : 	Linux Containers
+Author      : 	Jonathan Robe
+Date        : 	12-11-2015
+URL         : 	https://raymii.org/s/articles/Linux_Containers.html
+Format      : 	Markdown/HTML
 ---
 
 

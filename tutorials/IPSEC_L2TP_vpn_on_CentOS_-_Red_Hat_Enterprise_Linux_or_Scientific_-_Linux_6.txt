@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	IPSEC L2TP VPN on CentOS 6 / Red Hat Enterprise Linux 6 / Scientific Linux 6
-Author   : 	Remy van Elst
-Date     : 	01-12-2014
-URL      : 	https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html
-Format   : 	Markdown/HTML
+Title       : 	IPSEC L2TP VPN on CentOS 6 / Red Hat Enterprise Linux 6 / Scientific Linux 6
+Author      : 	Remy van Elst
+Date        : 	01-12-2014
+URL         : 	https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html
+Format      : 	Markdown/HTML
 ---
 
 

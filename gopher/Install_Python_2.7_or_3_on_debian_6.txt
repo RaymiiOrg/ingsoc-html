@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Install python 2.7 or 3 under Debian 6
-Author   : 	Remy van Elst
-Date     : 	15-01-2013
-URL      : 	https://raymii.org/s/tutorials/Install_Python_2.7_or_3_on_debian_6.html
-Format   : 	Markdown/HTML
+Title       : 	Install python 2.7 or 3 under Debian 6
+Author      : 	Remy van Elst
+Date        : 	15-01-2013
+URL         : 	https://raymii.org/s/tutorials/Install_Python_2.7_or_3_on_debian_6.html
+Format      : 	Markdown/HTML
 ---
 
 

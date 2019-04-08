@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Bash Incremental History Search / Autocomplete 
-Author   : 	Remy van Elst
-Date     : 	26-06-2013
-URL      : 	https://raymii.org/s/snippets/Bash_-_Incremental_History_Search_Autocomplete.html
-Format   : 	Markdown/HTML
+Title       : 	Bash Incremental History Search / Autocomplete 
+Author      : 	Remy van Elst
+Date        : 	26-06-2013
+URL         : 	https://raymii.org/s/snippets/Bash_-_Incremental_History_Search_Autocomplete.html
+Format      : 	Markdown/HTML
 ---
 
 

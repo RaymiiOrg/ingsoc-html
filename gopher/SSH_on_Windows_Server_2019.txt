@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	SSH on Windows Server 2019 (including how to sudo)
-Author   : 	Remy van Elst
-Date     : 	18-12-2018
-URL      : 	https://raymii.org/s/tutorials/SSH_on_Windows_Server_2019.html
-Format   : 	Markdown/HTML
+Title       : 	SSH on Windows Server 2019 (including how to sudo)
+Author      : 	Remy van Elst
+Date        : 	18-12-2018
+URL         : 	https://raymii.org/s/tutorials/SSH_on_Windows_Server_2019.html
+Format      : 	Markdown/HTML
 ---
 
 

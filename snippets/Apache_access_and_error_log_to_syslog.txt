@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Apache access/error log to syslog
-Author   : 	Remy van Elst
-Date     : 	15-12-2013
-URL      : 	https://raymii.org/s/snippets/Apache_access_and_error_log_to_syslog.html
-Format   : 	Markdown/HTML
+Title       : 	Apache access/error log to syslog
+Author      : 	Remy van Elst
+Date        : 	15-12-2013
+URL         : 	https://raymii.org/s/snippets/Apache_access_and_error_log_to_syslog.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,11 +1,11 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Ansible - Only do something if another action changed
-Author   : 	Remy van Elst
-Date     : 	22-12-2013
-Last update     : 	15-12-2018
-URL      : 	https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
-Format   : 	Markdown/HTML
+Title       : 	Ansible - Only do something if another action changed
+Author      : 	Remy van Elst
+Date        : 	22-12-2013
+Last update : 	15-12-2018
+URL         : 	https://raymii.org/s/tutorials/Ansible_-_Only-do-something-if-another-action-changed.html
+Format      : 	Markdown/HTML
 ---
 
 

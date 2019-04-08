@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Self Hosted CryptoCat - Secure self hosted multiuser webchat
-Author   : 	Remy van Elst
-Date     : 	09-11-2013
-URL      : 	https://raymii.org/s/tutorials/Self_Hosted_CryptoCat_-_Secure_Self_Hosted_Multiuser_Webchat.html
-Format   : 	Markdown/HTML
+Title       : 	Self Hosted CryptoCat - Secure self hosted multiuser webchat
+Author      : 	Remy van Elst
+Date        : 	09-11-2013
+URL         : 	https://raymii.org/s/tutorials/Self_Hosted_CryptoCat_-_Secure_Self_Hosted_Multiuser_Webchat.html
+Format      : 	Markdown/HTML
 ---
 
 

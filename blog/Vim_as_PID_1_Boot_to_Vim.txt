@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Boot to Vim, Vim as Pid 1
-Author   : 	Remy van Elst
-Date     : 	18-09-2014
-URL      : 	https://raymii.org/s/blog/Vim_as_PID_1_Boot_to_Vim.html
-Format   : 	Markdown/HTML
+Title       : 	Boot to Vim, Vim as Pid 1
+Author      : 	Remy van Elst
+Date        : 	18-09-2014
+URL         : 	https://raymii.org/s/blog/Vim_as_PID_1_Boot_to_Vim.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Building opkg .ipk packages by hand (for OpenEmbedded/Yocto/OpenWRT)
-Author   : 	Remy van Elst
-Date     : 	05-04-2019
-URL      : 	https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html
-Format   : 	Markdown/HTML
+Title       : 	Building opkg .ipk packages by hand (for OpenEmbedded/Yocto/OpenWRT)
+Author      : 	Remy van Elst
+Date        : 	05-04-2019
+URL         : 	https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Raspberry Pi Arcade Machine
-Author   : 	Graham Morrison
-Date     : 	03-05-2015
-URL      : 	https://raymii.org/s/articles/Raspberry_Pi_Arcade_Machine.html
-Format   : 	Markdown/HTML
+Title       : 	Raspberry Pi Arcade Machine
+Author      : 	Graham Morrison
+Date        : 	03-05-2015
+URL         : 	https://raymii.org/s/articles/Raspberry_Pi_Arcade_Machine.html
+Format      : 	Markdown/HTML
 ---
 
 

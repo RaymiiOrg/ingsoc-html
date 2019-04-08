@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	SSHdialog
-Author   : 	Remy van Elst
-Date     : 	26-10-2009
-URL      : 	https://raymii.org/s/software/SSHDialog.html
-Format   : 	Markdown/HTML
+Title       : 	SSHdialog
+Author      : 	Remy van Elst
+Date        : 	26-10-2009
+URL         : 	https://raymii.org/s/software/SSHDialog.html
+Format      : 	Markdown/HTML
 ---
 
 

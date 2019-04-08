@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Arch Linux AUR PKGBUILD generate new checksums
-Author   : 	Remy van Elst
-Date     : 	29-12-2014
-URL      : 	https://raymii.org/s/snippets/Arch_Linux_AUR_PKGBUILD_generate_new_checksums.html
-Format   : 	Markdown/HTML
+Title       : 	Arch Linux AUR PKGBUILD generate new checksums
+Author      : 	Remy van Elst
+Date        : 	29-12-2014
+URL         : 	https://raymii.org/s/snippets/Arch_Linux_AUR_PKGBUILD_generate_new_checksums.html
+Format      : 	Markdown/HTML
 ---
 
 

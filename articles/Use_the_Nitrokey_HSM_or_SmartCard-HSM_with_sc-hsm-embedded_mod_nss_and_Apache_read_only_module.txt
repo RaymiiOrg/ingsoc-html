@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Use the Nitrokey HSM or SmartCard-HSM with sc-hsm-embedded, mod_nss and Apache (read only module)
-Author   : 	Remy van Elst
-Date     : 	15-07-2016
-URL      : 	https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html
-Format   : 	Markdown/HTML
+Title       : 	Use the Nitrokey HSM or SmartCard-HSM with sc-hsm-embedded, mod_nss and Apache (read only module)
+Author      : 	Remy van Elst
+Date        : 	15-07-2016
+URL         : 	https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html
+Format      : 	Markdown/HTML
 ---
 
 

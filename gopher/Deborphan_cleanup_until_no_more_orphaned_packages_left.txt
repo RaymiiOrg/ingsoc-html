@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Deborphan cleanup until no more orphaned packages left
-Author   : 	Remy van Elst
-Date     : 	11-01-2016
-URL      : 	https://raymii.org/s/snippets/Deborphan_cleanup_until_no_more_orphaned_packages_left.html
-Format   : 	Markdown/HTML
+Title       : 	Deborphan cleanup until no more orphaned packages left
+Author      : 	Remy van Elst
+Date        : 	11-01-2016
+URL         : 	https://raymii.org/s/snippets/Deborphan_cleanup_until_no_more_orphaned_packages_left.html
+Format      : 	Markdown/HTML
 ---
 
 

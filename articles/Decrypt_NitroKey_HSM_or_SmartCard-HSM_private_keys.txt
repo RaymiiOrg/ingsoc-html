@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Decrypt/Extract Nitrokey HSM/SmartCard-HSM RSA private keys
-Author   : 	Remy van Elst
-Date     : 	13-07-2016
-URL      : 	https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html
-Format   : 	Markdown/HTML
+Title       : 	Decrypt/Extract Nitrokey HSM/SmartCard-HSM RSA private keys
+Author      : 	Remy van Elst
+Date        : 	13-07-2016
+URL         : 	https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	OpenVZ/Proxmox - Container to Template
-Author   : 	Remy van Elst
-Date     : 	11-07-2014
-URL      : 	https://raymii.org/s/tutorials/OpenVZ_Proxmox_Container_to_Template.html
-Format   : 	Markdown/HTML
+Title       : 	OpenVZ/Proxmox - Container to Template
+Author      : 	Remy van Elst
+Date        : 	11-07-2014
+URL         : 	https://raymii.org/s/tutorials/OpenVZ_Proxmox_Container_to_Template.html
+Format      : 	Markdown/HTML
 ---
 
 

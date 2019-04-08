@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Nagios plugin to check certificates on local file system
-Author   : 	Remy van Elst
-Date     : 	24-09-2012
-URL      : 	https://raymii.org/s/software/Nagios_check_local_certificate_files.html
-Format   : 	Markdown/HTML
+Title       : 	Nagios plugin to check certificates on local file system
+Author      : 	Remy van Elst
+Date        : 	24-09-2012
+URL         : 	https://raymii.org/s/software/Nagios_check_local_certificate_files.html
+Format      : 	Markdown/HTML
 ---
 
 

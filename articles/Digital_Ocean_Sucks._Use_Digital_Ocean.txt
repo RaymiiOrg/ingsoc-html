@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	DigitalOcean Sucks. Use DigitalOcean!
-Author   : 	Remy van Elst
-Date     : 	19-11-2013
-URL      : 	https://raymii.org/s/articles/Digital_Ocean_Sucks._Use_Digital_Ocean.html
-Format   : 	Markdown/HTML
+Title       : 	DigitalOcean Sucks. Use DigitalOcean!
+Author      : 	Remy van Elst
+Date        : 	19-11-2013
+URL         : 	https://raymii.org/s/articles/Digital_Ocean_Sucks._Use_Digital_Ocean.html
+Format      : 	Markdown/HTML
 ---
 
 

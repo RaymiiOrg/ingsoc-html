@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Reddit Gold for Caldera Openlinux 1.2
-Author   : 	Remy van Elst
-Date     : 	26-09-2018
-URL      : 	https://raymii.org/s/blog/Reddit_Gold_for_Caldera_Openlinux_1.2.html
-Format   : 	Markdown/HTML
+Title       : 	Reddit Gold for Caldera Openlinux 1.2
+Author      : 	Remy van Elst
+Date        : 	26-09-2018
+URL         : 	https://raymii.org/s/blog/Reddit_Gold_for_Caldera_Openlinux_1.2.html
+Format      : 	Markdown/HTML
 ---
 
 

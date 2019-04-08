@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Syslog configuration for remote logservers for syslog-ng and rsyslog, both client and server
-Author   : 	Remy van Elst
-Date     : 	21-06-2018
-URL      : 	https://raymii.org/s/tutorials/Syslog_config_for_remote_logservers_for_syslog-ng_and_rsyslog_client_server.html
-Format   : 	Markdown/HTML
+Title       : 	Syslog configuration for remote logservers for syslog-ng and rsyslog, both client and server
+Author      : 	Remy van Elst
+Date        : 	21-06-2018
+URL         : 	https://raymii.org/s/tutorials/Syslog_config_for_remote_logservers_for_syslog-ng_and_rsyslog_client_server.html
+Format      : 	Markdown/HTML
 ---
 
 

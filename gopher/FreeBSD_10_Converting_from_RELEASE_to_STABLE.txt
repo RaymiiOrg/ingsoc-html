@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	FreeBSD 10, Converting from RELEASE to STABLE 
-Author   : 	Remy van Elst
-Date     : 	17-04-2014
-URL      : 	https://raymii.org/s/blog/FreeBSD_10_Converting_from_RELEASE_to_STABLE.html
-Format   : 	Markdown/HTML
+Title       : 	FreeBSD 10, Converting from RELEASE to STABLE 
+Author      : 	Remy van Elst
+Date        : 	17-04-2014
+URL         : 	https://raymii.org/s/blog/FreeBSD_10_Converting_from_RELEASE_to_STABLE.html
+Format      : 	Markdown/HTML
 ---
 
 

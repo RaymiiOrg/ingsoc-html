@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	HP-UX 11.31 System information and find out part number of a failed disk with sasmgr
-Author   : 	Remy van Elst
-Date     : 	18-05-2018
-URL      : 	https://raymii.org/s/tutorials/Find_part_number_of_failed_disk_on_HP-UX_with_sasmgr.html
-Format   : 	Markdown/HTML
+Title       : 	HP-UX 11.31 System information and find out part number of a failed disk with sasmgr
+Author      : 	Remy van Elst
+Date        : 	18-05-2018
+URL         : 	https://raymii.org/s/tutorials/Find_part_number_of_failed_disk_on_HP-UX_with_sasmgr.html
+Format      : 	Markdown/HTML
 ---
 
 

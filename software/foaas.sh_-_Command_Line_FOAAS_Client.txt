@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	foaas.sh - Command Line Fuck Off as a Service client
-Author   : 	Remy van Elst
-Date     : 	08-09-2014
-URL      : 	https://raymii.org/s/software/foaas.sh_-_Command_Line_FOAAS_Client.html
-Format   : 	Markdown/HTML
+Title       : 	foaas.sh - Command Line Fuck Off as a Service client
+Author      : 	Remy van Elst
+Date        : 	08-09-2014
+URL         : 	https://raymii.org/s/software/foaas.sh_-_Command_Line_FOAAS_Client.html
+Format      : 	Markdown/HTML
 ---
 
 

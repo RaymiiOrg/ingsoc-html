@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Mount ISO and execute scripts on OpenVMS
-Author   : 	Remy van Elst
-Date     : 	08-05-2018
-URL      : 	https://raymii.org/s/blog/OpenVMS_Mount_ISO_and_execute_scripts.html
-Format   : 	Markdown/HTML
+Title       : 	Mount ISO and execute scripts on OpenVMS
+Author      : 	Remy van Elst
+Date        : 	08-05-2018
+URL         : 	https://raymii.org/s/blog/OpenVMS_Mount_ISO_and_execute_scripts.html
+Format      : 	Markdown/HTML
 ---
 
 

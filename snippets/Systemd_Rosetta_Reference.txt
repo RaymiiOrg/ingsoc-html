@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Systemd rosetta / cheatsheet
-Author   : 	Remy van Elst
-Date     : 	10-02-2013
-URL      : 	https://raymii.org/s/snippets/Systemd_Rosetta_Reference.html
-Format   : 	Markdown/HTML
+Title       : 	Systemd rosetta / cheatsheet
+Author      : 	Remy van Elst
+Date        : 	10-02-2013
+URL         : 	https://raymii.org/s/snippets/Systemd_Rosetta_Reference.html
+Format      : 	Markdown/HTML
 ---
 
 

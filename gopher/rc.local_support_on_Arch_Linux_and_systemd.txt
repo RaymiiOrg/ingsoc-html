@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	rc.local support on Arch Linux with systemd
-Author   : 	Remy van Elst
-Date     : 	13-01-2014
-URL      : 	https://raymii.org/s/tutorials/rc.local_support_on_Arch_Linux_and_systemd.html
-Format   : 	Markdown/HTML
+Title       : 	rc.local support on Arch Linux with systemd
+Author      : 	Remy van Elst
+Date        : 	13-01-2014
+URL         : 	https://raymii.org/s/tutorials/rc.local_support_on_Arch_Linux_and_systemd.html
+Format      : 	Markdown/HTML
 ---
 
 

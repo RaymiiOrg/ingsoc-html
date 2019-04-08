@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	FST-01 gnuk firmware update via USB
-Author   : 	Remy van Elst
-Date     : 	09-09-2016
-URL      : 	https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html
-Format   : 	Markdown/HTML
+Title       : 	FST-01 gnuk firmware update via USB
+Author      : 	Remy van Elst
+Date        : 	09-09-2016
+URL         : 	https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Small Operating Systems / Linux Distributions
-Author   : 	Remy van Elst
-Date     : 	09-07-2012
-URL      : 	https://raymii.org/s/articles/Small_Linux_Distros.html
-Format   : 	Markdown/HTML
+Title       : 	Small Operating Systems / Linux Distributions
+Author      : 	Remy van Elst
+Date        : 	09-07-2012
+URL         : 	https://raymii.org/s/articles/Small_Linux_Distros.html
+Format      : 	Markdown/HTML
 ---
 
 

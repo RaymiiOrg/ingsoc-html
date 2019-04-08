@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Tether your Sonim XP3 phone with Linux
-Author   : 	Remy van Elst
-Date     : 	08-02-2011
-URL      : 	https://raymii.org/s/tutorials/Tether-your-sonim-xp3-phone-with-linux.html
-Format   : 	Markdown/HTML
+Title       : 	Tether your Sonim XP3 phone with Linux
+Author      : 	Remy van Elst
+Date        : 	08-02-2011
+URL         : 	https://raymii.org/s/tutorials/Tether-your-sonim-xp3-phone-with-linux.html
+Format      : 	Markdown/HTML
 ---
 
 

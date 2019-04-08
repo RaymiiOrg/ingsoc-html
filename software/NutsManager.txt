@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	NutsManager
-Author   : 	Remy van Elst
-Date     : 	15-09-2012
-URL      : 	https://raymii.org/s/software/NutsManager.html
-Format   : 	Markdown/HTML
+Title       : 	NutsManager
+Author      : 	Remy van Elst
+Date        : 	15-09-2012
+URL         : 	https://raymii.org/s/software/NutsManager.html
+Format      : 	Markdown/HTML
 ---
 
 

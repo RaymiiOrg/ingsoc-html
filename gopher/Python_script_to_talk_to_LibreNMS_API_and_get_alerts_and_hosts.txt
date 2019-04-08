@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Python script to talk to LibreNMS API and get alerts and hosts
-Author   : 	Remy van Elst
-Date     : 	08-08-2018
-URL      : 	https://raymii.org/s/software/Python_script_to_talk_to_LibreNMS_API_and_get_alerts_and_hosts.html
-Format   : 	Markdown/HTML
+Title       : 	Python script to talk to LibreNMS API and get alerts and hosts
+Author      : 	Remy van Elst
+Date        : 	08-08-2018
+URL         : 	https://raymii.org/s/software/Python_script_to_talk_to_LibreNMS_API_and_get_alerts_and_hosts.html
+Format      : 	Markdown/HTML
 ---
 
 

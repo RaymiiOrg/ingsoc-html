@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	HTTP Public Key Pinning Extension HPKP for Apache, NGINX and Lighttpd
-Author   : 	Remy van Elst
-Date     : 	30-12-2014
-URL      : 	https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html
-Format   : 	Markdown/HTML
+Title       : 	HTTP Public Key Pinning Extension HPKP for Apache, NGINX and Lighttpd
+Author      : 	Remy van Elst
+Date        : 	30-12-2014
+URL         : 	https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html
+Format      : 	Markdown/HTML
 ---
 
 

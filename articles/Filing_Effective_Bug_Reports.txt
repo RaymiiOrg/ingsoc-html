@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Filing Effective Bug Reports
-Author   : 	Ben Everard
-Date     : 	03-05-2015
-URL      : 	https://raymii.org/s/articles/Filing_Effective_Bug_Reports.html
-Format   : 	Markdown/HTML
+Title       : 	Filing Effective Bug Reports
+Author      : 	Ben Everard
+Date        : 	03-05-2015
+URL         : 	https://raymii.org/s/articles/Filing_Effective_Bug_Reports.html
+Format      : 	Markdown/HTML
 ---
 
 

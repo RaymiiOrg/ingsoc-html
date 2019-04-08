@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Clonezilla Backup Script v0.2
-Author   : 	Remy van Elst, David Bekker
-Date     : 	18-05-2009
-URL      : 	https://raymii.org/s/software/Clonezilla-custom-backup-script.html
-Format   : 	Markdown/HTML
+Title       : 	Clonezilla Backup Script v0.2
+Author      : 	Remy van Elst, David Bekker
+Date        : 	18-05-2009
+URL         : 	https://raymii.org/s/software/Clonezilla-custom-backup-script.html
+Format      : 	Markdown/HTML
 ---
 
 

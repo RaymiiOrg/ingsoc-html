@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Set up your own distributed, redundant, and encrypted storage grid with Tahoe-LAFS
-Author   : 	Sven Slootweg
-Date     : 	08-11-2012
-URL      : 	https://raymii.org/s/tutorials/Tahoe_LAFS_Storage_Grid.html
-Format   : 	Markdown/HTML
+Title       : 	Set up your own distributed, redundant, and encrypted storage grid with Tahoe-LAFS
+Author      : 	Sven Slootweg
+Date        : 	08-11-2012
+URL         : 	https://raymii.org/s/tutorials/Tahoe_LAFS_Storage_Grid.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Storing arbitraty data in the Nitrokey HSM/SmartCard-HSM with Elementary Files (EF)
-Author   : 	Remy van Elst
-Date     : 	17-07-2016
-URL      : 	https://raymii.org/s/articles/Storing_arbitraty_data_in_the_Nitrokey_HSM.html
-Format   : 	Markdown/HTML
+Title       : 	Storing arbitraty data in the Nitrokey HSM/SmartCard-HSM with Elementary Files (EF)
+Author      : 	Remy van Elst
+Date        : 	17-07-2016
+URL         : 	https://raymii.org/s/articles/Storing_arbitraty_data_in_the_Nitrokey_HSM.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	IPv4 Address Conversion Tricks
-Author   : 	Remy van Elst
-Date     : 	01-09-2013
-URL      : 	https://raymii.org/s/articles/IPv4_Address_Conversion_Tricks.html
-Format   : 	Markdown/HTML
+Title       : 	IPv4 Address Conversion Tricks
+Author      : 	Remy van Elst
+Date        : 	01-09-2013
+URL         : 	https://raymii.org/s/articles/IPv4_Address_Conversion_Tricks.html
+Format      : 	Markdown/HTML
 ---
 
 

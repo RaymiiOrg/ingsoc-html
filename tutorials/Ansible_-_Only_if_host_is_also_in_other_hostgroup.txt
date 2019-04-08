@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Ansible - Only if host is also in other hostgroup
-Author   : 	Remy van Elst
-Date     : 	25-11-2014
-URL      : 	https://raymii.org/s/tutorials/Ansible_-_Only_if_host_is_also_in_other_hostgroup.html
-Format   : 	Markdown/HTML
+Title       : 	Ansible - Only if host is also in other hostgroup
+Author      : 	Remy van Elst
+Date        : 	25-11-2014
+URL         : 	https://raymii.org/s/tutorials/Ansible_-_Only_if_host_is_also_in_other_hostgroup.html
+Format      : 	Markdown/HTML
 ---
 
 

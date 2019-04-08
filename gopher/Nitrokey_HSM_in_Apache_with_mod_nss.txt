@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Use the Nitrokey HSM or SmartCard-HSM with mod_nss and Apache
-Author   : 	Remy van Elst
-Date     : 	21-06-2016
-URL      : 	https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html
-Format   : 	Markdown/HTML
+Title       : 	Use the Nitrokey HSM or SmartCard-HSM with mod_nss and Apache
+Author      : 	Remy van Elst
+Date        : 	21-06-2016
+URL         : 	https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Chrome 68 is depcrecating HPKP (HTTP Public Key Pinning)
-Author   : 	Remy van Elst
-Date     : 	12-06-2018
-URL      : 	https://raymii.org/s/blog/Chrome_68_is_deprecating_HPKP.html
-Format   : 	Markdown/HTML
+Title       : 	Chrome 68 is depcrecating HPKP (HTTP Public Key Pinning)
+Author      : 	Remy van Elst
+Date        : 	12-06-2018
+URL         : 	https://raymii.org/s/blog/Chrome_68_is_deprecating_HPKP.html
+Format      : 	Markdown/HTML
 ---
 
 

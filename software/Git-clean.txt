@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Git-clean
-Author   : 	Remy van Elst
-Date     : 	08-11-2012
-URL      : 	https://raymii.org/s/software/Git-clean.html
-Format   : 	Markdown/HTML
+Title       : 	Git-clean
+Author      : 	Remy van Elst
+Date        : 	08-11-2012
+URL         : 	https://raymii.org/s/software/Git-clean.html
+Format      : 	Markdown/HTML
 ---
 
 

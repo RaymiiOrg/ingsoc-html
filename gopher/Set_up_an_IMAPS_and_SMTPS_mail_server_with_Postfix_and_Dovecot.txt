@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Postfix snippets - not finished
-Author   : 	Remy van Elst
-Date     : 	09-07-2012
-URL      : 	https://raymii.org/s/snippets/Set_up_an_IMAPS_and_SMTPS_mail_server_with_Postfix_and_Dovecot.html
-Format   : 	Markdown/HTML
+Title       : 	Postfix snippets - not finished
+Author      : 	Remy van Elst
+Date        : 	09-07-2012
+URL         : 	https://raymii.org/s/snippets/Set_up_an_IMAPS_and_SMTPS_mail_server_with_Postfix_and_Dovecot.html
+Format      : 	Markdown/HTML
 ---
 
 

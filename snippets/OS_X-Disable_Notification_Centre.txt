@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	OS X: Disable Notification Center
-Author   : 	Remy van Elst
-Date     : 	10-07-2013
-URL      : 	https://raymii.org/s/snippets/OS_X-Disable_Notification_Centre.html
-Format   : 	Markdown/HTML
+Title       : 	OS X: Disable Notification Center
+Author      : 	Remy van Elst
+Date        : 	10-07-2013
+URL         : 	https://raymii.org/s/snippets/OS_X-Disable_Notification_Centre.html
+Format      : 	Markdown/HTML
 ---
 
 

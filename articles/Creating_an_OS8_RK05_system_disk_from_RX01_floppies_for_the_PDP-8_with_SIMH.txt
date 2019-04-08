@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)
-Author   : 	Remy van Elst
-Date     : 	07-12-2016
-URL      : 	https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html
-Format   : 	Markdown/HTML
+Title       : 	Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)
+Author      : 	Remy van Elst
+Date        : 	07-12-2016
+URL         : 	https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html
+Format      : 	Markdown/HTML
 ---
 
 

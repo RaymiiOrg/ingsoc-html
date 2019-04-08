@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Introduction to DokuWiki
-Author   : 	Remy van Elst
-Date     : 	15-06-2011
-URL      : 	https://raymii.org/s/tutorials/Dokuwiki_Overview.html
-Format   : 	Markdown/HTML
+Title       : 	Introduction to DokuWiki
+Author      : 	Remy van Elst
+Date        : 	15-06-2011
+URL         : 	https://raymii.org/s/tutorials/Dokuwiki_Overview.html
+Format      : 	Markdown/HTML
 ---
 
 

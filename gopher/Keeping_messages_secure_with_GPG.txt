@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Keep messages secure with GPG
-Author   : 	Ben Everard
-Date     : 	22-03-2015
-URL      : 	https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html
-Format   : 	Markdown/HTML
+Title       : 	Keep messages secure with GPG
+Author      : 	Ben Everard
+Date        : 	22-03-2015
+URL         : 	https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html
+Format      : 	Markdown/HTML
 ---
 
 

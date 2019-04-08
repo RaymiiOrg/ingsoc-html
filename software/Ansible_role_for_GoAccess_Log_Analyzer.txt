@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Ansible playbook for GoAccess Log Analyzer
-Author   : 	Remy van Elst
-Date     : 	17-01-2016
-URL      : 	https://raymii.org/s/software/Ansible_role_for_GoAccess_Log_Analyzer.html
-Format   : 	Markdown/HTML
+Title       : 	Ansible playbook for GoAccess Log Analyzer
+Author      : 	Remy van Elst
+Date        : 	17-01-2016
+URL         : 	https://raymii.org/s/software/Ansible_role_for_GoAccess_Log_Analyzer.html
+Format      : 	Markdown/HTML
 ---
 
 

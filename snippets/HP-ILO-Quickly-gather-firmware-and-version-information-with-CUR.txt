@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	HP ILO - Quickly gather ILO version and firmware information via CURL
-Author   : 	Remy van Elst
-Date     : 	13-04-2013
-URL      : 	https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html
-Format   : 	Markdown/HTML
+Title       : 	HP ILO - Quickly gather ILO version and firmware information via CURL
+Author      : 	Remy van Elst
+Date        : 	13-04-2013
+URL         : 	https://raymii.org/s/snippets/HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.html
+Format      : 	Markdown/HTML
 ---
 
 

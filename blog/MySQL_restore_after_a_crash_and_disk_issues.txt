@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	MySQL restore after a crash and disk issues
-Author   : 	Remy van Elst
-Date     : 	10-10-2016
-URL      : 	https://raymii.org/s/blog/MySQL_restore_after_a_crash_and_disk_issues.html
-Format   : 	Markdown/HTML
+Title       : 	MySQL restore after a crash and disk issues
+Author      : 	Remy van Elst
+Date        : 	10-10-2016
+URL         : 	https://raymii.org/s/blog/MySQL_restore_after_a_crash_and_disk_issues.html
+Format      : 	Markdown/HTML
 ---
 
 

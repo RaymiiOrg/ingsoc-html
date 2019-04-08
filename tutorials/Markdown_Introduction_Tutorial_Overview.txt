@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Introduction to Markdown
-Author   : 	Remy van Elst
-Date     : 	12-06-2011
-URL      : 	https://raymii.org/s/tutorials/Markdown_Introduction_Tutorial_Overview.html
-Format   : 	Markdown/HTML
+Title       : 	Introduction to Markdown
+Author      : 	Remy van Elst
+Date        : 	12-06-2011
+URL         : 	https://raymii.org/s/tutorials/Markdown_Introduction_Tutorial_Overview.html
+Format      : 	Markdown/HTML
 ---
 
 

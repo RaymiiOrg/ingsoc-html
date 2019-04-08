@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Customize your Clonezilla Live CD
-Author   : 	Remy van Elst
-Date     : 	01-01-2010
-URL      : 	https://raymii.org/s/tutorials/Customize-your-clonezilla-live-CD.html
-Format   : 	Markdown/HTML
+Title       : 	Customize your Clonezilla Live CD
+Author      : 	Remy van Elst
+Date        : 	01-01-2010
+URL         : 	https://raymii.org/s/tutorials/Customize-your-clonezilla-live-CD.html
+Format      : 	Markdown/HTML
 ---
 
 

@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Olimex OlinuXino A20 LIME2 mainline 4.0.0 kernel, u-boot and debian rootfs image building tutorial
-Author   : 	Remy van Elst
-Date     : 	21-03-2015
-URL      : 	https://raymii.org/s/articles/Olimex_OlinuXino_A20_Lime2_Kernel_3.19_uBoot_Debian_7_image_building.html
-Format   : 	Markdown/HTML
+Title       : 	Olimex OlinuXino A20 LIME2 mainline 4.0.0 kernel, u-boot and debian rootfs image building tutorial
+Author      : 	Remy van Elst
+Date        : 	21-03-2015
+URL         : 	https://raymii.org/s/articles/Olimex_OlinuXino_A20_Lime2_Kernel_3.19_uBoot_Debian_7_image_building.html
+Format      : 	Markdown/HTML
 ---
 
 

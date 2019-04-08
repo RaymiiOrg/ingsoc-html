@@ -1,10 +1,10 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title    : 	Vim Cheatsheet
-Author   : 	Remy van Elst
-Date     : 	01-01-2007
-URL      : 	https://raymii.org/s/snippets/Vim_Cheatsheet.html
-Format   : 	Markdown/HTML
+Title       : 	Vim Cheatsheet
+Author      : 	Remy van Elst
+Date        : 	01-01-2007
+URL         : 	https://raymii.org/s/snippets/Vim_Cheatsheet.html
+Format      : 	Markdown/HTML
 ---
 
 
