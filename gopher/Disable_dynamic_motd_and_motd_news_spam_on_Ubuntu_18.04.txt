@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Disable motd news or (parts of) the dynamic motd on Ubuntu
 Author      : 	Remy van Elst
 Date        : 	18-03-2019
+Last update : 	19-03-2019
 URL         : 	https://raymii.org/s/tutorials/Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html
 Format      : 	Markdown/HTML
 ---
