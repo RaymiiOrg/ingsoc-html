@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-04-09T09:25:29	/	localhost	70
+i            2019-04-10T08:20:19	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -27,5 +27,7 @@ i 	/	localhost	70
 1Michael Lazar's gopherspace (creator of the HN gopher site)	/	mozz.us	70
 1Gopher blog (phlog) aggregator	/en/bongusta	i-logout.cz	70
 1Matto's Gopherspace	/	box.matto.nl	70
+1Recent Gopher sites via Floodgap	/new	gopher.floodgap.com	70
+1Invisible Up	/	invisibleup.com	70
 i 	/	localhost	70
 1This server runs on Pygopherd	/devel/gopher/pygopherd	gopher.quux.org	70
