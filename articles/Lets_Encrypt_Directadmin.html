@@ -59,7 +59,7 @@
                 <div class="inner">
                 <div id="main"></div>
 
-           <h2 class='headheader' id='main'>Let's Encrypt with DirectAdmin or other Web Control Panels</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/articles.html" class="link">Articles</a></li><li><a href="Lets_Encrypt_Directadmin.html" class="link">Let's Encrypt with DirectAdmin or other Web Control Panels</a></li></ul><p><small>Published: 10-12-2015</small> | <small>Remy van Elst</small> | <a href="Lets_Encrypt_Directadmin.txt" class="link">Text only version of this article</a></p><div class='ad'>
+           <h2 class='headheader' id='main'>Let's Encrypt with DirectAdmin or other Web Control Panels</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/articles.html" class="link">Articles</a></li><li><a href="Lets_Encrypt_Directadmin.html" class="link">Let's Encrypt with DirectAdmin or other Web Control Panels</a></li></ul><p><small>Published: 11-1-2015</small> | <small>Last update: 24-02-2016</small> | <small>Remy van Elst</small> | <a href="Lets_Encrypt_Directadmin.txt" class="link">Text only version of this article</a></p><div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -69,9 +69,17 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Let&#39;s Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let&#39;s Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let&#39;s Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Let&#39;s Encrypt is a new certificate authority, recognized by all major browsers.
+They make it a breeze to set up TLS certificates for your web server. And for
+free! Let&#39;s Encrypt is supported by major players like Mozilla, Akamai, Cisco,
+the EFF, the Internet Security Research Group and others. Let&#39;s Encrypt provides
+free, automatic and secure certificates so that every website can be secured
+with an SSL certificate. </p>
 
-<p><strong>Note: Directadmin has this build in since version 1.50. <a href="https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html">I&#39;ve written a new guide to set it up via the built in automatic way here</a>. This article is still relevant for the manual way or other controlpanels, but the automatic way is way more easy.</strong></p>
+<p>**Note: Directadmin has this build in since version 1.50. <a href="https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html">I&#39;ve written a new
+**guide to set it up via the built in automatic way here</a>. This article is
+**still relevant for the manual way or other controlpanels, but the automatic
+<strong>way is way more easy.</strong></p>
 
 <p>Changelog:</p>
 
@@ -83,23 +91,47 @@
 <li>07-11-2015: first tutorial</li>
 </ul>
 
-<p>This article shows you how to setup Let&#39;s Encrypt with the DirectAdmin web control panel. The guide is generic, so it works for other controlpanels as well. </p>
+<p>This article shows you how to setup Let&#39;s Encrypt with the DirectAdmin web
+control panel. The guide is generic, so it works for other controlpanels as
+well. </p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)</a> </p>
 
-<p>First we talk a little bit on what Let&#39;s Encrypt is and how it works. We close off with the actual certificate generation and installation.</p>
+<p>First we talk a little bit on what Let&#39;s Encrypt is and how it works. We close
+off with the actual certificate generation and installation.</p>
 
-<p>For now it works with the beta, and required some linux knowledge and root access to the hosting server. So this guide might change later on when the final version is released. Also, Let&#39;s Encrypt tries to be as automatic as possible. It however is not able to update the Apache (webserver) configuration for Directadmin just yet. We therefore manually generate the certificate and use Directadmin to place it under a website.</p>
+<p>For now it works with the beta, and required some linux knowledge and root
+access to the hosting server. So this guide might change later on when the final
+version is released. Also, Let&#39;s Encrypt tries to be as automatic as possible.
+It however is not able to update the Apache (webserver) configuration for
+Directadmin just yet. We therefore manually generate the certificate and use
+Directadmin to place it under a website.</p>
 
-<p>In the future this will hopefully be automated away. We do symlink the certificate files after creation so that will make renewing them easier.</p>
+<p>In the future this will hopefully be automated away. We do symlink the
+certificate files after creation so that will make renewing them easier.</p>
 
-<p>This guide also works for any generic web service where you need a certificate (PEM) and a private key (PEM) file. The tutorial uses the <code>certOnly</code> option which gets us these files. You can skip the DirectAdmin part and place (symlink) the files in your Apache, NGINX or Lighttpd configuration and be done with it.</p>
+<p>This guide also works for any generic web service where you need a certificate
+(PEM) and a private key (PEM) file. The tutorial uses the <code>certOnly</code> option
+which gets us these files. You can skip the DirectAdmin part and place (symlink)
+the files in your Apache, NGINX or Lighttpd configuration and be done with it.</p>
 
 <h3>What is Let&#39;s Encrypt</h3>
 
-<p>Let&#39;s Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let&#39;s Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let&#39;s Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. </p>
+<p>Let&#39;s Encrypt is a new certificate authority, recognized by all major browsers.
+They make it a breeze to set up TLS certificates for your web server. And for
+free! Let&#39;s Encrypt is supported by major players like Mozilla, Akamai, Cisco,
+the EFF, the Internet Security Research Group and others. Let&#39;s Encrypt provides
+free, automatic and secure certificates so that every website can be secured
+with an SSL certificate. </p>
 
-<p>For Let&#39;s Encrypt to issue you a certificate, you must prove to them that you control the domain. If we own the domain, we can do this with a series of <a href="https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication">challenge-response</a> transactions, which is part of the <a href="https://github.com/letsencrypt/acme-spec">ACME protocol</a>. Let&#39;s Encrypt <a href="https://letsencrypt.org/howitworks/technology/">explains this process well</a>.</p>
+<p>For Let&#39;s Encrypt to issue you a certificate, you must prove to them that you
+control the domain. If we own the domain, we can do this with a series of
+<a href="https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication">challenge-response</a>
+transactions, which is part of the <a href="https://github.com/letsencrypt/acme-spec">ACME
+protocol</a>. Let&#39;s Encrypt <a href="https://letsencrypt.org/howitworks/technology/">explains
+this process well</a>.</p>
 
 <p>With the ACME protocol there is an automated way to securely generate, renew and revoke certificates.</p>
 
@@ -122,7 +154,7 @@
 
 <p>Let&#39;s Encrypt is in beta right now. This means it might not work, or might not work as expected. So don&#39;t use it on production just yet. </p>
 
-<p>If you really need an SSL certificate, https://gogetssl.com provides the cheapest ones, $3 something for a whole year comodo domain validation certificate. Other providers as well, no sponsoring here. (no referral link)</p>
+<p>If you really need an SSL certificate, <a href="https://gogetssl.com">GoGetSSL</a> provides the cheapest ones, $3 something for a whole year comodo domain validation certificate. Other providers as well, no sponsoring here. (no referral link)</p>
 
 <p>Since the 3rd of december 2015 the closed beta is over and you don&#39;t need an invite anymore. There are limit&#39;s on the API though:</p>
 
@@ -131,11 +163,15 @@
 <li>Rate limit on certificates per Domain: 5 per 7 days</li>
 </ul>
 
-<del>Read the article here on the beta program: [https://community.letsencrypt.org/t/beta-program-announcements/1631](https://community.letsencrypt.org/t/beta-program-announcements/1631) and follow the instructions to sign up. I've got my invitation about 3 days after I signed up, yours might be faster.<del>
+<del>Read the article here on the beta program: [https://community.letsencrypt.org/t/beta-program-announcements/1631][6] and follow the instructions to sign up. I've got my invitation about 3 days after I signed up, yours might be faster.<del>
 
 ### Installing the Let's Encrypt Client
 
-The installation is pretty straightforward. It does require SSH access to your Directadmin host, so that might not be available if you're on a shared hosting server. There is a manual way to authenticate the domain, that is also explained. You can run the client somewhere else and place the result, via SFTP, on your shared hosting account to complete the challenge.
+The installation is pretty straightforward. It does require SSH access to your
+Directadmin host, so that might not be available if you're on a shared hosting
+server. There is a manual way to authenticate the domain, that is also
+explained. You can run the client somewhere else and place the result, via SFTP,
+on your shared hosting account to complete the challenge.
 
 First make sure you have git installed:
 
@@ -149,23 +185,33 @@ Clone the Let's Encrypt code:
     git clone https://github.com/letsencrypt/letsencrypt
     cd letsencrypt
 
-Since December 2015 the client supports the `--webroot` option, so your webserver doesn't need to be brought down. 
+Since December 2015 the client supports the `--webroot` option, so your
+webserver doesn't need to be brought down. 
 
-<!-- The below part doesn't apply anymore.
+The below part doesn't apply anymore.
 
-<del>Now, Let's Encrypt binds to the HTTP port (80) to do the Domain Validatiopn sequence. You must stop your web server for a few moments to do this. Your website will be offline, but it will be for a minute at max. </del>
+<del>Now, Let's Encrypt binds to the HTTP port (80) to do the Domain Validatiopn
+sequence. You must stop your web server for a few moments to do this. Your
+website will be offline, but it will be for a minute at max. </del>
 
-<del>Directadmin also has a service monitor where we must indicate that HTTPD is offline, otherwise it will restart it and the process might fail:</del>
+<del>Directadmin also has a service monitor where we must indicate that HTTPD is
+offline, otherwise it will restart it and the process might fail:</del>
 
 <pre><code>sed -i &#39;s/httpd=ON/httpd=OFF/g&#39; /usr/local/directadmin/data/admin/services.status
 service httpd stop
 </code></pre>
 
-<p><del>If you don&#39;t want or are not able to take down all sites or bind to port 80, scroll down below for a manual command.</del> --&gt;</p>
+<del>If you don't want or are not able to take down all sites or bind to port
+80, scroll down below for a manual command.</del>
 
-<p>If you are not able to execute the client on the actual webserver, a shared hosting account without ssh or are behind a firewall or loadbalancer, read on below for a manual method.</p>
+<p>If you are not able to execute the client on the actual webserver, a shared
+hosting account without ssh or are behind a firewall or loadbalancer, read on
+below for a manual method.</p>
 
-<p>You need to provide your webroot path. The client places the authentication challenge files there to do the actual certificate domain ownership validation. You can find that in your webserver configuration. For directadmin it&#39;s like this: <code>/home/USERNAME/domains/DOMAIN.EXT/public_html</code>.</p>
+<p>You need to provide your webroot path. The client places the authentication
+challenge files there to do the actual certificate domain ownership validation.
+You can find that in your webserver configuration. For directadmin it&#39;s like
+this: <code>/home/USERNAME/domains/DOMAIN.EXT/public_html</code>.</p>
 
 <p>Also don&#39;t forget to fill in your correct email address.</p>
 
@@ -174,11 +220,16 @@ service httpd stop
 <pre><code>./letsencrypt-auto --server https://acme-v01.api.letsencrypt.org/directory certonly --agree-tos --email &#39;user@domain.tld&#39; --webroot --webroot-path &#39;/home/certmon/domains/certificatemonitor.org/public_html/&#39; -d certificatemonitor.org -d www.certificatemonitor.org
 </code></pre>
 
-<p>If you are using an older Python version, for example Python 2.6 on CentOS 6, add the <code>--debug</code> option as the client will tell you.</p>
+<p>If you are using an older Python version, for example Python 2.6 on CentOS 6,
+add the <code>--debug</code> option as the client will tell you.</p>
 
-<p>If you need a certificate with multiple subdomains or with <code>www.domain.tld</code> and <code>domain.tld</code>, specify the <code>-d domain</code> option multiple times. Make sure the webroot is the same. If you only need one domain, change the example and remove the last <code>-d</code> option.</p>
+<p>If you need a certificate with multiple subdomains or with <code>www.domain.tld</code> and
+<code>domain.tld</code>, specify the <code>-d domain</code> option multiple times. Make sure the
+webroot is the same. If you only need one domain, change the example and remove
+the last <code>-d</code> option.</p>
 
-<p>The client will then do a bit of work with the Lets Encrypt service to validate domain ownership.</p>
+<p>The client will then do a bit of work with the Lets Encrypt service to validate
+domain ownership.</p>
 
 <p>If all goes well it will print out the below message:</p>
 
@@ -198,24 +249,26 @@ IMPORTANT NOTES:
 
 <p>If not, try again. Otherwise you might be hit by a beta bug.</p>
 
-<!-- 
-Now turn on the webserver:
+<p>Now turn on the webserver:</p>
 
-    sed -i 's/httpd=OFF/httpd=ON/g' /usr/local/directadmin/data/admin/services.status
-    service httpd start
+<pre><code>sed -i &#39;s/httpd=OFF/httpd=ON/g&#39; /usr/local/directadmin/data/admin/services.status
+service httpd start
+</code></pre>
 
--->
-
-<p>I had to disable the CloudFlare protection service, before that I got the following error:</p>
+<p>I had to disable the CloudFlare protection service, before that I got the
+following error:</p>
 
 <pre><code>FailedChallenges: Failed authorization procedure. www.certificatemonitor.org (dvsni): tls :: The server experienced a TLS error during DV :: Failed to connect to host for DVSNI challenge, certificatemonitor.org (dvsni): tls :: The server experienced a TLS error during DV :: Failed to connect to host for DVSNI challenge
 </code></pre>
 
-<p>You now have the certificate from Let&#39;s Encrypt. Lets proceed with the installation.</p>
+<p>You now have the certificate from Let&#39;s Encrypt. Lets proceed with the
+installation.</p>
 
 <h3>Manual mode</h3>
 
-<p>If you have a loadbalancer or something else where you run the client NOT on the actual webserver, you can use the <code>-a manual</code> command line flag. You enter your email and domain, then the program displays the following:</p>
+<p>If you have a loadbalancer or something else where you run the client NOT on the
+actual webserver, you can use the <code>-a manual</code> command line flag. You enter your
+email and domain, then the program displays the following:</p>
 
 <pre><code>Make sure your web server displays the following content at
 http://www.certificatemonitor.org/.well-known/acme-challenge/1Qm[...]NHr0 before continuing:
@@ -238,14 +291,20 @@ s = BaseHTTPServer.HTTPServer((&#39;&#39;, 80), SimpleHTTPServer.SimpleHTTPReque
 s.serve_forever()&quot; 
 </code></pre>
 
-<p>You need not to press ENTER just yet. Create or upload the page requested to your domain and test it in a browser (via SFTP, for example). You might want to use the python command. You can also use <code>curl</code>:</p>
+<p>You need not to press ENTER just yet. Create or upload the page requested to
+your domain and test it in a browser (via SFTP, for example). You might want to
+use the python command. You can also use <code>curl</code>:</p>
 
 <pre><code>curl http://www.certificatemonitor.org/.well-known/acme-challenge/1Qm[...]NHr0
 </code></pre>
 
-<p>If you get the requested string back you&#39;re good to go. Press ENTER on the prompt and the validation will occur. If you placed the file on the correct place, it will succeed with the same output as above. If it failed, you will receive an <code>Authorization Error</code>.</p>
+<p>If you get the requested string back you&#39;re good to go. Press ENTER on the
+prompt and the validation will occur. If you placed the file on the correct
+place, it will succeed with the same output as above. If it failed, you will
+receive an <code>Authorization Error</code>.</p>
 
-<p>If you use the python script or watch your logs, you&#39;ll see something like this doing the verification:</p>
+<p>If you use the python script or watch your logs, you&#39;ll see something like this
+doing the verification:</p>
 
 <pre><code>outbound1.letsencrypt.org - - [07/Nov/2015 15:34:01] &quot;GET /.well-known/acme-challenge/1Qm[...]Hr0 HTTP/1.1&quot; 200 -
 </code></pre>
@@ -254,7 +313,9 @@ s.serve_forever()&quot;
 
 <h3>Installing the certificates</h3>
 
-<p>We generated a certificate, Let&#39;s Encrypt validated us and returned the certificates, all automatically. The certificates are placed on your system and you can check them with the following command:</p>
+<p>We generated a certificate, Let&#39;s Encrypt validated us and returned the
+certificates, all automatically. The certificates are placed on your system and
+you can check them with the following command:</p>
 
 <pre><code>ls -la /etc/letsencrypt/live/certificatemonitor.org/
 </code></pre>
@@ -269,9 +330,13 @@ lrwxrwxrwx 1 root root   47 Nov  7 07:34 chain.pem -&gt; ../../archive/certifica
 lrwxrwxrwx 1 root root   46 Nov  7 07:34 cert.pem -&gt; ../../archive/certificatemonitor.org/cert2.pem
 </code></pre>
 
-<p>As we can see they symlinked the files there. If you configure your own webserver manually, you can give these files as the location in your apace or nginx config. When you renew the certificate later on, you don&#39;t have to update the webserver config, just a reload/restart. </p>
+<p>As we can see they symlinked the files there. If you configure your own
+webserver manually, you can give these files as the location in your apace or
+nginx config. When you renew the certificate later on, you don&#39;t have to update
+the webserver config, just a reload/restart. </p>
 
-<p>Get the contents of the certificate, private key and chain with the following commands. Remember to replace certificatemonitor.org with your domain:</p>
+<p>Get the contents of the certificate, private key and chain with the following
+commands. Remember to replace certificatemonitor.org with your domain:</p>
 
 <pre><code>cat /etc/letsencrypt/live/certificatemonitor.org/cert.pem
 cat /etc/letsencrypt/live/certificatemonitor.org/privkey.pem
@@ -280,47 +345,75 @@ cat /etc/letsencrypt/live/certificatemonitor.org/chain.pem
 
 <p>Save the contents in a text editor somewhere, you need these in DirectAdmin.</p>
 
-<p>After you&#39;ve installed the certificates in the controlpanel (DirectAdmin), we need to symlink those files to the Lets Encrypt files so that auto renewal works better. We do need to first install them via the control panel so that the configuration gets updated in the correct way. Most controlpanels overwrite manual changes.</p>
+<p>After you&#39;ve installed the certificates in the controlpanel (DirectAdmin), we
+need to symlink those files to the Lets Encrypt files so that auto renewal works
+better. We do need to first install them via the control panel so that the
+configuration gets updated in the correct way. Most controlpanels overwrite
+manual changes.</p>
 
-<p>Login to your Directadmin control panel and navigate to your website. Under &quot;Advanced Features&quot; click &quot;SSL Certificates&quot;. </p>
+<p>Login to your Directadmin control panel and navigate to your website. Under
+&quot;Advanced Features&quot; click &quot;SSL Certificates&quot;. </p>
 
-<p>Select the radio button for the <code>Paste a pre-generated certificate and key</code> option. In the textfield below, first paste the contents of the <code>cert.pem</code> file. Below that, paste the contents of the <code>privkey.pem</code> file.</p>
+<p>Select the radio button for the <code>Paste a pre-generated certificate and key</code>
+option. In the textfield below, first paste the contents of the <code>cert.pem</code> file.
+Below that, paste the contents of the <code>privkey.pem</code> file.</p>
 
 <p><img src="https://raymii.org/s/inc/img/le-da-1.png"></p>
 
-<p>Click the Save button. Now go back to the main domain screen, and navigate to &quot;Advanced Features&quot; --&gt; &quot;SSL Certificates&quot; again. Scroll down and open the link <code>Click Here to paste a CA Root Certificate</code>. Mark the checkbox <code>Use a CA Cert.</code> and paste the contents of the <code>chain.pem</code> file there:</p>
+<p>Click the Save button. Now go back to the main domain screen, and navigate to
+&quot;Advanced Features&quot; --&gt; &quot;SSL Certificates&quot; again. Scroll down and open the link
+<code>Click Here to paste a CA Root Certificate</code>. Mark the checkbox <code>Use a CA Cert.
+</code> and paste the contents of the <code>chain.pem</code> file there:</p>
 
 <p><img src="https://raymii.org/s/inc/img/le-da-2.png"></p>
 
 <p>Click the Save button.</p>
 
-<p>If you haven&#39;t already enabled SSL for your domain, do that now. Navigate to the main domain screen. Click &quot;Domain Setup&quot;. Open your domain. Mark the <code>Secure SSL</code> checkbox and click the Save button. Now, under <code>private_html setup for certificatemonitor.org - (SSL must be enabled above)</code> mark the radio button <code>Use a symbolic link from private_html to public_html - allows for same data in http and https</code> and click the save button again:</p>
+<p>If you haven&#39;t already enabled SSL for your domain, do that now. Navigate to the
+main domain screen. Click &quot;Domain Setup&quot;. Open your domain. Mark the <code>Secure
+SSL</code> checkbox and click the Save button. Now, under <code>private_html setup for
+certificatemonitor.org - (SSL must be enabled above)</code> mark the radio button <code>Use
+a symbolic link from private_html to public_html - allows for same data in http
+and https</code> and click the save button again:</p>
 
 <p><img src="https://raymii.org/s/inc/img/le-da-3.png"></p>
 
-<p>Now navigate to <code>https://yourdomain</code> and behold Let&#39;s Encrypt in all it&#39;s glory. Well, actually, you should just see your own website with a valid SSL certificate:</p>
+<p>Now navigate to <code>https://yourdomain</code> and behold Let&#39;s Encrypt in all it&#39;s glory.
+Well, actually, you should just see your own website with a valid SSL
+certificate:</p>
 
 <p><img src="https://raymii.org/s/inc/img/le-valid.png"></p>
 
-<p>You can check it with an SSL validator like <a href="https://ssllabs.com/">the SSL server test from qually labs</a> or my own SSL test: <a href="https://ssldecoder.org">https://ssldecoder.org</a>.</p>
+<p>You can check it with an SSL validator like <a href="https://ssllabs.com/">the SSL server test from qually
+labs</a> or my own SSL test:
+<a href="https://ssldecoder.org">https://ssldecoder.org</a>.</p>
 
-<p>Make sure to also setup a secure cipherlist and other secure SSL settings. Read up on the current best practice here: <a href="https://cipherli.st">https://cipherli.st</a>.</p>
+<p>Make sure to also setup a secure cipherlist and other secure SSL settings. Read
+up on the current best practice here:
+<a href="https://cipherli.st">https://cipherli.st</a>.</p>
 
-<p>For other Control Panels, like cPanel, VestaCP, Plesk and Webmin, this process is the same. Look up their documentation on installing a certificate, and use the files Let&#39;s Encrypt generated for you.</p>
+<p>For other Control Panels, like cPanel, VestaCP, Plesk and Webmin, this process
+is the same. Look up their documentation on installing a certificate, and use
+the files Let&#39;s Encrypt generated for you.</p>
 
-<p>We&#39;re now going to symlink the certificates so that auto renewal works when the Let&#39;s Encrypt client supports it. Because we symlink, the files will be updated automatically. We do need to first install the certificates the control-panel way, otherwise our manual changes might be overwritten.</p>
+<p>We&#39;re now going to symlink the certificates so that auto renewal works when the
+Let&#39;s Encrypt client supports it. Because we symlink, the files will be updated
+automatically. We do need to first install the certificates the control-panel
+way, otherwise our manual changes might be overwritten.</p>
 
-<p>You need to check the apache configuration to find the certificate file paths. Use <code>httpd -S</code> to get the current configuration in use. Some distro&#39;s use <code>apachectl -S</code> instead of `httpd -S&#39;:</p>
+<p>You need to check the apache configuration to find the certificate file paths.
+Use <code>httpd -S</code> to get the current configuration in use. Some distro&#39;s use
+<code>apachectl -S</code> instead of <code>httpd -S</code>: </p>
 
-<pre><code>httpd -S 2&gt;&amp;1 | grep 443 | grep certificatemonitor
-</code></pre>
+<p>httpd -S 2&gt;&amp;1 | grep 443 | grep certificatemonitor</p>
 
 <p>Example output:</p>
 
 <pre><code>port 443 namevhost www.certificatemonitor.org (/usr/local/directadmin/data/users/certmon/httpd.conf:55)
 </code></pre>
 
-<p>Use the following command to get the SSL certificate file locations from the config file:</p>
+<p>Use the following command to get the SSL certificate file locations from the
+config file:</p>
 
 <pre><code>grep SSL /usr/local/directadmin/data/users/certmon/httpd.conf
 </code></pre>
@@ -333,7 +426,8 @@ SSLCertificateKeyFile /usr/local/directadmin/data/users/certmon/domains/certific
 SSLCACertificateFile /usr/local/directadmin/data/users/certmon/domains/certificatemonitor.org.cacert
 </code></pre>
 
-<p>With the following commands we symlink the certificates to the Let&#39;s Encrypt path:</p>
+<p>With the following commands we symlink the certificates to the Let&#39;s Encrypt
+path:</p>
 
 <pre><code># remember, ln -s syntax is: ln -s /path/to/file /path/to/symlink
 ln -s /etc/letsencrypt/live/certificatemonitor.org/cert.pem /usr/local/directadmin/data/users/certmon/domains/certificatemonitor.org.cert
@@ -341,23 +435,39 @@ ln -s /etc/letsencrypt/live/certificatemonitor.org/privkey.pem /usr/local/direct
 ln -s /etc/letsencrypt/live/certificatemonitor.org/chain.pem /usr/local/directadmin/data/users/certmon/domains/certificatemonitor.org.cacert 
 </code></pre>
 
-<p>If you get an error about a file already existing, remove the files first before creating the symlink.</p>
+<p>If you get an error about a file already existing, remove the files first before
+creating the symlink.</p>
 
-<p>Tha&#39;s it! You&#39;re done, you&#39;ve installed a valid Lets Encrypt certificate for your domain. Awesome!.</p>
+<p>Tha&#39;s it! You&#39;re done, you&#39;ve installed a valid Lets Encrypt certificate for
+your domain. Awesome!.</p>
 
 <p>Just one more important thing. </p>
 
 <h3>Renewing your certificate</h3>
 
-<p>After 90 day&#39;s, your certificate expires. With Let&#39;s Encrypt, that is not a problem. Why? Because the goal of the project is to automate this whole process. When the product is finished and out of beta, it will renew the certificate automatically when it is about to expire, so you don&#39;t have to do anything.</p>
+<p>After 90 day&#39;s, your certificate expires. With Let&#39;s Encrypt, that is not a
+problem. Why? Because the goal of the project is to automate this whole process.
+When the product is finished and out of beta, it will renew the certificate
+automatically when it is about to expire, so you don&#39;t have to do anything.</p>
 
-<p>For now, that is not the case, since we&#39;re running the beta. Your certificate will expire in 90 days. Make sure to setup a reminder in your calendar a few days before, or use my certificate expiry reminder service: <a href="https://certificatemonitor.org/">https://certificatemonitor.org/</a>. (That will send you a few mails before your certificate expires).</p>
+<p>For now, that is not the case, since we&#39;re running the beta. Your certificate
+will expire in 90 days. Make sure to setup a reminder in your calendar a few
+days before, or use my certificate expiry reminder service:
+<a href="https://certificatemonitor.org/">https://certificatemonitor.org/</a>. (That will send you a few mails before
+your certificate expires).</p>
 
-<p>When the 90 days are almost up, come back to this page and execute the Let&#39;s Encrypt command again with the correct domain and webroot options. You&#39;ll be asked if you want to renew, agree, and the certificate will be renewed. Then restart the webserver via a <code>service httpd restart</code>. Repeat is for all certificates.</p>
+<p>When the 90 days are almost up, come back to this page and execute the Let&#39;s
+Encrypt command again with the correct domain and webroot options. You&#39;ll be
+asked if you want to renew, agree, and the certificate will be renewed. Then
+restart the webserver via a <code>service httpd restart</code>. Repeat is for all
+certificates.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)</a> </p>
 
-<p>If you still have any questions or suggestions, shoot me a message. Check the About page for my details.</p>
+<p>If you still have any questions or suggestions, shoot me a message. Check the
+About page for my details.</p>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/centos.html" class="link">centos &nbsp;</a><a href="../tags/certificate.html" class="link">certificate &nbsp;</a><a href="../tags/cpanel.html" class="link">cpanel &nbsp;</a><a href="../tags/directadmin.html" class="link">directadmin &nbsp;</a><a href="../tags/nginx.html" class="link">nginx &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/plesk.html" class="link">plesk &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

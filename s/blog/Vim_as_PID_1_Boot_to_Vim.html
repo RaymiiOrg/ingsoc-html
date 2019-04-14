@@ -1,0 +1,267 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Boot to Vim, Vim as Pid 1 - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Boot to Vim, Vim as Pid 1</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="Vim_as_PID_1_Boot_to_Vim.html" class="link">Boot to Vim, Vim as Pid 1</a></li></ul><p><small>Published: 18-09-2014</small> | <small>Remy van Elst</small> | <a href="Vim_as_PID_1_Boot_to_Vim.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/boot-to-vim-1.png" alt="image" /></p>
+
+<p>This is a response on a great article from <a href="http://www.informatimago.com/index.html">Pascal
+Bourguignon</a>, namely how to run 
+<a href="http://www.informatimago.com/linux/emacs-on-user-mode-linux.html?raymii.org">Emacsas PID
+1</a>.</p>
+
+<p>As we all know, nobody uses emacs. </p>
+
+<p>The above statement is ment to start a flamewar. Please do so, see the contact
+page to contact me. </p>
+
+<p>No, all joking aside, I found it to be a good article and wanted to see how I
+could do that with Vim. Not in User Mode Linux, but by creating an actual ISO.
+Boot to Vim, as you might want to call it.</p>
+
+<p>This is actually fairly simple. Compile vim statically, set it as <code>init=</code> at
+boot and you&#39;re done. </p>
+
+<p>We are going to use small (9MB) distro named <a href="http://distro.ibiblio.org/tinycorelinux/">Tiny Core, Core edition</a> 
+and customize that to boot right into our static build of Vim.</p>
+
+<p>If you like this article and want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a>   </p>
+
+<h3>Building Vim</h3>
+
+<p>Please read and follow my <a href="https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html">tutorial on building a statically linked Vim</a>. 
+This will give you an executable we will use later on in the tutorial.</p>
+
+<h3>Preparation</h3>
+
+<p>You will need a few tools to build the ISO, namely <code>cpio</code>, <code>tar</code>, <code>gzip</code>,
+<code>advdef</code> and <code>mkisofs</code>. These can probably be installed with your package
+manager. Please do that first.</p>
+
+<p>First create a folder for building:</p>
+
+<pre><code>mkdir vim-as-pid-1
+cd vim-as-pid-1
+</code></pre>
+
+<p>Also create a few folders for the ISO build:</p>
+
+<pre><code>mkdir /tmp/isomount
+mkdir extract
+</code></pre>
+
+<p>Download the latest Tiny Core, Core edition (without GUI):</p>
+
+<pre><code>wget http://distro.ibiblio.org/tinycorelinux/5.x/x86/release/Core-current.iso
+</code></pre>
+
+<p>Copy the files from the ISO:</p>
+
+<pre><code>mount Core-current.iso /tmp/isomount/ -o loop,ro
+
+cp -a /tmp/isomount/boot /tmp/
+</code></pre>
+
+<p>This creates a <code>/tmp/boot</code> folder with the <code>core.gz</code> and boot loader. Don&#39;t
+forget to umount it:</p>
+
+<pre><code>umount /tmp/isomount
+</code></pre>
+
+<p>We will use the <code>/tmp/boot</code> folder later on when putting back together the ISO.</p>
+
+<h3>Changing the ISO</h3>
+
+<p>Go into the folder where we will extract the <code>core.gz</code> root filesystem:</p>
+
+<pre><code>cd extract
+</code></pre>
+
+<p>Use <code>zcat</code> and <code>cpio</code> to extract the <code>core.gz</code> rootfs:</p>
+
+<pre><code>zcat /tmp/boot/core.gz | cpio -i -H newc -d
+</code></pre>
+
+<p>We now have an extracted root filesystem:</p>
+
+<pre><code># ls
+bin  dev  etc  home  init  lib  linuxrc  mnt  opt  proc  root  run  sbin  sys  tmp  usr  var
+</code></pre>
+
+<p>Place the <a href="https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html">earlier built static Vim</a> in the <code>bin/</code> folder:</p>
+
+<pre><code>cp ~/vim bin/
+</code></pre>
+
+<p>You can do more customizations, for example, editing the boot loader message.
+That is in a file named <code>boot.msg</code> in <code>/tmp/boot/isolinux/</code>:</p>
+
+<pre><code># vim /tmp/boot/isolinux/boot.msg
+^L
+  _
+ ( -   Boot to Vim
+ //\   Vim as Pid 1, because Awesome!
+ v_/_  https://raymii.org/
+
+Press &lt;Enter&gt; to begin or F2, F3, or F4 to view boot options.
+</code></pre>
+
+<h3>Changing the inittab</h3>
+
+<p>To boot in to Vim right away we need to change the init configuration. Edit the
+following file:</p>
+
+<pre><code>vim etc/inittab
+</code></pre>
+
+<p>Change the following lines:</p>
+
+<pre><code>::sysinit:/etc/init.d/rcS
+tty1::respawn:/sbin/getty 38400 tty1
+</code></pre>
+
+<p>To:</p>
+
+<pre><code>::sysinit:/bin/vim
+tty1::respawn:/bin/vim
+</code></pre>
+
+<p>Do note that this does not actually make Vim PID 1. Init will still manage Vim,
+and do stuff like <code>fsck</code> and mount the root partition read/write. If you want to
+go barebones, add <code>init=/bin/vim</code> to the bootloader (<code>isolinux.cfg</code>). Then, from
+Vim, do <code>:!fsck /dev/sda</code> and <code>mount -o remount,rw /</code>. </p>
+
+<h3>Building a new ISO</h3>
+
+<p>Make sure you are still in the <code>extract</code> folder. Issue the following command to
+build a new <code>tinycore.gz</code> file which the ISO will use as it&#39;s <code>initramfs</code>:</p>
+
+<pre><code>find | cpio -o -H newc | gzip -2 &gt; ../tinycore.gz
+</code></pre>
+
+<p>Copy that over the original <code>core.gz</code> file in <code>/tmp/boot</code> which we copied ealier:</p>
+
+<pre><code>cp ../tinycore.gz /tmp/boot/core.gz
+</code></pre>
+
+<p>Create a new folder for the new ISO build files:</p>
+
+<pre><code>mkdir /tmp/newiso
+</code></pre>
+
+<p>Copy the <code>/tmp/boot</code> folder to it:</p>
+
+<pre><code>cp -a /tmp/boot /tmp/newiso/
+</code></pre>
+
+<p>Build a new ISO using <code>mkisofs</code>:</p>
+
+<pre><code>cd /tmp/
+mkisofs -l -J -R -V Boot_To_Vim -no-emul-boot -boot-load-size 4 -boot-info-table -b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -o Boot_to_Vim.iso newiso
+</code></pre>
+
+<p>You now have a file in <code>/tmp</code> named <code>Boot_to_Vim.iso</code>:</p>
+
+<pre><code>ls -la /tmp/Boot_to_Vim.iso
+-rw-r--r-- 1 root root 11044864 Sep 17 08:05 /tmp/Boot_to_Vim.iso
+</code></pre>
+
+<p>You can use this to boot a VM, or burn an ISO. If you exit <code>vim</code>, it will
+restart. </p>
+
+<p>You can start up a real shell by giving the <code>:!sh</code> command, in command mode. To
+shut down, issue the <code>:!halt</code> command.</p>
+
+<p>More info on remastering Tiny Core can be found <a href="http://wiki.tinycorelinux.net/wiki:remastering">here</a>.</p>
+
+<p><img src="https://raymii.org/s/inc/img/boot-to-vim-2.png" alt="image" /></p>
+</div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/compile.html" class="link">compile &nbsp;</a><a href="../tags/emacs.html" class="link">emacs &nbsp;</a><a href="../tags/mips.html" class="link">mips &nbsp;</a><a href="../tags/tiny-core.html" class="link">tiny-core &nbsp;</a><a href="../tags/vim.html" class="link">vim &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

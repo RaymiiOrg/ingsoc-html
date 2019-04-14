@@ -1,0 +1,394 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>SSH public key authentication on OpenVMS - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>SSH public key authentication on OpenVMS</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="SSH_public_key_authentication_on_OpenVMS.html" class="link">SSH public key authentication on OpenVMS</a></li></ul><p><small>Published: 05-04-2018</small> | <small>Remy van Elst</small> | <a href="SSH_public_key_authentication_on_OpenVMS.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+
+<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture
+(above</a>)</p>
+
+<p>My OpenVMS adventure continues, after my rabbit hole of folder removal, this
+time I actually get public key authentication working with OpenSSH so that I
+don&#39;t have to type my password to login.</p>
+
+<p>There is a bit of documentation from HP to set up SSH key authentication but
+that misses one important little thing. That thing took me a few days to figure
+out.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
+
+<h3>Client public key authentication</h3>
+
+<p>On the HPe website there is extensive
+<a href="https://web.archive.org/web/20180405170159/http://h41379.www4.hpe.com/doc/83final/ba548_90007/index.html">documentation</a>
+on both the SSH server setup as well as the client setup on OpenVMS. On the
+<a href="http://decus.org">DECUServe</a> system I&#39;m not an administrative user so this
+article will only cover the client part. It assumes a set up and working SSH
+server.</p>
+
+<p>SSH public key authentication allows you to login to an SSH server without
+specifying a password. It is more secure since passwords can easily be brute
+forced. An SSH key can be securely on a
+<a href="https://raymii.org/s/tags/hsm.html">HSM</a> so that the private part never is
+exposed and SSH keys allow for key forwarding, that means you can use the key
+from your laptop to login to other servers and then logon further to machines
+behind there without placing your private key on the intermidiate machines.</p>
+
+<p>Overall SSH keys are considered to be best practice instead of passwords.</p>
+
+<p>Since I access the <a href="http://decus.org">DECUServe</a> system via SSH with a password
+I was wondering if OpenVMS would support key authentication and <a href="https://web.archive.org/web/20180405171201/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">according to
+the documentation</a> it should just be simple. Place the public key and configure it to allow login.</p>
+
+<p>But sadly that was not all.</p>
+
+<h3>Creating the files and folders.</h3>
+
+<p>First create an <code>[SSH2]</code> folder in your homedir:</p>
+
+<pre><code> $ CREATE /DIRECTORY [.SSH2]
+ $ DIR [.SSH2]
+%DIRECT-W-NOFILES, no files found
+</code></pre>
+
+<p>Create the configuration file in which we explicitly allow public key authentication next to password login:</p>
+
+<pre><code> $ EVE [.SSH2]SSH2_CONFIG 
+</code></pre>
+
+<p>Place the following line in there:</p>
+
+<pre><code>AllowedAuthentications publickey, password
+</code></pre>
+
+<p>Directly underneath that the <code>EVE</code> editor will show this:</p>
+
+<pre><code>[End of file]
+
+ Buffer: SSH2_CONFIG.                                                                                                                                                     | Write | Insert | Forward
+
+1 line read from file EISNER$DRA3:[DECUSERVE_USER.EXAMPLE.SSH2]SSH2_CONFIG.;2
+</code></pre>
+
+<p>Save the file with <code>CTRL+Z</code>. As you can see via the <code>;2</code> file version number I
+was messing around. Did I mention how awesome it is that OpenVMS has file
+versioning built in the filesystem? </p>
+
+<p>On linux and other systems that use OpenSSH, you would create
+<code>~/.ssh/authorized_keys</code> and place your key(s) in there like so:</p>
+
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCq1vxYvJNBZMtrufZD0ivHXrt0A+WhslMcWeQTU2du2jznw64ScrxN+EYXVGg3JKu8N/QK/0VrtsxITFthHJQP0FkC0J8GnWeT3x2y0N38P+H3B/h1rh9DBY/GTUlXY9Q0MKAOEdTjSecK11Nd5183Xcygnv5xAxLqzqmnllumAE1Wd/B0NoKrcSy51hERn0kKTR9hIw8FTOUNPAwTgsMJ+A10aJtqjlk4OrOd1KOHi1jWNTc5wcW6xgWzMksdw++fBBPcJN9Bgihxz9kSwdpkcIYlBkIZZEwZtTvNy7K2nKw94omWmdr0ZlqsNwfOihyQpo4wtusjakTmM4GA+bH3 remy@gateway
+</code></pre>
+
+<p>On OpenVMS, you create a file named <code>AUTHORIZATION</code> and in there you specify
+filenames of public keys, like <code>KEY EXAMPLE-HOSTNAME.PUB</code> where
+<code>EXAMPLE-HOSTNAME.PUB</code> is the file name with the format <code>$USER-$HOST.PUB</code>.</p>
+
+<p>Use <code>EVE</code> to create this <code>AUTHORIZATION.</code> file and add the filename of your public key file:</p>
+
+<pre><code> $ EVE [.SSH2]AUTHORIZATION
+</code></pre>
+
+<p>My key example:</p>
+
+<pre><code>KEY REMY-GATEWAY.PUB
+</code></pre>
+
+<p>Note, do not add the key here like you might be used to on linux, just make up a
+filename, prefixed with <code>KEY</code>. Next create the actual key file:</p>
+
+<pre><code> $ EVE [.SSH2]REMY-GATEWAY.PUB
+</code></pre>
+
+<p>Paste your public key and save with <code>CTRL+Z</code>.</p>
+
+<p>The documentation states that the public key file requires specific permission.
+On linux I&#39;m used to setting permissions on the <code>authorized_keys</code> file and the
+private key material, but this will be comparable I guess:</p>
+
+<pre><code>SET FILE /PROTECTION=(S:WRED,O:WRED,G:RE,W:R) [.SSH2]REMY-GATEWAY.PUB
+</code></pre>
+
+<p>You can check the current permissions with the <code>SHOW SECURITY</code> command:</p>
+
+<pre><code> $ SHOW SECURITY [.SSH2]REMY-GATEWAY.PUB
+
+EISNER$DRA3:[DECUSERVE_USER.EXAMPLE.SSH2]REMY-GATEWAY.PUB;2 object of class FILE
+     Owner: [EXAMPLE]
+     Protection: (System: RWED, Owner: RWED, Group: RE, World: R)
+     Access Control List: &lt;empty&gt;
+</code></pre>
+
+<p>By default, or at least on DECUServe my files get the following permissions:</p>
+
+<pre><code>     Protection: (System: RWED, Owner: RWED, Group, World)
+</code></pre>
+
+<p>Now you should be all set to go. Login specifically disabling password login
+using your key:</p>
+
+<pre><code>$ ssh -oHostKeyAlgorithms=+ssh-dss -o &quot;PasswordAuthentication no&quot;  EXAMPLE@eisner.decus.org
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>The authenticity of host &#39;eisner.decus.org (104.207.199.162)&#39; can&#39;t be established.
+DSA key fingerprint is SHA256:S0vOOBec5QvjeC1aLvnSccBewSgOvsF2s97KGaY1pnE.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;eisner.decus.org,104.207.199.162&#39; (DSA) to the list of known hosts.
+
+                                N O T I C E
+
+This is Encompasserve.  Access is for subscribed individuals only.
+
+ o  By logging into the system you agree to abide by the Encompasserve
+    Canons of Conduct.
+
+ o  Source code or any other information posted on this system is not
+    warranted in any way.  YOU USE IT AT YOUR OWN RISK.
+
+ o  If you submit source code to or post information on this system, you
+    must allow its unrestricted use.  You must have the right to grant
+    such permission.
+
+ o  Refer to the Encompasserve Canons of Conduct, posted in the
+    DECUServe_Information conference topic 4.3, for further guidance.
+
+ o  Report problems in DECUServe_Forum.
+
+
+For information about Encompasserve please login under -&gt; Username INFORMATION
+To subscribe to Encompasserve       please login under -&gt; Username REGISTRATION
+To report any form of a problem     please login under -&gt; Username PROBLEMS
+To renew an Expired account         please login under -&gt; Username REGISTRATION
+
+Permission denied (publickey,password).
+</code></pre>
+
+<p>Err, what? We followed the documentation to the letter?</p>
+
+<h3>Why does it not work?</h3>
+
+<p>This problem took me a few days to resolve. As I have no access to logging on
+the OpenVMS system and no knowledge of how to view said logging, I was left to
+trial and error. </p>
+
+<p>To save you time and trouble, it appears that the key file was not in the
+correct format for OpenVMS. We pasted the OpenSSH key format in the key file but
+there is another format. I found this on a USENET newsgroup, you know you&#39;re far
+in the exotic corners of the internet when you&#39;re searching <code>comp.os.vms</code>. But
+hey, it helped me solve this issue.</p>
+
+<p>OpenVMS uses IEFT SECSH (Tectia) format keys. There is an IETF
+<a href="https://www.ietf.org/proceedings/50/I-D/secsh-publickeyfile-01.txt">document</a>
+describing the format and <a href="https://tools.ietf.org/html/draft-ietf-secsh-publickey-subsystem-08">a
+document</a>
+on the SSH key subsystem if you want to know more.</p>
+
+<p>The DECUServe system does not have the <code>SSH-KEYGEN</code> OpenVMS program installed or
+at least I got an error when trying to execute it. Otherwise I would have tried
+to create a key there and compare the files and permissions with my own file.</p>
+
+<p>OpenSSH uses, suprisingly, <code>openssh</code> format public keys. The ones you know and
+probably 99% of the regular internet uses. But as always there are special
+snowflakes and it seems this is one of them. Googling around also gave lot&#39;s of
+hits for IBM and <code>z/OS</code>.</p>
+
+<p>Using <code>ssh-keygen</code> (on linux) we can convert a private key to this format with
+the <code>-e</code> option. From the man page:</p>
+
+<pre><code> -e Extract/convert from OpenSSH private key file to SECSH public key format 
+</code></pre>
+
+<p>In my case:</p>
+
+<pre><code>$ ssh-keygen -e -f ~/.ssh/id_rsa
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>---- BEGIN SSH2 PUBLIC KEY ----
+Comment: &quot;2048-bit RSA, converted by remy@gateway from OpenSSH&quot;
+AAAAB3NzaC1yc2EAAAADAQABAAABAQCq1vxYvJNBZMtrufZD0ivHXrt0A+WhslMcWeQTU2
+du2jznw64ScrxN+EYXVGg3JKu8N/QK/0VrtsxITFthHJQP0FkC0J8GnWeT3x2y0N38P+H3
+B/h1rh9DBY/GTUlXY9Q0MKAOEdTjSecK11Nd5183Xcygnv5xAxLqzqmnllumAE1Wd/B0No
+KrcSy51hERn0kKTR9hIw8FTOUNPAwTgsMJ+A10aJtqjlk4OrOd1KOHi1jWNTc5wcW6xgWz
+Mksdw++fBBPcJN9Bgihxz9kSwdpkcIYlBkIZZEwZtTvNy7K2nKw94omWmdr0ZlqsNwfOih
+yQpo4wtusjakTmM4GA+bH3
+---- END SSH2 PUBLIC KEY ----
+</code></pre>
+
+<p>Use the editor to update your KEY file on OpenVMS, in my case
+<code>[.SSH]REMY-GATEWAY.PUB</code>. Save with <code>CTRL+Z</code> and retry:</p>
+
+<pre><code>$ ssh -oHostKeyAlgorithms=+ssh-dss -o &quot;PasswordAuthentication no&quot; -i .ssh/id_rsa EXAMPLE@eisner.decus.org
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>                                N O T I C E
+
+This is Encompasserve.  Access is for subscribed individuals only.
+
+ o  By logging into the system you agree to abide by the Encompasserve
+    Canons of Conduct.
+
+ o  Source code or any other information posted on this system is not
+    warranted in any way.  YOU USE IT AT YOUR OWN RISK.
+
+ o  If you submit source code to or post information on this system, you
+    must allow its unrestricted use.  You must have the right to grant
+    such permission.
+
+ o  Refer to the Encompasserve Canons of Conduct, posted in the
+    DECUServe_Information conference topic 4.3, for further guidance.
+
+ o  Report problems in DECUServe_Forum.
+
+
+For information about Encompasserve please login under -&gt; Username INFORMATION
+To subscribe to Encompasserve       please login under -&gt; Username REGISTRATION
+To report any form of a problem     please login under -&gt; Username PROBLEMS
+To renew an Expired account         please login under -&gt; Username REGISTRATION
+
+    Last interactive login on Thursday,  5-APR-2018 14:10:22.71
+
+
+%DCL-S-SPAWNED, process EXAMPLE_62002 spawned
+  User [EXAMPLE] has 132 blocks used, 9868 available,
+  of 10000 authorized and permitted overdraft of 0 blocks on DISK_USER
+ $
+Subprocess EXAMPLE_62002 has completed
+ $
+</code></pre>
+
+<p>Yay!</p>
+
+<h3>Conclusion</h3>
+
+<p>I learned a lot, again. I notice that filesystem actions like editing and
+permissions are a bit easier for me since I&#39;m beginning to grasp the concepts
+and commands. To summarize:</p>
+
+<ul>
+<li>OpenVMS supports public key authentication</li>
+<li>It&#39;s almost the same as with OpenSSH on Linux</li>
+<li>Define your public key in an <code>AUTHORIZATION</code> file and place the key on the system</li>
+<li>Make sure it is the correct key format</li>
+<li>Set the correct permissions</li>
+<li>???</li>
+<li>PROFIT!!</li>
+</ul>
+
+<h3>One more thing, LOGOUT of OpenVMS</h3>
+
+<p>In an earlier article I wrote that I was unable to logout on OpenVMS since
+<code>exit</code> and  <code>CTRL+D</code> not exited the SSH session. I stopped my sessions using
+either <code>~.</code> or by closing the window. </p>
+
+<p>In the same <code>comp.os.vms</code> I found the <code>LOG</code> command. The help says:</p>
+
+<pre><code> $ HELP LOG
+
+[...]
+LOGOUT
+
+     Terminates an interactive terminal session.
+
+     Format
+
+       LOGOUT
+</code></pre>
+
+<p>So, now I can type &#39;LOG&#39; on the prompt and exit OpenVMS.</p>
+</div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

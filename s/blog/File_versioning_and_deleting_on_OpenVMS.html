@@ -1,0 +1,367 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>File versioning and deleting on OpenVMS with DELETE and PURGE - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>File versioning and deleting on OpenVMS with DELETE and PURGE</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="File_versioning_and_deleting_on_OpenVMS.html" class="link">File versioning and deleting on OpenVMS with DELETE and PURGE</a></li></ul><p><small>Published: 15-04-2018</small> | <small>Remy van Elst</small> | <a href="File_versioning_and_deleting_on_OpenVMS.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+
+<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
+
+<p>I&#39;m now a few weeks into my OpenVMS adventure and my home folder on the
+<a href="http://decus.org">DECUS</a> system is quite cluttered with files. More
+specifically, with different versions of files, since OpenVMS by default has
+file versioning built in. This means that when you edit a file, or copy a file
+over an existing file, the old file is not overwritten but a new file with a new
+version is written. The old file still is there. This is one of the best things
+in my humble opinion so far on OpenVMS, but it does require maintenance to not
+have the disk get filled up fast. This article goes into the PURGE and DELETE
+commands which help you deal with file versioning and removal.</p>
+
+<p>[If you like this article, consider sponsoring me by trying out a Digital Ocean
+[VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">credit). (referral link)</a>  </p>
+
+<h3>DIR flags</h3>
+
+<p>My home folder <a href="http://decus.org">DECUS</a> is getting filled up with test files
+and other titbits. </p>
+
+<pre><code>   $ DIR /SIZE /OWNER /DATE /PROTECTION
+</code></pre>
+
+<p>Look at those fancy new flags I found to get more information out of DIR:</p>
+
+<pre><code>Directory DSA3:[DECUSERVE_USER.EXAMPLE]
+
+$MAIN.TPU$JOURNAL;1
+                              1  28-MAR-2018 07:42:31.09  [EXAMPLE]                           (RWED,RWED,,)
+.VIMINFO;1                   10  15-APR-2018 08:39:53.81  [EXAMPLE]                           (RWED,RWED,,)
+A.;1                          1   8-APR-2018 05:30:44.16  [EXAMPLE]                           (RWED,RWED,,)
+ICREATEDAFOLDERYAY.DIR;1
+                              1  28-MAR-2018 08:22:18.41  [EXAMPLE]                           (RWE,RWE,,)
+LOGIN.COM;2                   2   8-APR-2018 06:02:12.72  [EXAMPLE]                           (RWED,RWED,,)
+LOGIN.COM;1                   2   1-MAR-2018 10:10:32.12  [EXAMPLE]                           (RWED,RWED,,)
+LOGIN_COM.TPU$JOURNAL;1
+                              1   8-APR-2018 06:00:38.04  [EXAMPLE]                           (RWED,RWED,,)
+MAIL.DIR;1                    1   8-APR-2018 16:28:23.24  [EXAMPLE]                           (RWE,RWE,,)
+NOTES$NOTEBOOK.NOTE;1
+                             51   1-MAR-2018 09:56:04.63  [DECUSERVE]                      (RWE,RWE,,)
+RAYMII.DIR;1                  1  31-MAR-2018 14:29:02.15  [EXAMPLE]                           (RWE,RWE,,)
+REMY.DAT;8                    1  15-APR-2018 08:39:53.79  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;7                    1  15-APR-2018 08:39:47.90  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;6                    1  15-APR-2018 08:39:12.75  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;5                    1  15-APR-2018 08:39:05.02  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;4                    1  15-APR-2018 08:38:44.90  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;3                    1  31-MAR-2018 14:44:31.08  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;2                    1  28-MAR-2018 07:52:19.04  [EXAMPLE]                           (RWED,RWED,,)
+REMY.DAT;1                    1  28-MAR-2018 07:48:21.66  [EXAMPLE]                           (RWED,RWED,,)
+SSH.DIR;1                     1   3-APR-2018 15:27:07.45  [EXAMPLE]                           (RWE,RWE,,)
+SSH2.DIR;1                    1   3-APR-2018 13:16:46.97  [EXAMPLE]                           (RWE,RWE,,)
+SSH3.DIR;1                    1   5-APR-2018 13:10:06.94  [EXAMPLE]                           (RWE,RWE,,)
+WWW.DIR;1                     1  28-MAR-2018 07:43:47.18  [EXAMPLE]                           (RWE,RWE,,RE)
+
+Total of 22 files, 83 blocks.
+</code></pre>
+
+<p>Lets focus on the <code>REMY.DAT</code> file, that has 8 versions and all the old ones can
+be removed.</p>
+
+<h3>Look at the files with TYPE</h3>
+
+<p>Using the <code>TYPE</code> command we can look at a file. Specify the full filename and a
+specific version number, otherwise if you omit the version you will see the last
+version:</p>
+
+<pre><code> $ TYPE REMY.DAT;1
+Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe;
+All mimsy were the borogoves,
+And the mome raths outgrabe.
+hello
+</code></pre>
+
+<p>Version 4:</p>
+
+<pre><code> $ TYPE REMY.DAT;4
+Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe;
+All mimsy were the borogoves,
+And the mome raths outgrabe.
+
+Beware the Jabberwock, my son!
+The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+The frumious Bandersnatch!
+</code></pre>
+
+<p>The last version:</p>
+
+<pre><code> $ TYPE REMY.DAT;8
+
+Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe;
+All mimsy were the borogoves,
+And the mome raths outgrabe.
+
+Beware the Jabberwock, my son!
+The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+The frumious Bandersnatch!
+
+He took his vorpal sword in hand:
+Long time the manxome foe he sought-
+So rested he by the Tumtum tree,
+And stood awhile in thought.
+
+And as in uffish thought he stood,
+The Jabberwock, with eyes of flame,
+Came whiffling through the tulgey wood,
+And burbled as it came!
+
+One, two! One, two! And through and through
+The vorpal blade went snicker-snack!
+He left it dead, and with its head
+He went galumphing back.
+
+And hast thou slain the Jabberwock?
+Come to my arms, my beamish boy!
+O frabjous day! Callooh! Callay!
+He chortled in his joy.
+
+Twas brillig, and the slithy toves
+Did gyre and gimble in the wabe;
+All mimsy were the borogoves,
+And the mome raths outgrabe.
+</code></pre>
+
+<p>(For those who do <a href="https://en.wikipedia.org/wiki/Jabberwocky">not get</a> the reference).</p>
+
+<p>As you can see, the poem is finished in the last versions and the earlier
+versions are working copies that can be removed now that this poem is done.</p>
+
+<h3>PURGE</h3>
+
+<p>The <a href="http://web.archive.org/web/20180415125506/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_159.html">PURGE command</a>
+removes all but the highest version of a file. The <code>DELETE</code> command, which we
+will cover in the next section, only removes specific files and it requires you
+to specify a version number as well.</p>
+
+<p>The <code>PURGE</code> command is therefore usefull to clean up old versions of a file.
+There are a few usefull flags, for example the <code>/SINCE</code> flag. It removes only
+the versions from after the specified time. Lets say I worked on a file the
+whole week but all versions that were created yesterday and today only contain
+formatting fixes, I would specify the <code>PURGE /SINCE=YESTERDAY $FILE</code>. The
+versions of earlier in the week which do contain changes I want to keep, will be
+saved that way.</p>
+
+<p>The opposite of that flags is <code>/BEFORE</code> flag. It removes all versions of a file
+before the given time. If I wanted to save all versions that I created yesterday
+and today, but remove all earlier versions, the command would be <code>PURGE
+/BEFORE=YESTERDAY $FILE</code>. </p>
+
+<p>If you do want to keep some versions, the <code>/KEEP</code> flag allows you to specify a
+number of versions to keep. To keep the 5 last versions, specify <code>/KEEP=5</code>.</p>
+
+<p>The <code>/LOG</code> flag shows you the result, thus which files were removed. By default
+no output is logged.</p>
+
+<p>So for my poem, to remove all versions but the last:</p>
+
+<pre><code> $ PURGE /LOG REMY.DAT
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;7 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;6 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;5 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;4 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;3 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;2 deleted (3 blocks)
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE]REMY.DAT;1 deleted (3 blocks)
+%PURGE-I-TOTAL, 7 files deleted (21 blocks)
+</code></pre>
+
+<h4>Create a directory with version limits</h4>
+
+<p>Using the <code>/VERSION_LIMIT</code> flag when creating a folder limits the amount of
+versions that will be kept. By default it is unlimited. To create a folder named
+<code>THREE</code> where at max 3 versions are kept, use the following command:</p>
+
+<pre><code> $ CREATE /DIRECTORY /VERSION_LIMIT=3 [.THREE]
+ $ SET DEF [.THREE] 
+</code></pre>
+
+<p>I have edited my <code>REMY.DAT</code> file three times:</p>
+
+<pre><code> $ DIR
+Directory DSA3:[DECUSERVE_USER.EXAMPLE.THREE]
+
+REMY.DAT;3          REMY.DAT;2          REMY.DAT;1
+</code></pre>
+
+<p>Now after a new edit, version 1 of the file will be gone:</p>
+
+<pre><code> $ DIR
+
+Directory DSA3:[DECUSERVE_USER.EXAMPLE.THREE]
+
+REMY.DAT;4          REMY.DAT;3          REMY.DAT;2
+
+Total of 3 files.
+</code></pre>
+
+<p>To create a folder without versioning, specify <code>/VERSION_LIMIT=1</code>.</p>
+
+<p>Combining that with the previous section, if I wanted to keep the two last
+versions, I would use the following command:</p>
+
+<pre><code> $ PURGE /LOG /KEEP=2 REMY.DAT
+%PURGE-I-FILPURG, DSA3:[DECUSERVE_USER.EXAMPLE.THREE]REMY.DAT;2 deleted (3 blocks)
+</code></pre>
+
+<p>Let&#39;s check if versions 3 and 4 are still there:</p>
+
+<pre><code> $ DIR
+
+Directory DSA3:[DECUSERVE_USER.EXAMPLE.THREE]
+
+REMY.DAT;4          REMY.DAT;3
+
+Total of 2 files.
+</code></pre>
+
+<h3>DELETE</h3>
+
+<p>You can read most of my delete adventures <a href="https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html">here when I tried to remove a
+folder</a>.</p>
+
+<p><a href="http://web.archive.org/web/20180415131447/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">Reading the documentation</a> on <code>DELETE</code>, the same usefull flags 
+like <code>/BEFORE</code> and <code>/SINCE</code> can be used. However, they will not remove previous 
+versions, but all previous files and must be used with wildcards:</p>
+
+<pre><code>/BEFORE[=time]
+Selects only those files dated prior to the specified time. You can specify time as absolute time, as a combination of absolute and delta times, or as one of the following keywords: BOOT, LOGIN, TODAY (default), TOMORROW, or YESTERDAY.
+</code></pre>
+
+<p>Even back then they were already not actually removing a file, but just marking
+the location as usable again. The <code>/ERASE</code> flag also overwrites the files with
+something so that the data actually is not on the disk and not recoverable
+anymore:</p>
+
+<pre><code>/ERASE
+/NOERASE (default)
+When you delete a file, the area in which the file was stored is returned to the system for future use. The data that was stored in that location still exists in the system until new data is written over it. When you specify the /ERASE qualifier, the storage location is overwritten with a system specified pattern so that the data no longer exists.  
+</code></pre>
+
+<p>The <code>rm -rf</code> alternative for OpenVMS seems to be the <code>/TREE</code> flag:</p>
+
+<pre><code>/TREE
+Recursively deletes all files and sub directories excluding the parent directory.
+</code></pre>
+
+<p>As said, <code>DELETE</code> requires a version number. Just trying to delete my <code>REMY.DAT</code> file will fail:</p>
+
+<pre><code> $ DELETE REMY.DAT
+%DELETE-E-DELVER, explicit version number or wild card required
+</code></pre>
+
+<p>When a version is specified it does work:</p>
+
+<pre><code> $ DELETE /LOG REMY.DAT;4
+%DELETE-I-FILDEL, DSA3:[DECUSERVE_USER.EXAMPLE.THREE]REMY.DAT;4 deleted (3 blocks)
+</code></pre>
+
+<h3>Conclusion</h3>
+
+<p>In this article we covered the different ways to cleanup versions of files, in
+the other article we covered the removal of directories.</p>
+
+<p>We also know now how to create a folder with limits on the amount of versions
+that are kept.</p>
+</div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

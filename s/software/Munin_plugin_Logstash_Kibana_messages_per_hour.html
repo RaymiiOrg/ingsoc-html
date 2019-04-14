@@ -1,0 +1,125 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+        <title>Munin plugin to show Logstash/Kibana messages per hour - Raymii.org</title>
+        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
+        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
+        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
+    </head>
+    <body>
+        <a class="skip-main" href="#main">Skip to main content</a>
+        <a id="top-of-page"></a>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-sm-3 max-200">
+                        <div class="well well-none"> 
+                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
+                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                        </div>
+          
+
+    
+    <form role="search" action="https://encrypted.google.com/search">
+        <div class="form-group">
+          <input type="hidden" name="as_sitesearch" value="raymii.org">
+          <input type="hidden" name="as_qdr" value="all">
+          <input type="text" name="as_q" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
+<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
+<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
+<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
+               <!-- advertisement start -->
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
+                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting Affiliate Link</a><br />
+                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean Affiliate Link, $10 free credit.</a><br />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Raymii-2 -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:200px;height:200px"
+                     data-ad-client="ca-pub-7993642564731324"
+                     data-ad-slot="9322003332"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- advertisement end -->
+                </div>
+           </div>  
+           <div class="col-md-8 col-sm-8"> 
+                <div class="inner">
+                <div id="main"></div>
+
+           <h2 class='headheader' id='main'>Munin plugin to show Logstash/Kibana messages per hour</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/software.html" class="link">Software</a></li><li><a href="Munin_plugin_Logstash_Kibana_messages_per_hour.html" class="link">Munin plugin to show Logstash/Kibana messages per hour</a></li></ul><p><small>Published: 12-04-2013</small> | <small>Remy van Elst</small> | <a href="Munin_plugin_Logstash_Kibana_messages_per_hour.txt" class="link">Text only version of this article</a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a simple munin plugin which shows you the amount of log messages your logstash/kibana server receives per hour. It should run on the Logstash host, it gets the data from out the Elasticsearch database.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
+
+<p><img src="/s/inc/img/munin-logstash.png" alt="Munin plugin example"></p>
+
+<h2>Setup instructions</h2>
+
+<p>You need CURL, so you might need to install that via your package manager.  </p>
+
+<p>Clone the git repository:</p>
+
+<pre><code>git clone git://github.com/RaymiiOrg/munin-plugins.git
+</code></pre>
+
+<p>Place the plugin file in <code>/usr/share/munin/plugins/</code>, make it executable and create a symlink in <code>/etc/munin/plugins/</code></p>
+
+<pre><code>cd munin-plugins
+cp logstash-messages-per-hour.sh /usr/share/munin/plugins
+chmod +x /usr/share/munin/plugins/logstash-messages-per-hour.sh
+ln -s /usr/share/munin/plugins/logstash-messages-per-hour.sh /etc/munin/plugins/logstash
+</code></pre>
+
+<p>Edit the plugin if your elasticsearch database URL is on another host:</p>
+
+<pre><code># Edit the following line, and change localhost to what it should be
+TOTAL_EVENTS=$(curl -s -k -XGET http://localhost:9200/logstash
+</code></pre>
+
+<p>Then wait until your munin server has updated, and enjoy.</p>
+</div><hr>Tags: <a href="../tags/elasticsearch.html" class="link">elasticsearch &nbsp;</a><a href="../tags/kibana.html" class="link">kibana &nbsp;</a><a href="../tags/logging.html" class="link">logging &nbsp;</a><a href="../tags/logstash.html" class="link">logstash &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/munin.html" class="link">munin &nbsp;</a><a href="../tags/plugin.html" class="link">plugin &nbsp;</a><a href="../tags/rsyslog.html" class="link">rsyslog &nbsp;</a><a href="../tags/software.html" class="link">software &nbsp;</a><a href="../tags/syslog.html" class="link">syslog &nbsp;</a><div class="footer">
+                <hr>
+                <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
+                <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
+                <a href="/s/static/About.html">About</a><br />
+                </div>
+            </div>
+        </div>
+    </div>  
+    </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-3704876-6');
+    </script>
+     
+    </body>
+    </html>
+    

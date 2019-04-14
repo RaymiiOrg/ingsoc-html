@@ -9,15 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
-Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. 
+Let's Encrypt is a new certificate authority, recognized by all major browsers.
+They make it a breeze to set up TLS certificates for your web server. And for
+free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco,
+the EFF, the Internet Security Research Group and others. Let's Encrypt provides
+free, automatic and secure certificates so that every website can be secured
+with an SSL certificate. 
 
-I have written [a guide](https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html) on using Lets Encrypt with Directadmin before, but that involved manually logging in via SSH and a lot of work. 
+I have written [a guide][1] on using Lets Encrypt with Directadmin before, but
+that involved manually logging in via SSH and a lot of work. 
 
-DirectAdmin now supports Lets Encrypt natively since [version 1.50](http://www.directadmin.com/features.php?id=1828), so no more ssh fiddling, just via the control panel, for all the users on the server.
+DirectAdmin now supports Lets Encrypt natively since [version 1.50][2], so no
+more ssh fiddling, just via the control panel, for all the users on the server.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)][99] 
 
-The previous article still applies and it still works. It's generic enough for all control panels and non-supported webservers by Let's Encrypt.
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+The previous article still applies and it still works. It's generic enough for
+all control panels and non-supported webservers by Let's Encrypt.
 
 So let's get started. We'll do a couple of things, namely:
 
@@ -29,25 +41,43 @@ So let's get started. We'll do a couple of things, namely:
 
 After step 3, everything is automatic, including renewals. 
 
-Do note that the last step of the article requires you to have set up a website and a domain already. They must be working and resolving in DNS, because Let's Encrypt triggers a challenge-response authentication to the domain name.
+Do note that the last step of the article requires you to have set up a website
+and a domain already. They must be working and resolving in DNS, because Let's
+Encrypt triggers a challenge-response authentication to the domain name.
 
-You can test with a subdomain as well, but make sure to add the subdomain as a new domain, not as a subdomain (So, Domain Administration, Add a domain, testsub.example.org). Actual subdomains don't support seperate SSL in Directadmin.
+You can test with a subdomain as well, but make sure to add the subdomain as a
+new domain, not as a subdomain (So, Domain Administration, Add a domain,
+testsub.example.org). Actual subdomains don't support seperate SSL in
+Directadmin.
 
-Do note that I'm not sponsored by Directadmin (Hi John and crew) nor by Let's Encrypt. I just like them a lot both, Directadmin for being a lightweight but very easy and functional controlpanel, and Let's Encrypt for their effort to secure the entire web for free.
+Do note that I'm not sponsored by Directadmin (Hi John and crew) nor by Let's
+Encrypt. I just like them a lot both, Directadmin for being a lightweight but
+very easy and functional controlpanel, and Let's Encrypt for their effort to
+secure the entire web for free.
 
 ### Update Directadmin
 
-<img src="https://raymii.org/s/inc/img/da-le1.png" alt=da-le1 />
+![da-le1][3]
 
-Remember when I said no more fiddling with SSH? Well, that part isn't entirely untrue. You need to login once via SSH to update Directadmin and enable Let's Encrypt.
+Remember when I said no more fiddling with SSH? Well, that part isn't entirely
+untrue. You need to login once via SSH to update Directadmin and enable Let's
+Encrypt.
 
-You can update Directadmin via the Administrator Settings -> Update / Licensing page as well, but I like the custombuild method better. Why? Because you can update the other parts of your server as well and that a general good thing to do. 
+You can update Directadmin via the Administrator Settings -> Update / Licensing
+page as well, but I like the custombuild method better. Why? Because you can
+update the other parts of your server as well and that a general good thing to
+do. 
 
-Also, you do need to login via SSH and execute a few other steps like enabling Let's Encrypt and rewriting the configuration files, so you might just as well login and update via Custombuild.
+Also, you do need to login via SSH and execute a few other steps like enabling
+Let's Encrypt and rewriting the configuration files, so you might just as well
+login and update via Custombuild.
 
-A friend of mine wrote a [great article on keeping Directadmin up to date](http://www.arm-blog.com/keeping-directadmin-server-date/) on her website. I'll give you the TL;DR version here, but, if you want to know more, read her article.
+A friend of mine wrote a [great article on keeping Directadmin up to date][4] on
+her website. I'll give you the TL;DR version here, but, if you want to know
+more, read her article.
 
-First log in to your server via SSH as root or as a user that can `sudo` to root. Navigate to the `custombuild` folder:
+First log in to your server via SSH as root or as a user that can `sudo` to
+root. Navigate to the `custombuild` folder:
 
     cd /usr/local/directadmin/custombuild/ 
 
@@ -75,7 +105,8 @@ Apply the updates:
 
     ./build update_versions
 
-If you only want to update Directadmin and not the other updates you can do that with the following command:
+If you only want to update Directadmin and not the other updates you can do that
+with the following command:
 
     ./build update_da
 
@@ -83,25 +114,38 @@ While you're applying updates, do the operating system updates as well:
 
     apt-get update && apt-get upgrade || yum update
 
-The above command will work on both Debian / Ubuntu and CentOS. You will be asked to confirm the updates before they're installed.
+The above command will work on both Debian / Ubuntu and CentOS. You will be
+asked to confirm the updates before they're installed.
 
-There is one more important thing to do and that is rewriting the configuration. You need to do this because Directadmin keeps all the challenge-response files in one place, not for all domains seperate. Directadmin's Custombuild has a function for this. Do note that if you did any manual changed (not via Directadmin), they will be lost. Make sure you have a backp. Rewrite the confs, still in the custombuild folder:
+There is one more important thing to do and that is rewriting the configuration.
+You need to do this because Directadmin keeps all the challenge-response files
+in one place, not for all domains seperate. Directadmin's Custombuild has a
+function for this. Do note that if you did any manual changed (not via
+Directadmin), they will be lost. Make sure you have a backp. Rewrite the confs,
+still in the custombuild folder:
 
     ./build rewrite_confs
 
-Now that your server is up to date, continue on to enable Let's Encrypt in Directadmin.
+Now that your server is up to date, continue on to enable Let's Encrypt in
+Directadmin.
 
 ### Enable Let's Encrypt
 
-Make sure you're still logged in via SSH. You can execute the below command and it will add the configuration to the Directadmin configuration, but only if it's not already there:
+Make sure you're still logged in via SSH. You can execute the below command and
+it will add the configuration to the Directadmin configuration, but only if it's
+not already there:
 
     grep -q 'letsencrypt=1' /usr/local/directadmin/conf/directadmin.conf || echo 'letsencrypt=1' >> /usr/local/directadmin/conf/directadmin.conf
 
-You can also manually edit the file `/usr/local/directadmin/conf/directadmin.conf` and add the following value:
+You can also manually edit the file
+`/usr/local/directadmin/conf/directadmin.conf` and add the following value:
 
     'letsencrypt=1'
 
-If your server is recent enough, CentOS 6, Ubuntu 12.04 and you run Apache 2.2 or higher, you can also enable `SNI` support ([Server name indication](https://en.wikipedia.org/wiki/Server_Name_Indication)). That is an extension to the TLS protocol which, simply said, allows you to host multiple SSL enabled sites on one IP address. 
+If your server is recent enough, CentOS 6, Ubuntu 12.04 and you run Apache 2.2
+or higher, you can also enable `SNI` support ([Server name indication][5]). That
+is an extension to the TLS protocol which, simply said, allows you to host
+multiple SSL enabled sites on one IP address. 
 
 Almost the same command as above, but with another value:
 
@@ -113,54 +157,105 @@ After changing the configuration, restart Directadmin:
 
 You can check via the web interface if you now have the most recent version:
 
-<img src="https://raymii.org/s/inc/img/da-le2.png" alt=da-le2 />
+![da-le2][6]
 
 ### Request a certificate
 
-Now that we're all set up we can request a certificate for a website. Do make sure the user and the package have SSL enabled in their settings, otherwise add that option to the account.
+Now that we're all set up we can request a certificate for a website. Do make
+sure the user and the package have SSL enabled in their settings, otherwise add
+that option to the account.
 
-<img src="https://raymii.org/s/inc/img/da-le3.png" alt=da-le3 />
+![da-le3][7]
 
-Log in as the user you want to request the certificate for (either with their username and password or via the "Admin" -> "Show all users", "username", "Login as username"). Navigate to "Advanced Features" -> "SSL Certificates".
+Log in as the user you want to request the certificate for (either with their
+username and password or via the "Admin" -> "Show all users", "username", "Login
+as username"). Navigate to "Advanced Features" -> "SSL Certificates".
 
-<img src="https://raymii.org/s/inc/img/da-le4.png" alt=da-le4 />
+![da-le4][8]
 
-Make sure the top line says: `SSL is currently enabled for this domain. You can disable it here.`
+Make sure the top line says: `SSL is currently enabled for this domain. You can
+disable it here.`
 
-If it says `SSL is currently disabled for this domain. You can enable it here.`, click the `Enable it here` link and turn it on, then go back to the "SSL Certificates" page.
+If it says `SSL is currently disabled for this domain. You can enable it here.`,
+click the `Enable it here` link and turn it on, then go back to the "SSL
+Certificates" page.
 
-Select the third option, `Free & automatic certificate from Let's Encrypt` and fill in the fields below.
+Select the third option, `Free & automatic certificate from Let's Encrypt` and
+fill in the fields below.
 
-<img src="https://raymii.org/s/inc/img/da-le5.png" alt=da-le5 />
+![da-le5][9]
 
-If you've set up everything correctly, that meaning updated Directadmin, rewrote the configuration and enabled Let's Encrypt you should have output like in the picture below, with a correctly and valid certificate.
+If you've set up everything correctly, that meaning updated Directadmin, rewrote
+the configuration and enabled Let's Encrypt you should have output like in the
+picture below, with a correctly and valid certificate.
 
-<img src="https://raymii.org/s/inc/img/da-le6.png" alt=da-le6 />
+![da-le6][10]
 
-You can check if it all worked by using my SSL Check over at [SSLdecoder.org](https://ssldecoder.org/). The domain I'm using in the example is set up with a Let's Encrypt certificate, you can [see that yourself over here](https://ssldecoder.org/?host=certificatemonitor.org&port=&csr=&s=).
+You can check if it all worked by using my SSL Check over at
+[SSLdecoder.org][11]. 
 
-Directadmin will also show you that Let's Encrypt is enabled, plus the auto-renew date.
+Directadmin will also show you that Let's Encrypt is enabled, plus the
+auto-renew date.
 
-<img src="https://raymii.org/s/inc/img/da-le7.png" alt=da-le7 />
+![da-le7][12]
 
-If you forgot to rewrite the configuration, you might get an error message like in the picture below. Go back and re-do everything in this tutorial, don't forget to rewrite the configuration and try again.
+If you forgot to rewrite the configuration, you might get an error message like
+in the picture below. Go back and re-do everything in this tutorial, don't
+forget to rewrite the configuration and try again.
 
-<img src="https://raymii.org/s/inc/img/da-le8.png" alt=da-le8 />
+![da-le8][13]
 
-That's all there is. Your website is now set up with a certificate for free, which will auto renew when it's about to expire. You don't have to do anything or worry about it anymore.
+That's all there is. Your website is now set up with a certificate for free,
+which will auto renew when it's about to expire. You don't have to do anything
+or worry about it anymore.
 
 ### Profit!?!?!?!
 
-Another subtopic? But we're already done, the site has a certificate and it all works? I know, I know. There are a few things you might want to do to make sure it all keeps working in the best state.
+Another subtopic? But we're already done, the site has a certificate and it all
+works? I know, I know. There are a few things you might want to do to make sure
+it all keeps working in the best state.
 
-First, to make sure the certificate doesn't expire, add your website to the free [Certificate Expiry Monitor](https://certificatemonitor.org/) service, one of my other projects. The renew process should be automatic, but you never know. Even [Google](http://arstechnica.com/information-technology/2015/04/google-let-root-certificate-for-gmail-expire-causing-e-mail-hiccups/) sometimes forgets to renew certificates, so better to make sure it won't happen to your sites.
+First, to make sure the certificate doesn't expire, add your website to the free
+[Certificate Expiry Monitor][14] service, one of my other projects. The renew
+process should be automatic, but you never know. Even [Google][15] sometimes
+forgets to renew certificates, so better to make sure it won't happen to your
+sites.
 
-Second, you can optimize all aspects of TLS and make sure it's very secure. I [have a guide on that for Apache](https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html), [the Mozilla Foundation](https://wiki.mozilla.org/Security/Server_Side_TLS) has one as well. Both are very good, explain all aspects and make sure your site is as secure as possible.
+Second, you can optimize all aspects of TLS and make sure it's very secure. I
+[have a guide on that for Apache][16], [the Mozilla Foundation][17] has one as
+well. Both are very good, explain all aspects and make sure your site is as
+secure as possible.
 
-Third, check your score, settings and ratings on an SSL/TLS tester like [SSL Labs](https://www.ssllabs.com/ssltest/) or my own, faster check, [the SSL Decoder](http://ssldecoder.org/), which is [open source](https://github.com/RaymiiOrg/ssl-decoder) as well.
+Third, check your score, settings and ratings on an SSL/TLS tester like [SSL
+Labs][18] or my own, faster check, [the SSL Decoder][11], which is [open
+source][19] as well.
 
-Fourth and last, [if you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+Fourth and last, [If you like this article, consider sponsoring me by trying 
+out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free 
+(as in, you get $10 credit). (referral link)][98] 
 
+[98]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
+[1]: https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html
+[2]: http://www.directadmin.com/features.php?id=1828
+[3]: https://raymii.org/s/inc/img/da-le1.png
+[4]: http://www.arm-blog.com/keeping-directadmin-server-date/
+[5]: https://en.wikipedia.org/wiki/Server_Name_Indication
+[6]: https://raymii.org/s/inc/img/da-le2.png
+[7]: https://raymii.org/s/inc/img/da-le3.png
+[8]: https://raymii.org/s/inc/img/da-le4.png
+[9]: https://raymii.org/s/inc/img/da-le5.png
+[10]: https://raymii.org/s/inc/img/da-le6.png
+[11]: https://ssldecoder.org/
+[12]: https://raymii.org/s/inc/img/da-le7.png
+[13]: https://raymii.org/s/inc/img/da-le8.png
+[14]: https://certificatemonitor.org/
+[15]: http://arstechnica.com/information-technology/2015/04/google-let-root-certificate-for-gmail-expire-causing-e-mail-hiccups/
+[16]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
+[17]: https://wiki.mozilla.org/Security/Server_Side_TLS
+[18]: https://www.ssllabs.com/ssltest/
+[19]: https://github.com/RaymiiOrg/ssl-decoder
 
 ---
 
