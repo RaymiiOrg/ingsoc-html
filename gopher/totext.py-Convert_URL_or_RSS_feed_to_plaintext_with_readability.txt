@@ -31,7 +31,7 @@ credit). (referral link)][99]
 Here's an example of a news article. On the left, the text-only parsed version,
 on the right, the webpage:
 
-![example][2]
+<img src="https://raymii.org/s/inc/img/txtnws.png" width=880 height=480>
 
 [Github repo with source code][3]
 
