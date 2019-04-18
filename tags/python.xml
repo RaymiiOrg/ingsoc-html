@@ -11,8 +11,8 @@
                 <link>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</link> 
                 <guid>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</guid>
                 <description> Love plaintext? This script downloads an URL, parses it with readability and returns the plaintext (as markdown). It supports RSS feeds (will convert every article in the feed) and saves every article. My usecase is twofold. One is to convert RSS feeds to a gopher site, the second is to get full text in my RSS reader. The script contains a few workarounds for so-called cookiewalls. It also pauses between RSS feed articles to not do excessive requests. The readability part is handled by Python, no external services are used.</description> 
-                <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 20 Mar 2019 00:00:00 GMT</lastBuildDate>
+                <pubDate>Thu, 18 Apr 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 18 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

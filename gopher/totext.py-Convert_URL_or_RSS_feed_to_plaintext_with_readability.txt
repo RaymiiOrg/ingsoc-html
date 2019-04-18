@@ -2,7 +2,7 @@ This is a text-only version of the following page on https://raymii.org:
 ---
 Title       : 	totext.py - Convert URL or RSS feed to text with readability
 Author      : 	Remy van Elst
-Date        : 	20-03-2019
+Date        : 	18-04-2019
 URL         : 	https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html
 Format      : 	Markdown/HTML
 ---

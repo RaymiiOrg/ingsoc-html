@@ -7,6 +7,15 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>totext.py - Convert URL or RSS feed to text with readability</title> 
+                <link>gopher://raymii.org/0/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.txt</link> 
+                <guid>gopher://raymii.org/0/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.txt</guid>
+                <description> Love plaintext? This script downloads an URL, parses it with readability and returns the plaintext (as markdown). It supports RSS feeds (will convert every article in the feed) and saves every article. My usecase is twofold. One is to convert RSS feeds to a gopher site, the second is to get full text in my RSS reader. The script contains a few workarounds for so-called cookiewalls. It also pauses between RSS feed articles to not do excessive requests. The readability part is handled by Python, no external services are used.</description> 
+                <pubDate>Thu, 18 Apr 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 18 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Convert markdown inline links to reference style links with Pandoc</title> 
                 <link>gopher://raymii.org/0/Convert_markdown_inline_links_to_reference_style_links_with_Pandoc.txt</link> 
                 <guid>gopher://raymii.org/0/Convert_markdown_inline_links_to_reference_style_links_with_Pandoc.txt</guid>
@@ -38,15 +47,6 @@
                 <link>gopher://raymii.org/0/Simple_pygopherd_log_analyzer.txt</link> 
                 <guid>gopher://raymii.org/0/Simple_pygopherd_log_analyzer.txt</guid>
                 <description>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics. If you ever used Logwatch you'll feel at home.</description> 
-                <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 20 Mar 2019 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>totext.py - Convert URL or RSS feed to text with readability</title> 
-                <link>gopher://raymii.org/0/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.txt</link> 
-                <guid>gopher://raymii.org/0/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.txt</guid>
-                <description> Love plaintext? This script downloads an URL, parses it with readability and returns the plaintext (as markdown). It supports RSS feeds (will convert every article in the feed) and saves every article. My usecase is twofold. One is to convert RSS feeds to a gopher site, the second is to get full text in my RSS reader. The script contains a few workarounds for so-called cookiewalls. It also pauses between RSS feed articles to not do excessive requests. The readability part is handled by Python, no external services are used.</description> 
                 <pubDate>Wed, 20 Mar 2019 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 20 Mar 2019 00:00:00 GMT</lastBuildDate>
             </item>

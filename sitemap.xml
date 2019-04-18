@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</loc>
+            <lastmod>2019-04-18</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/articles/Convert_markdown_inline_links_to_reference_style_links_with_Pandoc.html</loc>
             <lastmod>2019-04-10</lastmod>
             <changefreq>weekly</changefreq>
@@ -25,12 +31,6 @@
     
         <url>
             <loc>https://raymii.org/s/software/Simple_pygopherd_log_analyzer.html</loc>
-            <lastmod>2019-03-20</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</loc>
             <lastmod>2019-03-20</lastmod>
             <changefreq>weekly</changefreq>
         </url>
