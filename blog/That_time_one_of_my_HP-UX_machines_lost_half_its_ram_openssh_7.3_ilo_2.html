@@ -59,7 +59,7 @@
                 <div class="inner">
                 <div id="main"></div>
 
-           <h2 class='headheader' id='main'>That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.html" class="link">That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))</a></li></ul><p><small>Published: 06-06-2018</small> | <small>Remy van Elst</small> | <a href="That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.txt" class="link">Text only version of this article</a></p><div class='ad'>
+           <h2 class='headheader' id='main'>That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/blog.html" class="link">Blog</a></li><li><a href="That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.html" class="link">That time when one of my HP-UX servers lost half of it's RAM (and how to connect to an HP iLO 2 with modern OpenSSH (7.6+))</a></li></ul><p><small>Published: 06-06-2018</small> | <small>Author: Remy van Elst</small><a href="That_time_one_of_my_HP-UX_machines_lost_half_its_ram_openssh_7.3_ilo_2.txt" class="link">Text only version of this article</a></p><div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -453,8 +453,8 @@ my <code>~/.ssh/config</code> file looks like this:</p>
 <pre><code>ssh -o HostKeyAlgorithms=ssh-rsa,ssh-dss -o KexAlgorithms=diffie-hellman-group1-sha1 -o Ciphers=aes128-cbc,3des-cbc -o MACs=hmac-md5,hmac-sha1 Admin@hpux09-ilo
 </code></pre>
 
-<p>*Do note that a better solution here is to upgrade the hardware and get it under
-<em>a support contract.</em> </p>
+<p><em>Do note that a better solution here is to upgrade the hardware and get it under
+*a support contract.</em> </p>
 
 <h3>iLO Management Processor hardware information</h3>
 
