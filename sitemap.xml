@@ -30,6 +30,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</loc>
+            <lastmod>2019-03-20</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tutorials/Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.html</loc>
             <lastmod>2019-03-18</lastmod>
             <changefreq>weekly</changefreq>

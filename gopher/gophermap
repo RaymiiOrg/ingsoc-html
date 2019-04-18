@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-04-18T15:04:01	/	localhost	70
+i            2019-04-18T15:11:22	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -23,6 +23,7 @@ i 	/	localhost	70
 0Building opkg .ipk packages by hand (for OpenEmbedded/Yocto/OpenWRT) (05-04-2019)	Building_IPK_packages_by_hand.txt	raymii.org	70
 0Where is dropbearconvert on Ubuntu? (02-04-2019)	Where_is_dropbearconvert_on_ubuntu.txt	raymii.org	70
 0Simple pygopherd log analyzer (20-03-2019)	Simple_pygopherd_log_analyzer.txt	raymii.org	70
+0totext.py - Convert URL or RSS feed to text with readability (20-03-2019)	totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.txt	raymii.org	70
 0Disable motd news or (parts of) the dynamic motd on Ubuntu (18-03-2019)	Disable_dynamic_motd_and_motd_news_spam_on_Ubuntu_18.04.txt	raymii.org	70
 0Site updates, raymii.org now also available on Gopher (10-03-2019)	Site_updates_raymii.org_now_on_gopher.txt	raymii.org	70
 0SpaceCat Launchpad v2, an awesome cool little macropad (05-03-2019)	SpaceCat_Launchpad_v2_an_awesome_little_macropad.txt	raymii.org	70
