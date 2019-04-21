@@ -175,10 +175,10 @@ invite anymore. There are limit&#39;s on the API though:</p>
 <li>Rate limit on certificates per Domain: 5 per 7 days</li>
 </ul>
 
-<p><del>Read the article here on the beta program:
-<a href="https://community.letsencrypt.org/t/beta-program-announcements/1631">https://community.letsencrypt.org/t/beta-program-announcements/1631</a> and
-follow the instructions to sign up. I&#39;ve got my invitation about 3 days after I
-signed up, yours might be faster.</del></p>
+<del>Read the article here on the beta program:
+[https://community.letsencrypt.org/t/beta-program-announcements/1631][6] and
+follow the instructions to sign up. I've got my invitation about 3 days after I
+signed up, yours might be faster.</del>
 
 <h3>Installing the Let&#39;s Encrypt Client</h3>
 
@@ -207,19 +207,19 @@ webserver doesn&#39;t need to be brought down. </p>
 
 <p>The below part doesn&#39;t apply anymore.</p>
 
-<p><del>Now, Let&#39;s Encrypt binds to the HTTP port (80) to do the Domain Validatiopn
+<del>Now, Let's Encrypt binds to the HTTP port (80) to do the Domain Validatiopn
 sequence. You must stop your web server for a few moments to do this. Your
-website will be offline, but it will be for a minute at max. </del></p>
+website will be offline, but it will be for a minute at max. </del>
 
-<p><del>Directadmin also has a service monitor where we must indicate that HTTPD is
-offline, otherwise it will restart it and the process might fail:</del></p>
+<del>Directadmin also has a service monitor where we must indicate that HTTPD is
+offline, otherwise it will restart it and the process might fail:</del>
 
 <pre><code>sed -i &#39;s/httpd=ON/httpd=OFF/g&#39; /usr/local/directadmin/data/admin/services.status
 service httpd stop
 </code></pre>
 
-<p><del>If you don&#39;t want or are not able to take down all sites or bind to port
-80, scroll down below for a manual command.</del></p>
+<del>If you don't want or are not able to take down all sites or bind to port
+80, scroll down below for a manual command.</del>
 
 <p>If you are not able to execute the client on the actual webserver, a shared
 hosting account without ssh or are behind a firewall or loadbalancer, read on
