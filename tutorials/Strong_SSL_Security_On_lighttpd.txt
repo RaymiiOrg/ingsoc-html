@@ -46,12 +46,10 @@ credit). (referral link)][99]
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 
-[This tutorial is also available for Apache2][7]
-[This tutorial is also available for NGINX][8]
-[This tutorial is also available for FreeBSD, NetBSD and OpenBSD over at
+- [This tutorial is also available for Apache2][7]
+- [This tutorial is also available for NGINX][8]
+- [This tutorial is also available for FreeBSD, NetBSD and OpenBSD over at
 the BSD Now podcast][9]
-
-You can find more info on the topics by following the links below:
 
 
 You can find more info on the topics by following the links below:
@@ -340,7 +338,7 @@ By updating OpenSSL you are not vulnerable to this bug.
 
 If you have applied the above config lines you need to restart lighttpd:
 
-    /etc/init.d/lighttpd restart
+    service lighttpd restart
 
 Now use the [SSL Labs test][22] to see if you get a nice A+. And of
 course have a safe and future proof SSL configuration!

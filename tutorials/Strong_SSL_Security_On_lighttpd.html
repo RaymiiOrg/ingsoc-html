@@ -102,12 +102,12 @@ are discovered.</p>
 VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 
 credit). (referral link)</a> </p>
 
-<p><a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html">This tutorial is also available for Apache2</a>
-<a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html">This tutorial is also available for NGINX</a>
-<a href="http://www.bsdnow.tv/episodes/2014_08_20-engineering_nginx">This tutorial is also available for FreeBSD, NetBSD and OpenBSD over at
-the BSD Now podcast</a></p>
-
-<p>You can find more info on the topics by following the links below:</p>
+<ul>
+<li><a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html">This tutorial is also available for Apache2</a></li>
+<li><a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html">This tutorial is also available for NGINX</a></li>
+<li><a href="http://www.bsdnow.tv/episodes/2014_08_20-engineering_nginx">This tutorial is also available for FreeBSD, NetBSD and OpenBSD over at
+the BSD Now podcast</a></li>
+</ul>
 
 <p>You can find more info on the topics by following the links below:</p>
 
@@ -411,7 +411,7 @@ the wild since OpenSSL release 1.0.1 on 14th of March 2012. OpenSSL
 
 <p>If you have applied the above config lines you need to restart lighttpd:</p>
 
-<pre><code>/etc/init.d/lighttpd restart
+<pre><code>service lighttpd restart
 </code></pre>
 
 <p>Now use the <a href="https://www.ssllabs.com/ssltest/">SSL Labs test</a> to see if you get a nice A+. And of
