@@ -59,7 +59,7 @@
                 <div class="inner">
                 <div id="main"></div>
 
-           <h2 class='headheader' id='main'>Strong SSL Security on Apache2</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Strong_SSL_Security_On_Apache2.html" class="link">Strong SSL Security on Apache2</a></li></ul><p><small>Published: 14-06-2015</small> | <small>Author: Remy van Elst</small><a href="Strong_SSL_Security_On_Apache2.txt" class="link">Text only version of this article</a></p><div class='ad'>
+           <h2 class='headheader' id='main'>Strong SSL Security on Apache2</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Strong_SSL_Security_On_Apache2.html" class="link">Strong SSL Security on Apache2</a></li></ul><p><small>Published: 14-06-2015</small> | <small>Last update: 27-04-2019</small> | <small>Author: Remy van Elst | </small><a href="Strong_SSL_Security_On_Apache2.txt" class="link"><small>Text only version of this article</small></a></p><div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -182,7 +182,7 @@
 
 <p>Again edit the config file:</p>
 
-<pre><code>SSLProtocol All -SSLv2 -SSLv3
+<pre><code>SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
 </code></pre>
 
 <p>All is a shortcut for <code>+SSLv2 +SSLv3 +TLSv1</code> or - when using OpenSSL 1.0.1 and later - <code>+SSLv2 +SSLv3 +TLSv1 +TLSv1.1 +TLSv1.2</code>, respectively. The above line enables everything except SSLv2 and SSLv3. <a href="http://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslprotocol">More info on the apache website</a></p>

@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Strong SSL Security on nginx
 Author      : 	Remy van Elst
 Date        : 	14-06-2015
+Last update : 	27-04-2019
 URL         : 	https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
 Format      : 	Markdown/HTML
 ---
@@ -118,7 +119,7 @@ SSL v2 is insecure, so we need to disable it. We also disable SSLv3, as TLS 1.0 
 
 Again edit the config file:
 
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_protocols TLSv1.2;
 
 ### Poodle and TLS-FALLBACK-SCSV
 
@@ -204,7 +205,7 @@ We need generate a stronger DHE parameter:
 And then tell nginx to use it for DHE key-exchange:
 
     ssl_dhparam /etc/ssl/certs/dhparam.pem;
-
+    ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
 
 ### OCSP Stapling
 

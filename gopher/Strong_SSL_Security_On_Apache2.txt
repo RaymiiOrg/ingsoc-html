@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Strong SSL Security on Apache2
 Author      : 	Remy van Elst
 Date        : 	14-06-2015
+Last update : 	27-04-2019
 URL         : 	https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
 Format      : 	Markdown/HTML
 ---
@@ -116,7 +117,7 @@ SSLv3 allows exploiting of the [POODLE](https://raymii.org/s/articles/Check_serv
 
 Again edit the config file:
 
-    SSLProtocol All -SSLv2 -SSLv3
+    SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
 
 All is a shortcut for `+SSLv2 +SSLv3 +TLSv1` or - when using OpenSSL 1.0.1 and later - `+SSLv2 +SSLv3 +TLSv1 +TLSv1.1 +TLSv1.2`, respectively. The above line enables everything except SSLv2 and SSLv3. [More info on the apache website](http://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslprotocol)
 

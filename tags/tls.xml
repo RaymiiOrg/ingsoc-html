@@ -7,6 +7,33 @@
             <atom:link href="https://raymii.org/s/tags/tls.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Strong SSL Security on Apache2</title> 
+                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</link> 
+                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the Apache2 webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
+                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Strong SSL Security on nginx</title> 
+                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</link> 
+                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the nginx webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
+                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Stong SSL Security on lighttpd</title> 
+                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html</link> 
+                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
+                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation</title> 
                 <link>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</link> 
                 <guid>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</guid>
@@ -76,33 +103,6 @@
                 <description>This small guide will shows you how to use the OpenSSL Command Line to sign a file, and how to verify the signing of this file. You can do this to prove ownership of a key, or to prove that a file hasn't been modified since you signed it. This works both with small text files as well as huge photo's, documents or PDF files.</description> 
                 <pubDate>Mon, 09 Nov 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 09 Nov 2015 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Strong SSL Security on Apache2</title> 
-                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</link> 
-                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the Apache2 webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
-                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 14 Jun 2015 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Strong SSL Security on nginx</title> 
-                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</link> 
-                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the nginx webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
-                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 14 Jun 2015 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Stong SSL Security on lighttpd</title> 
-                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html</link> 
-                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
-                <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 14 Jun 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

@@ -59,7 +59,7 @@
                 <div class="inner">
                 <div id="main"></div>
 
-           <h2 class='headheader' id='main'>Strong SSL Security on nginx</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Strong_SSL_Security_On_nginx.html" class="link">Strong SSL Security on nginx</a></li></ul><p><small>Published: 14-06-2015</small> | <small>Author: Remy van Elst</small><a href="Strong_SSL_Security_On_nginx.txt" class="link">Text only version of this article</a></p><div class='ad'>
+           <h2 class='headheader' id='main'>Strong SSL Security on nginx</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Strong_SSL_Security_On_nginx.html" class="link">Strong SSL Security on nginx</a></li></ul><p><small>Published: 14-06-2015</small> | <small>Last update: 27-04-2019</small> | <small>Author: Remy van Elst | </small><a href="Strong_SSL_Security_On_nginx.txt" class="link"><small>Text only version of this article</small></a></p><div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -182,7 +182,7 @@
 
 <p>Again edit the config file:</p>
 
-<pre><code>ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+<pre><code>ssl_protocols TLSv1.2;
 </code></pre>
 
 <h3>Poodle and TLS-FALLBACK-SCSV</h3>
@@ -277,6 +277,7 @@ openssl dhparam -out dhparam.pem 4096
 <p>And then tell nginx to use it for DHE key-exchange:</p>
 
 <pre><code>ssl_dhparam /etc/ssl/certs/dhparam.pem;
+ssl_ecdh_curve secp384r1; # Requires nginx &gt;= 1.1.0
 </code></pre>
 
 <h3>OCSP Stapling</h3>
