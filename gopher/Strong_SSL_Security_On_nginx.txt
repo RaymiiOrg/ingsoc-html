@@ -39,7 +39,6 @@ Handy if you don't want to read this entire tutorial. This tutorial and
 [https://cipherli.st][4] are updated continuously as new vulnerabilities
 are discovered.
 
-
 [If you like this article, consider sponsoring me by trying out a Digital Ocean 
 VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
 credit). (referral link)][99] 
@@ -56,6 +55,13 @@ if you follow(ed) it you get an A+)
 the BSD Now podcast][9]
 
 You can find more info on the topics by following the links below:
+
+- [BEAST Attack][23]
+- [CRIME Attack][24]
+- [Heartbleed][25]
+- [FREAK Attack][26]
+- [Perfect Forward Secrecy][27]
+- [Dealing with RC4 and BEAST][28]
 
 We are going to edit the nginx settings in the file `/etc/nginx/sites-
 enabled/yoursite.com` (On Ubuntu/Debian) or in
@@ -249,7 +255,6 @@ automatically enabled if you upgrade OpenSSL to the following versions:
   * OpenSSL 0.9.8 has TLS _FALLBACK_ SCSV in 0.9.8zc and higher.
 
 [More info on the NGINX documentation][15]
-
 
 ### The BEAST attack and RC4
 
