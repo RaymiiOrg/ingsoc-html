@@ -344,7 +344,7 @@ Now use the [SSL Labs test][22] to see if you get a nice A+. And of
 course have a safe and future proof SSL configuration!
 
 
-[1]: https://raymii.org/s/inc/img/ssl-labs-2.png
+[1]: https://raymii.org/s/inc/img/ssl-labs-3.png
 [2]: https://www.ssllabs.com/ssltest/analyze.html?d=raymii.org
 [3]: https://raymii.org/s/software/OpenSSL_Decoder.html
 [4]: https://cipherli.st/
