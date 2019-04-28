@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/crl.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>OpenSSL test TLSv1.3 connection and ciphersuites with s_client</title> 
+                <link>https://raymii.org/s/tutorials/OpenSSL_test_TLSv1.3_connection_with_s_client.html</link> 
+                <guid>https://raymii.org/s/tutorials/OpenSSL_test_TLSv1.3_connection_with_s_client.html</guid>
+                <description>This guide shows you how to test a server's TLSv1.3 connection and use specific ciphersuites with the command line `s_client` client from the `OpenSSL` project. With OpenSSL 1.1.1 you can use TLSv1.3. This guide covers the installation of OpenSSL 1.1.1 on Ubuntu, testing the connection to a server  and specific ciphersuites. It also covers the big differences between TLSv1.3 and lower.</description> 
+                <pubDate>Sun, 28 Apr 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 28 Apr 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation</title> 
                 <link>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</link> 
                 <guid>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</guid>
