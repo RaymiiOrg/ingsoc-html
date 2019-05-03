@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/tutorials/OpenSSL_test_TLSv1.3_connection_with_s_client.html</loc>
+            <lastmod>2019-04-28</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</loc>
             <lastmod>2019-04-18</lastmod>
             <changefreq>weekly</changefreq>
@@ -2940,7 +2946,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/certificate.html</loc>
+            <loc>https://raymii.org/s/tags/wps-8.html</loc>
             <lastmod>2019-04-26</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6630,6 +6636,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/tlsv1.3.html</loc>
+            <lastmod>2019-04-26</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/xterm.html</loc>
             <lastmod>2019-04-26</lastmod>
             <changefreq>weekly</changefreq>
@@ -7038,7 +7050,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wps-8.html</loc>
+            <loc>https://raymii.org/s/tags/certificate.html</loc>
             <lastmod>2019-04-26</lastmod>
             <changefreq>weekly</changefreq>
         </url>

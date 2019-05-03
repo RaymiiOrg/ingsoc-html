@@ -16,8 +16,8 @@ Ubuntu, and the new way, now that the apt-modules also support Debian, plus some
 other tricks.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. 
+With this link you'll get $100 credit). (referral link)][99] 
 
 - 14-12-2018: updated ansible syntax to 2.5
 - 15-05-2016: initial article
