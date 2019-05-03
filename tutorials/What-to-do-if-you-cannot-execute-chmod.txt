@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 Sometimes you do strange stuff with your Linux PC.   
 I did yesterday, when I was experimenting with what would happen if I would chmod /usr/bin/chmod to 000. That gave me some problems. Solution from: [Linux Magazine][1]
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 If the CHMOD program is not executable anymore, you should start it via the linker.   
 
 Execute this command:

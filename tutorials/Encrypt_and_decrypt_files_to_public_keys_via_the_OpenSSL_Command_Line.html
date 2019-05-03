@@ -71,7 +71,8 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This small tutorial will show you how to use the openssl command line to encrypt and decrypt a file using a public key. We will first generate a random key, encrypt that random key against the public key of the other person and use that random key to encrypt the actual file with using symmetric encryption.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
 
 <p>Because of how the RSA algorithm works it is not possible to encrypt large files. If you create a key of <code>n</code> bits, then the file you want to encrypt must not larger than (<code>n</code> minus 11) bits. The most effective use of RSA crypto is to encrypt a random generated password,  then encrypt the file with the password using symmetric crypto. If the file is larger then the key size the encryption command will fail:</p>
 

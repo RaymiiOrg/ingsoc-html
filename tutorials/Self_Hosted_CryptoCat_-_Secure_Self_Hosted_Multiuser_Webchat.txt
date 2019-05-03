@@ -15,6 +15,11 @@ This is a guide on setting up a self hosted secure multiuser webchat service wit
 
 [There were/are some issues with the encryption provided by CryptoCat. These seem to be fixed now, but still, beware.](http://en.wikipedia.org/wiki/Cryptocat)
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This tutorial is tested on Ubuntu 12.04.
 
 [If you want to set up a federated XMPP Chat Network with ejabberd, see my tutorial how to do that.](https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html)

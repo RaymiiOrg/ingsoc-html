@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This guide will help you tune the performance of Munin. When Munin monitors more than a few hosts the performance goes down and it requires more resources. This gets better with newer releases, but it still is not perfect. You can limit munin yourself so that the IO performance gets better.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This guide assumes a working munin setup (1.4 or 2.0) on debian/ubuntu. It also assumes root access to the server (either su or sudo).
 
 #### rrdcached

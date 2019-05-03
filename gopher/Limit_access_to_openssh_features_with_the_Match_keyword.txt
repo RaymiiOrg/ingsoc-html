@@ -11,7 +11,13 @@ Format      : 	Markdown/HTML
 
 OpenSSH has a lot of nice features which let you control how it is used. For example, you can disallow the root account to login, set the port number, protocol version and a lot of other features. This tutorial will show you how to enable certain features for certain hosts, users, groups and addresses with the Match keyword in sshd_config. And as a bonus it also covers the iptables firewall.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 #### Securing sshd
+
 First a few general tips about securing ssh. 
 
 - Disable login with username/pasword and use key based authentication.

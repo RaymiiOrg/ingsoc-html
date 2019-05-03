@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 
 This tutorial will show you how you can back up your website and database with Duplicity. [Duplicity](http://duplicity.nongnu.org/) is a very useful tool to make remote unassisted backups. The backups can be incremental, encrypted, and over a variety of transports. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 There are a few steps involved in the process of setting this up, and also a few preconditions:
 
 - The tutorial works best with a VPS, were you have full root access to the filesystem and database

@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This is a tutorial with a script which lets you set your IP address as wallpaper.  
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 You need to have a white background picture as base. Imagemagick will create it.
 
 See an [example wallpaper here](https://raymii.org/s/inc/img/ip-as-wallpaper.jpg).

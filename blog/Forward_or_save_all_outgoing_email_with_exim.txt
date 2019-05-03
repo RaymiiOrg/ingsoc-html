@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 I have a specific server where requirements state that all outgoing email should be saved for archival and auditing purposes. The server uses the Exim mail transfer agent, which makes this easy to configure. The outgoing email is also forwarded to an off-site mailbox, both for backup and easy consulting. This captures all outgoing email, sent by PHP scripts or cronjobs, or user accounts that send via exim. This tutorial also shows how to forward or save all outgoing email for a specific domain.
 
-If you like this website and want to support it AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Exim configuration
 

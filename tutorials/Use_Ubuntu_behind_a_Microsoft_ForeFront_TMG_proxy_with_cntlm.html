@@ -73,7 +73,8 @@
 
 <p>Recently I had to deploy a few machines in a network where outgoing network access was forced through a Microsoft Forefront TMG proxy. For all the Windows clients this went automatically due to domain policies, for Linux this has to be set up manually. Defining the proxy in <code>/etc/environment</code> was not enough since NTML authentication is required, which is not supported by default. I found <code>cntlm</code>, a piece of software which acts as a local proxy, translating all requests to authenticated NTLM requests to your upstream proxy. This guide covers the (offline) installation, setup, getting the correct password hash and system-wide configuration. It should work on a desktop as well, but I did not test that.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a>  </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
 
 <p>This guide was tested on both Ubuntu 16.04 and 18.04. You need a user account with the correct permissions for the proxy. The account will be locked, so make sure you have access the the Active Directory to unlock it when needed.</p>
 

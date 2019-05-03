@@ -9,7 +9,12 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial shows you how to set up your own federated chat network using ejabberd. It covers a basic single node ejabberd server and also the setup of an ejabberd cluster, including errors and DNS SRV record examples. Last but not least federation is also covered. You can use an [Inception Hosting VPS to set up your own XMPP server, I use them and they are very stable and offer good performance and pricing.](http://clients.inceptionhosting.com/aff.php?aff=083)
+This tutorial shows you how to set up your own federated chat network using ejabberd. It covers a basic single node ejabberd server and also the setup of an ejabberd cluster, including errors and DNS SRV record examples. Last but not least federation is also covered. 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Why set up your own XMPP server
 

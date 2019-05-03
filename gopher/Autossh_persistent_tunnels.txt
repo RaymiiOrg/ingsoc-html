@@ -15,17 +15,19 @@ You need another server to which you setup a persistent ssh connection with a re
 
 Make sure you have permission to do this from the administrators. They generally don't like holes in the firewall/security. They don't block it for no reason.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 #### Naming convention:
+
 restricted machine: machine inside the restricted network
 middleman: machine to which the restricted machine sets up the tunnel, and from which you access the restricted server
 
 
 #### Install the tools
+
 We are going to use autossh. This is in the debian/ubuntu repositories. Make sure you also install openssh server.
 
 Execute on: restricted machine.
@@ -71,6 +73,7 @@ If this all goes well you should be logged in to the middleman host without bein
 If it does not go well, check the permissions on the ssh key (should be 600), and make sure you have the correct values in the autossh command. 
 
 #### SSH back in the restricted host
+
 From another machine (outside the restricted network preferably) ssh into the middleman host.
 
 Execute on: other machine
@@ -86,6 +89,7 @@ Execute on: middleman
 If all goes well, you should see a prompt to login to the restricted machine. Enter your password and go. If this goes well, you can continue. If this does not work, check the values in the command and the ssh configs. Also make sure you have executed the steps above correctly.
 
 #### Enable the tunnel on boot
+
 We are going to edit the /etc/rc.local file. This script normally does nothing, but gets executed at boot. If you make any errors in this script, your machine might not boot so make sure to do this correctly.
 
 Execute on: restricted machine
@@ -118,6 +122,7 @@ Execute on: restricted machine
 If you get your regular promt back without any output you've done it correct.z
 
 #### Forward a website, not ssh
+
 You might want to forward a website on the restricted host. Follow the above tutorial, but change the autossh command:
 
 	autossh -M 10984 -o "PubkeyAuthentication=yes" -o "PasswordAuthentication=no" -i /root/.ssh/nopwd -R 8888:localhost:80 remy@middleman -p 2222
@@ -125,6 +130,7 @@ You might want to forward a website on the restricted host. Follow the above tut
 * -R 8888:localhost:80: this forwards all traffic on host middleman to port 80 on host restrictedhost. (port 80 = website).
 
 #### Other host inside restricted network
+
 You can also forward ports from other restricted hosts in the network:
 
 	autossh -M 10984 -o "PubkeyAuthentication=yes" -o "PasswordAuthentication=no" -i /root/.ssh/nopwd -R 7777:host2.restrictednetwork:22 remy@middleman -p 2222

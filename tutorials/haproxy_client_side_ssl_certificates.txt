@@ -14,8 +14,10 @@ This tutorial shows you how to configure haproxy and client side ssl certificate
 You need at least haproxy 1.5 dev 16 for this to work. If you want to pass the full sha 1 hash of a certificate to a backend you need at least 1.5 dev 19.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Place the certificate chain file somewhere haproxy can access it and append the following to your `bind` config line in the frontends where you want to use client side certificates: `ca-file <path to certificate chain> verify required`. If you want to also accept visitors without an ssl certificate change `verify required` to `verify optional`. You might want this if you handle the certificates in your application.
 

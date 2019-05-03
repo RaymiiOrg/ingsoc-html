@@ -17,7 +17,10 @@ This tutorial shows you how to install nmap 6.40 on Ubuntu 12.04. Ubuntu 12.04 h
 - New Nping Tool
 - Faster scans
 
-This tutorial is tested on a Digital Ocean VPS. If you like this tutorial and want to support me, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 We'll use `checkinstall` to create a .deb package instead of `make install`. `checkinstall` allows us to easily manage, remove or upgrade the software later on, instead of compiling and making just over the old version. Do note that `checkinstall` .deb packages are not intended for public distribution, using them on your internal network is OK.
 

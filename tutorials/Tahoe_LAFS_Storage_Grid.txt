@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 If you have a few different VPSes, you'll most likely have a significant amount of unused storage space across all of them. This guide will be a quick introduction to setting up and using [Tahoe-LAFS](http://tahoe-lafs.org/), a distributed, redundant, and encrypted storage system - some may call it 'cloud storage'.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [If you need VPS to set up your own Tahoe-LAFS storage grid, try InceptionHosting](http://clients.inceptionhosting.com/aff.php?aff=083)
 
 *   At least 2 VPSes required, at least 3 VPSes recommended. More is better.

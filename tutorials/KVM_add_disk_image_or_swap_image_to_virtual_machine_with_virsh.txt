@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to create and add a disk image to a KVM vm using virsh. This is useful when you for example want to expand the disk space of your virtual machine when it is using LVM, or if you want to add a swap disk to a virtual machine. Note that you can also create a swap file instead of a disk, however, this is an example for adding the disk.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Read this tutorial to [learn how to set up a proper KVM hypervisor host: https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html](https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html)
 
 ### Requirements

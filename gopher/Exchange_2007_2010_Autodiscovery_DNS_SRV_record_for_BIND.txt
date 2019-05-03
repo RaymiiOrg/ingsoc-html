@@ -9,7 +9,12 @@ Format      : 	Markdown/HTML
 
 
 
-Note: This article is targeted at *NIX administrators who have to manage Exchange installations, but are not Microsoft specialists. Therefore the BIND setup does not have an explanation, but the Exchange part has.
+Note: This article is targeted at \*NIX administrators who have to manage Exchange installations, but are not Microsoft specialists. Therefore the BIND setup does not have an explanation, but the Exchange part has.
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### What is Exchange Autodiscovery
 

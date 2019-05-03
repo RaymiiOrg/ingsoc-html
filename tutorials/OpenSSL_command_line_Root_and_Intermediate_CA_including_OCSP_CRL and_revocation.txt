@@ -2,7 +2,8 @@ This is a text-only version of the following page on https://raymii.org:
 ---
 Title       : 	OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation
 Author      : 	Remy van Elst
-Date        : 	17-12-2018
+Date        : 	03-03-2015
+Last update : 	17-12-2018
 URL         : 	https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html
 Format      : 	Markdown/HTML
 ---
@@ -13,7 +14,10 @@ These are quick and dirty notes on generating a certificate authority (CA), inte
 
 We'll set up our own root CA. We'll use the root CA to generate an example intermediate CA. We'll use the intermediate CA to sign end user certificates.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 - 31-03-2015: initial article
 - 17-12-2018: update to fix a few command / file paths

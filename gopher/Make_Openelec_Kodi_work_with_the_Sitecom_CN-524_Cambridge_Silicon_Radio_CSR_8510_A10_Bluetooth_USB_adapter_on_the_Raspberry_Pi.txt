@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Recently I set up a Kodi (XMBC) media center on a Raspberry Pi.  The setup is mounted on a flatscreen TV and uses a small Wifi dongle for network access and a small Bluetooth dongle for a Rapoo E6700 wireless bluetooth keyboard/touchpad. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 <img src="https://raymii.org/s/inc/img/rapoo-E6700.png" alt="rapoo e6700" />
 
 This is a nice bluetooth keyboard/mouse combo for a media center, it charges via micro USB. That saves a lot of battery hassle. The bluetooth adapter is a Sitecom CN-524, which was the only one my local electronic store had available.

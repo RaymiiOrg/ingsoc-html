@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to convert KVM qcow2 disk images to raw disk images. The qcow2 disk format has some decent features like encryption, compression and copy to write support. However, the compression and the copy processes make it quite a bit slower than raw disk images. Sometimes you want to convert the disk images so that the VM will perform better.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Benchmark
 
 For me it has a performance boost. Using a RAID 1 setup with two 5900 RPM disks and the `deadline` on the host and the `noop` scheduler without caching on a raw image in the guest resulted in a boost over the default `deadline` scheduler on a qcow2 image on the guest:

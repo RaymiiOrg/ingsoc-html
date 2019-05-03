@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>We are going to set up very simple keepalived IP failover on Ubuntu 14.04. Keepalived is a piece of software which can be used to achieve high availability by assigning two or more nodes a virtual IP and monitoring those nodes, failing over when one goes down.  Keepalived can do more, like load balancing and monitoring, but this tutorial focusses on a very simple setup, just IP failover.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>Internally keepalived uses VRRP. The VRRP protocol ensures that one of participating nodes is master. The backup node(s) listens for multicast packets from a node with a higher priority. If the backup node fails to receive VRRP advertisements for a period longer than three times of the advertisement timer, the backup node takes the master state and assigns the configured IP(s) to itself. In case there are more than one backup nodes with the same priority, the one with the highest IP wins the election. </p>
 
 <p>I&#39;m also a fan of Corosync/Pacemaker, you can see my articles about <a href="https://raymii.org/s/tags/corosync.html">Corosync here</a>.</p>

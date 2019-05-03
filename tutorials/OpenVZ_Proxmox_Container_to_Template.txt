@@ -13,7 +13,10 @@ This guide will show you how to convert an OpenVZ (Proxmox) container to a templ
 
 This guide is tested on a proxmox machine running proxmox version 3.2.
 
-If you like this tutorial and want to support my website, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Login as root to the proxmox machine via ssh.
 

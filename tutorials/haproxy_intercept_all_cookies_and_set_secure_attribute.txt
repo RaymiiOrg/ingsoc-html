@@ -12,8 +12,10 @@ Format      : 	Markdown/HTML
 This snippet shows you how to use haproxy to set the secure attribute on cookies. You might have a backend application which is not able to set the secure attribute on cookies or for which haproxy does the ssl offloading. This simple frontend rspirep sets the secure attribute for all cookies.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Add the following to a `frontend` block:
 

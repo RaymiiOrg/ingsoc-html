@@ -17,6 +17,11 @@ I want to set up a KVM host which is only reachable from the management network 
 
 The KVM host has 2 NIC's, which are plugged in to two switches who support LACP. The switch ports for the KVM host are trunk ports for the above VLAN's (11, 10 and 12). The two NIC's are bonded in balance-xor (bond mode 3) for fault tolerance and load balancing. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 We are going to create three interfaces using the linux vlan config, `bond0.11`, `bond0.10` and `bond0.12`. We need to do this for the VLAN tagging. 
 
 On those interfaces we are going to create bridges for use with KVM: `vmbr11`, `vmbr10` and `vmbr12`. Only `vmbr10` will get an IP address, which we will use for connecting over ssh for management. The other two bridges only serve as bridges for the virtual machine nic's. Because we do it this way, it will appear to the virtual machines as if they were only in the network they are bridged in and they require no further configuration themselves.

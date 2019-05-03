@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Keepalived supports running scripts on VRRP state change. This can come in handy when you need to execute an action when a failover occurs. In my case, I have a VPN running on a Virtual IP and want to make sure the VPN only runs on the node with the Virtual IP.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 If you want to set up a simple keepalived cluster, see [my tutorial on that](https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html).
 
 The VPN uses `strongswan` and is a simple ipsec site to site VPN. The two nodes are datacenter redundant. The nodes function as NAT/firewall proxies for a backend network. The backend servers need access to some other servers only reachable over the VPN.

@@ -12,7 +12,10 @@ Format      : 	Markdown/HTML
 Recently a rather large amount of new infrastructure was added to one of my monitoring instances. Using SNMP exclusively, but not the fastest network or infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts, which look like false positives and give unclean logs. Raising the SNMP timeout for the checks above 60 seconds was not that easy since the 60 second timeout is hardcoded in the underlying library (NET::SNMP). This article shows you how to raise that timeout on an Ubuntu 16.04 system.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 In the webinterface of Icinga2 the logs are unclean, making it harder to find actual errors:
 

@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bonding, also called port trunking or link aggregation means combining several network interfaces (NICs) to a single link, providing either high-availability, load-balancing, maximum throughput, or a combination of these.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 **Warning! Make sure you have ILO/BMC out of band remote access to your server. You are going to change vital network settings, this may result in loss of connectivity if done wrong.**
 
 ### Install required packages

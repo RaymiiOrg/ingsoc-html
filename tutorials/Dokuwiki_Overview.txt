@@ -16,8 +16,8 @@ small companies. It has a simple but powerful syntax which makes sure the
 datafiles remain readable outside the Wiki and eases the creation of structured
 texts. All data is stored in plain text files  no database is required.   
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

@@ -13,8 +13,10 @@ Format      : 	Markdown/HTML
 The NGINX blog recently had a [nice article on a new feature of NGINX 1.15.2, $ssl_preread_protocol](http://web.archive.org/web/20180806131633/https://www.nginx.com/blog/running-non-ssl-protocols-over-ssl-port-nginx-1-15-2/). This allows you to multiplex HTTPS and other SSL protocols on the same port, or as their blog states, 'to distinguish between SSL/TLS and other protocols when forwarding traffic using a TCP (stream) proxy'. This can be used to run SSH and HTTPS on the same port (or any other SSL protocol next to HTTPS). By running SSH and HTTPS on the same port, one can circumvent certain firewall restrictions. If the session looks like HTTPS, nginx will handle it, if it looks like something else, it will forward it to the configured other program. I used to use [SSLH](https://github.com/yrutschle/sslh) to get this functionality, but now it's built into the nginx webserver. 
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This small guide will cover the installation of the latest version of nginx on Ubuntu (16.04) and configuring this multiplex feature.
 

@@ -11,7 +11,12 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to install extra software in the VMWare vCenter appliance. VMWare provides a vCenter appliance, which is a SUSE Linux Enterprise Server appliance with the VMWare vCenter server software installed. Because this is SUSE, we can add repositories and install software from there. By default it comes without repositories enabled. I needed to do this because I want to use NRPE on the vCenter appliance.
 
-Make sure you can SSH to your vCenter Appliance. I use my own account with sudo, however, if you're feeling lucky you might be able to use the root account. Remember, to disable root login...
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+Make sure you can SSH to your vCenter Appliance. I use my own account with sudo, however, if you're feeling lucky you might be able to use the root account. Remember, to disable root login.
 
 First we need to make sure we have the correct version. Check the file `/etc/SuSE-release`:
 

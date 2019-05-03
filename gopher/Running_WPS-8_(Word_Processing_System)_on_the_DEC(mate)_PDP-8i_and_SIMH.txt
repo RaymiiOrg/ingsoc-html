@@ -24,7 +24,10 @@ Plus, in previous jobs I've worked on mainframes, VAX and PDP systems and the em
 
 [Oscar Vermeulen created an amazing replica of the PDP-8/I](http://obsolescence.wix.com/obsolescence#!pidp-8/cbie). It's a front panel with working switches and LED's, plus a simple Raspberry Pi running the SIMH emulator. [I've written](https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html) multiple [articles on the](https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html) [PDP and PiDP-8](https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html) and I like the device a lot in general.
 
-[If you like this article, consider sponsoring this site by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 So why run WPS-8 today you might ask? Well, first of all, because it is fun to play with. Second, to appreciate the modern software we use the present day more. Just imagine you writing your thesis on an ASR-33 teletype or a DECmate. Imagine the wrist and shoulder pain, the review process and all the other nice things we take for granted. The third reason of course is to bewonder how far advanced computers and software was more than 40 years ago. For less than the price of a small car, a business could own a PDP-8 and have their processes digitized, optimized and all the other advantages of a computer. Or just type their letters to look way more fancy.
 

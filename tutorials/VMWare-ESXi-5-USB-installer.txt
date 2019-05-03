@@ -14,6 +14,11 @@ If you need to install VMWare ESXi 5.1 and your shiny new server does not have a
 
 This also works for the special HP version of ESXi with all the drivers.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 These steps come from the [VMware install guide](https://pubs.vmware.com/vsphere-51/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-51-installation-setup-guide.pdf), but the VMWare website and their search function are both shit. And the steps in the manual don't completely work, so here's the fix for it.
 
 ### Preparation

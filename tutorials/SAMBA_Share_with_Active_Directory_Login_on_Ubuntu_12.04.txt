@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to set up a SAMBA server which authenticates all users to an Active Directory, including group based permissions. It uses Samba, Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving files via SMB, where your authentication and autorization for the files and folders is done via Active Directory.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 We are actually doing two things, we bind a Linux machine to the Active Directory (but we disable shell access for the users), and we then configure Samba to accept these users to the shares we set up.
 
 ### Introduction

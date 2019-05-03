@@ -96,12 +96,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</loc>
-            <lastmod>2018-12-17</lastmod>
-            <changefreq>monthly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tutorials/Line_total_up_down_sum_in_php_weathermap.html</loc>
             <lastmod>2018-11-13</lastmod>
             <changefreq>monthly</changefreq>
@@ -830,6 +824,12 @@
         <url>
             <loc>https://raymii.org/s/articles/Solve_word_puzzles_with_bash.html</loc>
             <lastmod>2015-03-08</lastmod>
+            <changefreq>monthly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.html</loc>
+            <lastmod>2015-03-03</lastmod>
             <changefreq>monthly</changefreq>
         </url>
     

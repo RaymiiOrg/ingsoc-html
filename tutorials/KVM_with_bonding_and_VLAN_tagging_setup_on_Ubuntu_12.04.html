@@ -77,6 +77,9 @@
 
 <p>The KVM host has 2 NIC&#39;s, which are plugged in to two switches who support LACP. The switch ports for the KVM host are trunk ports for the above VLAN&#39;s (11, 10 and 12). The two NIC&#39;s are bonded in balance-xor (bond mode 3) for fault tolerance and load balancing. </p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>We are going to create three interfaces using the linux vlan config, <code>bond0.11</code>, <code>bond0.10</code> and <code>bond0.12</code>. We need to do this for the VLAN tagging. </p>
 
 <p>On those interfaces we are going to create bridges for use with KVM: <code>vmbr11</code>, <code>vmbr10</code> and <code>vmbr12</code>. Only <code>vmbr10</code> will get an IP address, which we will use for connecting over ssh for management. The other two bridges only serve as bridges for the virtual machine nic&#39;s. Because we do it this way, it will appear to the virtual machines as if they were only in the network they are bridged in and they require no further configuration themselves.</p>

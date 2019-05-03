@@ -11,8 +11,16 @@ Format      : 	Markdown/HTML
 
 I have set up Motion in a way that it Emails me when it detects movement, and
 it automatically saves the pictures to my FTP server. I do not autostart
-motion in deamon mode, because it only needs to run while I'm away.   It
-requires little config adaption. First we need to install motion, wput, and
+motion in deamon mode, because it only needs to run while I'm away.   
+
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
+It requires little config adaption. First we need to install motion, wput, and
 sendemail:
 
     sudo apt-get install wput sendemail motion

@@ -11,6 +11,19 @@ Format      : 	Markdown/HTML
 
 ### Screenshots
 
+This is a guide on installing the latest ntop-ng (1.1) on Ubuntu 12.04. 
+
+
+    ntopng is the next generation version of the original ntop, a network traffic probe that shows the network usage, similar to what the popular top Unix command does. ntop is based on libpcap and it has been written in a portable way in order to virtually run on every Unix platform, MacOSX and on Win32 as well. ntopng users can use a a web browser to navigate through ntop (that acts as a web server) traffic information and get a dump of the network status. In the latter case, ntop can be seen as a simple RMON-like agent with an embedded web interface. 
+
+This tutorial will walk you through the compilation and installation of ntopng from source. The package in the Ubuntu 12.04 repositories it quite old.
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
 <a href="https://raymii.org/s/inc/img/ntopng/1.png"><img src="https://raymii.org/s/inc/img/ntopng/1.png" alt="ntop" /></a>
 
 <a href="https://raymii.org/s/inc/img/ntopng/2.png"><img src="https://raymii.org/s/inc/img/ntopng/2.png" alt="ntop" /></a>
@@ -20,13 +33,6 @@ Format      : 	Markdown/HTML
 <a href="https://raymii.org/s/inc/img/ntopng/4.png"><img src="https://raymii.org/s/inc/img/ntopng/4.png" alt="ntop" /></a>
 
 <a href="https://raymii.org/s/inc/img/ntopng/5.png"><img src="https://raymii.org/s/inc/img/ntopng/5.png" alt="ntop" /></a>
-
-This is a guide on installing the latest ntop-ng (1.1) on Ubuntu 12.04. 
-
-
-    ntopng is the next generation version of the original ntop, a network traffic probe that shows the network usage, similar to what the popular top Unix command does. ntop is based on libpcap and it has been written in a portable way in order to virtually run on every Unix platform, MacOSX and on Win32 as well. ntopng users can use a a web browser to navigate through ntop (that acts as a web server) traffic information and get a dump of the network status. In the latter case, ntop can be seen as a simple RMON-like agent with an embedded web interface. 
-
-This tutorial will walk you through the compilation and installation of ntopng from source. The package in the Ubuntu 12.04 repositories it quite old.
 
 ### What can ntopng do?
 

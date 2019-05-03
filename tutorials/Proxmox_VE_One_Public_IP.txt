@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This guide will show you how to set up Proxmox with only one public IP. We will configure an extra interface bridge and make sure VM traffic is NATed. I have a few dedicated servers, some run Proxmox. Most of them however have only a few IP's. Therefore the VM's in proxmox cannot all have a public IP. For most of them that is not a problem. If needed I run a proxy or set up iptables to forward ports to the VM's.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This guide is tested on a proxmox machine running proxmox version 3.2.
 
 What we will have at the end is a VM with an SSH port reachable on the public IP:

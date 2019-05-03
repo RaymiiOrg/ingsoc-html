@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This is a tutorial to set up automatic user lockout in Exchange 2010 - Outlook Web Acces (OWA). When a user does 5 wrong login attempts, he/she is locked out from the webinterface. After for example 5 minutes he or she is unlocked again automatically. This helps you mitigate brute force attacks, since an attacker can only try 1 password/minute, but the user will not be blocked for to long. Exchange 2010 has some special register settings to make IIS stop caching, otherwise it would not work.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 #### Group Policy settings
 
 Execute the following steps on one of your domain controllers.
@@ -35,6 +40,7 @@ Also make sure the group policy is enforced.
 Lets move on to IIS to make sure that OWA does not cache the login token.
 
 ### IIS / OWA
+
 Outlook Web Access operates via the IIS server, which when using form based authentication caches login tokens for a set amount of time. [(See this link)](http://support.microsoft.com/kb/173658/en-us) and [this one](https://www.microsoft.com/technet/prodtechnol/windowsserver2003/library/iis/6b2e7fcd-5fad-4ac8-ac0a-dcfbe771e9e1.mspx).
 
 If you have set the above group policy and you test in on the outlook web access of the exchange server, you will notice that if you have done more than 5 failed logins you can still login with the good password. 

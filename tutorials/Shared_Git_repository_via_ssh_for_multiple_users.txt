@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This tutorial will show you how to set up a shared git repo with multiple accounts over ssh. Only ssh, not gitolite or any other software. This is usefull if you have a small team of people that don't often need access to the repo and don't want something like github or bitbucket. With this you can use existing infrastructure.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 I have used this for a sysadmin team which had a few scripts scattered.
 
 ### Folders and Permissions

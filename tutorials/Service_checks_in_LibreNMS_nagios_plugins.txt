@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 LibreNMS is becoming one of my favorite monitoring tools. Setup and getting started is easy and it has enough advanced options and tunables. I recently discovered that LibreNMS is able to check services as well. Services, in this context, means, executing Nagios plugins (like check_http, check_ping, etc). This allows you to check services that SNMP does not cover by default, like HTTP(s) health checks, certificate expiry, tcp port checks (e.g. rdp) and anything for which you can write a Nagios plugin yourself. The performance data, if available, is graphed automatically. Alerting is done with the regular LibreNMS alerts. This guide covers the setup of services (it's not enabled by default) and a few basic checks, like an http health check, certificate expiry and SSH monitoring.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 You need a LibreNMS server for this guide to work. The project provides excellent documentation. To get started, get a [Digital Ocean VPS](https://www.digitalocean.com/?refcode=7435ae6b8212) and follow the [official guide for Ubuntu](http://web.archive.org/web/20180910120958/https://docs.librenms.org/#Installation/Installation-Ubuntu-1804-Nginx/).
 

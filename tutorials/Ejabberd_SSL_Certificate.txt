@@ -11,7 +11,12 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to set up an SSL Certificate for use with Ejabberd. It covers both the creation of the Certificate Signing Request, the preparing of the certificate for use with Ejabberd and the installation of the certificate.
 
-[If you need to set up an ejabberd server then you can read my tutorial here how to do that](https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html). [If you need a VPS to set up ejabberd you can use an Inception Hosting VPS to set up your own XMPP server, I use them and they are very stable and offer good performance and pricing.](http://clients.inceptionhosting.com/aff.php?aff=083)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+[If you need to set up an ejabberd server then you can read my tutorial here how to do that](https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html). 
 
 This tutorial assumes a working ejabberd installation. It is tested on Debian and Ubuntu, but should work on any ejabberd installation.
 

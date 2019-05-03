@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 This small guide will shows you how to use the OpenSSL Command Line to sign a file, and how to verify the signing of this file. You can do this to prove ownership of a key, or to prove that a file hasn't been modified since you signed it. This works both with small text files as well as huge photo's, documents or PDF files.
 
-If you like this website and want to support it AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Generate a keypair
 

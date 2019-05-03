@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This tutorial shows you how to backup and restore the mail message filters in Thunderbird on multiple platforms. The filters are in a plain text file located in your thunderbird Profile folder. On Mac OS X for example this is under the `/Users/<username>/Library/Thunderbird/Profiles/<profile>/ImapMail/<mailserver>/` folder. (If you use IMAP.) 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 The file is named `msgFilterRules.dat` and the contents look a bit like this:
 
 	version="9"

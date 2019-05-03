@@ -14,6 +14,11 @@ When connecting to a server, clients should verify the validity of the server ce
 
 OCSP is much more lightweight, as only one record is retrieved at a time. But the side effect is that OCSP requests must be made to a 3rd party OCSP responder when connecting to a server, which adds latency and potential failures. In fact, the OCSP responders operated by CAs are often so unreliable that browser will fail silently if no response is received in a timely manner. This reduces security, by allowing an attacker to DoS an OCSP responder to disable the validation.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 The solution is to allow the server to send its cached OCSP record during the TLS handshake, therefore bypassing the OCSP responder. This mechanism saves a roundtrip between the client and the OCSP responder, and is called OCSP Stapling.
 
 The server will send a cached OCSP response only if the client requests it, by announcing support for the status_request TLS extension in its CLIENT HELLO.

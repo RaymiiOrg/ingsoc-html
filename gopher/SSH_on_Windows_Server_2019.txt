@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 On [hackernews](https://news.ycombinator.com/item?id=18659635) I saw a [Microsoft blog post](https://blogs.windows.com/buildingapps/2018/12/11/windows-server-2019-includes-openssh/) stating that Windows Server 2019 now includes OpenSSH. In this post I'll try out both the client and server on a Windows 2019 server, including how to login as a Active Directory Domain user. All documentation from Microsoft on OpenSSH [can be found here](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview). The bonus this time is how to elevate permissions via SSH on Windows, sudo but way more complicated. This guide is also applicable on Windows 10, build 1809 and up.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 <img src="https://raymii.org/s/inc/img/server-2019-ssh.png">
 
 ### Installing OpenSSH on Windows
@@ -255,7 +260,6 @@ Note that this by default only works on localhost, not from a remote computer. U
 
 This is also not really like sudo, but more like setting up a new `ssh` session from  `localhost` to `localhost` as root. (But, with powershell remoting). 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
 
 ---
 

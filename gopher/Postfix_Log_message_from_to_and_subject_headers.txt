@@ -14,6 +14,11 @@ of all the emails postfix sends (or which pass through it if you run it as a
 relay). It comes in handy when you need to debug an email issue and need to
 confirm your mailserver has sent the message.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 First create the file `/etc/postfix/header_checks` and insert this into it:
 
     /^subject:/      WARN

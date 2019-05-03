@@ -18,8 +18,9 @@ file exists. If the file exists, it will not execute the action. The same goes
 for checking if a file does exist and only executing the action if it exists.
 (The action you want to do will remove that file).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

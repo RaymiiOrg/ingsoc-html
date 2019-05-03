@@ -18,8 +18,8 @@ helps you with an only if statement to select a specific distribution. As a
 bonus, you also get an `only_if` for specific distribution versions, like Ubuntu
  precise (12.04 LTS) or Ubuntu Trusty (14.04 LTS).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

@@ -11,9 +11,12 @@ Format      : 	Markdown/HTML
 
 OSSEC is an Open Source Host-based Intrusion Detection System that performs log analysis, file integrity checking, policy monitoring, rootkit detection, real-time alerting and active response. It runs on most operating systems, including Linux, MacOS, Solaris, HP-UX, AIX and Windows. It also includes agentless monitoring for use with for example Cisco, HP or Juniper hardware.
 
-OSSEC 2.8 was [released on the 4th of June, 2014](http://www.ossec.net/?p=1098). You can find the [full release notes here](http://www.ossec.net/files/ossec-hids-2.8-release-note.txt). New features include outputing of all alerts to a zeromq PUB socket in JSON, more sshd rules and a lot of bugfixes.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[This tutorial was tested on a DigitalOcean VPS. If you use this link you sponsor this website. (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+OSSEC 2.8 was [released on the 4th of June, 2014](http://www.ossec.net/?p=1098). You can find the [full release notes here](http://www.ossec.net/files/ossec-hids-2.8-release-note.txt). New features include outputing of all alerts to a zeromq PUB socket in JSON, more sshd rules and a lot of bugfixes.
 
 This tutorial covers the installation of the OSSEC 2.8.0 server, the standard OSSEC Web UI and the Analogi dashboard on Ubuntu 14.04. It also covers OSSEC setup with MySQL support. Last but not least it shows you how to install the OSSEC agent on a *NIX system.
 

@@ -11,8 +11,15 @@ Format      : 	Markdown/HTML
 
 This guide works for the Sonim XP3.20 Quest (Pro).   
 I also have an Android Phone which had an option to share the Internet Connection via USB and/or Wifi.  
-This was one of the features I missed on the Sonim. The phone itself is awesome, but that is not in the scope of this guide.  
-It is also tested with the newer Sonim XP1300 Core. (Yes, I have three Sonim phones). Please note that some providers not allow you to tether your phones internet connection, and this may cost you a lot of money if you go over your monthly bundle. Also you need to have internet setup on your phone already. This guide was written and tested on **Arch Linux with Kernel 2.6.36-ARCH**, but I think it will be usable on more distributions.  
+This was one of the features I missed on the Sonim. The phone itself is awesome, but that is not in the scope of this guide.
+
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+It is also tested with the newer Sonim XP1300 Core. Please note that some providers not allow you to tether your phones internet connection, and this may cost you a lot of money if you go over your monthly bundle. Also you need to have internet setup on your phone already. This guide was written and tested on **Arch Linux with Kernel 2.6.36-ARCH**, but I think it will be usable on more distributions.  
 First install wvdial:
 
     pacman -S wvdial

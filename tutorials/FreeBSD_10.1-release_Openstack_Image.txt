@@ -14,7 +14,10 @@ We are going to prepare a FreeBSD image for Openstack deployment. We do this by 
 You can see all my [Openstack related articles here][6]. For example, how to use [Duplicity to create Encrypted backups to the Openstack Swift Object Store][7]
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This tutorial is available for: 
 

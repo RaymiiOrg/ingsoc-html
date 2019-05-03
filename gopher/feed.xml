@@ -142,15 +142,6 @@
             </item>
     
             <item>
-                <title>OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation</title> 
-                <link>gopher://raymii.org/0/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt</link> 
-                <guid>gopher://raymii.org/0/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt</guid>
-                <description>These are quick and dirty notes on generating a certificate authority (CA), intermediate certificate authorities and end certificates using the OpenSSL command line tools. It includes OCSP, CRL and CA Issuer information and specific issue and expiry dates. We'll set up our own root CA. We'll use the root CA to generate an example intermediate CA. We'll use the intermediate CA to sign end user certificates.</description> 
-                <pubDate>Mon, 17 Dec 2018 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 17 Dec 2018 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>Line total (up+down sum) in PHP Network Weathermap</title> 
                 <link>gopher://raymii.org/0/Line_total_up_down_sum_in_php_weathermap.txt</link> 
                 <guid>gopher://raymii.org/0/Line_total_up_down_sum_in_php_weathermap.txt</guid>
@@ -1246,6 +1237,15 @@
                 <description>This article shows you how to solve word puzzles with Bash. It covers the grep tool including regular expressions to solve different kinds of word puzzles.</description> 
                 <pubDate>Sun, 08 Mar 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sun, 08 Mar 2015 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>OpenSSL command line Root and Intermediate CA including OCSP, CRL and revocation</title> 
+                <link>gopher://raymii.org/0/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt</link> 
+                <guid>gopher://raymii.org/0/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL and_revocation.txt</guid>
+                <description>These are quick and dirty notes on generating a certificate authority (CA), intermediate certificate authorities and end certificates using the OpenSSL command line tools. It includes OCSP, CRL and CA Issuer information and specific issue and expiry dates. We'll set up our own root CA. We'll use the root CA to generate an example intermediate CA. We'll use the intermediate CA to sign end user certificates.</description> 
+                <pubDate>Tue, 03 Mar 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 17 Dec 2018 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -2764,7 +2764,7 @@
                 <title>RT (Request Tracker) - find and delete big attachments</title> 
                 <link>gopher://raymii.org/0/RT_find__and_delete_big_attachments.txt</link> 
                 <guid>gopher://raymii.org/0/RT_find__and_delete_big_attachments.txt</guid>
-                <description>RT (Request Tracker) can save attachments. It saves these in the database (mysql). I had an issue where my mysqldump used in backupping RT would fail due to an `mysqldump: Error 2020: Got packet bigger than 'max_allowed_packet' bytes when dumping table Attachments at row: xxxxx error. Adding the --max_allowed_packet=500M parameter to the mysqldump command didn't work, so here is how to search and find big attachments in RT using mysql.</description> 
+                <description>RT (Request Tracker) can save attachments. It saves these in the database (mysql). I had an issue where my mysqldump used in backupping RT would fail due to an mysqldump: Error 2020: Got packet bigger than 'max_allowed_packet' bytes when dumping table Attachments at row: xxxxx error. Adding the --max_allowed_packet=500M parameter to the mysqldump command didn't work, so here is how to search and find big attachments in RT using mysql.</description> 
                 <pubDate>Thu, 17 Jan 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 17 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>

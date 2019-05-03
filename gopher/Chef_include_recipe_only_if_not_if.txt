@@ -11,8 +11,8 @@ Format      : 	Markdown/HTML
 
 Chef supports including other recipes in cookbooks, for example, I can include the MySQL recipe from a PHP recipe. However, this is not a normal resource but a normal method. Therefore it ignores anything passed to it, including only_if or not_if. This tutorial shows you how to include or not include a recipe based on a variable, comparable with not_if or only_if.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

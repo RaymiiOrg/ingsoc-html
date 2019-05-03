@@ -11,8 +11,8 @@ Format      : 	Markdown/HTML
 
 Chef supports a very powerfull search syntax which allows you for example to search all nodes with the graphite-server role and get their IP addresses. This tutorial shows you how to search based on a role a node has or a recipe a node has, plus an example config file with erb syntax. It has an example cookbook which sets up collectd as client and graphite as server. It shows you how to use the search function of Chef to get the IP addresses of the graphite servers and place those in the collectd config files. This technique is applicable to all kinds of services that use a client-server model, for example, munin, haproxy, zabbix and many more.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, 
-you get $10 credit). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

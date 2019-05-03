@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 The BIND nameserver (and many others) return their version number when queried a special DNS query. This gives exposure and that is most of the time a bad thing. This tutorial shows you how to query DNS servers for their version and how to stop/change your own BIND server version exposure.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Chaos Query
 
 The following `DIG` and `NSLOOKUP` queries will show the version of BIND:
