@@ -14,6 +14,11 @@ Format      : 	Markdown/HTML
 
 The image you see above here is Terrible Start, a new piece of software I'm creating for Terrible Linux, my debian respin. It will feature all the things in the above screenshot and it is meant as a handy one click start for stuff you want to do. Of course you will be able to turn it off at login, I do not want to bother you with stuff you do not want to have. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ##### Features
 
 *   Notepad with save function
@@ -42,8 +47,8 @@ The image you see above here is Terrible Start, a new piece of software I'm crea
 
 Terrible Start is made with [Illumination Software Creator][5].  
 
-[1]: http://i.imgur.com/vq2Lh.png "Terrible Start"   
-[5]: http://radicalbreeze.com/ " " 
+[1]: https://raymii.org/s/inc/img/terrible_start.png "Terrible Start"
+[5]: http://radicalbreeze.com/ 
 
 
 ---

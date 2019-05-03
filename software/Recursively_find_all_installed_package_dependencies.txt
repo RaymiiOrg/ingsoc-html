@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This small script shows you all packages [installed] that are a dependency from a package, and the dependencies of those packages. I installed the build-essential package, but apt-get remove-ing that package doens't remove the development tools. So I was wondering what packages were installed, including those dependencies, to remove the ones I didn't want. This small script shows you all packages that are dependencies of a package, and repeats that for those packages.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### The code
 
 Too small to create a github repo, so that's why you need to copy paste it.

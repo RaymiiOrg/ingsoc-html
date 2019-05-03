@@ -13,6 +13,13 @@ Format      : 	Markdown/HTML
 This script will help you with nursing-related infusion and drip speed calculations.  
 **Also available as an online tool, scroll down for the link**.  
 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
     NurseCalc infuus by Raymii.org. READ LICENSE
     Usage: ./infuus.sh $HOEVEELHEID $DRUPPELSNELHEID $TIJDSDUUR $DRUPPELSML
     Two variables are needed, the other will be calculated. Unknown variable should be entered as 0

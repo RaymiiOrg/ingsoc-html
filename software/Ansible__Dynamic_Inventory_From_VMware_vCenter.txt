@@ -14,6 +14,13 @@ This is a simple script which lets you use VMWare vCenter as a dynamic inventory
 [Github repository](https://github.com/RaymiiOrg/ansible-vmware)  
 [Official Website](https://raymii.org/s/software/Ansible__Dynamic_Inventory_From_VMware_vCenter.html)
 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
 ### Installation
 
 Install PySphere:

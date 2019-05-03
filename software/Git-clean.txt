@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 The script below is a script to clean a git repository. Either to see big files, or to remove them, and remove them from history.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 #### Examples
 
 View the list of big files in the git repo and the git repo history (from the sourcecode repo of this website):

@@ -11,6 +11,13 @@ Format      : 	Markdown/HTML
 
 NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password. 
 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
 ### Demo
 
 [Click here for a demo with the new interface](http://sparklingnetwork.nl/nopriv2/index.html)  
@@ -19,25 +26,33 @@ NoPriv.py is a python script to backup any IMAP capable email account to a bowsa
 ### Screenshots
 
 #### Running the program
+
 <a href = "http://i.imgur.com/8Uvrk.png"><img src="http://i.imgur.com/8Uvrk.png" width=400 alt="nopriv screenshot"height=400 /></a>
 
 #### Index page
+
 <a href = 'http://i.imgur.com/mQOrv8ih.png'><img src="http://i.imgur.com/mQOrv8ih.png" width=400 alt="nopriv screenshot"height=400 /></a>
 
 #### Folder Overview page 
+
 <a href = "http://i.imgur.com/7gWFky1h.png"><img src="http://i.imgur.com/7gWFky1h.png" width=400 alt="nopriv screenshot"height=400 /></a>
 
 #### Email itself
+
 <a href = "http://i.imgur.com/0765Xz1.png"><img src="http://i.imgur.com/0765Xz1.png" width=400 alt="nopriv screenshot"height=400 /></a>
 
 #### Attachments
+
 <a href="http://i.imgur.com/jAdGeeM.png"><img src="http://i.imgur.com/jAdGeeM.png" width=400 alt="nopriv screenshot"height=400 /></a>
 
 ### Empty Folder
+
 <a href="http://i.imgur.com/NigeQ9lh.png"><img src="http://i.imgur.com/NigeQ9lh.png" width=400 alt="nopriv screenshot"height=200 /></a>
 
 #### Command Line Client (links2):
+
 <a href="http://i.imgur.com/gt9nH.png"><img src="http://i.imgur.com/gt9nH.png" width=400 alt="nopriv screenshot"height=400 /></a>
+
 ### Features
 
 - Works with any IMAP/IMAPS account

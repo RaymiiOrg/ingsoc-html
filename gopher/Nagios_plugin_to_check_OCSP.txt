@@ -13,7 +13,10 @@ This is a nagios plugin to check an OCSP server. It does so by having either a P
 
 This version has contributions from [Pali Sigurdsson](https://github.com/palli/).
 
-[Do you need a VPS for hosting nagios? InceptionHosting has very good VPS servers!](http://clients.inceptionhosting.com/aff.php?aff=083)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 #### Download
 

@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Simple PHP script which decodes an SSL connection or certificate and displays information.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Features
 
 - Decodes CSR
@@ -30,9 +35,9 @@ Simple PHP script which decodes an SSL connection or certificate and displays in
 
 ### Demo
 
-See [https://z1s.org/ssl/](https://z1s.org/ssl/).
+See [htts://ssldecoder.org/](https://ssldecoder.org/).
 
-<a href="https://z1s.org/ssl/"><img src="http://i.imgur.com/R1BQlLVm.png" /></a>
+<a href="https://ssldecoder.org"><img src="http://i.imgur.com/R1BQlLVm.png" /></a>
 
 ### License
 

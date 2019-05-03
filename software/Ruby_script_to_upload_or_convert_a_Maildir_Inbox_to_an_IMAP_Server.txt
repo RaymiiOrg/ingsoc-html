@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 I decided to change email server for several reasons, anyway, long story short I was using postfix(qmail before that) and decided to switch to citadel, which is much easier to deal with (simple config).
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Anyway, Citadel use it's own format for emails (Berkeley DB), so you can't just copy over the existing emails stored in Maildir format (8 years worth !), but since Citadel provides an IMAP server, all I need is a tool that can copy/upload The IMAP folder(s) content to an IMAP server.
 
 I thought that would already exist, easy to find, but did not seem to find one.

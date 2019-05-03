@@ -11,6 +11,13 @@ Format      : 	Markdown/HTML
 I mostly get my wallpapers from the website [Wallbase.cc](http://wallbase.cc). But the site requires a lot of javascript and ajax, and it is hard to get a lot of wallpapers at once.
 I've written a script for this problem, it lets you grep wallbase from the cli!  
 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
 ##### Features
 * Bash, wget, awk only, nothing else required (well, active internet connection)
 * Get the newest wallpapers from wallbase.cc

@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This simple script creates a vzdump of all the OpenVZ containers on a machine. It can be used before an actual backup, in my case the actual backup excludes the container path <code>/var/lib/vz/private</code>. This because a dump is easier to backup because it has much less files in it.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>If I include the container path my backups take about 40% longer to run then with only the dumps enabled.</p>
 
 <p>Do note that the VM&#39;s by default are stopped a very short while. The <code>mode</code> is <code>suspend</code>, which means that first an online copy of all the files is performed, then the VM is stopped and the remaining changed files are synced. Afterwards the VM is booted again.</p>

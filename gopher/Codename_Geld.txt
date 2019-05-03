@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Codename Geld is a finance manager written in PHP. It uses a JSON text file for the values and the visual side is created with the excellent HTML5 Kickstart framework by Joshua Gatcke. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 It is not as fancy as mint.com or gnucash, so if you need advanced features (multiple accounts for example) you might want to use another piece of software. Also, the code is quite messy.
 
 #### Changelog

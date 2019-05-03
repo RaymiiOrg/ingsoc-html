@@ -12,6 +12,13 @@ Format      : 	Markdown/HTML
 This script will help you with nursing-related oxygen calculations.  
 **Also available as an online tool, scroll down for the link**.   
 
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
     Usage: ./o2.sh $si $pr $to $do 
     Three variables are needed, the other will be calculated. Unknown variable should be entered as 0
     $si = Size of the o2 tank in liters (eg 2, 5, 10)

@@ -14,9 +14,10 @@ This callback plugin creates a VCS branch every time you run Ansible. If you eve
 
 This is useful when you have multiple environments or multiple people deploying and continually develop your Ansible. When you often deploy to test / acceptance and less often to production, you can checkout the last branch that deployed to production if a hotfix or other maintenance is required, without having to search back in your commits and logs. I would recommend to develop infrastructure features in feature branches and have the master branch always deployable to production. However, reality learns that that is not always the case and this is a nice automatic way to have a fallback.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
-
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ## Requirements and installation
 

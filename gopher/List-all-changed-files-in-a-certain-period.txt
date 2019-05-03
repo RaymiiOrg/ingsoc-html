@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This is a little script I wrote and use to get a daily report of all the files that have changed on my servers. What it does is list all the files that are modified within a certain time period from a given directory. It can also be run from a desktop machine, or any machine which runs bash, find and ls. Usage is simple, save the script, chmod +x it, then run (./report.sh). If you want a specific directory to be scanned run it like ./report.sh /var/www/my/dir
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
   
 This is the script:
 

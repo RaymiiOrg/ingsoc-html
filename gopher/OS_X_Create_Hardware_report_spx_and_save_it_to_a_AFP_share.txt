@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This script creates a OS X hardware report (an SPX file) and saves it to a AFP share. This is usefull when you are rolling out new machines. Run this script via Apple Remote Desktop and you have all your administration in your AFP share, which you can later put in your CMDB. The report has all the hardware data, from firmware, serial number, model, MAC addresses, disk and memory information, in short everything you need for your CMDB and support contracts.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This is the script:
 
     #!/bin/bash

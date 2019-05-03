@@ -14,6 +14,11 @@ Format      : 	Markdown/HTML
 I wrote a script which combines dialog, awk and bash to make a nifty ssh
 script. First of, copy this script to your pc:
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 #### SSHdialog 
 
     #!/bin/bash

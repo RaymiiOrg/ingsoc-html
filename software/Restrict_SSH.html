@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>restrict<em>ssh.sh is a bash script which restricts ssh for a user to a set of (flexible) commands via .ssh/authorized</em>keys, and log it verbosely.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <h3>Purpose</h3>
 
 <p>I have a web application which needs to do some things over ssh on a server. It runs as a separate user, and this script allows me to restrict the commands it can execute as well. It however does allow regexes so filenames can be passed. It also logs the commands and session info.</p>

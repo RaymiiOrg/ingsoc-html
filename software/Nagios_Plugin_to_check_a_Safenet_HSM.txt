@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This is a Nagios plugin to monitor a Safenet Protectserver HSM using the Safenet tools. It can also gather information about the device, like firmware and functional module information.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Usage
 
     usage: ./hsm.sh options

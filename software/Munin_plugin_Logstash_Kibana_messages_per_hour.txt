@@ -11,8 +11,10 @@ Format      : 	Markdown/HTML
 
 This is a simple munin plugin which shows you the amount of log messages your logstash/kibana server receives per hour. It should run on the Logstash host, it gets the data from out the Elasticsearch database.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 
 ![Munin plugin example](/s/inc/img/munin-logstash.png)

@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 restrict_ssh.sh is a bash script which restricts ssh for a user to a set of (flexible) commands via .ssh/authorized_keys, and log it verbosely.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Purpose
 
 I have a web application which needs to do some things over ssh on a server. It runs as a separate user, and this script allows me to restrict the commands it can execute as well. It however does allow regexes so filenames can be passed. It also logs the commands and session info.
