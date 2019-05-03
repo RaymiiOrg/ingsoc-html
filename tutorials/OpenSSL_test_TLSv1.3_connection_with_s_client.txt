@@ -16,7 +16,12 @@ OpenSSL 1.1.1 on Ubuntu, testing the connection to a server  and specific
 ciphersuites. It also covers the big differences between TLSv1.3 and lower.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean 
+<<<<<<< HEAD
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+=======
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 
+credit). (referral link)][99] 
+>>>>>>> 01427e429cae7482e8c4ecc9970653d9488a6b16
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
