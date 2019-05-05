@@ -267,8 +267,7 @@ The full play then results in:
 
    [4]: http://blog.oddbit.com/2015/10/26/ansible-20-new-openstack-modules/
 
-   [5]: https://raymii.org/s/snippets/Ansible_-
-_create_playbooks_and_role_file_and_folder_structure.html
+   [5]: https://raymii.org/s/snippets/Ansible_-_create_playbooks_and_role_file_and_folder_structure.html
 
    [6]: https://docs.ansible.com/ansible/os_server_module.html
 

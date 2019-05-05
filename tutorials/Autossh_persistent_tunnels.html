@@ -69,23 +69,31 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Situation: you are in a restricted network (company, hotel, hospital) where you have a &quot;server&quot; which you want to access from outside that network. You cannot forward ports to that machine, but you can ssh outside (to your own server). This tutorial solves this problem.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Situation: you are in a restricted network (company, hotel, hospital) where you
+have a &quot;server&quot; which you want to access from outside that network. You cannot
+forward ports to that machine, but you can ssh outside (to your own server).
+This tutorial solves this problem.</p>
 
-<p>You need another server to which you setup a persistent ssh connection with a reverse tunnel. Then if you need to access the machine you ssh into the other server, and from there you ssh through the tunnel to the restriced machine.</p>
+<p>You need another server to which you setup a persistent ssh connection with a
+reverse tunnel. Then if you need to access the machine you ssh into the other
+server, and from there you ssh through the tunnel to the restriced machine.</p>
 
-<p>Make sure you have permission to do this from the administrators. They generally don&#39;t like holes in the firewall/security. They don&#39;t block it for no reason.</p>
+<p>Make sure you have permission to do this from the administrators. They generally
+don&#39;t like holes in the firewall/security. They don&#39;t block it for no reason.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h4>Naming convention:</h4>
 
-<p>restricted machine: machine inside the restricted network
-middleman: machine to which the restricted machine sets up the tunnel, and from which you access the restricted server</p>
+<p>restricted machine: machine inside the restricted network middleman: machine to
+which the restricted machine sets up the tunnel, and from which you access the
+restricted server</p>
 
 <h4>Install the tools</h4>
 
-<p>We are going to use autossh. This is in the debian/ubuntu repositories. Make sure you also install openssh server.</p>
+<p>We are going to use autossh. This is in the debian/ubuntu repositories. Make
+sure you also install openssh server.</p>
 
 <p>Execute on: restricted machine.</p>
 
@@ -110,7 +118,8 @@ Enter same passphrase again: *leave empty*
 <pre><code>ssh-copy-id -i .ssh/nopwd.pub &quot;-p 2222 remy@middleman&quot;
 </code></pre>
 
-<p>(replace remy@middleman with your username and middleman ssh server. Also note how you can give a custom port in the ssh-copy-id.)</p>
+<p>(replace remy@middleman with your username and middleman ssh server. Also note
+how you can give a custom port in the ssh-copy-id.)</p>
 
 <h4>Test the connection with autossh</h4>
 
@@ -130,31 +139,41 @@ Enter same passphrase again: *leave empty*
 <li>remy@middleman -p 2222: ssh user remy, ssh host middleman, ssh port 2222</li>
 </ul>
 
-<p>If this all goes well you should be logged in to the middleman host without being asked for a password. You might get the question if you want to add the ssh key. Say yes to this.</p>
+<p>If this all goes well you should be logged in to the middleman host without
+being asked for a password. You might get the question if you want to add the
+ssh key. Say yes to this.</p>
 
-<p>If it does not go well, check the permissions on the ssh key (should be 600), and make sure you have the correct values in the autossh command. </p>
+<p>If it does not go well, check the permissions on the ssh key (should be 600),
+and make sure you have the correct values in the autossh command.</p>
 
 <h4>SSH back in the restricted host</h4>
 
-<p>From another machine (outside the restricted network preferably) ssh into the middleman host.</p>
+<p>From another machine (outside the restricted network preferably) ssh into the
+middleman host.</p>
 
 <p>Execute on: other machine</p>
 
 <pre><code>ssh -p 2222 remy@middleman
 </code></pre>
 
-<p>From the middleman, ssh into the restricted host via the reverse tunnel we created:</p>
+<p>From the middleman, ssh into the restricted host via the reverse tunnel we
+created:</p>
 
 <p>Execute on: middleman</p>
 
 <pre><code>ssh -p 6666 remy@127.0.0.1
 </code></pre>
 
-<p>If all goes well, you should see a prompt to login to the restricted machine. Enter your password and go. If this goes well, you can continue. If this does not work, check the values in the command and the ssh configs. Also make sure you have executed the steps above correctly.</p>
+<p>If all goes well, you should see a prompt to login to the restricted machine.
+Enter your password and go. If this goes well, you can continue. If this does
+not work, check the values in the command and the ssh configs. Also make sure
+you have executed the steps above correctly.</p>
 
 <h4>Enable the tunnel on boot</h4>
 
-<p>We are going to edit the /etc/rc.local file. This script normally does nothing, but gets executed at boot. If you make any errors in this script, your machine might not boot so make sure to do this correctly.</p>
+<p>We are going to edit the /etc/rc.local file. This script normally does nothing,
+but gets executed at boot. If you make any errors in this script, your machine
+might not boot so make sure to do this correctly.</p>
 
 <p>Execute on: restricted machine</p>
 
@@ -192,7 +211,8 @@ Enter same passphrase again: *leave empty*
 
 <h4>Forward a website, not ssh</h4>
 
-<p>You might want to forward a website on the restricted host. Follow the above tutorial, but change the autossh command:</p>
+<p>You might want to forward a website on the restricted host. Follow the above
+tutorial, but change the autossh command:</p>
 
 <pre><code>autossh -M 10984 -o &quot;PubkeyAuthentication=yes&quot; -o &quot;PasswordAuthentication=no&quot; -i /root/.ssh/nopwd -R 8888:localhost:80 remy@middleman -p 2222
 </code></pre>
@@ -208,7 +228,8 @@ Enter same passphrase again: *leave empty*
 <pre><code>autossh -M 10984 -o &quot;PubkeyAuthentication=yes&quot; -o &quot;PasswordAuthentication=no&quot; -i /root/.ssh/nopwd -R 7777:host2.restrictednetwork:22 remy@middleman -p 2222
 </code></pre>
 
-<p>This will forward all traffic to port 7777 on host middleman, via host restrictedhost, to host host2.restrictednetwork port 22. </p>
+<p>This will forward all traffic to port 7777 on host middleman, via host
+restrictedhost, to host host2.restrictednetwork port 22.</p>
 </div><hr>Tags: <a href="../tags/autossh.html" class="link">autossh &nbsp;</a><a href="../tags/firewall.html" class="link">firewall &nbsp;</a><a href="../tags/nat.html" class="link">nat &nbsp;</a><a href="../tags/network.html" class="link">network &nbsp;</a><a href="../tags/remote-access.html" class="link">remote-access &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

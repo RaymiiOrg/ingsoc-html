@@ -70,11 +70,12 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><blockquote>
-<p>original article from: <a href="http://shtylman.com/post/cron-shell-power/">http://shtylman.com/post/cron-shell-power/</a> - archived for importance.</p>
+<p>original article from: <a href="http://shtylman.com/post/cron-shell-power/">http://shtylman.com/post/cron-shell-power/</a> -
+archived for importance.</p>
 </blockquote>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>If you don&#39;t know what <a href="http://en.wikipedia.org/wiki/Cron">cron</a> is this post is not for you.</p>
 
@@ -90,21 +91,28 @@ OTHER_VAR=foo
 */10 * * * * /path/to/node /path/to/my/script.js
 </code></pre>
 
-<p>If you don&#39;t want to repeat <code>/path/to/node</code> (or your runtime) over and over, you will add a <code>PATH</code> variable to go with the other variables.</p>
+<p>If you don&#39;t want to repeat <code>/path/to/node</code> (or your runtime) over and over, you
+will add a <code>PATH</code> variable to go with the other variables.</p>
 
-<p>But what happens if you want to use something like <a href="https://github.com/creationix/nvm">nvm</a> or <a href="https://rvm.io/">rvm</a> or <a href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>, etc? It is not uncommon to have the above change to something like the following</p>
+<p>But what happens if you want to use something like <a href="https://github.com/creationix/nvm">nvm</a> or <a href="https://rvm.io/">rvm</a> or
+<a href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>, etc? It is not uncommon to have the above change to something
+like the following</p>
 
 <pre><code>*/10 * * * * /path/to/my/launcher.sh
 */10 * * * * /path/to/my/launcher_another.sh
 </code></pre>
 
-<p>Now you have several shell scripts which invoke the required commands to setup the environment and then run whatever program.</p>
+<p>Now you have several shell scripts which invoke the required commands to setup
+the environment and then run whatever program.</p>
 
 <h2>enter SHELL</h2>
 
-<p>There is a little known special env variable for cron: <code>SHELL</code>. Most people know this variable can be used to change the shell your scripts run run (i.e. <code>SHELL=/bin/bash</code>), but it can actually run any file!</p>
+<p>There is a little known special env variable for cron: <code>SHELL</code>. Most people know
+this variable can be used to change the shell your scripts run run (i.e.
+<code>SHELL=/bin/bash</code>), but it can actually run any file!</p>
 
-<p>So lets say I use nvm and want to setup my environment. Instead of making custom launchers for each command, I can simply do the following:</p>
+<p>So lets say I use nvm and want to setup my environment. Instead of making custom
+launchers for each command, I can simply do the following:</p>
 
 <pre><code>SHELL=/path/to/setup/cron.bash
 
@@ -132,7 +140,10 @@ SHELL=/bin/bash
 exec /bin/bash --norc &quot;$@&quot;
 </code></pre>
 
-<p>For the most part it looks just like any other shell script. The important magical parts are the last 4 lines. These lines put back the SHELL variable to <code>/bin/bash</code> and then execute a bash shell to run the cronline command (the stuff for the specific cronjob).</p>
+<p>For the most part it looks just like any other shell script. The important
+magical parts are the last 4 lines. These lines put back the SHELL variable to
+<code>/bin/bash</code> and then execute a bash shell to run the cronline command (the stuff
+for the specific cronjob).</p>
 
 <pre><code>SHELL=/full/path/to/cron.bash
 MAILTO=cron@example.com
@@ -148,7 +159,8 @@ MAILTO=cron@example.com
 * * * * * node /path/to/script/.js
 </code></pre>
 
-<p>Now our cron files have a consistent environment setup and we can simply run whatever commands we need without further PATH tricks or nonsense.</p>
+<p>Now our cron files have a consistent environment setup and we can simply run
+whatever commands we need without further PATH tricks or nonsense.</p>
 
 <p>Go forth and update your dirty crontabs!</p>
 

@@ -9,14 +9,13 @@ Format      : 	Markdown/HTML
 
 
 
-> original article from: [http://shtylman.com/post/cron-shell-power/][10] - archived for importance.
+> original article from: <http://shtylman.com/post/cron-shell-power/> \-
+archived for importance.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-If you don't know what [cron][1] is this post is not for you.
+If you don't know what [cron][2] is this post is not for you.
 
 Using the `SHELL` variable in cron is more powerful than you may realize.
 
@@ -24,28 +23,41 @@ Using the `SHELL` variable in cron is more powerful than you may realize.
 
 Most people will have this type of setup in their crontab.
 
+    
+    
     NODE_ENV=production
     OTHER_VAR=foo
     
     */10 * * * * /path/to/node /path/to/my/script.js
     
 
-If you don't want to repeat `/path/to/node` (or your runtime) over and over, you will add a `PATH` variable to go with the other variables.
+If you don't want to repeat `/path/to/node` (or your runtime) over and over, you
+will add a `PATH` variable to go with the other variables.
 
-But what happens if you want to use something like [nvm][2] or [rvm][3] or [virtualenv][4], etc? It is not uncommon to have the above change to something like the following
+But what happens if you want to use something like [nvm][3] or [rvm][4] or
+[virtualenv][5], etc? It is not uncommon to have the above change to something
+like the following
 
+    
+    
     */10 * * * * /path/to/my/launcher.sh
     */10 * * * * /path/to/my/launcher_another.sh
     
 
-Now you have several shell scripts which invoke the required commands to setup the environment and then run whatever program.
+Now you have several shell scripts which invoke the required commands to setup
+the environment and then run whatever program.
 
 ## enter SHELL
 
-There is a little known special env variable for cron: `SHELL`. Most people know this variable can be used to change the shell your scripts run run (i.e. `SHELL=/bin/bash`), but it can actually run any file!
+There is a little known special env variable for cron: `SHELL`. Most people know
+this variable can be used to change the shell your scripts run run (i.e.
+`SHELL=/bin/bash`), but it can actually run any file!
 
-So lets say I use nvm and want to setup my environment. Instead of making custom launchers for each command, I can simply do the following:
+So lets say I use nvm and want to setup my environment. Instead of making custom
+launchers for each command, I can simply do the following:
 
+    
+    
     SHELL=/path/to/setup/cron.bash
     
     */10 * * * * node $HOME/foo.js
@@ -53,51 +65,61 @@ So lets say I use nvm and want to setup my environment. Instead of making custom
 
 Now lets look at what `cron.bash` might look like:
 
+    
+    
     #!/bin/bash
     set -e
-     
+    
     source /etc/environment
     source /etc/profile
-     
+    
     # setup any env variables you want here
     export NODE_ENV=production
-     
+    
     # I use node so I want to add node path stuff via npm
     # $HOME is available, but not many other env vars are by default
     source $HOME/nvm/nvm.sh
-     
+    
     # restore SHELL env var for cron
     SHELL=/bin/bash
     # execute the cron command in an actual shell
     exec /bin/bash --norc "$@"
+    
 
-For the most part it looks just like any other shell script. The important magical parts are the last 4 lines. These lines put back the SHELL variable to `/bin/bash` and then execute a bash shell to run the cronline command (the stuff for the specific cronjob).
+For the most part it looks just like any other shell script. The important
+magical parts are the last 4 lines. These lines put back the SHELL variable to
+`/bin/bash` and then execute a bash shell to run the cronline command (the stuff
+for the specific cronjob).
 
+    
+    
     SHELL=/full/path/to/cron.bash
     MAILTO=cron@example.com
-     
+    
     # For more information see the manual pages of crontab(5) and cron(8)
     #
     # m h  dom mon dow   command
-     
+    
     # dummy cron command to print the environment variables ever minute
     * * * * * env
-     
+    
     # node scripts can simply be run using `node` now
     * * * * * node /path/to/script/.js
+    
 
-Now our cron files have a consistent environment setup and we can simply run whatever commands we need without further PATH tricks or nonsense.
+Now our cron files have a consistent environment setup and we can simply run
+whatever commands we need without further PATH tricks or nonsense.
 
 Go forth and update your dirty crontabs!
 
-*[- home -][5]*
+_[\- home -][6]_
 
-[1]: http://en.wikipedia.org/wiki/Cron
-[2]: https://github.com/creationix/nvm
-[3]: https://rvm.io/
-[4]: https://pypi.python.org/pypi/virtualenv
-[5]: http://shtylman.com/  
-[10]: http://shtylman.com/post/cron-shell-power/
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://en.wikipedia.org/wiki/Cron
+   [3]: https://github.com/creationix/nvm
+   [4]: https://rvm.io/
+   [5]: https://pypi.python.org/pypi/virtualenv
+   [6]: http://shtylman.com/
 
 ---
 

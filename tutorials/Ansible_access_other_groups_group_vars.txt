@@ -207,11 +207,9 @@ constraints set, so this 'suboptimal' workaround works.
 
    [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-   [3]: https://stackoverflow.com/questions/34614337/ansible-get-other-group-
-vars
+   [3]: https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars
 
-   [4]: https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-
-and-group-variables
+   [4]: https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-and-group-variables
 
 ---
 
