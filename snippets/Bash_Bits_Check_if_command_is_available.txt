@@ -23,7 +23,7 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
 ### command_exists()
 
-The function uses the `[command][1]` binary to check if a binary is available.
+The function uses the [command][1] binary to check if a binary is available.
 `command` handles all the magic of searching your path, checking if something
 is executable, all the dificult stuff that could also be different on other
 distributions. 
