@@ -9,70 +9,89 @@ Format      : 	Markdown/HTML
 
 
 
-This is a short command to generate a CSR (certificate signing request) with openssl without being prompted for the values which go in the certificate's Subject field.
+This is a short command to generate a CSR (certificate signing request) with
+openssl without being prompted for the values which go in the certificate's
+Subject field.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+When you use OpenSSL to generate a CSR and a private key you use the following
+command:
 
-When you use OpenSSL to generate a CSR and a private key you use the following command:
-
-	openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr
-
-This is the output:
-	                                                                                 
-	Generating a 2048 bit RSA private key
-	.................................................................+++
-	.......................................................................+++
-	writing new private key to 'private.key'
-	-----
-	You are about to be asked to enter information that will be incorporated
-	into your certificate request.
-	What you are about to enter is what is called a Distinguished Name or a DN.
-	There are quite a few fields but you can leave some blank
-	For some fields there will be a default value,
-	If you enter '.', the field will be left blank.
-	-----
-	Country Name (2 letter code) [AU]:NL
-	State or Province Name (full name) [Some-State]:Zuid Holland
-	Locality Name (eg, city) []:Rotterdam
-	Organization Name (eg, company) [Internet Widgits Pty Ltd]:Sparkling Network
-	Organizational Unit Name (eg, section) []:IT Department
-	Common Name (e.g. server FQDN or YOUR name) []:ssl.raymii.org
-	Email Address []:
-
-	Please enter the following 'extra' attributes
-	to be sent with your certificate request
-	A challenge password []:
-	An optional company name []:
-
-You can see that you have to fill in a lot of data during the generation. If you do not want that, maybe because you are using a script to generate a lot of CSR's and private keys, you use the following command. It does the same as the above command, but it has all the data in it:
-
-	openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Department/CN=ssl.raymii.org"
+    
+    
+    openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr
+    
 
 This is the output:
 
+    
+    
+    Generating a 2048 bit RSA private key
+    .................................................................+++
+    .......................................................................+++
+    writing new private key to 'private.key'
+    -----
+    You are about to be asked to enter information that will be incorporated
+    into your certificate request.
+    What you are about to enter is what is called a Distinguished Name or a DN.
+    There are quite a few fields but you can leave some blank
+    For some fields there will be a default value,
+    If you enter '.', the field will be left blank.
+    -----
+    Country Name (2 letter code) [AU]:NL
+    State or Province Name (full name) [Some-State]:Zuid Holland
+    Locality Name (eg, city) []:Rotterdam
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:Sparkling Network
+    Organizational Unit Name (eg, section) []:IT Department
+    Common Name (e.g. server FQDN or YOUR name) []:ssl.raymii.org
+    Email Address []:
+    
+    Please enter the following 'extra' attributes
+    to be sent with your certificate request
+    A challenge password []:
+    An optional company name []:
+    
 
-	Generating a 2048 bit RSA private key
-	.......+++
-	..............................................................................................................................................+++
-	writing new private key to 'private.key'
-	-----
+You can see that you have to fill in a lot of data during the generation. If you
+do not want that, maybe because you are using a script to generate a lot of
+CSR's and private keys, you use the following command. It does the same as the
+above command, but it has all the data in it:
 
+    
+    
+    openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Department/CN=ssl.raymii.org"
+    
+
+This is the output:
+
+    
+    
+    Generating a 2048 bit RSA private key
+    .......+++
+    ..............................................................................................................................................+++
+    writing new private key to 'private.key'
+    -----
+    
 
 This is what the `-subj` option does:
 
-- /C=NL: 2 letter ISO country code (Netherlands)
-- /ST=: State, Zuid Holland (South holland)
-- /L=: Location, city (Rotterdam)
-- /O=: Organization (Sparkling Network)
-- /OU=: Organizational Unit, Department (IT Department, Sales)
-- /CN=: Common Name, for a website certificate this is the FQDN. (ssl.raymii.org)
+  * /C=NL: 2 letter ISO country code (Netherlands)
+  * /ST=: State, Zuid Holland (South holland)
+  * /L=: Location, city (Rotterdam)
+  * /O=: Organization (Sparkling Network)
+  * /OU=: Organizational Unit, Department (IT Department, Sales)
+  * /CN=: Common Name, for a website certificate this is the FQDN. (ssl.raymii.org)
 
-You can also give a `/serialNumber=0123456` with the above option. [This is NOT the serial number the issuing Certificate Authority (CA) will use, but a way to give extra information to a certificate. If you have a CN for John Doe, and another one, the serialNumber field can be used to distinguish John Doe 1 from John Doe 2's certificate. Click here for more info.](http://permalink.gmane.org/gmane.comp.encryption.openssl.user/9091)
+You can also give a `/serialNumber=0123456` with the above option. [This is NOT
+the serial number the issuing Certificate Authority (CA) will use, but a way to
+give extra information to a certificate. If you have a CN for John Doe, and
+another one, the serialNumber field can be used to distinguish John Doe 1 from
+John Doe 2's certificate. Click here for more info.][2]
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://permalink.gmane.org/gmane.comp.encryption.openssl.user/9091
 
 ---
 

@@ -39,8 +39,8 @@ on the nagios host:
     apt-get install python3 openssl python-m2crypto
     
 
-Now place the script on the host. I've placed in
-_/etc/nagios/plugins/check_crl.py_.
+Now place the script on the host. I've placed in _/etc/nagios/plugins/check_
+crl.py_.
 
     
     
@@ -101,10 +101,10 @@ get a critical.
 
 #### Changelog
 
-03-04-2013: \- Changed time to minutes for more precision \- Fixed timezone bug
-by comparing GMT with GMT
+03-04-2013: - Changed time to minutes for more precision - Fixed timezone bug by
+comparing GMT with GMT
 
-06-11-2012: \- Changed checking interval from dates to hours \- Added error
+06-11-2012: - Changed checking interval from dates to hours - Added error
 catching if a crl file cannot be retrieved.
 
    [1]: http://acksyn.org/?p=690

@@ -9,23 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
-Paste the following code in the address bar of your browser:  
+Paste the following code in the address bar of your browser:
 
-##### Code 1: Change and edit every website: 
- 
+##### Code 1: Change and edit every website:
+
+    
+    
     javascript: document.body.contentEditable = 'true'; document.designMode = 'on'; void 0 
     
 
-##### Code 2: Let a website trip and fly content around:  
+##### Code 2: Let a website trip and fly content around:
 
-
+    
+    
     javascript:R=0; x1=.1; y1=.05; x2=.25; y2=.24; x3=1.6; y3=.24; x4=300; y4=200; x5=300; y5=200; DI=document.getElementsByTagName(%22*%22); DIL=DI.length; function A(){for(i=0; i-DIL; i++){DIS=DI[ i ].style; DIS.position='absolute'; DIS.left=(Math.sin(R*x1+i*x2+x3)*x4+x5)+%22px%22; DIS.top=(Math.cos(R*y1+i*y2+y3)*y4+y5)+%22px%22}R++}setInterval('A()', 75); void(0);
     
+
 ##### Code 3: Same as above, but not all text.
+
     
-
+    
     javascript:R=0; x1=.1; y1=.05; x2=.25; y2=.24; x3=1.6; y3=.24; x4=300; y4=200; x5=300; y5=200; DI=document.getElementsByTagName(%22font%22); DIL=DI.length; function A(){for(i=0; i-DIL; i++){DIS=DI[ i ].style; DIS.position='absolute'; DIS.left=(Math.sin(R*x1+i*x2+x3)*x4+x5)+%22px%22; DIS.top=(Math.cos(R*y1+i*y2+y3)*y4+y5)+%22px%22}R++}setInterval('A()', 75); void(0);
-
 
 ---
 

@@ -69,20 +69,33 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="/s/inc/img/teletype_asr33.jpg"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="/s/inc/img/teletype_asr33.jpg" alt=""></p>
 
 <blockquote>
 <p>A Teletype ASR-33 printing system output</p>
 </blockquote>
 
-<p>Syslog is the protocol, format (and software) linux and most networking devices use to log messages. All kinds of messages, system, authentication, login and applications. There are multiple implementations of syslog, like syslog-ng and rsyslog. Syslog has the option to log to a remote server and to act as a remote logserver (that receives logs). With a remote logging server you can archive your logs and keep them secure (when a machine gets hacked, if root is compromised the logs on the machine are no longer trustworthy). This tutorial shows how to set up a syslog server with rsyslog and syslog-ng and shows how to setup servers as a syslog client (that log to a remote server) with syslog-ng and rsyslog.</p>
+<p>Syslog is the protocol, format (and software) linux and most networking devices
+use to log messages. All kinds of messages, system, authentication, login and
+applications. There are multiple implementations of syslog, like syslog-ng and
+rsyslog. Syslog has the option to log to a remote server and to act as a remote
+logserver (that receives logs). With a remote logging server you can archive
+your logs and keep them secure (when a machine gets hacked, if root is
+compromised the logs on the machine are no longer trustworthy). This tutorial
+shows how to set up a syslog server with rsyslog and syslog-ng and shows how to
+setup servers as a syslog client (that log to a remote server) with syslog-ng
+and rsyslog.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Server: rsyslog</h3>
 
-<p>rsyslog is the default syslog service on Ubuntu, Debian, OpenSUSE and CentOS (next to systemd&#39;s journald). The configuration syntax is simpler than syslog-ng&#39;s, but complex configuration is more clear in syslog-ng. Bottom line they both work just as well. The below steps are to be taken to setup rsyslog as a syslog service to receive syslogs.</p>
+<p>rsyslog is the default syslog service on Ubuntu, Debian, OpenSUSE and CentOS
+(next to systemd&#39;s journald). The configuration syntax is simpler than syslog-
+ng&#39;s, but complex configuration is more clear in syslog-ng. Bottom line they
+both work just as well. The below steps are to be taken to setup rsyslog as a
+syslog service to receive syslogs.</p>
 
 <p>Edit the following file:</p>
 
@@ -100,7 +113,7 @@ $template RemoteStore, &quot;/var/log/remote/%HOSTNAME%/%timegenerated:1:10:date
 :source, isequal, &quot;last&quot; ~
 </code></pre>
 
-<p>This will allow all hosts in the subnet <code>192.0.2.0/24</code> to log to this machine. </p>
+<p>This will allow all hosts in the subnet <code>192.0.2.0/24</code> to log to this machine.</p>
 
 <p>Restart rsyslog to make the changes active:</p>
 
@@ -125,11 +138,14 @@ drwxr-xr-x 4 syslog syslog 4.0K Jun 13 13:54 ..
 -rw-r----- 1 syslog adm    1.5G Jun 19 16:23 2018-06-19
 </code></pre>
 
-<p>When you just configured a client, it will take some time (a few minutes) before the logs and folder appear under <code>/var/log/remote</code>. </p>
+<p>When you just configured a client, it will take some time (a few minutes) before
+the logs and folder appear under <code>/var/log/remote</code>.</p>
 
 <h4>Logrotate</h4>
 
-<p>As you can see logging can take up some space, I recommend to setup logrotate for this remote folder. You can do so on Ubuntu by creating the following logrotate config file:</p>
+<p>As you can see logging can take up some space, I recommend to setup logrotate
+for this remote folder. You can do so on Ubuntu by creating the following
+logrotate config file:</p>
 
 <pre><code>vim /etc/logrotate.d/remote
 </code></pre>
@@ -145,25 +161,29 @@ drwxr-xr-x 4 syslog syslog 4.0K Jun 13 13:54 ..
 }
 </code></pre>
 
-<p>This will compress and rotate logs every day and keep them for 90 days (3 months). To test your config, use the following command:</p>
+<p>This will compress and rotate logs every day and keep them for 90 days (3
+months). To test your config, use the following command:</p>
 
 <pre><code>logrotate -d --force /etc/logrotate.d/remote
 </code></pre>
 
-<p>(that will rotate all your logs, don&#39;t CTRL+C it otherwise your log folder will be messed up)</p>
+<p>(that will rotate all your logs, don&#39;t CTRL+C it otherwise your log folder will
+be messed up)</p>
 
-<p>You don&#39;t have to restart a service since logrotate is ran via cron (<code>/etc/cron.daily/logrotate</code>).</p>
+<p>You don&#39;t have to restart a service since logrotate is ran via cron
+(<code>/etc/cron.daily/logrotate</code>).</p>
 
 <h3>Client: rsyslog (Ubuntu)</h3>
 
-<p>On Ubuntu or any rsyslog server, to log to a remote syslogserver, add the following to <code>rsyslog.conf</code>:</p>
+<p>On Ubuntu or any rsyslog server, to log to a remote syslogserver, add the
+following to <code>rsyslog.conf</code>:</p>
 
 <pre><code>    *.*   @192.0.2.10:514
 </code></pre>
 
 <p>(Replace 192.0.2.10 with the IP or hostname of your syslog server)</p>
 
-<p>The file can be either: </p>
+<p>The file can be either:</p>
 
 <ul>
 <li><code>/etc/rsyslog.conf</code></li>
@@ -177,9 +197,12 @@ drwxr-xr-x 4 syslog syslog 4.0K Jun 13 13:54 ..
 
 <h3>Server: syslog-ng</h3>
 
-<p>syslog-ng is the default on older versions of SUSE Enterprise Linux and OpenSUSE next to systemd&#39;s journald and on <a href="https://raymii.org/s/tags/hp-ux.html">HP-UX</a>. Most older distro&#39;s use it as well, Debian, Fedora and Arch all had it as their default years ago.</p>
+<p>syslog-ng is the default on older versions of SUSE Enterprise Linux and OpenSUSE
+next to systemd&#39;s journald and on <a href="https://raymii.org/s/tags/hp-ux.html">HP-UX</a>. Most older distro&#39;s use it as
+well, Debian, Fedora and Arch all had it as their default years ago.</p>
 
-<p>To set up syslog-ng as a remote log server that can receive logs, edit the following file:</p>
+<p>To set up syslog-ng as a remote log server that can receive logs, edit the
+following file:</p>
 
 <pre><code>vim /etc/syslog-ng/syslog-ng.conf
 </code></pre>
@@ -191,18 +214,23 @@ destination remote { file(&quot;/var/log/remote/${FULLHOST}&quot;); };
 log { source(net); destination(remote); };
 </code></pre>
 
-<p>This file can also be in <code>/etc/syslog-ng/conf.d/</code> under a different name. Restart syslog-ng to make the changes active:</p>
+<p>This file can also be in <code>/etc/syslog-ng/conf.d/</code> under a different name.
+Restart syslog-ng to make the changes active:</p>
 
 <pre><code>service syslog-ng restart
 </code></pre>
 
-<p>This will place the logfiles in <code>/var/log/remote</code>. As far as I could find in the documentation, there is no option to limit on subnet like rsyslog has in the above example. Use the firewall to allow access from different networks.</p>
+<p>This will place the logfiles in <code>/var/log/remote</code>. As far as I could find in the
+documentation, there is no option to limit on subnet like rsyslog has in the
+above example. Use the firewall to allow access from different networks.</p>
 
-<p>With syslog-ng it is also recommended to setup logrotate and compression. See the rsyslog server section on how to do that.</p>
+<p>With syslog-ng it is also recommended to setup logrotate and compression. See
+the rsyslog server section on how to do that.</p>
 
 <h3>Client: syslog-ng</h3>
 
-<p>The setup for sending logs to a remote syslog server is simple. Edit the <code>syslog-ng.conf</code> file:</p>
+<p>The setup for sending logs to a remote syslog server is simple. Edit the
+<code>syslog-ng.conf</code> file:</p>
 
 <pre><code>vim /etc/syslog-ng/syslog-ng.conf
 </code></pre>
@@ -212,21 +240,28 @@ log { source(net); destination(remote); };
 <pre><code>destination remote { network(&quot;192.0.2.10&quot; transport(&quot;udp&quot;) port(514)); };
 </code></pre>
 
-<p>Older versions do not support the <code>network()</code> syntax, you need to use the older <code>tcp()</code> or <code>udp()</code> syntax:</p>
+<p>Older versions do not support the <code>network()</code> syntax, you need to use the older
+<code>tcp()</code> or <code>udp()</code> syntax:</p>
 
 <pre><code>destination remote { udp(&quot;192.0.2.10&quot; port(514)); };
 </code></pre>
 
-<p>In both cases, replace <code>192.0.2.10</code> with your logserver&#39;s IP. (Unless you are using <code>TEST-NET-1</code> of course).</p>
+<p>In both cases, replace <code>192.0.2.10</code> with your logserver&#39;s IP. (Unless you are
+using <code>TEST-NET-1</code> of course).</p>
 
-<p>This file can also be in <code>/etc/syslog-ng/conf.d/</code> under a different name. Restart syslog-ng to make the changes active:</p>
+<p>This file can also be in <code>/etc/syslog-ng/conf.d/</code> under a different name.
+Restart syslog-ng to make the changes active:</p>
 
 <pre><code>service syslog-ng restart
 </code></pre>
 
 <h3>What about systemd / journald?</h3>
 
-<p>Systemd and journald are taking over every part of your linux system including logging. Most distro&#39;s supply a syslog service which journald (systemd&#39;s binary logging component) forwards logs to. If your system is not set up like that, you need to install either rsyslog or syslog-ng and tell journald to forward the logs to syslog:</p>
+<p>Systemd and journald are taking over every part of your linux system including
+logging. Most distro&#39;s supply a syslog service which journald (systemd&#39;s binary
+logging component) forwards logs to. If your system is not set up like that, you
+need to install either rsyslog or syslog-ng and tell journald to forward the
+logs to syslog:</p>
 
 <pre><code>vim /etc/systemd/journald.conf 
 </code></pre>
@@ -241,7 +276,8 @@ log { source(net); destination(remote); };
 <pre><code>systemctl restart systemd-journald
 </code></pre>
 
-<p>If your syslog-ng or rsyslog version is recent enough, all journald logs will now appear in syslog as well.</p>
+<p>If your syslog-ng or rsyslog version is recent enough, all journald logs will
+now appear in syslog as well.</p>
 </div><hr>Tags: <a href="../tags/hp-ux.html" class="link">hp-ux &nbsp;</a><a href="../tags/log.html" class="link">log &nbsp;</a><a href="../tags/logging.html" class="link">logging &nbsp;</a><a href="../tags/opensuse.html" class="link">opensuse &nbsp;</a><a href="../tags/rsyslog.html" class="link">rsyslog &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/sles.html" class="link">sles &nbsp;</a><a href="../tags/suse.html" class="link">suse &nbsp;</a><a href="../tags/syslog.html" class="link">syslog &nbsp;</a><a href="../tags/syslog-ng.html" class="link">syslog-ng &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

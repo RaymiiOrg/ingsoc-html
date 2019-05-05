@@ -76,19 +76,19 @@ It also covers if, and why you might need a virus scanner for Linux/Unix. As an
 extra, it also covers scans for specific folders which remove infected files
 automatically.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h4>Do you need a virus scanner on Linux/Unix?</h4>
 
 <p>Short answer, it depends on your situation.</p>
 
-<p>Long answer:   You might want to run a virus scanner on a server where files are
-uploaded, or where users login and manipulate files.   Lets say you host a file
+<p>Long answer: You might want to run a virus scanner on a server where files are
+uploaded, or where users login and manipulate files. Lets say you host a file
 upload site, you want to run a scan on the upload folder which auto removes
-infected files.   It can also be that your mailserver runs Linux, but people
-sometimes mail executables or infected pdf files. Then you also want a scanner. 
- Or you might run a source control server (gitolite, mercurial) where sometimes
+infected files. It can also be that your mailserver runs Linux, but people
+sometimes mail executables or infected pdf files. Then you also want a scanner.
+Or you might run a source control server (gitolite, mercurial) where sometimes
 binary files are checked in. (although ClamAV might not find things in bare-git
 repositories, only in working directories.)</p>
 
@@ -98,7 +98,7 @@ resources.</p>
 
 <p>My advice is to look at your situation and then decide if you need ClamAV, and
 if you only need to scan a few folders, the entire system and if you want to
-auto-remove the virusses or not. </p>
+auto-remove the virusses or not.</p>
 
 <h4>Install ClamAV</h4>
 
@@ -107,7 +107,7 @@ auto-remove the virusses or not. </p>
 <pre><code>sudo apt-get update
 </code></pre>
 
-<p>Now we install the clamav scanner, the daemon and the database updater. </p>
+<p>Now we install the clamav scanner, the daemon and the database updater.</p>
 
 <pre><code>sudo apt-get install clamav clamav-daemon clamav-freshclam
 </code></pre>
@@ -157,9 +157,8 @@ the cronjobs. The manual page will help you with that.</p>
 <h4>Extra: the targeted scan</h4>
 
 <p>The below cronjob is an example and you should adapt it. It updates the virus
-definitions and scans the folder
-<code>/var/www/sites/uploader.com/public-html/uploads/</code> two times per hour, and if it
-found any files it removes them. </p>
+definitions and scans the folder <code>/var/www/sites/uploader.com/public-
+html/uploads/</code> two times per hour, and if it found any files it removes them.</p>
 
 <pre><code>    ## This should be a root cronjob.
     */29 * * * * /usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected --remove /var/www/sites/uploader.com/public-html/uploads 2&gt;/dev/null

@@ -25,9 +25,9 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 streams web-server access logs as a pong-like battle between the web server and
 an never ending torrent of requests.
 
-  * [Logstalgia homepage][2]  
+  * [Logstalgia homepage][2]
 
-  * [logstalgia 1.0.3 x64 .deb package, tested under Ubuntu 12.04-x64][3]  
+  * [logstalgia 1.0.3 x64 .deb package, tested under Ubuntu 12.04-x64][3]
 
   * [logstalgia 1.0.3 x64 .rpm package, UNTESTED, deb converted with alien][4]
 
@@ -54,9 +54,9 @@ just like a VCR. Sudosh2 is a continuation of the development of sudosh.
 **This version of sudosh2 is compiled with bash as the default shell instead of
 sh. This can be changed in the configuration file in /etc/sudosh.conf.**
 
-  * [Sudosh2 homepage][8]  
+  * [Sudosh2 homepage][8]
 
-  * [sudosh2-bash 1.0.4 x64 .deb package, tested under Ubuntu 12.04-x64][9]  
+  * [sudosh2-bash 1.0.4 x64 .deb package, tested under Ubuntu 12.04-x64][9]
 
   * [sudosh2-bash 1.0.4 x64 .rpm package, UNTESTED, deb converted with alien][10]
 

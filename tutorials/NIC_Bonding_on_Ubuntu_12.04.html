@@ -69,22 +69,29 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bonding, also called port trunking or link aggregation means combining several network interfaces (NICs) to a single link, providing either high-availability, load-balancing, maximum throughput, or a combination of these.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bonding, also called port trunking or link aggregation means combining several
+network interfaces (NICs) to a single link, providing either high-availability,
+load-balancing, maximum throughput, or a combination of these.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><strong>Warning! Make sure you have ILO/BMC out of band remote access to your server. You are going to change vital network settings, this may result in loss of connectivity if done wrong.</strong></p>
+<p><strong>Warning! Make sure you have ILO/BMC out of band remote access to your server.
+You are going to change vital network settings, this may result in loss of
+connectivity if done wrong.</strong></p>
 
 <h3>Install required packages</h3>
 
-<p><code>ifenslave</code> is used to attach and detach slave network interfaces to a bonding device. Install the package: </p>
+<p><code>ifenslave</code> is used to attach and detach slave network interfaces to a bonding
+device. Install the package:</p>
 
 <p>apt-get install ifenslave</p>
 
 <h3>Kernel Module</h3>
 
-<p>Before Ubuntu can configure your network cards into a NIC bond, you need to ensure that the correct kernel module <code>bonding</code> is present, and loaded at boot time. </p>
+<p>Before Ubuntu can configure your network cards into a NIC bond, you need to
+ensure that the correct kernel module <code>bonding</code> is present, and loaded at boot
+time.</p>
 
 <p>Edit the file:</p>
 
@@ -138,29 +145,40 @@ iface bond0 inet static
     bond-slaves none # we already defined the interfaces above with bond-master
 </code></pre>
 
-<p>For round-robin/load balancing, use <code>bond-mode: balance-rr</code>. </p>
+<p>For round-robin/load balancing, use <code>bond-mode: balance-rr</code>.</p>
 
 <h3>Bonding modes explained</h3>
 
 <h4>Mode 0 - balance-rr</h4>
 
-<p>Round-robin policy: Transmit packets in sequential order from the first available slave through the last. This mode provides load balancing and fault tolerance.</p>
+<p>Round-robin policy: Transmit packets in sequential order from the first
+available slave through the last. This mode provides load balancing and fault
+tolerance.</p>
 
 <h4>Mode 1 - active-backup</h4>
 
-<p>Active-backup policy: Only one slave in the bond is active. A different slave becomes active if, and only if, the active slave fails. The bond&#39;s MAC address is externally visible on only one port (network adapter) to avoid confusing the switch. This mode provides fault tolerance. The primary option affects the behavior of this mode.</p>
+<p>Active-backup policy: Only one slave in the bond is active. A different slave
+becomes active if, and only if, the active slave fails. The bond&#39;s MAC address
+is externally visible on only one port (network adapter) to avoid confusing the
+switch. This mode provides fault tolerance. The primary option affects the
+behavior of this mode.</p>
 
 <h4>Mode 2 - balance-xor</h4>
 
-<p>XOR policy: Transmit based on [(source MAC address XOR&#39;d with destination MAC address) modulo slave count]. This selects the same slave for each destination MAC address. This mode provides load balancing and fault tolerance.</p>
+<p>XOR policy: Transmit based on [(source MAC address XOR&#39;d with destination MAC
+address) modulo slave count]. This selects the same slave for each destination
+MAC address. This mode provides load balancing and fault tolerance.</p>
 
 <h4>Mode 3 - broadcast</h4>
 
-<p>Broadcast policy: transmits everything on all slave interfaces. This mode provides fault tolerance.</p>
+<p>Broadcast policy: transmits everything on all slave interfaces. This mode
+provides fault tolerance.</p>
 
 <h4>Mode 4 - 802.3ad</h4>
 
-<p>IEEE 802.3ad Dynamic link aggregation. Creates aggregation groups that share the same speed and duplex settings. Utilizes all slaves in the active aggregator according to the 802.3ad specification.</p>
+<p>IEEE 802.3ad Dynamic link aggregation. Creates aggregation groups that share the
+same speed and duplex settings. Utilizes all slaves in the active aggregator
+according to the 802.3ad specification.</p>
 
 <h5>Prerequisites:</h5>
 
@@ -171,7 +189,11 @@ iface bond0 inet static
 
 <h4>Mode 5 - balance-tlb</h4>
 
-<p>Adaptive transmit load balancing: channel bonding that does not require any special switch support. The outgoing traffic is distributed according to the current load (computed relative to the speed) on each slave. Incoming traffic is received by the current slave. If the receiving slave fails, another slave takes over the MAC address of the failed receiving slave.</p>
+<p>Adaptive transmit load balancing: channel bonding that does not require any
+special switch support. The outgoing traffic is distributed according to the
+current load (computed relative to the speed) on each slave. Incoming traffic is
+received by the current slave. If the receiving slave fails, another slave takes
+over the MAC address of the failed receiving slave.</p>
 
 <h5>Prerequisites:</h5>
 
@@ -181,7 +203,12 @@ iface bond0 inet static
 
 <h4>Mode 6 - balance-alb</h4>
 
-<p>Adaptive load balancing: includes balance-tlb plus receive load balancing (rlb) for IPV4 traffic, and does not require any special switch support. The receive load balancing is achieved by ARP negotiation. The bonding driver intercepts the ARP Replies sent by the local system on their way out and overwrites the source hardware address with the unique hardware address of one of the slaves in the bond such that different peers use different hardware addresses for the server. </p>
+<p>Adaptive load balancing: includes balance-tlb plus receive load balancing (rlb)
+for IPV4 traffic, and does not require any special switch support. The receive
+load balancing is achieved by ARP negotiation. The bonding driver intercepts the
+ARP Replies sent by the local system on their way out and overwrites the source
+hardware address with the unique hardware address of one of the slaves in the
+bond such that different peers use different hardware addresses for the server.</p>
 
 <h3>Sources</h3>
 

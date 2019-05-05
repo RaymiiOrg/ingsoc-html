@@ -72,8 +72,8 @@
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>As all my servers run on Debian and I like to keep things clean, here are some
 handy commands.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h5>Find large packages</h5>
 
@@ -94,12 +94,12 @@ of the package and the files it uses:</p>
 9916 python2.5 
 </code></pre>
 
-<p>You can also use something like </p>
+<p>You can also use something like</p>
 
 <pre><code>dpkg-query -Wf &#39;${Installed-Size}\t${Package}\n&#39; | sort -n 
 </code></pre>
 
-<p>but this also takes the size of databases and extra files. </p>
+<p>but this also takes the size of databases and extra files.</p>
 
 <h5>Remove config files</h5>
 
@@ -132,10 +132,10 @@ apt-get clean
 </code></pre>
 
 <p>autoremove removes unused dependencies, packages which were installed by other
-packeges but which are no longer needed by your system.   clean just removes all
+packeges but which are no longer needed by your system. clean just removes all
 the packages in the apt cache. You can also use autoclean but clean frees up
-more space.   This command shows all the packages which are installed on
-your system because some package recommends it, but they are not actually
+more space. This command shows all the packages which are installed on your
+system because some package recommends it, but they are not actually
 dependencies of packages:</p>
 
 <pre><code>aptitude search &#39;?and( ?automatic(?reverse-recommends(?installed)), ?not(?automatic(?reverse-depends(?installed))) )&#39; 

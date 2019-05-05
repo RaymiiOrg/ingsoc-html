@@ -70,23 +70,32 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><blockquote>
-<p>procfs (or the proc filesystem) is a special filesystem in UNIX-like operating systems that presents information about processes and other system information in a hierarchical file-like structure, providing a more convenient and standardized method for dynamically accessing process data held in the kernel than traditional tracing methods or direct access to kernel memory. Typically, it is mapped to a mount point named /proc at boot time.</p>
+<p>procfs (or the proc filesystem) is a special filesystem in UNIX-like operating
+systems that presents information about processes and other system information
+in a hierarchical file-like structure, providing a more convenient and
+standardized method for dynamically accessing process data held in the kernel
+than traditional tracing methods or direct access to kernel memory. Typically,
+it is mapped to a mount point named /proc at boot time.</p>
 </blockquote>
 
-<p>Note that most /proc/ entries are separated by null characters, and there may be a null character at the end. Where applicable the <code>tr</code> command is used to replace these.</p>
+<p>Note that most /proc/ entries are separated by null characters, and there may be
+a null character at the end. Where applicable the <code>tr</code> command is used to
+replace these.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Processes</h3>
 
-<p>Inside the <code>/proc</code> directory every process has a folder, named after its process ID. For example, my <code>nagios3</code> program has the following process ID:</p>
+<p>Inside the <code>/proc</code> directory every process has a folder, named after its process
+ID. For example, my <code>nagios3</code> program has the following process ID:</p>
 
 <pre><code>ps aux | grep [n]agios3 | awk &#39;{ print $2 }&#39;
 3363
 </code></pre>
 
-<p>So it has its own special folder: <code>/proc/3363</code>. Every process has a folder like <code>/proc/$PID</code> where $PID is its process ID.</p>
+<p>So it has its own special folder: <code>/proc/3363</code>. Every process has a folder like
+<code>/proc/$PID</code> where $PID is its process ID.</p>
 
 <p>I&#39;ll cover a few specific files of a process folder below.</p>
 
@@ -116,7 +125,8 @@ lrwxrwxrwx 1 root root 0 2013-01-26 15:18 /proc/3363/cwd -&gt; /
 
 <h4>environ</h4>
 
-<p>This gives us the environment of the command (your <code>env</code>) which also shows us all the user variables and such:</p>
+<p>This gives us the environment of the command (your <code>env</code>) which also shows us
+all the user variables and such:</p>
 
 <pre><code>(sudo cat /proc/3363/environ; echo) | tr &quot;\000&quot; &quot;\n&quot;
 [output truncated]
@@ -138,7 +148,8 @@ TracerPid:      0
 
 <h4>limits</h4>
 
-<p>This gives the limits the process has, which can be set and tweaked using <code>ulimit</code>:</p>
+<p>This gives the limits the process has, which can be set and tweaked using
+<code>ulimit</code>:</p>
 
 <pre><code>sudo cat /proc/3363/limits
 Limit                     Soft Limit           Hard Limit           Units     
@@ -154,7 +165,7 @@ Max processes             unlimited            unlimited            processes
 
 <h3>Non Processes</h3>
 
-<p>There are also a lot of &quot;general&quot; files which give you system information. </p>
+<p>There are also a lot of &quot;general&quot; files which give you system information.</p>
 
 <h4>/proc/filesystems</h4>
 
@@ -168,11 +179,12 @@ nodev   proc
 nodev   cgroup
 </code></pre>
 
-<p>When it has <code>nodev</code> before it, it means it is a non-physical filesystems such as network filesystems and proc.</p>
+<p>When it has <code>nodev</code> before it, it means it is a non-physical filesystems such as
+network filesystems and proc.</p>
 
 <h4>/proc/cpuinfo</h4>
 
-<p>This return a lot of info about the processor(s). </p>
+<p>This return a lot of info about the processor(s).</p>
 
 <pre><code>cat /proc/cpuinfo
 processor       : 0
@@ -185,7 +197,9 @@ stepping        : 9
 
 <h4>/proc/uptime</h4>
 
-<p>This returns the uptime as two decimal values in seconds, separated by a space, the amount of time since the kernel was started and the amount of time that the kernel has been idle.</p>
+<p>This returns the uptime as two decimal values in seconds, separated by a space,
+the amount of time since the kernel was started and the amount of time that the
+kernel has been idle.</p>
 
 <pre><code>cat /proc/uptime
 3121129.58 4100521.65
@@ -201,7 +215,8 @@ BOOT_IMAGE=/boot/vmlinuz-2.6.18-21-generic-pae root=UUID=[...] ro quiet
 
 <h4>/proc/version</h4>
 
-<p>This gives very detailed kernel version information. More than with <code>uname -a</code>, see the comparison:</p>
+<p>This gives very detailed kernel version information. More than with <code>uname -a</code>,
+see the comparison:</p>
 
 <pre><code>cat /proc/version
 Linux version 2.6.18-21-custom-pae-bfs (remy@solaris3) (gcc version 4.4.3 (Ubuntu 4.2-ubuntu5.1) ) #101-Ubuntu SMP Mon Dec 3 15:56:38 UTC 2012
@@ -224,7 +239,8 @@ crc32c 2519 1 - Live 0xf8410000
 
 <h4>/proc/scsi/scsi</h4>
 
-<p>This gives information on the attached SCSI devices (handy on servers, also does SAS):</p>
+<p>This gives information on the attached SCSI devices (handy on servers, also does
+SAS):</p>
 
 <pre><code>cat /proc/scsi/scsi 
 Attached devices:
@@ -235,7 +251,13 @@ Host: scsi1 Channel: 00 Id: 00 Lun: 00
 
 <h4>/proc/uptime</h4>
 
-<p>This gives the same result as the <code>uptime</code> command, with two extra&#39;s. The fourth field consists of two numbers separated by a slash, the first one represents the number of currently executing processes/threads. This number will not exceed the number of processors cores the system has.The second number (the one after the slash) represents the number of processes/threads currently existing on the system. The fifth field has the most reced PID created (probably of the <code>cat</code> command you just did.)</p>
+<p>This gives the same result as the <code>uptime</code> command, with two extra&#39;s. The fourth
+field consists of two numbers separated by a slash, the first one represents the
+number of currently executing processes/threads. This number will not exceed the
+number of processors cores the system has.The second number (the one after the
+slash) represents the number of processes/threads currently existing on the
+system. The fifth field has the most reced PID created (probably of the <code>cat</code>
+command you just did.)</p>
 
 <pre><code>cat /proc/loadavg 
 1.02 1.43 1.40 1/132 16254
@@ -257,7 +279,8 @@ eth0    00000000        0EF1D9C2        0003    0       0       100     00000000
 
 <h4>/proc/net/arp</h4>
 
-<p>This has the system ARP table, also in HEX format. Using the <code>arp -a</code> command gives more readable output.</p>
+<p>This has the system ARP table, also in HEX format. Using the <code>arp -a</code> command
+gives more readable output.</p>
 
 <pre><code>cat /proc/net/arp
 IP address       HW type     Flags       HW address            Mask     Device
@@ -267,7 +290,8 @@ IP address       HW type     Flags       HW address            Mask     Device
 
 <h4>/proc/net/dev</h4>
 
-<p>This has information about sent and received packages for all interfaces. <code>ifconfig</code> gives a more readable output.</p>
+<p>This has information about sent and received packages for all interfaces.
+<code>ifconfig</code> gives a more readable output.</p>
 
 <pre><code>cat /proc/net/dev
 Inter-|   Receive                                                     |Transmit
@@ -280,7 +304,9 @@ Inter-|   Receive                                                     |Transmit
 
 <h4>/proc/sys/vm/swappiness</h4>
 
-<p>This value controls how willing the kernel will be to swap memory. If you raise this number, the kernel will want to swap more often, while lowering it will decrease his tendency to swap.</p>
+<p>This value controls how willing the kernel will be to swap memory. If you raise
+this number, the kernel will want to swap more often, while lowering it will
+decrease his tendency to swap.</p>
 
 <pre><code>cat /proc/sys/vm/swappiness 
 60
@@ -288,7 +314,8 @@ Inter-|   Receive                                                     |Transmit
 
 <h4>/proc/sys/kernel/threads-max</h4>
 
-<p>This value is the maximum number of processes/threads that can exist at any given time on the system.</p>
+<p>This value is the maximum number of processes/threads that can exist at any
+given time on the system.</p>
 
 <pre><code>cat /proc/sys/kernel/threads-max
 32068
@@ -296,8 +323,10 @@ Inter-|   Receive                                                     |Transmit
 
 <h4>/proc/sys/net/ipv4/conf/default/forwarding</h4>
 
-<p>This file controls if the kernel forwards packets. If your system is not acting as a router or firewall this should be off (0).
-You can change it by <code>echo 1 &gt; /proc/sys/net/ipv4/conf/default/forwarding</code> or by setting it in <code>/etc/sysctl.conf</code>.</p>
+<p>This file controls if the kernel forwards packets. If your system is not acting
+as a router or firewall this should be off (0). You can change it by <code>echo 1 &gt;
+/proc/sys/net/ipv4/conf/default/forwarding</code> or by setting it in
+<code>/etc/sysctl.conf</code>.</p>
 
 <pre><code>cat /proc/sys/net/ipv4/conf/default/forwarding
 0
@@ -305,20 +334,26 @@ You can change it by <code>echo 1 &gt; /proc/sys/net/ipv4/conf/default/forwardin
 
 <h4>/proc/sys/vm/drop_caches</h4>
 
-<p>Writing to this file causes the kernel to drop clean caches, dentries and inodes from memory, causing that memory to become free.
-To free pagecache, dentries and inodes, use <code>echo 3 &gt; /proc/sys/vm/drop_caches</code>. Because this is a nondestructive operation and dirty objects are not freeable, you should run <code>sync</code> first!</p>
+<p>Writing to this file causes the kernel to drop clean caches, dentries and inodes
+from memory, causing that memory to become free. To free pagecache, dentries and
+inodes, use <code>echo 3 &gt; /proc/sys/vm/drop_caches</code>. Because this is a
+nondestructive operation and dirty objects are not freeable, you should run
+<code>sync</code> first!</p>
 
 <h4>/proc/sysrq-trigger</h4>
 
-<p>Writing a character to this file triggers the SysRq function sent by the key. </p>
+<p>Writing a character to this file triggers the SysRq function sent by the key.</p>
 
-<p>This file is only writable by root.  </p>
+<p>This file is only writable by root.</p>
 
 <p>If you don&#39;t know what sysreq is, <a href="https://en.wikipedia.org/wiki/Magic_SysRq_key">read the wikipedia page to find out more.</a></p>
 
-<h4>/proc/sys/net/ipv4/ip<em>local</em>port_range</h4>
+<h4>/proc/sys/net/ipv4/ip <em>local</em> port_range</h4>
 
-<p>This controls the ports locally available for opening. If you use for example an apache or nginx proxy, that service will have to open two connections for each request (one to the client, one to the backend). Setting this value higher will in heavy load environments give a performance boost.</p>
+<p>This controls the ports locally available for opening. If you use for example an
+apache or nginx proxy, that service will have to open two connections for each
+request (one to the client, one to the backend). Setting this value higher will
+in heavy load environments give a performance boost.</p>
 
 <pre><code>cat /proc/sys/net/ipv4/ip_local_port_range 
 32768   61000

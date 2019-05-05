@@ -69,23 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/tmg.png"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/tmg.png" alt=""></p>
 
-<p>Recently I had to deploy a few machines in a network where outgoing network access was forced through a Microsoft Forefront TMG proxy. For all the Windows clients this went automatically due to domain policies, for Linux this has to be set up manually. Defining the proxy in <code>/etc/environment</code> was not enough since NTML authentication is required, which is not supported by default. I found <code>cntlm</code>, a piece of software which acts as a local proxy, translating all requests to authenticated NTLM requests to your upstream proxy. This guide covers the (offline) installation, setup, getting the correct password hash and system-wide configuration. It should work on a desktop as well, but I did not test that.</p>
+<p>Recently I had to deploy a few machines in a network where outgoing network
+access was forced through a Microsoft Forefront TMG proxy. For all the Windows
+clients this went automatically due to domain policies, for Linux this has to be
+set up manually. Defining the proxy in <code>/etc/environment</code> was not enough since
+NTML authentication is required, which is not supported by default. I found
+<code>cntlm</code>, a piece of software which acts as a local proxy, translating all
+requests to authenticated NTLM requests to your upstream proxy. This guide
+covers the (offline) installation, setup, getting the correct password hash and
+system-wide configuration. It should work on a desktop as well, but I did not
+test that.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This guide was tested on both Ubuntu 16.04 and 18.04. You need a user account with the correct permissions for the proxy. The account will be locked, so make sure you have access the the Active Directory to unlock it when needed.</p>
+<p>This guide was tested on both Ubuntu 16.04 and 18.04. You need a user account
+with the correct permissions for the proxy. The account will be locked, so make
+sure you have access the the Active Directory to unlock it when needed.</p>
 
 <h3>Installing cntlm</h3>
 
-<p>If you can get a temporary exeption for the machine, you can use your favorite package manager to install cntlm:</p>
+<p>If you can get a temporary exeption for the machine, you can use your favorite
+package manager to install cntlm:</p>
 
 <pre><code>apt-get install cntlm
 </code></pre>
 
-<p>If you have no network access, download the package from <a href="https://packages.ubuntu.com/xenial/cntlm">the ubuntu packages site</a>. The <code>dpkg</code> file has no dependencies other than <code>libc</code>. </p>
+<p>If you have no network access, download the package from <a href="https://packages.ubuntu.com/xenial/cntlm">the ubuntu packages
+site</a>. The <code>dpkg</code> file has no dependencies other than <code>libc</code>.</p>
 
 <p>Place it on the server and install it:</p>
 
@@ -99,11 +112,16 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Configuring cntlm</h3>
 
-<p>The configuration file lives in <code>/etc/cntlm.conf</code> and is very simple. You can setup cntlm as a proxy for other servers, but that is not in the scope of this guide. For me, I used Ansible to configure these few servers. </p>
+<p>The configuration file lives in <code>/etc/cntlm.conf</code> and is very simple. You can
+setup cntlm as a proxy for other servers, but that is not in the scope of this
+guide. For me, I used Ansible to configure these few servers.</p>
 
-<p>You can put the password as plaintext in the configuration file, but we are not going to do that since the software supports placing the ntlm hash directly.</p>
+<p>You can put the password as plaintext in the configuration file, but we are not
+going to do that since the software supports placing the ntlm hash directly.</p>
 
-<p>First we use the commandline to figure out which type of hash is used. Use the <code>-M</code> (magic) parameter with a username and password to autodetect the correct settings:</p>
+<p>First we use the commandline to figure out which type of hash is used. Use the
+<code>-M</code> (magic) parameter with a username and password to autodetect the correct
+settings:</p>
 
 <pre><code>cntlm -u $USERNAME@$ADDOMAIN -M http://raymii.org proxy.$ADDOMAIN.EXT 8080
 Password: 
@@ -118,9 +136,11 @@ PassNTLMv2      AAAAAAABBBBBBBBBXXXXXXX99999AAAA
 ------------------------------------------------
 </code></pre>
 
-<p>The username format is <code>$USERNAME@$domain</code>. The password is your domain account&#39;s password. The last two parameters are the proxy hostname/ip and port.</p>
+<p>The username format is <code>$USERNAME@$domain</code>. The password is your domain
+account&#39;s password. The last two parameters are the proxy hostname/ip and port.</p>
 
-<p>In this case we have the NTLMv2 hash and the output format. In other cases, there might be an NTLM hash, an NT hash, an LM hash or any combination.</p>
+<p>In this case we have the NTLMv2 hash and the output format. In other cases,
+there might be an NTLM hash, an NT hash, an LM hash or any combination.</p>
 
 <p>In the configuration file, abide to the following rules:</p>
 
@@ -131,7 +151,8 @@ PassNTLMv2      AAAAAAABBBBBBBBBXXXXXXX99999AAAA
 <li>Auth is NTLMv2: use only PassNTLMv2</li>
 </ul>
 
-<p>If you cannot connect right away or need to generate the hash offline, cntlm can do that as well:</p>
+<p>If you cannot connect right away or need to generate the hash offline, cntlm can
+do that as well:</p>
 
 <pre><code>echo &quot;P@ssw0rd&quot; | cntlm -H -u $USERNAME -d $ADDOMAIN 
 </code></pre>
@@ -149,7 +170,8 @@ PassNTLMv2      AAAAAAABBBBBBBBBXXXXXXX99999AAAA    # Only for user &#39;$USERNA
 <pre><code>vim /etc/cntlm.conf
 </code></pre>
 
-<p>The file is self-explanatory, but read through it if you want to setup a gateway. Here is the config we need for the above setup:</p>
+<p>The file is self-explanatory, but read through it if you want to setup a
+gateway. Here is the config we need for the above setup:</p>
 
 <pre><code>Username    $USERNAME
 Domain      $ADDOMAIN
@@ -161,7 +183,8 @@ NoProxy     localhost, 127.0.0.*, 10.*, 192.168.*
 Listen      3128
 </code></pre>
 
-<p><code>WorkStation</code> is optional, by default the system hostname is used. The other values like <code>Proxy</code> and <code>Listen</code> are self-explanatory as well.</p>
+<p><code>WorkStation</code> is optional, by default the system hostname is used. The other
+values like <code>Proxy</code> and <code>Listen</code> are self-explanatory as well.</p>
 
 <p>When your configuration file is done, make sure only root can read it:</p>
 
@@ -175,11 +198,13 @@ Listen      3128
 
 <h3>Testing cntlm</h3>
 
-<p>Use either cntlm itself with debug on, or a tool like curl with the proxy configured to test the local proxy. </p>
+<p>Use either cntlm itself with debug on, or a tool like curl with the proxy
+configured to test the local proxy.</p>
 
 <h4>Testing with curl</h4>
 
-<p>curl has the <code>-x</code> option to provide a proxy. Since <code>cntlm</code> is configured and listening on <code>127.0.0.1:3128</code> we can use it to test with curl:</p>
+<p>curl has the <code>-x</code> option to provide a proxy. Since <code>cntlm</code> is configured and
+listening on <code>127.0.0.1:3128</code> we can use it to test with curl:</p>
 
 <pre><code>curl -v -x http://127.0.0.1:3128/ http://raymii.org
 </code></pre>
@@ -214,17 +239,20 @@ You should be redirected to &lt;a href=&quot;https://raymii.org/s/&quot;&gt;http
 * Connection #0 to host 127.0.0.1 left intact
 </code></pre>
 
-<p>As you can see, the proxy is used and working. If it is not, the output will include something like below:  </p>
+<p>As you can see, the proxy is used and working. If it is not, the output will
+include something like below:</p>
 
 <pre><code># lots of html
  407 Proxy Authentication Required. Forefront TMG requires authorization to fulfill the request. Access to the Web Proxy filter is denied. (12209).
 </code></pre>
 
-<p>Your password hash could be wrong, the account might be locked out or the other authentication credentials are wrong.</p>
+<p>Your password hash could be wrong, the account might be locked out or the other
+authentication credentials are wrong.</p>
 
 <h4>Testing with cntlm</h4>
 
-<p>Using the <code>-v</code> option, for verbose with the <code>-M</code> option as before, we can test the connection.</p>
+<p>Using the <code>-v</code> option, for verbose with the <code>-M</code> option as before, we can test
+the connection.</p>
 
 <pre><code>cntlm -fv -c /etc/cntlm.conf -M http://raymii.org
 </code></pre>
@@ -299,7 +327,8 @@ PassNTLMv2      AAAAAAABBBBBBBBBXXXXXXX99999AAAA
 cntlm: Terminating with 0 active threads
 </code></pre>
 
-<p>The <code>200 OK</code> is what we&#39;re looking for. Stuff like below is wrong, just as above, check your credentials and config:</p>
+<p>The <code>200 OK</code> is what we&#39;re looking for. Stuff like below is wrong, just as
+above, check your credentials and config:</p>
 
 <pre><code>HEAD: HTTP/1.1 407 Proxy Authentication Required ( Forefront TMG requires authorization to fulfill the request. Access to the Web Proxy filter is denied.  )
 Credentials rejected
@@ -307,11 +336,14 @@ Credentials rejected
 Wrong credentials, invalid URL or proxy doesn&#39;t support NTLM nor BASIC.
 </code></pre>
 
-<p>The account will be locked, so make sure you have access the the Active Directory to unlock it.</p>
+<p>The account will be locked, so make sure you have access the the Active
+Directory to unlock it.</p>
 
 <h3>Systemwide proxy configuration</h3>
 
-<p>When the proxy is working, you make it available for the entire system. Most software will understand this, but make sure to check the specific manpages if software is not working for you.</p>
+<p>When the proxy is working, you make it available for the entire system. Most
+software will understand this, but make sure to check the specific manpages if
+software is not working for you.</p>
 
 <p>Edit the following file:</p>
 
@@ -345,7 +377,8 @@ Acquire::ftp::proxy &quot;ftp://127.0.0.1:3128/&quot;;
 Acquire::https::proxy &quot;https://127.0.0.1:3128/&quot;;
 </code></pre>
 
-<p>After logging out and in, test it with curl once again, but now without the <code>-x</code> option (so no proxy is specified, but the system proxy is used):</p>
+<p>After logging out and in, test it with curl once again, but now without the <code>-x</code>
+option (so no proxy is specified, but the system proxy is used):</p>
 
 <pre><code>curl -v raymii.org
 </code></pre>

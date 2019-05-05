@@ -73,8 +73,8 @@
 storage servers. I work at a fairly large cloud provider, where we have a lot of
 hardware. Think thousands of hardware servers and multiple ten thousand
 harddisks. It&#39;s all technology, so stuff breaks, and at our scale, stuff breaks
-often. One of my pet projects for the last period has been to automate the
-burn-in testing for our virtualisation servers and the storage machines. We run
+often. One of my pet projects for the last period has been to automate the burn-
+in testing for our virtualisation servers and the storage machines. We run
 OpenStack and use KVM for the hypervisors and a combination of different storage
 technology for the volume storage servers. Before they go in production, they
 are tested for a few days with very intensive automated usage. We&#39;ve noticed
@@ -82,10 +82,10 @@ that they either fail then, or not. This saves us from having to migrate
 customers off of new production servers just a few days after they&#39;ve gone live.
 The testing is of course all automated.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/busy-compute.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/busy-compute.jpg" alt=""></p>
 
 <blockquote>
 <p>A very busy hypervisor node</p>
@@ -94,15 +94,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <h3>Preface</h3>
 
 <p>This article is not a copy and paste tutorial. It&#39;s more a walkthrough of the
-processes used and the thought process behind it. </p>
+processes used and the thought process behind it.</p>
 
 <p>As said, I currently work at an OpenStack public cloud provider. That means that
 you can order a virtual server with us and get full administrative access to it.
 We use OpenStack, so you can also automate that part using the API and deploy
 instances automatically. Those virtual machines do need to run on actual
-hardware, which is where this article comes in. </p>
+hardware, which is where this article comes in.</p>
 
-<p><img src="https://raymii.org/s/inc/img/automate-all-the-things.png" width=600 height=400></p>
+<p><img src="https://raymii.org/s/inc/img/automate-all-the-things.png" alt=""></p>
 
 <p>The regular process for deploying new hardware is fully automated. We&#39;ve got
 capacity management nailed down, once the OpenStack environment reaches a
@@ -110,7 +110,7 @@ certain threshold, PDF&#39;s are automatically generated with investment request
 and sent off to the finance department and the hardware is ordered. Then after
 some time, the nodes are shipped to the datacenters. Our datacenter team handles
 the racking and stacking. They setup the remote out of band management (ILO,
-iDrac, IPMI) and put the credentials into the PXE deployment servers (MaaS). </p>
+iDrac, IPMI) and put the credentials into the PXE deployment servers (MaaS).</p>
 
 <p>The machine get&#39;s installed with the required OS automatically and after that
 the software stack (OpenStack) is installed. The machine firmwares are then
@@ -164,11 +164,11 @@ update outstanding, and if so it schedules a node for emptying out.</p>
 <p>We use live migrates and that process it automated as well, but it does add
 extra workload. Especially larger Windows VM&#39;s on KVM tend to lock up and break
 during a live-migrate, those need some tender love and care. Migrating storage
-(OpenStack Cinder Volumes) goes fine, never had any issues with that. </p>
+(OpenStack Cinder Volumes) goes fine, never had any issues with that.</p>
 
 <p>Depending on the used configuration, OpenStack can use local storage or Ceph.
 With Ceph, live migrated of Volumes and Instances is very easy and fast. Local
-storage takes longer, since then the disks need to be copied over. </p>
+storage takes longer, since then the disks need to be copied over.</p>
 
 <p>Once the node is empty, it&#39;s updated, both software and firmware, with the same
 playbooks we use when a new node is installed. When that&#39;s done, it&#39;s rebooted
@@ -197,13 +197,13 @@ corner.</p>
 <p>Since we saw that hardware can break when it&#39;s being used regularly, we also
 must test it using mostly regular usage patterns. For compute nodes that means,
 install OpenStack and run VM&#39;s. For storage machines, that means, install
-OpenStack and the specific storage (ZFS, Ceph, Linux LVM) and generate IO. </p>
+OpenStack and the specific storage (ZFS, Ceph, Linux LVM) and generate IO.</p>
 
 <p>Because we do want to stress the node a bit, we generate usage that under normal
 conditions would count as abuse. We thought of bitcoin miners or BOINC
 (SETI@HOME), but decided that that wouldn&#39;t be reproducable enough. Therefore we
 went with regular tools, like <code>stress</code>, <code>stress-ng</code>, <code>memtest</code>, <code>dd</code> and
-<code>iperf</code>. </p>
+<code>iperf</code>.</p>
 
 <p>Using OpenStack Userdata we provide a script to the instance that installs the
 packages and runs them in a specified order for a set amount of time. In my
@@ -211,11 +211,11 @@ example every tool, testing a specific aspect (CPU, RAM, etc) runs for 15
 minutes and then continues on to the next part. By creating a VM every 10
 minutes, all usage patterns are equal. With that I mean that the CPU isn&#39;t
 hammered for 15 minutes, then the RAM, then the NIC. No, one instance is
-hammering the disk while another is using all it&#39;s CPU. </p>
+hammering the disk while another is using all it&#39;s CPU.</p>
 
 <p>The below image shows <code>htop</code> on one of our empty compute nodes:</p>
 
-<p><img src="https://raymii.org/s/inc/img/empty-compute.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/empty-compute.jpg" alt=""></p>
 
 <p>One thing we do not test enough is a huge amount of small VM&#39;s, thus having a
 lot of hardware interrupts and context switching. My testing uses a few large
@@ -232,7 +232,7 @@ hammered.</p>
 <p>For the compute node benchmarking I&#39;m using an Ubuntu 14.04 VM. I&#39;m not able to
 share the Ansible playbooks we are using, but I can give you the manual
 commands. It&#39;s not that hard to put one and one together and create your own
-version. Or, if you don&#39;t get new hardware so often, just do it manually. </p>
+version. Or, if you don&#39;t get new hardware so often, just do it manually.</p>
 
 <p>In our specific OpenStack deployments we have an administrative user. We need
 this to override the scheduler and control on which compute node the VM&#39;s get
@@ -247,8 +247,8 @@ get spawned on that hypervisor:</p>
 </code></pre>
 
 <p>This does allow you to overload the hypervisor with instances. In our case it
-either cannot boot them and the logs say, cannot allocate memory. Or, the
-out-of-memory killer on the hypervisor just kills the <code>qemu</code> process and the
+either cannot boot them and the logs say, cannot allocate memory. Or, the out-
+of-memory killer on the hypervisor just kills the <code>qemu</code> process and the
 instance is in state stopped. The nova instance action list doesn&#39;t show that
 action (because it went outside of nova).</p>
 
@@ -284,7 +284,7 @@ packages:</p>
 <pre><code>stress --cpu $(nproc) --timeout 900
 </code></pre>
 
-<p><code>nproc</code> gives me the number of cores available, which is usable for the VM. </p>
+<p><code>nproc</code> gives me the number of cores available, which is usable for the VM.</p>
 
 <p>Stress with the <code>--cpu</code> parameter spins up processes in a tight loop calculating
 the <code>sqrt()</code> of a random number acquired with <code>rand()</code>.</p>
@@ -307,7 +307,7 @@ fill the RAM up nicely.</p>
 
 <p>This memory abuse has triggered a lot of servers where one of the RAM DIMM&#39;s was
 bad. Even though we always have ECC RAM. Only after a few hours of running, not
-right away. </p>
+right away.</p>
 
 <h4>Disk</h4>
 
@@ -316,26 +316,26 @@ servers (boot from volume) with ZFS. When a compute node has local disks we test
 them, otherwise it isn&#39;t much use since the storage servers are stressed
 differently.</p>
 
-<p><code>stress</code> has two different use cases for disk IO. The first does actual writes. </p>
+<p><code>stress</code> has two different use cases for disk IO. The first does actual writes.</p>
 
 <pre><code>stress --hdd $(nproc) --hdd-bytes 100G --timeout 900 
 </code></pre>
 
 <p><code>--hdd</code> spawns N workers spinning on <code>write()</code>/<code>unlink()</code>. <code>--hdd-bytes</code> write B
-bytes per hdd worker (default is 1GB). </p>
+bytes per hdd worker (default is 1GB).</p>
 
 <pre><code>stress --io $(nproc) --timeout 900 
 </code></pre>
 
-<p><code>--io</code> spawns N workers spinning on <code>sync()</code>. </p>
+<p><code>--io</code> spawns N workers spinning on <code>sync()</code>.</p>
 
 <p>Below is a screenshot of <code>iotop</code> on the compute node when a burn-in test is
 running on disk io with these tests:</p>
 
-<p><img src="https://raymii.org/s/inc/img/iops-compute.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/iops-compute.jpg" alt=""></p>
 
 <p>There have been four SSD&#39;s so far that needed replacing when these tests ran for
-a day. On average that suprised me, since I suspected it to be a lot more. </p>
+a day. On average that suprised me, since I suspected it to be a lot more.</p>
 
 <h4>Network</h4>
 
@@ -349,7 +349,7 @@ tools report on (yet):</p>
 <pre><code>iperf --port 5002 --client speedtest.serverius.net --dualtest --time 900 --format M 
 </code></pre>
 
-<p>I replaced our <code>iperf</code> server address with a public <code>iperf</code> server address. </p>
+<p>I replaced our <code>iperf</code> server address with a public <code>iperf</code> server address.</p>
 
 <h3>Storage servers: dd, dd and some more dd</h3>
 
@@ -359,7 +359,7 @@ volumes on them. Those volumes are then attached to an instance. On the
 instance, using <code>zfs</code>, we create a big pool (named <code>tank</code>) (no <code>raidZ</code> or
 mirroring) and one dataset (named <code>bullet</code>). Then, using <code>dd</code>, we first write
 zero&#39;s for a few hours. Afterwards, also using <code>dd</code> and random data from
-<code>openssl</code> (<code>/dev/urandom</code> is too slow), actual data is written. </p>
+<code>openssl</code> (<code>/dev/urandom</code> is too slow), actual data is written.</p>
 
 <p>This could of course also be done with regular LVM volumes or <code>mdraid</code>. The
 tests however are adapted from work I already had laying around, that playbook
@@ -398,7 +398,7 @@ already did <code>zfs</code>, so not much use in re-inventing the wheel.</p>
     state: present
 </code></pre>
 
-<p>It will be automatically mounted and available under <code>/tank/bullet</code>. </p>
+<p>It will be automatically mounted and available under <code>/tank/bullet</code>.</p>
 
 <p>The first <code>dd</code> command:</p>
 
@@ -421,19 +421,19 @@ new one, rinse and repeat.</p>
 
 <h3>The result</h3>
 
-<p><img src="https://raymii.org/s/inc/img/iops-zfs.png"></p>
+<p><img src="https://raymii.org/s/inc/img/iops-zfs.png" alt=""></p>
 
 <blockquote>
 <p>Writing zero&#39;s at near-line speed</p>
 </blockquote>
 
-<p><img src="https://raymii.org/s/inc/img/busy-compute.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/busy-compute.jpg" alt=""></p>
 
 <blockquote>
 <p>A busy hypervisor node</p>
 </blockquote>
 
-<p><img src="https://raymii.org/s/inc/img/busy-compute2.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/busy-compute2.jpg" alt=""></p>
 
 <blockquote>
 <p>An even more busy hypervisor node</p>
@@ -444,9 +444,9 @@ employers we actually found out that the fan rig wasn&#39;t correctly wired due 
 CPU heat alarms going off in the <code>ipmi</code>. Once again, make sure you have good
 monitoring and out of band access. This will happen often:</p>
 
-<p><img src="https://raymii.org/s/inc/img/notification-memory.png"></p>
+<p><img src="https://raymii.org/s/inc/img/notification-memory.png" alt=""></p>
 
-<p>Which is of course a good thing when the hardware is not yet in use. </p>
+<p>Which is of course a good thing when the hardware is not yet in use.</p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/cinder.html" class="link">cinder &nbsp;</a><a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/compute.html" class="link">compute &nbsp;</a><a href="../tags/nova.html" class="link">nova &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/storage.html" class="link">storage &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

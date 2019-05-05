@@ -9,36 +9,53 @@ Format      : 	Markdown/HTML
 
 
 
-This small article will show you how to remove unused kernels in Red Hat or CentOS. This is sometimes necessary because the /boot partition can fill up.
+This small article will show you how to remove unused kernels in Red Hat or
+CentOS. This is sometimes necessary because the /boot partition can fill up.
 
-[Are you running Ubuntu and want to clean up kernels? See this article: https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html](https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html)
+[Are you running Ubuntu and want to clean up kernels? See this article:
+https://raymii.org/s/snippets/Remove _Old_ Ubuntu_Kernels.html][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+You can check which kernels you have installed using the `rpm -q kernel`
+command:
 
-You can check which kernels you have installed using the `rpm -q kernel` command:
-
+    
+    
     $ rpm -q kernel
     kernel-2.6.18-348.16.1.el5
     kernel-2.6.18-348.18.1.el5
     kernel-2.6.18-371.el5
     kernel-2.6.18-371.1.2.el5
     kernel-2.6.18-371.3.1.el5
+    
 
-As you can see this is a CentOS 5 box. 
+As you can see this is a CentOS 5 box.
 
-In the `yum-utils` package there is the `package-cleanup` command. This command, among other things, lets you remove older kernels very simple. First install it:
+In the `yum-utils` package there is the `package-cleanup` command. This command,
+among other things, lets you remove older kernels very simple. First install it:
 
+    
+    
     yum install yum-utils
+    
 
-With the following command you can clean up all old kernels and keep just two. The current one and the previous one:
+With the following command you can clean up all old kernels and keep just two.
+The current one and the previous one:
 
+    
+    
     package-cleanup --oldkernels --count=2
+    
 
-The Fedora Documentation has more info and various good examples on the `package-cleanup` command: [https://docs.fedoraproject.org/en-US/Fedora/14/html/Software_Management_Guide/ch07s03.html](https://docs.fedoraproject.org/en-US/Fedora/14/html/Software_Management_Guide/ch07s03.html)
+The Fedora Documentation has more info and various good examples on the
+`package-cleanup` command: [https://docs.fedoraproject.org/en-
+US/Fedora/14/html/Software _Management_ Guide/ch07s03.html][3]
 
+   [1]: https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: https://docs.fedoraproject.org/en-US/Fedora/14/html/Software_Management_Guide/ch07s03.html
 
 ---
 

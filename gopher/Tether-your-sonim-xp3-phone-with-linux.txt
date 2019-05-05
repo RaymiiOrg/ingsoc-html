@@ -9,38 +9,57 @@ Format      : 	Markdown/HTML
 
 
 
-This guide works for the Sonim XP3.20 Quest (Pro).   
-I also have an Android Phone which had an option to share the Internet Connection via USB and/or Wifi.  
-This was one of the features I missed on the Sonim. The phone itself is awesome, but that is not in the scope of this guide.
+This guide works for the Sonim XP3.20 Quest (Pro).  
+I also have an Android Phone which had an option to share the Internet
+Connection via USB and/or Wifi.  
+This was one of the features I missed on the Sonim. The phone itself is awesome,
+but that is not in the scope of this guide.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-It is also tested with the newer Sonim XP1300 Core. Please note that some providers not allow you to tether your phones internet connection, and this may cost you a lot of money if you go over your monthly bundle. Also you need to have internet setup on your phone already. This guide was written and tested on **Arch Linux with Kernel 2.6.36-ARCH**, but I think it will be usable on more distributions.  
+It is also tested with the newer Sonim XP1300 Core. Please note that some
+providers not allow you to tether your phones internet connection, and this may
+cost you a lot of money if you go over your monthly bundle. Also you need to
+have internet setup on your phone already. This guide was written and tested on
+**Arch Linux with Kernel 2.6.36-ARCH** , but I think it will be usable on more
+distributions.  
 First install wvdial:
 
+    
+    
     pacman -S wvdial
- 
- Then plugin you Sonim and see on which tty it is detected: 
+    
 
+Then plugin you Sonim and see on which tty it is detected:
+
+    
+    
     dmesg | grep tty 
+    
 
 You need to see something like this:
 
+    
+    
     cdc_acm 5-1:1.1: ttyACM0: USB ACM device
     usbcore: registered new interface driver cdc_acm
     cdc_acm: v0.26:USB Abstract Control Model driver for USB modems and ISDN adapters
     scsi 8:0:0:0: Direct-Access     Philips  Dev. 0 LUN 0     1.0  PQ: 0 ANSI: 0 
+    
 
-Now we have the tty (/dev/ttyACM0). This is all we need for the wvdial.conf file: 
+Now we have the tty (/dev/ttyACM0). This is all we need for the wvdial.conf
+file:
 
+    
+    
     sudo nano /etc/wvdial.conf 
+    
 
-Paste this in there: 
+Paste this in there:
 
+    
+    
     [Dialer Defaults]
     Modem = /dev/ttyACM0
     Modem Type = Analog Modem
@@ -57,15 +76,22 @@ Paste this in there:
     Stupid Mode = 1
     Init3 = AT+CGDCONT=1,"IP","internet" 
     
-My provider is T-Mobile NL, and their APN is "internet", with login "tmobile" and password: "tmobile".
 
-  
-Change any of these values to your needs, look for them on your providers website. Now save with CTRL+O and quit with CTRL+X, and see if it works: 
+My provider is T-Mobile NL, and their APN is "internet", with login "tmobile"
+and password: "tmobile".
 
+Change any of these values to your needs, look for them on your providers
+website. Now save with CTRL+O and quit with CTRL+X, and see if it works:
+
+    
+    
     sudo wvdial internet 
+    
 
-Result: 
+Result:
 
+    
+    
     [remy@solaris3 ~]$ sudo wvdial internet
     --> WvDial: Internet dialer version 1.61
     --> Cannot get information for serial port.
@@ -94,8 +120,11 @@ Result:
     --> primary   DNS address 8.8.8.8
     --> secondary DNS address 8.8.4.4 
     
-Bazinga! You can now surf via your Sonim phone via your 3g / 2g / egde or GSM connection. (Check via /sbin/ifconfig). 
 
+Bazinga! You can now surf via your Sonim phone via your 3g / 2g / egde or GSM
+connection. (Check via /sbin/ifconfig).
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

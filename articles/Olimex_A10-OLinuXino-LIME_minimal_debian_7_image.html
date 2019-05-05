@@ -69,25 +69,41 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/A10-OLinuXino-LIME.jpeg" alt=olimex></img></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/A10-OLinuXino-LIME.jpeg" alt="olimex"></p>
 
-<p>A friend of me recently pointed me to the <a href="https://www.olimex.com/wiki/A10-OLinuXino-LIME">Olimex Olinuxino A10 LIME</a>, an open source hardware ARM (Allwinner A10) based dev board with 160 GPIO&#39;s, 1,2 GHz/512 MB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port, USB-OTG, 100 Mbit lan (not via the usb bus) and more of those nice features. The price is even more awesome, the device is 30 euro&#39;s, add 5 euro&#39;s and you have yourself a nice black case. It consumes very little power, combined with all the features a perfect dev / tinkerboard.</p>
+<p>A friend of me recently pointed me to the <a href="https://www.olimex.com/wiki/A10-OLinuXino-LIME">Olimex Olinuxino A10 LIME</a>, an
+open source hardware ARM (Allwinner A10) based dev board with 160 GPIO&#39;s, 1,2
+GHz/512 MB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port, USB-OTG, 100 Mbit
+lan (not via the usb bus) and more of those nice features. The price is even
+more awesome, the device is 30 euro&#39;s, add 5 euro&#39;s and you have yourself a nice
+black case. It consumes very little power, combined with all the features a
+perfect dev / tinkerboard.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Sadly, the default Debian 7 image suplied by Olimex is bloated and huge. Perfect for the general tinkerer, has a Desktop Environment and a lot of dev tools and support for everything. Not perfect for me, I want a small minimal base to start and add up on that only what I need.</p>
+<p>Sadly, the default Debian 7 image suplied by Olimex is bloated and huge. Perfect
+for the general tinkerer, has a Desktop Environment and a lot of dev tools and
+support for everything. Not perfect for me, I want a small minimal base to start
+and add up on that only what I need.</p>
 
-<p>I took this image and stripped everything out of it, leaving only the bare minimum. Basically it only runs SSH and allows you to install the tools you need to build your project, without any other cruft. </p>
+<p>I took this image and stripped everything out of it, leaving only the bare
+minimum. Basically it only runs SSH and allows you to install the tools you need
+to build your project, without any other cruft.</p>
 
-<p>It is also more optimized to run off flash storage, by default it has no logging, no locatedb updates, noatime mount option, this all reducing writes to the SD card.</p>
+<p>It is also more optimized to run off flash storage, by default it has no
+logging, no locatedb updates, noatime mount option, this all reducing writes to
+the SD card.</p>
 
-<p>If you have an Olimex A20 LIME2, I also have an image for that, located <a href="https://raymii.org/s/articles/Olimex_A20-OLinuXino-LIME2_minimal_debian_7_image.html">on this page</a>. The difference between the A10 and the A20-LIME2 is that the latter one has gigabit network, 1 GB ram and a dual core ARM processor. </p>
+<p>If you have an Olimex A20 LIME2, I also have an image for that, located <a href="https://raymii.org/s/articles/Olimex_A20-OLinuXino-LIME2_minimal_debian_7_image.html">on this
+page</a>. The difference between the A10 and the A20-LIME2 is that the latter
+one has gigabit network, 1 GB ram and a dual core ARM processor.</p>
 
-<p>The main features / differences from the Olimex provided Debian image (Debian with kernel 3.4.90+ release 3):</p>
+<p>The main features / differences from the Olimex provided Debian image (Debian
+with kernel 3.4.90+ release 3):</p>
 
 <ul>
-<li>Minimal set of packages:
+<li>Minimal set of packages: 
 
 <ul>
 <li>No X or desktop environment.</li>
@@ -117,7 +133,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>SHA256: 319a70b3097cac299a764e4b06721481599c0ad3b8ec2f43df8c4f588822ab3c</li>
 </ul>
 
-<p>Feel free to mirror it wherever you want. If you like it or use it, you might consider sending me a nice email. Or, if this image helped you and you want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a>   </p>
+<p>Feel free to mirror it wherever you want. If you like it or use it, you might
+consider sending me a nice email. Or, if this image helped you and you want to
+support me AND get $10 Digital Ocean credit (2 months free), use this link to
+order: <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a></p>
 
 <h3>Instructions</h3>
 
@@ -141,18 +160,23 @@ sha256sum a10_debian7_minimal_raymii.img
 
 <p>Plug in your microSD card and use <code>dmesg</code> to see which device it is.</p>
 
-<p>Please note that this image is supposed to be on the MicroSD card. I don&#39;t know if and how it works on the eMMC internal flash.</p>
+<p>Please note that this image is supposed to be on the MicroSD card. I don&#39;t know
+if and how it works on the eMMC internal flash.</p>
 
 <p>Write the image to the microSD card:</p>
 
 <pre><code>dd if=a10_debian7_minimal_raymii.img of=/dev/mmcblk0
 </code></pre>
 
-<p>Afterwards, use a tool like (c)fdisk, parted or gparted to enlarge the second partition. It is only 300 MB, which is to small to use most of the time.</p>
+<p>Afterwards, use a tool like (c)fdisk, parted or gparted to enlarge the second
+partition. It is only 300 MB, which is to small to use most of the time.</p>
 
-<p>Plug the microSD card back in and boot the Olinuxino. It receives an IP address via DHCP. Check your router or use nmap to find it. Log in as root with the password <code>olimex</code>. </p>
+<p>Plug the microSD card back in and boot the Olinuxino. It receives an IP address
+via DHCP. Check your router or use nmap to find it. Log in as root with the
+password <code>olimex</code>.</p>
 
-<p>If you want to install software, please <code>apt-get update</code> first, since the apt-lists are removed to save +100 MB.</p>
+<p>If you want to install software, please <code>apt-get update</code> first, since the apt-
+lists are removed to save +100 MB.</p>
 
 <p>Enjoy!</p>
 </div><hr>Tags: <a href="../tags/allwinner.html" class="link">allwinner &nbsp;</a><a href="../tags/arm.html" class="link">arm &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/gpio.html" class="link">gpio &nbsp;</a><a href="../tags/minimal.html" class="link">minimal &nbsp;</a><a href="../tags/olimex.html" class="link">olimex &nbsp;</a><a href="../tags/olinuxino.html" class="link">olinuxino &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><div class="footer">

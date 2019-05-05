@@ -16,21 +16,19 @@ It also covers if, and why you might need a virus scanner for Linux/Unix. As an
 extra, it also covers scans for specific folders which remove infected files
 automatically.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 #### Do you need a virus scanner on Linux/Unix?
 
 Short answer, it depends on your situation.
 
-Long answer:   You might want to run a virus scanner on a server where files are
-uploaded, or where users login and manipulate files.   Lets say you host a file
+Long answer: You might want to run a virus scanner on a server where files are
+uploaded, or where users login and manipulate files. Lets say you host a file
 upload site, you want to run a scan on the upload folder which auto removes
-infected files.   It can also be that your mailserver runs Linux, but people
-sometimes mail executables or infected pdf files. Then you also want a scanner. 
- Or you might run a source control server (gitolite, mercurial) where sometimes
+infected files. It can also be that your mailserver runs Linux, but people
+sometimes mail executables or infected pdf files. Then you also want a scanner.
+Or you might run a source control server (gitolite, mercurial) where sometimes
 binary files are checked in. (although ClamAV might not find things in bare-git
 repositories, only in working directories.)
 
@@ -40,35 +38,45 @@ resources.
 
 My advice is to look at your situation and then decide if you need ClamAV, and
 if you only need to scan a few folders, the entire system and if you want to
-auto-remove the virusses or not. 
-
+auto-remove the virusses or not.
 
 #### Install ClamAV
 
 First we update the package repository:
 
+    
+    
     sudo apt-get update
+    
 
-Now we install the clamav scanner, the daemon and the database updater. 
+Now we install the clamav scanner, the daemon and the database updater.
 
+    
+    
     sudo apt-get install clamav clamav-daemon clamav-freshclam
+    
 
 You can also install the clamav-data package, but the clamav-freshclam package
 is another (easier) way to update your virus definitions.
 
 On RHEL, CentOS or Scientific Linux, you only need to install the `clamav`
 package:
+
+    
     
     yum install clamav
+    
 
 #### Update the database
 
 The below two commands will restart the freshclam daemon (which auto updates the
 database) and then does a manual update of the definitions.
 
+    
+    
     sudo /etc/init.d/clamav-freshclam restart
     sudo /usr/bin/freshclam
-
+    
 
 #### The daily scan
 
@@ -78,8 +86,11 @@ will only report when there are infected files on the system. It also does not
 remove the infected files automatically, you have to do this manually. This way
 you make sure that it does not delete /bin/bash by accident.
 
+    
+    
     ## This should be a root cronjob. 30 01 * * * /
     usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected / 2>/dev/null
+    
 
 The `2>/dev/null` options keeps the /proc and such access denied errors out of
 the report. The infected files however are still found and reported.
@@ -89,28 +100,35 @@ the cronjobs. The manual page will help you with that.
 
 This is how a sample email looks if you have an infection:
 
+    
+    
     /home/remy/eicar.zip: Eicar-Test-Signature FOUND
     /home/remy/eicar.com: Eicar-Test-Signature FOUND
-
+    
 
 #### Extra: the targeted scan
 
 The below cronjob is an example and you should adapt it. It updates the virus
-definitions and scans the folder
-`/var/www/sites/uploader.com/public-html/uploads/` two times per hour, and if it
-found any files it removes them. 
+definitions and scans the folder `/var/www/sites/uploader.com/public-
+html/uploads/` two times per hour, and if it found any files it removes them.
 
+    
+    
         ## This should be a root cronjob.
         */29 * * * * /usr/bin/freshclam --quiet; /usr/bin/clamscan --recursive --no-summary --infected --remove /var/www/sites/uploader.com/public-html/uploads 2>/dev/null
+    
 
 This is how a sample email might look like:
 
+    
+    
     /var/www/sites/uploader.com/public-html/uploads/eicar.zip: Eicar-Test-Signature FOUND
     /var/www/sites/uploader.com/public-html/uploads/eicar.zip: Removed.
     /var/www/sites/uploader.com/public-html/uploads/eicar.com: Eicar-Test-Signature FOUND
     /var/www/sites/uploader.com/public-html/uploads/eicar.com: Removed.
+    
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

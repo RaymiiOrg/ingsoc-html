@@ -69,7 +69,9 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to install nmap 6.40 on Ubuntu 12.04. Ubuntu 12.04 has nmap 5.21 in the repositories. nmap 6 features a lot of improvements, here is a list of the biggest changes:</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to install nmap 6.40 on Ubuntu 12.04. Ubuntu 12.04
+has nmap 5.21 in the repositories. nmap 6 features a lot of improvements, here
+is a list of the biggest changes:</p>
 
 <ul>
 <li>Nmap Scripting Engine (NSE), 352 scripts</li>
@@ -79,10 +81,14 @@
 <li>Faster scans</li>
 </ul>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>We&#39;ll use <code>checkinstall</code> to create a .deb package instead of <code>make install</code>. <code>checkinstall</code> allows us to easily manage, remove or upgrade the software later on, instead of compiling and making just over the old version. Do note that <code>checkinstall</code> .deb packages are not intended for public distribution, using them on your internal network is OK.</p>
+<p>We&#39;ll use <code>checkinstall</code> to create a .deb package instead of <code>make install</code>.
+<code>checkinstall</code> allows us to easily manage, remove or upgrade the software later
+on, instead of compiling and making just over the old version. Do note that
+<code>checkinstall</code> .deb packages are not intended for public distribution, using
+them on your internal network is OK.</p>
 
 <p>Firt install the required development packages:</p>
 
@@ -116,7 +122,8 @@ cd nmap-6.40
 <pre><code>make
 </code></pre>
 
-<p>Now instead of <code>make install</code>, execute this command to start building the .deb package:</p>
+<p>Now instead of <code>make install</code>, execute this command to start building the .deb
+package:</p>
 
 <pre><code>checkinstall
 </code></pre>

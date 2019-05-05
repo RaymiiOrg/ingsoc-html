@@ -9,42 +9,59 @@ Format      : 	Markdown/HTML
 
 
 
-On Ubuntu and Debian (12.04/6) the munin plugins which graphs mysql by default gives the following error:
+On Ubuntu and Debian (12.04/6) the munin plugins which graphs mysql by default
+gives the following error:
 
+    
+    
     Missing dependency Cache::Cache at /usr/share/munin/plugins/mysql_ line 716.
+    
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+This is because a Perl cache package is needed. In the repositories there are
+two of those packages. Install them both:
 
-This is because a Perl cache package is needed. In the repositories there are two of those packages. Install them both:
-
+    
+    
     ## Execute as root
     apt-get install libcache-{perl,cache-perl} 
+    
 
 Now generate the munin plugin config again:
 
+    
+    
     ## Execute as root
     munin-node-configure --suggest --shell | sh
+    
 
 And restart the munin-node service:
 
+    
+    
     ## Execute as root
     /etc/init.d/munin-node restart
+    
 
-The graphs should now appear. If not, you might need to manually symlink the munin mysql plugins from `/usr/share/munin/plugins/` to `/etc/munin/plugins/`.
+The graphs should now appear. If not, you might need to manually symlink the
+munin mysql plugins from `/usr/share/munin/plugins/` to `/etc/munin/plugins/`.
 
-If you need to define another user for MySQL, configure `/etc/munin/plugin-conf.d/munin-node` with the following settings:
+If you need to define another user for MySQL, configure `/etc/munin/plugin-
+conf.d/munin-node` with the following settings:
 
+    
+    
     [mysql*]
     user root
     env.mysqluser monitoring
     env.mysqlpassword MyOwnSuperSecretPassword
+    
 
 Altough on Ubuntu and Debian this should run via the debian maintenance user.
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

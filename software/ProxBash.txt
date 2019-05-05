@@ -9,9 +9,11 @@ Format      : 	Markdown/HTML
 
 
 
-Proxmox VE is a complete virtualization management solution for servers. You can virtualize even the most demanding application workloads running on Linux and Windows Servers. 
-    It is based on the leading Kernel-based Virtual Machine (KVM) hypervisor and OpenVZ, the number one solution for container based virtualization.
-    
+Proxmox VE is a complete virtualization management solution for servers. You can
+virtualize even the most demanding application workloads running on Linux and
+Windows Servers. It is based on the leading Kernel-based Virtual Machine (KVM)
+hypervisor and OpenVZ, the number one solution for container based
+virtualization.
 
 [Proxmox Website][1]
 

@@ -69,11 +69,15 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On a default CentOS installation, when trying to execute the <code>service iptables save</code> command you can get an error like <code>iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found.</code><br>
-<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On a default CentOS installation, when trying to execute the <code>service iptables
+save</code> command you can get an error like <code>iptables: Saving firewall rules to
+/etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not
+found.</code><br>
+<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This is fixed easily by installing the <code>policycoreutils</code> package, which is available in the default CentOS repositories:</p>
+<p>This is fixed easily by installing the <code>policycoreutils</code> package, which is
+available in the default CentOS repositories:</p>
 
 <pre><code>yum install policycoreutils
 </code></pre>

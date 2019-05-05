@@ -69,10 +69,9 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
-<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture
-(above</a>)</p>
+<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture (above</a>)</p>
 
 <p>My OpenVMS adventure continues, after my rabbit hole of folder removal, this
 time I actually get public key authentication working with OpenSSH so that I
@@ -82,31 +81,29 @@ don&#39;t have to type my password to login.</p>
 that misses one important little thing. That thing took me a few days to figure
 out.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Client public key authentication</h3>
 
-<p>On the HPe website there is extensive
-<a href="https://web.archive.org/web/20180405170159/http://h41379.www4.hpe.com/doc/83final/ba548_90007/index.html">documentation</a>
-on both the SSH server setup as well as the client setup on OpenVMS. On the
-<a href="http://decus.org">DECUServe</a> system I&#39;m not an administrative user so this
-article will only cover the client part. It assumes a set up and working SSH
-server.</p>
+<p>On the HPe website there is extensive <a href="https://web.archive.org/web/20180405170159/http://h41379.www4.hpe.com/doc/83final/ba548_90007/index.html">documentation</a> on both the SSH server
+setup as well as the client setup on OpenVMS. On the <a href="http://decus.org">DECUServe</a> system I&#39;m
+not an administrative user so this article will only cover the client part. It
+assumes a set up and working SSH server.</p>
 
 <p>SSH public key authentication allows you to login to an SSH server without
 specifying a password. It is more secure since passwords can easily be brute
-forced. An SSH key can be securely on a
-<a href="https://raymii.org/s/tags/hsm.html">HSM</a> so that the private part never is
-exposed and SSH keys allow for key forwarding, that means you can use the key
+forced. An SSH key can be securely on a <a href="https://raymii.org/s/tags/hsm.html">HSM</a> so that the private part never
+is exposed and SSH keys allow for key forwarding, that means you can use the key
 from your laptop to login to other servers and then logon further to machines
 behind there without placing your private key on the intermidiate machines.</p>
 
 <p>Overall SSH keys are considered to be best practice instead of passwords.</p>
 
-<p>Since I access the <a href="http://decus.org">DECUServe</a> system via SSH with a password
-I was wondering if OpenVMS would support key authentication and <a href="https://web.archive.org/web/20180405171201/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">according to
-the documentation</a> it should just be simple. Place the public key and configure it to allow login.</p>
+<p>Since I access the <a href="http://decus.org">DECUServe</a> system via SSH with a password I was wondering
+if OpenVMS would support key authentication and <a href="https://web.archive.org/web/20180405171201/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">according to the
+documentation</a> it should just be simple. Place the public key and configure
+it to allow login.</p>
 
 <p>But sadly that was not all.</p>
 
@@ -119,7 +116,8 @@ the documentation</a> it should just be simple. Place the public key and configu
 %DIRECT-W-NOFILES, no files found
 </code></pre>
 
-<p>Create the configuration file in which we explicitly allow public key authentication next to password login:</p>
+<p>Create the configuration file in which we explicitly allow public key
+authentication next to password login:</p>
 
 <pre><code> $ EVE [.SSH2]SSH2_CONFIG 
 </code></pre>
@@ -140,7 +138,7 @@ the documentation</a> it should just be simple. Place the public key and configu
 
 <p>Save the file with <code>CTRL+Z</code>. As you can see via the <code>;2</code> file version number I
 was messing around. Did I mention how awesome it is that OpenVMS has file
-versioning built in the filesystem? </p>
+versioning built in the filesystem?</p>
 
 <p>On linux and other systems that use OpenSSH, you would create
 <code>~/.ssh/authorized_keys</code> and place your key(s) in there like so:</p>
@@ -149,10 +147,11 @@ versioning built in the filesystem? </p>
 </code></pre>
 
 <p>On OpenVMS, you create a file named <code>AUTHORIZATION</code> and in there you specify
-filenames of public keys, like <code>KEY EXAMPLE-HOSTNAME.PUB</code> where
-<code>EXAMPLE-HOSTNAME.PUB</code> is the file name with the format <code>$USER-$HOST.PUB</code>.</p>
+filenames of public keys, like <code>KEY EXAMPLE-HOSTNAME.PUB</code> where <code>EXAMPLE-
+HOSTNAME.PUB</code> is the file name with the format <code>$USER-$HOST.PUB</code>.</p>
 
-<p>Use <code>EVE</code> to create this <code>AUTHORIZATION.</code> file and add the filename of your public key file:</p>
+<p>Use <code>EVE</code> to create this <code>AUTHORIZATION.</code> file and add the filename of your
+public key file:</p>
 
 <pre><code> $ EVE [.SSH2]AUTHORIZATION
 </code></pre>
@@ -239,7 +238,7 @@ Permission denied (publickey,password).
 
 <p>This problem took me a few days to resolve. As I have no access to logging on
 the OpenVMS system and no knowledge of how to view said logging, I was left to
-trial and error. </p>
+trial and error.</p>
 
 <p>To save you time and trouble, it appears that the key file was not in the
 correct format for OpenVMS. We pasted the OpenSSH key format in the key file but
@@ -247,11 +246,9 @@ there is another format. I found this on a USENET newsgroup, you know you&#39;re
 in the exotic corners of the internet when you&#39;re searching <code>comp.os.vms</code>. But
 hey, it helped me solve this issue.</p>
 
-<p>OpenVMS uses IEFT SECSH (Tectia) format keys. There is an IETF
-<a href="https://www.ietf.org/proceedings/50/I-D/secsh-publickeyfile-01.txt">document</a>
-describing the format and <a href="https://tools.ietf.org/html/draft-ietf-secsh-publickey-subsystem-08">a
-document</a>
-on the SSH key subsystem if you want to know more.</p>
+<p>OpenVMS uses IEFT SECSH (Tectia) format keys. There is an IETF <a href="https://www.ietf.org/proceedings/50/I-D/secsh-publickeyfile-01.txt">document</a>
+describing the format and <a href="https://tools.ietf.org/html/draft-ietf-secsh-publickey-subsystem-08">a document</a> on the SSH key subsystem if you want
+to know more.</p>
 
 <p>The DECUServe system does not have the <code>SSH-KEYGEN</code> OpenVMS program installed or
 at least I got an error when trying to execute it. Otherwise I would have tried
@@ -286,8 +283,8 @@ yQpo4wtusjakTmM4GA+bH3
 ---- END SSH2 PUBLIC KEY ----
 </code></pre>
 
-<p>Use the editor to update your KEY file on OpenVMS, in my case
-<code>[.SSH]REMY-GATEWAY.PUB</code>. Save with <code>CTRL+Z</code> and retry:</p>
+<p>Use the editor to update your KEY file on OpenVMS, in my case <code>[.SSH]REMY-
+GATEWAY.PUB</code>. Save with <code>CTRL+Z</code> and retry:</p>
 
 <pre><code>$ ssh -oHostKeyAlgorithms=+ssh-dss -o &quot;PasswordAuthentication no&quot; -i .ssh/id_rsa EXAMPLE@eisner.decus.org
 </code></pre>
@@ -351,8 +348,8 @@ and commands. To summarize:</p>
 <h3>One more thing, LOGOUT of OpenVMS</h3>
 
 <p>In an earlier article I wrote that I was unable to logout on OpenVMS since
-<code>exit</code> and  <code>CTRL+D</code> not exited the SSH session. I stopped my sessions using
-either <code>~.</code> or by closing the window. </p>
+<code>exit</code> and <code>CTRL+D</code> not exited the SSH session. I stopped my sessions using
+either <code>~.</code> or by closing the window.</p>
 
 <p>In the same <code>comp.os.vms</code> I found the <code>LOG</code> command. The help says:</p>
 

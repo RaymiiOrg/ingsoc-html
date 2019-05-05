@@ -69,10 +69,12 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This snippet strips all non-ascii characters from a file. It backs up the original file. This is handy if you have input for programs that bork on non-ascii input like older mainframes and such.</p>
+<p>This snippet strips all non-ascii characters from a file. It backs up the
+original file. This is handy if you have input for programs that bork on non-
+ascii input like older mainframes and such.</p>
 
 <pre><code>perl -i.bk -pe &#39;s/[^[:ascii:]]//g;&#39; filename
 </code></pre>

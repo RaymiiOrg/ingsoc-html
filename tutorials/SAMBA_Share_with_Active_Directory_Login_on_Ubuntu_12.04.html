@@ -69,12 +69,18 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up a SAMBA server which authenticates all users to an Active Directory, including group based permissions. It uses Samba, Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving files via SMB, where your authentication and autorization for the files and folders is done via Active Directory.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up a SAMBA server which authenticates all
+users to an Active Directory, including group based permissions. It uses Samba,
+Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving
+files via SMB, where your authentication and autorization for the files and
+folders is done via Active Directory.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>We are actually doing two things, we bind a Linux machine to the Active Directory (but we disable shell access for the users), and we then configure Samba to accept these users to the shares we set up.</p>
+<p>We are actually doing two things, we bind a Linux machine to the Active
+Directory (but we disable shell access for the users), and we then configure
+Samba to accept these users to the shares we set up.</p>
 
 <h3>Introduction</h3>
 
@@ -84,22 +90,22 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Active Directory Domain: example.org</li>
 <li>Realm/workgroup: example</li>
 <li>Active Directory Server IP: 10.0.23.1 (Also DNS and NTP)</li>
-<li>Share 1: Marketing
+<li>Share 1: Marketing 
 
 <ul>
 <li>Allowed AD group: marketing</li>
 </ul></li>
-<li>Share 2: Research
+<li>Share 2: Research 
 
 <ul>
 <li>Allowed AD groups: research, development</li>
 </ul></li>
-<li>Share 3: Dropbox
+<li>Share 3: Dropbox 
 
 <ul>
 <li>Allowed AD groups: Everyone with a domain account, Domain Users.</li>
 </ul></li>
-<li>Share 4: CEO
+<li>Share 4: CEO 
 
 <ul>
 <li>Allowed AD users: CEO.</li>
@@ -130,25 +136,30 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Test the setup</li>
 </ul>
 
-<p>You need to have a privileged account to join the Active Directory Domain. </p>
+<p>You need to have a privileged account to join the Active Directory Domain.</p>
 
 <h3>Install Packages</h3>
 
-<p>On a freshly installed Ubuntu Server 12.04 we need to install the following packages to get started:</p>
+<p>On a freshly installed Ubuntu Server 12.04 we need to install the following
+packages to get started:</p>
 
 <pre><code>apt-get install ntp krb5-user samba smbfs smbclient winbind
 </code></pre>
 
-<p>krb5, Kerberos will ask some questions about your domain and a privileged user. You can enter through this, we are going to put our own config files. </p>
+<p>krb5, Kerberos will ask some questions about your domain and a privileged user.
+You can enter through this, we are going to put our own config files.</p>
 
 <h3>Configure NTP &amp; DNS</h3>
 
-<p>Active Directory (Kerberos in general) is very picky about the system time, so configure NTP to sync the time against your Active Directory NTP server. Edit <code>/etc/ntp.conf</code>:</p>
+<p>Active Directory (Kerberos in general) is very picky about the system time, so
+configure NTP to sync the time against your Active Directory NTP server. Edit
+<code>/etc/ntp.conf</code>:</p>
 
 <pre><code>server 10.0.23.1
 </code></pre>
 
-<p>Now also edit your <code>/etc/resolv.conf</code> (or <code>/etc/network/interfaces</code>) file and change the DNS to your Active Directory DNS servers:</p>
+<p>Now also edit your <code>/etc/resolv.conf</code> (or <code>/etc/network/interfaces</code>) file and
+change the DNS to your Active Directory DNS servers:</p>
 
 <pre><code># /etc/resolv.conf
 nameserver 10.0.23.1
@@ -161,18 +172,24 @@ iface eth0 inet static
     dns-search example.org
 </code></pre>
 
-<p>We do this because Active Directory uses DNS for a lot of things. You can also setup your standard DNS servers to use an Active Directory DNS server as first upstream.</p>
+<p>We do this because Active Directory uses DNS for a lot of things. You can also
+setup your standard DNS servers to use an Active Directory DNS server as first
+upstream.</p>
 
 <h3>Configure Kerberos</h3>
 
-<p>What is Kerberos? </p>
+<p>What is Kerberos?</p>
 
 <pre><code>Kerberos is a computer network authentication protocol which works on the basis of &quot;tickets&quot; to allow nodes communicating over a non-secure network to prove their identity to one another in a secure manner. Its designers aimed it primarily at a clientserver model and it provides mutual authenticationboth the user and the server verify each other&#39;s identity.
 </code></pre>
 
-<p><a href="http://technet.microsoft.com/en-us/library/bb742516.aspx">A good article on how Kerberos is used in Active Directory can be found here: http://technet.microsoft.com/en-us/library/bb742516.aspx</a></p>
+<p><a href="http://technet.microsoft.com/en-us/library/bb742516.aspx">A good article on how Kerberos is used in Active Directory can be found here:
+http://technet.microsoft.com/en-us/library/bb742516.aspx</a></p>
 
-<p>We need to set up Kerberos so that we can bind our machine against Active Directory and let users access the Samba share via the AD. Edit the <code>/etc/krb5.conf</code> file, remove everything and place the following in it, changing the <code>EXAMPLE.ORG</code> domain to your own Active Directory Domain:</p>
+<p>We need to set up Kerberos so that we can bind our machine against Active
+Directory and let users access the Samba share via the AD. Edit the
+<code>/etc/krb5.conf</code> file, remove everything and place the following in it, changing
+the <code>EXAMPLE.ORG</code> domain to your own Active Directory Domain:</p>
 
 <pre><code>[libdefaults]
   ticket_lifetime = 24h
@@ -207,7 +224,8 @@ iface eth0 inet static
   default = FILE:/var/log/krb5lib.log
 </code></pre>
 
-<p>We are now going to test Kerberos by getting a ticket for the Active Directory Administrator User. Make sure you have the password ready:</p>
+<p>We are now going to test Kerberos by getting a ticket for the Active Directory
+Administrator User. Make sure you have the password ready:</p>
 
 <pre><code>kinit Administrator
 Password for Administrator@EXAMPLE.ORG:
@@ -224,31 +242,38 @@ Valid starting    Expires           Service principal
         renew until 28/06/2013 07:17
 </code></pre>
 
-<p>If this is not correct, check your Kerberos and DNS and NTP (time) settings and try again.</p>
+<p>If this is not correct, check your Kerberos and DNS and NTP (time) settings and
+try again.</p>
 
 <h3>Configure nsswitch</h3>
 
-<p>nsswitch is used to tell the system that the Active Directory users are also valid users. We are going to configure it to also accept winbind users, which is what Samba uses after it has bound to the domain.</p>
+<p>nsswitch is used to tell the system that the Active Directory users are also
+valid users. We are going to configure it to also accept winbind users, which is
+what Samba uses after it has bound to the domain.</p>
 
-<p>Edit the <code>/etc/nsswitch.conf</code> and change the <code>passwd</code>, <code>shadow</code> and <code>group</code> lines to look like this:</p>
+<p>Edit the <code>/etc/nsswitch.conf</code> and change the <code>passwd</code>, <code>shadow</code> and <code>group</code>
+lines to look like this:</p>
 
 <pre><code>passwd:         compat winbind
 group:          compat winbind
 shadow:         compat winbind
 </code></pre>
 
-<p>Note that this might not work for you. If you have issues with the users later on, change these lines to this:</p>
+<p>Note that this might not work for you. If you have issues with the users later
+on, change these lines to this:</p>
 
 <pre><code> passwd:            files winbind
  shadow:            files winbind
  group:             files winbind
 </code></pre>
 
-<p><a href="http://www.daemon-systems.org/man/nsswitch.conf.5.html">The NetBSD man page explains more than the Ubuntu man page: http://www.daemon-systems.org/man/nsswitch.conf.5.html</a></p>
+<p><a href="http://www.daemon-systems.org/man/nsswitch.conf.5.html">The NetBSD man page explains more than the Ubuntu man page: http://www.daemon-
+systems.org/man/nsswitch.conf.5.html</a></p>
 
 <h3>Configure Samba (#1)</h3>
 
-<p>Now we need to set up Samba to also support the domain. Edit <code>/etc/samba/smb.conf</code> and remove everything, then place the following in it:</p>
+<p>Now we need to set up Samba to also support the domain. Edit
+<code>/etc/samba/smb.conf</code> and remove everything, then place the following in it:</p>
 
 <pre><code>[global]
     # No .tld
@@ -300,7 +325,8 @@ shadow:         compat winbind
 
 <h3>Join the domain</h3>
 
-<p>Make sure you still have a valid Kerberos ticket. If not, do a new <code>kinit Administrator</code>. Then execute the following command:</p>
+<p>Make sure you still have a valid Kerberos ticket. If not, do a new <code>kinit
+Administrator</code>. Then execute the following command:</p>
 
 <pre><code>net ads join -U administrator
 </code></pre>
@@ -314,7 +340,8 @@ DNS Update for hostname.example.org failed: ERROR_DNS_GSS_ERROR
 DNS update failed!
 </code></pre>
 
-<p>The DNS error can be ignored, make sure you create an A record and a PTR record manually.</p>
+<p>The DNS error can be ignored, make sure you create an A record and a PTR record
+manually.</p>
 
 <p>Restart all the daemons again:</p>
 
@@ -340,11 +367,15 @@ wbinfo -g # lists all the groups in the domain
 getent group # should return a list with all groups and their members, both from the local system and the active directory
 </code></pre>
 
-<p>If this does not work, go back to the nsswitch configuration section and change the <code>compat</code> to <code>files</code>. </p>
+<p>If this does not work, go back to the nsswitch configuration section and change
+the <code>compat</code> to <code>files</code>.</p>
 
 <h3>Configure Samba (#2): Shares</h3>
 
-<p>This setup reflects an average business. Two departments with their own share, and one dump folder for everyone. And a folder for the CEO so that he feels special. Do note that it is a good idea to clean the Dropbox every night with a cronjob, but let your users know that that happens.</p>
+<p>This setup reflects an average business. Two departments with their own share,
+and one dump folder for everyone. And a folder for the CEO so that he feels
+special. Do note that it is a good idea to clean the Dropbox every night with a
+cronjob, but let your users know that that happens.</p>
 
 <p>We are going to create the shares. First create the folders on the system:</p>
 
@@ -412,11 +443,16 @@ chgrp -R &quot;Domain Users&quot; /sharing/
     hide unreadable = yes
 </code></pre>
 
-<p>As you can see, an active directory group is defined with an <code>@</code>, and a user without. Also, when there are spaces in the groupname, you escape that with quotes: <code>&quot;@EXAMPLE\Domain Users&quot;</code>.</p>
+<p>As you can see, an active directory group is defined with an <code>@</code>, and a user
+without. Also, when there are spaces in the groupname, you escape that with
+quotes: <code>&quot;@EXAMPLE\Domain Users&quot;</code>.</p>
 
-<p><a href="https://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html">You can find a lot of information on the smb.conf file in the man page: https://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html</a></p>
+<p><a href="https://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html">You can find a lot of information on the smb.conf file in the man page:
+https://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html</a></p>
 
-<p><a href="https://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/AccessControls.html#id2615334">Why do we force the mode on files and folders? Because of problems with MS word, according to the Samba documentation: https://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/AccessControls.html#id2615334</a></p>
+<p><a href="https://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/AccessControls.html#id2615334">Why do we force the mode on files and folders? Because of problems with MS
+word, according to the Samba documentation: https://www.samba.org/samba/docs/man
+/Samba-HOWTO-Collection/AccessControls.html#id2615334</a></p>
 
 <p>Afterwards restart samba:</p>
 
@@ -425,9 +461,16 @@ chgrp -R &quot;Domain Users&quot; /sharing/
 
 <h3>Testing it</h3>
 
-<p>Create a few accounts in the groups used (set expiry date to 1 day so you don&#39;t forget to remove them) and use those accounts to test the shares. Create files and folders as one user, try to edit and remove them as another user. Also try to access the shares with a non-privileged user. </p>
+<p>Create a few accounts in the groups used (set expiry date to 1 day so you don&#39;t
+forget to remove them) and use those accounts to test the shares. Create files
+and folders as one user, try to edit and remove them as another user. Also try
+to access the shares with a non-privileged user.</p>
 
-<p>If you run into errors, check your log files in <code>/var/log/samba</code>. Make sure that the capitalization and spelling is correct in the <code>valid users</code> part of the samba config file, and also check the permissions on the folders themselves with <code>ls -la</code>. You can set <code>valid users = any</code> to make check if there are errors or not. The <code>testparm</code> command is also very helpful for the samba config file part.</p>
+<p>If you run into errors, check your log files in <code>/var/log/samba</code>. Make sure that
+the capitalization and spelling is correct in the <code>valid users</code> part of the
+samba config file, and also check the permissions on the folders themselves with
+<code>ls -la</code>. You can set <code>valid users = any</code> to make check if there are errors or
+not. The <code>testparm</code> command is also very helpful for the samba config file part.</p>
 </div><hr>Tags: <a href="../tags/active-directory.html" class="link">active-directory &nbsp;</a><a href="../tags/kerberos.html" class="link">kerberos &nbsp;</a><a href="../tags/ldap.html" class="link">ldap &nbsp;</a><a href="../tags/microsoft.html" class="link">microsoft &nbsp;</a><a href="../tags/nsswitch.html" class="link">nsswitch &nbsp;</a><a href="../tags/samba.html" class="link">samba &nbsp;</a><a href="../tags/smb.html" class="link">smb &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><a href="../tags/winbind.html" class="link">winbind &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

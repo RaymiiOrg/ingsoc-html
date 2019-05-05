@@ -19,9 +19,10 @@ Our images are named `schoon#`. It restores the image to `/dev/sda`, you can
 change the clonezilla command. Make sure your share is writable. It gets network
 from dhcp on eth0. The steps to get the script in clonezilla:
 
-  * Install the squashfs-tools for your distro, this is important.  
+  * Install the squashfs-tools for your distro, this is important. 
 
   * Unetbootin the ISO to a USB. 
+
   * Copy the files to a dir on your pc and open a terminal in the dir. 
 
 Execute this command:

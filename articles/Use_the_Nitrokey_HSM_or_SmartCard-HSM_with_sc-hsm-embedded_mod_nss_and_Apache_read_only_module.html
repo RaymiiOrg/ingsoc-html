@@ -69,53 +69,78 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/nitrokey1.jpg" width="500" height="600"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/nitrokey1.jpg" alt=""></p>
 
 <blockquote>
 <p>The NitroKey HSM in a sealed package</p>
 </blockquote>
 
-<p>This is a guide on using the Nitrokey HSM with sc-hsm-embedded module instead of the PC/SC daemon and OpenSC, mod_nss and the Apache webserver. This is an extension on the earlier guide, with new benchmarks. The sc-hsm-embedded module is not using a global lock like OpenSC, therefore providing better performance. The sc-hsm-embedded module is also a read only module, suitable for embedded systems. Read only also makes it more secure when deployed, even when the user pin leaks out an attacker cannot create new keypairs or delete the current ones.</p>
+<p>This is a guide on using the Nitrokey HSM with sc-hsm-embedded module instead of
+the PC/SC daemon and OpenSC, mod_nss and the Apache webserver. This is an
+extension on the earlier guide, with new benchmarks. The sc-hsm-embedded module
+is not using a global lock like OpenSC, therefore providing better performance.
+The sc-hsm-embedded module is also a read only module, suitable for embedded
+systems. Read only also makes it more secure when deployed, even when the user
+pin leaks out an attacker cannot create new keypairs or delete the current ones.</p>
 
-<p>The HSM allows you to store the private key for a SSL certificate inside the HSM (instead of on the filesystem), so that it can never leave the device and thus never be stolen. </p>
+<p>The HSM allows you to store the private key for a SSL certificate inside the HSM
+(instead of on the filesystem), so that it can never leave the device and thus
+never be stolen.</p>
 
-<p>The guide covers the installation of the sc-hsm-embedded module, configuration of and benchmarks from Apache with the HSM and different key sizes.</p>
+<p>The guide covers the installation of the sc-hsm-embedded module, configuration
+of and benchmarks from Apache with the HSM and different key sizes.</p>
 
 <h3>Introduction</h3>
 
-<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg" alt=""></p>
 
 <blockquote>
 <p>The SmartCard-HSM</p>
 </blockquote>
 
-<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a> project.</p>
+<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB
+version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey
+HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a>
+project.</p>
 
-<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting started</a> article. It explains what the HSM is, how to set it up and how to use it with OpenSSH for example.</p>
+<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting
+started</a> article. It explains what the HSM is, how to set it up and how to
+use it with OpenSSH for example.</p>
 
-<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the others as well.</p>
+<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the
+others as well.</p>
 
-<p>To follow this article, I recommend you first read the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">article on the Nitrokey HSM with mod_nss and Apache</a> I wrote earlier. The other article has more explanation and examples, this article will focus on the installation of the module and the benchmarks.</p>
+<p>To follow this article, I recommend you first read the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">article on the Nitrokey
+HSM with mod_nss and Apache</a> I wrote earlier. The other article has more
+explanation and examples, this article will focus on the installation of the
+module and the benchmarks.</p>
 
-<p>In a recent conversation I had with Andreas Schwier, one of the people behind the <a href="http://www.smartcard-hsm.com/">SmardCard-HSM</a> project, I was informed about the <code>sc-hsm-embedded</code> module. Andreas told me that they, in <a href="http://www.smartcard-hsm.com/2015/11/20/Building-a-SmartCard-HSM-Cluster.html">their load tests</a>, experienced bad performance with OpenSC because of a global lock. Their benchmarks were done with their own PKCS#11 module, which we are covering here in this article.</p>
+<p>In a recent conversation I had with Andreas Schwier, one of the people behind
+the <a href="http://www.smartcard-hsm.com/">SmardCard-HSM</a> project, I was informed about the <code>sc-hsm-embedded</code>
+module. Andreas told me that they, in <a href="http://www.smartcard-hsm.com/2015/11/20/Building-a-SmartCard-HSM-Cluster.html">their load tests</a>, experienced bad
+performance with OpenSC because of a global lock. Their benchmarks were done
+with their own PKCS#11 module, which we are covering here in this article.</p>
 
 <p>The <code>sc-hsm-embedded</code> is described as:</p>
 
 <pre><code>Light-weight, read-only PKCS#11 library for using the SmartCard-HSM in embedded systems.
 </code></pre>
 
-<p>So you will not be able to create keypairs with this module or write certificates to the HSM.</p>
+<p>So you will not be able to create keypairs with this module or write
+certificates to the HSM.</p>
 
-<p>This guide was tested on Ubuntu 14.04 and Arch Linux with a NitroKey HSM. </p>
+<p>This guide was tested on Ubuntu 14.04 and Arch Linux with a NitroKey HSM.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Installation of the sc-hsm-embedded module</h3>
 
-<p>For Arch Linux <a href="https://aur.archlinux.org/packages/sc-hsm-embedded-git/">I made an AUR package</a> of the module <a href="https://aur.archlinux.org/packages/engine_pkcs11_alternative/">and an AUR package</a> for the OpenSSL Engine. </p>
+<p>For Arch Linux <a href="https://aur.archlinux.org/packages/sc-hsm-embedded-git/">I made an AUR package</a> of the module <a href="https://aur.archlinux.org/packages/engine_pkcs11_alternative/">and an AUR
+package</a> for the OpenSSL Engine.</p>
 
-<p>Do note that you can install this module next to the OpenSC package. They don&#39;t conflict with one another.</p>
+<p>Do note that you can install this module next to the OpenSC package. They don&#39;t
+conflict with one another.</p>
 
 <p>On Ubuntu, install the development tools and pcsclite packages:</p>
 
@@ -128,7 +153,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 cd sc-hsm-embedded-2.9
 </code></pre>
 
-<p>Execute the following commands to generate a <code>/.configure</code> file using the <code>autotools</code>:</p>
+<p>Execute the following commands to generate a <code>/.configure</code> file using the
+<code>autotools</code>:</p>
 
 <pre><code>libtoolize --force
 aclocal
@@ -143,12 +169,17 @@ autoconf
 make
 </code></pre>
 
-<p>I like to create a debian package with <code>checkinstall</code> instead of a <code>make install</code>. It&#39;s certainly not the official way to create debian packages, but it does allow you to keep a system clean and allows for easier upgrading. Also, a package is much more convinient if you are distributing it in a repo or with Ansible. Create the package:</p>
+<p>I like to create a debian package with <code>checkinstall</code> instead of a <code>make
+install</code>. It&#39;s certainly not the official way to create debian packages, but it
+does allow you to keep a system clean and allows for easier upgrading. Also, a
+package is much more convinient if you are distributing it in a repo or with
+Ansible. Create the package:</p>
 
 <pre><code>checkinstall
 </code></pre>
 
-<p>The default settings should be OK, but change them as you like. The final output should be along the lines of:</p>
+<p>The default settings should be OK, but change them as you like. The final output
+should be along the lines of:</p>
 
 <pre><code>**********************************************************************
 
@@ -163,9 +194,10 @@ make
 **********************************************************************
 </code></pre>
 
-<p>On any other distro, use their native way to build a package (hi <code>PKGBUILD</code>) or just do a plain simple <code>make install</code>.</p>
+<p>On any other distro, use their native way to build a package (hi <code>PKGBUILD</code>) or
+just do a plain simple <code>make install</code>.</p>
 
-<p>There should now  be a new library on your system:</p>
+<p>There should now be a new library on your system:</p>
 
 <pre><code>file /usr/local/lib/libsc-hsm-pkcs11.so
 /usr/local/lib/libsc-hsm-pkcs11.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=1ede3f07f0094711931f5e25d9716622742356da, stripped
@@ -177,7 +209,9 @@ make
 /usr/lib/libsc-hsm-pkcs11.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=3854bdd3a096b19c927817a486140bc2750555f8, stripped
 </code></pre>
 
-<p>Later in the article, place the correct path to this <code>.so</code> file in the configuration. Or, if you want to be able to copy and paste the commands, create a symlink:</p>
+<p>Later in the article, place the correct path to this <code>.so</code> file in the
+configuration. Or, if you want to be able to copy and paste the commands, create
+a symlink:</p>
 
 <pre><code>ln -s /usr/lib/libsc-hsm-pkcs11.so /usr/local/lib/libsc-hsm-pkcs11.so
 </code></pre>
@@ -208,7 +242,8 @@ Library          OpenSC smartcard framework (ver 0.16)
 Using slot 1 with a present token (0x4)
 </code></pre>
 
-<p>You will notice that most operations with <code>pkcs11-tool</code>, like creating a keypair, will fail:</p>
+<p>You will notice that most operations with <code>pkcs11-tool</code>, like creating a
+keypair, will fail:</p>
 
 <pre><code>pkcs11-tool --module libsc-hsm-pkcs11.so --login --pin 648219 --keypairgen --key-type rsa:1024 --id 1 --label &quot;HSM RSA Key Remy&quot;
 </code></pre>
@@ -221,7 +256,9 @@ error: Generate RSA mechanism not supported
 Aborting.
 </code></pre>
 
-<p>This is expected since it&#39;s a read only module. Read only also makes it more secure when deployed, even when the user pin leaks out an attacker cannot create new keypairs or delete the current ones.</p>
+<p>This is expected since it&#39;s a read only module. Read only also makes it more
+secure when deployed, even when the user pin leaks out an attacker cannot create
+new keypairs or delete the current ones.</p>
 
 <p>A delete operation will not give any error messages:</p>
 
@@ -233,7 +270,8 @@ Aborting.
 <pre><code>Using slot 1 with a present token (0x5)
 </code></pre>
 
-<p>But, if you list the objects before and after you will see that the key you tried to delete is still there. </p>
+<p>But, if you list the objects before and after you will see that the key you
+tried to delete is still there.</p>
 
 <p>Just listing data does work:</p>
 
@@ -267,11 +305,16 @@ qJ49qqLd5I24yKXxh9qTYrXDxHPAExqXHnwydXiDRQ==
 
 <h3>Creating the keys and certificates</h3>
 
-<p>We will now start with creating the keypairs in the HSM and generating the certificates. </p>
+<p>We will now start with creating the keypairs in the HSM and generating the
+certificates.</p>
 
-<p>Please do read the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">article on the Nitrokey HSM with mod_nss and Apache</a> to find out how to fully configure the NitroKey HSM/SmartCard HSM with <code>mod_nss</code>. This is a more compact version without all the explanation.</p>
+<p>Please do read the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">article on the Nitrokey HSM with mod_nss and Apache</a> to
+find out how to fully configure the NitroKey HSM/SmartCard HSM with <code>mod_nss</code>.
+This is a more compact version without all the explanation.</p>
 
-<p>I did create three test keypairs, one <code>RSA 1024</code> bit, one <code>RSA 2048</code> bit and one <code>EC</code> pair. They have ID 1, 2 and, suprisingly, 3. If you want to follow along, also create the keys. Start with the 1024 bit key:</p>
+<p>I did create three test keypairs, one <code>RSA 1024</code> bit, one <code>RSA 2048</code> bit and one
+<code>EC</code> pair. They have ID 1, 2 and, suprisingly, 3. If you want to follow along,
+also create the keys. Start with the 1024 bit key:</p>
 
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --keypairgen --key-type rsa:1024 --id 1 --label &quot;httpd1024&quot; 
 </code></pre>
@@ -326,9 +369,12 @@ Public Key Object; EC  EC_POINT 256 bits
   Usage:      verify
 </code></pre>
 
-<p>We need to generate (self signed) certificates for all of these keypairs. We will use OpenSSL with a configfile do to that. See <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html#Using_the_keys">my tutorial on the Nitrokey if you want to generate a CSR and what to put in</a> <code>hsm.conf</code>. </p>
+<p>We need to generate (self signed) certificates for all of these keypairs. We
+will use OpenSSL with a configfile do to that. See <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html#Using_the_keys">my tutorial on the Nitrokey
+if you want to generate a CSR and what to put in</a> <code>hsm.conf</code>.</p>
 
-<p>I did have some issues when providing the slot and ID, OpenSSL gave errors like these:</p>
+<p>I did have some issues when providing the slot and ID, OpenSSL gave errors like
+these:</p>
 
 <pre><code>engine &quot;pkcs11&quot; set.
 Invalid slot number: 1
@@ -358,7 +404,8 @@ Slot 1 (0x4): Nitrokey Nitrokey HSM (010000000000000000000000) 01 00
   serial num         : DENK0100186
 </code></pre>
 
-<p>I was using slot 1, but that did not work. Slot 4 (<code>0x4</code>) did work. You can provide the slot and ID to OpenSSL in multiple formats:</p>
+<p>I was using slot 1, but that did not work. Slot 4 (<code>0x4</code>) did work. You can
+provide the slot and ID to OpenSSL in multiple formats:</p>
 
 <pre><code>supported formats: &lt;id&gt;, &lt;slot&gt;:&lt;id&gt;, id_&lt;id&gt;, slot_&lt;slot&gt;-id_&lt;id&gt;, label_&lt;label&gt;, slot_&lt;slot&gt;-label_&lt;label&gt;
 where &lt;slot&gt; is the slot number as normal integer,
@@ -381,7 +428,8 @@ and &lt;label&gt; is the textual key label string.
 <pre><code>OPENSSL_CONF=./hsm.conf openssl req -engine pkcs11 -keyform engine -new -key slot_4-id_3 -nodes -days 3560 -x509 -sha256 -out &quot;httpdECprime256v1.tst.raymii.org.pem&quot; -subj &quot;/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=httpdECprime256v1.tst.raymii.org&quot;
 </code></pre>
 
-<p>Do note that you can also generate a CSR and submit that to your certificate provider The getting started article covers that as well.</p>
+<p>Do note that you can also generate a CSR and submit that to your certificate
+provider The getting started article covers that as well.</p>
 
 <p>Convert the PEM certificates into DER format, since DER is what the HSM uses:</p>
 
@@ -492,14 +540,16 @@ Public Key Object; RSA 1024 bits
 <pre><code>a2dismod ssl
 </code></pre>
 
-<p>On other Linux distro&#39;s you might need to manually change config files. On my Arch installation I had to add the following to <code>/etc/http/conf/http.conf</code>:</p>
+<p>On other Linux distro&#39;s you might need to manually change config files. On my
+Arch installation I had to add the following to <code>/etc/http/conf/http.conf</code>:</p>
 
 <pre><code>Include conf/extra/nss.conf
 </code></pre>
 
 <h4>Configuring the NSS certificate database</h4>
 
-<p>NSS requires a certificate database. We also need to tell NSS to load the <code>pkcs11</code> module.</p>
+<p>NSS requires a certificate database. We also need to tell NSS to load the
+<code>pkcs11</code> module.</p>
 
 <p>Create the database folder:</p>
 
@@ -511,7 +561,8 @@ Public Key Object; RSA 1024 bits
 <pre><code>certutil -N -d /etc/nss/db/
 </code></pre>
 
-<p>It will ask you for a password. Enter a secure one, or, when testing, just pres RETURN twice. Output:</p>
+<p>It will ask you for a password. Enter a secure one, or, when testing, just pres
+RETURN twice. Output:</p>
 
 <pre><code>Enter a password which will be used to encrypt your keys.
 The password should be at least 8 characters long,
@@ -521,7 +572,8 @@ Enter new password:
 Re-enter password: 
 </code></pre>
 
-<p>Add the HSM module to NSS. This is where things differ from the other tutorial. We add the <code>sc-hsm-embedded</code> module here and give it a different name:</p>
+<p>Add the HSM module to NSS. This is where things differ from the other tutorial.
+We add the <code>sc-hsm-embedded</code> module here and give it a different name:</p>
 
 <pre><code>modutil -add hsm -libfile /usr/lib/libsc-hsm-pkcs11.so -dbdir /etc/nss/db/
 </code></pre>
@@ -531,7 +583,8 @@ Re-enter password:
 <pre><code>modutil -enable hsm -dbdir /etc/nss/db/
 </code></pre>
 
-<p>The other module we named <code>pkcs11</code>. If you want to, you could add them both and switch if needed.</p>
+<p>The other module we named <code>pkcs11</code>. If you want to, you could add them both and
+switch if needed.</p>
 
 <p>We need the <code>Token Name</code> to put in the <code>mod_nss</code> configuration. Find it:</p>
 
@@ -550,7 +603,8 @@ Re-enter password:
 -----------------------------------------------------------
 </code></pre>
 
-<p>The name in this case is <code>SmartCard-HSM</code>. List all the certificates with the <code>certutil</code> command:</p>
+<p>The name in this case is <code>SmartCard-HSM</code>. List all the certificates with the
+<code>certutil</code> command:</p>
 
 <pre><code>certutil -d /etc/nss/db/ -h &#39;SmartCard-HSM&#39; -L 
 </code></pre>
@@ -585,7 +639,8 @@ Certificate:
             Rotterdam,ST=Zuid Holland,C=NL&quot;
 </code></pre>
 
-<p>(<code>-n</code> names the specific certificate we want to list/show. <code>-a</code> enables ASCII output.)</p>
+<p>(<code>-n</code> names the specific certificate we want to list/show. <code>-a</code> enables ASCII
+output.)</p>
 
 <p>Place the PIN for the slot in this file:</p>
 
@@ -602,7 +657,8 @@ SmartCard-HSM:648219
 
 <h4>Apache mod_nss configuration</h4>
 
-<p>Make sure you have disabled <code>mod_ssl</code> in the Apache configuration and have enabled <code>mod_nss</code>. This is my <code>nss.conf</code> file:</p>
+<p>Make sure you have disabled <code>mod_ssl</code> in the Apache configuration and have
+enabled <code>mod_nss</code>. This is my <code>nss.conf</code> file:</p>
 
 <pre><code># grep -v -e &quot;#&quot; -e &#39;^$&#39; /etc/httpd/conf/extra/nss.conf
 LoadModule nss_module modules/libmodnss.so
@@ -637,7 +693,10 @@ NSSRequireSafeNegotiation off
 &lt;/VirtualHost&gt;  
 </code></pre>
 
-<p>On Arch I had to comment out <code>NSSSessionCacheSize</code> and replace <code>NSSPassPhraseHelper /usr/libexec/nss_pcache</code> with <code>NSSPassPhraseHelper /usr/bin/nss_pcache</code>. For the testing certificate I also had to add <code>NSSEnforceValidCerts off</code>. The rest is just the example config.</p>
+<p>On Arch I had to comment out <code>NSSSessionCacheSize</code> and replace
+<code>NSSPassPhraseHelper /usr/libexec/nss_pcache</code> with <code>NSSPassPhraseHelper
+/usr/bin/nss_pcache</code>. For the testing certificate I also had to add
+<code>NSSEnforceValidCerts off</code>. The rest is just the example config.</p>
 
 <p>Make sure the certificate name is correct here:</p>
 
@@ -656,9 +715,15 @@ NSSRequireSafeNegotiation off
 
 <h3>Benchmarking 2048 bit RSA</h3>
 
-<p>The Nitrokey HSM is not a fast HSM. I&#39;ve worked with HSM&#39;s that are capable of multiple hundreds of signs per second, and this HSM is not one that can do that. But, as we know, that&#39;s not the intended target for the device. It&#39;s meant for safe and secure key storage, for example to encrypt files or protect SSH or S/MIME keys. I did a few <code>siege</code> benchmarks, and as you can see it is quite slow.</p>
+<p>The Nitrokey HSM is not a fast HSM. I&#39;ve worked with HSM&#39;s that are capable of
+multiple hundreds of signs per second, and this HSM is not one that can do that.
+But, as we know, that&#39;s not the intended target for the device. It&#39;s meant for
+safe and secure key storage, for example to encrypt files or protect SSH or
+S/MIME keys. I did a few <code>siege</code> benchmarks, and as you can see it is quite
+slow.</p>
 
-<p>The page that was being loaded is a plain text file containing only the text <code>Jeej it works!</code>. </p>
+<p>The page that was being loaded is a plain text file containing only the text
+<code>Jeej it works!</code>.</p>
 
 <p>Remember to update your httpd config if needed:</p>
 
@@ -746,7 +811,9 @@ AH01382: Request header read timeout
 
 <h3>Benchmarking 1024 bit RSA</h3>
 
-<p>A <a href="http://www.cardcontact.de/products/SmartCard-HSM_V1.1.pdf">product folder</a> mentions that the HSM should be a bit faster with smaller keys. Now do note that it&#39;s not recommended to use a 1024 bit key in production. But, this is just a  benchmark test.</p>
+<p>A <a href="http://www.cardcontact.de/products/SmartCard-HSM_V1.1.pdf">product folder</a> mentions that the HSM should be a bit faster with smaller
+keys. Now do note that it&#39;s not recommended to use a 1024 bit key in production.
+But, this is just a benchmark test.</p>
 
 <p>A siege test with 5 concurrent users, 30 seconds:</p>
 
@@ -964,7 +1031,11 @@ Shortest transaction:     2.12
 
 <h3>Benchmarking with PHP and Wordpress</h3>
 
-<p>I setup a default PHP (7), MariaDB and Wordpress install with this mod_nss Apache and ran the some benchmarks on that as well to show how a &#39;real&#39; site performs. This with the EC key we also used above. Just using the site, browsing with firefox/chrome and updating/editing posts also works fine, feels snappy enough.</p>
+<p>I setup a default PHP (7), MariaDB and Wordpress install with this mod_nss
+Apache and ran the some benchmarks on that as well to show how a &#39;real&#39; site
+performs. This with the EC key we also used above. Just using the site, browsing
+with firefox/chrome and updating/editing posts also works fine, feels snappy
+enough.</p>
 
 <p>20 concurrent users:</p>
 
@@ -989,13 +1060,25 @@ Shortest transaction:     0.44
 
 <h3>Comparing and conclusion</h3>
 
-<p>Most of the benchmarks are comparable to the benchmarks with the OpenSC module. Except for the EC keypair, since that failed with the OpenSC module. I did try to switch to the other NSS certificate DB (with the opensc module) but that failed. So, if you want to use an EC keypair, you need to use this module.</p>
+<p>Most of the benchmarks are comparable to the benchmarks with the OpenSC module.
+Except for the EC keypair, since that failed with the OpenSC module. I did try
+to switch to the other NSS certificate DB (with the opensc module) but that
+failed. So, if you want to use an EC keypair, you need to use this module.</p>
 
-<p>As said in the other article, the HSM is not a fast HSM, but that is not the target. It&#39;s target is to enable everyone to have secure key storage for a reasonable price, instead of thousands of dollars for a big-company-name HSM. </p>
+<p>As said in the other article, the HSM is not a fast HSM, but that is not the
+target. It&#39;s target is to enable everyone to have secure key storage for a
+reasonable price, instead of thousands of dollars for a big-company-name HSM.</p>
 
-<p>This read only module is very nice if you are deploying this HSM in untrusted places, for example at a client or in a datacenter. It also seperates the HSM management from the actual usage by the webserver. If you need to renew the certificate or generate a new keypair, you need to take the device to a machine with OpenSC and all the tools installed (which can be an offline machine), instead of the webserver being able to do this. If the webserver ever gets compromised, they will not be able to edit/delete or otherwise write to the HSM.</p>
+<p>This read only module is very nice if you are deploying this HSM in untrusted
+places, for example at a client or in a datacenter. It also seperates the HSM
+management from the actual usage by the webserver. If you need to renew the
+certificate or generate a new keypair, you need to take the device to a machine
+with OpenSC and all the tools installed (which can be an offline machine),
+instead of the webserver being able to do this. If the webserver ever gets
+compromised, they will not be able to edit/delete or otherwise write to the HSM.</p>
 
-<p>One of the next articles will be about a HSM cluster with multiple HSM&#39;s, which will result in a speed increase.</p>
+<p>One of the next articles will be about a HSM cluster with multiple HSM&#39;s, which
+will result in a speed increase.</p>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/cryptoki.html" class="link">cryptoki &nbsp;</a><a href="../tags/hsm.html" class="link">hsm &nbsp;</a><a href="../tags/mod_nss.html" class="link">mod_nss &nbsp;</a><a href="../tags/nitrokey.html" class="link">nitrokey &nbsp;</a><a href="../tags/nitrokey-hsm.html" class="link">nitrokey-hsm &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/pkcs11.html" class="link">pkcs11 &nbsp;</a><a href="../tags/safenet.html" class="link">safenet &nbsp;</a><a href="../tags/sc-hsm-embedded.html" class="link">sc-hsm-embedded &nbsp;</a><a href="../tags/smartcard.html" class="link">smartcard &nbsp;</a><a href="../tags/smartcard-hsm.html" class="link">smartcard-hsm &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

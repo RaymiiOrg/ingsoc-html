@@ -9,50 +9,63 @@ Format      : 	Markdown/HTML
 
 
 
-Bash Bits are small examples and tips for Bash Scripts. 
-This bash bit shows you how to find all files containing specific text, and 
-how to remove them.
+Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to find all files containing specific text, and how to remove them.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-[All Bash Bits can be found using this link][1]
+[All Bash Bits can be found using this link][2]
 
 ### Finding all files with specific text in them
 
-For [text news][2] I convert news articles to plain text with readability.
-Recently one of the sites I convert changed their HTML, causing the parsing
-to fail. I fixed that in the parser, but had over 200 failed parsed articles.
-I wanted to remove them all. They all contain the following string:
+For [text news][3] I convert news articles to plain text with readability.
+Recently one of the sites I convert changed their HTML, causing the parsing to
+fail. I fixed that in the parser, but had over 200 failed parsed articles. I
+wanted to remove them all. They all contain the following string:
 
+    
+    
     Wij willen graag weten in welke omgeving u woont
+    
 
 Navigate to the folder where you want to search (recursivly):
 
+    
+    
     cd /var/gopher
+    
 
 Search for all `.txt` files which have the string in them. `grep -l` will only
 write the filename of the file that contains the string.
 
+    
+    
     find -iname "*.txt" | xargs grep -l "Wij willen graag weten in welke omgeving"
+    
 
 This will give you a list of files:
 
+    
+    
     ./Dutch/www.rtvdrenthe.nl/20190428T0924_Inbraak_bij_super_Barger_Oosterveld.txt
     ./Dutch/www.rtvdrenthe.nl/20190428T1036_Hoofdprijs_Staatsloterij_valt_in_Borger_Odoorn.txt
     ./Dutch/www.rtvdrenthe.nl/20190501T1304_50Plus_en_Sterk_Lokaal_samen_verder_in_de_Staten.txt
     ./Dutch/www.rtvdrenthe.nl/20190504T1657_Live__Dodenherdenking_Westerbork__afgesloten_.txt
     ./Dutch/www.rtvdrenthe.nl/20190503T0557_Drankrijder_A28_is_rijbewijs_kwijt.txt
+    
 
-Check them by hand, and if you're sure you want to remove them, use the following
-command:
+Check them by hand, and if you're sure you want to remove them, use the
+following command:
 
+    
+    
     find -iname "*.txt" | xargs grep -l "Wij willen graag weten in welke omgeving" | awk '{print "rm "$1}' | bash
+    
 
-[1]: https://raymii.org/s/tags/bash-bits.html
-[2]: https://txtn.ws
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tags/bash-bits.html
+   [3]: https://txtn.ws
 
 ---
 

@@ -69,12 +69,16 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>One of my clients wanted to block a few social networking websites. Since they have no IPv6 (yet) I figured the simplest way was to block access to the entire IP range. This won&#39;t work for all the CDN networks they use, but it does get you started. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>One of my clients wanted to block a few social networking websites. Since they
+have no IPv6 (yet) I figured the simplest way was to block access to the entire
+IP range. This won&#39;t work for all the CDN networks they use, but it does get you
+started.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>To find all the ranges beloning to an AS number you can query the <code>whois.radb.net</code> server with the AS number.</p>
+<p>To find all the ranges beloning to an AS number you can query the
+<code>whois.radb.net</code> server with the AS number.</p>
 
 <p>For Facebook for example:</p>
 
@@ -90,7 +94,8 @@ A248
 194.60.207.0/24 79.170.88.0/21 89.31.96.0/21 217.170.21.0/24 193.138.204.0/22 178.18.80.0/20 31.3.96.0/21 141.138.192.0/20 212.32.226.0/24 37.34.48.0/21 37.230.96.0/21 93.191.128.0/21 185.21.188.0/22 213.187.240.0/21 85.222.224.0/21 185.3.208.0/22
 </code></pre>
 
-<p>To find an AS number, you can query this whois server with the IP address. Linode for example:</p>
+<p>To find an AS number, you can query this whois server with the IP address.
+Linode for example:</p>
 
 <pre><code>$ whois -h whois.radb.net  178.79.155.1
 route:          178.79.128.0/18
@@ -121,7 +126,8 @@ A3937
 
 <p>Where <code>-d</code> is the destination you want to make unreachable.</p>
 
-<p>If you have the <code>ipset</code> extension enabled you can create a set of all the ranges:</p>
+<p>If you have the <code>ipset</code> extension enabled you can create a set of all the
+ranges:</p>
 
 <pre><code>ipset -N blocked_nets nethash
 ipset -A blocked_nets 194.60.207.0/24
@@ -142,7 +148,8 @@ ipset -A blocked_nets 85.222.224.0/21
 ipset -A blocked_nets 185.3.208.0/22
 </code></pre>
 
-<p>And create the rules to filter based on the <code>ipset</code>, which is faster when you have a large amount of IP&#39;s and ranges.</p>
+<p>And create the rules to filter based on the <code>ipset</code>, which is faster when you
+have a large amount of IP&#39;s and ranges.</p>
 
 <pre><code>iptables -I INPUT -m set --match-set blocked_nets src,dst -j DROP
 </code></pre>

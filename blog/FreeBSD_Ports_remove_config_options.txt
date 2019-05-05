@@ -9,54 +9,64 @@ Format      : 	Markdown/HTML
 
 
 
-Today I wanted to upgrade a few packages on one of my FreeBSD servers. The vim port kept complaining: 
+Today I wanted to upgrade a few packages on one of my FreeBSD servers. The vim
+port kept complaining:
 
-	[root@vps4 /usr/ports/editors/vim]# make reinstall clean
-	===> Options unchanged
-	====> You must select one and only one option from the UI single
-	Config is invalid. Re-edit? [Y/n] Y
-	===> Options unchanged
-	====> You must select one and only one option from the UI single
-	Config is invalid. Re-edit? [Y/n] n
+    
+    
+    [root@vps4 /usr/ports/editors/vim]# make reinstall clean
+    ===> Options unchanged
+    ====> You must select one and only one option from the UI single
+    Config is invalid. Re-edit? [Y/n] Y
+    ===> Options unchanged
+    ====> You must select one and only one option from the UI single
+    Config is invalid. Re-edit? [Y/n] n
+    
 
-It also did it with `make config` or `make clean`. 
+It also did it with `make config` or `make clean`.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 This is because the UI settings changed for vim, as `make showconfig` shows:
 
-	[root@vps4 /usr/ports/editors/vim]# make showconfig
-	===> The following configuration options are available for vim-7.4.229_1:
-	     CSCOPE=off: cscope support
-	     EXUBERANT_CTAGS=off: Use exctags instead of ctags
-	     LUA=off: Lua scripting language support
-	     NLS=off: Native Language Support
-	     PERL=off: Perl scripting language support
-	     PYTHON=off: Python bindings or support
-	     RUBY=off: Ruby bindings or support
-	     TCL=off: Tcl scripting language support
-	     XTERM_SAVE=off: Restore xterm screen after exit
-	====> User interface: you have to select exactly one of them
-	     ATHENA=off: Athena GUI toolkit
-	     CONSOLE=off: Console/terminal mode
-	     GNOME=off: GNOME desktop environment support
-	     GTK2=off: GTK+ 2 GUI toolkit support
-	     MOTIF=off: Motif widget library support
-	     X11=off: X11 (graphics) support
+    
+    
+    [root@vps4 /usr/ports/editors/vim]# make showconfig
+    ===> The following configuration options are available for vim-7.4.229_1:
+         CSCOPE=off: cscope support
+         EXUBERANT_CTAGS=off: Use exctags instead of ctags
+         LUA=off: Lua scripting language support
+         NLS=off: Native Language Support
+         PERL=off: Perl scripting language support
+         PYTHON=off: Python bindings or support
+         RUBY=off: Ruby bindings or support
+         TCL=off: Tcl scripting language support
+         XTERM_SAVE=off: Restore xterm screen after exit
+    ====> User interface: you have to select exactly one of them
+         ATHENA=off: Athena GUI toolkit
+         CONSOLE=off: Console/terminal mode
+         GNOME=off: GNOME desktop environment support
+         GTK2=off: GTK+ 2 GUI toolkit support
+         MOTIF=off: Motif widget library support
+         X11=off: X11 (graphics) support
+    
 
-Digging through the [FreeBSD Handbook][1], in section "5.5.1.1. Customizing
+Digging through the [FreeBSD Handbook][2], in section "5.5.1.1. Customizing
 Ports Installation" we find the following little snippet:
 
-> There are several ways to revisit a port's build options menu in order to add, remove, or change these options after a port has been built. One method is to cd into the directory containing the port and type make config. Another option is to use make showconfig. Another option is to execute make rmconfig which will remove all selected options and allow you to start over. All of these options, and others, are explained in great detail in ports(7).
+> There are several ways to revisit a port's build options menu in order to add,
+remove, or change these options after a port has been built. One method is to cd
+into the directory containing the port and type make config. Another option is
+to use make showconfig. Another option is to execute make rmconfig which will
+remove all selected options and allow you to start over. All of these options,
+and others, are explained in great detail in ports(7).
 
-And as such, after `make rmconfig` and a new `make config-recursive` the upgrade worked.
+And as such, after `make rmconfig` and a new `make config-recursive` the upgrade
+worked.
 
-
-[1]: https://www.freebsd.org/doc/handbook/book.html#ports-using
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://www.freebsd.org/doc/handbook/book.html#ports-using
 
 ---
 

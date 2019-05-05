@@ -9,19 +9,18 @@ Format      : 	Markdown/HTML
 
 
 
-<a href="https://raymii.org/s/inc/img/blokada1-big.png"><img src="https://raymii.org/s/inc/img/blokada1-small.png"></a>
+[![][1]][2]
 
 Recently I switched to a new phone. After a few years (!) my old phone stopped
 receiving calls making it time for a new one. The new phone has Android, which
-allowed me to install a system wide adblocker, Blokada. 
+allowed me to install a system wide adblocker, Blokada.
 
 Why do you need an adblocker? Besides not seeing advertisements and being
 tracked/spied on in your every move, it improves battery life, makes your device
 more secure (no more malicious advertisements), makes pages and apps load
 faster, makes your data plan (4g) last longer and most pages are cleaner to view
 and read. It's not just me telling you that, the big [antivirus and security
-software vendor AVG says the
-same](http://web.archive.org/web/20190216070854/https://www.avg.com/en/signal/5-reasons-you-should-use-an-adblocker).
+software vendor AVG says the same][3].
 
 Blokada works by posing itself as a local VPN, filtering advertisements,
 trackers and all kinds of nasty things that spy on you or bring in malware. It
@@ -32,32 +31,36 @@ To my big surprise after three days of using my phone (after everything was set
 up and transferred), Blokada blocked almost 5000 (five-thousand!) advertisements
 and tracking requests. That's more than 70 requests an hour, so an ad every
 minute (if you would use the device for that 72 hour period). According to the
-[Google
-Wellbeing](http://web.archive.org/web/20190216064336/https://www.theverge.com/2018/11/20/18104987/google-digital-wellbeing-pixel-android-9-pie-exit-beta-features-now-available)
-statistics, in those three days, I used my phone actively for 12 hours. That
-means my phone served me more than 400 ads or trackers per active hour.
+[Google Wellbeing][4] statistics, in those three days, I used my phone actively
+for 12 hours. That means my phone served me more than 400 ads or trackers per
+active hour.
 
-<img src="https://raymii.org/s/inc/img/welzijn1.png">
+![][5]
 
 But those ads/trackers are not just served only when the phone is in use. Just
 before I went to bed, I reset the counters, when I woke up it had blocked 400
 requests already. That means, even when I'm sleeping and not using my phone, it
 is being used to spy on me (tracking) and to serve advertisements.
 
-Blokada is free and open source software and can be found [on
-blokada.org](https://blokada.org/). I recommend you install it. With the default
-adblock list (energized blu) plus the tracker list, I have not found any sites
-or applications that did not work, the user experience is just as it would be
-without blokada. Battery life is still the same, maybe even a bit better. 
+Blokada is free and open source software and can be found [on blokada.org][6]. I
+recommend you install it. With the default adblock list (energized blu) plus the
+tracker list, I have not found any sites or applications that did not work, the
+user experience is just as it would be without blokada. Battery life is still
+the same, maybe even a bit better.
 
-On the desktop (browser) I recommend [uBlock
-Origin](https://github.com/gorhill/uBlock).
+On the desktop (browser) I recommend [uBlock Origin][7].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][8]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+   [1]: https://raymii.org/s/inc/img/blokada1-small.png
+   [2]: https://raymii.org/s/inc/img/blokada1-big.png
+   [3]: http://web.archive.org/web/20190216070854/https://www.avg.com/en/signal/5-reasons-you-should-use-an-adblocker
+   [4]: http://web.archive.org/web/20190216064336/https://www.theverge.com/2018/11/20/18104987/google-digital-wellbeing-pixel-android-9-pie-exit-beta-features-now-available
+   [5]: https://raymii.org/s/inc/img/welzijn1.png
+   [6]: https://blokada.org/
+   [7]: https://github.com/gorhill/uBlock
+   [8]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

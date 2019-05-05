@@ -9,23 +9,32 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/OpenSSL_logo_small.png" alt=Openssl />
+![Openssl][1]
 
-When you update OpenSSL, the software that currently has the ssl libraries loaded in memory do not automatically load the updated libraries. A full system reboot resolves that problem, but sometimes that is not possible. This command shows you all the software that has loaded the libraries, allowing you to restart only those services. If you don't restart or reload after an update, the software might still be vulnerable to issues that the update fixed.
+When you update OpenSSL, the software that currently has the ssl libraries
+loaded in memory do not automatically load the updated libraries. A full system
+reboot resolves that problem, but sometimes that is not possible. This command
+shows you all the software that has loaded the libraries, allowing you to
+restart only those services. If you don't restart or reload after an update, the
+software might still be vulnerable to issues that the update fixed.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-Make sure you have the `lsof` command installed. Your package manager probably has this package.
+Make sure you have the `lsof` command installed. Your package manager probably
+has this package.
 
 Using the following command you get a list of services currently using libssl:
 
+    
+    
     lsof | grep libssl | awk '{print $1}' | sort | uniq
+    
 
 On a Directadmin shared hosting server this is the output:
 
+    
+    
     directadm
     exim
     httpd
@@ -36,24 +45,39 @@ On a Directadmin shared hosting server this is the output:
     pop3-logi
     pure-ftpd
     spamd
+    
 
-Not all the filenames are complete but you can fill those in. If you leave out the last part of the command you can also see which specific library is in use:
+Not all the filenames are complete but you can fill those in. If you leave out
+the last part of the command you can also see which specific library is in use:
 
+    
+    
     lsof | grep libssl
+    
 
 Example output:
 
+    
+    
     imap-logi   449   dovecot  mem       REG              202,1    539869      85375 /usr/lib64/libssl.so.1.0.0
     httpd       876    apache  mem       REG              202,1    539869      85375 /usr/lib64/libssl.so.1.0.0  
     [...]
     spamd     13513      root  mem       REG              202,1    444168      85398 /usr/lib64/libssl.so.1.0.1e
+    
 
-Here you can see some services using a different library, those still need a restart.
+Here you can see some services using a different library, those still need a
+restart.
 
-_Update_. Tzu sent me an email with his command to find all updated libraries and services using the old ones:
+_Update_. Tzu sent me an email with his command to find all updated libraries
+and services using the old ones:
 
+    
+    
     lsof | grep 'DEL.*lib' | cut -f 1 -d ' ' | sort -u
     
+
+   [1]: https://raymii.org/s/inc/img/OpenSSL_logo_small.png
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

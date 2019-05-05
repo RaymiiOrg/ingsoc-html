@@ -69,18 +69,30 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>OSSEC is an Open Source Host-based Intrusion Detection System that performs log analysis, file integrity checking, policy monitoring, rootkit detection, real-time alerting and active response. It runs on most operating systems, including Linux, MacOS, Solaris, HP-UX, AIX and Windows. It also includes agentless monitoring for use with for example Cisco, HP or Juniper hardware.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>OSSEC is an Open Source Host-based Intrusion Detection System that performs log
+analysis, file integrity checking, policy monitoring, rootkit detection, real-
+time alerting and active response. It runs on most operating systems, including
+Linux, MacOS, Solaris, HP-UX, AIX and Windows. It also includes agentless
+monitoring for use with for example Cisco, HP or Juniper hardware.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This tutorial covers the installation of the OSSEC server, the standard OSSEC Web UI and the Analogi dashboard on Ubuntu 12.04. It also covers OSSEC setup with MySQL support, including a Makefile bugfix. Last but not least it shows you how to install the OSSEC agent on a *NIX system.</p>
+<p>This tutorial covers the installation of the OSSEC server, the standard OSSEC
+Web UI and the Analogi dashboard on Ubuntu 12.04. It also covers OSSEC setup
+with MySQL support, including a Makefile bugfix. Last but not least it shows you
+how to install the OSSEC agent on a *NIX system.</p>
 
-<p>There is a new version of OSSEC, 2.8. <a href="https://raymii.org/s/tutorials/OSSEC_2.8.0_Server_Client_and_Analogi_Dashboard_on_Ubuntu.html">There is also a new version of this tutorial, for the new OSSEC and for Ubuntu 14.04. Click here to read it.</a></p>
+<p>There is a new version of OSSEC, 2.8. <a href="https://raymii.org/s/tutorials/OSSEC_2.8.0_Server_Client_and_Analogi_Dashboard_on_Ubuntu.html">There is also a new version of this
+tutorial, for the new OSSEC and for Ubuntu 14.04. Click here to read it.</a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ossec/analogi.png"><img src="https://raymii.org/s/inc/img/ossec/analogi.png" width="320" height="240" alt="OSSEC Analogi dashboard" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ossec/analogi.png"><img src="https://raymii.org/s/inc/img/ossec/analogi.png" alt="OSSEC Analogi dashboard"></a></p>
 
-<p>This tutorial is written for an ubuntu 12.04 OSSEC server, but can be easily adapted to other *NIX operating systems. It only covers basic OSSEC client/server configuration, not automatic blocking or comprehensive configuration settings. It gets you started, the rest is available in the documentation: http://www.ossec.net/doc/</p>
+<p>This tutorial is written for an ubuntu 12.04 OSSEC server, but can be easily
+adapted to other *NIX operating systems. It only covers basic OSSEC
+client/server configuration, not automatic blocking or comprehensive
+configuration settings. It gets you started, the rest is available in the
+documentation: http://www.ossec.net/doc/</p>
 
 <h3>Steps</h3>
 
@@ -88,7 +100,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Installing development packages</li>
 <li>Installing Apache, PHP and MySQL</li>
 <li>Configuring MySQL</li>
-<li>Compiling the OSSEC server
+<li>Compiling the OSSEC server 
 
 <ul>
 <li>Makefile fix for Ubuntu</li>
@@ -109,7 +121,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Installing development packages</h3>
 
-<p>OSSEC is installed from source, therefore you need development packages. This is both for the OSSEC clients as for the OSSEC server:</p>
+<p>OSSEC is installed from source, therefore you need development packages. This is
+both for the OSSEC clients as for the OSSEC server:</p>
 
 <pre><code>apt-get install build-essential make libssl-dev
 </code></pre>
@@ -121,7 +134,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>apt-get install mysql-server libmysqlclient-dev mysql-client apache2 php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
 </code></pre>
 
-<p>Remember to give a strong root password for MySQL. Next finish MySQL with a secure installation:</p>
+<p>Remember to give a strong root password for MySQL. Next finish MySQL with a
+secure installation:</p>
 
 <pre><code>mysql_secure_installation
 </code></pre>
@@ -134,7 +148,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Compiling the OSSEC server</h3>
 
-<p>Download and verify OSSEC, either via wget or from the website: http://www.ossec.net/?page_id=19</p>
+<p>Download and verify OSSEC, either via wget or from the website:
+http://www.ossec.net/?page_id=19</p>
 
 <pre><code>wget http://www.ossec.net/files/ossec-hids-2.7.tar.gz
 
@@ -158,7 +173,8 @@ cd ossec-hids-2.7
 
 <h4>Makefile fix for Ubuntu</h4>
 
-<p>Because of some Ubuntu specific errors in compiling with MySQL support we need to edit the MySQL Makefile:</p>
+<p>Because of some Ubuntu specific errors in compiling with MySQL support we need
+to edit the MySQL Makefile:</p>
 
 <pre><code>cd src
 vim os_dbd/Makefile
@@ -367,7 +383,8 @@ Query OK, 0 rows affected (0.00 sec)
 quit;
 </code></pre>
 
-<p>The database also needs a schema. OSSEC provides a schema, it is located in the extracted OSSEC folder, <code>src/os_dbd</code>. Import it into MySQL:</p>
+<p>The database also needs a schema. OSSEC provides a schema, it is located in the
+extracted OSSEC folder, <code>src/os_dbd</code>. Import it into MySQL:</p>
 
 <pre><code>mysql -u root -p ossec &lt; src/os_dbd/mysql.schema
 </code></pre>
@@ -397,9 +414,10 @@ quit;
 
 <h3>Installing OSSEC Web UI</h3>
 
-<p><a href="https://raymii.org/s/inc/img/ossec/webui.png"><img src="https://raymii.org/s/inc/img/ossec/webui.png" width="320" height="240" alt="OSSEC Web UI" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ossec/webui.png"><img src="https://raymii.org/s/inc/img/ossec/webui.png" alt="OSSEC Web UI"></a></p>
 
-<p>This is also quite simple. Because we&#39;ve already set up Apache and PHP, we can just download the web UI and extract to <code>/var/www/</code>:</p>
+<p>This is also quite simple. Because we&#39;ve already set up Apache and PHP, we can
+just download the web UI and extract to <code>/var/www/</code>:</p>
 
 <pre><code>wget http://www.ossec.net/files/ossec-wui-0.8-beta-1.tar.gz
 tar -xf ossec-wui-0.8-beta-1.tar.gz
@@ -409,15 +427,21 @@ chown www-data:www-data /var/www/ossec/tmp/
 chmod 666 /var/www/ossec/tmp
 </code></pre>
 
-<p>We use the web UI Beta because there are a lot of errors (like broken search) in the stable 0.3 version. We also set the correct permissions on the <code>tmp/</code> folder. Afterwards the web ui is visible at http://hostname/ossec/.</p>
+<p>We use the web UI Beta because there are a lot of errors (like broken search) in
+the stable 0.3 version. We also set the correct permissions on the <code>tmp/</code>
+folder. Afterwards the web ui is visible at http://hostname/ossec/.</p>
 
 <h3>Installing Analogi Web Dashboard</h3>
 
-<p><a href="https://raymii.org/s/inc/img/ossec/analogi.png"><img src="https://raymii.org/s/inc/img/ossec/analogi.png" width="320" height="240" alt="OSSEC Analogi dashboard" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ossec/analogi.png"><img src="https://raymii.org/s/inc/img/ossec/analogi.png" alt="OSSEC Analogi dashboard"></a></p>
 
-<p>The Analogi dashboard is a nice and informative dashboard around OSSEC, which provides more visual information then the standard Web UI. The standard Web UI has better search functions, the Dashboard can be used for example on a Wall Mounted monitor and such.</p>
+<p>The Analogi dashboard is a nice and informative dashboard around OSSEC, which
+provides more visual information then the standard Web UI. The standard Web UI
+has better search functions, the Dashboard can be used for example on a Wall
+Mounted monitor and such.</p>
 
-<p>Installation consists out of cloning the git repo and entering the settings file:</p>
+<p>Installation consists out of cloning the git repo and entering the settings
+file:</p>
 
 <pre><code>cd /var/www
 git clone https://github.com/ECSC/analogi.git
@@ -425,13 +449,15 @@ cp analogi/db_ossec.php.new analogi/db_ossec.php
 vim analogi/db_ossec.php        
 </code></pre>
 
-<p>Edit the relevant settings for the MySQL database configuration. When correctly configured the Analogi webinterface can be found at http://hostname/analogi/.</p>
+<p>Edit the relevant settings for the MySQL database configuration. When correctly
+configured the Analogi webinterface can be found at http://hostname/analogi/.</p>
 
-<p>The OSSEC server is now correctly set up. </p>
+<p>The OSSEC server is now correctly set up.</p>
 
 <h3>Client installation</h3>
 
-<p>Download and verify the OSSEC stable .tar.gz file as described above. This time, do an agent installation. See the output below:</p>
+<p>Download and verify the OSSEC stable .tar.gz file as described above. This time,
+do an agent installation. See the output below:</p>
 
 <pre><code>root@testclient:~/ossec-hids-2.7# ./install.sh
 
@@ -501,9 +527,13 @@ INFO: Little endian set.
 
 <h4>Client OSSEC config</h4>
 
-<p>Adding a client to OSSEC is quite simple. First you add the client to the server, which gives you a key. Then you add this key to the client, edit the config file on the client and that&#39;s it.</p>
+<p>Adding a client to OSSEC is quite simple. First you add the client to the
+server, which gives you a key. Then you add this key to the client, edit the
+config file on the client and that&#39;s it.</p>
 
-<p>First we need to generate a key on the OSSEC server for this client. We do this by running <code>/var/ossec/bin/manage_agents</code>, option A, then entering the hostname, IP and ID for the client we want to add. Do these steps on the OSSEC server!:</p>
+<p>First we need to generate a key on the OSSEC server for this client. We do this
+by running <code>/var/ossec/bin/manage_agents</code>, option A, then entering the hostname,
+IP and ID for the client we want to add. Do these steps on the OSSEC server!:</p>
 
 <pre><code>root@ossec:~# /var/ossec/bin/manage_agents
 
@@ -620,7 +650,8 @@ Started ossec-monitord...
 Completed.
 </code></pre>
 
-<p>That&#39;s it. Repeat these steps for any client that needs to be added. There are both puppetfiles and chef cookbooks to manage this process.</p>
+<p>That&#39;s it. Repeat these steps for any client that needs to be added. There are
+both puppetfiles and chef cookbooks to manage this process.</p>
 
 <h3>Bonus Tips</h3>
 
@@ -628,7 +659,9 @@ Completed.
 
 <h4>Ignoring rules</h4>
 
-<p>To very simply ignore rules based on rule id, add them to the XML file located in <code>/var/ossec/rules/local_rules/xml</code>, either on the ossec client for one machine or the ossec server to ignore on all machines:</p>
+<p>To very simply ignore rules based on rule id, add them to the XML file located
+in <code>/var/ossec/rules/local_rules/xml</code>, either on the ossec client for one
+machine or the ossec server to ignore on all machines:</p>
 
 <pre><code>&lt;!-- Specify here a list of rules to ignore. --&gt;
 &lt;!-- 3334 postfix start  --&gt;
@@ -641,7 +674,8 @@ Completed.
 
 <h4>Monitoring additional log files</h4>
 
-<p>The OSSEC agent by default only monitors a few log files. To add more, edit the <code>/var/ossec/etc/ossec.conf</code> file and add a line like this:</p>
+<p>The OSSEC agent by default only monitors a few log files. To add more, edit the
+<code>/var/ossec/etc/ossec.conf</code> file and add a line like this:</p>
 
 <pre><code>&lt;localfile&gt;
     &lt;location&gt;/var/log/*&lt;/location&gt;
@@ -649,11 +683,13 @@ Completed.
 &lt;/localfile&gt;
 </code></pre>
 
-<p>This will add all files under <code>/var/log</code>. This might be a lot, you can also just add multiple <code>&lt;localfile&gt;</code> blocks with filenames.</p>
+<p>This will add all files under <code>/var/log</code>. This might be a lot, you can also just
+add multiple <code>&lt;localfile&gt;</code> blocks with filenames.</p>
 
 <h4>Firewall</h4>
 
-<p>You need to allow UDP port 1514 between OSSEC server and clients. Otherwise you get errors like this:</p>
+<p>You need to allow UDP port 1514 between OSSEC server and clients. Otherwise you
+get errors like this:</p>
 
 <pre><code>2013/09/06 19:53:00 ossec-agentd: INFO: Using IPv4 for: 10.0.51.31 .
 2013/09/06 19:53:21 ossec-agentd(4101): WARN: Waiting for server reply (not started). Tried: &#39;ossec.raymii.nl/10.0.51.31&#39;.
@@ -661,7 +697,8 @@ Completed.
 
 <h3>Removing OSSEC</h3>
 
-<p><a href="https://raymii.org/s/tutorials/Uninstall_OSSEC.html">If you want to remove OSSEC, either the client or the server, read this tutorial. It covers all the steps required to uninstall OSSEC</a></p>
+<p><a href="https://raymii.org/s/tutorials/Uninstall_OSSEC.html">If you want to remove OSSEC, either the client or the server, read this
+tutorial. It covers all the steps required to uninstall OSSEC</a></p>
 </div><hr>Tags: <a href="../tags/active-response.html" class="link">active-response &nbsp;</a><a href="../tags/analogi.html" class="link">analogi &nbsp;</a><a href="../tags/file-monitoring.html" class="link">file-monitoring &nbsp;</a><a href="../tags/ids.html" class="link">ids &nbsp;</a><a href="../tags/integrity.html" class="link">integrity &nbsp;</a><a href="../tags/intrusion-detection.html" class="link">intrusion-detection &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/ossec.html" class="link">ossec &nbsp;</a><a href="../tags/ossec-wui.html" class="link">ossec-wui &nbsp;</a><a href="../tags/rootkit.html" class="link">rootkit &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/splunk.html" class="link">splunk &nbsp;</a><a href="../tags/syslog.html" class="link">syslog &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

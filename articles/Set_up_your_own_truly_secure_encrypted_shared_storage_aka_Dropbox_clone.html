@@ -71,23 +71,34 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><h3>TL;DR</h3>
 
-<p>This article describes my truly secure, encrypted file synchronization service. It used EncFS and dvcs-autosync which lets me share only the encrypted data and mount that locally to get the plaintext. It works on OS X, Linux and ARM linux. This article has setup instructions for all those platforms.</p>
+<p>This article describes my truly secure, encrypted file synchronization service.
+It used EncFS and dvcs-autosync which lets me share only the encrypted data and
+mount that locally to get the plaintext. It works on OS X, Linux and ARM linux.
+This article has setup instructions for all those platforms.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Diagram</h3>
 
-<p><img src="http://i.imgur.com/0L5GxCR.png?2" alt="Diagram" />
-<strong>Overview of the solution we are building.</strong></p>
+<p><img src="http://i.imgur.com/0L5GxCR.png?2" alt="Diagram"> <strong>Overview of the solution we are building.</strong></p>
 
-<p>My data is in an EncFS encrypted folder. The unencrypted contents are available after unlocking the folder. The encrypted files are synced to an ssh server an to a few other machines and devices using dvcs-autosync. The encryption happens on my machines before the data leaves the to internet.  </p>
+<p>My data is in an EncFS encrypted folder. The unencrypted contents are available
+after unlocking the folder. The encrypted files are synced to an ssh server an
+to a few other machines and devices using dvcs-autosync. The encryption happens
+on my machines before the data leaves the to internet.</p>
 
 <h3>Preface</h3>
 
-<p>Recently I&#39;ve had to stop using SpiderOak for my file backup and synchronization across machines. The main reason being that there is no ARM version of SpiderOak and the RAM usage was getting out of hand for me. And there still is no open source client, sadly. However, my time with SpiderOak was good, I&#39;ve paid for it and most of the time it just works fine.</p>
+<p>Recently I&#39;ve had to stop using SpiderOak for my file backup and synchronization
+across machines. The main reason being that there is no ARM version of SpiderOak
+and the RAM usage was getting out of hand for me. And there still is no open
+source client, sadly. However, my time with SpiderOak was good, I&#39;ve paid for it
+and most of the time it just works fine.</p>
 
-<p>But since I recently bought an ARM Laptop on which I also need my files, it became time to switch to another secure shared file storage. I have a few demands for such a service:</p>
+<p>But since I recently bought an ARM Laptop on which I also need my files, it
+became time to switch to another secure shared file storage. I have a few
+demands for such a service:</p>
 
 <ul>
 <li>It should support synchronization to multiple (more than 2) devices.</li>
@@ -98,11 +109,19 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>It should run on both x86 and ARM (debian armhf) (Chromebook ARM, Raspberry Pi).</li>
 </ul>
 
-<p>Then all current commercial services drop off, including SpiderOak, Bittorrent Sync and git-annex. This resulted in a clever combination of <a href="https://en.wikipedia.org/wiki/EncFS">EncFS</a> and <a href="https://github.com/rmayr/dvcs-autosync">dvcs-autosync</a>. Because, in this day and age, you cannot trust any &quot;cloud&quot; provider with your unencrypted data. (And you can only trust those who say they do it securely when they release there source code, wink wink Wuala/Spideroak).</p>
+<p>Then all current commercial services drop off, including SpiderOak, Bittorrent
+Sync and git-annex. This resulted in a clever combination of <a href="https://en.wikipedia.org/wiki/EncFS">EncFS</a> and
+<a href="https://github.com/rmayr/dvcs-autosync">dvcs-autosync</a>. Because, in this day and age, you cannot trust any &quot;cloud&quot;
+provider with your unencrypted data. (And you can only trust those who say they
+do it securely when they release there source code, wink wink Wuala/Spideroak).</p>
 
 <h3>Overview</h3>
 
-<p>I&#39;ll describe the steps and requirements needed to set this up first. Then we get started with the setup. First we&#39;ll set up the server. Then the first Linux client. If needed, steps are provided for adding other Linux clients. Then instructions for OS X are provided. It is a little long, but if you want privacy and security a one time investment is required.</p>
+<p>I&#39;ll describe the steps and requirements needed to set this up first. Then we
+get started with the setup. First we&#39;ll set up the server. Then the first Linux
+client. If needed, steps are provided for adding other Linux clients. Then
+instructions for OS X are provided. It is a little long, but if you want privacy
+and security a one time investment is required.</p>
 
 <h4>Requirements</h4>
 
@@ -143,15 +162,23 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 </ul></li>
 </ul>
 
-<p>So, lets get started. In about half an hour you have your own secure encrypted file synchronization service.</p>
+<p>So, lets get started. In about half an hour you have your own secure encrypted
+file synchronization service.</p>
 
 <h3>Set up the SSH server</h3>
 
-<p>As said, you&#39;ll need an SSH server which will act as your central data repository. Here your encrypted data will reside, and clients push and pull changes to and from here. If you have a few laptops which are not on all the time, this server makes sure all the clients have the most recent data. </p>
+<p>As said, you&#39;ll need an SSH server which will act as your central data
+repository. Here your encrypted data will reside, and clients push and pull
+changes to and from here. If you have a few laptops which are not on all the
+time, this server makes sure all the clients have the most recent data.</p>
 
-<p>If you don&#39;t have a VPS, <a href="https://clients.inceptionhosting.com/aff.php?aff=083">InceptionHosting has good VPS servers for a nice price. (Affiliation link)</a>. <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a> also does a good job. (Also affiliation link).</p>
+<p>If you don&#39;t have a VPS, <a href="https://clients.inceptionhosting.com/aff.php?aff=083">InceptionHosting has good VPS servers for a nice
+price. (Affiliation link)</a>. <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a> also does a good job. (Also
+affiliation link).</p>
 
-<p>I won&#39;t cover the installation and setup of the server. SSH, a user account and a passwordless SSH key is all you need. Google can help you with the setup of that.</p>
+<p>I won&#39;t cover the installation and setup of the server. SSH, a user account and
+a passwordless SSH key is all you need. Google can help you with the setup of
+that.</p>
 
 <p>First install git:</p>
 
@@ -168,14 +195,22 @@ git init --bare autosync.git
 
 <h3>rsync.net</h3>
 
-<p>rsync.net is a service which provides online storage available via rsync. You can use them instead of your own VPS server, I&#39;ll show you how in a moment. Why would you store your data there, and why do I recommend them when this is an article about a truly private system? Because they use a standard open protocol, support git and don&#39;t require a local client to be installed. Dropbox for example does. Any service which provides git/ssh access would be fine because you are just dumping encrypted data there and rsync.net is one of the better ones to do that. </p>
+<p>rsync.net is a service which provides online storage available via rsync. You
+can use them instead of your own VPS server, I&#39;ll show you how in a moment. Why
+would you store your data there, and why do I recommend them when this is an
+article about a truly private system? Because they use a standard open protocol,
+support git and don&#39;t require a local client to be installed. Dropbox for
+example does. Any service which provides git/ssh access would be fine because
+you are just dumping encrypted data there and rsync.net is one of the better
+ones to do that.</p>
 
 <p>Add you ssh key to rsync.net:</p>
 
 <pre><code>scp ~/.ssh/backup_nopasswd.pub &amp;lt;user-id&amp;gt;@&amp;lt;server&amp;gt;.rsync.net:.ssh/authorized_keys
 </code></pre>
 
-<p>To add more than one key, make sure the first key is added like above, for each subsequent key use the following method:</p>
+<p>To add more than one key, make sure the first key is added like above, for each
+subsequent key use the following method:</p>
 
 <pre><code> cat ~/.ssh/other_key.pub | ssh &amp;lt;user-id&amp;gt;@&amp;lt;server&amp;gt;.rsync.net &#39;dd of=.ssh/authorized_keys oflag=append conv=notrunc&#39; 
 </code></pre>
@@ -188,9 +223,11 @@ git init --bare autosync.git
 Initialized empty Git repository in /data5/home/&amp;lt;user&amp;gt;/autosync.git/
 </code></pre>
 
-<p>Remember/copy that path to somewhere, we&#39;ll need it later on to add the git remote.</p>
+<p>Remember/copy that path to somewhere, we&#39;ll need it later on to add the git
+remote.</p>
 
-<p>That&#39;s it for now. Continue with the tutorial, when we get to the other git parts where applicable there will be a part for rsync.net.</p>
+<p>That&#39;s it for now. Continue with the tutorial, when we get to the other git
+parts where applicable there will be a part for rsync.net.</p>
 
 <p><a href="http://blog.kozubik.com/john_kozubik/2010/02/git-and-subversion-support-at-rsyncnet.html">Read more on rsync.net git/svn support</a></p>
 
@@ -203,13 +240,16 @@ Initialized empty Git repository in /data5/home/&amp;lt;user&amp;gt;/autosync.gi
 <pre><code>apt-get install encfs
 </code></pre>
 
-<p>This will automatically install and set up both FUSE and EncFS. It&#39;ll also put you in the right user groups (FUSE).</p>
+<p>This will automatically install and set up both FUSE and EncFS. It&#39;ll also put
+you in the right user groups (FUSE).</p>
 
 <h4>Creating the secure EncFS folder</h4>
 
-<p><em>(Note that this is required only once on the first machine, not on all the others added later on).</em>  </p>
+<p><em>(Note that this is required only once on the first machine, not on all the
+others added later on).</em></p>
 
-<p>Now in your home folder, execute the following commands to create the Encfs folders and set them up:</p>
+<p>Now in your home folder, execute the following commands to create the Encfs
+folders and set them up:</p>
 
 <pre><code>cd ~
 mkdir share
@@ -217,7 +257,11 @@ mkdir secure
 encfs ~/secure ~/share
 </code></pre>
 
-<p>The first option of the encfs command specifies the folder where all the encrypted data will be. The second options specifies the mount point where the unencrypted data will be. It will ask you a few questions. The first can be answered with <strong>p</strong>. The second question is for the folder password. Make sure this is a <strong>long and strong</strong> password.</p>
+<p>The first option of the encfs command specifies the folder where all the
+encrypted data will be. The second options specifies the mount point where the
+unencrypted data will be. It will ask you a few questions. The first can be
+answered with <strong>p</strong>. The second question is for the folder password. Make sure
+this is a <strong>long and strong</strong> password.</p>
 
 <p>Output:</p>
 
@@ -259,9 +303,11 @@ New Encfs Password:
 Verify Encfs Password: 
 </code></pre>
 
-<p>That&#39;s it. Try to create a file in the <code>~/share</code> folder and you&#39;ll see the encrypted file show up in the <code>~/secure</code> folder.</p>
+<p>That&#39;s it. Try to create a file in the <code>~/share</code> folder and you&#39;ll see the
+encrypted file show up in the <code>~/secure</code> folder.</p>
 
-<p><em>To access the folder any time later, use the above EncFS command to mount it again.</em></p>
+<p><em>To access the folder any time later, use the above EncFS command to mount it
+again.</em></p>
 
 <p>We need to prepare the secure folder for usage with dvcs-autosync.</p>
 
@@ -271,9 +317,11 @@ Verify Encfs Password:
 EncFS Password:
 </code></pre>
 
-<p><em>IMPORTANT! Make sure to remove the .encfs</em> files from the secure folder before syncing. IF THESE FILES ARE IN THE SYNCED FOLDER, YOUR FILES ARE MUCH MORE EASIER TO BE CRACKED.*</p>
+<p><em>IMPORTANT! Make sure to remove the .encfs</em> files from the secure folder before
+syncing. IF THESE FILES ARE IN THE SYNCED FOLDER, YOUR FILES ARE MUCH MORE
+EASIER TO BE CRACKED.*</p>
 
-<p><em>You can also add them to the <code>.gitignore file</code>:</em></p>
+<p><em>You can also add them to the<code>.gitignore file</code>:</em></p>
 
 <pre><code>-rw-rw-r--   1 remy  remy   1.1K Aug 29 16:09 .encfs6.xml
 
@@ -296,12 +344,15 @@ git commit -m &quot;Initial Commit&quot;
  create mode 100644 date
 </code></pre>
 
-<p>Now make sure you have your SSH server domain name ready. For me, it is <code>sync.raymii.nl</code>. Also have the autosync folder ready. For me this is <code>/home/remy/autosync.git</code>. We need this in the following command:</p>
+<p>Now make sure you have your SSH server domain name ready. For me, it is
+<code>sync.raymii.nl</code>. Also have the autosync folder ready. For me this is
+<code>/home/remy/autosync.git</code>. We need this in the following command:</p>
 
 <pre><code>git remote add origin ssh://sync.raymii.nl/home/remy/autosync.git
 </code></pre>
 
-<p>If you are using rsync.net, you have to add an upstream like this, with the path you remembered from above:</p>
+<p>If you are using rsync.net, you have to add an upstream like this, with the path
+you remembered from above:</p>
 
 <pre><code>git remote add origin ssh://&amp;lt;server&amp;gt;.rsync.net/data5/home/&amp;lt;user&amp;gt;/autosync.git/
 </code></pre>
@@ -311,11 +362,13 @@ git commit -m &quot;Initial Commit&quot;
 <pre><code>git push -u origin master
 </code></pre>
 
-<p>The <code>-u</code> option also sets up the master branch as default and starts tracking in from origin.</p>
+<p>The <code>-u</code> option also sets up the master branch as default and starts tracking in
+from origin.</p>
 
 <h4>Install dvcs-autosync</h4>
 
-<p>On debian/Ubuntu this part is easy because you can install a package. On other distro&#39;s, follow the instructions <a href="https://github.com/rmayr/dvcs-autosync/blob/master/README">here on the official repo</a>.</p>
+<p>On debian/Ubuntu this part is easy because you can install a package. On other
+distro&#39;s, follow the instructions <a href="https://github.com/rmayr/dvcs-autosync/blob/master/README">here on the official repo</a>.</p>
 
 <p>So, to install the package:</p>
 
@@ -324,11 +377,17 @@ git commit -m &quot;Initial Commit&quot;
 
 <h4>Create an XMPP account</h4>
 
-<p>dvcs-autosync uses XMPP as a way to send changes to other online nodes. So, you need a XMPP account. You can use your Google (talk) account for this, but you can also create an account via Pidgin at services like <a href="http://www.swissjabber.ch/">http://www.swissjabber.ch/</a> or <a href="http://xabber.de">http://xabber.de</a>. I have my own XMPP server network, so for me that is solved. Make sure you have the username (you@xabber.de) and the password ready.</p>
+<p>dvcs-autosync uses XMPP as a way to send changes to other online nodes. So, you
+need a XMPP account. You can use your Google (talk) account for this, but you
+can also create an account via Pidgin at services like
+<a href="http://www.swissjabber.ch/">http://www.swissjabber.ch/</a> or <a href="http://xabber.de">http://xabber.de</a>. I have my own XMPP server
+network, so for me that is solved. Make sure you have the username
+(you@xabber.de) and the password ready.</p>
 
 <h4>Set up dvcs-autosync</h4>
 
-<p>This is also quite simple. Copy the example file from <a href="https://github.com/rmayr/dvcs-autosync/blob/master/.autosync-example">here</a> to <code>~/.autosync</code> and edit at least the following sections:</p>
+<p>This is also quite simple. Copy the example file from <a href="https://github.com/rmayr/dvcs-autosync/blob/master/.autosync-example">here</a> to
+<code>~/.autosync</code> and edit at least the following sections:</p>
 
 <pre><code>[autosync]
 path = ~/secure
@@ -342,14 +401,16 @@ password = Your_Passw0rd
 alsonotify = you@yourXMPPserver.tld
 </code></pre>
 
-<p>And change the XMPP account data. That&#39;s it. You can change more things, but that is all explained in the config file.</p>
+<p>And change the XMPP account data. That&#39;s it. You can change more things, but
+that is all explained in the config file.</p>
 
 <p>Now, with all the above set up, start <code>dvcs-autosync</code> from the command line:</p>
 
 <pre><code>dvcs-autosync
 </code></pre>
 
-<p>You&#39;ll get a lot of output, which can be safely ignored when you experience no errors:</p>
+<p>You&#39;ll get a lot of output, which can be safely ignored when you experience no
+errors:</p>
 
 <pre><code>DEBUG:jabberbot:Got presence: you@yourXMPPserver.tld/AutosyncJabberBot on MyHostName.tld (type: None, show: None, status: None, subscription: None)
 Could not load one of the supported DNS libraries (dnspython or pydns). SRV records will not be queried and you may need to set custom hostname/port for some servers to be accessible.
@@ -401,7 +462,7 @@ DEBUG:jabberbot:*** username = raymii
 DEBUG:jabberbot:*** type = chat
 </code></pre>
 
-<p>Now you can also see with a <code>git log</code> that the files are added. It works! </p>
+<p>Now you can also see with a <code>git log</code> that the files are added. It works!</p>
 
 <p>To make sure it keeps running, add a cronjob:</p>
 
@@ -413,17 +474,24 @@ DEBUG:jabberbot:*** type = chat
 <pre><code>*/5 * * * * dvcs-autosync
 </code></pre>
 
-<p>This runs dvcs-autosync every 5 minutes. It sees when it is already running, then it does not run again.</p>
+<p>This runs dvcs-autosync every 5 minutes. It sees when it is already running,
+then it does not run again.</p>
 
 <h4>Special steps for an ARM Chromebook</h4>
 
-<p>I have an ARM Chromebook with Ubuntu running in a chroot. In the chroot cron does not run, so I have created a simple script to autostart dvcs-autosync on login. You <a href="https://github.com/RaymiiOrg/df/blob/master/dvcs.sh">can find it here on my github</a>. Add it to your window manager to open on login and you are also set.</p>
+<p>I have an ARM Chromebook with Ubuntu running in a chroot. In the chroot cron
+does not run, so I have created a simple script to autostart dvcs-autosync on
+login. You <a href="https://github.com/RaymiiOrg/df/blob/master/dvcs.sh">can find it here on my github</a>. Add it to your window manager to
+open on login and you are also set.</p>
 
 <h1>Set up another Linux client</h1>
 
-<p>If you need to set up another Linux client, first install <code>encfs</code> and <code>dvcs-autosync</code> as explained above. Also, configure <code>dvcs-autosync</code> with the existing XMPP account and set up the dvcs-autosync cronjob.</p>
+<p>If you need to set up another Linux client, first install <code>encfs</code> and <code>dvcs-
+autosync</code> as explained above. Also, configure <code>dvcs-autosync</code> with the existing
+XMPP account and set up the dvcs-autosync cronjob.</p>
 
-<p>Then, instead of creating an EncFS folder, clone the git repo with the encrypted EncFS data:</p>
+<p>Then, instead of creating an EncFS folder, clone the git repo with the encrypted
+EncFS data:</p>
 
 <pre><code>git clone ssh://sync.raymii.nl/home/remy/autosync.git ~/secure
 </code></pre>
@@ -433,7 +501,8 @@ DEBUG:jabberbot:*** type = chat
 <pre><code>git clone ssh://&amp;lt;server&amp;gt;.rsync.net/data5/home/&amp;lt;user&amp;gt;/autosync.git/ ~/secure
 </code></pre>
 
-<p>Also remember to add another ssh key to your rsync.net account (presuming you already have added an ssh key to your account):</p>
+<p>Also remember to add another ssh key to your rsync.net account (presuming you
+already have added an ssh key to your account):</p>
 
 <pre><code> cat ~/.ssh/other_key.pub | ssh &amp;lt;user-id&amp;gt;@&amp;lt;server&amp;gt;.rsync.net &#39;dd of=.ssh/authorized_keys oflag=append conv=notrunc&#39; 
 </code></pre>
@@ -450,24 +519,33 @@ DEBUG:jabberbot:*** type = chat
 <pre><code>encfs ~/secure ~/share
 </code></pre>
 
-<p>You can now also test if you create or remove files/folders on one Linux Machine, they are also created or removed on the other Linux machine(s).</p>
+<p>You can now also test if you create or remove files/folders on one Linux
+Machine, they are also created or removed on the other Linux machine(s).</p>
 
 <h3>Prepare the OS X client</h3>
 
-<p>I also use OS X machines, so I want to have secure access to my files there as well. Luckily, that is possible with the above setup. The tools required are a bit more spartan in setup, but after setup is just as simple in use. You have to have XCode and the Command Line Developer Tools installed. </p>
+<p>I also use OS X machines, so I want to have secure access to my files there as
+well. Luckily, that is possible with the above setup. The tools required are a
+bit more spartan in setup, but after setup is just as simple in use. You have to
+have XCode and the Command Line Developer Tools installed.</p>
 
 <h3>Install OSXFUSE</h3>
 
-<p>Download the .pkg file from <a href="http://osxfuse.github.io/">http://osxfuse.github.io/</a> and install it. This is needed for EncFS. OSXFuse is the continuation of MacFUSE, that seems to be discontinued. OSXFuse works on both Lion and Mountain Lion.</p>
+<p>Download the .pkg file from <a href="http://osxfuse.github.io/">http://osxfuse.github.io/</a> and install it. This is
+needed for EncFS. OSXFuse is the continuation of MacFUSE, that seems to be
+discontinued. OSXFuse works on both Lion and Mountain Lion.</p>
 
 <h4>Install EncFS</h4>
 
-<p>Make sure you have installed Homebrew (from <a href="http://brew.sh/">http://brew.sh/</a>). We use homebrew to install a version of EncFS configured to use OSXFuse instead of MacFUSE. When brew and OSXFuse are installed, use the following command to install EncFS:</p>
+<p>Make sure you have installed Homebrew (from <a href="http://brew.sh/">http://brew.sh/</a>). We use homebrew
+to install a version of EncFS configured to use OSXFuse instead of MacFUSE. When
+brew and OSXFuse are installed, use the following command to install EncFS:</p>
 
 <pre><code>brew install https://raw.github.com/jollyjinx/encfs.macosx/master/encfsmacosxfuse.rb
 </code></pre>
 
-<p>It takes a while to compile and build the required dependencies, <code>boost</code> for example took 20 minutes on my 2012 Macbook Pro with an Intel Core i7.</p>
+<p>It takes a while to compile and build the required dependencies, <code>boost</code> for
+example took 20 minutes on my 2012 Macbook Pro with an Intel Core i7.</p>
 
 <p>When everything is installed and working continue to the next step.</p>
 
@@ -483,7 +561,8 @@ DEBUG:jabberbot:*** type = chat
 <pre><code>git clone ssh://&amp;lt;server&amp;gt;.rsync.net/data5/home/&amp;lt;user&amp;gt;/autosync.git/ ~/secure
 </code></pre>
 
-<p>Also remember to add another ssh key to your rsync.net account (presuming you already have added an ssh key to your account):</p>
+<p>Also remember to add another ssh key to your rsync.net account (presuming you
+already have added an ssh key to your account):</p>
 
 <pre><code> cat ~/.ssh/other_key.pub | ssh &amp;lt;user-id&amp;gt;@&amp;lt;server&amp;gt;.rsync.net &#39;dd of=.ssh/authorized_keys oflag=append conv=notrunc&#39; 
 </code></pre>
@@ -511,7 +590,9 @@ cd olivierg-dvcs-autosync
 sudo python setup.py install
 </code></pre>
 
-<p>Now download and build <code>xmpppy</code>. Save the file from <a href="http://downloads.sourceforge.net/project/xmpppy/xmpppy/0.5.0-rc1/xmpppy-0.5.0rc1.tar.gz">http://downloads.sourceforge.net/project/xmpppy/xmpppy/0.5.0-rc1/xmpppy-0.5.0rc1.tar.gz</a> to your home folder. Then extract and build it:</p>
+<p>Now download and build <code>xmpppy</code>. Save the file from
+<a href="http://downloads.sourceforge.net/project/xmpppy/xmpppy/0.5.0-rc1/xmpppy-0.5.0rc1.tar.gz">http://downloads.sourceforge.net/project/xmpppy/xmpppy/0.5.0-rc1/xmpppy-0.5.0rc1.tar.gz</a>
+to your home folder. Then extract and build it:</p>
 
 <pre><code>cd ~
 tar -xf xmpppy-0.5.0rc1.tar.gz
@@ -530,7 +611,8 @@ sudo python setup.py install
 
 <h4>Set up dvcs-autosync</h4>
 
-<p>This is the same as for the Linux client. Copy the example file from <a href="https://github.com/rmayr/dvcs-autosync/blob/master/.autosync-example">here</a> to <code>~/.autosync</code> and edit at least the following sections:</p>
+<p>This is the same as for the Linux client. Copy the example file from <a href="https://github.com/rmayr/dvcs-autosync/blob/master/.autosync-example">here</a>
+to <code>~/.autosync</code> and edit at least the following sections:</p>
 
 <pre><code>[autosync]
 path = ~/secure
@@ -544,19 +626,22 @@ password = Your_Passw0rd
 alsonotify = you@yourXMPPserver.tld
 </code></pre>
 
-<p>And change the XMPP account data. That&#39;s it. You can change more things, but that is all explained in the config file.</p>
+<p>And change the XMPP account data. That&#39;s it. You can change more things, but
+that is all explained in the config file.</p>
 
 <p>When you have set it up, start dvcs-autosync from the terminal:</p>
 
 <pre><code>dvcs-autosync
 </code></pre>
 
-<p>Now you should see all your files being synced. When it has caught up with all the files, mount the EncFS folder:</p>
+<p>Now you should see all your files being synced. When it has caught up with all
+the files, mount the EncFS folder:</p>
 
 <pre><code>encfs ~/secure ~/share
 </code></pre>
 
-<p>When you look in the ~/share folder now, you have all your files. Don&#39;t forget to add a cronjob for dvcs-autosync:</p>
+<p>When you look in the ~/share folder now, you have all your files. Don&#39;t forget
+to add a cronjob for dvcs-autosync:</p>
 
 <pre><code>crontab -e
 </code></pre>
@@ -566,11 +651,13 @@ alsonotify = you@yourXMPPserver.tld
 <pre><code>*/5 * * * * dvcs-autosync
 </code></pre>
 
-<p>With this all set up, you have your own, truly secure encrypted file synchronization service! Well done.</p>
+<p>With this all set up, you have your own, truly secure encrypted file
+synchronization service! Well done.</p>
 
 <h3>Pitfalls of EncFS</h3>
 
-<p>EncFS does have a few disadvantages. For me they don&#39;t weight up to all the advantages. </p>
+<p>EncFS does have a few disadvantages. For me they don&#39;t weight up to all the
+advantages.</p>
 
 <ul>
 <li>It leaks file modification/creation dates.</li>
@@ -578,13 +665,19 @@ alsonotify = you@yourXMPPserver.tld
 <li>Some filenames can be derived from the encrypted form.</li>
 </ul>
 
-<p>You can read a very good article about EncFS <a href="http://movingtofreedom.org/2007/02/21/howto-encfs-encrypted-file-system-in-ubuntu-and-fedora-gnu-linux/">here</a>. It explains all the possibilities, but also all the pitfalls.</p>
+<p>You can read a very good article about EncFS <a href="http://movingtofreedom.org/2007/02/21/howto-encfs-encrypted-file-system-in-ubuntu-and-fedora-gnu-linux/">here</a>. It explains all the
+possibilities, but also all the pitfalls.</p>
 
-<p><a href="http://sourceforge.net/mailarchive/message.php?msg_id=31849549">There has also been a extensive code audit of EncFS which resulted in some issues. Read this mailing list post to find out.</a></p>
+<p><a href="http://sourceforge.net/mailarchive/message.php?msg_id=31849549">There has also been a extensive code audit of EncFS which resulted in some
+issues. Read this mailing list post to find out.</a></p>
 
 <h3>Race conditions</h3>
 
-<p>With multiple edits of a file, on different devices, then the file whichever dvcs-autosync commits first is used as &quot;master copy&quot;. The others receive an XMPP notification, and incorporate a (5 second) wait time. When not online, as far as I&#39;ve seen in the last three weeks of intensive usage, the when a file on the server is newer it is overwritten with a pull.</p>
+<p>With multiple edits of a file, on different devices, then the file whichever
+dvcs-autosync commits first is used as &quot;master copy&quot;. The others receive an XMPP
+notification, and incorporate a (5 second) wait time. When not online, as far as
+I&#39;ve seen in the last three weeks of intensive usage, the when a file on the
+server is newer it is overwritten with a pull.</p>
 
 <p>If you have any questions, you can always contact me via email.</p>
 </div><hr>Tags: <a href="../tags/arm.html" class="link">arm &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/chromebook.html" class="link">chromebook &nbsp;</a><a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/dropbox.html" class="link">dropbox &nbsp;</a><a href="../tags/dvcs-autosync.html" class="link">dvcs-autosync &nbsp;</a><a href="../tags/encfs.html" class="link">encfs &nbsp;</a><a href="../tags/encryption.html" class="link">encryption &nbsp;</a><a href="../tags/featured-two.html" class="link">featured-two &nbsp;</a><a href="../tags/file-synchronization.html" class="link">file-synchronization &nbsp;</a><a href="../tags/os-x.html" class="link">os-x &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><a href="../tags/spideroak.html" class="link">spideroak &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/vps.html" class="link">vps &nbsp;</a><div class="footer">

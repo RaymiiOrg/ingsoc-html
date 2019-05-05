@@ -9,22 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial shows you how to create and add a disk image to a KVM vm using virsh. This is useful when you for example want to expand the disk space of your virtual machine when it is using LVM, or if you want to add a swap disk to a virtual machine. Note that you can also create a swap file instead of a disk, however, this is an example for adding the disk.
+This tutorial shows you how to create and add a disk image to a KVM vm using
+virsh. This is useful when you for example want to expand the disk space of your
+virtual machine when it is using LVM, or if you want to add a swap disk to a
+virtual machine. Note that you can also create a swap file instead of a disk,
+however, this is an example for adding the disk.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-Read this tutorial to [learn how to set up a proper KVM hypervisor host: https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html](https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html)
+Read this tutorial to [learn how to set up a proper KVM hypervisor host:
+https://raymii.org/s/tutorials/KVM _with_ bonding _and_ VLAN _tagging_ setup
+_on_ Ubuntu_12.04.html][2]
 
 ### Requirements
 
-- Host running KVM and virsh
+  * Host running KVM and virsh
 
-- Virtual Machine to add disk to
+  * Virtual Machine to add disk to
 
-This was tested on a KVM hypervisor host running Ubuntu 12.04 LTS and a Ubuntu 13.10 virtual machine. The KVM hypervisor uses virsh for management.
+This was tested on a KVM hypervisor host running Ubuntu 12.04 LTS and a Ubuntu
+13.10 virtual machine. The KVM hypervisor uses virsh for management.
 
 The example vm is named `example-vm` in virsh (domain).
 
@@ -34,68 +39,109 @@ Execute these steps on the KVM hypervisor host.
 
 cd to the folder where you store your disk images:
 
-	cd /var/lib/libvirt/images/
+    
+    
+    cd /var/lib/libvirt/images/
+    
 
 Create the new disk image:
 
-	qemu-img create -f raw example-vm-swap.img 1G
+    
+    
+    qemu-img create -f raw example-vm-swap.img 1G
+    
 
 We use `qemu-img` to `create` a new `raw` disk image with a size of 1 GB.
 
 Attach the disk to the example virtual machine using virsh:
 
-	virsh attach-disk example-vm --source /var/lib/libvirt/images/example-vm-swap.img --target vdb --persistent
+    
+    
+    virsh attach-disk example-vm --source /var/lib/libvirt/images/example-vm-swap.img --target vdb --persistent
+    
 
-We use `virsh` to attach the disk image `/var/lib/libvirt/images/example-vm-swap` as a `virtio` (`/dev/vdb`) disk to the domain (vm) `example-vm`. The `--persistent` option updates the domain xml file with an element for the newly attached disk.
+We use `virsh` to attach the disk image `/var/lib/libvirt/images/example-vm-
+swap` as a `virtio` (`/dev/vdb`) disk to the domain (vm) `example-vm`. The
+`--persistent` option updates the domain xml file with an element for the newly
+attached disk.
 
-Note that if you already have a `/dev/vdb` disk you need to change `vdb` to a free device like `vdc` or `vdd`.
-
+Note that if you already have a `/dev/vdb` disk you need to change `vdb` to a
+free device like `vdc` or `vdd`.
 
 ### Formatting the disk
 
 Execute these steps in your virtual machine.
 
 Reboot it so that the kernel sees the new disk:
-		
-	reboot
 
-Partition the drive with `cfdisk`. For our example we use filesystem type 82 (linux/linux swap):
+    
+    
+    reboot
+    
 
-	cfdisk /dev/vdb
+Partition the drive with `cfdisk`. For our example we use filesystem type 82
+(linux/linux swap):
+
+    
+    
+    cfdisk /dev/vdb
+    
 
 Format the disk as swap:
 
-	mkswap /dev/vdb1
+    
+    
+    mkswap /dev/vdb1
+    
 
 Or format it as ext4:
 
-	mkfs.ext4 /dev/vdb1
+    
+    
+    mkfs.ext4 /dev/vdb1
+    
 
 Make the swap active:
 
-	swapon /dev/vdb1
+    
+    
+    swapon /dev/vdb1
+    
 
 Or mount the partition:
 
-	mkdir /mnt/new-disk
-	mount /dev/vdb1 /mnt/new-disk
-
+    
+    
+    mkdir /mnt/new-disk
+    mount /dev/vdb1 /mnt/new-disk
+    
 
 Add to /etc/fstab for reboot persistence:
 
-	/dev/vdb1	swap			swap    defaults    0 0
+    
+    
+    /dev/vdb1   swap            swap    defaults    0 0
+    
 
 Or for the ext4 disk:
 
-	/dev/vdb1	/mnt/new-disk	ext4	defaults	0 0
+    
+    
+    /dev/vdb1   /mnt/new-disk   ext4    defaults    0 0
+    
 
-That's it. You've now created, attached, formatted and mounted a new disk in your VM.
+That's it. You've now created, attached, formatted and mounted a new disk in
+your VM.
 
 ### Sources
 
-- [qemu-img man page](http://linux.die.net/man/1/qemu-img)
-- [virsh-attach doc page](http://builder.virt-tools.org/artifacts/libvirt-virshcmdref/html/sect-attach-disk.html)
+  * [qemu-img man page][3]
+  * [virsh-attach doc page][4]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html
+   [3]: http://linux.die.net/man/1/qemu-img
+   [4]: http://builder.virt-tools.org/artifacts/libvirt-virshcmdref/html/sect-attach-disk.html
 
 ---
 

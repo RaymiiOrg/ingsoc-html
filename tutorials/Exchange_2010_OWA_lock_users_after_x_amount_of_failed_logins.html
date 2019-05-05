@@ -69,10 +69,16 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a tutorial to set up automatic user lockout in Exchange 2010 - Outlook Web Acces (OWA). When a user does 5 wrong login attempts, he/she is locked out from the webinterface. After for example 5 minutes he or she is unlocked again automatically. This helps you mitigate brute force attacks, since an attacker can only try 1 password/minute, but the user will not be blocked for to long. Exchange 2010 has some special register settings to make IIS stop caching, otherwise it would not work.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a tutorial to set up automatic user lockout in Exchange 2010 - Outlook
+Web Acces (OWA). When a user does 5 wrong login attempts, he/she is locked out
+from the webinterface. After for example 5 minutes he or she is unlocked again
+automatically. This helps you mitigate brute force attacks, since an attacker
+can only try 1 password/minute, but the user will not be blocked for to long.
+Exchange 2010 has some special register settings to make IIS stop caching,
+otherwise it would not work.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h4>Group Policy settings</h4>
 
@@ -80,16 +86,17 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p><code>Start</code> -&gt; <code>Administrative Tools</code> -&gt; <code>Group Policy Editor</code>.</p>
 
-<p>Right click the &quot;Default Domain Policy&quot; (or any other policy where you might want to apply this).</p>
+<p>Right click the &quot;Default Domain Policy&quot; (or any other policy where you might
+want to apply this).</p>
 
 <p>Click <code>Edit</code></p>
 
-<p>Navigate to: <code>Computer Configuration</code> -&gt; <code>Policies</code> -&gt; <code>Windows Settings</code> -&gt; <code>Security Settings</code> -&gt; <code>Account Policies</code> -&gt; <code>Account Lockout Policy</code>.</p>
+<p>Navigate to: <code>Computer Configuration</code> -&gt; <code>Policies</code> -&gt; <code>Windows Settings</code> -&gt;
+<code>Security Settings</code> -&gt; <code>Account Policies</code> -&gt; <code>Account Lockout Policy</code>.</p>
 
-<p>Set the following values:
-- &quot;Account Lockout Duration&quot;: 5 minutes
-- &quot;Account Lockout Threshold&quot;: 5 invalid logon attempts
-- &quot;Reset Account Lockout Counter After&quot;: 5 minutes</p>
+<p>Set the following values: - &quot;Account Lockout Duration&quot;: 5 minutes - &quot;Account
+Lockout Threshold&quot;: 5 invalid logon attempts - &quot;Reset Account Lockout Counter
+After&quot;: 5 minutes</p>
 
 <p>Adapt this to your own time/threshold if you feel so.</p>
 
@@ -99,9 +106,13 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>IIS / OWA</h3>
 
-<p>Outlook Web Access operates via the IIS server, which when using form based authentication caches login tokens for a set amount of time. <a href="http://support.microsoft.com/kb/173658/en-us">(See this link)</a> and <a href="https://www.microsoft.com/technet/prodtechnol/windowsserver2003/library/iis/6b2e7fcd-5fad-4ac8-ac0a-dcfbe771e9e1.mspx">this one</a>.</p>
+<p>Outlook Web Access operates via the IIS server, which when using form based
+authentication caches login tokens for a set amount of time. <a href="http://support.microsoft.com/kb/173658/en-us">(See this
+link)</a> and <a href="https://www.microsoft.com/technet/prodtechnol/windowsserver2003/library/iis/6b2e7fcd-5fad-4ac8-ac0a-dcfbe771e9e1.mspx">this one</a>.</p>
 
-<p>If you have set the above group policy and you test in on the outlook web access of the exchange server, you will notice that if you have done more than 5 failed logins you can still login with the good password. </p>
+<p>If you have set the above group policy and you test in on the outlook web access
+of the exchange server, you will notice that if you have done more than 5 failed
+logins you can still login with the good password.</p>
 
 <p>On your IIS server(s) where OWA resides execute the following:</p>
 
@@ -115,26 +126,27 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p><code>HKEY_LOCAL_MACHINESystemCurrentControlSetServicesInetInfoParameters</code></p>
 
-<p>Click the <code>Edit</code> menu, then the <code>Add</code> menu, select a <code>32 bit DWORD</code> (or just <code>DWORD</code>).</p>
+<p>Click the <code>Edit</code> menu, then the <code>Add</code> menu, select a <code>32 bit DWORD</code> (or just
+<code>DWORD</code>).</p>
 
 <p>Name it: <code>UserTokenTTL</code></p>
 
-<p>Then set its value to <code>30</code>. This means that user tokens will be cached for 30 seconds by IIS.</p>
+<p>Then set its value to <code>30</code>. This means that user tokens will be cached for 30
+seconds by IIS.</p>
 
 <p>Now that is also solved.</p>
 
 <h3>Bonus: Active Directory Saved Search to view Locked Out users</h3>
 
-<p>Open the <code>Active Directory Users &amp;&amp; Computers</code> window from the <code>Administrative Tools</code> menu. </p>
+<p>Open the <code>Active Directory Users &amp;&amp; Computers</code> window from the <code>Administrative
+Tools</code> menu.</p>
 
 <p>Right Click the <code>Saved Queries</code>, select <code>New</code> -&gt; <code>Query</code>.</p>
 
-<p>Name: <code>Locked Out users</code>
-Description: <code>-</code></p>
+<p>Name: <code>Locked Out users</code> Description: <code>-</code></p>
 
-<p>Click <code>Define Query</code>.
-Click the <code>Find</code> dropdown, select <code>Custom Search</code>.
-Select the <code>Advanced</code> tab.</p>
+<p>Click <code>Define Query</code>. Click the <code>Find</code> dropdown, select <code>Custom Search</code>. Select
+the <code>Advanced</code> tab.</p>
 
 <p>Paste the following LDAP Query:</p>
 
@@ -145,7 +157,9 @@ Select the <code>Advanced</code> tab.</p>
 
 <p>Click <code>OK</code>.</p>
 
-<p>Now if a users calls you that they cannot login, you can see if they are locked out via that Saved Search. (Note that you might have to refresh the view a few times before seeing it.)</p>
+<p>Now if a users calls you that they cannot login, you can see if they are locked
+out via that Saved Search. (Note that you might have to refresh the view a few
+times before seeing it.)</p>
 </div><hr>Tags: <a href="../tags/exchange.html" class="link">exchange &nbsp;</a><a href="../tags/microsoft.html" class="link">microsoft &nbsp;</a><a href="../tags/outlook.html" class="link">outlook &nbsp;</a><a href="../tags/outlook-web-access.html" class="link">outlook-web-access &nbsp;</a><a href="../tags/owa.html" class="link">owa &nbsp;</a><a href="../tags/server-2008.html" class="link">server-2008 &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/windows.html" class="link">windows &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

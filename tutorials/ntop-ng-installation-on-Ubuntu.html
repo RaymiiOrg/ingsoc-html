@@ -71,25 +71,26 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><h3>Screenshots</h3>
 
-<p>This is a guide on installing the latest ntop-ng (1.1) on Ubuntu 12.04. </p>
+<p>This is a guide on installing the latest ntop-ng (1.1) on Ubuntu 12.04.</p>
 
 <pre><code>ntopng is the next generation version of the original ntop, a network traffic probe that shows the network usage, similar to what the popular top Unix command does. ntop is based on libpcap and it has been written in a portable way in order to virtually run on every Unix platform, MacOSX and on Win32 as well. ntopng users can use a a web browser to navigate through ntop (that acts as a web server) traffic information and get a dump of the network status. In the latter case, ntop can be seen as a simple RMON-like agent with an embedded web interface. 
 </code></pre>
 
-<p>This tutorial will walk you through the compilation and installation of ntopng from source. The package in the Ubuntu 12.04 repositories it quite old.</p>
+<p>This tutorial will walk you through the compilation and installation of ntopng
+from source. The package in the Ubuntu 12.04 repositories it quite old.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ntopng/1.png"><img src="https://raymii.org/s/inc/img/ntopng/1.png" alt="ntop" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ntopng/1.png"><img src="https://raymii.org/s/inc/img/ntopng/1.png" alt="ntop"></a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ntopng/2.png"><img src="https://raymii.org/s/inc/img/ntopng/2.png" alt="ntop" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ntopng/2.png"><img src="https://raymii.org/s/inc/img/ntopng/2.png" alt="ntop"></a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ntopng/3.png"><img src="https://raymii.org/s/inc/img/ntopng/3.png" alt="ntop" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ntopng/3.png"><img src="https://raymii.org/s/inc/img/ntopng/3.png" alt="ntop"></a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ntopng/4.png"><img src="https://raymii.org/s/inc/img/ntopng/4.png" alt="ntop" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ntopng/4.png"><img src="https://raymii.org/s/inc/img/ntopng/4.png" alt="ntop"></a></p>
 
-<p><a href="https://raymii.org/s/inc/img/ntopng/5.png"><img src="https://raymii.org/s/inc/img/ntopng/5.png" alt="ntop" /></a></p>
+<p><a href="https://raymii.org/s/inc/img/ntopng/5.png"><img src="https://raymii.org/s/inc/img/ntopng/5.png" alt="ntop"></a></p>
 
 <h3>What can ntopng do?</h3>
 
@@ -108,7 +109,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Produce HTML5/AJAX network traffic statistics</li>
 </ul>
 
-<p><a href="http://www.ntop.org/">More information on ntop-ng can be found on their website: http://www.ntop.org/</a></p>
+<p><a href="http://www.ntop.org/">More information on ntop-ng can be found on their website:
+http://www.ntop.org/</a></p>
 
 <h3>Contents</h3>
 
@@ -131,13 +133,20 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Debian 7 also works</li>
 </ul>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">This tutorial was tested on a DigitalOcean VPS. If you use this link you sponsor this website. (referral link)</a></p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">This tutorial was tested on a DigitalOcean VPS. If you use this link you
+sponsor this website. (referral link)</a></p>
 
 <h3>Note about checkinstall and packages</h3>
 
-<p>We are using checkinstall here to create a debian package of the source we compile. I do this because it gives more flexibility in managing the software afterwards. Upgrading or uninstalling the packages is easier than removing all the things make install placed. Furthermore, it makes it more clear for other administrators which software is installed.</p>
+<p>We are using checkinstall here to create a debian package of the source we
+compile. I do this because it gives more flexibility in managing the software
+afterwards. Upgrading or uninstalling the packages is easier than removing all
+the things make install placed. Furthermore, it makes it more clear for other
+administrators which software is installed.</p>
 
-<p>If you for example want to upgrade ntop-ng when it was installed via this tutorial with checkinstall, repeat the tutorial with only the version number changed. </p>
+<p>If you for example want to upgrade ntop-ng when it was installed via this
+tutorial with checkinstall, repeat the tutorial with only the version number
+changed.</p>
 
 <h3>Installing required packages</h3>
 
@@ -160,7 +169,8 @@ wget &quot;http://downloads.sourceforge.net/project/ntop/ntopng/ntopng-1.1_6932.
 
 <h3>Place ntopng-data</h3>
 
-<p>The data files contain files for the web interface like the GeoIP database. They are already good, the only thing we need to do is place them:</p>
+<p>The data files contain files for the web interface like the GeoIP database. They
+are already good, the only thing we need to do is place them:</p>
 
 <pre><code>cd /usr/local/src
 tar -xf ntopng-data-1.1.tar.gz
@@ -170,9 +180,12 @@ cp -r ./usr/* /usr
 
 <h3>Compile ntopng</h3>
 
-<p>The compilation of ntopng itself is a bit more work, this is because the ntopng 1.1 package includes prebuilt .o blobs for third party tools, probably by accident, which will cause you trouble when building ntopng yourself. We need to clean those up.</p>
+<p>The compilation of ntopng itself is a bit more work, this is because the ntopng
+1.1 package includes prebuilt .o blobs for third party tools, probably by
+accident, which will cause you trouble when building ntopng yourself. We need to
+clean those up.</p>
 
-<p>First we extract: </p>
+<p>First we extract:</p>
 
 <pre><code>cd /usr/local/src
 tar -xf ntopng-1.1.tar.gz
@@ -250,7 +263,8 @@ cd ..
 <pre><code>-G=/var/run/ntopng.pid
 </code></pre>
 
-<p>Again, with the <code>ntopng -</code> option you can see all the possible options for use in this config file.</p>
+<p>Again, with the <code>ntopng -</code> option you can see all the possible options for use
+in this config file.</p>
 
 <p>Before starting the test, make sure redis is started:</p>
 
@@ -259,18 +273,22 @@ cd ..
 
 <h3>Test ntopng</h3>
 
-<p>If the compilation gave no errors and the config files are places we can start <code>ntopng</code> and see how it works:</p>
+<p>If the compilation gave no errors and the config files are places we can start
+<code>ntopng</code> and see how it works:</p>
 
 <pre><code>ntopng /etc/ntopng/ntopng.conf
 </code></pre>
 
-<p>Use your web browser to navigate to <code>http://your-ntop-box-ip:3000</code>. There you can login with the username/password combo <code>admin/admin</code>.</p>
+<p>Use your web browser to navigate to <code>http://your-ntop-box-ip:3000</code>. There you
+can login with the username/password combo <code>admin/admin</code>.</p>
 
-<p>If this works, and there is data visible as in the screenshots, continue on to set up the upstart script.</p>
+<p>If this works, and there is data visible as in the screenshots, continue on to
+set up the upstart script.</p>
 
 <h3>Upstart script</h3>
 
-<p>This is a simple upstart script which can be used to start, stop and restart ntopng. Place it in <code>/etc/init/ntopng.conf</code>:</p>
+<p>This is a simple upstart script which can be used to start, stop and restart
+ntopng. Place it in <code>/etc/init/ntopng.conf</code>:</p>
 
 <pre><code># ntopng network flow analyzer
 # by https://raymii.org

@@ -69,18 +69,26 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/pidp8/wps8/pdp8withptr.jpg"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/pidp8/wps8/pdp8withptr.jpg" alt=""></p>
 
 <blockquote>
 <p>PDP-8/L with papertape reader (<a href="https://web.archive.org/web/20161207195918/https://ethandicks.wordpress.com/2013/07/31/adventures-in-retrocomputing-the-dec-pdp-8-pr8l-high-speed-paper-tape-interface/">src</a>)</p>
 </blockquote>
 
-<p>This guide shows you how to build an RK05 bootable system disk with OS/8 on it for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build source, copy over all the files and set up the LPT printer and the PTR/PIP paper tape punch/readers. As an added bonus the article also shows you how to get text files in and out of the PDP-8 sytem using the printer and papertape reader / puncher.</p>
+<p>This guide shows you how to build an RK05 bootable system disk with OS/8 on it
+for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build
+source, copy over all the files and set up the LPT printer and the PTR/PIP paper
+tape punch/readers. As an added bonus the article also shows you how to get text
+files in and out of the PDP-8 sytem using the printer and papertape reader /
+puncher.</p>
 
-<p><a href="http://obsolescence.wix.com/obsolescence#!pidp-8/cbie">Oscar Vermeulen created an amazing replica of the PDP-8/I</a>. It&#39;s a front panel with working switches and LED&#39;s, plus a simple Raspberry Pi running the SIMH emulator. <a href="https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html">I&#39;ve written</a> multiple <a href="https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html">articles on the</a> <a href="https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html">PDP and PiDP-8</a> and I like the device a lot in general.</p>
+<p><a href="http://obsolescence.wix.com/obsolescence#!pidp-8/cbie">Oscar Vermeulen created an amazing replica of the PDP-8/I</a>. It&#39;s a front
+panel with working switches and LED&#39;s, plus a simple Raspberry Pi running the
+SIMH emulator. <a href="https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html">I&#39;ve written</a> multiple <a href="https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html">articles on the</a> <a href="https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html">PDP and
+PiDP-8</a> and I like the device a lot in general.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Setup</h3>
 
@@ -94,7 +102,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>pacman -Sy simh
 </code></pre>
 
-<p>You also need two RX01 floppy disks with the OS/8 system on them. We will use those floppies to create and format an RK05 disk and copy over all the files. As a bonus we will also copy over a lot of games from the famous <code>advent.rk05</code> disk.</p>
+<p>You also need two RX01 floppy disks with the OS/8 system on them. We will use
+those floppies to create and format an RK05 disk and copy over all the files. As
+a bonus we will also copy over a lot of games from the famous <code>advent.rk05</code>
+disk.</p>
 
 <p>Create a new folder for this project:</p>
 
@@ -114,7 +125,7 @@ wget http://www.pdp8online.com/ftp/images/os8/os8f4_rx.rx01
 wget https://raymii.org/s/inc/downloads/pdp/os8f4_rx.rx01
 </code></pre>
 
-<p>The first disk is OS/8 with Basic, the second disk with Fortran 4. </p>
+<p>The first disk is OS/8 with Basic, the second disk with Fortran 4.</p>
 
 <p>Download the <code>advent</code> disk as well:</p>
 
@@ -123,9 +134,16 @@ wget https://raymii.org/s/inc/downloads/pdp/os8f4_rx.rx01
 
 <h3>Preparing SIMH</h3>
 
-<p>OS/8 was delivered via a lot of different ways. You could get it on paper tape, DECtape, RK05 disks or RX01/2 floppies. All &#39;distributions&#39; came with a utility named BUILD, which allowed you to create new systems or modify the existing running system. In our case we use the RX01 floppies as our &#39;source&#39;, booting of one of them. We then use the <code>BUILD</code> program to format a new RK05 disk and then copy over all the programs. </p>
+<p>OS/8 was delivered via a lot of different ways. You could get it on paper tape,
+DECtape, RK05 disks or RX01/2 floppies. All &#39;distributions&#39; came with a utility
+named BUILD, which allowed you to create new systems or modify the existing
+running system. In our case we use the RX01 floppies as our &#39;source&#39;, booting of
+one of them. We then use the <code>BUILD</code> program to format a new RK05 disk and then
+copy over all the programs.</p>
 
-<p>Fun fact, the RX01 capacity was 256kb and the RX02 disk is 512kb large. On the image below another type of diskette made by DEC is shown, the <a href="https://web.archive.org/web/20161204184459/http://home.claranet.nl/users/pb0aia/vax/rx50.html">rx50</a>. That was 1.2 MB large as far as I can <a href="https://en.wikiversity.org/wiki/DEC_Professional_(computer)">find</a>.</p>
+<p>Fun fact, the RX01 capacity was 256kb and the RX02 disk is 512kb large. On the
+image below another type of diskette made by DEC is shown, the <a href="https://web.archive.org/web/20161204184459/http://home.claranet.nl/users/pb0aia/vax/rx50.html">rx50</a>. That
+was 1.2 MB large as far as I can <a href="https://en.wikiversity.org/wiki/DEC_Professional_(computer)">find</a>.</p>
 
 <p><img src="https://raymii.org/s/inc/img/pidp8/wps8/floppies.jpg" alt="rx02"></p>
 
@@ -133,16 +151,17 @@ wget https://raymii.org/s/inc/downloads/pdp/os8f4_rx.rx01
 <p>On the left an RX02 diskette and on the right an RX50 diskette. (<a href="http://www.pdp8.net/rx02/rx02.shtml?large">source</a>)</p>
 </blockquote>
 
-<p>We will not create a simh ini file just yet. Fire off the emulator in this folder:</p>
+<p>We will not create a simh ini file just yet. Fire off the emulator in this
+folder:</p>
 
 <pre><code>simh-pdp8
 </code></pre>
 
-<p>First we will tell the emulator that it is emulating a PDP8 with 32k of core memory (instead of 4):</p>
+<p>First we will tell the emulator that it is emulating a PDP8 with 32k of core
+memory (instead of 4):</p>
 
-<p>PDP-8 simulator V4.0-0 Beta        git commit id: ff95fb8e
-  sim&gt; set cpu 32k
-  sim&gt; set cpu noidle</p>
+<p>PDP-8 simulator V4.0-0 Beta git commit id: ff95fb8e sim&gt; set cpu 32k sim&gt; set
+cpu noidle</p>
 
 <p>Attach the (nonexistent) new system disk, simh will create it:</p>
 
@@ -200,7 +219,11 @@ OS/8 V3Q
 .
 </code></pre>
 
-<p>The <code>RESORC</code> command shows the system resources. In this case we can see that the <code>SYS</code> (system partition?) is of type <code>RX8E</code>. This type is the subsystem controller (hardware board) which, via the <a href="http://www.pdp-11.nl/peripherals/disk/rx-info.html">OMNIBUS</a>, drives the RX01 floppy drive. <a href="https://en.wikipedia.org/wiki/RK05">RK8E</a> is the (OMNIBUS) controller for the <code>RK05</code> disks. The <code>PT8E</code> is the paper tape/punch used with <code>PIP</code> as the <code>PTP:</code> or <code>PTR:</code> device.</p>
+<p>The <code>RESORC</code> command shows the system resources. In this case we can see that
+the <code>SYS</code> (system partition?) is of type <code>RX8E</code>. This type is the subsystem
+controller (hardware board) which, via the <a href="http://www.pdp-11.nl/peripherals/disk/rx-info.html">OMNIBUS</a>, drives the RX01 floppy
+drive. <a href="https://en.wikipedia.org/wiki/RK05">RK8E</a> is the (OMNIBUS) controller for the <code>RK05</code> disks. The <code>PT8E</code>
+is the paper tape/punch used with <code>PIP</code> as the <code>PTP:</code> or <code>PTR:</code> device.</p>
 
 <p>We start with formatting the disk with the <code>ZERO</code> command:</p>
 
@@ -211,11 +234,17 @@ OS/8 V3Q
 .
 </code></pre>
 
-<p>RKA0 and RKB0 represent the inner and outer cylinders of the disk. The split is necessary because OS/8 cannot address the entire 2.5 MB disk with a 12-bit machine word. 1.6 megawords is 6250 sectors (256 words per sector) so that overflows the 4096 word limit. So, it just assigns half the disk to one device, and half to the other.</p>
+<p>RKA0 and RKB0 represent the inner and outer cylinders of the disk. The split is
+necessary because OS/8 cannot address the entire 2.5 MB disk with a 12-bit
+machine word. 1.6 megawords is 6250 sectors (256 words per sector) so that
+overflows the 4096 word limit. So, it just assigns half the disk to one device,
+and half to the other.</p>
 
-<p>On the RK05F, the double-capacity fixed-disk version, OS/8 sees two logical drives, drive 0 and drive 1. So, RKA0, RKB0, RKA1, and RKB1.</p>
+<p>On the RK05F, the double-capacity fixed-disk version, OS/8 sees two logical
+drives, drive 0 and drive 1. So, RKA0, RKB0, RKA1, and RKB1.</p>
 
-<p>The above disk explanation comes via <a href="https://groups.google.com/forum/#!topic/pidp-8/uyUUxtZaQGQ">Warren Young and Rick Murphy</a> on the PiDP-8 mailinglist.</p>
+<p>The above disk explanation comes via <a href="https://groups.google.com/forum/#!topic/pidp-8/uyUUxtZaQGQ">Warren Young and Rick Murphy</a> on the
+PiDP-8 mailinglist.</p>
 
 <p>The actual system build is done with the <code>BUILD</code> program:</p>
 
@@ -224,7 +253,8 @@ OS/8 V3Q
 $
 </code></pre>
 
-<p>From the OS/8 System reference manual (AA-H607A-TA<em>OS8</em>V3D_sysMan), Chapter 9, the description of <code>BUILD</code>:</p>
+<p>From the OS/8 System reference manual (AA-H607A-TA <em>OS8</em> V3D_sysMan), Chapter 9,
+the description of <code>BUILD</code>:</p>
 
 <p><code>BUILD</code> is the system generation program for OS/8 that allows you to:</p>
 
@@ -235,11 +265,16 @@ $
 <li>Add your own device handlers to a new or existing system.</li>
 </ul>
 
-<p>With <code>BUILD</code>, you use simple keyboard commands to manipulate the device handlers that make up the OS/8 peripheral configuration. <code>BUILD</code> allows you to quickly and easily insert devices not standard on the system.</p>
+<p>With <code>BUILD</code>, you use simple keyboard commands to manipulate the device handlers
+that make up the OS/8 peripheral configuration. <code>BUILD</code> allows you to quickly
+and easily insert devices not standard on the system.</p>
 
-<p>Device handlers are comparable to our current day device drivers. They for example know how a specific disk, paper tape or other device works and let the OS/8 system use it.</p>
+<p>Device handlers are comparable to our current day device drivers. They for
+example know how a specific disk, paper tape or other device works and let the
+OS/8 system use it.</p>
 
-<p>I&#39;ll go over a few commands in more detail below. After that we create the actual disk with the commands.</p>
+<p>I&#39;ll go over a few commands in more detail below. After that we create the
+actual disk with the commands.</p>
 
 <h4>PRINT</h4>
 
@@ -258,22 +293,33 @@ LS8E: *LPT
 DSK=RX8E:SYS
 </code></pre>
 
-<p>If there is an asterisk (<code>*</code>) in front of the devices then that device is active and will be included in the new OS/8 system.</p>
+<p>If there is an asterisk (<code>*</code>) in front of the devices then that device is active
+and will be included in the new OS/8 system.</p>
 
-<p>The <code>BUILD</code> commands <code>INSERT</code>, <code>REPLACE</code> and <code>SYSTEM</code> are used to activate device handlers. A maximum of 15 handlers, including the system device (SYS) and the default mass storage device can be made active.</p>
+<p>The <code>BUILD</code> commands <code>INSERT</code>, <code>REPLACE</code> and <code>SYSTEM</code> are used to activate
+device handlers. A maximum of 15 handlers, including the system device (SYS) and
+the default mass storage device can be made active.</p>
 
 <h4>LOAD</h4>
 
-<p>If you have a tape with a specific device handler, which will be unlikely in the case of <code>simh</code> emulation, you can use the <code>LOAD</code> command to load this handler from the tape device. For example to load a handler from a binary paper tape:</p>
+<p>If you have a tape with a specific device handler, which will be unlikely in the
+case of <code>simh</code> emulation, you can use the <code>LOAD</code> command to load this handler
+from the tape device. For example to load a handler from a binary paper tape:</p>
 
 <pre><code>$LOAD PTR:
 ^
 $
 </code></pre>
 
-<p>The caret (<code>^</code>) is shown to indicate that the system is waiting for the tape to be loaded. If you&#39;ve loaded the device then you can press any key (the ESC is a good one). The prompt will change back to <code>$</code> to indicate that the handler has been loader. If you have a specific filename on a structured device you can specify it after the colon. A paper tape is a non-structured device so we can omit it there.</p>
+<p>The caret (<code>^</code>) is shown to indicate that the system is waiting for the tape to
+be loaded. If you&#39;ve loaded the device then you can press any key (the ESC is a
+good one). The prompt will change back to <code>$</code> to indicate that the handler has
+been loader. If you have a specific filename on a structured device you can
+specify it after the colon. A paper tape is a non-structured device so we can
+omit it there.</p>
 
-<p>To load the handler with the filename <code>HANDLR.03</code> from the DECtape device <code>DTA3</code> use the below syntax:</p>
+<p>To load the handler with the filename <code>HANDLR.03</code> from the DECtape device <code>DTA3</code>
+use the below syntax:</p>
 
 <pre><code>$LOAD DTA3:HANDLR.03
 
@@ -282,26 +328,40 @@ $
 
 <h4>INSERT and DELETE</h4>
 
-<p>After a <code>LOAD</code> command has made a handler or group of handlers available for insertion into the OS/8 system, use the <code>INSERT</code> command to make particular entry points active. The <code>INSERT</code> command uses two arguments; <code>gname</code> and <code>pname</code>. <code>Gname</code> is the group name of the handler, for example, the <code>gname</code> for TC08 DECtape is <code>TC</code>. <code>Pname</code> is the permanent name by which the device is currently known to <code>BUILD</code>.  TC08 DECtape thus has the group name <code>TC</code> and the permanent names <code>DTA0</code>-<code>DTA7</code>.</p>
+<p>After a <code>LOAD</code> command has made a handler or group of handlers available for
+insertion into the OS/8 system, use the <code>INSERT</code> command to make particular
+entry points active. The <code>INSERT</code> command uses two arguments; <code>gname</code> and
+<code>pname</code>. <code>Gname</code> is the group name of the handler, for example, the <code>gname</code> for
+TC08 DECtape is <code>TC</code>. <code>Pname</code> is the permanent name by which the device is
+currently known to <code>BUILD</code>. TC08 DECtape thus has the group name <code>TC</code> and the
+permanent names <code>DTA0</code>-<code>DTA7</code>.</p>
 
-<p>Other examples are to include a handler for the paper tape reader and punch device <code>PT8E</code>:</p>
+<p>Other examples are to include a handler for the paper tape reader and punch
+device <code>PT8E</code>:</p>
 
 <pre><code>$INSERT PT8E:PTR
 $INSERT PT8E:PTP
 </code></pre>
 
-<p>If you want to export files or import files (with PIP) then having the papertape reader is quite handy.</p>
+<p>If you want to export files or import files (with PIP) then having the papertape
+reader is quite handy.</p>
 
 <h4>DSK</h4>
 
-<p><code>DSK</code> allows you to specify the name of the device that will become the default storage device of OS/8. Since we want to use the RK05 disk, we should tell the system that:</p>
+<p><code>DSK</code> allows you to specify the name of the device that will become the default
+storage device of OS/8. Since we want to use the RK05 disk, we should tell the
+system that:</p>
 
 <pre><code>$DSK RK8E:SYS
 </code></pre>
 
 <h4>SYSTEM and BOOTSTRAP</h4>
 
-<p>The <code>SYSTEM</code> command specifies devices that are system handlers. The <code>BOOTSTRAP</code> command is the command that finally implements all the changes that you made with <code>BUILD</code>. <code>BOOT</code> rewrites all relevant Monitor tables and device handlers to reflect the updated system status. The devices <code>BUILD</code> had marked active now become device handlers in the system.</p>
+<p>The <code>SYSTEM</code> command specifies devices that are system handlers. The <code>BOOTSTRAP</code>
+command is the command that finally implements all the changes that you made
+with <code>BUILD</code>. <code>BOOT</code> rewrites all relevant Monitor tables and device handlers to
+reflect the updated system status. The devices <code>BUILD</code> had marked active now
+become device handlers in the system.</p>
 
 <p>To mark the RK05 drive as the system device:</p>
 
@@ -312,26 +372,34 @@ WRITE ZERO DIRECT?YES
 SYS BUILT
 </code></pre>
 
-<p>If the system device specified is different from the current system device, <code>BUILD</code> copies the system from the current system device to the new system device. After the copy is complete, <code>BUILD</code> asks: </p>
+<p>If the system device specified is different from the current system device,
+<code>BUILD</code> copies the system from the current system device to the new system
+device. After the copy is complete, <code>BUILD</code> asks:</p>
 
 <pre><code>WRITE ZERO DIRECT? 
 </code></pre>
 
-<p>to determine whether a new (zero) directory is to be writtenon the new system device. If the reply is YES, the system will place a zero directory on the device. Any other reply causes the system to retain the old directory.</p>
+<p>to determine whether a new (zero) directory is to be writtenon the new system
+device. If the reply is YES, the system will place a zero directory on the
+device. Any other reply causes the system to retain the old directory.</p>
 
-<p>We must save the built system in the case we ever want to make changes to it again without starting over. This is after you&#39;ve exited  the <code>BUILD</code> program (with CTRL+C), in the OS/8 prompt:</p>
+<p>We must save the built system in the case we ever want to make changes to it
+again without starting over. This is after you&#39;ve exited the <code>BUILD</code> program
+(with CTRL+C), in the OS/8 prompt:</p>
 
 <pre><code>. SAVE SYS BUILD
 </code></pre>
 
 <h3>BUILD the new device</h3>
 
-<p>If you&#39;ve read all the above information you can probably guess the commands we&#39;re going to execute. We start from the OS/8 monitor (<code>.</code> prompt) by running:</p>
+<p>If you&#39;ve read all the above information you can probably guess the commands
+we&#39;re going to execute. We start from the OS/8 monitor (<code>.</code> prompt) by running:</p>
 
 <pre><code>. RUN SYS BUILD
 </code></pre>
 
-<p>The prompt changes to the <code>$</code>. Delete the current system device (we don&#39;t want the floppy-based system, but the disk based one):</p>
+<p>The prompt changes to the <code>$</code>. Delete the current system device (we don&#39;t want
+the floppy-based system, but the disk based one):</p>
 
 <pre><code>$DELETE SYS
 </code></pre>
@@ -348,7 +416,8 @@ SYS BUILT
 $INSERT RK8E:RKB0
 </code></pre>
 
-<p>The papertape reader and punch and the LPT printer always come in handy, so insert the required system handlers:</p>
+<p>The papertape reader and punch and the LPT printer always come in handy, so
+insert the required system handlers:</p>
 
 <pre><code>$INSERT LS8E:LPT
 
@@ -369,13 +438,15 @@ $SYSTEM RK8E
 <pre><code>?SYS
 </code></pre>
 
-<p>Then you need to check if the RX8E (floppy) handler is not active. Issue the <code>PRINT</code> command and check for:</p>
+<p>Then you need to check if the RX8E (floppy) handler is not active. Issue the
+<code>PRINT</code> command and check for:</p>
 
 <pre><code>RX8E: *SYS  
 RK8E: *SYS  *RKA0 *RKB0 
 </code></pre>
 
-<p>If the <code>*</code> (star) is there, it is active. Run <code>DELETE SYS</code> again and check with <code>PRINT</code> afterwards. It should look like:</p>
+<p>If the <code>*</code> (star) is there, it is active. Run <code>DELETE SYS</code> again and check with
+<code>PRINT</code> afterwards. It should look like:</p>
 
 <pre><code>RX8E: SYS 
 RK8E: *SYS  *RKA0 *RKB0 
@@ -390,14 +461,17 @@ RK8E: *SYS  *RKA0 *RKB0
 
 <h3>Copy all the things</h3>
 
-<p>The systemdrive is set up on the RK05 disk, we can now boot from it. Press <code>CTRL+E</code> to pause and return to the SIMH prompt and boot from the new system disk:</p>
+<p>The systemdrive is set up on the RK05 disk, we can now boot from it. Press
+<code>CTRL+E</code> to pause and return to the SIMH prompt and boot from the new system
+disk:</p>
 
 <pre><code>Simulation stopped, PC: 01210 (JMP 1207)
 sim&gt; boot rk0
 .
 </code></pre>
 
-<p>Any command will fail, since there is nothing on the device except the bare base system:</p>
+<p>Any command will fail, since there is nothing on the device except the bare base
+system:</p>
 
 <pre><code>.DIR
 NO CCL!
@@ -406,7 +480,8 @@ NO CCL!
 .
 </code></pre>
 
-<p>We should copy over all the system files and software from the floppy drive. Press <code>CTRL+E</code> again and boot from the floppy disk again:</p>
+<p>We should copy over all the system files and software from the floppy drive.
+Press <code>CTRL+E</code> again and boot from the floppy disk again:</p>
 
 <pre><code>Simulation stopped, PC: 01210 (JMP 1207)
 sim&gt; boot rx0 
@@ -414,7 +489,8 @@ sim&gt; boot rx0
 .
 </code></pre>
 
-<p>With the <code>DIR</code> command you can see what is on the disk. I made a typo earlier when doing <code>SAVE SYS BUILD</code> as you can see:</p>
+<p>With the <code>DIR</code> command you can see what is on the disk. I made a typo earlier
+when doing <code>SAVE SYS BUILD</code> as you can see:</p>
 
 <pre><code>.DIR RKA0:
 
@@ -435,7 +511,8 @@ BUILT .SV  33           BUILD .SV  33
 <pre><code>.COPY RKA0:&lt;RXA0:*.*
 </code></pre>
 
-<p>The syntax is <code>COPY DEST:&lt;SRC:name.ext</code>. To just copy the binaries you can do <code>COPY RKA0:&lt;RXA0:*.SV</code>. </p>
+<p>The syntax is <code>COPY DEST:&lt;SRC:name.ext</code>. To just copy the binaries you can do
+<code>COPY RKA0:&lt;RXA0:*.SV</code>.</p>
 
 <p>The output is a list of files copied:</p>
 
@@ -468,12 +545,16 @@ FORLIB.RL
 [...]
 </code></pre>
 
-<p>We also have the <code>ADVENT</code> disk coupled. It houses a few programs I want, like <code>WPFLOP.SV</code> (to manage WPS-8 diskettes) and the editor <code>TECO.SV</code>. Copy that as well:</p>
+<p>We also have the <code>ADVENT</code> disk coupled. It houses a few programs I want, like
+<code>WPFLOP.SV</code> (to manage WPS-8 diskettes) and the editor <code>TECO.SV</code>. Copy that as
+well:</p>
 
 <pre><code>.COPY RKA0:&lt;RKA1:*.SV
 </code></pre>
 
-<p>Here I copy just the programs, nothing else. The B side of that disk has the <code>ADVENT.SV</code> game and a boatload of other games, if you like you can copy it as well:</p>
+<p>Here I copy just the programs, nothing else. The B side of that disk has the
+<code>ADVENT.SV</code> game and a boatload of other games, if you like you can copy it as
+well:</p>
 
 <pre><code>.COPY RKA0:&lt;RKB1:*.*
 </code></pre>
@@ -483,7 +564,8 @@ FORLIB.RL
 <pre><code>NO ROOM, SKIPPING- RX01SY.BN
 </code></pre>
 
-<p>With the <code>DIR RKA0:</code> command you can see large files (blocks used). With the <code>DEL</code> command you can remove them:</p>
+<p>With the <code>DIR RKA0:</code> command you can see large files (blocks used). With the
+<code>DEL</code> command you can remove them:</p>
 
 <pre><code>.DEL RKA0:ADVENT.TX
 FILES DELETED:
@@ -520,7 +602,8 @@ ENTER.MU
 GMINOR.MU
 </code></pre>
 
-<p>Do more file management as you like. To see the contents of a file, use the <code>TYPE</code> command:</p>
+<p>Do more file management as you like. To see the contents of a file, use the
+<code>TYPE</code> command:</p>
 
 <pre><code>.TYPE RKA0:SNOOPY.BA
 </code></pre>
@@ -533,7 +616,8 @@ GMINOR.MU
 [...]
 </code></pre>
 
-<p>When you&#39;re done we can finish off by booting from the filled up <code>rx0</code> disk. Press <code>CTRL+E</code> to return to the simh prompt and boot off the disk:</p>
+<p>When you&#39;re done we can finish off by booting from the filled up <code>rx0</code> disk.
+Press <code>CTRL+E</code> to return to the simh prompt and boot off the disk:</p>
 
 <pre><code>Simulation stopped, PC: 01207 (KSF)
 sim&gt; boot rk0
@@ -595,13 +679,16 @@ COMPLIMENTS OF  DIGITAL&#39;S  PDP-8/E  COMPUTER
 READY
 </code></pre>
 
-<h3>Punching and reading PAPERTAPE with PIP aka getting files in and out of the system</h3>
+<h3>Punching and reading PAPERTAPE with PIP aka getting files in and out of the</h3>
 
-<p><img src="https://raymii.org/s/inc/img/pidp8/wps8/PDP8Papertape.jpg"></p>
+<p>system</p>
+
+<p><img src="https://raymii.org/s/inc/img/pidp8/wps8/PDP8Papertape.jpg" alt=""></p>
 
 <p>(<a href="https://web.archive.org/web/20161207195815/http://technology.niagarac.on.ca/staff/mcsele/pdp8.htm">image source</a>)</p>
 
-<p>Now that we have a working systemdisk we can set up a <code>simh.ini</code> file and play with the papertape reader and puncher. This is the contents of my simh ini file:</p>
+<p>Now that we have a working systemdisk we can set up a <code>simh.ini</code> file and play
+with the papertape reader and puncher. This is the contents of my simh ini file:</p>
 
 <pre><code>set cpu 32k
 set cpu noidle
@@ -625,7 +712,8 @@ LPT: creating new file
 .
 </code></pre>
 
-<p>To get files off the PDP-8 system, use the <code>PTP</code> device (paper tape punch). Create a test file with the <code>CREATE</code> command:</p>
+<p>To get files off the PDP-8 system, use the <code>PTP</code> device (paper tape punch).
+Create a test file with the <code>CREATE</code> command:</p>
 
 <pre><code>.CREATE REMY.TX
 </code></pre>
@@ -664,7 +752,9 @@ HOW ARE YOU?
 .
 </code></pre>
 
-<p>Fire up the <code>PIP</code> program, it stands for <code>peripheral interchange program</code>. I didn&#39;t make it up, but the name is quite a mouthfull. Just as with the copy command, we can send data from place A to place B:</p>
+<p>Fire up the <code>PIP</code> program, it stands for <code>peripheral interchange program</code>. I
+didn&#39;t make it up, but the name is quite a mouthfull. Just as with the copy
+command, we can send data from place A to place B:</p>
 
 <pre><code>.R PIP
 </code></pre>
@@ -679,7 +769,8 @@ HOW ARE YOU?
 <pre><code>*PTP:&lt;REMY.TX
 </code></pre>
 
-<p>Syntax is like <code>COPY</code>, <code>DEST:&lt;SRC</code>. Press ESC afterwards to return to the OS/8 Monitor:</p>
+<p>Syntax is like <code>COPY</code>, <code>DEST:&lt;SRC</code>. Press ESC afterwards to return to the OS/8
+Monitor:</p>
 
 <pre><code>*$
 .
@@ -694,7 +785,9 @@ HOW ARE YOU?
 .
 </code></pre>
 
-<p>To get files into the system, like your assembler or basic programs, use the <code>PTR</code> (reader). On the host system, edit the <code>ptr.txt</code> file with your desired text:</p>
+<p>To get files into the system, like your assembler or basic programs, use the
+<code>PTR</code> (reader). On the host system, edit the <code>ptr.txt</code> file with your desired
+text:</p>
 
 <pre><code>$ cat ptr.txt
 Raymii.org
@@ -712,20 +805,24 @@ The quick brown fox jumps over the lazy dog.
 unix2dos: converting file ptr.txt to DOS format...
 </code></pre>
 
-<p>Start up simh again and fire up PIP. The syntax here is the opposite of when getting data out of the system, since we now have our local file as the DEST:</p>
+<p>Start up simh again and fire up PIP. The syntax here is the opposite of when
+getting data out of the system, since we now have our local file as the DEST:</p>
 
 <pre><code>.R PIP
 *REMY2.TX&lt;PTR:
 </code></pre>
 
-<p>The prompt now changes to an <code>^</code>. This is to allow you to load the paper tape. Since we&#39;re emulating that is not needed. Press <code>ESC</code> to continue, the prompt will go back to the <code>*</code>. Exit <code>PIP</code> with <code>CTRL+C</code> afterwards;</p>
+<p>The prompt now changes to an <code>^</code>. This is to allow you to load the paper tape.
+Since we&#39;re emulating that is not needed. Press <code>ESC</code> to continue, the prompt
+will go back to the <code>*</code>. Exit <code>PIP</code> with <code>CTRL+C</code> afterwards;</p>
 
 <pre><code>^*
 *^C
 .
 </code></pre>
 
-<p>Since the encoding is different the file is in ALL CAPS, but that&#39;s not an issue for compiling:</p>
+<p>Since the encoding is different the file is in ALL CAPS, but that&#39;s not an issue
+for compiling:</p>
 
 <pre><code>.TYPE REMY2.TX
 RAYMII.ORG
@@ -739,11 +836,12 @@ THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
 .
 </code></pre>
 
-<p>There is one more way to get text in the system, directly via the terminal. </p>
+<p>There is one more way to get text in the system, directly via the terminal.</p>
 
 <h4>PIP TTY</h4>
 
-<p>Since the <code>TTY</code> device on emulated PDP-8&#39;s is just a window on your host computer, you can use the <code>TTY</code> device in <code>PIP</code> and paste text in from the host.</p>
+<p>Since the <code>TTY</code> device on emulated PDP-8&#39;s is just a window on your host
+computer, you can use the <code>TTY</code> device in <code>PIP</code> and paste text in from the host.</p>
 
 <p>Start up pip in OS/8:</p>
 
@@ -755,11 +853,15 @@ THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
 <pre><code>*REMY3.TX&lt;TTY:
 </code></pre>
 
-<p>Paste the text and ype <code>CTRL+Z</code> when the input is done. There is a 140 character line limit in ASCII mode. If you have binary data or longer lines, start up <code>PIP</code> with the <code>/I</code> flag in Image Mode.</p>
+<p>Paste the text and ype <code>CTRL+Z</code> when the input is done. There is a 140 character
+line limit in ASCII mode. If you have binary data or longer lines, start up
+<code>PIP</code> with the <code>/I</code> flag in Image Mode.</p>
 
-<p>The above TTY trick comes via <a href="https://groups.google.com/forum/#!topic/pidp-8/uyUUxtZaQGQ">Warren Young and Rick Murphy</a> on the PiDP-8 mailinglist.</p>
+<p>The above TTY trick comes via <a href="https://groups.google.com/forum/#!topic/pidp-8/uyUUxtZaQGQ">Warren Young and Rick Murphy</a> on the PiDP-8
+mailinglist.</p>
 
-<p>When your entirely finished with your newly built system drive you can shut down the system with the <code>BOOT</code> command, then quit SIMH with a <code>CTRL+C</code>:</p>
+<p>When your entirely finished with your newly built system drive you can shut down
+the system with the <code>BOOT</code> command, then quit SIMH with a <code>CTRL+C</code>:</p>
 
 <pre><code>.BOOT /DT
 </code></pre>

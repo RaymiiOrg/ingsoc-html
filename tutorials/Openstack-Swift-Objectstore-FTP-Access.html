@@ -69,20 +69,37 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo"></p>
 
-<p>This is a guide on accessing the Openstack Swift Object Storage system using an FTP client. Openstack Swift has a beautiful API which you can program to. However, sometimes it is handy to quickly be able to access your Swift/Objectstore data without programming around it. We will use ftp-cloudfs to do this. There is also Softlayers swftp, but that does not support Keystone Authentication (2.0). ftp-cloudfs does support this. The OS X Cyberduck FTP client also has Openstack Swift support, however that is a native implementation, not using FTP. With ftp-cloudfs we can use any ftp client, from Filezilla to midnight commander.</p>
+<p>This is a guide on accessing the Openstack Swift Object Storage system using an
+FTP client. Openstack Swift has a beautiful API which you can program to.
+However, sometimes it is handy to quickly be able to access your
+Swift/Objectstore data without programming around it. We will use ftp-cloudfs to
+do this. There is also Softlayers swftp, but that does not support Keystone
+Authentication (2.0). ftp-cloudfs does support this. The OS X Cyberduck FTP
+client also has Openstack Swift support, however that is a native
+implementation, not using FTP. With ftp-cloudfs we can use any ftp client, from
+Filezilla to midnight commander.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean<br>
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>We will be using the Dutch provider <a href="http://www.cloudvps.com">CloudVPS</a>, which is the first European-only Openstack Public Cloud, therefore not bound to the Patriot Act, so your data is more safe than it is with a provider that is vulnerable to the Patriot Act. <a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a> provides 10GB free ObjectStore, if you have VPS with them, the data is stored on at least 3 machines in 3 locations and they have a boatload of certifications (ISO 27001 etc).</p>
+<p>We will be using the Dutch provider <a href="http://www.cloudvps.com">CloudVPS</a>, which is the first European-
+only Openstack Public Cloud, therefore not bound to the Patriot Act, so your
+data is more safe than it is with a provider that is vulnerable to the Patriot
+Act. <a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a> provides 10GB free ObjectStore, if you have VPS with them,
+the data is stored on at least 3 machines in 3 locations and they have a
+boatload of certifications (ISO 27001 etc).</p>
 
-<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a>, please mention my name or this article. I&#39;ll get a little referal bonus, which will be used to keep this awesome website running.</p>
+<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a>, please mention my name or
+this article. I&#39;ll get a little referal bonus, which will be used to keep this
+awesome website running.</p>
 
-<p>Note that this article is not sponsored nor endorsed by <a href="http://www.cloudvps.com">CloudVPS</a>, nor am I speaking for or as <a href="http://www.cloudvps.com">CloudVPS</a>. </p>
+<p>Note that this article is not sponsored nor endorsed by <a href="http://www.cloudvps.com">CloudVPS</a>, nor am I
+speaking for or as <a href="http://www.cloudvps.com">CloudVPS</a>.</p>
 
-<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
+<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword
+bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
 
 <pre><code>OpenStack is a free and open-source software cloud computing platform. It is primarily deployed as an infrastructure as a service (IaaS) solution. The technology consists of a series of interrelated projects that control pools of processing, storage, and networking resources throughout a data center, able to be managed or provisioned through a web-based dashboard, command-line tools, or a RESTful API. It is released under the terms of the Apache License.
 </code></pre>
@@ -97,13 +114,24 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Be open source. There is no vendor lock in, you can switch between any provider providing OpenStack.</li>
 </ol>
 
-<p>In this tutorial we will focus on the Swift part, which provides s3 like access to files, or, objects. </p>
+<p>In this tutorial we will focus on the Swift part, which provides s3 like access
+to files, or, objects.</p>
 
-<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related tutorials here</a>. For example, how to use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a>.</p>
+<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related tutorials here</a>. For example, how to
+use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object
+Store</a>.</p>
 
-<p>As said, Swift has a very nice API to program to. For example, you can create an app for a TV show which streams extra video related to the TV show. This will be a one time peak  in traffic, depending on the TV show it can get pretty high in volume. You don&#39;t want to set up all the capacity yourself, including scaling, distributing files over multiple servers and load balancing it all. Swift handles this for you. You do need to program to it, there is not an easy way (yet) to access it in your file browser for example.</p>
+<p>As said, Swift has a very nice API to program to. For example, you can create an
+app for a TV show which streams extra video related to the TV show. This will be
+a one time peak in traffic, depending on the TV show it can get pretty high in
+volume. You don&#39;t want to set up all the capacity yourself, including scaling,
+distributing files over multiple servers and load balancing it all. Swift
+handles this for you. You do need to program to it, there is not an easy way
+(yet) to access it in your file browser for example.</p>
 
-<p>The project <a href="https://github.com/cloudfs/ftp-cloudfs">ftp-cloudfs</a> solves this partly by acting as a proxy between the Object Store API and an FTP client. Installation is easy, it can all be done via <a href="http://docs.openstack.org/api/quick-start/content/">pip</a>.</p>
+<p>The project <a href="https://github.com/cloudfs/ftp-cloudfs">ftp-cloudfs</a> solves this partly by acting as a proxy between the
+Object Store API and an FTP client. Installation is easy, it can all be done via
+<a href="http://docs.openstack.org/api/quick-start/content/">pip</a>.</p>
 
 <h3>Requirements</h3>
 
@@ -111,7 +139,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <ul>
 <li>access to an Openstack Swift instance (<a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a> for example)</li>
-<li>python 2.7
+<li>python 2.7 
 
 <ul>
 <li>python-keystoneclient (if you are going to use v2.0 authentication)</li>
@@ -120,11 +148,13 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>an ftp client</li>
 </ul>
 
-<p>This tutorial was written and tested on Ubuntu 12.04 and CentOS 6, but works everywhere the above requirements can be met.</p>
+<p>This tutorial was written and tested on Ubuntu 12.04 and CentOS 6, but works
+everywhere the above requirements can be met.</p>
 
 <h3>Installing packages</h3>
 
-<p>We need to make sure we have python 2, pip and the keystone client installed. For Ubuntu/Debian:</p>
+<p>We need to make sure we have python 2, pip and the keystone client installed.
+For Ubuntu/Debian:</p>
 
 <pre><code>apt-get install python-pip
 </code></pre>
@@ -134,7 +164,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>yum install python-pip
 </code></pre>
 
-<p>Now we are going to install ftp-cloudfs, swiftclient and keystoneclient using <code>pip</code>. You should do this in a python virtualenv, however that goes beyond the scope of this tutorial.</p>
+<p>Now we are going to install ftp-cloudfs, swiftclient and keystoneclient using
+<code>pip</code>. You should do this in a python virtualenv, however that goes beyond the
+scope of this tutorial.</p>
 
 <pre><code>pip install ftp-cloudfs python-keystoneclient python-swiftclient
 </code></pre>
@@ -146,7 +178,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>ftpcloudfs --foreground --keystone-auth --auth-url https://identity.stack.cloudvps.com/v2.0
 </code></pre>
 
-<p>This will start up the FTP server in the foreground on port 2021, talking to the <a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a> Swift Object Store. </p>
+<p>This will start up the FTP server in the foreground on port 2021, talking to the
+<a href="http://www.cloudvps.com/openstack/object-store/">CloudVPS</a> Swift Object Store.</p>
 
 <p><code>ftp-cloudfs</code> has the following usage options:</p>
 
@@ -183,9 +216,14 @@ Options:
                         publicURL)
 </code></pre>
 
-<p>For CloudVPS, the username will be in the form of: <code>TENANTNAME.EMAIL@ADDRESS.EXT</code>. For example, <code>BLA000066 Cinderella.user@example.org</code>. If you have a tenant (tenant means project in Openstack terminology) with a dot in the name, you can use the <code>--keystone-tenant-separator</code> option to change it in, for example, a <code>\</code> backslash.</p>
+<p>For CloudVPS, the username will be in the form of:
+<code>TENANTNAME.EMAIL@ADDRESS.EXT</code>. For example, <code>BLA000066
+Cinderella.user@example.org</code>. If you have a tenant (tenant means project in
+Openstack terminology) with a dot in the name, you can use the <code>--keystone-
+tenant-separator</code> option to change it in, for example, a <code>\</code> backslash.</p>
 
-<p>Now use your FTP client to connect to the server and there&#39;s your Object Store. There are some limitations: </p>
+<p>Now use your FTP client to connect to the server and there&#39;s your Object Store.
+There are some limitations:</p>
 
 <ul>
 <li>you can not place files in the top level folder, you need a subfolder. This is because top level are containers. </li>
@@ -194,13 +232,20 @@ Options:
 <li>top level folders are created as private containers. You will need to change them to public if that is needed.</li>
 </ul>
 
-<p>These limitations come from the fact that we are not talking to a file system block storage, but to object storage. Try to force a square through a circle, and then appreciate how well ftp-cloudfs handles this.</p>
+<p>These limitations come from the fact that we are not talking to a file system
+block storage, but to object storage. Try to force a square through a circle,
+and then appreciate how well ftp-cloudfs handles this.</p>
 
-<p>To set the ftp proxy open for other users, set the <code>--bind-address</code> to <code>0.0.0.0</code>. Remember that there is no encryption on FTP, so make sure you handle that in a different way.</p>
+<p>To set the ftp proxy open for other users, set the <code>--bind-address</code> to
+<code>0.0.0.0</code>. Remember that there is no encryption on FTP, so make sure you handle
+that in a different way.</p>
 
 <h3>Authentication Data</h3>
 
-<p>If you are unsure about what data you should use to authenticate you can use the <a href="http://docs.openstack.org/api/quick-start/content/">Openstack API</a> to get that data. Your provider may for example not have it in a logical place. The Openstack Horizon dashboard provides all the required data and URLs under the &quot;Access and Security --&gt; API Access&quot;.</p>
+<p>If you are unsure about what data you should use to authenticate you can use the
+<a href="http://docs.openstack.org/api/quick-start/content/">Openstack API</a> to get that data. Your provider may for example not have it
+in a logical place. The Openstack Horizon dashboard provides all the required
+data and URLs under the &quot;Access and Security --&gt; API Access&quot;.</p>
 
 <p>First get an authentication token using cURL:</p>
 
@@ -238,7 +283,7 @@ Connection: close
 }
 </code></pre>
 
-<p>The token is the first <code>id</code>. In this case: <code>8g2CeQ3kM0tkRAEiu6KmGaI6M8NLFDJ8WQ</code>. </p>
+<p>The token is the first <code>id</code>. In this case: <code>8g2CeQ3kM0tkRAEiu6KmGaI6M8NLFDJ8WQ</code>.</p>
 
 <p>Use the token to get a list of tenants for that token:</p>
 
@@ -274,13 +319,15 @@ Connection: close
 }
 </code></pre>
 
-<p>The part you want to have is the <code>&quot;name&quot;: &quot;HANDLE Projectname&quot;</code> part. That is your tenant.</p>
+<p>The part you want to have is the <code>&quot;name&quot;: &quot;HANDLE Projectname&quot;</code> part. That is
+your tenant.</p>
 
 <h3>Screenshot</h3>
 
-<p>Here is a screenshot of Filezilla uploading a copy of this website to the Object Store:</p>
+<p>Here is a screenshot of Filezilla uploading a copy of this website to the Object
+Store:</p>
 
-<p><img src="https://raymii.org/s/inc/img/filezilla-swift.png" alt=filezilla /></p>
+<p><img src="https://raymii.org/s/inc/img/filezilla-swift.png" alt="filezilla"></p>
 </div><hr>Tags: <a href="../tags/backup.html" class="link">backup &nbsp;</a><a href="../tags/centos.html" class="link">centos &nbsp;</a><a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/filezilla.html" class="link">filezilla &nbsp;</a><a href="../tags/ftp.html" class="link">ftp &nbsp;</a><a href="../tags/keystone.html" class="link">keystone &nbsp;</a><a href="../tags/objectstore.html" class="link">objectstore &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/swift.html" class="link">swift &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

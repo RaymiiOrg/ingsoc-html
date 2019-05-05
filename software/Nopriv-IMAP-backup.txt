@@ -108,7 +108,7 @@ New in version 2:
 
 git clone git://github.com/RaymiiOrg/NoPriv.git
 
-  2. Set up your login details, imap server and ssl:
+  1. Set up your login details, imap server and ssl:
 
 Edit the `nopriv.ini` file with your IMAP server, login and password:
 
@@ -146,7 +146,7 @@ Dutch gmail account it is named "[Gmail]/Alle Berichten".
 
 python ./nopriv.py
 
-  2. Browse the generated backup:
+  1. Browse the generated backup:
 
 Open the file `index.html` in your browser. There are all your folders and
 emails.

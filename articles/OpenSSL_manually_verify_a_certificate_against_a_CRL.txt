@@ -9,57 +9,87 @@ Format      : 	Markdown/HTML
 
 
 
-This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.
+This article shows you how to manually verfify a certificate against a CRL. CRL
+stands for Certificate Revocation List and is one way to validate a certificate
+status. It is an alternative to the OCSP, Online Certificate Status Protocol.
 
-You can read more about CRL's on [Wikipedia](https://en.wikipedia.org/wiki/Revocation_list).
+You can read more about CRL's on [Wikipedia][1].
 
-If you want to validate a certificate against an OCSP, see [my article on that here](https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html).
+If you want to validate a certificate against an OCSP, see [my article on that
+here][2].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
 
 We will be using OpenSSL in this article. I'm using the following version:
 
+    
+    
     $ openssl version
     OpenSSL 1.0.2 22 Jan 2015
+    
 
 ### Get a certificate with a CRL
 
-First we will need a certificate from a website. I'll be using Wikipedia as an example here. We can retreive this with the following openssl command:
+First we will need a certificate from a website. I'll be using Wikipedia as an
+example here. We can retreive this with the following openssl command:
 
+    
+    
     openssl s_client -connect wikipedia.org:443 2>&1 < /dev/null | sed -n '/-----BEGIN/,/-----END/p'
+    
 
 Save this output to a file, for example, wikipedia.pem:
 
+    
+    
     openssl s_client -connect wikipedia.org:443 2>&1 < /dev/null | sed -n '/-----BEGIN/,/-----END/p' > wikipedia.pem
+    
 
 Now, check if this certificate has an CRL URI:
 
+    
+    
     openssl x509 -noout -text -in wikipedia.pem | grep -A 4 'X509v3 CRL Distribution Points'
     X509v3 CRL Distribution Points: 
         Full Name:
           URI:http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl
+    
 
-If it does not give any output, the certificate has no CRL URI. You cannot valdiate it against a CRL.
+If it does not give any output, the certificate has no CRL URI. You cannot
+valdiate it against a CRL.
 
 Download the CRL:
 
+    
+    
     wget -O crl.der http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl
+    
 
-The CRL will be in `DER` (binary) format. The OpenSSL command needs it in PEM (base64 encoded DER) format, so convert it:
+The CRL will be in `DER` (binary) format. The OpenSSL command needs it in PEM
+(base64 encoded DER) format, so convert it:
 
+    
+    
     openssl crl -inform DER -in crl.der -outform PEM -out crl.pem
+    
 
 ### Getting the certificate chain
 
-It is required to have the certificate chain together with the certificate you want to validate. So, we need to get the certificate chain for our domain, `wikipedia.org`. Using the `-showcerts` option with `openssl s_client`, we can see all the certificates, including the chain:
+It is required to have the certificate chain together with the certificate you
+want to validate. So, we need to get the certificate chain for our domain,
+`wikipedia.org`. Using the `-showcerts` option with `openssl s_client`, we can
+see all the certificates, including the chain:
 
+    
+    
     openssl s_client -connect wikipedia.org:443 -showcerts 2>&1 < /dev/null
+    
 
 Results in a lot of output, but what we are interested in is the following:
 
+    
+    
      1 s:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert High Assurance CA-3
        i:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert High Assurance EV Root CA
     -----BEGIN CERTIFICATE-----
@@ -98,38 +128,67 @@ Results in a lot of output, but what we are interested in is the following:
     JiiNeXf1L/BXunwH1OH8zVowV36GEEfdMR/X/KLCvzB8XSSq6PmuX2p0ws5rs0bY
     Ib4p1I5eFdZCSucyb6Sxa1GDWL4/bcf72gMhy2oWGU4K8K2Eyl2Us1p292E=
     -----END CERTIFICATE-----
+    
 
-As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we already have that. If your site has more certificates in its chain, you will see more here. Save them all, in the order OpenSSL sends them (as in, first the one which directly issued your server certificate, then the one that issues that certificate and so on, with the root or most-root at the end of the file) to a file, named `chain.pem`.
+As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we
+already have that. If your site has more certificates in its chain, you will see
+more here. Save them all, in the order OpenSSL sends them (as in, first the one
+which directly issued your server certificate, then the one that issues that
+certificate and so on, with the root or most-root at the end of the file) to a
+file, named `chain.pem`.
 
-You can use the following command to save all the certificates OpenSSL command returns to a file named `chain.pem`. See [this article for more information)[https://raymii.org/s/articles/OpenSSL_-_Get_all_certificates_from_a_website_in_plain_text.html).
+You can use the following command to save all the certificates OpenSSL command
+returns to a file named `chain.pem`. See [this article for more
+information)[https://raymii.org/s/articles/OpenSSL _-_ Get _all_ certificates
+_from_ a _website_ in _plain_ text.html).
 
+    
+    
     OLDIFS=$IFS; IFS=':' certificates=$(openssl s_client -connect wikipedia.org:443 -showcerts -tlsextdebug -tls1 2>&1 </dev/null | sed -n '/-----BEGIN/,/-----END/ {/-----BEGIN/ s/^/:/; p}'); for certificate in ${certificates#:}; do echo $certificate | tee -a chain.pem ; done; IFS=$OLDIFS 
+    
 
 ### Combining the CRL and the Chain
 
-The Openssl command needs both the certificate chain and the CRL, in PEM format concatenated together for the validation to work. You can omit the CRL, but then the CRL check will not work, it will just validate the certificate against the chain.
+The Openssl command needs both the certificate chain and the CRL, in PEM format
+concatenated together for the validation to work. You can omit the CRL, but then
+the CRL check will not work, it will just validate the certificate against the
+chain.
 
+    
+    
     cat chain.pem crl.pem > crl_chain.pem
+    
 
 ### OpenSSL Verify
 
-We now have all the data we need can validate the certificate. 
+We now have all the data we need can validate the certificate.
 
+    
+    
     $ openssl verify -crl_check -CAfile crl_chain.pem wikipedia.pem 
     wikipedia.pem: OK
+    
 
 Above shows a good certificate status.
 
 ### Revoked certificate
 
-If you have a revoked certificate, you can also test it the same way as stated above. The response looks like this:
+If you have a revoked certificate, you can also test it the same way as stated
+above. The response looks like this:
 
+    
+    
     $ openssl verify -crl_check -CAfile crl_chain.pem revoked-test.pem 
     revoked-test.pem: OU = Domain Control Validated, OU = PositiveSSL, CN = xs4all.nl
     error 23 at 0 depth lookup:certificate revoked
+    
 
-You can test this using the certificate and chain on the Verisign revoked certificate test page: [https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html](https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html).
+You can test this using the certificate and chain on the Verisign revoked
+certificate test page: .
 
+   [1]: https://en.wikipedia.org/wiki/Revocation_list
+   [2]: https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html
+   [3]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

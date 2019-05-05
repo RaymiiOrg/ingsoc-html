@@ -69,24 +69,33 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/inc/img/cryptocat.png"><img src="https://raymii.org/s/inc/img/cryptocat.png" alt="cryptocat" width="480" height="320" /></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/inc/img/cryptocat.png"><img src="https://raymii.org/s/inc/img/cryptocat.png" alt="cryptocat"></a></p>
 
-<p>This is a guide on setting up a self hosted secure multiuser webchat service with CryptoCat. It covers the set up of ejabberd, nginx and the web interface for CryptoCat. It supports secure encrypted group chat, secure encrypted private chat and file and photo sharing.</p>
+<p>This is a guide on setting up a self hosted secure multiuser webchat service
+with CryptoCat. It covers the set up of ejabberd, nginx and the web interface
+for CryptoCat. It supports secure encrypted group chat, secure encrypted private
+chat and file and photo sharing.</p>
 
-<p><a href="http://en.wikipedia.org/wiki/Cryptocat">There were/are some issues with the encryption provided by CryptoCat. These seem to be fixed now, but still, beware.</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Cryptocat">There were/are some issues with the encryption provided by CryptoCat. These
+seem to be fixed now, but still, beware.</a></p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>This tutorial is tested on Ubuntu 12.04.</p>
 
-<p><a href="https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html">If you want to set up a federated XMPP Chat Network with ejabberd, see my tutorial how to do that.</a></p>
+<p><a href="https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html">If you want to set up a federated XMPP Chat Network with ejabberd, see my
+tutorial how to do that.</a></p>
 
 <h3>Set up a DNS record</h3>
 
-<p>Make sure you set up two DNS A records to your chat server. One should be for example <code>chat.sparklingclouds.nl</code> and the other is for the conferencing: <code>conference.chat.sparklingclouds.nl</code>. You should contact your provider if you need help with this.</p>
+<p>Make sure you set up two DNS A records to your chat server. One should be for
+example <code>chat.sparklingclouds.nl</code> and the other is for the conferencing:
+<code>conference.chat.sparklingclouds.nl</code>. You should contact your provider if you
+need help with this.</p>
 
-<p><strong>In the configuration files, you should replace <code>chat.sparklingclouds.nl</code> with your own domain name.</strong></p>
+<p><strong>In the configuration files, you should replace<code>chat.sparklingclouds.nl</code> with
+your own domain name.</strong></p>
 
 <h3>Install required packages</h3>
 
@@ -102,7 +111,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>/etc/ejabberd/ejabberd.cfg
 </code></pre>
 
-<p>And place the following contents in it, replacing chat.sparklingclouds.nl with your own domain:</p>
+<p>And place the following contents in it, replacing chat.sparklingclouds.nl with
+your own domain:</p>
 
 <pre><code>%% Hostname
 {hosts, [&quot;chat.sparklingclouds.nl&quot;]}.
@@ -202,11 +212,13 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
  ]}.
 </code></pre>
 
-<p><a href="https://raymii.org/s/tutorials/Ejabberd_SSL_Certificate.html">If you want a signed ejabberd ssl certificate you can read my tutorial how to do that</a></p>
+<p><a href="https://raymii.org/s/tutorials/Ejabberd_SSL_Certificate.html">If you want a signed ejabberd ssl certificate you can read my tutorial how to
+do that</a></p>
 
 <h3>NGINX Configuration</h3>
 
-<p>We need an SSL certificate for the web server. You can generate one yourself using the following command:</p>
+<p>We need an SSL certificate for the web server. You can generate one yourself
+using the following command:</p>
 
 <pre><code>cd /etc/ssl/certs
 openssl req -nodes -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 356
@@ -218,14 +230,15 @@ openssl req -nodes -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 35
 openssl req -nodes -newkey rsa:4096 -keyout private.key -out CSR.csr 
 </code></pre>
 
-<p>When the certificate is in place you can continue to configure NGINX.  </p>
+<p>When the certificate is in place you can continue to configure NGINX.</p>
 
-<p>Edit the file or create a new virtual host. </p>
+<p>Edit the file or create a new virtual host.</p>
 
 <pre><code>vim /etc/nginx/sites-enabled/default
 </code></pre>
 
-<p>And place the following contents in it, replacing chat.sparklingclouds.nl with your own domain:</p>
+<p>And place the following contents in it, replacing chat.sparklingclouds.nl with
+your own domain:</p>
 
 <pre><code>server {
     listen 80;
@@ -281,7 +294,8 @@ server {
 
 <h3>Cronjob for ejabberd</h3>
 
-<p>This is important, it cleans up unused ejabberd accounts. Create a new crontab like so:</p>
+<p>This is important, it cleans up unused ejabberd accounts. Create a new crontab
+like so:</p>
 
 <pre><code>crontab -e
 </code></pre>
@@ -295,15 +309,20 @@ server {
 
 <h3>Web Frontend</h3>
 
-<p>Note that you now already can use your own server with the CryptoCat frontend via: <a href="https://crypto.cat">https://crypto.cat</a>. We are going to set up our own frontend on our webserver so we don&#39;t need Crypto.Cat.</p>
+<p>Note that you now already can use your own server with the CryptoCat frontend
+via: <a href="https://crypto.cat">https://crypto.cat</a>. We are going to set up our own frontend on our
+webserver so we don&#39;t need Crypto.Cat.</p>
 
-<p>Setting up a web frontend is not recommended by the cryptocat developers. See the comment below, <a href="http://www.reddit.com/r/linux/comments/1q8zha/self_hosted_cryptocat_secure_self_hosted/">and read the full thread on this Reddit post</a></p>
+<p>Setting up a web frontend is not recommended by the cryptocat developers. See
+the comment below, <a href="http://www.reddit.com/r/linux/comments/1q8zha/self_hosted_cryptocat_secure_self_hosted/">and read the full thread on this Reddit post</a></p>
 
 <pre><code>When you host Cryptocat as a website, this means that every time someone wants to use it, they technically will need to re-download the entire code by visiting the website. This means that every use needs a full re-download of the Cryptocat code. By centralizing the code redistribution in a &quot;web front-end&quot; and making it necessary for everyone to redownload the code every time, you create an opportunity for malicious code poisoning by the host, or code injection by a third party. This is why the only recommended Cryptocat download is the browser extension from the official website, which downloads only once as opposed to every time (just like a regular desktop application), and is authenticated by Cryptocat&#39;s development team as genuine.  
 Kaepora - 12-11-2013 on Reddit
 </code></pre>
 
-<p>Take that into consideration when setting up the frontend. A use case could be an internal cryptocat chat service where people don&#39;t need to change the default server address and such.</p>
+<p>Take that into consideration when setting up the frontend. A use case could be
+an internal cryptocat chat service where people don&#39;t need to change the default
+server address and such.</p>
 
 <p>First get the source code:</p>
 
@@ -322,7 +341,8 @@ git clone https://github.com/cryptocat/cryptocat.git
 vim js/cryptocat.js
 </code></pre>
 
-<p>And place the following contents in it, replacing chat.sparklingclouds.nl with your own domain:</p>
+<p>And place the following contents in it, replacing chat.sparklingclouds.nl with
+your own domain:</p>
 
 <pre><code>/* Configuration */
 // Domain name to connect to for XMPP.
@@ -333,7 +353,7 @@ var defaultConferenceServer = &#39;conference.chat.sparklingclouds.nl&#39;
 var defaultBOSH = &#39;https://chat.sparklingclouds.nl/http-bind/&#39;
 </code></pre>
 
-<p>Now save the file. </p>
+<p>Now save the file.</p>
 
 <p>You are finished now. Go to your website and test the chat out.</p>
 </div><hr>Tags: <a href="../tags/chat.html" class="link">chat &nbsp;</a><a href="../tags/cryptocat.html" class="link">cryptocat &nbsp;</a><a href="../tags/ejabberd.html" class="link">ejabberd &nbsp;</a><a href="../tags/jabber.html" class="link">jabber &nbsp;</a><a href="../tags/nginx.html" class="link">nginx &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/xmpp.html" class="link">xmpp &nbsp;</a><div class="footer">

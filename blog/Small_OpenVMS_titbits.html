@@ -69,13 +69,12 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
-<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture
-(above</a>)</p>
+<p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture (above</a>)</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Here are some small titbits I found out this week on the DECUServe OpenVMS
 system. Not enough to write a blogpost on their own, but collected together.</p>
@@ -87,7 +86,7 @@ system. Not enough to write a blogpost on their own, but collected together.</p>
 <pre><code>$ RECALL/ALL
 </code></pre>
 
-<p>Output: </p>
+<p>Output:</p>
 
 <pre><code>  1 show proc
   2 proc
@@ -145,7 +144,7 @@ $
 <p>Your home directory on OpenVMS is not known as <code>~</code> (as on UNIX) but as
 <code>SYS$LOGIN</code>. As we learned in an earlier article, OpenVMS uses the <code>SET/SHOW
 DEFAULT</code> commands to navigate directories. So the equivalent of <code>cd ~</code> on linux,
-or even shorter, <code>cd</code> is <code>SET DEF SYS$LOGIN</code>: </p>
+or even shorter, <code>cd</code> is <code>SET DEF SYS$LOGIN</code>:</p>
 
 <pre><code>$ SET DEFAULT SYS$LOGIN
 $ SHOW DEF
@@ -196,7 +195,7 @@ Updater file:   TPU$CCTSHR
 $
 </code></pre>
 
-<p>So I retyped the note and pasted the error in, maybe someone knows more. </p>
+<p>So I retyped the note and pasted the error in, maybe someone knows more.</p>
 
 <p>Edit: they know more on the DECUS system. This happens when you CRTL+C out of
 the NOTES application.</p>
@@ -259,7 +258,7 @@ MAIL&gt;
 <h4>Delete a message</h4>
 
 <p>OpenVMS <code>MAIL</code> doesn&#39;t delete messages immediately but moves them from your
-default folder to a folder called <code>WASTEBASKET</code>. </p>
+default folder to a folder called <code>WASTEBASKET</code>.</p>
 
 <p>On most OpenVMS systems the <code>WASTEBASKET</code> is purged when the you use the
 command, <code>EXIT</code> to exit <code>MAIL</code>. If you use the command, <code>QUIT</code>, the old, deleted
@@ -294,7 +293,8 @@ program, enter the following command:</p>
 %MAIL-I-CREATED, DISK_USER:[DECUSERVE_USER.EXAMPLE.MAIL] created
 </code></pre>
 
-<p>Now mail related files will be placed in <code>[.MAIL]</code> and your home directory will stay a bit cleaner.</p>
+<p>Now mail related files will be placed in <code>[.MAIL]</code> and your home directory will
+stay a bit cleaner.</p>
 
 <h3>ls -la (list files, owner and permissions)</h3>
 

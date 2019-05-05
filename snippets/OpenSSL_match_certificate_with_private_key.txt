@@ -9,34 +9,48 @@ Format      : 	Markdown/HTML
 
 
 
-Today I had to set up something but I kept getting ssl errors. Turns out, the certificate did not match the private key, because the private key file was damaged. After I copied the certificate all was good, so it might got damaged while `scping` it.
+Today I had to set up something but I kept getting ssl errors. Turns out, the
+certificate did not match the private key, because the private key file was
+damaged. After I copied the certificate all was good, so it might got damaged
+while `scping` it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+The following `openssl` commands give you the hash of the modulus of certificate
+and the private key. If those two don't match then they either do not below to
+each other, or the file is damaged.
 
-The following `openssl` commands give you the hash of the modulus of certificate and the private key. If those two don't match then they either do not below to each other, or the file is damaged.
-
- My private key is named `private.key` and my certificate file is named `certificate.crt`. Both are in PEM format.
+My private key is named `private.key` and my certificate file is named
+`certificate.crt`. Both are in PEM format.
 
 Certificate:
 
- 	openssl x509 -noout -modulus -in certificate.crt | openssl md5
-	(stdin)= d238708c18b3c0d42994cfb61f060467
+    
+    
+    openssl x509 -noout -modulus -in certificate.crt | openssl md5
+    (stdin)= d238708c18b3c0d42994cfb61f060467
+    
 
 Private Key:
 
-	openssl rsa -noout -modulus -in private.key | openssl md5 
-	(stdin)= 5dd148535fb0763926c285c83cb6b58
+    
+    
+    openssl rsa -noout -modulus -in private.key | openssl md5 
+    (stdin)= 5dd148535fb0763926c285c83cb6b58
+    
 
 They don't match... This was the result after I did another `scp`:
 
-	openssl rsa -noout -modulus -in private.key | openssl md5
-	(stdin)= d238708c18b3c0d42994cfb61f060467
+    
+    
+    openssl rsa -noout -modulus -in private.key | openssl md5
+    (stdin)= d238708c18b3c0d42994cfb61f060467
+    
 
 Perfect match!
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

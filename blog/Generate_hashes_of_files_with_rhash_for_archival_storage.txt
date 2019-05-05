@@ -24,11 +24,8 @@ simple.
 This small article shows you how to create an archive file with the checksums
 included and shows you how to validate these checksums later on.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 The data in question are archived tapes, disk copies, source code and
 documentation for the PDP8 mainframe. We also have these for the PDP11 and a few
@@ -36,13 +33,15 @@ VAX machines. The archives contain about 5 million files and is about 700 GB in
 size. The company decided to phase out the on-line storage and place this data
 on tapes and dvd's, since they're not accessed more than once or twice a month.
 
-
 ### Creating the hashes
 
 The first archive contains PDP8 files located in the folder `pdp8`. This command
 creates the `MD5SUMS` file, which we place in the same folder:
 
+    
+    
     rhash --recursive --md5 --output=pdp8/MD5SUMS pdp8/
+    
 
 The archive is later on created with a simple `tar -czf pdp8.tar.gz pdp8`.
 
@@ -51,37 +50,50 @@ The archive is later on created with a simple `tar -czf pdp8.tar.gz pdp8`.
 Extract the archive to a folder and use the following command to verify all
 files:
 
+    
+    
     rhash --skip-ok --check pdp8/MD5SUMS 
+    
 
 If all files match the output looks like this:
 
+    
+    
     --( Verifying pdp8/MD5SUMS )----------------------------------------------------
     --------------------------------------------------------------------------------
     Everything OK
+    
 
 If a file does not match the hash, the output will include it:
 
-
+    
+    
     --( Verifying pdp8/MD5SUMS )----------------------------------------------------
     pdp8/pdp8/readme.txt                                ERR
     --------------------------------------------------------------------------------
     Errors Occurred: Errors:1   Miss:0   Success:3323 Total:3324
-
+    
 
 If you leave out the `--skip-ok` option all files checked will be shown which
 might result in long output.
 
 To manually verify one file, first get the checksum:
 
+    
+    
     grep 'pdp8/readme.txt' pdp8/MD5SUMS 
     53a1aca1631d55de3feece9e1c4d900a  pdp8/pdp8/readme.txt
+    
 
 Then manually execute the correct checksum command to verify the match:
 
+    
+    
     $ md5sum pdp8/pdp8/readme.txt 
     53a1aca1631d55de3feece9e1c4d900a  pdp8/pdp8/readme.txt
+    
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

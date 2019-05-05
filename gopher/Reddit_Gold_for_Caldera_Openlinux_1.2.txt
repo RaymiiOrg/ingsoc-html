@@ -9,27 +9,28 @@ Format      : 	Markdown/HTML
 
 
 
-Someone [liked my Reddit
-post](https://www.reddit.com/r/linux/comments/9iqpii/found_when_cleaning_up_caldera_openlinux_12/)
-regarding a few old CD's I found of Caldera Openlinux 1.2, including source code
-and floppies so much they gilded it. I got some special internet points today.
+Someone [liked my Reddit post][1] regarding a few old CD's I found of Caldera
+Openlinux 1.2, including source code and floppies so much they gilded it. I got
+some special internet points today.
 
-<img src="https://raymii.org/s/inc/img/gilded-1.png">
+![][2]
 
 Look at that bright yellow star.
 
-<img src="https://raymii.org/s/inc/img/gilded-2.png">
+![][3]
 
 Reddit even messaged me to let me know I got gold.
 
 I'll have to go look for a CD drive, since I don't have any at hand, but I will
 try to upload these CD's to Archive.org as requested in the reddit thread.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+   [1]: https://www.reddit.com/r/linux/comments/9iqpii/found_when_cleaning_up_caldera_openlinux_12/
+   [2]: https://raymii.org/s/inc/img/gilded-1.png
+   [3]: https://raymii.org/s/inc/img/gilded-2.png
+   [4]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

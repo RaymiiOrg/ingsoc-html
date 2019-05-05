@@ -77,9 +77,10 @@ before.
 
 Here's our system for getting the correct device:
 
-  * `sudo tail -f /var/log/syslog | grep sd`  
+  * `sudo tail -f /var/log/syslog | grep sd`
 
   * Clear your terminal window buffer
+
   * Plug in your USB drive and watch the output
 
 You'll see several lines appear as your system negotiates with the new USB
@@ -157,7 +158,7 @@ whatever router your kernel-configured network interface can find. Try typing
     
 
 to see if any packets are returned. If this doesn't work - and it didn't for us
-- first get the name of your interface by typing `ip link`. It's usually the
+\- first get the name of your interface by typing `ip link`. It's usually the
 second device listed, because you should ignore the first one called lo (this is
 a system loopback device).
 

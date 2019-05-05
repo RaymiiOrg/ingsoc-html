@@ -69,25 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide will help you tune the performance of Munin. When Munin monitors more than a few hosts the performance goes down and it requires more resources. This gets better with newer releases, but it still is not perfect. You can limit munin yourself so that the IO performance gets better.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide will help you tune the performance of Munin. When Munin monitors more
+than a few hosts the performance goes down and it requires more resources. This
+gets better with newer releases, but it still is not perfect. You can limit
+munin yourself so that the IO performance gets better.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This guide assumes a working munin setup (1.4 or 2.0) on debian/ubuntu. It also assumes root access to the server (either su or sudo).</p>
+<p>This guide assumes a working munin setup (1.4 or 2.0) on debian/ubuntu. It also
+assumes root access to the server (either su or sudo).</p>
 
 <h4>rrdcached</h4>
 
-<p>rrdcached is as the name implies a caching daemon for rrd. Munin uses rrd for the database, and updates the rrd files every 5 minutes, which gives a lot of random IO. rrdcached makes the writes more sequential and less often.</p>
+<p>rrdcached is as the name implies a caching daemon for rrd. Munin uses rrd for
+the database, and updates the rrd files every 5 minutes, which gives a lot of
+random IO. rrdcached makes the writes more sequential and less often.</p>
 
-<p><em>Do note that rrdcached is only fully supported in munin 2.0. Usage on 1.4 is not supported.</em></p>
+<p><em>Do note that rrdcached is only fully supported in munin 2.0. Usage on 1.4 is
+not supported.</em></p>
 
 <p>First install it:</p>
 
 <pre><code>apt-get install rrdcached
 </code></pre>
 
-<p>Then run the below command to create an rrd socket </p>
+<p>Then run the below command to create an rrd socket</p>
 
 <pre><code>sudo -u munin /usr/bin/rrdcached 
   -p /run/munin/rrdcached.pid 
@@ -97,7 +104,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
   -w 1800 -z 1800 -f 3600
 </code></pre>
 
-<p>Make sure to add it to <code>/etc/rc.local</code>. </p>
+<p>Make sure to add it to <code>/etc/rc.local</code>.</p>
 
 <p>Now add the following to your <code>/etc/munin/munin.conf</code> to enable the socket:</p>
 
@@ -113,7 +120,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 -f 3600 Flush all data every hour
 </code></pre>
 
-<p>By default munin-graph runs every 5 minutes so the caching we do above will not work if the data is read every 5 minutes. To solve this we split the munin-updating and the munin-graphing.</p>
+<p>By default munin-graph runs every 5 minutes so the caching we do above will not
+work if the data is read every 5 minutes. To solve this we split the munin-
+updating and the munin-graphing.</p>
 
 <p>Edit the file <code>/etc/cron.d/munin</code>, add the following line:</p>
 
@@ -142,7 +151,8 @@ nice /usr/share/munin/munin-graph --cron $@ || exit 1
 <pre><code>chmod +x /usr/bin/munin-graph
 </code></pre>
 
-<p>Now we edit the <code>/usr/bin/munin-cron</code> file and comment out the lines we put in the <code>munin-graph</code> file:</p>
+<p>Now we edit the <code>/usr/bin/munin-cron</code> file and comment out the lines we put in
+the <code>munin-graph</code> file:</p>
 
 <pre><code>[...]
 # We always launch munin-html.
@@ -154,32 +164,46 @@ nice /usr/share/munin/munin-graph --cron $@ || exit 1
 # nice /usr/share/munin/munin-graph --cron $@ || exit 1   
 </code></pre>
 
-<p>By doing this, the munin-update runs every 5 minutes, and the graphing and HTML page creation runs only once per hour. This prevents data loss, and I dont think you are going to look at the graphs every 5 minutes. Whenever you need to have faster updates, just change the crontab file to also create the munin-graphs more often. </p>
+<p>By doing this, the munin-update runs every 5 minutes, and the graphing and HTML
+page creation runs only once per hour. This prevents data loss, and I dont think
+you are going to look at the graphs every 5 minutes. Whenever you need to have
+faster updates, just change the crontab file to also create the munin-graphs
+more often.</p>
 
 <h4>nice and ionice</h4>
 
-<p>This little tweak to the munin-cron file makes it IO and CPU friendlier. Note that you need to use the default disk-scheduler for the ionice to work. Also check the syntax of the nice command, different versions exist.</p>
+<p>This little tweak to the munin-cron file makes it IO and CPU friendlier. Note
+that you need to use the default disk-scheduler for the ionice to work. Also
+check the syntax of the nice command, different versions exist.</p>
 
 <p>Edit the <code>/etc/cron.d/munin</code> file and change the cronjob:</p>
 
 <pre><code>*/5 * * * *     munin if [ -x /usr/bin/munin-cron ]; then /usr/bin/ionice -c 3 /usr/bin/nice -n 19 /usr/bin/munin-cron; fi
 </code></pre>
 
-<p>If you have applied the above tweak with rrdcached then you can also make the other cronjob nicer:</p>
+<p>If you have applied the above tweak with rrdcached then you can also make the
+other cronjob nicer:</p>
 
 <pre><code>10 * * * *      munin if [ -x /usr/bin/munin-graph ]; then /usr/bin/ionice -c 3 /usr/bin/nice -n 19 /usr/bin/munin-graph; fi
 </code></pre>
 
 <h4>munin html and graphs in RAM</h4>
 
-<p>By mounting the folder where munin creates the HTML (in my case <code>/var/www/munin</code>) we lower the IO a bit more because it is written to the RAM instead of the disk. Data loss after a power outage/reboot is not an issue, because the html and graphs are generated fresh every time. </p>
+<p>By mounting the folder where munin creates the HTML (in my case
+<code>/var/www/munin</code>) we lower the IO a bit more because it is written to the RAM
+instead of the disk. Data loss after a power outage/reboot is not an issue,
+because the html and graphs are generated fresh every time.</p>
 
-<p>Edit <code>/etc/fstab</code> and add the following (be careful not to change something else):</p>
+<p>Edit <code>/etc/fstab</code> and add the following (be careful not to change something
+else):</p>
 
 <pre><code>tmpfs  /var/www/munin   tmpfs   rw,mode=755,uid=munin,gid=munin,size=150M   0 0
 </code></pre>
 
-<p>Because my munin-server has 256MB RAM I give it a 150M size. If you have more RAM available you can easisly up this to 1000 M. If you save your munin graphs somewhere else (check the <code>htmldir</code> variable in <code>/etc/munin/munin.conf</code>) the make sure you change that as well.</p>
+<p>Because my munin-server has 256MB RAM I give it a 150M size. If you have more
+RAM available you can easisly up this to 1000 M. If you save your munin graphs
+somewhere else (check the <code>htmldir</code> variable in <code>/etc/munin/munin.conf</code>) the
+make sure you change that as well.</p>
 
 <p>Now make sure it is mounted by executing the following:</p>
 
@@ -188,7 +212,9 @@ nice /usr/share/munin/munin-graph --cron $@ || exit 1
 
 <h4>cgi strategy</h4>
 
-<p>Another way to up the performance of Munin is by using a cgi-based graph strategy. However, for me this made the munin webinterface terribly slow and unworkable so I will not cover that here. </p>
+<p>Another way to up the performance of Munin is by using a cgi-based graph
+strategy. However, for me this made the munin webinterface terribly slow and
+unworkable so I will not cover that here.</p>
 
 <h4>Links</h4>
 

@@ -71,22 +71,46 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><h3>Preface</h3>
 
-<p><img src="https://raymii.org/s/inc/img/tsung_logo_non_official.png"></p>
+<p><img src="https://raymii.org/s/inc/img/tsung_logo_non_official.png" alt=""></p>
 
-<p>At $dayjob I manage a large OpenStack Cloud. Next to that I also build high-performance and redundant clusters for customers. Think multiple datacenters, <code>haproxy</code>, <code>galera</code> or <code>postgres</code> or mysql replication, <code>drbd</code> with <code>nfs</code> or <code>glusterfs</code> and all sorts of software that can (and sometimes cannot) be clustered (<code>redis</code>, <code>rabbitmq</code> etc.). Our customers deploy their application on there and when one or a few components fail, their application stays up. Hypervisors, disks, switches, routers, all can fail without actual service downtime. Next to building such clusters, we also monitor and manage them.</p>
+<p>At $dayjob I manage a large OpenStack Cloud. Next to that I also build high-
+performance and redundant clusters for customers. Think multiple datacenters,
+<code>haproxy</code>, <code>galera</code> or <code>postgres</code> or mysql replication, <code>drbd</code> with <code>nfs</code> or
+<code>glusterfs</code> and all sorts of software that can (and sometimes cannot) be
+clustered (<code>redis</code>, <code>rabbitmq</code> etc.). Our customers deploy their application on
+there and when one or a few components fail, their application stays up.
+Hypervisors, disks, switches, routers, all can fail without actual service
+downtime. Next to building such clusters, we also monitor and manage them.</p>
 
-<p>When we build such a cluster (fully automated with Ansible) we do a basic load test. We do this not for benchmarking or application flow testing, but to optimize the cluster components. Simple things like the <code>mpm</code> workers or threads in Apache or more advanced topics like MySQL or DRBD. Optimization there depends on the specifications of the servers used and the load patterns.</p>
+<p>When we build such a cluster (fully automated with Ansible) we do a basic load
+test. We do this not for benchmarking or application flow testing, but to
+optimize the cluster components. Simple things like the <code>mpm</code> workers or threads
+in Apache or more advanced topics like MySQL or DRBD. Optimization there depends
+on the specifications of the servers used and the load patterns.</p>
 
-<p>Tsung is a high-performance but simple to configure and use piece of software written in Erlang. Configuration is done in a simple readable XML file. Tsung can be run distributed as well for large setups. It has good reporting and a live web interface for status and reports during a test.</p>
+<p>Tsung is a high-performance but simple to configure and use piece of software
+written in Erlang. Configuration is done in a simple readable XML file. Tsung
+can be run distributed as well for large setups. It has good reporting and a
+live web interface for status and reports during a test.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>I&#39;m by no means a load-testing expert. User flow, parsing the results and such are not my cup of tea. I do however understand server performance and optimization. These load tests are ment to help me and my team to have a general idea of that the clients setup is able to handle. For example, high-load clusters benefit from several extra IP addresses just for monitoring. Sockets in linux are per IP, and when the IP&#39;s and conntrack are exhausted, the monitoring IP will still work. We found that during one of these load tests where the load was relatively low, but all the monitoring failed (because of conntrack). </p>
+<p>I&#39;m by no means a load-testing expert. User flow, parsing the results and such
+are not my cup of tea. I do however understand server performance and
+optimization. These load tests are ment to help me and my team to have a general
+idea of that the clients setup is able to handle. For example, high-load
+clusters benefit from several extra IP addresses just for monitoring. Sockets in
+linux are per IP, and when the IP&#39;s and conntrack are exhausted, the monitoring
+IP will still work. We found that during one of these load tests where the load
+was relatively low, but all the monitoring failed (because of conntrack).</p>
 
 <h3>Tsung configuration</h3>
 
-<p>The tsung configuration file consists out of several different parts. We&#39;ll cover them here, but first we must install the software. The version of <code>tsung</code> that I&#39;m using is 1.6.0. We&#39;ll talk in detail about the configuration file. The entire file can be found at the bottom of this page as a whole. </p>
+<p>The tsung configuration file consists out of several different parts. We&#39;ll
+cover them here, but first we must install the software. The version of <code>tsung</code>
+that I&#39;m using is 1.6.0. We&#39;ll talk in detail about the configuration file. The
+entire file can be found at the bottom of this page as a whole.</p>
 
 <h4>Installation</h4>
 
@@ -95,7 +119,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>apt-get install tsung
 </code></pre>
 
-<p>Under Ubuntu 16.04 and 17.04 I did get strange erlang errors complaining about <code>enoent</code>. It appears in the Ubuntu package something was missing. Manually compiling <code>tsung</code> with the classical </p>
+<p>Under Ubuntu 16.04 and 17.04 I did get strange erlang errors complaining about
+<code>enoent</code>. It appears in the Ubuntu package something was missing. Manually
+compiling <code>tsung</code> with the classical</p>
 
 <pre><code>./configure
 make
@@ -115,7 +141,8 @@ make install
 
 <h4>Clients</h4>
 
-<p>The clients are the servers that execute the actual load test. If you have a distributed setup (see below) then you define them here:</p>
+<p>The clients are the servers that execute the actual load test. If you have a
+distributed setup (see below) then you define them here:</p>
 
 <pre><code>&lt;clients&gt;
   &lt;client host=&quot;ts2&quot; maxusers=&quot;30000&quot; weight=&quot;2&quot; /&gt;
@@ -123,9 +150,11 @@ make install
 &lt;/clients&gt;
 </code></pre>
 
-<p><code>ts3</code> will do a maximum amount of users and client <code>ts2</code> will be used twice as much as client <code>ts3</code> due to the weight. You can omit those two options.</p>
+<p><code>ts3</code> will do a maximum amount of users and client <code>ts2</code> will be used twice as
+much as client <code>ts3</code> due to the weight. You can omit those two options.</p>
 
-<p>If you want to execute the test from your local workstation you can use the following configuration:</p>
+<p>If you want to execute the test from your local workstation you can use the
+following configuration:</p>
 
 <pre><code>&lt;clients&gt;
   &lt;client host=&quot;localhost&quot; use_controller_vm=&quot;true&quot;/&gt;
@@ -134,7 +163,8 @@ make install
 
 <h4>Servers</h4>
 
-<p>The servers are the endpoints where the clients will send the requests to. This will be either the hostname or IP address of the server you are going to test. </p>
+<p>The servers are the endpoints where the clients will send the requests to. This
+will be either the hostname or IP address of the server you are going to test.</p>
 
 <pre><code>&lt;servers&gt;
   &lt;server host=&quot;example.org&quot; port=&quot;443&quot; type=&quot;ssl&quot;&gt;&lt;/server&gt;
@@ -155,7 +185,10 @@ make install
 <li>websocket </li>
 </ul>
 
-<p>For HTTP you need to use <code>tcp</code>, for HTTPS you need to use <code>ssl</code>. If you use multiple servers based on IP address and they use virtual hosts, for every request (see below) you need to also define the <code>HTTP Host:</code> header in the configuration section for that request:</p>
+<p>For HTTP you need to use <code>tcp</code>, for HTTPS you need to use <code>ssl</code>. If you use
+multiple servers based on IP address and they use virtual hosts, for every
+request (see below) you need to also define the <code>HTTP Host:</code> header in the
+configuration section for that request:</p>
 
 <pre><code>&lt;request&gt;
   &lt;http url=&quot;/bla&quot; method=&quot;POST&quot; contents=&quot;bla=blu&amp;amp;name=glop&quot;&gt;
@@ -170,7 +203,9 @@ make install
 
 <h4>Load progression</h4>
 
-<p>The load test is split up into several phases. Each phase has a duration and a number of visitors. During these phases the sessions will be executed. A basic load setup I use often is one where there are the number of users increases:</p>
+<p>The load test is split up into several phases. Each phase has a duration and a
+number of visitors. During these phases the sessions will be executed. A basic
+load setup I use often is one where there are the number of users increases:</p>
 
 <pre><code>&lt;load&gt;
   &lt;!-- 50 users a second for 3 minutes == 9000 sessions --&gt;
@@ -188,7 +223,8 @@ make install
 &lt;/load&gt;
 </code></pre>
 
-<p>You can define as many phases as you please. If you want to test a maximum number of users per phase, use the <code>maxnumber=&quot;&quot;</code> option:</p>
+<p>You can define as many phases as you please. If you want to test a maximum
+number of users per phase, use the <code>maxnumber=&quot;&quot;</code> option:</p>
 
 <pre><code>&lt;load&gt;
   &lt;arrivalphase phase=&quot;1&quot; duration=&quot;3&quot; unit=&quot;minute&quot;&gt;
@@ -199,11 +235,15 @@ make install
 
 <p>There will be a maximum of 100 users in the three minutes setup.</p>
 
-<p>Phases are done in order of the number. First phase 1, then 2, then 3 and so on. These phases can also be looped. More information on phases and load progression <a href="http://tsung.erlang-projects.org/user_manual/conf-load.html">can be found here</a>.</p>
+<p>Phases are done in order of the number. First phase 1, then 2, then 3 and so on.
+These phases can also be looped. More information on phases and load progression
+<a href="http://tsung.erlang-projects.org/user_manual/conf-load.html">can be found here</a>.</p>
 
 <h4>Options</h4>
 
-<p>Per test we can define options. These are mostly used for <code>xmpp</code> testing, the only option we have for HTTP is the user agent. Multiple user agents can be setup and given a probability:</p>
+<p>Per test we can define options. These are mostly used for <code>xmpp</code> testing, the
+only option we have for HTTP is the user agent. Multiple user agents can be
+setup and given a probability:</p>
 
 <pre><code>&lt;options&gt;
   &lt;option type=&quot;ts_http&quot; name=&quot;user_agent&quot;&gt;
@@ -214,27 +254,51 @@ make install
 &lt;/options&gt;
 </code></pre>
 
-<p>Chrome will be 20% of the visits, Firefox 30 and the rest is Internet Explorer. The probability must add up to 100. </p>
+<p>Chrome will be 20% of the visits, Firefox 30 and the rest is Internet Explorer.
+The probability must add up to 100.</p>
 
-<p>A few more options like SSL Ciphers and global timeouts can be set, <a href="http://tsung.erlang-projects.org/user_manual/conf-options.html">see here</a> for details.</p>
+<p>A few more options like SSL Ciphers and global timeouts can be set, <a href="http://tsung.erlang-projects.org/user_manual/conf-options.html">see
+here</a> for details.</p>
 
 <h4>Sessions</h4>
 
-<p>Sessions define the content of the scenario itself. They describe the requests to execute. Multiple types of requests can be given, next to the basic HTTP GET and POST requests. WEBDAV is supported as well as basic, oauth and digest authentication, HTTP headers and more.</p>
+<p>Sessions define the content of the scenario itself. They describe the requests
+to execute. Multiple types of requests can be given, next to the basic HTTP GET
+and POST requests. WEBDAV is supported as well as basic, oauth and digest
+authentication, HTTP headers and more.</p>
 
-<p>This article limits itself to HTTP website testing. For XMPP and the other types supported by Tsung, please <a href="http://tsung.erlang-projects.org/user_manual/conf-sessions.html">consult the documentation</a>.</p>
+<p>This article limits itself to HTTP website testing. For XMPP and the other types
+supported by Tsung, please <a href="http://tsung.erlang-projects.org/user_manual/conf-sessions.html">consult the documentation</a>.</p>
 
-<p>Before we dive in to all the configuration, lets think about what our goal is here. We want to simulate a visitor with a web browser. Browsers normally do not just get a page over and over again. They request the page, but also all the content included, like javascript, stylesheets and images. Once a page is loaded, they stop doing stuff while the human reads the page, until a new link is clicked and the whole thing starts over. Include a search or a POST reqeust here and there and you&#39;ve got something much more complex than just a <code>curl</code> loop in your shell. </p>
+<p>Before we dive in to all the configuration, lets think about what our goal is
+here. We want to simulate a visitor with a web browser. Browsers normally do not
+just get a page over and over again. They request the page, but also all the
+content included, like javascript, stylesheets and images. Once a page is
+loaded, they stop doing stuff while the human reads the page, until a new link
+is clicked and the whole thing starts over. Include a search or a POST reqeust
+here and there and you&#39;ve got something much more complex than just a <code>curl</code>
+loop in your shell.</p>
 
-<p>A very nice feature of Tsung is support for so called Transactions. Transactions are a way to group several requests. In the statistics these requests will be shown as a group, like here below in the image:</p>
+<p>A very nice feature of Tsung is support for so called Transactions. Transactions
+are a way to group several requests. In the statistics these requests will be
+shown as a group, like here below in the image:</p>
 
-<p><img src="https://raymii.org/s/inc/img/tsung2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/tsung2.png" alt=""></p>
 
-<p>In the picture I&#39;ve defined two transactions. One to get the index page including javascript, css, the logo image and the custom web fonts, and one to get an actual article including all of the above plus the images in the article.</p>
+<p>In the picture I&#39;ve defined two transactions. One to get the index page
+including javascript, css, the logo image and the custom web fonts, and one to
+get an actual article including all of the above plus the images in the article.</p>
 
-<p>Using transactions your can understand your statistics better. You can also find out bottlenecks easier. Let&#39;s say your index page and your articles are cached by <code>varnish</code> or <code>nginx</code>, but your product list is not. With the transactions you can probably see that the caching works for the first to. The latter group, the product list, will have a lower performance.</p>
+<p>Using transactions your can understand your statistics better. You can also find
+out bottlenecks easier. Let&#39;s say your index page and your articles are cached
+by <code>varnish</code> or <code>nginx</code>, but your product list is not. With the transactions you
+can probably see that the caching works for the first to. The latter group, the
+product list, will have a lower performance.</p>
 
-<p>So let&#39;s define our first session with two transactions. Use your favorite browser and the Proxy Recorder from Tsung (see below) or open up the development tools and copy the URL&#39;s of all the requests. You can have multiple sessions as well, after this session we will add another one that does a website search.</p>
+<p>So let&#39;s define our first session with two transactions. Use your favorite
+browser and the Proxy Recorder from Tsung (see below) or open up the development
+tools and copy the URL&#39;s of all the requests. You can have multiple sessions as
+well, after this session we will add another one that does a website search.</p>
 
 <pre><code>&lt;sessions&gt;
   &lt;session name=&quot;http&quot; weight=&quot;10&quot; type=&quot;ts_http&quot;&gt;
@@ -266,13 +330,21 @@ make install
 &lt;/sessions&gt;
 </code></pre>
 
-<p>The weight can be defined here as well, just as a probability. I prefer to use weight due to a more even distribution, probability is still a chance-based calculation. A probablity of 10 and 90 doesn&#39;t mean that 10% of the requests will be as you specified, just that is has a 10% change. A weight of 1 and 10 will mean that there will be 10 times more requests absolute.</p>
+<p>The weight can be defined here as well, just as a probability. I prefer to use
+weight due to a more even distribution, probability is still a chance-based
+calculation. A probablity of 10 and 90 doesn&#39;t mean that 10% of the requests
+will be as you specified, just that is has a 10% change. A weight of 1 and 10
+will mean that there will be 10 times more requests absolute.</p>
 
 <p>Thinktime is a random pause with a maximum of 2 seconds between requests.</p>
 
-<p>The actual requests are self explanatory, an URL is defined. I use relative URL&#39;s, but you can also use absolute URL&#39;s. Do note that the absolute URL overrides the server for the rest of the sessions, until you define another absolute URL. </p>
+<p>The actual requests are self explanatory, an URL is defined. I use relative
+URL&#39;s, but you can also use absolute URL&#39;s. Do note that the absolute URL
+overrides the server for the rest of the sessions, until you define another
+absolute URL.</p>
 
-<p>Here is an example of a POST request wich submits data and does a HTTP Basic login:</p>
+<p>Here is an example of a POST request wich submits data and does a HTTP Basic
+login:</p>
 
 <pre><code>&lt;request&gt;
   &lt;http url=&quot;/migration/new&quot; method=&quot;POST&quot; contents=&quot;server=www1&amp;amp;name=dave&amp;amp;reason=maintenance&quot;&gt;
@@ -283,7 +355,9 @@ make install
 &lt;/request&gt;
 </code></pre>
 
-<p>You can add a cookie to a request. I haven&#39;t found a way to do a POST and use the cookie you get from that yet. You also need to define the cookie during every request:</p>
+<p>You can add a cookie to a request. I haven&#39;t found a way to do a POST and use
+the cookie you get from that yet. You also need to define the cookie during
+every request:</p>
 
 <pre><code>&lt;request&gt;
   &lt;http url=&quot;/s/&quot; method=&quot;GET&quot; version=&quot;1.1&quot;&gt;
@@ -292,7 +366,8 @@ make install
 &lt;/request&gt;
 </code></pre>
 
-<p>Here is the second transaction which gets an article page from here, including all the images.</p>
+<p>Here is the second transaction which gets an article page from here, including
+all the images.</p>
 
 <pre><code>&lt;transaction name=&quot;article_request&quot;&gt;
   &lt;request&gt; &lt;http url=&quot;/s/blog/Burn_in_testing_for_Hypervisor_and_Storage_servers.html&quot; method=&quot;GET&quot; version=&quot;1.1&quot;&gt;&lt;/http&gt; &lt;/request&gt;
@@ -314,15 +389,26 @@ make install
 
 <h5>Random variables</h5>
 
-<p>Static content mostly works just fine and probably comes from a caching layer. One thing we always do is something dynamic to let the requests fall through the cache and go to the application, <code>php</code>, <code>django</code> or <code>rails</code> for example. 90% of the time we can use the search feature of the tested application, the other 10% we do POST requests or have the development team build a special testing page.</p>
+<p>Static content mostly works just fine and probably comes from a caching layer.
+One thing we always do is something dynamic to let the requests fall through the
+cache and go to the application, <code>php</code>, <code>django</code> or <code>rails</code> for example. 90% of
+the time we can use the search feature of the tested application, the other 10%
+we do POST requests or have the development team build a special testing page.</p>
 
-<p>Tsung can do a few more tricks and even allows you to write custom Erlang scripts for more magic. We use but a simple part of that to get a random string for the searches. If the site has a GET based search page, this is easy. </p>
+<p>Tsung can do a few more tricks and even allows you to write custom Erlang
+scripts for more magic. We use but a simple part of that to get a random string
+for the searches. If the site has a GET based search page, this is easy.</p>
 
-<p>Using <code>dynvars</code> we can create a random string.  Tsung has multiple types of random strings. First, and in my experience the fastest, is a numeric only ID. Append <code>subst=&quot;true&quot;</code> to the <code>&lt;request&gt;</code> for a dynamic variable request.</p>
+<p>Using <code>dynvars</code> we can create a random string. Tsung has multiple types of
+random strings. First, and in my experience the fastest, is a numeric only ID.
+Append <code>subst=&quot;true&quot;</code> to the <code>&lt;request&gt;</code> for a dynamic variable request.</p>
 
-<p>One thing to remember is that all dynamic variables must be prefixed with an underscore (<code>_</code>) in the requests. If you define a variable named <code>example_var</code>, in your request you need to call it via <code>%%_example_var%%</code>.</p>
+<p>One thing to remember is that all dynamic variables must be prefixed with an
+underscore (<code>_</code>) in the requests. If you define a variable named <code>example_var</code>,
+in your request you need to call it via <code>%%_example_var%%</code>.</p>
 
-<p>In your request you can call this by adding <code>%%ts_user_server:get_unique_id%%</code> in the request URL. For example:</p>
+<p>In your request you can call this by adding <code>%%ts_user_server:get_unique_id%%</code>
+in the request URL. For example:</p>
 
 <pre><code>&lt;http url=&quot;/zoeken/?q=%%ts_user_server:get_unique_id%%&quot; method=&quot;GET&quot; version=&quot;1.1&quot;&gt;&lt;/http&gt;
 </code></pre>
@@ -336,9 +422,11 @@ make install
 215.83.32.40 - - [14/Apr/2017:16:21:09 +0200] &quot;GET /zoeken/?q=15532 HTTP/1.1&quot; 200 308 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0&quot;
 </code></pre>
 
-<p>The parameter is different for every single request. </p>
+<p>The parameter is different for every single request.</p>
 
-<p>The next parameter is <code>urandom_string</code>. According to the documentation this string is faster than <code>random_string</code> but not truly random. It is also the same for the entire session. In the <code>&lt;session&gt;</code>, define the variable:</p>
+<p>The next parameter is <code>urandom_string</code>. According to the documentation this
+string is faster than <code>random_string</code> but not truly random. It is also the same
+for the entire session. In the <code>&lt;session&gt;</code>, define the variable:</p>
 
 <pre><code>&lt;setdynvars sourcetype=&quot;urandom_string&quot; length=&quot;20&quot;&gt;
   &lt;var name=&quot;urndstring1&quot; /&gt;
@@ -359,9 +447,12 @@ make install
 215.83.32.40 - - [14/Apr/2017:16:08:54 +0200] &quot;GET /zoeken/?q_urand=qxvmvtglimieyhemzlxc HTTP/1.1&quot; 200 308 &quot;-&quot; &quot;Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko&quot;
 </code></pre>
 
-<p>The same parameter is sent for every request. This can be a problem if your search results are cached, only the first search will be slow until the cache expires.</p>
+<p>The same parameter is sent for every request. This can be a problem if your
+search results are cached, only the first search will be slow until the cache
+expires.</p>
 
-<p>The last random method is <code>random_string</code>. This is slower to generate but is different for each request.</p>
+<p>The last random method is <code>random_string</code>. This is slower to generate but is
+different for each request.</p>
 
 <p>In your session:</p>
 
@@ -386,9 +477,17 @@ make install
 215.83.32.40 - - [14/Apr/2017:16:08:54 +0200] &quot;GET /zoeken/?q_rand=egidgqflijzul HTTP/1.1&quot; 200 308 &quot;-&quot; &quot;Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko&quot;
 </code></pre>
 
-<p>The parameter here is different. </p>
+<p>The parameter here is different.</p>
 
-<p>Do be carefull with these random or dynamic requests that fall through the cache to your application. We mostly make 10% of the scenario requests of this type, our experience is that more will bring every application to a grinding halt. Regular user traffic (non-bots) also most of the time doesn&#39;t do that many things that cannot be cached. Take a forum for example, only the post-request that submits a topic or reply cannot be cached, but a user won&#39;t send 1500 new topics in a few minutes. All the other parts, even dynamic stuff like profile pages or user-generated content can be cached. Maybe not in <code>varnish</code>, but in a key-value store like <code>redis</code> instead of directly coming from your database. </p>
+<p>Do be carefull with these random or dynamic requests that fall through the cache
+to your application. We mostly make 10% of the scenario requests of this type,
+our experience is that more will bring every application to a grinding halt.
+Regular user traffic (non-bots) also most of the time doesn&#39;t do that many
+things that cannot be cached. Take a forum for example, only the post-request
+that submits a topic or reply cannot be cached, but a user won&#39;t send 1500 new
+topics in a few minutes. All the other parts, even dynamic stuff like profile
+pages or user-generated content can be cached. Maybe not in <code>varnish</code>, but in a
+key-value store like <code>redis</code> instead of directly coming from your database.</p>
 
 <p>Here is a session that utilizes the three different random string methods:</p>
 
@@ -416,7 +515,10 @@ make install
 
 <h5>Dynamic variables from a file (usernames and passwords)</h5>
 
-<p>The <a href="http://tsung.erlang-projects.org/user_manual/conf-advanced-features.html">manual</a> has another example where you can read a <code>csv</code> file with usernames and passwords and use those for a request. This is a good way to test if your application has a rate-limiting feature, to make sure users cannot just brute-force their way in.</p>
+<p>The <a href="http://tsung.erlang-projects.org/user_manual/conf-advanced-features.html">manual</a> has another example where you can read a <code>csv</code> file with
+usernames and passwords and use those for a request. This is a good way to test
+if your application has a rate-limiting feature, to make sure users cannot just
+brute-force their way in.</p>
 
 <p>The <code>userlist.csv</code> file:</p>
 
@@ -442,11 +544,15 @@ user2;password2
 &lt;/request&gt;
 </code></pre>
 
-<p>Testing the actual rate limiting can be done as well by checking the servers response. </p>
+<p>Testing the actual rate limiting can be done as well by checking the servers
+response.</p>
 
 <h5>Checking the servers response</h5>
 
-<p>With the tag match in a <code>&lt;request&gt;</code> tag, you can check the server&#39;s response against a given string, and do some actions depending on the result. In any case, if it matches, this will increment the <code>match</code> counter, if it does not match, the <code>nomatch</code> counter will be incremented.</p>
+<p>With the tag match in a <code>&lt;request&gt;</code> tag, you can check the server&#39;s response
+against a given string, and do some actions depending on the result. In any
+case, if it matches, this will increment the <code>match</code> counter, if it does not
+match, the <code>nomatch</code> counter will be incremented.</p>
 
 <p>The list of available actions to do is:</p>
 
@@ -459,9 +565,13 @@ user2;password2
 <li><code>dump</code>: dump the content of the response in a filen filename is <code>match-&lt;userid&gt;-&lt;sessionid&gt;-&lt;requestid&gt;-&lt;dumpid&gt;.dump</code></li>
 </ul>
 
-<p>To test if brute-force protection works, you can use either the <code>continue</code> option or the <code>abort</code> option. If you use continue, check the <code>nomatch</code> counter in the statistics. If you use the <code>abort</code> option, the test will stop when the rate-limiting is in place and your match fails.</p>
+<p>To test if brute-force protection works, you can use either the <code>continue</code>
+option or the <code>abort</code> option. If you use continue, check the <code>nomatch</code> counter
+in the statistics. If you use the <code>abort</code> option, the test will stop when the
+rate-limiting is in place and your match fails.</p>
 
-<p>Here is an example of a login page with an <code>abort</code> if the content has the words <code>login failed!</code>:</p>
+<p>Here is an example of a login page with an <code>abort</code> if the content has the words
+<code>login failed!</code>:</p>
 
 <pre><code>&lt;request&gt;
    &lt;match do=&quot;abort&quot; when=&quot;match&quot;&gt;login failed!&lt;/match&gt;
@@ -471,13 +581,16 @@ user2;password2
 &lt;/request&gt;
 </code></pre>
 
-<p>You can also use <code>nomatch</code>, for example if you don&#39;t give an error when your brute-force protection kicks in. You can then test if the <code>Welcome dear $username</code> is not on the page.</p>
+<p>You can also use <code>nomatch</code>, for example if you don&#39;t give an error when your
+brute-force protection kicks in. You can then test if the <code>Welcome dear
+$username</code> is not on the page.</p>
 
 <p>The <a href="http://tsung.erlang-projects.org/user_manual/conf-advanced-features.html#checking-the-server-s-response">docs</a> have more examples, including complex conditionals and loops.</p>
 
 <h4>Closing the XML</h4>
 
-<p>When you&#39;ve defined all your transactions and requests, you need to close the file with the last tag:</p>
+<p>When you&#39;ve defined all your transactions and requests, you need to close the
+file with the last tag:</p>
 
 <pre><code>&lt;/tsung&gt;
 </code></pre>
@@ -488,9 +601,10 @@ user2;password2
 
 <p>With your configuration file set up, and if defined, your distributed setup working, you can start the test. During the test there is a live status web interface running on <a href="127.0.0.1:8091"><code>127.0.0.1:8091</code></a>: </p>
 
-<p><img src="https://raymii.org/s/inc/img/tsung1.png"></p>
+<p><img src="https://raymii.org/s/inc/img/tsung1.png" alt=""></p>
 
-<p>Using the below command we can start a test. The <code>-k</code> option keeps the web interface open even when the test is finished. </p>
+<p>Using the below command we can start a test. The <code>-k</code> option keeps the web
+interface open even when the test is finished.</p>
 
 <pre><code>tsung -k -f file.xml start
 </code></pre>
@@ -507,21 +621,32 @@ Log directory is: /root/.tsung/log/20170414-1609
 Hit CTRL-C or click Stop on the dashboard to stop.
 </code></pre>
 
-<p>If you want to abort a test while it is running, because for example your server crashes, hit <code>CTRL+C</code> a few times. </p>
+<p>If you want to abort a test while it is running, because for example your server
+crashes, hit <code>CTRL+C</code> a few times.</p>
 
 <p>During the test you get live metrics and graphs on the web interface:</p>
 
-<p><img src="https://raymii.org/s/inc/img/tsung3.png"></p>
+<p><img src="https://raymii.org/s/inc/img/tsung3.png" alt=""></p>
 
-<p>I&#39;ll discuss two other very nice features of Tsung, the distributed setup and the proxy recorder. The distributed setup allows you to scale up the load test far beyond one server. We&#39;ve done tests with over ten million concurrent hits using 50 virtual machines. Just small single core instances with gigabit network.</p>
+<p>I&#39;ll discuss two other very nice features of Tsung, the distributed setup and
+the proxy recorder. The distributed setup allows you to scale up the load test
+far beyond one server. We&#39;ve done tests with over ten million concurrent hits
+using 50 virtual machines. Just small single core instances with gigabit
+network.</p>
 
-<p>The proxy recorder allows you to record a browsing session. Way better than manually creating a text configuration file. Even the client can do so.</p>
+<p>The proxy recorder allows you to record a browsing session. Way better than
+manually creating a text configuration file. Even the client can do so.</p>
 
 <h3>Distributed setup</h3>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring this site by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring this site by trying out a Digital
+Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get
+$10 credit). (referral link)</a></p>
 
-<p>Tsung communicates between testing nodes using SSH, so make sure your SSH keys are installed on the servers and that you can SSH between them without a password prompt. If you can&#39;t, generate a special SSH key for tsung, without a password:</p>
+<p>Tsung communicates between testing nodes using SSH, so make sure your SSH keys
+are installed on the servers and that you can SSH between them without a
+password prompt. If you can&#39;t, generate a special SSH key for tsung, without a
+password:</p>
 
 <pre><code>ssh-keygen -C &#39;tsung&#39; -t rsa -b 2048 -N &quot;&quot; -f /root/.ssh/id_rsa.tsung
 </code></pre>
@@ -572,19 +697,26 @@ The key&#39;s randomart image is:
 
 <p>Repeat this for all the other nodes.</p>
 
-<p>You must use a hostname (ssh hostname or actual hostname), otherwise you will get an error:</p>
+<p>You must use a hostname (ssh hostname or actual hostname), otherwise you will
+get an error:</p>
 
 <pre><code>ERROR: client config: &#39;host&#39; attribute must be a hostname, not an IP ! (was &quot;213.187.242.156&quot;)
 </code></pre>
 
-<p>It is important to use the same <code>erlang</code> and <code>tsung</code> version on all the servers. I had my controller vm on CentOS 7 and the test servers on Ubuntu 16.04, with a slightly different erlang version (<code>erts-8.2.1</code> vs <code>erts-8.3</code>) and the tests all timed out or failed. Booting up a controller VM with 16.04 made it all work.</p>
+<p>It is important to use the same <code>erlang</code> and <code>tsung</code> version on all the servers.
+I had my controller vm on CentOS 7 and the test servers on Ubuntu 16.04, with a
+slightly different erlang version (<code>erts-8.2.1</code> vs <code>erts-8.3</code>) and the tests all
+timed out or failed. Booting up a controller VM with 16.04 made it all work.</p>
 
-<p>If you do experience issues with the distributed setup, you can test if the SSH connection via erlang works. On your controller VM execute the following command:</p>
+<p>If you do experience issues with the distributed setup, you can test if the SSH
+connection via erlang works. On your controller VM execute the following
+command:</p>
 
 <pre><code>erl -rsh ssh -sname foo -setcookie mycookie
 </code></pre>
 
-<p>In the prompt, give the following command, where <code>ts2</code> is the hostname of the server to test the connection to:</p>
+<p>In the prompt, give the following command, where <code>ts2</code> is the hostname of the
+server to test the connection to:</p>
 
 <pre><code>slave:start(ts2,bar,&quot;-setcookie mycookie&quot;).
 </code></pre>
@@ -598,21 +730,28 @@ The key&#39;s randomart image is:
 
 <h3>Proxy recorder</h3>
 
-<p>Tsung has a proxy recorder. It allows you to record a browser session to a configuration file. I haven&#39;t used it but for complicated browsing session it seems quite handy.</p>
+<p>Tsung has a proxy recorder. It allows you to record a browser session to a
+configuration file. I haven&#39;t used it but for complicated browsing session it
+seems quite handy.</p>
 
-<p>The recorder has three plugins: for HTTP, WebDAV and for PostgreSQL. To start it, run:</p>
+<p>The recorder has three plugins: for HTTP, WebDAV and for PostgreSQL. To start
+it, run:</p>
 
 <pre><code>tsung-recorder -p PLUGIN start
 </code></pre>
 
-<p>where PLUGIN can be <code>http</code>, <code>webdav</code> or <code>pgsql</code> for PostgreSQL. The default plugin is <code>http</code>. The proxy is listening to port 8090. You can change the port with <code>-L portnumber</code>.</p>
+<p>where PLUGIN can be <code>http</code>, <code>webdav</code> or <code>pgsql</code> for PostgreSQL. The default
+plugin is <code>http</code>. The proxy is listening to port 8090. You can change the port
+with <code>-L portnumber</code>.</p>
 
 <p>To stop it, use :</p>
 
 <pre><code>tsung-recorder stop.
 </code></pre>
 
-<p>The recorded session is created as <code>~/.tsung/tsung_recorderYYYMMDD-HH:MM.xml</code>; if it doesn&#39;t work, take a look at <code>~/.tsung/log/tsung.log-tsung_recorder@hostname</code>.</p>
+<p>The recorded session is created as <code>~/.tsung/tsung_recorderYYYMMDD-HH:MM.xml</code>;
+if it doesn&#39;t work, take a look at <code>~/.tsung/log/tsung.log-
+tsung_recorder@hostname</code>.</p>
 
 <p><a href="http://tsung.erlang-projects.org/user_manual/proxy.html">More info</a></p>
 
@@ -704,7 +843,12 @@ The key&#39;s randomart image is:
 
 <h3>Conclusion</h3>
 
-<p>Load testing is a powerfull tool. We use it to optimize our clusters. You can also do more harm than good with it, like crashing poorly setup applications. So please make sure you always test only your own setup or a non-production setup. A staging or preproduction environment that replicates production, or if you must, make sure to have written permission from the client on the exact test you are going to execute.</p>
+<p>Load testing is a powerfull tool. We use it to optimize our clusters. You can
+also do more harm than good with it, like crashing poorly setup applications. So
+please make sure you always test only your own setup or a non-production setup.
+A staging or preproduction environment that replicates production, or if you
+must, make sure to have written permission from the client on the exact test you
+are going to execute.</p>
 </div><hr>Tags: <a href="../tags/ab.html" class="link">ab &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/benchmark.html" class="link">benchmark &nbsp;</a><a href="../tags/loadtest.html" class="link">loadtest &nbsp;</a><a href="../tags/performance.html" class="link">performance &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/testing.html" class="link">testing &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><a href="../tags/tsung.html" class="link">tsung &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

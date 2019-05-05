@@ -9,19 +9,24 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial shows you how to set up `ejabberd` to authenticate against a Microsoft Active Directory LDAP. It is tested with an mixed Server 2008 / Server 2012 Active Directory, and ejabberd 2.1.10 running on Debian 7 and Ubuntu 12.04.
+This tutorial shows you how to set up `ejabberd` to authenticate against a
+Microsoft Active Directory LDAP. It is tested with an mixed Server 2008 / Server
+2012 Active Directory, and ejabberd 2.1.10 running on Debian 7 and Ubuntu 12.04.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you need to set up an ejabberd server then you can read my tutorial here how
+to do that][2].
 
-[If you need to set up an ejabberd server then you can read my tutorial here how to do that](https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html).
+This tutorial assumes a working ejabberd installation and a working Active
+Directory installation.
 
-This tutorial assumes a working ejabberd installation and a working Active Directory installation. 
+Edit the `/etc/ejabberd/ejabberd.cfg` file and change the `auth_method` from
+internal to LDAP, and use the following example settings:
 
-Edit the `/etc/ejabberd/ejabberd.cfg` file and change the `auth_method` from internal to LDAP, and use the following example settings:
-
+    
+    
     {host_config, "example.org", [{auth_method, ldap},
     {ldap_servers, ["pdc.example.org", "dc2.example.org", "dc3.example.org"]},
     {ldap_encrypt, none},
@@ -32,15 +37,25 @@ Edit the `/etc/ejabberd/ejabberd.cfg` file and change the `auth_method` from int
     {ldap_password, "HAc4glzWnhhMHSMEJTUq"}]}.
     {acl, admin, {user, "adminUser", "example.org"}}.
     {acl, admin, {user, "remy", "example.org"}}.
+    
 
-As you can see I use the "Example.org" Active Directory domain with three LDAP AD Domain Controllers and with a special ejabberd LDAP bind account. This can be a normal account, but please create a separate one so that if the config of ejabberd gets compromised you only have to change one password at one place.
+As you can see I use the "Example.org" Active Directory domain with three LDAP
+AD Domain Controllers and with a special ejabberd LDAP bind account. This can be
+a normal account, but please create a separate one so that if the config of
+ejabberd gets compromised you only have to change one password at one place.
 
 After setting up the config give ejabberd a restart:
 
+    
+    
     /etc/init.d/ejabberd restart
+    
 
-And you are all set to go. If you use a clustered setup make sure you set this configuration on all the nodes.
+And you are all set to go. If you use a clustered setup make sure you set this
+configuration on all the nodes.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html
 
 ---
 

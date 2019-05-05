@@ -69,22 +69,34 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial will show you how to install the latest (1.0) version of ZNC (an advanced IRC bouncer) on Ubuntu from source. Why from source? The package in the repositories is quite old and missing features like multiple IRC networks. It also includes an upstart script, and an example config for ZNC. ZNC is an advanced IRC bouncer that is left connected so an IRC client can disconnect/reconnect without losing the chat session.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial will show you how to install the latest (1.0) version of ZNC (an
+advanced IRC bouncer) on Ubuntu from source. Why from source? The package in the
+repositories is quite old and missing features like multiple IRC networks. It
+also includes an upstart script, and an example config for ZNC. ZNC is an
+advanced IRC bouncer that is left connected so an IRC client can
+disconnect/reconnect without losing the chat session.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This is tested on Ubuntu 12.04 and 13.10. It will probably work on debian, only you will have to use an init script instead of an upstart script.</p>
+<p>This is tested on Ubuntu 12.04 and 13.10. It will probably work on debian, only
+you will have to use an init script instead of an upstart script.</p>
 
 <h3>Note about checkinstall and packages</h3>
 
-<p>We are using checkinstall here to create a debian package of the source we compile. I do this because it gives more flexibility in managing the software afterwards. Upgrading or uninstalling the packages is easier than removing all the things make install placed. Furthermore, it makes it more clear for other administrators which software is installed.</p>
+<p>We are using checkinstall here to create a debian package of the source we
+compile. I do this because it gives more flexibility in managing the software
+afterwards. Upgrading or uninstalling the packages is easier than removing all
+the things make install placed. Furthermore, it makes it more clear for other
+administrators which software is installed.</p>
 
-<p>If you for example want to upgrade znc when it was installed via this tutorial with checkinstall, repeat the tutorial with only the version number changed. </p>
+<p>If you for example want to upgrade znc when it was installed via this tutorial
+with checkinstall, repeat the tutorial with only the version number changed.</p>
 
 <h3>Install required packages</h3>
 
-<p>We first need to make sure we have all the packages required to build ZNC. Install them via apt:</p>
+<p>We first need to make sure we have all the packages required to build ZNC.
+Install them via apt:</p>
 
 <pre><code>sudo apt-get install build-essential libssl-dev libperl-dev pkg-config checkinstall
 </code></pre>
@@ -122,7 +134,8 @@ sudo adduser --system --home /var/lib/znc --group znc
 
 <h3>Configuring ZNC</h3>
 
-<p>You can use the interactive wizard to configure ZNC. I advise you to do this, it helps a lot when creating the initial configuration file:</p>
+<p>You can use the interactive wizard to configure ZNC. I advise you to do this, it
+helps a lot when creating the initial configuration file:</p>
 
 <pre><code>sudo -u znc /usr/local/bin/znc --datadir=/var/lib/znc --makeconf
 </code></pre>
@@ -131,7 +144,8 @@ sudo adduser --system --home /var/lib/znc --group znc
 
 <h3>Upstart script</h3>
 
-<p>Place the following script in <code>/etc/init/znc.conf</code> to be able to start and stop znc as a system service:</p>
+<p>Place the following script in <code>/etc/init/znc.conf</code> to be able to start and stop
+znc as a system service:</p>
 
 <pre><code># znc
 
@@ -158,7 +172,8 @@ sudo stop znc
 
 <h3>Example ZNC configuration</h3>
 
-<p>This is an example ZNC configuration file. You can place this in <code>/var/lib/znc/configs/znc.conf</code>. Make sure to stop ZNC first:</p>
+<p>This is an example ZNC configuration file. You can place this in
+<code>/var/lib/znc/configs/znc.conf</code>. Make sure to stop ZNC first:</p>
 
 <pre><code>// WARNING
 //
@@ -257,7 +272,9 @@ Version = 1.0
 &amp;lt;/User&amp;gt;
 </code></pre>
 
-<p>With this config file set up, you can point your IRC client to the ZNC server&#39;s IP and port (6667) and automatically be connected to Freenode and a few channels.</p>
+<p>With this config file set up, you can point your IRC client to the ZNC server&#39;s
+IP and port (6667) and automatically be connected to Freenode and a few
+channels.</p>
 
 <h3>Troubleshooting</h3>
 

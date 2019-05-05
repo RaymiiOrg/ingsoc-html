@@ -9,17 +9,20 @@ Format      : 	Markdown/HTML
 
 
 
-This little tutorial will show you how to set up the Munin plugin to monitor NGINX (nginx_request and nginx_status) and graph it. You need to change some URLs in the config because by default this is wrong.
+This little tutorial will show you how to set up the Munin plugin to monitor
+NGINX (nginx _request and nginx_ status) and graph it. You need to change some
+URLs in the config because by default this is wrong.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-For this tutorial you need to have a munin server and a NGINX server. All commands need to be run as root or a superuser.
+For this tutorial you need to have a munin server and a NGINX server. All
+commands need to be run as root or a superuser.
 
 First enable the nginx status page:
 
+    
+    
     ## Edit your nginx configuration (vhost) and add this in a server {} block
     location /nginx_status {
         stub_status on;
@@ -27,27 +30,42 @@ First enable the nginx status page:
         allow 127.0.0.1;
         deny all;
     }
+    
 
-The above config will enable the status module only for the localhost, without access logging. This means that nobody other than munin can access the status page.
+The above config will enable the status module only for the localhost, without
+access logging. This means that nobody other than munin can access the status
+page.
 
-Now execute this command to change the munin configuration to have the correct URL for the plugin:
+Now execute this command to change the munin configuration to have the correct
+URL for the plugin:
 
+    
+    
     if [[ $(cat /etc/munin/plugin-conf.d/munin-node | grep "nginx") = "" ]]; then echo -e "\n[nginx*]\nenv.url http://localhost/nginx_status" >> /etc/munin/plugin-conf.d/munin-node; fi
+    
 
 Then configure the munin plugins:
 
+    
+    
     munin-node-configure --suggest --shell | sh
+    
 
-This creates the symlinks in the `/etc/munin/plugins/` folder. If they are note there, `ln -s` them yourself.
+This creates the symlinks in the `/etc/munin/plugins/` folder. If they are note
+there, `ln -s` them yourself.
 
 Finally restart munin:
+
+    
     
     /etc/init.d/munin-node restart
+    
 
 Done. You will now have nice nginx ghraps like below:
 
 !(http://zeldor.biz/wp-content/uploads/2011/01/nginx_status-day.png)
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

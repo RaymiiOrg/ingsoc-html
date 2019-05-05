@@ -9,26 +9,34 @@ Format      : 	Markdown/HTML
 
 
 
-OpenSSH has a lot of nice features which let you control how it is used. For example, you can disallow the root account to login, set the port number, protocol version and a lot of other features. This tutorial will show you how to enable certain features for certain hosts, users, groups and addresses with the Match keyword in sshd_config. And as a bonus it also covers the iptables firewall.
+OpenSSH has a lot of nice features which let you control how it is used. For
+example, you can disallow the root account to login, set the port number,
+protocol version and a lot of other features. This tutorial will show you how to
+enable certain features for certain hosts, users, groups and addresses with the
+Match keyword in sshd_config. And as a bonus it also covers the iptables
+firewall.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 #### Securing sshd
 
-First a few general tips about securing ssh. 
+First a few general tips about securing ssh.
 
-- Disable login with username/pasword and use key based authentication.
-- Do not allow root to login, limit permissions with sudo or use su.
-- Only allow protocol 2, not any of the earlier ones.
-- Not a real security measure but makes your logs less dirty: set sshd to a higher port.
+  * Disable login with username/pasword and use key based authentication.
+  * Do not allow root to login, limit permissions with sudo or use su.
+  * Only allow protocol 2, not any of the earlier ones.
+  * Not a real security measure but makes your logs less dirty: set sshd to a higher port.
 
 #### Examples
 
-You of course have disabled password authentication and you use public/private key based authentication, right? Buy, you might have that one host which is for whatever reason is not able to use ssh keys. The below config line disables password authentication for everyone, and then it enables it for the IP address 1.2.3.4:
+You of course have disabled password authentication and you use public/private
+key based authentication, right? Buy, you might have that one host which is for
+whatever reason is not able to use ssh keys. The below config line disables
+password authentication for everyone, and then it enables it for the IP address
+1.2.3.4:
 
+    
     
     PasswordAuthentication no
     
@@ -36,93 +44,119 @@ You of course have disabled password authentication and you use public/private k
     ### Enable password authentication for IP 1.2.3.4
     Match Address 1.2.3.4
         PasswordAuthentication yes
+    
 
-Or you might have a user which needs to use a graphical application on a server. But all the other users do not have to use that. For example, you might have Matlab for one user. You can install a desktop for them, but you can also let them use X forwarding. The below config allows X forwarding for the user John, but disallows it for everyone else.
+Or you might have a user which needs to use a graphical application on a server.
+But all the other users do not have to use that. For example, you might have
+Matlab for one user. You can install a desktop for them, but you can also let
+them use X forwarding. The below config allows X forwarding for the user John,
+but disallows it for everyone else.
 
+    
+    
     X11Forwarding no
     ### add this to the bottom of the sshd_config
     Match User John
         X11Forwarding yes
+    
 
+But lets say John can only use matlab (X-forwarding) from the internal network
+and you want to X forwarding for every other user, only allowing it from the
+local 172.16.1.* network, you might want to use this config lines:
 
-But lets say John can only use matlab (X-forwarding) from the internal network and you want to X forwarding for every other user, only allowing it from the local 172.16.1.* network, you might want to use this config lines:
-
+    
+    
     X11Forwarding no
     ### add this to the bottom of the sshd_config
     Match User John Address 172.16.1.* 
         X11Forwarding yes
+    
 
-And what if you want to allow a few IP addresses and one hostname to login with a password, as root? *Note that this is a bad thing to do, you should not allow root to login but use su or sudo, and preferably all users should login with ssh keys*.
+And what if you want to allow a few IP addresses and one hostname to login with
+a password, as root? _Note that this is a bad thing to do, you should not allow
+root to login but use su or sudo, and preferably all users should login with ssh
+keys_.
 
+    
+    
     PaswordAuthentication no
     PermitRootLogin no
     ### Add this to the end of the config file
     Match Address 10.20.30.40,80.90.100.200 Host dispatch.raymii.org
         PasswordAuthentication Yes
         PermitRootLogin yes
-
+    
 
 #### Restrict access via the firewall
-Using iptables is also a good way to restrict access to a few IP addresses. The below example allows the IP addresses 2.3.4.5, 3.4.5.6 and 10.2.3.40 to talk to port 22, and discards all the other traffic.
 
+Using iptables is also a good way to restrict access to a few IP addresses. The
+below example allows the IP addresses 2.3.4.5, 3.4.5.6 and 10.2.3.40 to talk to
+port 22, and discards all the other traffic.
+
+    
+    
     iptables -I INPUT -s 2.3.4.5 -p tcp -m tcp --dport 22 -j ACCEPT
     iptables -I INPUT -s 3.4.5.6 -p tcp -m tcp --dport 22 -j ACCEPT
     iptables -I INPUT -s 10.2.3.40 -p tcp -m tcp --dport 22 -j ACCEPT
     iptables -I INPUT -p tcp -m tcp --dport 22 -j REJECT
+    
 
 #### All the options
+
 The list below are all the options supported in an SSH Match pattern:
 
-- AcceptEnv
-- AllowTcpForwarding
-- AuthorizedKeysFile
-- AuthorizedKeysFile2
-- Banner
-- ChallengeResponseAuthentication
-- ChallengeResponseAuthentication
-- ClientAliveCountMax
-- ClientAliveInterval
-- GatewayPorts
-- GssAuthentication
-- GssCleanupCreds
-- HostbasedAuthentication
-- HostbasedUsesNameFromPacketOnly
-- IgnoreRhosts
-- IgnoreUserKnownHosts
-- KbdInteractiveAuthentication
-- KerberosAuthentication
-- KerberosGetAFSToken
-- KerberosOrLocalPasswd
-- KerberosTicketCleanup
-- LogFacility
-- LogLevel
-- LoginGraceTime
-- MaxAuthTries
-- PasswordAuthentication
-- PermitEmptyPasswd
-- PermitRootLogin
-- PermitTunnel
-- PermitUserEnvironment
-- PrintLastLog
-- PrintMotd
-- PubkeyAuthentication
-- PubkeyAuthentication
-- RSAAuthentication
-- RhostsRSAAuthentication
-- StrictModes
-- UseLogin
-- UsePAM
-- X11DisplayOffset
-- X11Forwarding
-- X11UseLocalhost
-- XAuthLocation
-
+  * AcceptEnv
+  * AllowTcpForwarding
+  * AuthorizedKeysFile
+  * AuthorizedKeysFile2
+  * Banner
+  * ChallengeResponseAuthentication
+  * ChallengeResponseAuthentication
+  * ClientAliveCountMax
+  * ClientAliveInterval
+  * GatewayPorts
+  * GssAuthentication
+  * GssCleanupCreds
+  * HostbasedAuthentication
+  * HostbasedUsesNameFromPacketOnly
+  * IgnoreRhosts
+  * IgnoreUserKnownHosts
+  * KbdInteractiveAuthentication
+  * KerberosAuthentication
+  * KerberosGetAFSToken
+  * KerberosOrLocalPasswd
+  * KerberosTicketCleanup
+  * LogFacility
+  * LogLevel
+  * LoginGraceTime
+  * MaxAuthTries
+  * PasswordAuthentication
+  * PermitEmptyPasswd
+  * PermitRootLogin
+  * PermitTunnel
+  * PermitUserEnvironment
+  * PrintLastLog
+  * PrintMotd
+  * PubkeyAuthentication
+  * PubkeyAuthentication
+  * RSAAuthentication
+  * RhostsRSAAuthentication
+  * StrictModes
+  * UseLogin
+  * UsePAM
+  * X11DisplayOffset
+  * X11Forwarding
+  * X11UseLocalhost
+  * XAuthLocation
 
 #### More information
 
-[Source link used for this article](https://bugzilla.mindrot.org/show_bug.cgi?id=match)  
-[Forum topic on the Arch Linux bbs](https://bbs.archlinux.org/viewtopic.php?id=121945)
+[Source link used for this article][2]  
+[Forum topic on the Arch Linux bbs][3]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://bugzilla.mindrot.org/show_bug.cgi?id=match
+   [3]: https://bbs.archlinux.org/viewtopic.php?id=121945
 
 ---
 

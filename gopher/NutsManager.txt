@@ -58,17 +58,22 @@ lot.
 
 ### Install
 
-  * Download zip file: https://github.com/RaymiiOrg/nutsmanager/zipball/master and unzip to webroot (/var/www).  
+  * Download zip file: https://github.com/RaymiiOrg/nutsmanager/zipball/master and unzip to webroot (/var/www). 
 
   * Make sure json file is writable by webserver: _chown www-data:www-date power.json_
+
     * (Or, _chmod 777 power.json_ if you are lazy)
   * Change the price values for the power, gas and water in the _functions.php_ file. 
+
     * Make sure you use a dot (.) and not a comma (,), php doesn't like comma's.
   * Set the language in the _functions.php_ file. 
+
     * For english: language.en.php.
     * For dutch: language.nl.php.
   * Start adding the values every day.
+
   * ???
+
   * PROFIT!!!
 
 ### Links

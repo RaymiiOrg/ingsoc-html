@@ -69,24 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I set up a Kodi (XMBC) media center on a Raspberry Pi.  The setup is mounted on a flatscreen TV and uses a small Wifi dongle for network access and a small Bluetooth dongle for a Rapoo E6700 wireless bluetooth keyboard/touchpad. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I set up a Kodi (XMBC) media center on a Raspberry Pi. The setup is
+mounted on a flatscreen TV and uses a small Wifi dongle for network access and a
+small Bluetooth dongle for a Rapoo E6700 wireless bluetooth keyboard/touchpad.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/rapoo-E6700.png" alt="rapoo e6700" /></p>
+<p><img src="https://raymii.org/s/inc/img/rapoo-E6700.png" alt="rapoo e6700"></p>
 
-<p>This is a nice bluetooth keyboard/mouse combo for a media center, it charges via micro USB. That saves a lot of battery hassle. The bluetooth adapter is a Sitecom CN-524, which was the only one my local electronic store had available.</p>
+<p>This is a nice bluetooth keyboard/mouse combo for a media center, it charges via
+micro USB. That saves a lot of battery hassle. The bluetooth adapter is a
+Sitecom CN-524, which was the only one my local electronic store had available.</p>
 
 <h3>Bluetooth boot mode</h3>
 
-<p>It however does not work with linux/Kodi by default. This is because the device boots in a wrong mode, HID, instead of HCI. On my Linux Mint and Ubuntu machines it wasn&#39;t recognized as well, and the usb_modeswitch tools didn&#39;t help. <a href="http://blog.ruecker.fi/2013/10/06/adventures-in-bluetooth-4-0-part-i/">This website</a> has a fix for that in the comments which is posted here as well.</p>
+<p>It however does not work with linux/Kodi by default. This is because the device
+boots in a wrong mode, HID, instead of HCI. On my Linux Mint and Ubuntu machines
+it wasn&#39;t recognized as well, and the usb_modeswitch tools didn&#39;t help. <a href="http://blog.ruecker.fi/2013/10/06/adventures-in-bluetooth-4-0-part-i/">This
+website</a> has a fix for that in the comments which is posted here as well.</p>
 
-<p>You do sadly need a Windows machine for it. I used Windows 7 in a Virtualbox VM with USB passthrough.</p>
+<p>You do sadly need a Windows machine for it. I used Windows 7 in a Virtualbox VM
+with USB passthrough.</p>
 
 <ul>
 <li>Don&#39;t plug in the bluetooth dongle yet (or enable passthrough in the VM)</li>
-<li>Download the BlueSuite to modifiy &quot;BlueCore Persistent Store&quot;: <a href="http://www.kcwirefree.com/docs/BlueSuite_2_5.zip">http://www.kcwirefree.com/docs/BlueSuite<em>2</em>5.zip</a></li>
+<li>Download the BlueSuite to modifiy &quot;BlueCore Persistent Store&quot;: <a href="http://www.kcwirefree.com/docs/BlueSuite_2_5.zip">http://www.kcwirefree.com/docs/BlueSuite <em>2</em> 5.zip</a></li>
 <li>Install the BlueSuite Software (default options)</li>
 <li>Plug the bluetooth dongle in (enable passthrough in the VM)</li>
 <li>Run CSR BlueSuite 2.5.0 / PSTool as Administrator</li>
@@ -97,13 +105,16 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Wait a few seconds then unplug the bluetooth dongle.</li>
 </ul>
 
-<p>After I did this the bluetooth dongle worked without issues on Ubuntu and my Linux Mint machine. The Raspberry Pi / Kodi setup required some more steps.</p>
+<p>After I did this the bluetooth dongle worked without issues on Ubuntu and my
+Linux Mint machine. The Raspberry Pi / Kodi setup required some more steps.</p>
 
 <h3>Kodi / OpenELEC configuration</h3>
 
-<p><img src="https://raymii.org/s/inc/img/openelec_raspberry.jpg" alt="openelec" /></p>
+<p><img src="https://raymii.org/s/inc/img/openelec_raspberry.jpg" alt="openelec"></p>
 
-<p>Make sure you enable SSH via the OpenELEC settings. The default username / password is <code>root</code> / <code>openelec</code>. Login via SSH and make sure the bluetooth adapter is listed in the output of <code>lsusb</code>:</p>
+<p>Make sure you enable SSH via the OpenELEC settings. The default username /
+password is <code>root</code> / <code>openelec</code>. Login via SSH and make sure the bluetooth
+adapter is listed in the output of <code>lsusb</code>:</p>
 
 <pre><code>lsusb
 </code></pre>
@@ -113,7 +124,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>Bus 001 Device 005: ID 0a12:0001 Cambridge Silicon Radio, Ltd Bluetooth Dongle (HCI mode)
 </code></pre>
 
-<p>If that is the case, continue on. </p>
+<p>If that is the case, continue on.</p>
 
 <p>The bluetooth adapter is down by default. Check it with the <code>hciconfig</code> command:</p>
 
@@ -129,7 +140,8 @@ RX bytes:108 acl:0 sco:0 events:0 errors:0
 TX bytes:104 acl:0 sco:0 commands:0 errors:0
 </code></pre>
 
-<p>Turn it on with the following command, and check the status again with <code>hciconfig</code>:</p>
+<p>Turn it on with the following command, and check the status again with
+<code>hciconfig</code>:</p>
 
 <pre><code>hciconfig hci0 up
 hciconfig
@@ -153,11 +165,14 @@ TX bytes:164 acl:0 sco:0 commands:40 errors:0
 <pre><code> /usr/lib/bluetooth/bluetoothd &amp;
 </code></pre>
 
-<p>There is no output of this command. </p>
+<p>There is no output of this command.</p>
 
-<p>Now try to pair the bluetooth keyboard via the OpenELEC settings program, it should work. You enter a code from the screen in the keyboard and after that it works every time you turn the keyboard on by default.</p>
+<p>Now try to pair the bluetooth keyboard via the OpenELEC settings program, it
+should work. You enter a code from the screen in the keyboard and after that it
+works every time you turn the keyboard on by default.</p>
 
-<p>To make these settings permanent, add the following to the file <code>/storage/.config/autostart.sh</code>:</p>
+<p>To make these settings permanent, add the following to the file
+<code>/storage/.config/autostart.sh</code>:</p>
 
 <pre><code>nano /storage/.config/autostart.sh
 

@@ -9,19 +9,24 @@ Format      : 	Markdown/HTML
 
 
 
-On a default CentOS installation, when trying to execute the `service iptables save` command you can get an error like `iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found.`  
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+On a default CentOS installation, when trying to execute the `service iptables
+save` command you can get an error like `iptables: Saving firewall rules to
+/etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not
+found.`  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+This is fixed easily by installing the `policycoreutils` package, which is
+available in the default CentOS repositories:
 
-
-This is fixed easily by installing the `policycoreutils` package, which is available in the default CentOS repositories:
-
+    
+    
     yum install policycoreutils
+    
 
 After installation the `service iptables save` command works without errors.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

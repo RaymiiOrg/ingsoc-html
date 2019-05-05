@@ -69,36 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide shows you how to test a server&#39;s TLSv1.3 connection and use specific 
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide shows you how to test a server&#39;s TLSv1.3 connection and use specific
 ciphersuites with the command line <code>s_client</code> client from the <code>OpenSSL</code> project.
 With OpenSSL 1.1.1 you can use TLSv1.3. This guide covers the installation of
-OpenSSL 1.1.1 on Ubuntu, testing the connection to a server  and specific
+OpenSSL 1.1.1 on Ubuntu, testing the connection to a server and specific
 ciphersuites. It also covers the big differences between TLSv1.3 and lower.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>I often write about OpenSSL. <a href="https://raymii.org/s/tags/openssl.html">You can see all my OpenSSL articles here</a></p>
 
 <h3>Installing OpenSSL 1.1.1 on Ubuntu 14.04, 16.04 or 18.04</h3>
 
 <p>The version of OpenSSL that ships with Ubuntu 16.04, 14.04 and 18.04 (and 18.10
-but thats not an LTS) is not new enough to support TLSv1.3. You can either 
+but thats not an LTS) is not new enough to support TLSv1.3. You can either
 compile OpenSSL yourself (download the source, extract, <code>./configure</code>, <code>make</code>),
-which I would recommend you to do. It&#39;s easy and provides a local binary for 
+which I would recommend you to do. It&#39;s easy and provides a local binary for
 testing, not a systemwide upgrade. Ubuntu versions are built around specific
 versions, so upgrading a core security component might not be the greatest idea.
 As in, I don&#39;t know what will break when you upgrade OpenSSL system wide.</p>
 
 <p>Or, you can use a PPA and upgrade OpenSSL systemwide. I recommend you only do
-this on a test system (one which you can afford to lose). </p>
+this on a test system (one which you can afford to lose).</p>
 
 <pre><code>add-apt-repository ppa:ondrej/apache2
 apt-get update
 apt-get install openssl
 </code></pre>
 
-<p>Again, I recommend you compile OpenSSL yourself. </p>
+<p>Again, I recommend you compile OpenSSL yourself.</p>
 
 <p>You can check the OpenSSL version with this command:</p>
 
@@ -112,8 +112,8 @@ apt-get install openssl
 
 <h3>Testing TLSv1.3 with s_client</h3>
 
-<p>Using <code>s_client</code>, one can test a server via the command line. This is usefull if 
-you want to quickly test if your server is configured correctly, get the 
+<p>Using <code>s_client</code>, one can test a server via the command line. This is usefull if
+you want to quickly test if your server is configured correctly, get the
 certificate or show the chain, or use in scripts. It&#39;s a lot faster than using
 an online tool.</p>
 
@@ -202,14 +202,14 @@ TLS_CHACHA20_POLY1305_SHA256 TLSv1.3 Kx=any      Au=any  Enc=CHACHA20/POLY1305(2
 TLS_AES_128_GCM_SHA256  TLSv1.3 Kx=any      Au=any  Enc=AESGCM(128) Mac=AEAD
 </code></pre>
 
-<p>So, to test if a server supports the <code>TLS_AES_256_GCM_SHA384</code> ciphersuite, use 
+<p>So, to test if a server supports the <code>TLS_AES_256_GCM_SHA384</code> ciphersuite, use
 the following command:</p>
 
 <pre><code>echo | openssl s_client -tls1_3 -ciphersuites &#39;TLS_AES_256_GCM_SHA384&#39; -connect tls13.cloudflare.com:443
 </code></pre>
 
-<p>In the output under the connection information (below the certificates), you will
-see this if it succeeds:</p>
+<p>In the output under the connection information (below the certificates), you
+will see this if it succeeds:</p>
 
 <pre><code>New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
 </code></pre>
@@ -219,8 +219,8 @@ see this if it succeeds:</p>
 <pre><code>New, TLSv1.3, Cipher is TLS_CHACHA20_POLY1305_SHA256
 </code></pre>
 
-<p>To test multiple ciphers, provide them in client preferred order, 
-seperated by a colon (<code>:</code>):</p>
+<p>To test multiple ciphers, provide them in client preferred order, seperated by a
+colon (<code>:</code>):</p>
 
 <pre><code>echo | openssl s_client -tls1_3 -ciphersuites &#39;TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384&#39; -connect tls13.cloudflare.com:443
 </code></pre>
@@ -230,10 +230,11 @@ seperated by a colon (<code>:</code>):</p>
 <pre><code>New, TLSv1.3, Cipher is TLS_CHACHA20_POLY1305_SHA256
 </code></pre>
 
-<p>The server will, if it supports the ciphersuite, use the clients preferred cipher.</p>
+<p>The server will, if it supports the ciphersuite, use the clients preferred
+cipher.</p>
 
-<p>If you enable TLSv1.3 in Apache (or any OpenSSL using program) and configure 
-specific ciphersuites, you must explicitly enable specific TLSv1.3 ciphersuites, 
+<p>If you enable TLSv1.3 in Apache (or any OpenSSL using program) and configure
+specific ciphersuites, you must explicitly enable specific TLSv1.3 ciphersuites,
 the first three are included in <code>DEFAULT</code>. Otherwise a connection will fail.</p>
 
 <p><a href="https://github.com/openssl/openssl/issues/5065">This was a deliberate decision</a> by the <a href="https://github.com/openssl/openssl/issues/5057">OpenSSL team</a>.</p>
@@ -243,24 +244,13 @@ the first three are included in <code>DEFAULT</code>. Otherwise a connection wil
 <p>Citing the <a href="http://web.archive.org/web/20190428143322/https://www.openssl.org/blog/blog/2017/05/04/tlsv1.3/">OpenSSL blog here verbatim</a>:</p>
 
 <ul>
-<li><p>TLSv1.3 is a major rewrite of the specification. There was some debate as to
-whether it should really be called TLSv2.0m but TLSv1.3 it is. There are major
-changes and some things work very differently. A brief, incomplete, summary of
-some things that you are likely to notice follows:</p></li>
-<li><p>There are new ciphersuites that only work in TLSv1.3. The old ciphersuites
-cannot be used for TLSv1.3 connections.</p></li>
-<li><p>The new ciphersuites are defined differently and do not specify the certificate
-type (e.g. RSA, DSA, ECDSA) or the key exchange mechanism (e.g. DHE or ECHDE).
-This has implications for ciphersuite configuration.</p></li>
-<li><p>Clients provide a &quot;key_share&quot; in the ClientHello. This has consequences for
-&quot;group&quot; configuration. Sessions are not established until after the main
-handshake has been completed. There may be a gap between the end of the
-handshake and the establishment of a session (or, in theory, a session may not
-be established at all). This could have impacts on session resumption code.</p></li>
+<li><p>TLSv1.3 is a major rewrite of the specification. There was some debate as to whether it should really be called TLSv2.0m but TLSv1.3 it is. There are major changes and some things work very differently. A brief, incomplete, summary of some things that you are likely to notice follows:</p></li>
+<li><p>There are new ciphersuites that only work in TLSv1.3. The old ciphersuites cannot be used for TLSv1.3 connections.</p></li>
+<li><p>The new ciphersuites are defined differently and do not specify the certificate type (e.g. RSA, DSA, ECDSA) or the key exchange mechanism (e.g. DHE or ECHDE). This has implications for ciphersuite configuration.</p></li>
+<li><p>Clients provide a &quot;key_share&quot; in the ClientHello. This has consequences for &quot;group&quot; configuration. Sessions are not established until after the main handshake has been completed. There may be a gap between the end of the handshake and the establishment of a session (or, in theory, a session may not be established at all). This could have impacts on session resumption code.</p></li>
 <li><p>Renegotiation is not possible in a TLSv1.3 connection</p></li>
 <li><p>More of the handshake is now encrypted.</p></li>
-<li><p>More types of messages can now have extensions (this has an impact on the custom
-extension APIs and Certificate Transparency)</p></li>
+<li><p>More types of messages can now have extensions (this has an impact on the custom extension APIs and Certificate Transparency)</p></li>
 <li><p>DSA certificates are no longer allowed in TLSv1.3 connections</p></li>
 </ul>
 </div><hr>Tags: <a href="../tags/ca.html" class="link">ca &nbsp;</a><a href="../tags/certificate.html" class="link">certificate &nbsp;</a><a href="../tags/crl.html" class="link">crl &nbsp;</a><a href="../tags/ocsp.html" class="link">ocsp &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/pki.html" class="link">pki &nbsp;</a><a href="../tags/revocation.html" class="link">revocation &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><a href="../tags/tlsv1.3.html" class="link">tlsv1.3 &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">

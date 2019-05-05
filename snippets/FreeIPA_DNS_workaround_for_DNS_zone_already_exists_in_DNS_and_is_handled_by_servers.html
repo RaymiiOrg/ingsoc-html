@@ -69,21 +69,33 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I ran into an issue with FreeIPA when trying to add an existing DNS zone. The zone already exists on the internet so, logically, FreeIPA wouldn&#39;t allow me to hijack this domain locally. My usecase is special, so I wanted to forcefully add this zone as a forward zone.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I ran into an issue with FreeIPA when trying to add an existing DNS
+zone. The zone already exists on the internet so, logically, FreeIPA wouldn&#39;t
+allow me to hijack this domain locally. My usecase is special, so I wanted to
+forcefully add this zone as a forward zone.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>In the web UI of FreeIPA when trying to add this existing zone, the following error appears:</p>
+<p>In the web UI of FreeIPA when trying to add this existing zone, the following
+error appears:</p>
 
 <pre><code>DNS zone example.org. already exists in DNS and is handled by server(s): ns1.kpn.com, ns2.kpn.com
 </code></pre>
 
-<p>This is a logical error since hijacking a domain like this is a bad idea, features like DNSSEC will bite you. </p>
+<p>This is a logical error since hijacking a domain like this is a bad idea,
+features like DNSSEC will bite you.</p>
 
-<p>My setup however was different. In this setup, domain <code>sub.example.org</code> was delegated to this environment, but via some tunneling constructions VPSes in this environment would be able to connect internally to the <code>example.org</code> domain. So, I want the FreeIPA system that is also the DNS resolver, to forward queries for <code>example.org</code> to the local internal nameserver in the <code>example.org</code> domain, and not resolving them externally. </p>
+<p>My setup however was different. In this setup, domain <code>sub.example.org</code> was
+delegated to this environment, but via some tunneling constructions VPSes in
+this environment would be able to connect internally to the <code>example.org</code>
+domain. So, I want the FreeIPA system that is also the DNS resolver, to forward
+queries for <code>example.org</code> to the local internal nameserver in the <code>example.org</code>
+domain, and not resolving them externally.</p>
 
-<p>FreeIPA wouldn&#39;t let me do that via the GUI. Which is IMHO the good option, since you are doing something that normally will break stuff. Using the commandline we can skip this overlap check with the <code>--skip-overlap-check</code> flag:</p>
+<p>FreeIPA wouldn&#39;t let me do that via the GUI. Which is IMHO the good option,
+since you are doing something that normally will break stuff. Using the
+commandline we can skip this overlap check with the <code>--skip-overlap-check</code> flag:</p>
 
 <pre><code> ipa dnsforwardzone-add  --skip-overlap-check example.org --forwarder=192.0.2.10 --forwarder=198.51.100.10 --forward-policy=only
 Server will check DNS forwarder(s).
@@ -94,7 +106,8 @@ This may take some time, please wait ...
   Forward policy: only
 </code></pre>
 
-<p>If you do not want to add a forward zone, you can also use this flag to add a regular zone:</p>
+<p>If you do not want to add a forward zone, you can also use this flag to add a
+regular zone:</p>
 
 <pre><code>ipa dnszone-add --skip-overlap-check example.org --forwarder=192.0.2.10 --forwarder=198.51.100.10 --forward-policy=only
 </code></pre>

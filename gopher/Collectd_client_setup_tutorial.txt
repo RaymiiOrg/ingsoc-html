@@ -20,12 +20,10 @@ right place, too ;).
 You need a collectd server set up to fully use this tutorial, but I also have
 written a tutorial to do that.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-[The collectd server tutorial can be found here][1].
+[The collectd server tutorial can be found here][2].
 
 The collectd client is much easier to set up than the server with web frontend.
 It only requires installation and configuring the client.
@@ -34,18 +32,22 @@ It only requires installation and configuring the client.
 
 First install all the required packages:
 
+    
+    
     sudo apt-get install collectd 
-
+    
 
 #### Configuring Collectd to talk to our server
 
 Open your favorite editor and edit the `/etc/collectd/collectd.conf` file. Read
 it, then remove it all and make sure it looks like the below config file:
 
+    
+    
     ## /etc/collectd/collectd.conf generated for vps3.sparklingclouds.nl by Ansible
     ## Config Type: CollectD Client
-
-
+    
+    
     Hostname $HOSTNAME
     FQDNLookup false
     Interval 30
@@ -54,7 +56,7 @@ it, then remove it all and make sure it looks like the below config file:
     <Plugin syslog>
             LogLevel info
     </Plugin>
-
+    
     LoadPlugin cpu
     LoadPlugin df
     LoadPlugin disk
@@ -68,38 +70,37 @@ it, then remove it all and make sure it looks like the below config file:
     LoadPlugin swap
     LoadPlugin users
     LoadPlugin network
-
+    
     ## Extra Plugins
     LoadPlugin nginx
     LoadPlugin iptables
     LoadPlugin uptime
     LoadPlugin dns
     LoadPlugin ping
-
+    
     ## CollectD Servers
     <Plugin "network">
             Server "$COLLECTD SERVER IP" "25826"
             Server "$COLLECTD SERVER IP" "25826"
             SecurityLevel None
     </Plugin>
-
-
+    
+    
     <Plugin rrdtool>
             DataDir "/var/lib/collectd/rrd"
     </Plugin>
-
+    
     Include "/etc/collectd/filters.conf"
     Include "/etc/collectd/plugins.conf"
     Include "/etc/collectd/thresholds.conf"
+    
 
 The configuration file is relatively simple. Make sure to replace $VARIABLE$ by
 the correct on for your server. You load plugins via `"LoadPlugin $name"`. The
 network part is important, this configures our client to send its data to our
-server. Replace $COLLECT SERVER IP with your collectd server IP. 
+server. Replace $COLLECT SERVER IP with your collectd server IP.
 
-*Make sure the file has a blank newline at the end. If it has not, collectd will
-*fail to start/run correctly*.
-
+*Make sure the file has a blank newline at the end. If it has not, collectd will _fail to start/run correctly_.
 
 #### Configure collectd plugins
 
@@ -108,30 +109,31 @@ default. This will house the plugin config. Add the following content to it, but
 make sure it matches your LoadPlugin settings above. If you don't have the ping
 plugin, you also don't need the config for it.
 
-
+    
+    
     ## /etc/collectd/plugins.conf 
-
+    
     ## Static Plugins (every host has them)
     <Plugin swap>
            ReportByDevice false
     </Plugin>
-
-
+    
+    
     ## Dynamic Plugins 
     <Plugin nginx>
            URL "http://127.0.0.1/nginx_status"
     </Plugin>
-
+    
     <Plugin ntpd>
            Host "localhost"
            Port 123
            ReverseLookups false
     </Plugin>
-
+    
     <Plugin ping>
            Host "google.com"
     </Plugin>
-
+    
     <Plugin sensors>
            SensorConfigFile "/etc/sensors3.conf"
            Sensor "it8712-isa-0290/temperature-temp1"
@@ -139,7 +141,7 @@ plugin, you also don't need the config for it.
            Sensor "it8712-isa-0290/voltage-in8"
            IgnoreSelected false
     </Plugin>
-
+    
     <Plugin write_graphite>
            <Carbon>
                    Host "$GRAPHITE_HOST$"
@@ -151,12 +153,15 @@ plugin, you also don't need the config for it.
                    EscapeCharacter "_"
            </Carbon>
     </Plugin>
-
+    
 
 Collectd server is now set up in "client" mode. To test it we restart the
 service:
 
+    
+    
     /etc/init.d/collectd restart
+    
 
 And then check the `/var/lib/collectd/rrd/` folder and you should see some files
 and folders (rrd libraries). If not then your collectd is setup wrong, see
@@ -168,9 +173,10 @@ correctly.
 
 Remember to add the IP to the collectd server firewall.
 
-Now you have a fully working collectd client set up. 
+Now you have a fully working collectd client set up.
 
-[1]: https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/Collectd_server_setup_tutorial_with_web_frontend.html
 
 ---
 

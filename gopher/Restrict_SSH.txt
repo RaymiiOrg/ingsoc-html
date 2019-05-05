@@ -70,7 +70,7 @@ regexes you can be very creative with this, for example `^ping -c 4
 2 to 20 character .com, .net or .org domain. domain and nothing else.
 
 _BE CAREFUL WITH THIS. IF YOU CONFIGURE IT WRONG USER MAY BE ABLE TO GET A SHELL
-(vim, :!bash) OR OVERWRITE THE .ssh/authorized_keys FILE. IF YOU ARE NOT SURE,
+(vim, :!bash) OR OVERWRITE THE .ssh/authorized_ keys FILE. IF YOU ARE NOT SURE,
 THEN DO NOT USE IT AT ALL!_
 
 Also, if you allow `vim`, `less`, `man`, or any other program, a user might get

@@ -9,53 +9,78 @@ Format      : 	Markdown/HTML
 
 
 
+While doing my monitoring script [ray-mon][1] I found out it can be quite hard
+to get the correct values for uptime, load average and users on different
+systems.
 
-While doing my monitoring script [ray-mon](https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html) I found out it can be quite hard to get the correct values for uptime, load average and users on different systems. 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+For example, the _uptime_ command displays this on a mac:
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-For example, the *uptime* command displays this on a mac:
-
+    
+    
      8:27  up 1 day, 17:06, 1 user, load averages: 1,01 0,87 0,79
+    
 
 This on a debian 6 machine:
 
+    
+    
      06:27:33 up 4 days,  2:36,  2 users,  load average: 0.16, 0.26, 0.27
+    
 
 This on a RHEL 5 machine:
 
+    
+    
      06:28:26 up 54 min,  127 users,  load average: 6.34, 6.28, 6.27    
+    
 
+Small differences in space placement, "load averages:" instead of "load
+average:" and "min" vs "days". It took me quite a while to find out how to get
+the correct values for the following items using just unix tools:
 
-Small differences in space placement, "load averages:" instead of "load average:" and "min" vs "days". It took me quite a while to find out how to get the correct values for the following items using just unix tools:
-
-  - Uptime
-  - Amount of users logged in
-  - Current load average
+  * Uptime
+  * Amount of users logged in
+  * Current load average
 
 #### Uptime
 
+    
+    
     uptime | grep -ohe 'up .*' | sed 's/,//g' | awk '{ print $2" "$3 }'
+    
 
-First take the output of uptime to grep, only show matching characters (-oh) and do regex (-e). Filter on "up" "space" "everything after that". Then go to sed to remove the comma's "4 days," to "4 days", and then with awk print the second and third collumn, and remove the rest of the output.
+First take the output of uptime to grep, only show matching characters (-oh) and
+do regex (-e). Filter on "up" "space" "everything after that". Then go to sed to
+remove the comma's "4 days," to "4 days", and then with awk print the second and
+third collumn, and remove the rest of the output.
 
 #### Users logged in
 
+    
+    
     uptime | grep -ohe '[0-9.*] user[s,]'
+    
 
-Take the output of uptime to grep, only show matching characters (-oh), and do regex (-e). Filter on "number between 0 and 9" "any amount of the previous character" "space" "user, or users"
+Take the output of uptime to grep, only show matching characters (-oh), and do
+regex (-e). Filter on "number between 0 and 9" "any amount of the previous
+character" "space" "user, or users"
 
 #### Load
 
+    
+    
     uptime | grep -ohe 'load average[s:][: ].*' | awk '{ print $3 }'
+    
 
-First take the output of uptime to grep. only show matching characters (-oh), and do regex (-e). Filter on "load average: or load averages:" "everything after that". The with awk print the 3d collumn.
+First take the output of uptime to grep. only show matching characters (-oh),
+and do regex (-e). Filter on "load average: or load averages:" "everything after
+that". The with awk print the 3d collumn.
 
-
-
+   [1]: https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

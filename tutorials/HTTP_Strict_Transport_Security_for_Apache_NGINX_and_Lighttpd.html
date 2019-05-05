@@ -69,10 +69,16 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>HTTP Strict Transport Security (often abbreviated as HSTS) is a security feature that lets a web site tell browsers that it should only be communicated with using HTTPS, instead of using HTTP. This tutorial will show you how to set up HSTS in Apache2, NGINX and Lighttpd. It is tested with all mentioned webservers, NGINX 1.1.19, Lighttpd 1.4.28 and Apache 2.2.22 on Ubuntu 12.04, Debian 6 &amp; 7 and CentOS 6.It should work on other distro&#39;s however, these are just reference values.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>HTTP Strict Transport Security (often abbreviated as HSTS) is a security feature
+that lets a web site tell browsers that it should only be communicated with
+using HTTPS, instead of using HTTP. This tutorial will show you how to set up
+HSTS in Apache2, NGINX and Lighttpd. It is tested with all mentioned webservers,
+NGINX 1.1.19, Lighttpd 1.4.28 and Apache 2.2.22 on Ubuntu 12.04, Debian 6 &amp; 7
+and CentOS 6.It should work on other distro&#39;s however, these are just reference
+values.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>What is HTTP Strict Transport Security?</h3>
 
@@ -92,21 +98,31 @@ The HTTP Strict Transport Security feature lets a web site inform the browser th
 Strict Transport Security resolves this problem; as long as you&#39;ve accessed your bank&#39;s web site once using HTTPS, and the bank&#39;s web site uses Strict Transport Security, your browser will know to automatically use only HTTPS, which prevents hackers from performing this sort of man-in-the-middle attack.
 </code></pre>
 
-<p><em>Do note that HSTS does not work if you&#39;ve never visited the website before.</em>  A website needs to tell you it is HTTPS only.</p>
+<p><em>Do note that HSTS does not work if you&#39;ve never visited the website before.</em> A
+website needs to tell you it is HTTPS only.</p>
 
 <h3>Important regarding preload</h3>
 
-<p>In the below configuration the <code>preload</code> directive was used. As requested by Lucas Garron from Google I removed it since most people seem to do screw it up. </p>
+<p>In the below configuration the <code>preload</code> directive was used. As requested by
+Lucas Garron from Google I removed it since most people seem to do screw it up.</p>
 
-<p>Please note that that <code>THE PRELOAD DIRECTIVE WILL HAVE SEMI-PERMANENT CONSEQUENCE</code>. If you are testing, screw up or don&#39;t want to use HSTS anymore you might be on the preload list. </p>
+<p>Please note that that <code>THE PRELOAD DIRECTIVE WILL HAVE SEMI-PERMANENT
+CONSEQUENCE</code>. If you are testing, screw up or don&#39;t want to use HSTS anymore you
+might be on the preload list.</p>
 
-<p>It is important that you understand what you are doing and that you understand that the preload directive means that it will end up in browsers. If your HTTPS configuration is wrong, broken or you don&#39;t want to use HTTPS anymore, you will experience problems. <a href="https://hstspreload.appspot.com/">See this page</a> as well. </p>
+<p>It is important that you understand what you are doing and that you understand
+that the preload directive means that it will end up in browsers. If your HTTPS
+configuration is wrong, broken or you don&#39;t want to use HTTPS anymore, you will
+experience problems. <a href="https://hstspreload.appspot.com/">See this page</a> as well.</p>
 
-<p>If you still want to use <code>preload</code>, just append it to the header after the semi-colon.</p>
+<p>If you still want to use <code>preload</code>, just append it to the header after the semi-
+colon.</p>
 
 <h3>Set up HSTS in Apache2</h3>
 
-<p>Edit your apache configuration file (<code>/etc/apache2/sites-enabled/website.conf</code> and <code>/etc/apache2/httpd.conf</code> for example) and add the following to your VirtualHost:</p>
+<p>Edit your apache configuration file (<code>/etc/apache2/sites-enabled/website.conf</code>
+and <code>/etc/apache2/httpd.conf</code> for example) and add the following to your
+VirtualHost:</p>
 
 <pre><code># Optionally load the headers module:
 LoadModule headers_module modules/mod_headers.so
@@ -116,10 +132,13 @@ LoadModule headers_module modules/mod_headers.so
 &lt;/VirtualHost&gt;
 </code></pre>
 
-<p>Now your website will set the header every time someone visits, with an expiration date of two years (in seconds). It sets it at every visit. So tomorrow, it will say two years again.<br>
-You do have to set it on the HTTPS vhost only. It cannot be in the http vhost. </p>
+<p>Now your website will set the header every time someone visits, with an
+expiration date of two years (in seconds). It sets it at every visit. So
+tomorrow, it will say two years again.<br>
+You do have to set it on the HTTPS vhost only. It cannot be in the http vhost.</p>
 
-<p>To redirect your visitors to the HTTPS version of your website, use the following configuration:</p>
+<p>To redirect your visitors to the HTTPS version of your website, use the
+following configuration:</p>
 
 <pre><code>&lt;VirtualHost *:80&gt;
   [...]
@@ -130,7 +149,9 @@ You do have to set it on the HTTPS vhost only. It cannot be in the http vhost. <
 
 <p>If you only redirect, you dont even need a document root.</p>
 
-<p>You can also use mod<em>rewrite, however the above method is simpler and safer. However, mod</em>rewrite below redirects the user to the page they were visiting over https, the above config just redirects to /:</p>
+<p>You can also use mod <em>rewrite, however the above method is simpler and safer.
+However, mod</em> rewrite below redirects the user to the page they were visiting
+over https, the above config just redirects to /:</p>
 
 <pre><code>&lt;VirtualHost *:80&gt;
   [...]
@@ -146,7 +167,8 @@ You do have to set it on the HTTPS vhost only. It cannot be in the http vhost. <
 
 <h3>Lighttpd</h3>
 
-<p>The lighttpd variant is just as simple. Add it to your Lighttpd configuration file (<code>/etc/lighttpd/lighttpd.conf</code> for example):</p>
+<p>The lighttpd variant is just as simple. Add it to your Lighttpd configuration
+file (<code>/etc/lighttpd/lighttpd.conf</code> for example):</p>
 
 <pre><code>server.modules += ( &quot;mod_setenv&quot; )
 $HTTP[&quot;scheme&quot;] == &quot;https&quot; {
@@ -158,7 +180,8 @@ $HTTP[&quot;scheme&quot;] == &quot;https&quot; {
 
 <h3>NGINX</h3>
 
-<p>NGINX is even shorter with its config. Add this in the <code>server</code> block for your HTTPS configuration:</p>
+<p>NGINX is even shorter with its config. Add this in the <code>server</code> block for your
+HTTPS configuration:</p>
 
 <pre><code>add_header Strict-Transport-Security &quot;max-age=63072000; includeSubdomains; &quot;;
 </code></pre>
@@ -172,7 +195,8 @@ $HTTP[&quot;scheme&quot;] == &quot;https&quot; {
 <pre><code>The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a `&lt;frame&gt;` or `&lt;iframe&gt;`. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.
 </code></pre>
 
-<p>You can change DENY to SAMEORIGIN or ALLOW-FROM uri, see the Mozilla link above for more information on that. (Or the <a href="http://tools.ietf.org/html/rfc7034">RFC</a>.)</p>
+<p>You can change DENY to SAMEORIGIN or ALLOW-FROM uri, see the Mozilla link above
+for more information on that. (Or the <a href="http://tools.ietf.org/html/rfc7034">RFC</a>.)</p>
 
 <h4>X-Frame-Options for Apache2</h4>
 
@@ -183,7 +207,8 @@ $HTTP[&quot;scheme&quot;] == &quot;https&quot; {
 
 <h3>Lighttpd</h3>
 
-<p>This goes in the lighttpd config. Make sure you don&#39;t double the above set config, if you have that, just add the rule it to it.</p>
+<p>This goes in the lighttpd config. Make sure you don&#39;t double the above set
+config, if you have that, just add the rule it to it.</p>
 
 <pre><code>server.modules += ( &quot;mod_setenv&quot; )
 $HTTP[&quot;scheme&quot;] == &quot;https&quot; {

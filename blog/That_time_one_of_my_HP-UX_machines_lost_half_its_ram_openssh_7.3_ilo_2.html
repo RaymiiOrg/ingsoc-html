@@ -69,7 +69,7 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/nocloud.png"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/nocloud.png" alt=""></p>
 
 <p>One of my favorite sayings is: &#39;Hardware is stupid, move everything to the
 cloud!&#39;. The cloud is just someone elses computer, but at least I&#39;m not
@@ -79,11 +79,11 @@ new one. We all know that&#39;s not true, but still, the thought of it is nice. 
 man can have hopes and dreams, even if the harsh reality shoots them down every
 time.</p>
 
-<p><a href="https://raymii.org/s/tutorials/Find_part_number_of_failed_disk_on_HP-UX_with_sasmgr.html">Last week one of the HP-UX machines had a failing disk</a> 
-and this week it&#39;s back with a whole new issue. After it was rebooted (due to
-issues with the services running on it), the Event Monitoring Service (EMS) sent
-an email regarding RAM issues and after manual checking it seems the machine
-lost half of it&#39;s RAM. </p>
+<p><a href="https://raymii.org/s/tutorials/Find_part_number_of_failed_disk_on_HP-UX_with_sasmgr.html">Last week one of the HP-UX machines had a failing disk</a> and this week it&#39;s
+back with a whole new issue. After it was rebooted (due to issues with the
+services running on it), the Event Monitoring Service (EMS) sent an email
+regarding RAM issues and after manual checking it seems the machine lost half of
+it&#39;s RAM.</p>
 
 <p>It should have 16 GB and now it only has 8 GB. You might imagine my suprise.
 This post goes into my troubleshooting, since I was not able to go to the
@@ -92,8 +92,8 @@ I&#39;ll cover the use of cstm (Support Tool Manager), how to connect to the HP 
 (out of band access) with modern OpenSSH (7.2) and the steps I took to gather
 information on what might have happened.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>This machine is not under monitoring yet, therefore it is regularly visited and
 checked manually. You could call that monitoring as well, but I rather have
@@ -102,8 +102,8 @@ considered a tool, sadly (this is a joke). The machine furthermore is part of an
 older setup (10 years) and is being replaced, so there is not a lot of budget or
 time allocated. I like to learn new things, so I seize the oppertunity to expand
 my UNIX knowledge, thus allocating some of my own time to research (and
-hopefully fix) these issues. <a href="https://raymii.org/s/tags/hp-ux.html">Read my other HP-UX articles as
-well</a> if you like that kind of stuff.</p>
+hopefully fix) these issues. <a href="https://raymii.org/s/tags/hp-ux.html">Read my other HP-UX articles as well</a> if you
+like that kind of stuff.</p>
 
 <p>Now that you know some background, let&#39;s dive in.</p>
 
@@ -203,7 +203,7 @@ has proven itself.</p>
 <p>Since this machine is not under a support contract anymore, step 1 and 5 are off
 the table. HP requires an active support contract to get firmware updates. I do
 not have access to replacement DIMM&#39;s and I was not able to go to the machine to
-do a DIMM swap (or note part numbers). </p>
+do a DIMM swap (or note part numbers).</p>
 
 <p>The only thing left to do was to dig into the issue and gather as much logging
 and information as possible, to prepare for a visit to the machine.</p>
@@ -212,38 +212,44 @@ and information as possible, to prepare for a visit to the machine.</p>
 
 <h3>Memory Ranking</h3>
 
-<p>I had never heard of the term Rank in RAM context, but
-<a href="https://en.wikipedia.org/wiki/DIMM#Ranking">Wikipedia</a> came to the rescue:</p>
+<p>I had never heard of the term Rank in RAM context, but <a href="https://en.wikipedia.org/wiki/DIMM#Ranking">Wikipedia</a> came to
+the rescue:</p>
 
 <blockquote>
-<p>Sometimes memory modules are designed with two or more independent sets of DRAM chips connected to the same address and data buses; each such set is called a rank.</p>
+<p>Sometimes memory modules are designed with two or more independent sets of
+DRAM chips connected to the same address and data buses; each such set is called
+a rank.</p>
 </blockquote>
 
-<p>There is even an article on <a href="https://en.wikipedia.org/wiki/Memory_rank">Memory
-Ranking</a>:</p>
+<p>There is even an article on <a href="https://en.wikipedia.org/wiki/Memory_rank">Memory Ranking</a>:</p>
 
 <blockquote>
-<p>A memory rank is a set of DRAM chips connected to the same chip select, which are therefore accessed simultaneously.</p>
+<p>A memory rank is a set of DRAM chips connected to the same chip select, which
+are therefore accessed simultaneously.</p>
 </blockquote>
 
-<p>That still didn&#39;t tell me much, how correct it might be. <a href="https://web.archive.org/web/20180605191021/http://www.dataram.com/blog/?p=32">This
-site</a>
-had a very helpfull and practical explanation:</p>
+<p>That still didn&#39;t tell me much, how correct it might be. <a href="https://web.archive.org/web/20180605191021/http://www.dataram.com/blog/?p=32">This site</a> had a
+very helpfull and practical explanation:</p>
 
 <blockquote>
-<p>The term &quot;rank&quot; simply refers to a 64-bit chunk of data. In its simplest form, a DIMM with DRAM chips on just one side would contain a single 64-bit chunk of data and would be called a single-rank (1R) module. DIMMs with chips on both sides often contain at least two 64-bit chunks of data and are referred to as dual-rank (2R) modules. Some DIMMs can have DRAM chips on both sides but are configured so that they contain two 64-bit data chunks on each sidefour in totaland are referred to as quad-rank (4R) modules. Quad-rank DIMMs run at a maximum PC3-8500 (DDR3-1066) speed in current architecture.</p>
+<p>The term &quot;rank&quot; simply refers to a 64-bit chunk of data. In its simplest form,
+a DIMM with DRAM chips on just one side would contain a single 64-bit chunk of
+data and would be called a single-rank (1R) module. DIMMs with chips on both
+sides often contain at least two 64-bit chunks of data and are referred to as
+dual-rank (2R) modules. Some DIMMs can have DRAM chips on both sides but are
+configured so that they contain two 64-bit data chunks on each sidefour in
+totaland are referred to as quad-rank (4R) modules. Quad-rank DIMMs run at a
+maximum PC3-8500 (DDR3-1066) speed in current architecture.</p>
 </blockquote>
 
 <p>Now that I had a better understanding of what a memory rank is, my suspicion is
 that there is one failed memory module and the rest of the modules (after that
-failed module) are not loaded anymore. </p>
+failed module) are not loaded anymore.</p>
 
 <h3>Support Tool Manager</h3>
 
 <p>Using <code>cstm</code> I hope to find the part number of the DIMM&#39;s so I can at least
-order a few replacement modules. According to multiple <a href="https://web.archive.org/web/20180605193125/https://community.hpe.com/t5/General/How-to-find-Memory-DIMM-part-number/td-p/5265571">HPe
-forum</a>
-<a href="https://web.archive.org/web/20180605193526/https://community.hpe.com/t5/HPE-9000-and-HPE-e3000-Servers/checking-part-number-of-memory/m-p/4501569/highlight/true">posts</a>
+order a few replacement modules. According to multiple <a href="https://web.archive.org/web/20180605193125/https://community.hpe.com/t5/General/How-to-find-Memory-DIMM-part-number/td-p/5265571">HPe forum</a> <a href="https://web.archive.org/web/20180605193526/https://community.hpe.com/t5/HPE-9000-and-HPE-e3000-Servers/checking-part-number-of-memory/m-p/4501569/highlight/true">posts</a>
 <code>ctsm</code> should report the part number with this command:</p>
 
 <pre><code>echo &quot;selclass qualifier memory;info;wait;infolog&quot; | /usr/sbin/cstm 
@@ -337,11 +343,9 @@ SaveAs - To Save the file.
 Enter Done, Help, Print, SaveAs, or View: [Done] #.
 </code></pre>
 
-<p>It did gave me a better idea of the physical memory layout. </p>
+<p>It did gave me a better idea of the physical memory layout.</p>
 
-<p>According to <a href="https://web.archive.org/web/20180605193526/https://community.hpe.com/t5/HPE-9000-and-HPE-e3000-Servers/checking-part-number-of-memory/m-p/4501569/highlight/true">this
-post</a>,
-the output with part number should look like this:</p>
+<p>According to <a href="https://web.archive.org/web/20180605193526/https://community.hpe.com/t5/HPE-9000-and-HPE-e3000-Servers/checking-part-number-of-memory/m-p/4501569/highlight/true">this post</a>, the output with part number should look like this:</p>
 
 <pre><code>DIMM  Location       Size(MB)  State   Serial Num       Part Num
 -------------------- --------  ------- ---------------- ------------------
@@ -374,7 +378,7 @@ From this out put you would get the exact part number for the dimm and also othe
 shortly known as the iLO. Dell calls them iDrac (integrated Dell remote access
 controller) and on a SuperMicro server it&#39;s just called IPMI or OOB (out of band
 access). It provides a way to power on/off and troubleshoot the server when you
-cannot access it, often also a remote console. </p>
+cannot access it, often also a remote console.</p>
 
 <p>Since I was not able to go to the machine and reboot into some kind of BIOS or
 iLO console, I had to resort to connecting via the web or SSH. The web interface
@@ -421,20 +425,17 @@ Disconnected from 192.0.2.30 port 22
 </code></pre>
 
 <p>Lucky for me, the iLO 2 was horribly old and insecure in 2013 already, as <a href="https://web.archive.org/web/20180605195032/https://community.hpe.com/t5/Server-Management-Remote-Server/Unable-to-SSH-to-iLO2-with-OpenSSH-6-2/td-p/6050925">this
-post</a>
-shows. With OpenSSH 6.2 there were problems connecting to the iLO, back then.
-I&#39;m on OpenSSH 7.6 so let&#39;s hope that their fix works for me as well.</p>
+post</a> shows. With OpenSSH 6.2 there were problems connecting to the iLO,
+back then. I&#39;m on OpenSSH 7.6 so let&#39;s hope that their fix works for me as well.</p>
 
-<p>In a <a href="http://web.archive.org/web/20180601112113/https://community.hpe.com/t5/Server-Management-Remote-Server/iLO-2-Firmware-version-2-20-released/td-p/6067313">firmware update for the
-iLO2</a>
-some of these bugs are fixed, but not all of them, and quoting  <a href="https://www.linkedin.com/in/oscar-perez-7a861549">Oscar A.
-Perez</a> (who lists &quot;Senior
-Embedded System Engineer, 100% committed to make Embedded Systems reliable, safe
-and secure&quot; on it&#39;s LinkedIn for 15 years, so I guess probably is legit), it
-will be hard to fix in the future due to the limited iLO 2 memory:</p>
+<p>In a <a href="http://web.archive.org/web/20180601112113/https://community.hpe.com/t5/Server-Management-Remote-Server/iLO-2-Firmware-version-2-20-released/td-p/6067313">firmware update for the iLO2</a> some of these bugs are fixed, but not all of them, and quoting <a href="https://www.linkedin.com/in/oscar-perez-7a861549">Oscar A. Perez</a> (who lists &quot;Senior Embedded System Engineer, 100% committed to make Embedded Systems reliable, safe and secure&quot; on it&#39;s LinkedIn for 15 years, so I guess probably is legit), it will be hard to fix in the future due to the limited iLO 2 memory:</p>
 
 <blockquote>
-<p>I had to make lots of changes to the mpSSH server code to get it to work with the new OpenSSH 6.2p1. I hope this is the last time we have to make changes like this one. iLO2 memory is very limited and already full so, we won&#39;t be able to spin new firmware releases, every time the OpenSSH folks decide to increase the size of the payload during Key Exchange.</p>
+<p>I had to make lots of changes to the mpSSH server code to get it to work with
+the new OpenSSH 6.2p1. I hope this is the last time we have to make changes like
+this one. iLO2 memory is very limited and already full so, we won&#39;t be able to
+spin new firmware releases, every time the OpenSSH folks decide to increase the
+size of the payload during Key Exchange.</p>
 </blockquote>
 
 <p>Lower on in the post I do find the correct OpenSSH options to connect. I missed
@@ -454,8 +455,7 @@ my <code>~/.ssh/config</code> file looks like this:</p>
 <pre><code>ssh -o HostKeyAlgorithms=ssh-rsa,ssh-dss -o KexAlgorithms=diffie-hellman-group1-sha1 -o Ciphers=aes128-cbc,3des-cbc -o MACs=hmac-md5,hmac-sha1 Admin@hpux09-ilo
 </code></pre>
 
-<p>*Do note that a better solution here is to upgrade the hardware and get it under
-<em>a support contract.</em> </p>
+<p>*Do note that a better solution here is to upgrade the hardware and get it under <em>a support contract.</em></p>
 
 <h3>iLO Management Processor hardware information</h3>
 
@@ -578,9 +578,7 @@ Mfg Unique Serial #     : 0x00CE010640711D20A8
 </code></pre>
 
 <p>I cannot easily find a replacement for this part number, but it comes up in a HP
-<a href="https://web.archive.org/web/20180605200950/https://community.hpe.com/t5/Integrity-Servers/Hardware-Information-finding-How-in-HP-UX-Server/m-p/6697829/highlight/true">forum
-post</a>
-as a Samsung 2GB module. </p>
+<a href="https://web.archive.org/web/20180605200950/https://community.hpe.com/t5/Integrity-Servers/Hardware-Information-finding-How-in-HP-UX-Server/m-p/6697829/highlight/true">forum post</a> as a Samsung 2GB module.</p>
 
 <h4>Ext1</h4>
 
@@ -653,12 +651,11 @@ JEDEC Mfg Serial #      : 0xD925C4CB
 Mfg Unique Serial #     : 0x002C0C0836D925C4CB
 </code></pre>
 
-<p>So the DIMM&#39;s are still in the system, and of all places,
-<a href="https://web.archive.org/web/20180605200737/https://www.amazon.com/PC2-5300-667MHz-240pin-Registered-MT36HTF25672PY-667D1/dp/B0050JMQFS">Amazon</a>
-sells these DIMM&#39;s. The type is <code>2GB DDR2 PC2-5300 667MHz 240pin ECC</code>, which is
+<p>So the DIMM&#39;s are still in the system, and of all places, <a href="https://web.archive.org/web/20180605200737/https://www.amazon.com/PC2-5300-667MHz-240pin-Registered-MT36HTF25672PY-667D1/dp/B0050JMQFS">Amazon</a> sells
+these DIMM&#39;s. The type is <code>2GB DDR2 PC2-5300 667MHz 240pin ECC</code>, which is
 exactly what I need to order a replacement or look into our hardware stash. It
 took me a good hour, but the part number and some more type information has been
-found. </p>
+found.</p>
 
 <p>I still need to figure out which specific DIMM broke, but that is not in the
 above output.</p>
@@ -666,7 +663,7 @@ above output.</p>
 <h3>iLO Event Log</h3>
 
 <p>In the iLO menu, I also saw <code>SL: Show Event Logs</code>. Maybe that will tell me
-specifically which DIMM could be the culprit. </p>
+specifically which DIMM could be the culprit.</p>
 
 <pre><code> [mphpux09] MP&gt; sl
 
@@ -684,7 +681,7 @@ Event Log Viewer Menu:
    L - Live Events
 </code></pre>
 
-<p>Let&#39;s view the <code>System Event log</code>, using option <code>E</code>: </p>
+<p>Let&#39;s view the <code>System Event log</code>, using option <code>E</code>:</p>
 
 <pre><code>Enter menu item or [Ctrl-B] to Quit: E 
 
@@ -798,11 +795,9 @@ MP:SL (+,-,&lt;CR&gt;,D, F, L, J, H, K, T, A, U, ? for Help, Q or Ctrl-B to Quit
 </code></pre>
 
 <p>Not much help, no clear DIMM location yet. But, I did search around and found
-<a href="https://web.archive.org/web/20180605204015/https://support.hpe.com/hpsc/doc/public/display?docId=c02454812">this HP support
-page</a>
-titled &quot;HP Integrity rx3600 Servers - BOOT<em>DECONFIG</em>CPU Can Be Caused by Memory
-Dimm Failure&quot;. In the log output there are these lines, looking a lot like the
-above output:</p>
+<a href="https://web.archive.org/web/20180605204015/https://support.hpe.com/hpsc/doc/public/display?docId=c02454812">this HP support page</a> titled &quot;HP Integrity rx3600 Servers - BOOT <em>DECONFIG</em>
+CPU Can Be Caused by Memory Dimm Failure&quot;. In the log output there are these
+lines, looking a lot like the above output:</p>
 
 <pre><code>SFW  0   0  0x040000E500E00000 FFFFFFFF000AFF74 MEM_SPD_2G_DIMM_FOUND
 SFW  0   0  0x040000E500E00000 FFFFFFFF000BFF74 MEM_SPD_2G_DIMM_FOUND
@@ -842,18 +837,16 @@ changing looks an awfull lot like a memory location:</p>
 </code></pre>
 
 <p>Not exactly the same but good enough, since it&#39;s a different server (the above
-output seems to be for the 8 port memory carrier board). <a href="https://web.archive.org/web/20180605202816/https://community.hpe.com/t5/Integrity-Servers/RX2620-Memory-Errors/m-p/4794083/highlight/true#M7674">This
-post</a>
+output seems to be for the 8 port memory carrier board). <a href="https://web.archive.org/web/20180605202816/https://community.hpe.com/t5/Integrity-Servers/RX2620-Memory-Errors/m-p/4794083/highlight/true#M7674">This post</a>
 confirms my suspicion on the HEX values corresponding to the DIMM Slots.</p>
 
 <h3>HP Integrity rx3600 Server User Service Guide</h3>
 
-<p>The <a href="https://raymii.org/s/inc/downloads/emr_na-c01290179-9.pdf">HP Integrity rx3600 Server User Service
-Guide</a>, chapter 5
+<p>The <a href="https://raymii.org/s/inc/downloads/emr_na-c01290179-9.pdf">HP Integrity rx3600 Server User Service Guide</a>, chapter 5
 Troubleshooting, subsection CPU, Memory and SBA, subsection Troubleshooting
 rx3600 memory has a picture of the 24 slot memory carrier board:</p>
 
-<p><img src="https://raymii.org/s/inc/img/rx3600-mem.png"></p>
+<p><img src="https://raymii.org/s/inc/img/rx3600-mem.png" alt=""></p>
 
 <p>I know this server has 2 24 slot memory carrier boards due to the full output of
 the hardware list, it states 4 <code>12 DIMM Memory Extender</code> components.</p>
@@ -861,7 +854,7 @@ the hardware list, it states 4 <code>12 DIMM Memory Extender</code> components.<
 <p>The service guide also lists the error message:</p>
 
 <ul>
-<li>IPMI events: Type E0h, 4000d:26d MEM<em>CHIPSPARE</em>DEALLOC_RANK</li>
+<li>IPMI events: Type E0h, 4000d:26d MEM <em>CHIPSPARE</em> DEALLOC_RANK</li>
 <li>Cause: An SDRAM is failing on the DIMM.</li>
 <li>Notes: The failing DIMM quad will be deallocated.</li>
 </ul>
@@ -906,13 +899,13 @@ also has Memory loading guidelines:</p>
 <li>Ensure all DIMMs within a pair or quad are identical.</li>
 <li>Install quads in order of capacity from largest to smallest. For example, install all 2 GB quads before 1 GB or smaller quads, and install all 1 GB quads before 512 MB quads.</li>
 <li>Side 0 must have equal or greater memory capacity than side 1.</li>
-<li>Install DIMM pairs or quads based on the following rules:
+<li>Install DIMM pairs or quads based on the following rules: 
 
 <ul>
 <li>1. Load pairs or quads into the memory carrier in order, starting with slot 0 and ending with slot 2.</li>
 <li>2. Install the first pair or quad in side 0.</li>
 <li>3. Install the second pair or quad in side 1.</li>
-<li>4. For the remaining pairs or quads:
+<li>4. For the remaining pairs or quads: 
 
 <ul>
 <li>a. If both sides of the memory carrier contain the same capacity of memory, install the next pair or quad in side 0.</li>
@@ -926,8 +919,7 @@ also has Memory loading guidelines:</p>
 
 <p>The guide even has a list of Customer Replacable parts including HP and
 replacement part numbers. For my 2GB memory module, it would be <code>AD328A</code>, for
-sale on <a href="https://web.archive.org/web/20180605205753/http://www.memory4less.com/hp-2gb-ddr2-pc4200-ad328a">lots of
-places</a>.</p>
+sale on <a href="https://web.archive.org/web/20180605205753/http://www.memory4less.com/hp-2gb-ddr2-pc4200-ad328a">lots of places</a>.</p>
 
 <h3>Conclusion</h3>
 

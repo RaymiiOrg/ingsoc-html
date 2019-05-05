@@ -9,21 +9,30 @@ Format      : 	Markdown/HTML
 
 
 
-The AUR is a nice feature from Arch Linux, it allows anyone to create and upload a simple package build script, PKGBUILD, for a piece of software which is not in the repositories. Sometimes however, the PKGBUILD is outdated. You then need to manually fix it, by changing the download link or version. With a new version you get new checksums, and the `makepkg` command has a neat feature which generates the checksums for you. 
+The AUR is a nice feature from Arch Linux, it allows anyone to create and upload
+a simple package build script, PKGBUILD, for a piece of software which is not in
+the repositories. Sometimes however, the PKGBUILD is outdated. You then need to
+manually fix it, by changing the download link or version. With a new version
+you get new checksums, and the `makepkg` command has a neat feature which
+generates the checksums for you.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+After you have updated your `PKGBUILD` you can get new checksums with the
+following command:
 
-After you have updated your `PKGBUILD` you can get new checksums with the following command:
-
+    
+    
     makepkg -g -f -p PKGBUILD
+    
 
 Where `PKGBUILD` is the actual PKGBUILD file with incorrect md5sums.
 
 Output, for `newrelic-php5` in this example:
 
+    
+    
     ==> Retrieving sources...
       -> Found newrelic-php5-4.17.0.79-linux.tar.gz
       -> Found newrelic-daemon.service
@@ -32,9 +41,12 @@ Output, for `newrelic-php5` in this example:
     md5sums=('c1c01fe1deed8e73508588a30e01046c'
              '4fc78347663adcb32ed28eddb546619c'
              'd3f7bb7fc0d84dff40d294384a32ddd3')
+    
 
-Update the `PKGBUILD` file with the new checksums and you are ready to try a new build.
+Update the `PKGBUILD` file with the new checksums and you are ready to try a new
+build.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

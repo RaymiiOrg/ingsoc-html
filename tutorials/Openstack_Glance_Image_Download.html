@@ -69,16 +69,22 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide shows you how download Openstack Images to your local machine using the command line Glance client. You can use this, for example, to download a copy of an image created from a VM, or to download the images your Openstack provider provides and adapt those.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This guide shows you how download Openstack Images to your local machine using
+the command line Glance client. You can use this, for example, to download a
+copy of an image created from a VM, or to download the images your Openstack
+provider provides and adapt those.</p>
 
-<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related articles here</a>. For example, how to use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a></p>
+<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related articles here</a>. For example, how to use
+<a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a></p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Command Line tools</h3>
 
-<p>Make sure you have the Openstack command line tools installed. Follow the official openstack guide <a href="http://docs.openstack.org/user-guide/content/install_clients.html">here</a>. If you have <code>pip</code> installed you can use that to install the tools:</p>
+<p>Make sure you have the Openstack command line tools installed. Follow the
+official openstack guide <a href="http://docs.openstack.org/user-guide/content/install_clients.html">here</a>. If you have <code>pip</code> installed you can use that
+to install the tools:</p>
 
 <pre><code>pip install python-novaclient
 pip install python-cinderclient
@@ -88,7 +94,8 @@ pip install python-neutronclient
 pip install python-swiftclient
 </code></pre>
 
-<p>Save yourself some time and create a file named <code>computerc</code> with the below contents:</p>
+<p>Save yourself some time and create a file named <code>computerc</code> with the below
+contents:</p>
 
 <pre><code>export OS_AUTH_URL=&quot;https://identity.stack.cloudvps.com/v2.0&quot;
 export OS_TENANT_NAME=&quot;&lt;tenant name&gt;&quot;
@@ -97,32 +104,45 @@ export OS_PASSWORD=&quot;&lt;password&gt;&quot;
 export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 </code></pre>
 
-<p>When you are going to do stuff with the Openstack command line clients, load this file:</p>
+<p>When you are going to do stuff with the Openstack command line clients, load
+this file:</p>
 
 <pre><code>source computerc
 </code></pre>
 
-<p>That way, your authentication data are loaded and you don&#39;t have to give parameters like <code>--os-username</code> and such.</p>
+<p>That way, your authentication data are loaded and you don&#39;t have to give
+parameters like <code>--os-username</code> and such.</p>
 
 <h3>Openstack Overview</h3>
 
-<p>Openstack is a datacenter virtualization plaform consisting out of many different tools and services. Here is a short overview of the different services you might encounter.</p>
+<p>Openstack is a datacenter virtualization plaform consisting out of many
+different tools and services. Here is a short overview of the different services
+you might encounter.</p>
 
 <h4>Compute (Nova)</h4>
 
-<p>This is the virtualization service. It works with a hypervisor to create and manage virtual machines. You can create a VM based on a specific &quot;Flavour&quot;, which is just a definition of specs like disk, cpu and ram.</p>
+<p>This is the virtualization service. It works with a hypervisor to create and
+manage virtual machines. You can create a VM based on a specific &quot;Flavour&quot;,
+which is just a definition of specs like disk, cpu and ram.</p>
 
 <h4>Block Storage (Cinder)</h4>
 
-<p>This is the service which makes block devices (volumes) available to services. A flavour can not be changed, just resized. If you want extra storage you need to create a volume, attach it to the VM and mount it there for use.</p>
+<p>This is the service which makes block devices (volumes) available to services. A
+flavour can not be changed, just resized. If you want extra storage you need to
+create a volume, attach it to the VM and mount it there for use.</p>
 
 <h4>Images (Glance)</h4>
 
-<p>This is the service which holds all the images. Images can be used to boot a VM from. Images can be prepared with tools like <code>cloud-init</code> to make them behave better in a cloud environment, for example, setting an SSH key or password at boot.</p>
+<p>This is the service which holds all the images. Images can be used to boot a VM
+from. Images can be prepared with tools like <code>cloud-init</code> to make them behave
+better in a cloud environment, for example, setting an SSH key or password at
+boot.</p>
 
 <h3>Listing images</h3>
 
-<p>When you&#39;ve created a <code>computerc</code> file and loaded it up in your shell you can start the process. You need the UUID of the image you want to download. Get a list of all images using the <code>glance image-list</code> command:</p>
+<p>When you&#39;ve created a <code>computerc</code> file and loaded it up in your shell you can
+start the process. You need the UUID of the image you want to download. Get a
+list of all images using the <code>glance image-list</code> command:</p>
 
 <pre><code>$ glance image-list
 </code></pre>
@@ -143,7 +163,8 @@ export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 
 <h3>Download Image</h3>
 
-<p>Use the <code>glance image-download</code> command to download the image. By default it will go to STDOUT, use the <code>--file</code> parameter to place the output in a file.</p>
+<p>Use the <code>glance image-download</code> command to download the image. By default it
+will go to STDOUT, use the <code>--file</code> parameter to place the output in a file.</p>
 
 <pre><code>$ glance image-download --file ./example-test.img 0a[...]5dd
 </code></pre>

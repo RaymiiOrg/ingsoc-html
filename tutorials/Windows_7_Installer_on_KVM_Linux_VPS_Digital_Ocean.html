@@ -69,12 +69,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>For fun I wanted to install Windows 7 on a KVM Linux VPS (on <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a>) but it should work for any KVM or XEN-HVM VPS with console access). I was experimenting with Grub2 and ISO booting, since grub2 can natively boot a linux ISO. For Windows this is not possible, the installer needs to be extracted on a FAT32 partition from which you boot. On a normal system I would repartition the disk using a live CD, but on a VPS where an ISO cannot be booted this is troublesome. If I could boot from an ISO I would use that to install Windows, but where&#39;s the fun in that? I had to figure out how to shrink an EXT4 filesystem from a running Ubuntu VPS, which is possible, however very risky, with pivot_root. Next the partiton table can be converted to MBR, the partition can be resized, a FAT32 partiton and filesystem can be created, the Windows Installer files copied onto that, some Grub config and a reboot later, you&#39;re in the Windows 7 Installer. TL;DR, the installer cannot complete due to missing VirtIO drivers, which is a project for another time.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>For fun I wanted to install Windows 7 on a KVM Linux VPS (on <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a>)
+but it should work for any KVM or XEN-HVM VPS with console access). I was
+experimenting with Grub2 and ISO booting, since grub2 can natively boot a linux
+ISO. For Windows this is not possible, the installer needs to be extracted on a
+FAT32 partition from which you boot. On a normal system I would repartition the
+disk using a live CD, but on a VPS where an ISO cannot be booted this is
+troublesome. If I could boot from an ISO I would use that to install Windows,
+but where&#39;s the fun in that? I had to figure out how to shrink an EXT4
+filesystem from a running Ubuntu VPS, which is possible, however very risky,
+with pivot_root. Next the partiton table can be converted to MBR, the partition
+can be resized, a FAT32 partiton and filesystem can be created, the Windows
+Installer files copied onto that, some Grub config and a reboot later, you&#39;re in
+the Windows 7 Installer. TL;DR, the installer cannot complete due to missing
+VirtIO drivers, which is a project for another time.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/do_win2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/do_win2.png" alt=""></p>
 
 <blockquote>
 <p>The finished result, Windows 7 on Digital Ocean</p>
@@ -82,7 +95,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Summary and requirements</h3>
 
-<p>Why Windows on a Linux VPS and why Windows 7? Because it&#39;s fun. I learned new stuff about partitioning schemes and how to do harddisk maintenance on a running Linux system. I won&#39;t be using the Windows VPS, in fact I removed it already, but the journey to get there was quite the ride.</p>
+<p>Why Windows on a Linux VPS and why Windows 7? Because it&#39;s fun. I learned new
+stuff about partitioning schemes and how to do harddisk maintenance on a running
+Linux system. I won&#39;t be using the Windows VPS, in fact I removed it already,
+but the journey to get there was quite the ride.</p>
 
 <p>Requirements:</p>
 
@@ -91,14 +107,18 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>KVM VPS with console access, at least 2 GB RAM (I used <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a>).</li>
 </ul>
 
-<p>The VPS needs 2 GB of ram to create the temporary root filesystem in it. 1 GB is too small for my Ubuntu test system. Windows itself will also not run very well with such a small amount of RAM. </p>
+<p>The VPS needs 2 GB of ram to create the temporary root filesystem in it. 1 GB is
+too small for my Ubuntu test system. Windows itself will also not run very well
+with such a small amount of RAM.</p>
 
-<p>I&#39;ll be using a trial version of Windows 7. I have not tested this with Server 2016 or Windows 10, but the steps should be fairly similar. Remember this is just a fun experiment.</p>
+<p>I&#39;ll be using a trial version of Windows 7. I have not tested this with Server
+2016 or Windows 10, but the steps should be fairly similar. Remember this is
+just a fun experiment.</p>
 
 <p>The steps involved are the following:</p>
 
 <ul>
-<li>Create a VPS with Ubuntu 16.04 and 2 GB of RAM  (I used <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a>).</li>
+<li>Create a VPS with Ubuntu 16.04 and 2 GB of RAM (I used <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a>).</li>
 <li>Resize the root filesystem while the VPS is running (since we cannot boot a live CD)</li>
 <li>Resize the root partition while the VPS is running</li>
 <li>Convert the partition table from GPT to MBR</li>
@@ -110,7 +130,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Profit!</li>
 </ul>
 
-<p>Depending on the VPS provider the partition layout might be different. The Digital Ocean VPS has one large root partition as the first partition, no LVM or extended partitions:</p>
+<p>Depending on the VPS provider the partition layout might be different. The
+Digital Ocean VPS has one large root partition as the first partition, no LVM or
+extended partitions:</p>
 
 <pre><code>root@w:~# lsblk
 NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
@@ -122,7 +144,9 @@ vda     253:0    0   50G  0 disk
 
 <h3>Chainloading Windows 7 ISO</h3>
 
-<p>Grub2 <a href="https://help.ubuntu.com/community/Grub2/ISOBoot">can load Linux ISO files directly</a>. None of the pages mentioned anything about Windows, so I tried a few GRUB2 entries to load the Windows 7 ISO from <code>/win7.iso</code>:</p>
+<p>Grub2 <a href="https://help.ubuntu.com/community/Grub2/ISOBoot">can load Linux ISO files directly</a>. None of the pages mentioned
+anything about Windows, so I tried a few GRUB2 entries to load the Windows 7 ISO
+from <code>/win7.iso</code>:</p>
 
 <pre><code>menuentry &quot;Win7 1&quot; {
   set isofile=&quot;/win7.iso&quot;
@@ -140,7 +164,8 @@ vda     253:0    0   50G  0 disk
 }
 </code></pre>
 
-<p>None worked, both resulted in a Windows boot which directly errored with <code>Windows BCD boot error 0xc0000225</code>:</p>
+<p>None worked, both resulted in a Windows boot which directly errored with
+<code>Windows BCD boot error 0xc0000225</code>:</p>
 
 <pre><code> Windows failed to start. A recent hardware or software change might be the cause. To fix the problem: 
 
@@ -154,13 +179,20 @@ Status: 0xc0000225
 Info: An unexpected error has occurred.
 </code></pre>
 
-<p>I found <a href="https://web.archive.org/web/20180701063248/https://volatilesystems.org/booting-multiple-isos-with-grub2-from-one-single-usb-stick.html">one article</a> that suggested Windows needed to be booted from a FAT32 partition where all the files were extracted.</p>
+<p>I found <a href="https://web.archive.org/web/20180701063248/https://volatilesystems.org/booting-multiple-isos-with-grub2-from-one-single-usb-stick.html">one article</a> that suggested Windows needed to be booted from a FAT32
+partition where all the files were extracted.</p>
 
 <h3>Online shrink root partition with pivot_root</h3>
 
-<p>An EXT4 partition can be grown without reboots or downtime (using <code>resize2fs</code>). Shrinking is not possible while the partition is mounted. Using <code>pivot_root</code> we create a bare root filesystem in RAM, pivot the linux system in there, unmount the actual disk (since we&#39;re running from RAM) and shrink the partition.</p>
+<p>An EXT4 partition can be grown without reboots or downtime (using <code>resize2fs</code>).
+Shrinking is not possible while the partition is mounted. Using <code>pivot_root</code> we
+create a bare root filesystem in RAM, pivot the linux system in there, unmount
+the actual disk (since we&#39;re running from RAM) and shrink the partition.</p>
 
-<p>Via <a href="https://web.archive.org/web/20180701063259/https://unix.stackexchange.com/questions/226872/how-to-shrink-root-filesystem-without-booting-a-livecd/227318">this stackoverflow post</a>, a brief summary of steps to do an online resize. This is dangerous and might destroy your system, don&#39;t try it on a production system. It works 99% of the time, but make sure you have working out of band access. </p>
+<p>Via <a href="https://web.archive.org/web/20180701063259/https://unix.stackexchange.com/questions/226872/how-to-shrink-root-filesystem-without-booting-a-livecd/227318">this stackoverflow post</a>, a brief summary of steps to do an online
+resize. This is dangerous and might destroy your system, don&#39;t try it on a
+production system. It works 99% of the time, but make sure you have working out
+of band access.</p>
 
 <p>Set a root password first so you can access the console:</p>
 
@@ -210,15 +242,19 @@ for i in dev proc sys run; do mount --move /oldroot/$i /$i; done
 <pre><code>systemd causes mounts to allow subtree sharing by default (as with mount --make-shared), and this causes pivot_root to fail. Hence, we turn this off globally with mount --make-rprivate /. System and temporary filesystems are moved wholesale into the new root. This is necessary to make it work at all; the sockets for communication with systemd, among other things, live in /run, and so there&#39;s no way to make running processes close it.
 </code></pre>
 
-<p>The next step is to close all running processes in the old root. First, restart OpenSSH:</p>
+<p>The next step is to close all running processes in the old root. First, restart
+OpenSSH:</p>
 
 <pre><code>systemctl restart sshd
 systemctl status sshd
 </code></pre>
 
-<p>Now, don&#39;t close this terminal. First, open a new one and SSH into the VPS. If that works, close the old tab. I forgot to copy over my SSH key in the new root so I had to reboot and start again, since I did close the tab before checking.</p>
+<p>Now, don&#39;t close this terminal. First, open a new one and SSH into the VPS. If
+that works, close the old tab. I forgot to copy over my SSH key in the new root
+so I had to reboot and start again, since I did close the tab before checking.</p>
 
-<p>Whe&#39;n you&#39;re setup in the new shell, use <code>lsof</code> or <code>fuser</code> on <code>/oldroot/</code> to see which files are open and used:</p>
+<p>Whe&#39;n you&#39;re setup in the new shell, use <code>lsof</code> or <code>fuser</code> on <code>/oldroot/</code> to see
+which files are open and used:</p>
 
 <pre><code>fuser -vm /oldroot/
 </code></pre>
@@ -254,7 +290,8 @@ systemctl status sshd
                      root       1891 ....m bash
 </code></pre>
 
-<p>Either <code>kill $PID</code> or <code>systemctl stop $service</code> all the items in that list. Here are the items I had to stop:</p>
+<p>Either <code>kill $PID</code> or <code>systemctl stop $service</code> all the items in that list. Here
+are the items I had to stop:</p>
 
 <pre><code>systemctl stop rsyslog
 systemctl stop snapd
@@ -343,7 +380,9 @@ cloudimg-rootfs: ***** FILE SYSTEM WAS MODIFIED *****
 cloudimg-rootfs: 61175/6451200 files (0.0% non-contiguous), 1272940/13078779 blocks
 </code></pre>
 
-<p>Resize the filesystem. In my case the VPS has 40 GB of disk, the FAT32 partition needs to be at least 4 GB to fit the extracted Windows 7 file. I resized the root partition to 35 GB:</p>
+<p>Resize the filesystem. In my case the VPS has 40 GB of disk, the FAT32 partition
+needs to be at least 4 GB to fit the extracted Windows 7 file. I resized the
+root partition to 35 GB:</p>
 
 <pre><code>resize2fs /dev/vda1 35G
 </code></pre>
@@ -359,9 +398,13 @@ The filesystem on /dev/vda1 is now 9175040 (4k) blocks long.
 
 <h3>Create fat32 partition</h3>
 
-<p>Windows 7 doesn&#39;t seem <a href="https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Windows_UEFI_vs_BIOS_limitations">to boot from an GPT/EFI disk</a>. I tested my setup in VirtualBox first, where it worked fine. On DigitalOcean, the GPT partition table gave me some trouble, in the end I decided to convert it back to MBR. And of course there is a tool for that already.</p>
+<p>Windows 7 doesn&#39;t seem <a href="https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#Windows_UEFI_vs_BIOS_limitations">to boot from an GPT/EFI disk</a>. I tested my setup in
+VirtualBox first, where it worked fine. On DigitalOcean, the GPT partition table
+gave me some trouble, in the end I decided to convert it back to MBR. And of
+course there is a tool for that already.</p>
 
-<p>While we&#39;re doing all these destructive things to the disk, lets convert the partition table from GPT back to MBR to get Windows 7 to boot. </p>
+<p>While we&#39;re doing all these destructive things to the disk, lets convert the
+partition table from GPT back to MBR to get Windows 7 to boot.</p>
 
 <p>Use the <code>gdisk</code> tool on <code>/dev/vda</code>:</p>
 
@@ -378,7 +421,7 @@ The filesystem on /dev/vda1 is now 9175040 (4k) blocks long.
 <pre><code>Recovery/transformation command (? for help): g
 </code></pre>
 
-<p>Enter  <code>g</code>:</p>
+<p>Enter <code>g</code>:</p>
 
 <pre><code>MBR command (? for help): p
 </code></pre>
@@ -430,18 +473,23 @@ other utilities.
 Installation finished. No error reported.
 </code></pre>
 
-<p>I use <code>cfdisk</code>, a console UI to manage partitions. Delete the linux partition and re-create it with a smaller size. In my case,  36 GB (to make sure the filesystem fits). Then create a new fat32 partition in the free space. Set the Linux partiton as bootable.</p>
+<p>I use <code>cfdisk</code>, a console UI to manage partitions. Delete the linux partition
+and re-create it with a smaller size. In my case, 36 GB (to make sure the
+filesystem fits). Then create a new fat32 partition in the free space. Set the
+Linux partiton as bootable.</p>
 
-<p><img src="https://raymii.org/s/inc/img/do_part.png"></p>
+<p><img src="https://raymii.org/s/inc/img/do_part.png" alt=""></p>
 
-<p>You can use <code>parted</code> or <code>fdisk</code>, note the start and end numbers of the partition. I prefer <code>cfdisk</code>. </p>
+<p>You can use <code>parted</code> or <code>fdisk</code>, note the start and end numbers of the
+partition. I prefer <code>cfdisk</code>.</p>
 
 <p>After creating the partitions, reboot the machine. Either via:</p>
 
 <pre><code>echo b &gt; /proc/sysrq-trigger
 </code></pre>
 
-<p>or via the VPS provider&#39;s control panel. SSH back in to your VPS afterwards and create the FAT filesystem:</p>
+<p>or via the VPS provider&#39;s control panel. SSH back in to your VPS afterwards and
+create the FAT filesystem:</p>
 
 <pre><code>mkfs.vfat /dev/vda2
 </code></pre>
@@ -521,16 +569,21 @@ sent 2,436,207,244 bytes  received 17,955 bytes  17,463,979.92 bytes/sec
 total size is 2,582,383,757  speedup is 1.06
 </code></pre>
 
-<p>This might take some time. Open another terminal and continue with the Grub editing.</p>
+<p>This might take some time. Open another terminal and continue with the Grub
+editing.</p>
 
 <h3>GRUB2 entry</h3>
 
-<p>Edit the Grub boot loader configuration to boot from your FAT32 partition with the Windows Installer.</p>
+<p>Edit the Grub boot loader configuration to boot from your FAT32 partition with
+the Windows Installer.</p>
 
 <pre><code>vim /boot/grub/grub.cfg
 </code></pre>
 
-<p>No need to use the normal way since this disk is going to be wiped. Change the <code>timeout</code> to 300, that way you can use the console of your provider instead of pressing SHIFT to get the grub boot menu. Remove the <code>timeout_style=hidden</code> option if you find it.</p>
+<p>No need to use the normal way since this disk is going to be wiped. Change the
+<code>timeout</code> to 300, that way you can use the console of your provider instead of
+pressing SHIFT to get the grub boot menu. Remove the <code>timeout_style=hidden</code>
+option if you find it.</p>
 
 <p>Add the following at the bottom of the file:</p>
 
@@ -544,13 +597,14 @@ total size is 2,582,383,757  speedup is 1.06
 
 <p>When the ISO is copied over, reboot and select the Windows option:</p>
 
-<p><img src="https://raymii.org/s/inc/img/do_win.png"></p>
+<p><img src="https://raymii.org/s/inc/img/do_win.png" alt=""></p>
 
 <p>Now you should see the Windows 7 installer starting up:</p>
 
-<p><img src="https://raymii.org/s/inc/img/do_win2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/do_win2.png" alt=""></p>
 
-<p>A suprise in the end is that Windows 7 doesn&#39;t have a VirtIO Driver, so the installation is unable to continue on Digital Ocean.</p>
+<p>A suprise in the end is that Windows 7 doesn&#39;t have a VirtIO Driver, so the
+installation is unable to continue on Digital Ocean.</p>
 
 <p>Let&#39;s try it some other time with a newer version of Windows, 10 maybe.</p>
 </div><hr>Tags: <a href="../tags/gdisk.html" class="link">gdisk &nbsp;</a><a href="../tags/gpt.html" class="link">gpt &nbsp;</a><a href="../tags/grub.html" class="link">grub &nbsp;</a><a href="../tags/mbr.html" class="link">mbr &nbsp;</a><a href="../tags/microsoft.html" class="link">microsoft &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/partitioning.html" class="link">partitioning &nbsp;</a><a href="../tags/server.html" class="link">server &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><a href="../tags/vps.html" class="link">vps &nbsp;</a><a href="../tags/windows.html" class="link">windows &nbsp;</a><div class="footer">

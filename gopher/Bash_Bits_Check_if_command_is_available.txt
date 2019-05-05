@@ -9,27 +9,26 @@ Format      : 	Markdown/HTML
 
 
 
-Bash Bits are small examples and tips for Bash Scripts. 
-This bash bit shows you how to check if a piece of software is installed on 
-a machine. It's a function you can use in your shell scripts.
+Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to check if a piece of software is installed on a machine. It's a function
+you can use in your shell scripts.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-[All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
-
+[All Bash Bits can be found using this link][2]
 
 ### command_exists()
 
-The function uses the [command][1] binary to check if a binary is available.
-`command` handles all the magic of searching your path, checking if something
-is executable, all the dificult stuff that could also be different on other
-distributions. 
+The function uses the [command][3] binary to check if a binary is available.
+`command` handles all the magic of searching your path, checking if something is
+executable, all the dificult stuff that could also be different on other
+distributions.
 
 This is the function:
 
+    
+    
     command_exists() {
         # check if command exists and fail otherwise
         command -v "$1" >/dev/null 2>&1
@@ -38,19 +37,28 @@ This is the function:
             exit 1
         fi
     }
+    
 
 You can use it in a loop to check multiple binaries:
 
+    
+    
     for COMMAND in "awk" "sed" "grep" "tar" "gzip" "which" "openssl" "curl"; do
         command_exists "${COMMAND}"
     done
+    
 
 If a command does not exist, your script will fail and exit with an error
 message:
 
+    
+    
     I require curl but it's not installed. Abort.
+    
 
-[1]: https://manpages.ubuntu.com/manpages/bionic/en/man1/command.1posix.html
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tags/bash-bits.html
+   [3]: https://manpages.ubuntu.com/manpages/bionic/en/man1/command.1posix.html
 
 ---
 

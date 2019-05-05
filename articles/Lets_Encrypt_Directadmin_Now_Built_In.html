@@ -74,16 +74,16 @@ They make it a breeze to set up TLS certificates for your web server. And for
 free! Let&#39;s Encrypt is supported by major players like Mozilla, Akamai, Cisco,
 the EFF, the Internet Security Research Group and others. Let&#39;s Encrypt provides
 free, automatic and secure certificates so that every website can be secured
-with an SSL certificate. </p>
+with an SSL certificate.</p>
 
 <p>I have written <a href="https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html">a guide</a> on using Lets Encrypt with Directadmin before, but
-that involved manually logging in via SSH and a lot of work. </p>
+that involved manually logging in via SSH and a lot of work.</p>
 
 <p>DirectAdmin now supports Lets Encrypt natively since <a href="http://www.directadmin.com/features.php?id=1828">version 1.50</a>, so no
 more ssh fiddling, just via the control panel, for all the users on the server.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>The previous article still applies and it still works. It&#39;s generic enough for
 all control panels and non-supported webservers by Let&#39;s Encrypt.</p>
@@ -98,7 +98,7 @@ all control panels and non-supported webservers by Let&#39;s Encrypt.</p>
 <li>Profit!?!??!</li>
 </ol>
 
-<p>After step 3, everything is automatic, including renewals. </p>
+<p>After step 3, everything is automatic, including renewals.</p>
 
 <p>Do note that the last step of the article requires you to have set up a website
 and a domain already. They must be working and resolving in DNS, because Let&#39;s
@@ -125,7 +125,7 @@ Encrypt.</p>
 <p>You can update Directadmin via the Administrator Settings -&gt; Update / Licensing
 page as well, but I like the custombuild method better. Why? Because you can
 update the other parts of your server as well and that a general good thing to
-do. </p>
+do.</p>
 
 <p>Also, you do need to login via SSH and execute a few other steps like enabling
 Let&#39;s Encrypt and rewriting the configuration files, so you might just as well
@@ -215,7 +215,7 @@ not already there:</p>
 <p>If your server is recent enough, CentOS 6, Ubuntu 12.04 and you run Apache 2.2
 or higher, you can also enable <code>SNI</code> support (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">Server name indication</a>). That
 is an extension to the TLS protocol which, simply said, allows you to host
-multiple SSL enabled sites on one IP address. </p>
+multiple SSL enabled sites on one IP address.</p>
 
 <p>Almost the same command as above, but with another value:</p>
 
@@ -264,10 +264,10 @@ picture below, with a correctly and valid certificate.</p>
 <p><img src="https://raymii.org/s/inc/img/da-le6.png" alt="da-le6"></p>
 
 <p>You can check if it all worked by using my SSL Check over at
-<a href="https://ssldecoder.org/">SSLdecoder.org</a>. </p>
+<a href="https://ssldecoder.org/">SSLdecoder.org</a>.</p>
 
-<p>Directadmin will also show you that Let&#39;s Encrypt is enabled, plus the
-auto-renew date.</p>
+<p>Directadmin will also show you that Let&#39;s Encrypt is enabled, plus the auto-
+renew date.</p>
 
 <p><img src="https://raymii.org/s/inc/img/da-le7.png" alt="da-le7"></p>
 
@@ -302,9 +302,9 @@ secure as possible.</p>
 Labs</a> or my own, faster check, <a href="https://ssldecoder.org/">the SSL Decoder</a>, which is <a href="https://github.com/RaymiiOrg/ssl-decoder">open
 source</a> as well.</p>
 
-<p>Fourth and last, <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying 
-out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free 
-(as in, you get $10 credit). (referral link)</a> </p>
+<p>Fourth and last, <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out
+a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as
+in, you get $10 credit). (referral link)</a></p>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/centos.html" class="link">centos &nbsp;</a><a href="../tags/certificate.html" class="link">certificate &nbsp;</a><a href="../tags/directadmin.html" class="link">directadmin &nbsp;</a><a href="../tags/nginx.html" class="link">nginx &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -71,14 +71,33 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/yubikey.png" alt="yubikey"></p>
 
-<p>Today my trusty old first generation Yubikey didn&#39;t light up when I plugged it in. No problem for me, I had a backup key. But most people don&#39;t, so here&#39;s an important tip when you use two factor authentication like a Yubikey, Nitrokey or Google Authenticator (HOTP). TL;DR: Have a second hardware token stored away safely and backup your QR codes (print/screenshot) somewhere secure. Swap the hardware tokens often to make sure they both work with all services. Today my trusty old first generation Yubikey didn&#39;t light up when I plugged it in. No problem for me, I had a backup key. But most people don&#39;t, so here&#39;s an important tip when you use two factor authentication like a Yubikey, Nitrokey or Google Authenticator (HOTP). TL;DR: Have a second hardware token stored away safely and backup your QR codes (print/screenshot) somewhere secure. Swap the hardware tokens often to make sure they both work with all services.</p>
+<p>Today my trusty old first generation Yubikey didn&#39;t light up when I plugged it
+in. No problem for me, I had a backup key. But most people don&#39;t, so here&#39;s an
+important tip when you use two factor authentication like a Yubikey, Nitrokey or
+Google Authenticator (HOTP). TL;DR: Have a second hardware token stored away
+safely and backup your QR codes (print/screenshot) somewhere secure. Swap the
+hardware tokens often to make sure they both work with all services. Today my
+trusty old first generation Yubikey didn&#39;t light up when I plugged it in. No
+problem for me, I had a backup key. But most people don&#39;t, so here&#39;s an
+important tip when you use two factor authentication like a Yubikey, Nitrokey or
+Google Authenticator (HOTP). TL;DR: Have a second hardware token stored away
+safely and backup your QR codes (print/screenshot) somewhere secure. Swap the
+hardware tokens often to make sure they both work with all services.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>As we all know, 2 factor authentication is important. Passwords are insecure, can be brute forced or logged (malware, keylogger) and are re-used everywhere. If you&#39;re password is leaked, when you are using two factor, something you know (password/username) and something you have (security token, time-based code), the attacker doesn&#39;t have access to your stuff unless they also compromise the second factor. </p>
+<p>As we all know, 2 factor authentication is important. Passwords are insecure,
+can be brute forced or logged (malware, keylogger) and are re-used everywhere.
+If you&#39;re password is leaked, when you are using two factor, something you know
+(password/username) and something you have (security token, time-based code),
+the attacker doesn&#39;t have access to your stuff unless they also compromise the
+second factor.</p>
 
-<p>I love security devices, I&#39;ve written <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">a lot</a> about the open source <a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">NitroKey</a> devices, <a href="https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html">even how to get the private key fronm the HSM</a>. Also, the <a href="https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html">FST-01</a>, an open source GnuPG token and the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">SmartCard-HSM</a>. In my professional job I work with enterprise HSM devices (Safenet, Gemalto). </p>
+<p>I love security devices, I&#39;ve written <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">a lot</a> about the open source
+<a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">NitroKey</a> devices, <a href="https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html">even how to get the private key fronm the HSM</a>. Also,
+the <a href="https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html">FST-01</a>, an open source GnuPG token and the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">SmartCard-HSM</a>. In my
+professional job I work with enterprise HSM devices (Safenet, Gemalto).</p>
 
 <h3>Backups backups backups!</h3>
 
@@ -86,27 +105,53 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h4>HOTP / TOTP</h4>
 
-<p>If you use Google Authenticator (or any other TOTP/HOTP), you get a QR code to scan with your device or a code to enter. Screenshot that code and print it, file it in a folder. Or write down the code.</p>
+<p>If you use Google Authenticator (or any other TOTP/HOTP), you get a QR code to
+scan with your device or a code to enter. Screenshot that code and print it,
+file it in a folder. Or write down the code.</p>
 
 <p><img src="https://raymii.org/s/inc/img/google_auth.png" alt="TOTP"></p>
 
-<p>I myself have a second Android device at home with all the codes scanned as well, so when my main phone breaks I have an &#39;online&#39; backup. Since the codes are all printed, when my main phone is working again, I scan the codes from the &#39;offline&#39; backup to add them back. I don&#39;t have to login to every service or contact customer support to change the 2 factor settings.</p>
+<p>I myself have a second Android device at home with all the codes scanned as
+well, so when my main phone breaks I have an &#39;online&#39; backup. Since the codes
+are all printed, when my main phone is working again, I scan the codes from the
+&#39;offline&#39; backup to add them back. I don&#39;t have to login to every service or
+contact customer support to change the 2 factor settings.</p>
 
 <h4>Hardware tokens</h4>
 
 <p><img src="https://raymii.org/s/inc/img/yubikeys.png" alt="yubikeys"></p>
 
-<p>The physical tokens, like the Yubikey, GnuPG (FST-01 or Nitrokey Start/Pro), SmartCard HSM, Nitrokey HSM or the RSA token, yes my keychain is full with those sadly, all have a second device. At home I have a &#39;backup&#39; keychain with authentication tokens. Which means, a second Yubikey (for KeePass), a second Nitrokey Pro (for GPG) and a second Nitrokey HSM (S/MIME and other certificates). It also has copies of the important physical keys (car, home, etc). </p>
+<p>The physical tokens, like the Yubikey, GnuPG (FST-01 or Nitrokey Start/Pro),
+SmartCard HSM, Nitrokey HSM or the RSA token, yes my keychain is full with those
+sadly, all have a second device. At home I have a &#39;backup&#39; keychain with
+authentication tokens. Which means, a second Yubikey (for KeePass), a second
+Nitrokey Pro (for GPG) and a second Nitrokey HSM (S/MIME and other
+certificates). It also has copies of the important physical keys (car, home,
+etc).</p>
 
-<p>This keychain is stored in a safe next to the phone with the authenticator and the printed QR codes. Also a printout of my private keys which are not in hardware tokens (with passwords). </p>
+<p>This keychain is stored in a safe next to the phone with the authenticator and
+the printed QR codes. Also a printout of my private keys which are not in
+hardware tokens (with passwords).</p>
 
-<p>You must also add all these devices to the services you use. Lastpass for example supports up to 5 yubikeys. It&#39;s not much use to have a second YubiKey if you can&#39;t use it. So make sure to add the token to the service you use. </p>
+<p>You must also add all these devices to the services you use. Lastpass for
+example supports up to 5 yubikeys. It&#39;s not much use to have a second YubiKey if
+you can&#39;t use it. So make sure to add the token to the service you use.</p>
 
-<p>In the case of the GPG token and the HSM, backup the key material on them and import it on the second device. </p>
+<p>In the case of the GPG token and the HSM, backup the key material on them and
+import it on the second device.</p>
 
-<p>The last step in this backup scheme is, as is with all backups, to regularly test them. Otherwise a backup is worth nothing. I swap the keychain once every month, so I know it works with all the services it needs to. If something doesn&#39;t work, I don&#39;t want to find out on a critical moment, rather as soon as possible. Just as with all other backups, do a restore test once in a while. </p>
+<p>The last step in this backup scheme is, as is with all backups, to regularly
+test them. Otherwise a backup is worth nothing. I swap the keychain once every
+month, so I know it works with all the services it needs to. If something
+doesn&#39;t work, I don&#39;t want to find out on a critical moment, rather as soon as
+possible. Just as with all other backups, do a restore test once in a while.</p>
 
-<p>I know that this increases the cost, instead of 1 token you need to buy two, and Yubikeys are pricey ($50 as of today). But I had my two Yubikeys since around 2010, so 8 years, that is a cost I could spread out. The other hardware tokens are either bought via my work (free for me yay) or paid for myself. But, my time is costly, so I rather buy two tokens than to spend an afternoon fixing all the 2 factor authentication. </p>
+<p>I know that this increases the cost, instead of 1 token you need to buy two, and
+Yubikeys are pricey ($50 as of today). But I had my two Yubikeys since around
+2010, so 8 years, that is a cost I could spread out. The other hardware tokens
+are either bought via my work (free for me yay) or paid for myself. But, my time
+is costly, so I rather buy two tokens than to spend an afternoon fixing all the
+2 factor authentication.</p>
 </div><hr>Tags: <a href="../tags/backups.html" class="link">backups &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/hotp.html" class="link">hotp &nbsp;</a><a href="../tags/lastpass.html" class="link">lastpass &nbsp;</a><a href="../tags/nitrokey.html" class="link">nitrokey &nbsp;</a><a href="../tags/password.html" class="link">password &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/yubikey.html" class="link">yubikey &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

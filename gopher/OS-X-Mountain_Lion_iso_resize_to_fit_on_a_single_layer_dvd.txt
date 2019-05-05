@@ -9,31 +9,40 @@ Format      : 	Markdown/HTML
 
 
 
-This script will help you resize the OS X Mountain Lion `InstallESD.dmg` file to fit on a single layer DVD. The normal .dmg file will give an error that it is to big for a single layer DVD. The install works fine afterwards, the .dmg file just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not work because it is a read only dmg image. 
+This script will help you resize the OS X Mountain Lion `InstallESD.dmg` file to
+fit on a single layer DVD. The normal .dmg file will give an error that it is to
+big for a single layer DVD. The install works fine afterwards, the .dmg file
+just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not
+work because it is a read only dmg image.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+You need to download OS X Mountain Lion via the App Store. This script assumes
+that file path.
 
-You need to download OS X Mountain Lion via the App Store. This script assumes that file path.
+This is an adapted version of this script:
+<http://hints.macworld.com/article.php?story=20120727121953498>. It has the file
+remove lines removed, and a few other things changed.
 
-This is an adapted version of this script: [http://hints.macworld.com/article.php?story=20120727121953498](http://hints.macworld.com/article.php?story=20120727121953498). It has the file remove lines removed, and a few other things changed.
+Copy and paste the following lines in a terminal, one by one. The first `hdiutil
+create` line, the `cp` and the last `hdiutil convert` line might take a while.
 
-Copy and paste the following lines in a terminal, one by one. The first `hdiutil create` line, the `cp` and the last `hdiutil convert` line might take a while.
-
+    
+    
     sudo hdiutil create -size 4.2g -volname "Mac OS X Install ESD" /private/tmp/Mountain\ Lion\ DVD\ Image\ read-write.dmg -fs HFS+ -layout SPUD
     sudo hdiutil attach -nobrowse /Applications/Install\ OS\ X\ Mountain\ Lion.app/Contents/SharedSupport/InstallESD.dmg
     sudo hdiutil attach -nobrowse /private/tmp/Mountain\ Lion\ DVD\ Image\ read-write.dmg
-
+    
     sudo cp -pRv /Volumes/Mac\ OS\ X\ Install\ ESD/* /Volumes/Mac\ OS\ X\ Install\ ESD\ 1/
-
+    
     sudo hdiutil detach /Volumes/Mac\ OS\ X\ Install\ ESD\ 1
     sudo hdiutil detach /Volumes/Mac\ OS\ X\ Install\ ESD
-
+    
     sudo hdiutil convert /private/tmp/Mountain\ Lion\ DVD\ Image\ read-write.dmg -format UDZO -o ~/Desktop/Mountain\ Lion\ DVD\ Image.dmg
+    
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

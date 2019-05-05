@@ -69,10 +69,10 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/mutt_djd.png"></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/mutt_djd.png" alt=""></p>
 
 <p>mutt is my email client at work. I like the simple interface, the speed and the
-ability to customize the workflow.  Email is synced with <code>offlineimap</code> and sent
+ability to customize the workflow. Email is synced with <code>offlineimap</code> and sent
 via <code>msmtp</code>, addresses are in <code>abook</code>, and <code>calcurse</code> is the calendar for
 meetings, no complicated setup there. One aspect I especially like is the
 ability to view attachments on the command line right from mutt itself. Some
@@ -83,12 +83,12 @@ displayed as a regular mail, no interruptions in my workflow by opening an
 external program. This article explains how to set up your <code>.muttrc</code> and
 <code>.mailcap</code> to use <code>pandoc</code> and <code>pdftotext</code> to view attachments as text in mutt.</p>
 
-<p>I do assume you have a working mutt set up as I don&#39;t cover that here. 
-<a href="https://wiki.archlinux.org/index.php/mutt">The Arch Linux Wiki</a> on mutt is a
-great place to start if you haven&#39;t got mutt setup yet.</p>
+<p>I do assume you have a working mutt set up as I don&#39;t cover that here. <a href="https://wiki.archlinux.org/index.php/mutt">The Arch
+Linux Wiki</a> on mutt is a great place to start if you haven&#39;t got mutt setup
+yet.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Installing software</h3>
 
@@ -102,8 +102,8 @@ using apt:</p>
 
 <h3>.mailcap</h3>
 
-<p>Your <code>.mailcap.</code> file contains information for a mail client how to handle
-non-text files.</p>
+<p>Your <code>.mailcap.</code> file contains information for a mail client how to handle non-
+text files.</p>
 
 <p>In your <code>.muttrc</code> file you need to specify where this file is:</p>
 
@@ -120,8 +120,8 @@ look like this:</p>
 <pre><code>text/plain; cat %s
 </code></pre>
 
-<p>The optional flags can be used to specify additional information about the
-mail-handling command. For example:</p>
+<p>The optional flags can be used to specify additional information about the mail-
+handling command. For example:</p>
 
 <pre><code>text/plain; cat %s; copiousoutput
 </code></pre>
@@ -185,7 +185,7 @@ using <code>s</code> to save the file you can now use <code>v</code> to view the
 <code>pdftotext</code> or <code>pandoc</code> is invoked, and the plain text output is shown inside
 mutt.</p>
 
-<p><img src="https://raymii.org/s/inc/img/mutt_pdf.png"></p>
+<p><img src="https://raymii.org/s/inc/img/mutt_pdf.png" alt=""></p>
 
 <blockquote>
 <p>A PDF file viewed in mutt, as text</p>

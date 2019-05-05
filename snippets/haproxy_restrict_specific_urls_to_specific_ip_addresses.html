@@ -69,18 +69,29 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This snippet shows you how to use haproxy to restrict certain URLs to certain IP addresses. For example, to make sure your admin interface can only be accessed from your company IP address.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This snippet shows you how to use haproxy to restrict certain URLs to certain IP
+addresses. For example, to make sure your admin interface can only be accessed
+from your company IP address.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This example restricts access to the <code>/admin/</code> and <code>/helpdesk</code> URL&#39;s. It only allows access from the IP addresses <code>20.30.40.50</code> and <code>20.30.40.40</code>. Any other IP addresses will get the standard haproxy 403 forbidden error.</p>
+<p>This example restricts access to the <code>/admin/</code> and <code>/helpdesk</code> URL&#39;s. It only
+allows access from the IP addresses <code>20.30.40.50</code> and <code>20.30.40.40</code>. Any other
+IP addresses will get the standard haproxy 403 forbidden error.</p>
 
 <h3>ACL for URL&#39;s</h3>
 
-<p>It uses the acl option. If the requested path begins with either <code>/admin</code> or <code>/helpdesk</code> haproxy sets the <code>restricted_page</code> acl. haproxy also looks at the requesting source IP address. If that matches any of the two IP addresses, it sets the <code>network_allowed</code> acl. If the <code>allowed_network</code> acl is set and the <code>restricted_page</code> is also set, it allows a visitor to go to the page. If the <code>restricted_page</code> acl is set but the <code>allowed_network</code> is not, haproxy will serve a 403 error, thus, disallowing access to that specific URL.</p>
+<p>It uses the acl option. If the requested path begins with either <code>/admin</code> or
+<code>/helpdesk</code> haproxy sets the <code>restricted_page</code> acl. haproxy also looks at the
+requesting source IP address. If that matches any of the two IP addresses, it
+sets the <code>network_allowed</code> acl. If the <code>allowed_network</code> acl is set and the
+<code>restricted_page</code> is also set, it allows a visitor to go to the page. If the
+<code>restricted_page</code> acl is set but the <code>allowed_network</code> is not, haproxy will
+serve a 403 error, thus, disallowing access to that specific URL.</p>
 
-<p>Note that you can use IP addresses but also networks in the <code>src</code> acl. Both <code>192.168.20.0/24</code> and <code>192.168.10.3</code> work.</p>
+<p>Note that you can use IP addresses but also networks in the <code>src</code> acl. Both
+<code>192.168.20.0/24</code> and <code>192.168.10.3</code> work.</p>
 
 <pre><code>frontend example-frontend
   [...]
@@ -91,7 +102,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
   [...]
 </code></pre>
 
-<p>To use a specific file as error page, use the following config in the defaults section:</p>
+<p>To use a specific file as error page, use the following config in the defaults
+section:</p>
 
 <pre><code>defaults
   [...]
@@ -128,7 +140,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>** update 2017-01-09 **</p>
 
-<p>If you have a non-http service you want to restrict to a few IP&#39;s you can use an ACL together with the <code>tcp-request connection reject</code> optio. Here below is a simple example for a MySQL service. Do note that this also works in a <code>frontend</code> block:</p>
+<p>If you have a non-http service you want to restrict to a few IP&#39;s you can use an
+ACL together with the <code>tcp-request connection reject</code> optio. Here below is a
+simple example for a MySQL service. Do note that this also works in a <code>frontend</code>
+block:</p>
 
 <pre><code>listen mysql
       bind            1.2.3.4:3306
@@ -138,12 +153,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
       server          mysqlvip 10.0.0.30:3306
 </code></pre>
 
-<p><a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl">More info on acl: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl</a>
-<a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile">More info on errorfile: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile</a></p>
+<p><a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl">More info on acl: http://cbonte.github.io/haproxy-
+dconv/configuration-1.5.html#acl</a> <a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile">More info on errorfile:
+http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile</a></p>
 
 <h3>Password if not from whitelisted network</h3>
 
-<p>If you want access to the resource, but are not on the whitelisted network, the recommended way is to setup a VPN. But, if that is not feasable, the below trick allows you to prompt for a password if you&#39;re from a different network.</p>
+<p>If you want access to the resource, but are not on the whitelisted network, the
+recommended way is to setup a VPN. But, if that is not feasable, the below trick
+allows you to prompt for a password if you&#39;re from a different network.</p>
 
 <p>First setup a <code>userlist</code>:</p>
 
@@ -177,7 +195,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
   [...]
 </code></pre>
 
-<p>If you&#39;re on the whitelisted network, you are given access. If you&#39;re on a different network, you will be prompted for a password. Make sure you&#39;re only using this over an HTTPS protected frontend.</p>
+<p>If you&#39;re on the whitelisted network, you are given access. If you&#39;re on a
+different network, you will be prompted for a password. Make sure you&#39;re only
+using this over an HTTPS protected frontend.</p>
 </div><hr>Tags: <a href="../tags/acl.html" class="link">acl &nbsp;</a><a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/errors.html" class="link">errors &nbsp;</a><a href="../tags/haproxy.html" class="link">haproxy &nbsp;</a><a href="../tags/loadbalancer.html" class="link">loadbalancer &nbsp;</a><a href="../tags/restrict.html" class="link">restrict &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

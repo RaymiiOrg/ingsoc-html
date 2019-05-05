@@ -9,30 +9,40 @@ Format      : 	Markdown/HTML
 
 
 
-One of my clients wanted to block a few social networking websites. Since they have no IPv6 (yet) I figured the simplest way was to block access to the entire IP range. This won't work for all the CDN networks they use, but it does get you started. 
+One of my clients wanted to block a few social networking websites. Since they
+have no IPv6 (yet) I figured the simplest way was to block access to the entire
+IP range. This won't work for all the CDN networks they use, but it does get you
+started.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-To find all the ranges beloning to an AS number you can query the `whois.radb.net` server with the AS number.
+To find all the ranges beloning to an AS number you can query the
+`whois.radb.net` server with the AS number.
 
 For Facebook for example:
 
+    
+    
     whois -h whois.radb.net '!gAS32934'
     A1063
     204.15.20.0/22 69.63.176.0/20 66.220.144.0/20 66.220.144.0/21 69.63.184.0/21 69.63.176.0/21 74.119.76.0/22 69.171.255.0/24 173.252.64.0/18 69.171.224.0/19 69.171.224.0/20 103.4.96.0/22 69.63.176.0/24 173.252.64.0/19 173.252.70.0/24 31.13.64.0/18 31.13.24.0/21 66.220.152.0/21 66.220.159.0/24 69.171.239.0/24 69.171.240.0/20 31.13.64.0/19 31.13.64.0/24 31.13.65.0/24 31.13.67.0/24 31.13.68.0/24 31.13.69.0/24 31.13.70.0/24 31.13.71.0/24 31.13.72.0/24 31.13.73.0/24 31.13.74.0/24 31.13.75.0/24 31.13.76.0/24 31.13.77.0/24 31.13.96.0/19 31.13.66.0/24 173.252.96.0/19 69.63.178.0/24 31.13.78.0/24 31.13.79.0/24 31.13.80.0/24 31.13.82.0/24 31.13.83.0/24 31.13.84.0/24 31.13.85.0/24 31.13.86.0/24 31.13.87.0/24 31.13.88.0/24 31.13.89.0/24 31.13.90.0/24 31.13.91.0/24 31.13.92.0/24 31.13.93.0/24 31.13.94.0/24 31.13.95.0/24 69.171.253.0/24 69.63.186.0/24 31.13.81.0/24 179.60.192.0/22 179.60.192.0/24 179.60.193.0/24 179.60.194.0/24 179.60.195.0/24 185.60.216.0/22 45.64.40.0/22 204.15.20.0/22 69.63.176.0/20 69.63.176.0/21 69.63.184.0/21 66.220.144.0/20 69.63.176.0/20
-
+    
 
 For CloudVPS:
 
+    
+    
     whois -h whois.radb.net '!gAS35470'
     A248
     194.60.207.0/24 79.170.88.0/21 89.31.96.0/21 217.170.21.0/24 193.138.204.0/22 178.18.80.0/20 31.3.96.0/21 141.138.192.0/20 212.32.226.0/24 37.34.48.0/21 37.230.96.0/21 93.191.128.0/21 185.21.188.0/22 213.187.240.0/21 85.222.224.0/21 185.3.208.0/22
+    
 
-To find an AS number, you can query this whois server with the IP address. Linode for example:
+To find an AS number, you can query this whois server with the IP address.
+Linode for example:
 
+    
+    
     $ whois -h whois.radb.net  178.79.155.1
     route:          178.79.128.0/18
     descr:          Linode-2
@@ -46,22 +56,31 @@ To find an AS number, you can query this whois server with the IP address. Linod
     remarks:        * To view the original object, please query the RIPE Database at:
     remarks:        * http://www.ripe.net/whois
     remarks:        ****************************
+    
 
 And then their AS number:
 
+    
+    
     $ whois -h whois.radb.net '!gAS15830'
     A3937
     217.68.16.0/22 217.20.46.0/24 [...] 213.52.183.0/24 213.52.182.0/24 212.111.40.0/24
-
+    
 
 A block can then be issued with the following `iptables` command:
 
+    
+    
     iptables -A INPUT -d 217.68.16.0/22 -j DROP
+    
 
 Where `-d` is the destination you want to make unreachable.
 
-If you have the `ipset` extension enabled you can create a set of all the ranges:
+If you have the `ipset` extension enabled you can create a set of all the
+ranges:
 
+    
+    
     ipset -N blocked_nets nethash
     ipset -A blocked_nets 194.60.207.0/24
     ipset -A blocked_nets 79.170.88.0/21
@@ -81,10 +100,15 @@ If you have the `ipset` extension enabled you can create a set of all the ranges
     ipset -A blocked_nets 185.3.208.0/22
     
 
-And create the rules to filter based on the `ipset`, which is faster when you have a large amount of IP's and ranges.
+And create the rules to filter based on the `ipset`, which is faster when you
+have a large amount of IP's and ranges.
 
+    
+    
     iptables -I INPUT -m set --match-set blocked_nets src,dst -j DROP
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

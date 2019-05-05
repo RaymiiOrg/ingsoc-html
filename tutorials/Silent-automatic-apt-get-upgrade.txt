@@ -9,22 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
+This tutorial will show you how to setup completely silent apt-get upgrade via
+cron. It also defaults to not overwriting config files if a package has a newer
+version.
 
-This tutorial will show you how to setup completely silent apt-get upgrade via cron. It also defaults to not overwriting config files if a package has a newer version.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+> Important! You should watch out with this. Upgrades can break things. Use this
+on your own risk.
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-> Important! You should watch out with this. Upgrades can break things. Use this on your own risk.
-
-apt-get can be ran from a cronjob with different options to let it update everything without asking questions. However, the regular combination as seen below still mails output (and thus, not upgrades) when a changed file is found in a package, for example, the */etc/lighttpd/lighttpd.conf* file.
+apt-get can be ran from a cronjob with different options to let it update
+everything without asking questions. However, the regular combination as seen
+below still mails output (and thus, not upgrades) when a changed file is found
+in a package, for example, the _/etc/lighttpd/lighttpd.conf_ file.
 
 This is example output of such a situation:
 
+    
+    
     apt-get upgrade -y --force-yes -qq
-
+    
     Configuration file `/etc/lighttpd/lighttpd.conf'
     ==> Modified (by you or by a script) since installation.
     ==> Package distributor has shipped an updated version.
@@ -35,6 +40,7 @@ This is example output of such a situation:
     Z : background this process to examine the situation
     The default action is to keep your current version.
     *** lighttpd.conf (Y/I/N/O/D/Z) [default=N] ? 
+    
 
 The apt-get command is ran from cron, and the below lines are mailed.
 
@@ -42,17 +48,27 @@ The apt-get command is ran from cron, and the below lines are mailed.
 
 Using a few options for DPKG results in this command:
 
+    
+    
     DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
+    
 
 Results in this cronjob:
 
+    
+    
     1 1 * * * DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical sudo apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
+    
 
 And if you also want to update the apt-cache:
 
+    
+    
     1 3 * * * DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical sudo apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
     1 1 * * * apt-get -y update
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

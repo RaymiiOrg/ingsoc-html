@@ -77,14 +77,13 @@ to try to fix the SD card, including fsck, badblocks and other filesystem
 utilities. It also has tips to reduce the writing on the Raspberry Pi, this to
 save SD cards from some amount of wear and thus possible corruption.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>The machine was running as an <a href="http://www.icrobotics.co.uk/wiki/index.php/Turning_the_Raspberry_Pi_Into_an_FM_Transmitter">FM
-transmitter</a>
-so that my regular sound system could play podcasts (Please note that it is
-probably illegal to transmit without having your HAM license). I&#39;t would sync up
-my feeds and, when turned on, started playing them.</p>
+<p>The machine was running as an <a href="http://www.icrobotics.co.uk/wiki/index.php/Turning_the_Raspberry_Pi_Into_an_FM_Transmitter">FM transmitter</a> so that my regular sound
+system could play podcasts (Please note that it is probably illegal to transmit
+without having your HAM license). I&#39;t would sync up my feeds and, when turned
+on, started playing them.</p>
 
 <p>However, after the last reboot it would not start up again. I rigged up the UART
 to my machine and found out why, there were files that the system could not
@@ -103,7 +102,7 @@ the card to my machine and started the fsck:</p>
 <pre><code># fsck /dev/mmcblk0p2
 </code></pre>
 
-<p>And it failed right away:    </p>
+<p>And it failed right away:</p>
 
 <pre><code>fsck from util-linux 2.25.2
 e2fsck 1.42.12 (29-Aug-2014)
@@ -124,9 +123,7 @@ is corrupt, and you might try running e2fsck with an alternate superblock:
 <p>The superblock contains information about the file system such as the file
 system type, size, status, information about other metadata structures, block
 counts, inode counts, supported features, maintenance information, and more and
-so on
-(<a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout#The_Super_Block">source</a>).
-It is an important piece of information for the filesystem.</p>
+so on (<a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout#The_Super_Block">source</a>). It is an important piece of information for the filesystem.</p>
 
 <p>So the card is so broken that the first superblock is not readable. An ext4
 filesystem has multiple copies of it&#39;s superblock, so lets find them and use
@@ -148,7 +145,8 @@ Superblock backups stored on blocks:
 </code></pre>
 
 <p>We also need to find the block size, the above command shows it as 4k, which is
-4096. With this information we can retry the fsck with the alternate superblock:</p>
+4096. With this information we can retry the fsck with the alternate
+superblock:</p>
 
 <pre><code>fsck -b 163840 -B 4096 /dev/mmcblk0p2
 </code></pre>
@@ -185,7 +183,8 @@ Recreate journal&lt;y&gt;? cancelled!
 /dev/mmcblk0p2: ***** FILE SYSTEM WAS MODIFIED *****
 </code></pre>
 
-<p>Adding the <code>-y</code> option to the command will automatically answer yes to everything:</p>
+<p>Adding the <code>-y</code> option to the command will automatically answer yes to
+everything:</p>
 
 <pre><code>fsck -y -b 163840 -B 4096 /dev/mmcblk0p2
 </code></pre>
@@ -222,13 +221,12 @@ directory = /var/cache/e2fsck
 <p>Ted Tso explains what this option does on <a href="https://www.redhat.com/archives/ext3-users/2008-June/msg00015.html">this mailinglist topic</a>:</p>
 
 <blockquote>
-<p>This will cause e2fsck to store certain data structures which grow
-large with backup servers that have a vast number of hard-linked files
-in /var/cache/e2fsck instead of in memory.  This will slow down e2fsck
-by approximately 25%, but for large filesystems where you couldn&#39;t
-otherwise get e2fsck to complete because you&#39;re exhausting the 2GB VM
-per-process limitation for 32-bit systems, it should allow you to run
-through to completion.</p>
+<p>This will cause e2fsck to store certain data structures which grow large with
+backup servers that have a vast number of hard-linked files in /var/cache/e2fsck
+instead of in memory. This will slow down e2fsck by approximately 25%, but for
+large filesystems where you couldn&#39;t otherwise get e2fsck to complete because
+you&#39;re exhausting the 2GB VM per-process limitation for 32-bit systems, it
+should allow you to run through to completion.</p>
 </blockquote>
 
 <p>You have to create the <code>/var/cache/e2fsck</code> folder if it does not exist yet
@@ -238,15 +236,14 @@ before running the fsck:</p>
 </code></pre>
 
 <p>The <code>scratch_files</code> stanza has more options, two of which might be important,
-<code>set dirinfo</code> and <code>set icount</code>. </p>
+<code>set dirinfo</code> and <code>set icount</code>.</p>
 
 <p>You configure <code>set dirinfo</code> to false if your filesystem had an large number of
 individual files and not that many directories. You configure <code>set icount</code> to
 false if the reverse were true. Otherwise, you configure them both on true.</p>
 
 <p>There was also a good explanation of where the Out of Memory error comes from on
-<a href="https://unix.stackexchange.com/a/100805">Stack Exchange</a>, it might not be out
-of memory.</p>
+<a href="https://unix.stackexchange.com/a/100805">Stack Exchange</a>, it might not be out of memory.</p>
 
 <p>The <code>scratch_files</code> setting did not improve the check. It still gave the same
 error, out of memory.</p>
@@ -259,13 +256,13 @@ fsck would still fail. <code>dmesg</code> was also full with these kinds of logs
 
 <h3>Spinrite</h3>
 
-<p>My last guess would be to try <a href="https://www.grc.com/sr/spinrite.htm">Spinrite</a>.
-Spinrite is a hard drive recovery and maintenande utility written by Steve
-Gibson from <a href="https://grc.com">Gibson Research Corporation</a>. I configured a KVM
-VM with the card reader device as a second block device and tried to run
-Spinrite on Level 2. However, even spinrite failed:</p>
+<p>My last guess would be to try <a href="https://www.grc.com/sr/spinrite.htm">Spinrite</a>. Spinrite is a hard drive recovery
+and maintenande utility written by Steve Gibson from <a href="https://grc.com">Gibson Research
+Corporation</a>. I configured a KVM VM with the card reader device as a second
+block device and tried to run Spinrite on Level 2. However, even spinrite
+failed:</p>
 
-<p><a href="https://raymii.org/s/inc/img/spinrite-fail.png"><img src="https://raymii.org/s/inc/img/spinrite-fail.png" width="320" height="240"></a></p>
+<p><a href="https://raymii.org/s/inc/img/spinrite-fail.png"><img src="https://raymii.org/s/inc/img/spinrite-fail.png" alt=""></a></p>
 
 <p>Booting Spinrite on a spare laptop with a cardreader with this SD card gave the
 same error. It sees the device, but fails to run on it.</p>
@@ -281,7 +278,7 @@ not report actual physical addresses (because of wear levelling) it does tell us
 if the card is broken or not.</p>
 
 <p>The following badblocks command will scan and report bad blocks for the device.
-<strong>It is a destructive write operation, you will lose your data</strong>. </p>
+<strong>It is a destructive write operation, you will lose your data</strong>.</p>
 
 <pre><code>badblocks -o ./badblocks.list -w -s -v -b 4096 -c 16 /dev/mmcblk0
 </code></pre>
@@ -299,7 +296,7 @@ Testing with pattern 0xaa: 0.01% done, 1:57 elapsed. (0/292/0 errors)
 Interrupted at block 294
 </code></pre>
 
-<p>The error output format means the following: </p>
+<p>The error output format means the following:</p>
 
 <pre><code>number of read errors/number of write errors/number of corruption errors
 </code></pre>
@@ -336,7 +333,8 @@ partitions, for example on a standard Raspbian:</p>
 /dev/mmcblk0p2  /               ext4    defaults,noatime  0       1
 </code></pre>
 
-<p>Here the <code>/boot</code> partition is also mounted read only (<code>ro</code>). The <code>noatime</code> option is added.</p>
+<p>Here the <code>/boot</code> partition is also mounted read only (<code>ro</code>). The <code>noatime</code>
+option is added.</p>
 
 <p>Issue a <code>mount -a</code> command or reboot the machine to make this active.</p>
 
@@ -352,16 +350,17 @@ amount of virtual memory available.</p>
 save writes. The downside of this is that when there is not enough RAM available
 the linux OOM killer will randomly kill processes to save RAM.</p>
 
-<p>Raspbian by default has a swap file, dynamically managed by the
-<code>dphsys-swapfile</code> utility. You can turn off this utility by issueing the
-following commands:</p>
+<p>Raspbian by default has a swap file, dynamically managed by the <code>dphsys-
+swapfile</code> utility. You can turn off this utility by issueing the following
+commands:</p>
 
 <pre><code>dphys-swapfile swapoff
 dphys-swapfile uninstall
 update-rc.d dphys-swapfile remove
 </code></pre>
 
-<p>After a reboot the swap will be gone, which you can check with the <code>free -m</code> command:</p>
+<p>After a reboot the swap will be gone, which you can check with the <code>free -m</code>
+command:</p>
 
 <pre><code>             total       used       free     shared    buffers     cached
 Mem:           484        243        241          0         42        162
@@ -403,7 +402,7 @@ and the <code>pifm</code> software was set up again. The music came from another
 so that did not have to be copied again.</p>
 
 <p>With the tips above you might be able to save your SD card if it ever gets
-corrupted. These tips also work on regular disks and SSD&#39;s. </p>
+corrupted. These tips also work on regular disks and SSD&#39;s.</p>
 </div><hr>Tags: <a href="../tags/badblocks.html" class="link">badblocks &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/ext4.html" class="link">ext4 &nbsp;</a><a href="../tags/filesystem.html" class="link">filesystem &nbsp;</a><a href="../tags/fsck.html" class="link">fsck &nbsp;</a><a href="../tags/mkfs.html" class="link">mkfs &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><a href="../tags/sd.html" class="link">sd &nbsp;</a><a href="../tags/swap.html" class="link">swap &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

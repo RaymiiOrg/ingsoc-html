@@ -9,65 +9,74 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial shows you how to set up an SSL Certificate for use with Ejabberd. It covers both the creation of the Certificate Signing Request, the preparing of the certificate for use with Ejabberd and the installation of the certificate.
+This tutorial shows you how to set up an SSL Certificate for use with Ejabberd.
+It covers both the creation of the Certificate Signing Request, the preparing of
+the certificate for use with Ejabberd and the installation of the certificate.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you need to set up an ejabberd server then you can read my tutorial here how
+to do that][2].
 
-[If you need to set up an ejabberd server then you can read my tutorial here how to do that](https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html). 
-
-This tutorial assumes a working ejabberd installation. It is tested on Debian and Ubuntu, but should work on any ejabberd installation.
+This tutorial assumes a working ejabberd installation. It is tested on Debian
+and Ubuntu, but should work on any ejabberd installation.
 
 ### Steps and Explanation
 
 To get an SSL certificate working on ejabberd we need to do a few things:
 
-- Create an Certificate Signing Request (CSR) and a Private Key
-- Submit the CSR to a Certificate Authority, let them sign it and give you a Certificate
-- Combine the certificate, private key (and chain) into a ejabberd compatible PEM file
-- Install the certificate in ejabberd
+  * Create an Certificate Signing Request (CSR) and a Private Key
+  * Submit the CSR to a Certificate Authority, let them sign it and give you a Certificate
+  * Combine the certificate, private key (and chain) into a ejabberd compatible PEM file
+  * Install the certificate in ejabberd
 
-With a certificate we can secure our XMPP connection and conversations. This way it is much harder for others to spy on your conversations. Combined with OTR this enabled a super secure channel for conversation. 
+With a certificate we can secure our XMPP connection and conversations. This way
+it is much harder for others to spy on your conversations. Combined with OTR
+this enabled a super secure channel for conversation.
 
 ### Creating the Certificate Signing Request
 
 Create a folder to store all the files and cd to that:
 
-  mkdir -p ~/Certificates/xmpp
-  cd ~/Certificates/xmpp
+mkdir -p ~/Certificates/xmpp cd ~/Certificates/xmpp
 
-Now use OpenSSL to create both a Private Key and a CSR. The first command will do it interactively, the second command will do it non-interactive. Make sure to set the correct values, your Common Name (CN) should be your XMPP server URL:
+Now use OpenSSL to create both a Private Key and a CSR. The first command will
+do it interactively, the second command will do it non-interactive. Make sure to
+set the correct values, your Common Name (CN) should be your XMPP server URL:
 
 Interactive:
 
-  openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr
+openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr
 
 Non-interactive:
 
-  openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj "/C=NL/ST=State/L=City/O=Company Name/OU=Department/CN=chat.example.org"
+openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj
+"/C=NL/ST=State/L=City/O=Company Name/OU=Department/CN=chat.example.org"
 
-This will result in two files, `CSR.csr` and `private.key`. You now have to submit the CSR to a Certificate Authority. This can be any CA, I myself have good experiences with [Xolphin](https://sslcertificaten.nl), but there are others like Digicert and Verisign.
+This will result in two files, `CSR.csr` and `private.key`. You now have to
+submit the CSR to a Certificate Authority. This can be any CA, I myself have
+good experiences with [Xolphin][3], but there are others like Digicert and
+Verisign.
 
 Once you have submitted your CSR and have gotten a Certificate you can continue.
 
 ### Creating the ejabberd certificate
 
-Once you have all the files (private key, certificate and certificate chain), put them all in a folder and continue. We are going to `cat` all the required files into a `ejabberd.pem` file. 
+Once you have all the files (private key, certificate and certificate chain),
+put them all in a folder and continue. We are going to `cat` all the required
+files into a `ejabberd.pem` file.
 
 This needs to happen in a specific order:
 
-- private key
-- certificate
-- chains
+  * private key
+  * certificate
+  * chains
 
 So adapt the following commands to your filenames and create the pem file:
 
-  cat private.key >> ejabberd.pem
-  cat certificate.pem >> ejabberd.pem
-  cat chain-1.pem >> ejabberd.pem
-  cat chain-2.pem >> ejabberd.pem
+cat private.key >> ejabberd.pem cat certificate.pem >> ejabberd.pem cat
+chain-1.pem >> ejabberd.pem cat chain-2.pem >> ejabberd.pem
 
 If that all works out continue.
 
@@ -75,37 +84,32 @@ If that all works out continue.
 
 Copy the certificate to all your ejabberd servers:
 
-  scp ejabberd.pem user@srv1.example.org:
+scp ejabberd.pem user@srv1.example.org:
 
 The place the certificate in the `/etc/ejabberd` folder:
 
-  cp ejabberd.pem /etc/ejabberd/ejabberd.pem
+cp ejabberd.pem /etc/ejabberd/ejabberd.pem
 
 Now change the ejabberd config to point to the new certificate:
 
-  vim /etc/ejabberd/ejabberd.cfg
+vim /etc/ejabberd/ejabberd.cfg
 
 Check/change the following to point to the new certificate:
 
-  [...]
-  {listen,
-    [
-    {5222, ejabberd_c2s, [
-                          {access, c2s},
-                          {shaper, c2s_shaper},
-                          {max_stanza_size, 65536},
-                          starttls, {certfile, "/etc/ejabberd/ejabberd.pem"}
-                         ]},
-  [...]
-  {s2s_use_starttls, true}.
-  {s2s_certfile, "/etc/ejabberd/ejabberd.pem"}.
-  [...]
+[...] {listen, [ {5222, ejabberd _c2s, [ {access, c2s}, {shaper, c2s_ shaper},
+{max _stanza_ size, 65536}, starttls, {certfile, "/etc/ejabberd/ejabberd.pem"}
+]}, [...] {s2s _use_ starttls, true}. {s2s_certfile,
+"/etc/ejabberd/ejabberd.pem"}. [...]
 
 Afterwards restart ejabberd:
 
-  /etc/init.d/ejabberd restart
+/etc/init.d/ejabberd restart
 
 You can now use any XMPP client to connect with SSL/TLS to see if it works.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html
+   [3]: https://sslcertificaten.nl
 
 ---
 

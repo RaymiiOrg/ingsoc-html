@@ -69,41 +69,52 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/arch_on_pi.jpg" alt="ArchonPi" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/arch_on_pi.jpg" alt="ArchonPi"></p>
 
-<p>The Raspberry Pi is a great little small computer, both for tinkering but also as a low power 24/7 running homeserver system. I&#39;ve got multiple Pi&#39;s, one running as my home VPN gateway. It is running an IPSEC/L2TP VPN server. This is a guide on setting up an IPSEC/L2TP vpn server with Arch Linux on the Raspberry Pi using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs.</p>
+<p>The Raspberry Pi is a great little small computer, both for tinkering but also
+as a low power 24/7 running homeserver system. I&#39;ve got multiple Pi&#39;s, one
+running as my home VPN gateway. It is running an IPSEC/L2TP VPN server. This is
+a guide on setting up an IPSEC/L2TP vpn server with Arch Linux on the Raspberry
+Pi using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or
+local users / PAM for authentication. It has a detailed explanation with every
+step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities
+found in pptpd VPNs.</p>
 
 <p>This tutorial is available for the following platforms:</p>
 
 <ul>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a><br></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a></p></li>
 </ul>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This tutorial was tested on a Raspberry Pi running Arch Linux ARM, installed via NOOBS. It ran the current up to date Arch Linux ARM, here are the versions used:</p>
+<p>This tutorial was tested on a Raspberry Pi running Arch Linux ARM, installed via
+NOOBS. It ran the current up to date Arch Linux ARM, here are the versions used:</p>
 
 <ul>
 <li><code>uname -a</code>: Linux pi2.raymii.nl 3.10.25-1-ARCH #1 PREEMPT Mon Dec 23 16:07:25 MST 2013 armv6l GNU/Linux</li>
 <li><code>ipsec --version</code>: Linux Openswan U2.6.39/K3.10.25-1-ARCH (netkey)</li>
-<li><code>xl2tpd -v</code>: xl2tpd version:  xl2tpd-1.3.1</li>
+<li><code>xl2tpd -v</code>: xl2tpd version: xl2tpd-1.3.1</li>
 <li><code>pppd --version</code>: pppd version 2.4.5</li>
 </ul>
 
-<p>IPSec encrypts your IP packets to provide encryption and authentication, so no one can decrypt or forge data between your clients and your server. L2TP provides a tunnel to send data. It does not provide encryption and authentication though, that is why we combine the two.</p>
+<p>IPSec encrypts your IP packets to provide encryption and authentication, so no
+one can decrypt or forge data between your clients and your server. L2TP
+provides a tunnel to send data. It does not provide encryption and
+authentication though, that is why we combine the two.</p>
 
-<p>To work trough this tutorial you should have:  </p>
+<p>To work trough this tutorial you should have:</p>
 
 <ul>
 <li>1 Raspberry Pi running Arch Linux ARM</li>
@@ -111,27 +122,31 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Ports 1701 TCP, 4500 UDP and 500 UDP opened in the firewall.</li>
 </ul>
 
-<p>I do all the steps as the root user. You should do to, but only via <code>sudo  -i</code> or <code>su -</code>. Do not allow root to login via SSH!  </p>
+<p>I do all the steps as the root user. You should do to, but only via <code>sudo -i</code> or
+<code>su -</code>. Do not allow root to login via SSH!</p>
 
 <h4>Install ppp openswan and xl2tpd</h4>
 
-<p>First we will install the required packages:  </p>
+<p>First we will install the required packages:</p>
 
 <pre><code>pacman -Sy openswan xl2tpd ppp lsof python2
 </code></pre>
 
-<p>If you are running normal Arch (x86), you need to install OpenSWAN from the AUR. For the ARM/Pi version there is a package available. Python2 is required for OpenSWAN, but not listed as a dependency, therefore it is installed.</p>
+<p>If you are running normal Arch (x86), you need to install OpenSWAN from the AUR.
+For the ARM/Pi version there is a package available. Python2 is required for
+OpenSWAN, but not listed as a dependency, therefore it is installed.</p>
 
 <h4>Firewall and sysctl</h4>
 
-<p>We are going to set the firewall and make sure the kernel forwards IP packets:  </p>
+<p>We are going to set the firewall and make sure the kernel forwards IP packets:</p>
 
-<p>Execute this command to enable the iptables firewall to allow vpn traffic:  </p>
+<p>Execute this command to enable the iptables firewall to allow vpn traffic:</p>
 
 <pre><code>iptables --table nat --append POSTROUTING --jump MASQUERADE
 </code></pre>
 
-<p>Execute the below commands to enable kernel IP packet forwarding and disable ICP redirects.  </p>
+<p>Execute the below commands to enable kernel IP packet forwarding and disable ICP
+redirects.</p>
 
 <pre><code>echo &quot;net.ipv4.ip_forward = 1&quot; |  tee -a /etc/sysctl.conf
 echo &quot;net.ipv4.conf.all.accept_redirects = 0&quot; |  tee -a /etc/sysctl.conf
@@ -154,7 +169,9 @@ echo &quot;net.ipv4.icmp_ignore_bogus_error_responses = 1&quot; |  tee -a /etc/s
 
 <h5>Persistent settings via systemd</h5>
 
-<p>Arch Linux uses systemd. Init script functionality like rc.local is not available. To have these settings applied at boot we can however create a custom systemd service which starts at boot.</p>
+<p>Arch Linux uses systemd. Init script functionality like rc.local is not
+available. To have these settings applied at boot we can however create a custom
+systemd service which starts at boot.</p>
 
 <p>Add the following code to <code>/usr/local/bin/vpn-boot.sh</code>:</p>
 
@@ -173,7 +190,8 @@ sysctl -p
 <pre><code>chmod 755 /usr/local/bin/vpn-boot.sh
 </code></pre>
 
-<p>Using the following systemd service we can start the script which sets the above things at boot:</p>
+<p>Using the following systemd service we can start the script which sets the above
+things at boot:</p>
 
 <p>Add the following code to <code>/etc/systemd/system/vpnboot.service</code>:</p>
 
@@ -196,12 +214,12 @@ WantedBy=multi-user.target
 
 <h4>Configure Openswan (IPSEC)</h4>
 
-<p>Use your favorite editor to edit the following file:  </p>
+<p>Use your favorite editor to edit the following file:</p>
 
 <pre><code>vim /etc/ipsec.conf  
 </code></pre>
 
-<p>Replace the contents with the following:  </p>
+<p>Replace the contents with the following:</p>
 
 <p>(Most lines have a comment below it explaining what it does.)</p>
 
@@ -260,19 +278,22 @@ conn L2TP-PSK-noNAT
     # When a DPD enabled peer is declared dead, what action should be taken. clear means the eroute and SA with both be cleared.
 </code></pre>
 
-<p>Replace %SERVERIP% with the external IP of your Raspberry Pi. You can find it out by:</p>
+<p>Replace %SERVERIP% with the external IP of your Raspberry Pi. You can find it
+out by:</p>
 
 <pre><code>curl http://ip.mtak.nl
 </code></pre>
 
 <h5>The shared secret</h5>
 
-<p>The shared secret is defined in the <code>/etc/ipsec.secrets</code> file. Make sure it is long and random:  </p>
+<p>The shared secret is defined in the <code>/etc/ipsec.secrets</code> file. Make sure it is
+long and random:</p>
 
 <pre><code>%SERVERIP%  %any:   PSK &quot;Your secret random key&quot;
 </code></pre>
 
-<p>Again, replace %SERVERIP% with the external IP of your Raspberry Pi. If you want to generate a random key you can use the following openssl command:</p>
+<p>Again, replace %SERVERIP% with the external IP of your Raspberry Pi. If you want
+to generate a random key you can use the following openssl command:</p>
 
 <pre><code>openssl rand -hex 30
 </code></pre>
@@ -284,12 +305,12 @@ conn L2TP-PSK-noNAT
 
 <h5>Verify IPSEC Settings</h5>
 
-<p>Now to make sure IPSEC works, execute the following command:  </p>
+<p>Now to make sure IPSEC works, execute the following command:</p>
 
 <pre><code>ipsec verify
 </code></pre>
 
-<p>My output looks like this:  </p>
+<p>My output looks like this:</p>
 
 <pre><code> Checking if IPsec got installed and started correctly:
 
@@ -323,7 +344,8 @@ Checking &#39;iptables&#39; command                         [OK]
 ipsec verify: encountered errors
 </code></pre>
 
-<p>However, a <code>netstat -tulpan</code> shows that <code>pluto</code> is listening on the ports that give errors:</p>
+<p>However, a <code>netstat -tulpan</code> shows that <code>pluto</code> is listening on the ports that
+give errors:</p>
 
 <pre><code>Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
@@ -341,7 +363,7 @@ udp        0      0 10.0.0.10:500           0.0.0.0:*                           
 
 <h4>Configure xl2tpd</h4>
 
-<p>Use your favorite editor to edit the following file:  </p>
+<p>Use your favorite editor to edit the following file:</p>
 
 <pre><code>/etc/xl2tpd/xl2tpd.conf  
 </code></pre>
@@ -376,7 +398,9 @@ length bit = yes
 
 <h4>Local user (PAM//etc/passwd) authentication</h4>
 
-<p>To use local user accounts via pam (or /etc/passwd), and thus not having plain text user passwords in a text file you have to do a few extra steps. Huge thanks to <code>Sascha Scandella</code> for the hard work and troubleshooting.</p>
+<p>To use local user accounts via pam (or /etc/passwd), and thus not having plain
+text user passwords in a text file you have to do a few extra steps. Huge thanks
+to <code>Sascha Scandella</code> for the hard work and troubleshooting.</p>
 
 <p>In your <code>/etc/xl2tpd/xl2tpd.conf</code> add the following line:</p>
 
@@ -388,7 +412,9 @@ length bit = yes
 <pre><code>refuse pap = yes
 </code></pre>
 
-<p>In the file <code>/etc/ppp/options.xl2tpd</code> make sure you do not add the following line (below it states to add it, but not if you want to use UNIX authentication):</p>
+<p>In the file <code>/etc/ppp/options.xl2tpd</code> make sure you do not add the following
+line (below it states to add it, but not if you want to use UNIX
+authentication):</p>
 
 <pre><code>require-mschap-v2
 </code></pre>
@@ -415,7 +441,7 @@ session required        pam_unix.so
 
 <h4>Configuring PPP</h4>
 
-<p>Use your favorite editor to edit the following file:  </p>
+<p>Use your favorite editor to edit the following file:</p>
 
 <pre><code>/etc/ppp/options.xl2tpd  
 </code></pre>
@@ -445,7 +471,8 @@ lcp-echo-failure 4
 
 <h4>Adding users</h4>
 
-<p>Every user should be defined in the <code>/etc/ppp/chap-secrets</code> file. Below is an example file.  </p>
+<p>Every user should be defined in the <code>/etc/ppp/chap-secrets</code> file. Below is an
+example file.</p>
 
 <pre><code># Secrets for authentication using CHAP
 # client       server  secret                  IP addresses
@@ -462,19 +489,27 @@ bob            l2tpd   DF98F09F74C06A2F             *
 
 <h4>Testing it</h4>
 
-<p>To make sure everything has the newest config files restart openswan and xl2tpd:  </p>
+<p>To make sure everything has the newest config files restart openswan and xl2tpd:</p>
 
 <pre><code>systemctl restart openswan
 systemctl restart xl2tpd
 </code></pre>
 
-<p>On the client connect to the server IP address (or add a DNS name) with a valid user, password and the shared secret. Test if you have internet access and which IP you have (via for example <a href="http://whatsmyip.org">http://whatsmyip.org</a>. If it is the VPN servers IP then it works.  </p>
+<p>On the client connect to the server IP address (or add a DNS name) with a valid
+user, password and the shared secret. Test if you have internet access and which
+IP you have (via for example <a href="http://whatsmyip.org">http://whatsmyip.org</a>. If it is the VPN servers IP
+then it works.</p>
 
-<p>If you experience problems make sure to check the client log files. Also, on Arch Linux, the system log can be viewed by using <code>journalctl -f</code> (that emulates <code>tail -f /var/log/syslog</code>). Arch Linux uses systemd logging. For more info about systemd services, <a href="http://www.freedesktop.org/software/systemd/man/systemd.service.html">see this page</a></p>
+<p>If you experience problems make sure to check the client log files. Also, on
+Arch Linux, the system log can be viewed by using <code>journalctl -f</code> (that emulates
+<code>tail -f /var/log/syslog</code>). Arch Linux uses systemd logging. For more info about
+systemd services, <a href="http://www.freedesktop.org/software/systemd/man/systemd.service.html">see this page</a></p>
 
-<p>If you have your Raspberry Pi behind a NAT router, you might need to change your %SERVERIP% to the internal IP of your Raspberry Pi (like 192.168.1.101) instead of your external IP address.</p>
+<p>If you have your Raspberry Pi behind a NAT router, you might need to change your
+%SERVERIP% to the internal IP of your Raspberry Pi (like 192.168.1.101) instead
+of your external IP address.</p>
 
-<p>If you google the error messages you most of the time get a good answer.  </p>
+<p>If you google the error messages you most of the time get a good answer.</p>
 
 <p>Thanks to <a href="https://smileykeith.com/2014/01/27/ipsec-l2tp-vpn-on-a-raspberry-pi-running-arch-linux/">Keith&#39;s article</a> for help with boot persistency.</p>
 </div><hr>Tags: <a href="../tags/arch.html" class="link">arch &nbsp;</a><a href="../tags/ipsec.html" class="link">ipsec &nbsp;</a><a href="../tags/l2tp.html" class="link">l2tp &nbsp;</a><a href="../tags/openvpn.html" class="link">openvpn &nbsp;</a><a href="../tags/pptp.html" class="link">pptp &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><a href="../tags/systemd.html" class="link">systemd &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/vpn.html" class="link">vpn &nbsp;</a><div class="footer">

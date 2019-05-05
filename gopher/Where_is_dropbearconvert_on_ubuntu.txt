@@ -9,40 +9,42 @@ Format      : 	Markdown/HTML
 
 
 
-Dropbear is a lightweight SSH server and client implementation, often
-used on embedded systems and routers. If you use the [dropbear SSH
-client (dbclient)][1] and want to use a private key, it needs to be in
-the dropbear format and cannot have a passphrase. Dropbear provides a
-conversion utility to convert openssh style keys to dropbear style keys,
-dropbearconvert, but on Ubuntu it's not in your $PATH. This means you
-have to provide the full path to execute it, which is cumbersome. There
-is a [bug in Ubuntu][0] that has been reported in 2012, but in Ubuntu
-18.04 (2019) it's still not fixed.
+Dropbear is a lightweight SSH server and client implementation, often used on
+embedded systems and routers. If you use the [dropbear SSH client (dbclient)][1]
+and want to use a private key, it needs to be in the dropbear format and cannot
+have a passphrase. Dropbear provides a conversion utility to convert openssh
+style keys to dropbear style keys, dropbearconvert, but on Ubuntu it's not in
+your $PATH. This means you have to provide the full path to execute it, which is
+cumbersome. There is a [bug in Ubuntu][2] that has been reported in 2012, but in
+Ubuntu 18.04 (2019) it's still not fixed.
 
 This is the full path to dropbearconvert:
 
-	/usr/lib/dropbear/dropbearconvert
+    
+    
+    /usr/lib/dropbear/dropbearconvert
+    
 
+This is an example to convert an OpenSSH style private key to a dropbear style
+private key:
 
-This is an example to convert an OpenSSH style private key to a dropbear
-style private key:
+    
+    
+    usr/lib/dropbear/dropbearconvert openssh dropbear ~/.ssh/id_rsa ~/.ssh/id_rsa_dropbear
+    
 
-	usr/lib/dropbear/dropbearconvert openssh dropbear ~/.ssh/id_rsa ~/.ssh/id_rsa_dropbear
+Your dropear style private key will be located in `~/.ssh/id_rsa
+~/.ssh/id_rsa_dropbear`.
 
-Your dropear style private key will be located
-in `~/.ssh/id_rsa ~/.ssh/id_rsa_dropbear`.
+Do note that your private key cannot be protected with a passphrase. Dropbear
+does not support this.
 
-Do note that your private key cannot be protected with a passphrase. 
-Dropbear does not support this.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-[0]: https://bugs.launchpad.net/ubuntu/+source/dropbear/+bug/1009868
-[1]: http://manpages.ubuntu.com/manpages/trusty/man1/dbclient.1.html
+   [1]: http://manpages.ubuntu.com/manpages/trusty/man1/dbclient.1.html
+   [2]: https://bugs.launchpad.net/ubuntu/+source/dropbear/+bug/1009868
+   [3]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

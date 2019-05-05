@@ -9,9 +9,9 @@ Format      : 	Markdown/HTML
 
 
 
-<a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a>
+[![openvms][1]][2]
 
-(You can read all my OpenVMS articles by [clicking the picture above](https://raymii.org/s/tags/openvms.html))
+(You can read all my OpenVMS articles by [clicking the picture above][2])
 
 OpenVMS 7.3 was the last version for the VAX architecture. All later versions
 (like 8.4) are only available for the Alpha CPU architecture or Intel's Itanium
@@ -29,10 +29,8 @@ This article focusses on the hobbyist aspect of Alpha emulation. If you're a
 company and spend a big sum of money, you will have all the resources you'll
 ever need.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
 
 ### Limits of commercial Alpha emulators
 
@@ -46,8 +44,8 @@ told me that they stopped the free version because it was used commercially,
 thus hurting the sale of their commercial offering. If you're a serious hobbyist
 their product is available for $400, which, comparing the prices to Charon-AXP
 and Avanti (freeAXP's commercial counterpart) is very cheap. The CTO, [Artem
-Alimarin](https://nl.linkedin.com/in/artemalimarin) has, according to LinkedIn,
-also worked at Stromasys and created Charon-AXP, so he knows Alpha emulation. 
+Alimarin][4] has, according to LinkedIn, also worked at Stromasys and created
+Charon-AXP, so he knows Alpha emulation.
 
 I was given a 30 day trial version of AlphaVM basic, with both a Windows and
 Linux version download. The product does require to be always online due to a
@@ -74,33 +72,38 @@ machine.
 So if you want to cluster, you need to stick to simh and OpenVMS 7.3, or get
 your hands on actual hardware.
 
-
 ### es40
 
-I tried to install [es40 on Ubuntu
-16.04](https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html)
-and in that, install OpenVMS 8.4. That works up to halfway through the
-installer, then it crashes:
+I tried to install [es40 on Ubuntu 16.04][5] and in that, install OpenVMS 8.4.
+That works up to halfway through the installer, then it crashes:
 
+    
+    
     %SYSTEM-F-ACCVIO, access violation, reason mask=00, virtual address=FFFFFFFFFFFFFFB8, PC=000000007
     FDC5210, PS=0000001B
-
+    
       Improperly handled condition, image exit forced.
+    
 
 Even after multiple tries it crashes on different times during the install:
 
+    
+    
     Exception in CPU thread: System exception: cannot signal semaphore: count would exceed maximum.
     Emulator Failure: Threading error: CPU thread has died: AlphaCPU.cpp, line 532
     Stop threads: cpu0 ali kbd ide0 ide1 srl0
     Freeing memory in use by system...
     pci0.15(ali_ide).disk0.0(file): Closing file.
     *** Error in `es40': double free or corruption (fasttop): 0x0000000001886fe0 ***
+    
 
 No luck there. There are no other open source Alpha emulators.
 
 ### FreeAXP
 
-> FreeAXP is a free Avanti virtual Alpha technology demonstrator. It provides a virtual AlphaServer 400 equipped with 1 CPU, 128MB memory, 7 disk drives, two NICs, and two virtual serial ports. 
+> FreeAXP is a free Avanti virtual Alpha technology demonstrator. It provides a
+virtual AlphaServer 400 equipped with 1 CPU, 128MB memory, 7 disk drives, two
+NICs, and two virtual serial ports.
 
 I downloaded version 3.0.0.617 on Windows 10 x64 (1709 build 16299.125).
 Installation was a breeze and the first try worked as well, I was able to
@@ -108,12 +111,11 @@ install OpenVMS 8.4. The next try, actually running OpenVMS, fails horribly. The
 software crashes after loading the config file, and even killing the process via
 the task manager fails:
 
-<img src="https://raymii.org/s/inc/img/freeaxp_1.png" alt=freeaxp>
+![freeaxp][6]
 
-That adventure ended way to quickly. There is [a topic
-here](https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU) on
-`os.comp.vms` where this issue is discussed, but sadly without a fix yet.
-Downgrading winPCAP had no effect for me.
+That adventure ended way to quickly. There is [a topic here][7] on `os.comp.vms`
+where this issue is discussed, but sadly without a fix yet. Downgrading winPCAP
+had no effect for me.
 
 ### EmuVM basic
 
@@ -121,7 +123,7 @@ I was given a trial of EmuVM's AlphaVM Basic, which will function for 1 month.
 It runs both on Windows and on linux (without GUI). Here is a picture of the
 Windows version:
 
-<img src="https://raymii.org/s/inc/img/emuvm_1.png" alt=emuvm>
+![emuvm][8]
 
 I experienced no problems at all, the installation went without issues and
 subsequent starts all went fine.
@@ -135,7 +137,7 @@ with `dd` and in Windows they provide a tool.
 
 Here is a screenshot of the Linux version:
 
-<img src="https://raymii.org/s/inc/img/emuvm_2.png" alt=emuvm>
+![emuvm][9]
 
 ### Conclusion
 
@@ -144,12 +146,12 @@ and the Windows version doesn't work for me.
 
 The only working option is EmuVM's AlphaVM, which for me works both on Windows
 and on Linux without issues. The customer support is good and the product is
-featurefull. 
+featurefull.
 
 If I ever would have to do a commercial OpenVMS deployment on Alpha, based on my
 experience now I would let the company buy the AlphaVM Pro version. That does
 not require an always online license check but a USB dongle or special hardware
-bind (also for virtual machines). 
+bind (also for virtual machines).
 
 I do hope that EmuVM rethink their free offering. I suggested not to limit on
 emulated hardware like FreeAXP, but to just let the product run for two hours
@@ -168,6 +170,16 @@ cheaper.
 So the state of Alpha emulation for OpenVMS in 2018 for hobbyists is poor. Let's
 hope VSI release a hobbyist version of the OpenVMS x86 release they are making.
 Then I can just use KVMN or Virtualbox to play with OpenVMS.
+
+   [1]: https://raymii.org/s/inc/img/ovmsdec.png
+   [2]: https://raymii.org/s/tags/openvms.html
+   [3]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [4]: https://nl.linkedin.com/in/artemalimarin
+   [5]: https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html
+   [6]: https://raymii.org/s/inc/img/freeaxp_1.png
+   [7]: https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU
+   [8]: https://raymii.org/s/inc/img/emuvm_1.png
+   [9]: https://raymii.org/s/inc/img/emuvm_2.png
 
 ---
 

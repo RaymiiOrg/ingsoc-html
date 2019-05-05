@@ -9,44 +9,66 @@ Format      : 	Markdown/HTML
 
 
 
+This command enables access for assistive decives on Apple OS X machines via the
+command line, or via Apple Remote Desktop. This is needed for software like
+SpectacleApp or Sizeup.
 
-This command enables access for assistive decives on Apple OS X machines via the command line, or via Apple Remote Desktop. This is needed for software like SpectacleApp or Sizeup.
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Mavericks
 
-In Mavericks Apple changed the permissions so that every app has to be given permission individually. Therefore we need to do a bit more work. We first need to get the applications Bundle Identifier:
+In Mavericks Apple changed the permissions so that every app has to be given
+permission individually. Therefore we need to do a bit more work. We first need
+to get the applications Bundle Identifier:
 
-	/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/<Appname.app>/Contents/Info.plist
-	com.apple.Safari
-
-For SpectacleApp:
-
-	/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Spectacle.app/Contents/Info.plist
-	com.divisiblebyzero.Spectacle
-
-Then we use the Bundle ID in the following command to modify the permission database:
-
-	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','<Bundle-ID>',0,1,1,NULL);" 
+    
+    
+    /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/<Appname.app>/Contents/Info.plist
+    com.apple.Safari
+    
 
 For SpectacleApp:
 
-	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.divisiblebyzero.Spectacle',0,1,1,NULL);"
+    
+    
+    /usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Spectacle.app/Contents/Info.plist
+    com.divisiblebyzero.Spectacle
+    
 
-To remove an application from the list we use the following command, with the correct bundle ID:
+Then we use the Bundle ID in the following command to modify the permission
+database:
 
-	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "delete from access where client='<Bundle ID>';"
+    
+    
+    sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','<Bundle-ID>',0,1,1,NULL);" 
+    
+
+For SpectacleApp:
+
+    
+    
+    sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.divisiblebyzero.Spectacle',0,1,1,NULL);"
+    
+
+To remove an application from the list we use the following command, with the
+correct bundle ID:
+
+    
+    
+    sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "delete from access where client='<Bundle ID>';"
+    
 
 ### Mountain Lion and Lion
 
 On OS X Mountain Lion (10.8) or Lion (10.7) simply run this command as root:
 
+    
+    
     touch /private/var/db/.AccessibilityAPIEnabled
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

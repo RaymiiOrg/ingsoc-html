@@ -69,16 +69,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to configure haproxy and client side ssl certificates.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to configure haproxy and client side ssl
+certificates.</p>
 
-<p>You need at least haproxy 1.5 dev 16 for this to work. If you want to pass the full sha 1 hash of a certificate to a backend you need at least 1.5 dev 19.</p>
+<p>You need at least haproxy 1.5 dev 16 for this to work. If you want to pass the
+full sha 1 hash of a certificate to a backend you need at least 1.5 dev 19.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Place the certificate chain file somewhere haproxy can access it and append the following to your <code>bind</code> config line in the frontends where you want to use client side certificates: <code>ca-file &lt;path to certificate chain&gt; verify required</code>. If you want to also accept visitors without an ssl certificate change <code>verify required</code> to <code>verify optional</code>. You might want this if you handle the certificates in your application.</p>
+<p>Place the certificate chain file somewhere haproxy can access it and append the
+following to your <code>bind</code> config line in the frontends where you want to use
+client side certificates: <code>ca-file &lt;path to certificate chain&gt; verify required</code>.
+If you want to also accept visitors without an ssl certificate change <code>verify
+required</code> to <code>verify optional</code>. You might want this if you handle the
+certificates in your application.</p>
 
-<p>Below is an example which sends users to a different backend based on if there is a client side certificate. It also sends users to a special error page if there are validation errors with their client side certificate.</p>
+<p>Below is an example which sends users to a different backend based on if there
+is a client side certificate. It also sends users to a special error page if
+there are validation errors with their client side certificate.</p>
 
 <pre><code>frontend intranet
     mode http
@@ -106,12 +115,13 @@ backend expired
     server helpdesk3 10.20.20.30:80 check
 </code></pre>
 
-<p>Note that this example config also uses a CRL file to check for revocations. You need to place that CRL file.</p>
+<p>Note that this example config also uses a CRL file to check for revocations. You
+need to place that CRL file.</p>
 
 <ul>
 <li>If the client did not provide a certificate, haproxy uses the <code>helpdesk</code> backend.</li>
 <li>If the client provides a certificate, haproxy uses the <code>wiki</code> backend</li>
-<li>If there is an error with the client certificate, haproxy uses the <code>ssl-error</code> backend.
+<li>If there is an error with the client certificate, haproxy uses the <code>ssl-error</code> backend. 
 
 <ul>
 <li>If the certificate is revoked, haproxy redirects the user to the <code>certificate-revoked.html</code> page on that backend server.</li>
@@ -120,7 +130,8 @@ backend expired
 </ul></li>
 </ul>
 
-<p>I&#39;ve had issues with a DER encoded CRL file for haproxy. To convert it to pem you can use the following command:</p>
+<p>I&#39;ve had issues with a DER encoded CRL file for haproxy. To convert it to pem
+you can use the following command:</p>
 
 <pre><code>openssl crl -in example.crl -inform DER -outform PEM -out /etc/haproxy/crl/haproxy.crl
 </code></pre>
@@ -132,9 +143,12 @@ backend expired
 
 <h3>Sending certificate details to backend application</h3>
 
-<p>You can also send specific details about a client certificate to your backend application. You can then handle the verification of the certificate in your backend application.</p>
+<p>You can also send specific details about a client certificate to your backend
+application. You can then handle the verification of the certificate in your
+backend application.</p>
 
-<p>This example config sends all available certificate details to your backend application as HTTP Headers:</p>
+<p>This example config sends all available certificate details to your backend
+application as HTTP Headers:</p>
 
 <pre><code>frontend intranet
     bind 10.20.30.40:443 ssl crt /etc/haproxy/pem/server.pem ca-file /etc/haproxy/pem/client-chain.pem verify required
@@ -149,7 +163,8 @@ backend expired
     default_backend example_backend
 </code></pre>
 
-<p>The <code>{+Q}</code> means that the data is quoted as a string. Otherwise it would be binary or boolean.</p>
+<p>The <code>{+Q}</code> means that the data is quoted as a string. Otherwise it would be
+binary or boolean.</p>
 
 <p>In your backend the headers look like this:</p>
 

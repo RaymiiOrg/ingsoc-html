@@ -69,36 +69,53 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on setting up an IPSEC VPN server on CentOS 7 using StrongSwan as the IPsec server and for authentication. It has a detailed explanation with every step. We choose the IPSEC protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all recent operating systems by default. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on setting up an IPSEC VPN server on CentOS 7 using StrongSwan
+as the IPsec server and for authentication. It has a detailed explanation with
+every step. We choose the IPSEC protocol stack because of recent vulnerabilities
+found in pptpd VPNs and because it is supported on all recent operating systems
+by default.</p>
 
 <h3>Why a VPN?</h3>
 
-<p>More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can&#39;t see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</p>
+<p>More than ever, your freedom and privacy when online is under threat.
+Governments and ISPs want to control what you can and can&#39;t see while keeping a
+record of everything you do, and even the shady-looking guy lurking around your
+coffee shop or the airport gate can grab your bank details easier than you may
+think. A self hosted VPN lets you surf the web the way it was intended:
+anonymously and without oversight.</p>
 
-<p>A VPN (virtual private network) creates a secure, encrypted tunnel through which all of your online data passes back and forth. Any application that requires an internet connection works with this self hosted VPN, including your web browser, email client, and instant messaging program, keeping everything you do online hidden from prying eyes while masking your physical location and giving you unfettered access to any website or web service no matter where you happen to live or travel to.</p>
+<p>A VPN (virtual private network) creates a secure, encrypted tunnel through which
+all of your online data passes back and forth. Any application that requires an
+internet connection works with this self hosted VPN, including your web browser,
+email client, and instant messaging program, keeping everything you do online
+hidden from prying eyes while masking your physical location and giving you
+unfettered access to any website or web service no matter where you happen to
+live or travel to.</p>
 
 <p>This tutorial is available for the following platforms:</p>
 
 <ul>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a><br></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a></p></li>
 </ul>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>IPSEC encrypts your IP packets to provide encryption and authentication, so no one can decrypt or forge data between your clients and your server. It also provides a tunnel to send data to the server.</p>
+<p>IPSEC encrypts your IP packets to provide encryption and authentication, so no
+one can decrypt or forge data between your clients and your server. It also
+provides a tunnel to send data to the server.</p>
 
-<p>To work trough this tutorial you should have:  </p>
+<p>To work trough this tutorial you should have:</p>
 
 <ul>
 <li>1 CentOS 7 server with at least 1 public IP address and root access</li>
@@ -106,7 +123,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Ports 4500/UDP, 500/UDP, 51/UDP and 50/UDP opened in the firewall.</li>
 </ul>
 
-<p>I do all the steps as the root user. You should do to, but only via * -i* or * su -*.</p>
+<p>I do all the steps as the root user. You should do to, but only via * -i* or *
+su -*.</p>
 
 <h4>Version History:</h4>
 
@@ -117,9 +135,13 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>No L2TP?</h3>
 
-<p>The previous tutorials all used L2TP to set up the VPN tunnel and use IPSEC only for the encryption. With the IKEv2 protocol and recent operating systems (like OS X 10.8+, Android 4+, iOS 6+ and Windows 7+) supporting IKEv2 we can also use IPSEC to set up the tunnel, before we used IPSEC to do that.</p>
+<p>The previous tutorials all used L2TP to set up the VPN tunnel and use IPSEC only
+for the encryption. With the IKEv2 protocol and recent operating systems (like
+OS X 10.8+, Android 4+, iOS 6+ and Windows 7+) supporting IKEv2 we can also use
+IPSEC to set up the tunnel, before we used IPSEC to do that.</p>
 
-<p>This VPN will therefore not work out of the box on older operating systems. See my other tutorials with L2TP on how to do that.</p>
+<p>This VPN will therefore not work out of the box on older operating systems. See
+my other tutorials with L2TP on how to do that.</p>
 
 <h3>Overview</h3>
 
@@ -136,7 +158,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Install EPEL 7:</h3>
 
-<p>Strongswan packages are available in the EPEL. The CentOS/RHEL repo&#39;s only ship Libreswan, which is not what we&#39;ll use in this tutorial. You can read more about the EPEL here: <a href="https://fedoraproject.org/wiki/EPEL">https://fedoraproject.org/wiki/EPEL</a>, packages can be found here: <a href="http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/7/x86_64/repoview/epel-release.html">http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/7/x86_64/repoview/epel-release.html</a></p>
+<p>Strongswan packages are available in the EPEL. The CentOS/RHEL repo&#39;s only ship
+Libreswan, which is not what we&#39;ll use in this tutorial. You can read more about
+the EPEL here: <a href="https://fedoraproject.org/wiki/EPEL">https://fedoraproject.org/wiki/EPEL</a>, packages can be found
+here:</p>
 
 <p>Install and enable the EPEL using Yum:</p>
 
@@ -145,16 +170,23 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Install Strongswan</h3>
 
-<p>After the EPEL is enabled we can install StrongSwan. StrongSwan is a descendant of FreeS/WAN, just like Openswan or Libreswan. Strongswan however has a very active community and is actively developed, whereas the other ones are less. You can read more about Strongswan on <a href="http://en.wikipedia.org/wiki/StrongSwan">wikipedia</a> or their <a href="http://strongswan.org">website</a>.</p>
+<p>After the EPEL is enabled we can install StrongSwan. StrongSwan is a descendant
+of FreeS/WAN, just like Openswan or Libreswan. Strongswan however has a very
+active community and is actively developed, whereas the other ones are less. You
+can read more about Strongswan on <a href="http://en.wikipedia.org/wiki/StrongSwan">wikipedia</a> or their <a href="http://strongswan.org">website</a>.</p>
 
 <pre><code>yum install strongswan
 </code></pre>
 
 <h3>Certificates</h3>
 
-<p>The VPN server will identify itself with a certificate to the clients. The clients can use a certificate to authenticate themself, this tutorial however keeps it simple and sets up username and password authentication as well.</p>
+<p>The VPN server will identify itself with a certificate to the clients. The
+clients can use a certificate to authenticate themself, this tutorial however
+keeps it simple and sets up username and password authentication as well.</p>
 
-<p>On Android with the StrongSwan Application you can just import the <code>.p12</code> we are going to create later on. On Windows 7, we&#39;ll use <code>EAP</code> to configure a username and password for our client.</p>
+<p>On Android with the StrongSwan Application you can just import the <code>.p12</code> we are
+going to create later on. On Windows 7, we&#39;ll use <code>EAP</code> to configure a username
+and password for our client.</p>
 
 <p>You might want to install <code>haveged</code> to speed up the key generation process:</p>
 
@@ -197,7 +229,8 @@ keyid:     c6:3a:c8:2e:31:cf:12:aa:67:4f:7c:da:65:3c:4f:84:bc:69:46:02
 subjkey:   d8:fb:1f:ae:15:7c:02:4c:d7:95:bc:dd:9c:40:e4:db:33:38:8a:b4
 </code></pre>
 
-<p>Generate the VPN Host key. This is the keypair the VPN server host will use to authenticate itself to clietns. First the private key:</p>
+<p>Generate the VPN Host key. This is the keypair the VPN server host will use to
+authenticate itself to clietns. First the private key:</p>
 
 <pre><code>strongswan pki --gen --type rsa --size 2048 --outform der &gt; ipsec.d/private/vpnHostKey.der
 chmod 600 ipsec.d/private/vpnHostKey.der
@@ -208,11 +241,18 @@ chmod 600 ipsec.d/private/vpnHostKey.der
 <pre><code>strongswan pki --pub --in ipsec.d/private/vpnHostKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/strongswanCert.der --cakey ipsec.d/private/strongswanKey.der --dn &quot;C=NL, O=Example Company, CN=vpn.example.org&quot; --san vpn.example.com --san vpn.example.net --san 213.187.243.183  --san @213.187.243.183 --flag serverAuth --flag ikeIntermediate --outform der &gt; ipsec.d/certs/vpnHostCert.der
 </code></pre>
 
-<p>The domain name or IP address of your VPN server, which is later entered in the clients connection properties, MUST be contained either in the subject Distinguished Name (CN) and/or in a subject Alternative Name (<code>--san</code>). If this does not match the clients will fail to connect.</p>
+<p>The domain name or IP address of your VPN server, which is later entered in the
+clients connection properties, MUST be contained either in the subject
+Distinguished Name (CN) and/or in a subject Alternative Name (<code>--san</code>). If this
+does not match the clients will fail to connect.</p>
 
-<p>The built in Windows 7 VPN client needs the <code>serverAuth</code> extended key usage flag in your host certificate as shown above, or the client will refuse to connect. In addition, OS X 10.7.3 or older requires the <code>ikeIntermediate</code> flag, which we also add here. </p>
+<p>The built in Windows 7 VPN client needs the <code>serverAuth</code> extended key usage flag
+in your host certificate as shown above, or the client will refuse to connect.
+In addition, OS X 10.7.3 or older requires the <code>ikeIntermediate</code> flag, which we
+also add here.</p>
 
-<p>We add the IP address twice, one with an <code>@</code> in front so that it gets added as an <code>subjectAltName</code> of the <code>dNSName</code> type and one of the <code>iPAddess</code> type.</p>
+<p>We add the IP address twice, one with an <code>@</code> in front so that it gets added as
+an <code>subjectAltName</code> of the <code>dNSName</code> type and one of the <code>iPAddess</code> type.</p>
 
 <p>Let&#39;s view the certificate:</p>
 
@@ -268,11 +308,17 @@ subjkey:   2b:03:2a:36:d5:6e:37:69:b8:79:0f:36:35:b6:b4:3d:b2:76:9d:2e
         [...]
 </code></pre>
 
-<p>The private key (<code>/etc/openswan/ipsec.d/private/strongswanKey.der</code>) of the CA should be moved somewhere safe, possibly to a special signing host without access to the Internet. Theft of this master signing key would completely compromise your public key infrastructure. Use it only to generate client certificates when needed.</p>
+<p>The private key (<code>/etc/openswan/ipsec.d/private/strongswanKey.der</code>) of the CA
+should be moved somewhere safe, possibly to a special signing host without
+access to the Internet. Theft of this master signing key would completely
+compromise your public key infrastructure. Use it only to generate client
+certificates when needed.</p>
 
 <h4>Client certificate</h4>
 
-<p>Any client will require a personal certificate in order to use the VPN. The process is analogous to generating a host certificate, except that we identify a client certificate by the clients e-mail address rather than a hostname.</p>
+<p>Any client will require a personal certificate in order to use the VPN. The
+process is analogous to generating a host certificate, except that we identify a
+client certificate by the clients e-mail address rather than a hostname.</p>
 
 <p>We create a keypair for the example user &quot;John&quot;.</p>
 
@@ -288,7 +334,9 @@ chmod 600 ipsec.d/private/JohnKey.der
 <pre><code>strongswan pki --pub --in ipsec.d/private/JohnKey.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/strongswanCert.der --cakey ipsec.d/private/strongswanKey.der --dn &quot;C=NL, O=Example Company, CN=john@example.org&quot; --san &quot;john@example.org&quot; --san &quot;john@example.net&quot; --outform der &gt; ipsec.d/certs/JohnCert.der
 </code></pre>
 
-<p>A VPN client needs a client certificate, its private key, and the signing CA certificate. The most convenient way is to put everything in a single signed PKCS#12 file and export it with a paraphrase.</p>
+<p>A VPN client needs a client certificate, its private key, and the signing CA
+certificate. The most convenient way is to put everything in a single signed
+PKCS#12 file and export it with a paraphrase.</p>
 
 <p>Convert the required keys to PEM formt before converting to a .p12:</p>
 
@@ -306,15 +354,21 @@ openssl x509 -inform DER -in ipsec.d/cacerts/strongswanCert.der -out ipsec.d/cac
 <pre><code>openssl pkcs12 -export  -inkey ipsec.d/private/JohnKey.pem -in ipsec.d/certs/JohnCert.pem -name &quot;John&#39;s VPN Certificate&quot;  -certfile ipsec.d/cacerts/strongswanCert.pem -caname &quot;strongSwan Root CA&quot; -out John.p12
 </code></pre>
 
-<p>Enter a password twice, then you have a .p12. You can send <code>John.p12</code> and its export paraphrase to the person whos going to install it onto the client. In some cases (iOS for example) you have to separately include the CA certificate <code>ipsec.d/cacerts/strongswanCert.pem</code>.</p>
+<p>Enter a password twice, then you have a .p12. You can send <code>John.p12</code> and its
+export paraphrase to the person whos going to install it onto the client. In
+some cases (iOS for example) you have to separately include the CA certificate
+<code>ipsec.d/cacerts/strongswanCert.pem</code>.</p>
 
-<p>Transport this <code>John.p12</code> file and the password over seperate channels to a client.</p>
+<p>Transport this <code>John.p12</code> file and the password over seperate channels to a
+client.</p>
 
-<p>If you need any more user certificate, repeat the above steps with other user data.</p>
+<p>If you need any more user certificate, repeat the above steps with other user
+data.</p>
 
 <h3>IPSEC Configuration</h3>
 
-<p>The main <code>ipsec</code> configuration file is located in <code>/etc/strongswan</code>. We are going to edit it:</p>
+<p>The main <code>ipsec</code> configuration file is located in <code>/etc/strongswan</code>. We are
+going to edit it:</p>
 
 <pre><code>vim /etc/strongswan/ipsec.conf
 </code></pre>
@@ -359,17 +413,23 @@ conn CiscoIPSec
     auto=add
 </code></pre>
 
-<p>This configuration has settings for three types of VPN services: IKEv2 + RSA certificate, IKEv2 + EAP, and IKEv1 + Xauth RSA, thus providing compatibility for a wide range of IPsec clients.</p>
+<p>This configuration has settings for three types of VPN services: IKEv2 + RSA
+certificate, IKEv2 + EAP, and IKEv1 + Xauth RSA, thus providing compatibility
+for a wide range of IPsec clients.</p>
 
-<p>iOS clients below iOS 8 need to use <code>ikev1</code>. Apple added support for IKEv2 in iOS 8, but it needs to be configured using a <a href="https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile">custom configuration profile</a>.</p>
+<p>iOS clients below iOS 8 need to use <code>ikev1</code>. Apple added support for IKEv2 in
+iOS 8, but it needs to be configured using a <a href="https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile">custom configuration profile</a>.</p>
 
-<p>OS X does not support IKEv2 (not on 10.10 or lower) so they need to use <code>ikev1</code> as well.</p>
+<p>OS X does not support IKEv2 (not on 10.10 or lower) so they need to use <code>ikev1</code>
+as well.</p>
 
 <p>Android 4+ and Windows 7+ support IKEv2 and can use that.</p>
 
-<p>Clients will get the Google DNS servers and an IP address in the <code>10.42.42.0/24</code> range. We use a strong ciphersuite.</p>
+<p>Clients will get the Google DNS servers and an IP address in the <code>10.42.42.0/24</code>
+range. We use a strong ciphersuite.</p>
 
-<p>The <code>leftcert=vpnHostCert.der</code> expands to the path <code>/etc/strongswan/ipsec.d/certs/vpnHostCert.der</code>.</p>
+<p>The <code>leftcert=vpnHostCert.der</code> expands to the path
+<code>/etc/strongswan/ipsec.d/certs/vpnHostCert.der</code>.</p>
 
 <h3>VPN user accounts and secrets</h3>
 
@@ -387,16 +447,23 @@ bob : EAP &quot;E23pOjvW8z248iAp&quot;
 hipster: XAUTH &quot;xauth_ikev1_example_password&quot;
 </code></pre>
 
-<p>In the example above the RSA private key file vpnHostKey.der stored in the <code>/etc/openswan/ipsec.d/private/</code> directory is not protected by symmetric encryption (a password).</p>
+<p>In the example above the RSA private key file vpnHostKey.der stored in the
+<code>/etc/openswan/ipsec.d/private/</code> directory is not protected by symmetric
+encryption (a password).</p>
 
 <p>The format of the EAP MSCHAPv2 user credentials is:</p>
 
 <pre><code>[&lt;domain&gt;\]&lt;username&gt; : EAP &quot;&lt;plaintext password&gt;&quot; 
 </code></pre>
 
-<p>Add as many users as you like there. The first line allows all users with a valid certificate to use the VPN, the other lines allow users without a certificate to login with a username and password. The space between the username, the colon (:) and EAP needs to be there.</p>
+<p>Add as many users as you like there. The first line allows all users with a
+valid certificate to use the VPN, the other lines allow users without a
+certificate to login with a username and password. The space between the
+username, the colon (:) and EAP needs to be there.</p>
 
-<p>If you have users that need to use IKEv1 with a password and XAUTH you need to seperately configure those. Note that certificate authentication is prefersed, those users do not have to be configured there.</p>
+<p>If you have users that need to use IKEv1 with a password and XAUTH you need to
+seperately configure those. Note that certificate authentication is prefersed,
+those users do not have to be configured there.</p>
 
 <p>If you need to generate password, OpenSSL can help you there:</p>
 
@@ -406,7 +473,9 @@ hipster: XAUTH &quot;xauth_ikev1_example_password&quot;
 
 <h3>Firewall &amp; Packet Routing</h3>
 
-<p>Configure the firewall to allow the below ports on the VM. CentOS 7 uses <code>firewalld</code> to configure <code>iptables</code>, so lets use that. Add the required ports to the <code>dmz</code> zone, make sure the server NAT&#39;s our traffic and activate that zone:</p>
+<p>Configure the firewall to allow the below ports on the VM. CentOS 7 uses
+<code>firewalld</code> to configure <code>iptables</code>, so lets use that. Add the required ports to
+the <code>dmz</code> zone, make sure the server NAT&#39;s our traffic and activate that zone:</p>
 
 <pre><code>firewall-cmd --zone=dmz --permanent --add-rich-rule=&#39;rule protocol value=&quot;esp&quot; accept&#39; # ESP (the encrypted data packets)
 firewall-cmd --zone=dmz --permanent --add-rich-rule=&#39;rule protocol value=&quot;ah&quot; accept&#39; # AH (authenticated headers)
@@ -466,70 +535,85 @@ failed to connect to stroke socket &#39;unix:///var/run/charon.ctl&#39;
 
 <h4>Windows 7</h4>
 
-<p>While the connecting user is authenticated with Username/Password using MSCHAPv2, the gateway is authenticated in advance using Certificates. Therefore we need to install the client <code>.p12</code> certificate.</p>
+<p>While the connecting user is authenticated with Username/Password using
+MSCHAPv2, the gateway is authenticated in advance using Certificates. Therefore
+we need to install the client <code>.p12</code> certificate.</p>
 
 <h5>Certificate</h5>
 
-<p>To install the trusted CA certificate locally, call up the Microsoft Management Console (<code>mmc</code>) and add the Certificates Snap-In:</p>
+<p>To install the trusted CA certificate locally, call up the Microsoft Management
+Console (<code>mmc</code>) and add the Certificates Snap-In:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/snapin_add.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/snapin_add.png" alt=""></p>
 
 <p>It is of the utmost importance that you select Computer account:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/snapin_computer_account.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/snapin_computer_account.png" alt=""></p>
 
-<p>Go into the <i>Certificates (Local Computer) / Trusted Root Certification Authorities / Certificates</i> folder:</p>
+<p>Go into the <em>Certificates (Local Computer) / Trusted Root Certification
+Authorities / Certificates</em> folder:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/snapin_trusted_ca_certificates.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/snapin_trusted_ca_certificates.png" alt=""></p>
 
 <p>and select the Import action which will start the Certificate Import Wizard:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/cert_import_wizard.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/cert_import_wizard.png" alt=""></p>
 
-<p>Never double-click on a certificate file because the content will end up in the current user instead of the local computer part of the Windows registry and will not be available for IPsec.</p>
+<p>Never double-click on a certificate file because the content will end up in the
+current user instead of the local computer part of the Windows registry and will
+not be available for IPsec.</p>
 
-<p>Select the <code>John.p12</code> certificate file to be imported and install it in the Trusted Root Certification Authorities
-store.</p>
+<p>Select the <code>John.p12</code> certificate file to be imported and install it in the
+Trusted Root Certification Authorities store.</p>
 
 <p>Source: <a href="https://wiki.strongswan.org/projects/strongswan/wiki/Win7EapCert">https://wiki.strongswan.org/projects/strongswan/wiki/Win7EapCert</a></p>
 
 <h5>Add VPN Connection</h5>
 
-<p>In the Network and Sharing Center choose Set up a new connection or network and as a connection option select Connect to a workplace:</p>
+<p>In the Network and Sharing Center choose Set up a new connection or network and
+as a connection option select Connect to a workplace:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/connect_1.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/connect_1.png" alt=""></p>
 
 <p>Click on Use my Internet connection (VPN):</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/connect_2.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/connect_2.png" alt=""></p>
 
-<p>Enter the IPv4 or IPv6 internet address or the fully-qualified hostname of the strongSwan VPN gateway. The destination name string can be chosen freely, let&#39;s call the connection VPN:</p>
+<p>Enter the IPv4 or IPv6 internet address or the fully-qualified hostname of the
+strongSwan VPN gateway. The destination name string can be chosen freely, let&#39;s
+call the connection VPN:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/connect_3.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/connect_3.png" alt=""></p>
 
-<p>Enter your user name and password. These credentials are used in the MSCHAPv2 authentication exchange. We&#39;ve configred these credentials in the <code>ipsec.secrets</code> file.</p>
+<p>Enter your user name and password. These credentials are used in the MSCHAPv2
+authentication exchange. We&#39;ve configred these credentials in the
+<code>ipsec.secrets</code> file.</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/connect_4.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/connect_4.png" alt=""></p>
 
-<p>Windows 7 will try to use IKEv2 to establish the VPN connection. If that fails, it will fall back to other VPN protocols.</p>
+<p>Windows 7 will try to use IKEv2 to establish the VPN connection. If that fails,
+it will fall back to other VPN protocols.</p>
 
-<p>To restrict Windows 7 to IKEv2, you might want to change the Type of VPN to IKEv2 in the Security tab of the VPN Properties menu.</p>
+<p>To restrict Windows 7 to IKEv2, you might want to change the Type of VPN to
+IKEv2 in the Security tab of the VPN Properties menu.</p>
 
 <p>Source: <a href="https://wiki.strongswan.org/projects/strongswan/wiki/Win7EapConfig">https://wiki.strongswan.org/projects/strongswan/wiki/Win7EapConfig</a></p>
 
 <h5>Starting the VPN</h5>
 
-<p>VPN connections can be managed either from the Network and Internet / Network and Sharing Center menu:</p>
+<p>VPN connections can be managed either from the Network and Internet / Network
+and Sharing Center menu:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/network_and_internet.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/network_and_internet.png" alt=""></p>
 
 <p>or more concisely from the Network and Internet / Network Connections menu:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/network_connections.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/network_connections.png" alt=""></p>
 
-<p>Double click the adapter or click on Connect and the VPN tunnel comes up after which the following status information is available:</p>
+<p>Double click the adapter or click on Connect and the VPN tunnel comes up after
+which the following status information is available:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/vpn_status_general.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/vpn_status_general.png" alt=""></p>
 
 <p>The console command <code>ipconfig /all</code> shows the created virtual VPN interface:</p>
 
@@ -548,7 +632,8 @@ store.</p>
 
 <h4>Configuring Android</h4>
 
-<p>On Android we use the <a href="https://wiki.strongswan.org/projects/strongswan/wiki/AndroidVPNClient">StrongSwan Application: https://wiki.strongswan.org/projects/strongswan/wiki/AndroidVPNClient</a>. </p>
+<p>On Android we use the <a href="https://wiki.strongswan.org/projects/strongswan/wiki/AndroidVPNClient">StrongSwan Application:
+https://wiki.strongswan.org/projects/strongswan/wiki/AndroidVPNClient</a>.</p>
 
 <p>Download the <code>.p12</code> certificate, but not double tap it or install it.</p>
 
@@ -561,21 +646,23 @@ store.</p>
 <li>CA Certificate: <code>Select automatically</code></li>
 </ul>
 
-<p>Tap <code>Select user certificate</code>. Tap <code>Install</code>. Navigate to your <code>.p12</code> certificate and install it. Give the correct password and select the <code>VPN and Apps</code> usage reference:</p>
+<p>Tap <code>Select user certificate</code>. Tap <code>Install</code>. Navigate to your <code>.p12</code>
+certificate and install it. Give the correct password and select the <code>VPN and
+Apps</code> usage reference:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/android_3.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/android_3.png" alt=""></p>
 
 <p>Select that certificate for use:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/android_1.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/android_1.png" alt=""></p>
 
 <p>Tap <code>Save</code>:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/android_2.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/android_2.png" alt=""></p>
 
 <p>To connect, tap the VPN name and it will connect:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/android_4.png" alt="" /></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/android_4.png" alt=""></p>
 
 <p>The following command can be used to see if there are clients connected:</p>
 

@@ -73,7 +73,7 @@
 key and more in the ~/.ssh/config file. If you have many servers this file can
 become cluttered and maintaining it can become a not so nice task. This simple
 guide shows you how you can use a conf.d directory with seperate smaller files
-which gets converted to the big config file by Ansible. </p>
+which gets converted to the big config file by Ansible.</p>
 
 <p>I need to manage a lot of linux servers. With a lot I mean almost a thousand
 servers. Some of those servers require VPN, some of those servers are clusters
@@ -81,16 +81,16 @@ and some of those servers require a seperate key, username, port or
 configuration. I don&#39;t like the big <code>~/.ssh/config</code> file which, in my case, is
 extremely large.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>I much rather prefer the <code>conf.d</code> type structure with a lot of small files.
-OpenSSH does not support this, however, Ansible has the
-<a href="http://docs.ansible.com/assemble_module.html">assemble</a> module which, given a
-set of files or a folder, assembles a configuration file based on all the given
-files.</p>
+OpenSSH does not support this, however, Ansible has the <a href="http://docs.ansible.com/assemble_module.html">assemble</a> module
+which, given a set of files or a folder, assembles a configuration file based on
+all the given files.</p>
 
-<p>Using this Ansible module together with a <code>local connection</code> we can assemble the configuration file on our own machine.</p>
+<p>Using this Ansible module together with a <code>local connection</code> we can assemble the
+configuration file on our own machine.</p>
 
 <p>Create the <code>~/.ssh/conf.d</code> folder:</p>
 

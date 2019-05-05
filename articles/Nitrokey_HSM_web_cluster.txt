@@ -9,122 +9,192 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/hsmcluster.jpg" >
+![][1]
 
 > The 3-Pi HSM cluster to be used for the cluster articles
 
-This article sets up a Nitrokey HSM/SmartCard-HSM web cluster and has a lot of benchmarks. This specific HSM is not a fast HSM since it's very inexpensive and targeted at secure key storage, not performance. But, what if you do want more performance? Then you scale horizontally, just add some more HSM's and a loadbalancer in front. 
+This article sets up a Nitrokey HSM/SmartCard-HSM web cluster and has a lot of
+benchmarks. This specific HSM is not a fast HSM since it's very inexpensive and
+targeted at secure key storage, not performance. But, what if you do want more
+performance? Then you scale horizontally, just add some more HSM's and a
+loadbalancer in front.
 
-You want to put your private key material inside an HSM because it cannot be stolen that way. A HSM does not allow key material to be exported, so nobody can secretly copy the keys and use them without your knowledge. If the HSM is tampered with, it will also wipe itself, so brute forcing it will not work.
+You want to put your private key material inside an HSM because it cannot be
+stolen that way. A HSM does not allow key material to be exported, so nobody can
+secretly copy the keys and use them without your knowledge. If the HSM is
+tampered with, it will also wipe itself, so brute forcing it will not work.
 
-The cluster consists of Raspberry Pi's and Nitrokey HSM's and SmartCard-HSM's, softwarewise we use Apache, `mod_nss` and haproxy. 
+The cluster consists of Raspberry Pi's and Nitrokey HSM's and SmartCard-HSM's,
+softwarewise we use Apache, `mod_nss` and haproxy.
 
-This is the first time I had an actual use case for Raspberry Pi's in a cluster, and I really enjoyed doing it. I might even, in the future, add some more Pi's on top and do some more benchmarks. But I already spent about two weeks working on this single article so three was just fine for now.
+This is the first time I had an actual use case for Raspberry Pi's in a cluster,
+and I really enjoyed doing it. I might even, in the future, add some more Pi's
+on top and do some more benchmarks. But I already spent about two weeks working
+on this single article so three was just fine for now.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 Do note that two devices were sponsored for this article.
 
 We benchmark a small HTML file and a Wordpress site using:
 
-- a 8192 bit RSA certificate without using the HSM's
-- a 4096 bit RSA certificate without using the HSM's
-- a 2048 bit RSA certificate without using the HSM's
-- a 1024 bit RSA certificate without using the HSM's
-- a prime256v1 EC certificate without using the HSM's
+  * a 8192 bit RSA certificate without using the HSM's
+  * a 4096 bit RSA certificate without using the HSM's
+  * a 2048 bit RSA certificate without using the HSM's
+  * a 1024 bit RSA certificate without using the HSM's
+  * a prime256v1 EC certificate without using the HSM's
 
-- a 2048 bit RSA certificate in the HSM
-- a 1024 bit RSA certificate in the HSM
-- a prime256v1 EC certificate in the HSM. 
+  * a 2048 bit RSA certificate in the HSM
 
-We do these benchmarks with the `OpenSC` module and with the `sc-hsm-embedded` module to see if that makes any difference. 
+  * a 1024 bit RSA certificate in the HSM
 
-The full raw results are provided at the end of the article. I first talk a bit more about the HSM's, the cluster setup and the issues I had with the Raspberry Pi's. Then we set up the three HSM devices and the load balancer. Finally, before the raw results, we have nice charts and interpretation of the charts, plus an unexpected conclusion.
+  * a prime256v1 EC certificate in the HSM. 
+
+We do these benchmarks with the `OpenSC` module and with the `sc-hsm-embedded`
+module to see if that makes any difference.
+
+The full raw results are provided at the end of the article. I first talk a bit
+more about the HSM's, the cluster setup and the issues I had with the Raspberry
+Pi's. Then we set up the three HSM devices and the load balancer. Finally,
+before the raw results, we have nice charts and interpretation of the charts,
+plus an unexpected conclusion.
 
 ### Introduction
 
-<img src="https://raymii.org/s/inc/img/sc-hsm-nitrokey.jpg" height=300>
+![][3]
 
 > The Nitrokey HSM and the SmartCard-HSM
 
-The [Nitrokey HSM](http://nitrokey.com) is an open hardware and open software device. It is a USB version of the [SmartCard-HSM](http://www.smartcard-hsm.com/). Both the [SmartCard-HSM](http://www.smartcard-hsm.com/opensource.html) as the [Nitrokey HSM](https://github.com/nitrokey) have sources available and are fully supported by the [OpenSC](https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM) project.
+The [Nitrokey HSM][4] is an open hardware and open software device. It is a USB
+version of the [SmartCard-HSM][5]. Both the [SmartCard-HSM][6] as the [Nitrokey
+HSM][7] have sources available and are fully supported by the [OpenSC][8]
+project.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
-<img src="https://raymii.org/s/inc/img/sc-hsm.jpg" height=300>
+![][9]
 
 > The SmartCard-HSM
 
-If you are new to the NitroKey HSM/SmartCard HSM, please also [read my getting started](https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html) article. It explains what the HSM is, how to set it up and how to use it with OpenSSH for example.
+If you are new to the NitroKey HSM/SmartCard HSM, please also [read my getting
+started][10] article. It explains what the HSM is, how to set it up and how to
+use it with OpenSSH for example.
 
-I have [multiple articles](https://raymii.org/s/tags/nitrokey.html) on this nice device, so make sure to read the others as well.
+I have [multiple articles][11] on this nice device, so make sure to read the
+others as well.
 
 ### How many HSM's?
 
-<img src="https://raymii.org/s/inc/img/3hsm.jpg" width="500" height="300">
+![][12]
 
 > Three Nitrokey's in their bags
 
-This guide uses three Nitrokey HSM devices. I've generated three keypairs on one of the HSM's, one RSA 1024, one RSA 2048 and one EC key, just as we did in [the `mod_nss` tutorial](https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html). Please consult that article first, since the key generation and certificate loading part is not included in this guide.
+This guide uses three Nitrokey HSM devices. I've generated three keypairs on one
+of the HSM's, one RSA 1024, one RSA 2048 and one EC key, just as we did in [the
+`mod_nss` tutorial][13]. Please consult that article first, since the key
+generation and certificate loading part is not included in this guide.
 
-I'll refer to the HSM where the DKEK was initialized and the keys were generated as HSM 1. The other two HSM's are referred two as HSM 2 and HSM 3.  
+I'll refer to the HSM where the DKEK was initialized and the keys were generated
+as HSM 1. The other two HSM's are referred two as HSM 2 and HSM 3.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
-This guide uses three Raspberry Pi 3 comuters, wired network with Raspbian testing (2016-07-29) and with the three HSM devices plugged in. 
+This guide uses three Raspberry Pi 3 comuters, wired network with Raspbian
+testing (2016-07-29) and with the three HSM devices plugged in.
 
-At first I tried to use the HSM's on the host computer, with different virtual hosts. That works when using the OpenSC module, but not with the sc-hsm-embedded module. [That module doesn't support token labels](https://github.com/CardContact/sc-hsm-embedded/issues/12), yet, so there was no way to distinguish between them. I did try to setup three different NSS databases where the HSM's were only enabled by ID but that still resulted in the three of them being used. To make all tests equal, I went for a second option.
+At first I tried to use the HSM's on the host computer, with different virtual
+hosts. That works when using the OpenSC module, but not with the sc-hsm-embedded
+module. [That module doesn't support token labels][14], yet, so there was no way
+to distinguish between them. I did try to setup three different NSS databases
+where the HSM's were only enabled by ID but that still resulted in the three of
+them being used. To make all tests equal, I went for a second option.
 
-That second option was using three different virtual machines on the same PC with VirtualBox and USB passthrough in VirtualBox:
+That second option was using three different virtual machines on the same PC
+with VirtualBox and USB passthrough in VirtualBox:
 
-<img src="https://raymii.org/s/inc/img/hsmshare.png">
+![][15]
 
-That however gave all kinds of errors with the HSM's in use. At first it worked just fine with `mod_nss` but whenever I tried to do more than 5 concurrent actions on the HSM the connection was lost and it became unresponsive, to the part that even `sc-hsm-tool` did not recognize the HSM and a VM reboot was required. So that wasn't a viable solution either. On to the third option it was.
+That however gave all kinds of errors with the HSM's in use. At first it worked
+just fine with `mod_nss` but whenever I tried to do more than 5 concurrent
+actions on the HSM the connection was lost and it became unresponsive, to the
+part that even `sc-hsm-tool` did not recognize the HSM and a VM reboot was
+required. So that wasn't a viable solution either. On to the third option it
+was.
 
 ### Cluster setup
 
-THe final solution was using three different computers. Since I wanted to keep it simple, fair and not too expensive I decided to buy three Raspberry Pi 3's. I bought them from the dutch store [Kiwi-Electronics](https://www.kiwi-electronics.nl/) including two [stackable cases](https://www.kiwi-electronics.nl/raspberry-pi-stackable-case-kit-black?search=stack). (These links are not affiliate links, just had a great experience there. Their order confirmation lists the ordering IP, and in my case it was my IPv6 address. Yay +1 for them!). The case comes from [ModMyPi](https://www.modmypi.com/blog/multi-pi-assembly-guide) and I might even just recreate it in Inkscape and use my lasercutter in the future for expansion.
+THe final solution was using three different computers. Since I wanted to keep
+it simple, fair and not too expensive I decided to buy three Raspberry Pi 3's. I
+bought them from the dutch store [Kiwi-Electronics][16] including two [stackable
+cases][17]. (These links are not affiliate links, just had a great experience
+there. Their order confirmation lists the ordering IP, and in my case it was my
+IPv6 address. Yay +1 for them!). The case comes from [ModMyPi][18] and I might
+even just recreate it in Inkscape and use my lasercutter in the future for
+expansion.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
 The Raspberry Pi 3 Model B's have the following specs:
 
-- 1.2GHz 64-bit quad-core ARMv8 CPU
-- 1 GB LPDDR2 RAM 900 MHz
-- 100 Mbit NIC
-- 4x USB 2.0
+  * 1.2GHz 64-bit quad-core ARMv8 CPU
+  * 1 GB LPDDR2 RAM 900 MHz
+  * 100 Mbit NIC
+  * 4x USB 2.0
 
-They also have Wifi and bluetooth but I did not use that. All the benchmarks were done over the wired network. The OS is [Raspbian Testing](https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html). Since the current normal Raspbian ships `OpenSC` 0.14 which doesn't support the SmartCard-HSM/Nitrokey HSM an upgrade was required. The current testing ships with OpenSC 0.16, which does work with the SmartCard-HSM/Nitrokey HSM.
+They also have Wifi and bluetooth but I did not use that. All the benchmarks
+were done over the wired network. The OS is [Raspbian Testing][19]. Since the
+current normal Raspbian ships `OpenSC` 0.14 which doesn't support the SmartCard-
+HSM/Nitrokey HSM an upgrade was required. The current testing ships with OpenSC
+0.16, which does work with the SmartCard-HSM/Nitrokey HSM.
 
-To combine the three machines into one single service I used `haproxy` in TCP mode. `haproxy` is a very fast and scalable HTTP(s)/TCP load balancer. I've used it in production for many years now and have been happy with it ever since.
+To combine the three machines into one single service I used `haproxy` in TCP
+mode. `haproxy` is a very fast and scalable HTTP(s)/TCP load balancer. I've used
+it in production for many years now and have been happy with it ever since.
 
-I did also try `nginx` since that also [supports TCP and UDP load balancing](https://www.nginx.com/resources/admin-guide/tcp-load-balancing/). The results were very comparable, so I think the load balancer is not the limiting factor here.
+I did also try `nginx` since that also [supports TCP and UDP load
+balancing][20]. The results were very comparable, so I think the load balancer
+is not the limiting factor here.
 
 The software stack used on Raspbian Testing is the following:
 
-- Apache 2.4.23 (Raspbian)
-- mpm_event
-- PHP 7.0.8-5
-- MySQL 5.6.30-1 (Raspbian)
-- php-fpm / fcgi
-- Wordpress 4.5.3
-- `mod_nss` 1.0.12-2
+  * Apache 2.4.23 (Raspbian)
+  * mpm_event
+  * PHP 7.0.8-5
+  * MySQL 5.6.30-1 (Raspbian)
+  * php-fpm / fcgi
+  * Wordpress 4.5.3
+  * `mod_nss` 1.0.12-2
 
-I'm using `mpm_event` and `php-fpm` instead of `mpm_prefork` and `mod-php` because of issues with the initialization of the HSM by all the workers. See [the mailinglist thread here](https://www.redhat.com/archives/mod_nss-list/2016-July/msg00000.html) for more information. Otherwise all kinds of errors like ` SSL Library Error: -8152 The key does not support the requested operation` and `SSL Library Error: -8023 Unknown` and `SSL Library Error: -12216 Attempt to write encrypted data to underlying socket failed` and `SSL input filter
-read failed.` occur.
+I'm using `mpm_event` and `php-fpm` instead of `mpm_prefork` and `mod-php`
+because of issues with the initialization of the HSM by all the workers. See
+[the mailinglist thread here][21] for more information. Otherwise all kinds of
+errors like `SSL Library Error: -8152 The key does not support the requested
+operation` and `SSL Library Error: -8023 Unknown` and `SSL Library Error: -12216
+Attempt to write encrypted data to underlying socket failed` and `SSL input
+filter read failed.` occur.
 
-To install all the software and configure everything except for the HSM key generation I've created a set of Ansible playbooks. Because nobody wants to handcraft three special snowflakes. I've burned through 7 MicroSD cards before getting to a working setup. I also tried to use Arch and Ubuntu 16.04 but those images all had their own instabillites, so I just settled on Raspbian testing.
+To install all the software and configure everything except for the HSM key
+generation I've created a set of Ansible playbooks. Because nobody wants to
+handcraft three special snowflakes. I've burned through 7 MicroSD cards before
+getting to a working setup. I also tried to use Arch and Ubuntu 16.04 but those
+images all had their own instabillites, so I just settled on Raspbian testing.
 
-<img src="https://raymii.org/s/inc/img/ansible_nss.png">
+![][22]
 
-I might put the playbooks on here someday, but now they are intertwined to much with my personal playbooks to make sense without it.
+I might put the playbooks on here someday, but now they are intertwined to much
+with my personal playbooks to make sense without it.
 
-How do you keep the HSM's apart? Well, I've used a very high-tech solution for that, namely using three different coloured key-cords:
+How do you keep the HSM's apart? Well, I've used a very high-tech solution for
+that, namely using three different coloured key-cords:
 
-<img src="https://raymii.org/s/inc/img/hsmkeycord.jpg" height="300">
+![][23]
 
 Stickers might also be an option.
 
@@ -132,41 +202,66 @@ Stickers might also be an option.
 
 Plug in HSM 2.
 
-If you execute `sc-hsm-tool` it will notify you that the new HSM has never been initialized:
+If you execute `sc-hsm-tool` it will notify you that the new HSM has never been
+initialized:
 
+    
+    
     $ sc-hsm-tool 
+    
 
 Output:
 
+    
+    
     Using reader with a card: Nitrokey Nitrokey HSM (010000000000000000000000) 02 00
     Version              : 2.0
     SmartCard-HSM has never been initialized. Please use --initialize to set SO-PIN and user PIN.
+    
 
-HSM 1 was initialized with one DKEK share. We initialize the new HSMs and import the DKEK share, to make sure the key backups work. We also give it a different label.
+HSM 1 was initialized with one DKEK share. We initialize the new HSMs and import
+the DKEK share, to make sure the key backups work. We also give it a different
+label.
 
+    
+    
     sc-hsm-tool --initialize --so-pin 3537363231383830 --pin 648219 --dkek-shares 1 --label 'hsm2'
+    
 
 Output:
 
+    
+    
     Using reader with a card: Nitrokey Nitrokey HSM (010000000000000000000000) 02 00
+    
 
 Import the DKEK share:
 
+    
+    
     sc-hsm-tool --import-dkek-share dkek-share-1.pbe
+    
 
 Output:
 
+    
+    
     Using reader with a card: Nitrokey Nitrokey HSM (010000000000000000000000) 02 00
     Enter password to decrypt DKEK share : 123456789
-
+    
     Deciphering DKEK share, please wait...
     DKEK share imported
     DKEK shares          : 1
     DKEK key check value : 0FB85F69F6EBF256
+    
 
-Repeat the above process for HSM 3 and any more HSM's you have. Make sure to give them descriptive labels. Unplug the other HSM's when initializing one, to make sure you don't overwrite the wrong one.
+Repeat the above process for HSM 3 and any more HSM's you have. Make sure to
+give them descriptive labels. Unplug the other HSM's when initializing one, to
+make sure you don't overwrite the wrong one.
 
-The new HSM's are now initialized with the same DKEK as the old HSM. The next step is to securely backup the existing keys from the old HSM and import them into the new HSMs. This works because we're using the same DKEK.
+The new HSM's are now initialized with the same DKEK as the old HSM. The next
+step is to securely backup the existing keys from the old HSM and import them
+into the new HSMs. This works because we're using the same DKEK.
 
 ### Backup and restore the keys
 
@@ -174,37 +269,50 @@ Plug in HSM 1.
 
 Wrap (export) the keys on HSM 1:
 
+    
+    
     sc-hsm-tool --wrap-key wrap-key-1.bin --key-reference 1 --pin 648219
     sc-hsm-tool --wrap-key wrap-key-2.bin --key-reference 2 --pin 648219
     sc-hsm-tool --wrap-key wrap-key-3.bin --key-reference 3 --pin 648219
+    
 
 Output:
 
+    
+    
     Using reader with a card: Nitrokey Nitrokey HSM (010000000000000000000000) 00 00
-
+    
 
 Plug in HSM 2.
 
 Unwrap (import) the keys on the HSM 2:
 
-
+    
+    
     sc-hsm-tool --unwrap-key wrap-key-1.bin --key-reference 1 --pin 648219
     sc-hsm-tool --unwrap-key wrap-key-2.bin --key-reference 2 --pin 648219
     sc-hsm-tool --unwrap-key wrap-key-3.bin --key-reference 3 --pin 648219
+    
 
 Output:
 
+    
+    
     Using reader with a card: Nitrokey Nitrokey HSM (010000000000000000000000) 00 00
     Wrapped key contains:
       Key blob
       Private Key Description (PRKD)
       Certificate
     Key successfully imported
+    
 
 Repeat this for HSM 3.
 
-With all the keys imported and three HSM's plugged in, `pkcs11-tool` gives some nice output:
+With all the keys imported and three HSM's plugged in, `pkcs11-tool` gives some
+nice output:
 
+    
+    
     pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --list-slots
     Available slots:
     Slot 0 (0x0): Nitrokey Nitrokey HSM (010000000000000000000000) 00 00
@@ -233,34 +341,46 @@ With all the keys imported and three HSM's plugged in, `pkcs11-tool` gives some 
       hardware version   : 24.13
       firmware version   : 2.0
       serial num         : DENK0100436
+    
 
-If you want to do operations on a specific device you can add the `--slot` parameter to the `pkcs11-tool` command. For example, to generate a key just on HSM 2 (slot 3/c):
+If you want to do operations on a specific device you can add the `--slot`
+parameter to the `pkcs11-tool` command. For example, to generate a key just on
+HSM 2 (slot 3/c):
 
+    
+    
     $ pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --keypairgen --key-type EC:prime256v1 --slot c --id 10 --label "ect"
-
+    
 
 ### Raspberry Pi setup
 
-The Raspberry Pi's are on the network via a wired connection. They run [Raspbian Testing](https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html) because of the OpenSC version. 
+The Raspberry Pi's are on the network via a wired connection. They run [Raspbian
+Testing][19] because of the OpenSC version.
 
 The following steps should be done on the three Pi's:
 
-* HSM driver installation (OpenSC)
-* Apache and `mod_nss` installation
-* NSS Certificate database setup
-* Apache and `mod_nss` configuration
+  * HSM driver installation (OpenSC)
+  * Apache and `mod_nss` installation
+  * NSS Certificate database setup
+  * Apache and `mod_nss` configuration
 
-Please consult the [mod_nss opensc](https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html) guide or the [mod_nss with sc-hsm-embedded](https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html) guide for the specific setup and repeat that on all the Raspberry Pi's. I'm not going to cover the setup here any further.
+Please consult the [mod_nss opensc][24] guide or the [mod_nss with sc-hsm-
+embedded][13] guide for the specific setup and repeat that on all the Raspberry
+Pi's. I'm not going to cover the setup here any further.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
 ### Apache setup
 
-Remember to not use `mod_php` and `mpm_prefork`. I used `mpm_event` and `php-fpm` (PHP 7). 
+Remember to not use `mod_php` and `mpm_prefork`. I used `mpm_event` and `php-
+fpm` (PHP 7).
 
 Here is the `mpm_event` configuration:
 
+    
+    
         StartServers             20
         MinSpareThreads          250
         MaxSpareThreads          500
@@ -268,8 +388,10 @@ Here is the `mpm_event` configuration:
         ThreadsPerChild          25
         MaxRequestWorkers        500
         MaxConnectionsPerChild   150
+    
 
-I couldn't get `fastcgi` to run, but it seems Apache uses its own module now (`proxy_fcgi`). 
+I couldn't get `fastcgi` to run, but it seems Apache uses its own module now
+(`proxy_fcgi`).
 
 Make sure to restart Apache after configuring.
 
@@ -279,12 +401,25 @@ Repeat this step on all the VM's.
 
 Make sure you have haproxy installed:
 
+    
+    
     apt-get install haproxy
+    
 
-I'm using version 1.6.6. I've got a few [other articles](https://raymii.org/s/tags/haproxy.html) on HAproxy if you're interested. HAproxy does not run on the Raspberry Pi's, but on my local host (A Lenovo Thinkpad x240, i5, 8GB RAM, Arch linux), so don't install this in the VM's.
+I'm using version 1.6.6. I've got a few [other articles][25] on HAproxy if
+you're interested. HAproxy does not run on the Raspberry Pi's, but on my local
+host (A Lenovo Thinkpad x240, i5, 8GB RAM, Arch linux), so don't install this in
+the VM's.
 
-HAproxy can do many things in http mode, but we're not using that. We will be using `tcp` mode with a `roundrobin` configuration. This means that when requests come in, haproxy proxy's the TCP connection to the backends. Request one goes to hsm1, request two to hsm 2, request 3 to hsm 3 and request 4 goes to hsm 1. This way the server can handle more concurrent requests. This is my basic haproxy configuration file, `/etc/haproxy/haproxy.cfg`:
+HAproxy can do many things in http mode, but we're not using that. We will be
+using `tcp` mode with a `roundrobin` configuration. This means that when
+requests come in, haproxy proxy's the TCP connection to the backends. Request
+one goes to hsm1, request two to hsm 2, request 3 to hsm 3 and request 4 goes to
+hsm 1. This way the server can handle more concurrent requests. This is my basic
+haproxy configuration file, `/etc/haproxy/haproxy.cfg`:
 
+    
+    
     global
         maxconn     20000
         log         hsmcluster.nl local0
@@ -292,178 +427,242 @@ HAproxy can do many things in http mode, but we're not using that. We will be us
         chroot      /usr/share/haproxy
         pidfile     /run/haproxy.pid
         daemon
-
+    
     frontend hsm
         bind *:443
         mode tcp
         default_backend hsm
         timeout client 1m
-
+    
     backend hsm
         mode tcp
         balance roundrobin
         timeout connect 10s
         timeout server 1m
-
+    
         server hsm01 10.0.0.106:8443
         server hsm02 10.0.0.107:8443
         server hsm03 10.0.0.108:8443
+    
 
-My VM's have the `10.0.0.106`, `107` and `108` addresses. 
+My VM's have the `10.0.0.106`, `107` and `108` addresses.
 
 Restart `haproxy` after changing the config.
 
-In my `hosts` file I've setup the domain [hsmcluster.nl](https://hsmcluster.nl) on localhost.
+In my `hosts` file I've setup the domain [hsmcluster.nl][26] on localhost.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
 ### NGINX in TCP mode
 
 If you prefer to use NGINX then you can use this example configuration:
 
+    
+    
     worker_processes  1;
     events {
         worker_connections  1024;
     }
-
+    
     stream {
         server {
           listen 443;
           proxy_pass hsm_backend;
         }
-      
+    
         upstream hsm_backend {
           server 10.0.0.106:443;
           server 10.0.0.100:443;
           server 10.0.0.105:443;
         }
     }
-
-
+    
 
 ### Charts and result interpretation
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
-Here below I'll look into the various aspects and results of the benchmark. The last section of the article gives you the raw numbers/benchmark siege results to play around yourself. This is the more readable part if you're not into number crunching.
+Here below I'll look into the various aspects and results of the benchmark. The
+last section of the article gives you the raw numbers/benchmark siege results to
+play around yourself. This is the more readable part if you're not into number
+crunching.
 
 #### Siege result parsing
 
-Siege gives you different types of metrics. We do the same benchmark over and over so we're interesed in some, not all. The time for example is 30 seconds everywhere. Here is, [from the manual](https://www.joedog.org/siege-manual/#a08), the explanation of the metrics we use.
+Siege gives you different types of metrics. We do the same benchmark over and
+over so we're interesed in some, not all. The time for example is 30 seconds
+everywhere. Here is, [from the manual][27], the explanation of the metrics we
+use.
 
-- Transactions is the number of server hits.
-- Response time is the average time it took to respond to each simulated user's requests.
-- Transaction rate is the average number of transactions the server was able to handle per second, in a nutshell: transactions divided by elapsed time.
-- Concurrency is average number of simultaneous connections, a number which rises as server performance decreases.
+  * Transactions is the number of server hits.
+  * Response time is the average time it took to respond to each simulated user's requests.
+  * Transaction rate is the average number of transactions the server was able to handle per second, in a nutshell: transactions divided by elapsed time.
+  * Concurrency is average number of simultaneous connections, a number which rises as server performance decreases.
 
 #### `mod_ssl`. no HSM
 
-<img src="https://raymii.org/s/inc/img/hsm/no-hsm-mod_ssl.png" height=300>
+![][28]
 
-As we can see here the 1024 bit RSA key is the fastest. 2048 bit RSA is just a tidbit slower, but still acceptable. 4096 bit RSA keys take a huge dump down in transactions and the response time and concurrency go up. 
+As we can see here the 1024 bit RSA key is the fastest. 2048 bit RSA is just a
+tidbit slower, but still acceptable. 4096 bit RSA keys take a huge dump down in
+transactions and the response time and concurrency go up.
 
-8192 bit RSA keys slow down to a grinding halt, huge response time, low transaction rate. It might be super secure, but super slow as well.
+8192 bit RSA keys slow down to a grinding halt, huge response time, low
+transaction rate. It might be super secure, but super slow as well.
 
-Same goes for the EC prime256v1 keys. Most of the time EC keys are faster, but it seems the Pi's have trouble with it, just as much as with the 8192 bit RSA keys. 
+Same goes for the EC prime256v1 keys. Most of the time EC keys are faster, but
+it seems the Pi's have trouble with it, just as much as with the 8192 bit RSA
+keys.
 
-#### 1024 bit RSA key 
+#### 1024 bit RSA key
 
-<img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa.png" height=300>
+![][29]
 
-We can see that the HSM is around 8 times slower than using regular `mod_ssl`. But, we knew that already. Adding a HSM to the loadbalancer doubles the performance, and adding two HSM's to the loadbalancer triples it, as we would expect. So, going down that route, if we have 8 HSM's, it would be just as fast as regular `mod_ssl`.
+We can see that the HSM is around 8 times slower than using regular `mod_ssl`.
+But, we knew that already. Adding a HSM to the loadbalancer doubles the
+performance, and adding two HSM's to the loadbalancer triples it, as we would
+expect. So, going down that route, if we have 8 HSM's, it would be just as fast
+as regular `mod_ssl`.
 
-Something that caught my eye was that with one HSM the `OpenSC` module was faster. (Remember, best of three for the tests, every test is done three times, best result is kept.). When using multiple HSM's we see a small gain in transactions when using `sc-hsm-embedded`. I'm not quite sure why that is, but it's something that steps out.
+Something that caught my eye was that with one HSM the `OpenSC` module was
+faster. (Remember, best of three for the tests, every test is done three times,
+best result is kept.). When using multiple HSM's we see a small gain in
+transactions when using `sc-hsm-embedded`. I'm not quite sure why that is, but
+it's something that steps out.
 
-But, as we all know, using an 1024 bit RSA key is considered insecure. So don't do that in production.
+But, as we all know, using an 1024 bit RSA key is considered insecure. So don't
+do that in production.
 
-Here is the same data with only the HSM's so that you can see the differences better between OpenSC and sc-embedded-hsm:
+Here is the same data with only the HSM's so that you can see the differences
+better between OpenSC and sc-embedded-hsm:
 
-<img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa-hsm.png" height=300>
+![][30]
 
 #### 2048 bit RSA key
 
-<img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa.png" height=300>
+![][31]
 
-2048 bit keys are way harder for the HSM, but not at all for regular `mod_ssl`. In this case it is about 26 times slower when using a HSM, comparing to no HSM. Here we see again that the transaction rate is doubled and trippled when adding HSM's to the cluster. The same thing here with sc-hsm-embedded, when used with 1 HSM it's slower, but when scaling up it becomes a little bit faster.
+2048 bit keys are way harder for the HSM, but not at all for regular `mod_ssl`.
+In this case it is about 26 times slower when using a HSM, comparing to no HSM.
+Here we see again that the transaction rate is doubled and trippled when adding
+HSM's to the cluster. The same thing here with sc-hsm-embedded, when used with 1
+HSM it's slower, but when scaling up it becomes a little bit faster.
 
-Here is the same data with only the HSM's so that you can see the differences better between OpenSC and sc-embedded-hsm:
+Here is the same data with only the HSM's so that you can see the differences
+better between OpenSC and sc-embedded-hsm:
 
-<img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa-hsm.png" height=300>
-
+![][32]
 
 #### prime256v1 EC key
 
-<img src="https://raymii.org/s/inc/img/hsm/prime256v1-ec.png" height=300>
+![][33]
 
-I think the Pi's have trouble with the prime256v1 EC key. When using just one HSM, the performance almost doubles. When we use three HSM's the performance is almost as good as with the 1024 bit RSA key. In all cases OpenSC was slower than the sc-hsm-embedded module. 
+I think the Pi's have trouble with the prime256v1 EC key. When using just one
+HSM, the performance almost doubles. When we use three HSM's the performance is
+almost as good as with the 1024 bit RSA key. In all cases OpenSC was slower than
+the sc-hsm-embedded module.
 
-What suprises me the most is that EC algorithms are supposed to be faster then RSA. It might be that non-Pi hardware has the AES-NI extension or something.
-
+What suprises me the most is that EC algorithms are supposed to be faster then
+RSA. It might be that non-Pi hardware has the AES-NI extension or something.
 
 #### Different keysizes, 1 HSM
 
-<img src="https://raymii.org/s/inc/img/hsm/different-keys-hsms.png" height=300>
+![][34]
 
-This is an interesting one. We see that the EC prime256v1 key is almost as fast as the RSA 1024 bit key. Also, OpenSC is slower here with the EC keypair. [Most browsers](https://security.stackexchange.com/a/78624) support prime256v1, also named NIST curve P-256. There however are some concerns [since the NSA is involved](https://www.nsa.gov/ia/programs/suiteb_cryptography/). Keep that in mind. Still, the fastest modern algorithm in this HSM. 
-
+This is an interesting one. We see that the EC prime256v1 key is almost as fast
+as the RSA 1024 bit key. Also, OpenSC is slower here with the EC keypair. [Most
+browsers][35] support prime256v1, also named NIST curve P-256. There however are
+some concerns [since the NSA is involved][36]. Keep that in mind. Still, the
+fastest modern algorithm in this HSM.
 
 #### Burst mode
 
-The burst mode benchmark is different than the above ones. The above tests take a random amount of seconds between 1 and 5 and delay each connection that amount. This gives you a more realistic test than when your just hammering every second. Hammering every second is a performance measure, because you can then measure how many connections your server could handle at peak times.
+The burst mode benchmark is different than the above ones. The above tests take
+a random amount of seconds between 1 and 5 and delay each connection that
+amount. This gives you a more realistic test than when your just hammering every
+second. Hammering every second is a performance measure, because you can then
+measure how many connections your server could handle at peak times.
 
-This test fires of 60 connections for half a minute and doesnt take any time between them. Just bang bang bang. The results differ from the 20 connection test because the HSM then has some time to recover, so to say, between connections. The more HSM's you add to the cluster, the more time each one will have to recover, the better your tests will be.
+This test fires of 60 connections for half a minute and doesnt take any time
+between them. Just bang bang bang. The results differ from the 20 connection
+test because the HSM then has some time to recover, so to say, between
+connections. The more HSM's you add to the cluster, the more time each one will
+have to recover, the better your tests will be.
 
 The burst benchmark doesn't hit the wordpress site but the small text file.
 
-<img src="https://raymii.org/s/inc/img/hsm/60-1024.png" height=300>
+![][37]
 
-The chart above is for an 1024 bit RSA key. We see that without the HSM it is the fastest, topping a whopping 7000+ transactions. Here is the picture without that, so make it more clear what the differences with HSM are.
+The chart above is for an 1024 bit RSA key. We see that without the HSM it is
+the fastest, topping a whopping 7000+ transactions. Here is the picture without
+that, so make it more clear what the differences with HSM are.
 
-<img src="https://raymii.org/s/inc/img/hsm/60-1024-hsm.png" height=300>
+![][38]
 
-Same results as above, adding more HSM's gives better performance. Note that sc-hsm-embedded is only faster in the 3 HSM test.
+Same results as above, adding more HSM's gives better performance. Note that sc-
+hsm-embedded is only faster in the 3 HSM test.
 
 This is the score for 2048 bit keys, including the test without the HSM:
 
-<img src="https://raymii.org/s/inc/img/hsm/60-2048.png" height=300>
+![][39]
 
-Same as above, more HSM makes stuff faster, without the HSM we see an enourmus speed bump. Here's the graph without the last part:
+Same as above, more HSM makes stuff faster, without the HSM we see an enourmus
+speed bump. Here's the graph without the last part:
 
+![][40]
 
-<img src="https://raymii.org/s/inc/img/hsm/60-2048-hsm.png" height=300>
+Strange, sc-embedded-hsm is only faster here with 2 HSM's and OpenSC was
+significantly lower with 2 HSM's. I did rone this specific test again a few
+times but all gave comparable results.
 
-Strange, sc-embedded-hsm is only faster here with 2 HSM's and OpenSC was significantly lower with 2 HSM's. I did rone this specific test again a few times but all gave comparable results. 
+Last but not least, the prime256v1 EC key. This is the only time where the HSM
+is faster, I suspect because it provides offloading (the Pi lacks crypto
+hardware?).
 
+![][41]
 
-Last but not least, the prime256v1 EC key. This is the only time where the HSM is faster, I suspect because it provides offloading (the Pi lacks crypto hardware?). 
-
-<img src="https://raymii.org/s/inc/img/hsm/60-prime256v1.png" height=300>
-
-Using the HSM here almost doubles the performance, using three HSM's you get almost 6 times the performance of no HSM. I did not expect this at all, but I do find it awesome.
+Using the HSM here almost doubles the performance, using three HSM's you get
+almost 6 times the performance of no HSM. I did not expect this at all, but I do
+find it awesome.
 
 ### Conclusion
 
-- Using this HSM with RSA is significantly slower than not using this HSM
-- Using this HSM with EC is significantly faster than not using this HSM
-- 8192 bit RSA is slower than trying to nail hammer [jelly pudding](https://raymii.org/s/inc/img/pudding.jpg) to a wall
-- Adding one HSM to the cluster doubles the performance
-- Adding two HSM's to the cluster tripples the performance
-- You need about 10 HSM's (for RSA 1024) or 26 HSM's (for RSA 2048) to have the same performance without a HSM
-- You need about two Pi's without a HSM to have the same performance as with one HSM with prime256v1 EC.
+  * Using this HSM with RSA is significantly slower than not using this HSM
+  * Using this HSM with EC is significantly faster than not using this HSM
+  * 8192 bit RSA is slower than trying to nail hammer [jelly pudding][42] to a wall
+  * Adding one HSM to the cluster doubles the performance
+  * Adding two HSM's to the cluster tripples the performance
+  * You need about 10 HSM's (for RSA 1024) or 26 HSM's (for RSA 2048) to have the same performance without a HSM
+  * You need about two Pi's without a HSM to have the same performance as with one HSM with prime256v1 EC.
 
-In general this was what I expected, except for the EC part. As said at the start of the article, the Nitrokey/SmartCard-HSM is not built for this use case, although it works absolutely fine, just a bit slower. 
+In general this was what I expected, except for the EC part. As said at the
+start of the article, the Nitrokey/SmartCard-HSM is not built for this use case,
+although it works absolutely fine, just a bit slower.
 
-I've browsed the wordpress site, did some searching, installed some plugins (slider, contact form etc) and created a few blog posts, which all works just fine. I have 500/500 mbit fiber at home so I do notice the delay, but the performance is comparable to a location with regular DSL and a 8/2 mbit speed. Which means I'm spoiled and most people will not notice the difference.
+I've browsed the wordpress site, did some searching, installed some plugins
+(slider, contact form etc) and created a few blog posts, which all works just
+fine. I have 500/500 mbit fiber at home so I do notice the delay, but the
+performance is comparable to a location with regular DSL and a 8/2 mbit speed.
+Which means I'm spoiled and most people will not notice the difference.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)][2]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
-
-Below I'll talk more about something I tried first for the graphs and then give you more information on the benchmarks and the raw results.
+Below I'll talk more about something I tried first for the graphs and then give
+you more information on the benchmarks and the raw results.
 
 ### Chart creation
 
-I first tried to use GNUPlot to create charts based on the `siege` log file with the following gnuplot file:
+I first tried to use GNUPlot to create charts based on the `siege` log file with
+the following gnuplot file:
 
+    
+    
     set term png truecolor size 600,600
     set output "data.png"
     set title "2048 bit RSA key"
@@ -475,66 +674,100 @@ I first tried to use GNUPlot to create charts based on the `siege` log file with
     set style data histogram
     set style fill solid border
     set style histogram clustered
-
+    
     plot for [COL=2:4] 'siegedata' using COL:xticlabels(1) title columnheader 
+    
 
 The siege log is transformed to a usable datafile using the following commands:
+
+    
     
     awk -F, '{print $2":"$5":"$8}' siege.log  | awk '{print NR-1"-PI:",$0}' | sed 's/\s\+//g'  | sed -e '1s/^...../Number /' -e 's/:/ /g'
+    
 
 This is the result of the command:
 
+    
+    
     Number Trans RespTime Concurrent
     1-HSM 9 0.83 0.25
     2-HSM 23 1.06 0.82
     3-HSM 124 2.34 9.68
+    
 
 The original siege log was:
 
+    
+    
           Date & Time,  Trans,  Elap Time,  Data Trans,  Resp Time,  TransRate,  Throughput,  Concurrent,    OKAY,   Failed
     1 2016-07-31 08:35:21,      9,      29.86,           0,       0.83,        0.30,        0.00,        0.25,       9,       0
     2 2016-07-31 08:36:39,     23,      29.60,           0,       1.06,        0.78,        0.00,        0.82,      23,      21
     3 2016-07-31 08:40:15,    124,      29.99,           0,       2.34,        4.13,        0.00,        9.68,     124,       0
-
+    
 
 This would give me a graph like below:
 
-<img src="https://raymii.org/s/inc/img/hsm/example.png">
+![][43]
 
-But that doesn't scale very well for larger and smaller numbers and I didn't like the overall look. So I looked around for simple online charting services and via Opensource.com found [Datawrapper](https://datawrapper.de). It's a nice service, lots of options while keeping it simple. I shoved them $12 to export the images because I'm to lazy to [host it myself](https://github.com/datawrapper/datawrapper) or take screenshots. People put effort into hosting and development, so let's reward them for it.
-
-
-
+But that doesn't scale very well for larger and smaller numbers and I didn't
+like the overall look. So I looked around for simple online charting services
+and via Opensource.com found [Datawrapper][44]. It's a nice service, lots of
+options while keeping it simple. I shoved them $12 to export the images because
+I'm to lazy to [host it myself][45] or take screenshots. People put effort into
+hosting and development, so let's reward them for it.
 
 ### Benchmark process
 
-All the benchmarks were done three times and the best result is used. The machine that runs haproxy wasn't doing anything else at the time, measured with nethogs. No spotify or skype skewing the benchmarks. All was done via a wired gigabit network, cat6 cabling.
+All the benchmarks were done three times and the best result is used. The
+machine that runs haproxy wasn't doing anything else at the time, measured with
+nethogs. No spotify or skype skewing the benchmarks. All was done via a wired
+gigabit network, cat6 cabling.
 
-I've also done benchmarks without the HSM, just regular apache with `mod_ssl`. Why not `mod_nss` you might ask? Well, because nobody will setup `mod_nss` when they can use `mod_ssl`. All the guides use `mod_ssl`.and the most sites online are using it. Only if you have special software or need PKCS#11 you need to use mod_nss.
+I've also done benchmarks without the HSM, just regular apache with `mod_ssl`.
+Why not `mod_nss` you might ask? Well, because nobody will setup `mod_nss` when
+they can use `mod_ssl`. All the guides use `mod_ssl`.and the most sites online
+are using it. Only if you have special software or need PKCS#11 you need to use
+mod_nss.
 
 ### Benchmarks without the HSM
 
-The below benchmarks does not use the HSM, just regular `mod_ssl` and a certificate file. We're benchmarking one small page with only the contents 'Jeej it works!'. We're also benchmarking a Wordpress 4.5.3 install with the default content after install and the Hemmingway theme.
+The below benchmarks does not use the HSM, just regular `mod_ssl` and a
+certificate file. We're benchmarking one small page with only the contents 'Jeej
+it works!'. We're also benchmarking a Wordpress 4.5.3 install with the default
+content after install and the Hemmingway theme.
 
-I'm not benchmarking multiple Pi's since the result of one Pi and the result of three Pi's was so comparable, I suspect they are fast enough and that `mod_ssl` doesn't have any bottlenecks there. Except for some tests, those just blew up the Pi's. (8192 bit keys).
+I'm not benchmarking multiple Pi's since the result of one Pi and the result of
+three Pi's was so comparable, I suspect they are fast enough and that `mod_ssl`
+doesn't have any bottlenecks there. Except for some tests, those just blew up
+the Pi's. (8192 bit keys).
 
-The HSM does not support 4096 or 8192 bit RSA keys, which is why I didnot test those with the HSM's. 
+The HSM does not support 4096 or 8192 bit RSA keys, which is why I didnot test
+those with the HSM's.
 
-Here below are all the benchmarking results. Every benchmark was done three times, best result was kept.
+Here below are all the benchmarking results. Every benchmark was done three
+times, best result was kept.
 
 #### Benchmarking 1024 bit RSA key without HSM
 
 Self signed with OpenSSL:
 
+    
+    
     #key + certificate
     openssl req -nodes -x509 -sha256 -newkey rsa:1024 -keyout "pi1.hsmcluster.nl.key" -out "pi1.hsmcluster.nl.cert" -days 365 -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=pi1.hsmcluster.nl"
+    
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     63 hits
     Availability:                 100.00 %
     Elapsed time:                  29.47 secs
@@ -547,13 +780,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.06
     Shortest transaction:           0.02
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    119 hits
     Availability:                 100.00 %
     Elapsed time:                  29.67 secs
@@ -566,14 +805,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.10
     Shortest transaction:           0.02
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    239 hits
     Availability:                 100.00 %
     Elapsed time:                  29.80 secs
@@ -586,13 +830,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.13
     Shortest transaction:           0.02
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                   7331 hits
     Availability:                 100.00 %
     Elapsed time:                  29.18 secs
@@ -605,14 +855,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.47
     Shortest transaction:           0.03
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    772 hits
     Availability:                 100.00 %
     Elapsed time:                  29.84 secs
@@ -625,14 +880,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.75
     Shortest transaction:           0.02
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                   1353 hits
     Availability:                 100.00 %
     Elapsed time:                  29.09 secs
@@ -645,20 +905,29 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.46
     Shortest transaction:           0.02
+    
 
 #### Benchmarking 2048 bit RSA key without HSM
 
 Self signed with OpenSSL:
 
+    
+    
     #key + certificate
     openssl req -nodes -x509 -sha256 -newkey rsa:2048 -keyout "pi1.hsmcluster.nl.key" -out "pi1.hsmcluster.nl.cert" -days 365 -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=pi1.hsmcluster.nl"
+    
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     51 hits
     Availability:                 100.00 %
     Elapsed time:                  29.28 secs
@@ -671,14 +940,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.10
     Shortest transaction:           0.04
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    126 hits
     Availability:                 100.00 %
     Elapsed time:                  29.68 secs
@@ -691,14 +965,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.19
     Shortest transaction:           0.04
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Lifting the server siege...
     Transactions:                    253 hits
     Availability:                 100.00 %
@@ -712,15 +991,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.28
     Shortest transaction:           0.04
-
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                   2999 hits
     Availability:                 100.00 %
     Elapsed time:                  29.92 secs
@@ -733,9 +1016,12 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.87
     Shortest transaction:           0.14
+    
 
 60 benchmark mode with 3 Pi's in haproxy:
 
+    
+    
     Transactions:                   4890 hits
     Availability:                 100.00 %
     Elapsed time:                  29.80 secs
@@ -748,13 +1034,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.42
     Shortest transaction:           0.04
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    707 hits
     Availability:                 100.00 %
     Elapsed time:                  29.66 secs
@@ -767,14 +1059,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.86
     Shortest transaction:           0.04
- 
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                   1267 hits
     Availability:                 100.00 %
     Elapsed time:                  29.62 secs
@@ -787,22 +1084,29 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.55
     Shortest transaction:           0.04
-
+    
 
 #### Benchmarking 4096 bit RSA key without HSM
 
 Self signed with OpenSSL:
 
+    
+    
     #key + certificate
     openssl req -nodes -x509 -sha256 -newkey rsa:4096 -keyout "pi1.hsmcluster.nl.key" -out "pi1.hsmcluster.nl.cert" -days 365 -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=pi1.hsmcluster.nl"
-
+    
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     51 hits
     Availability:                 100.00 %
     Elapsed time:                  29.47 secs
@@ -815,14 +1119,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.45
     Shortest transaction:           0.19
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    117 hits
     Availability:                 100.00 %
     Elapsed time:                  29.85 secs
@@ -835,13 +1144,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.87
     Shortest transaction:           0.19  
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    234 hits
     Availability:                 100.00 %
     Elapsed time:                  29.30 secs
@@ -854,13 +1169,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.14
     Shortest transaction:           0.19
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    591 hits
     Availability:                 100.00 %
     Elapsed time:                  29.94 secs
@@ -873,14 +1194,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.82
     Shortest transaction:           0.40
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    483 hits
     Availability:                 100.00 %
     Elapsed time:                  29.22 secs
@@ -893,15 +1219,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.98
     Shortest transaction:           0.04
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
-
+    
+    
     Transactions:                    577 hits
     Availability:                 100.00 %
     Elapsed time:                  29.69 secs
@@ -914,25 +1244,29 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.37
     Shortest transaction:           0.04
-
-
-
-
+    
 
 #### Benchmarking 8192 bit RSA key without HSM
 
 Self signed with OpenSSL:
 
+    
+    
     #key + certificate
     openssl req -nodes -x509 -sha256 -newkey rsa:8192 -keyout "pi1.hsmcluster.nl.key" -out "pi1.hsmcluster.nl.cert" -days 365 -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=pi1.hsmcluster.nl"
-
+    
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     39 hits
     Availability:                 100.00 %
     Elapsed time:                  29.84 secs
@@ -945,14 +1279,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.81
     Shortest transaction:           1.30
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     70 hits
     Availability:                 100.00 %
     Elapsed time:                  29.94 secs
@@ -965,14 +1304,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.38
     Shortest transaction:           1.30
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     71 hits
     Availability:                 100.00 %
     Elapsed time:                  29.25 secs
@@ -985,15 +1329,22 @@ Result:
     Failed transactions:               0
     Longest transaction:            6.78
     Shortest transaction:           1.36
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
-This benchmark was done against THREE Pi's, one or two would fail and give the Pi a load of +100.
+This benchmark was done against THREE Pi's, one or two would fail and give the
+Pi a load of +100.
 
 Result:
 
+    
+    
     Transactions:                    176 hits
     Availability:                 100.00 %
     Elapsed time:                  29.75 secs
@@ -1006,14 +1357,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           22.08
     Shortest transaction:           1.30
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     40 hits
     Availability:                 100.00 %
     Elapsed time:                  29.05 secs
@@ -1026,15 +1382,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            7.89
     Shortest transaction:           5.62
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
+    
+    
     Transactions:                     62 hits
     Availability:                 100.00 %
     Elapsed time:                  29.39 secs
@@ -1047,30 +1407,31 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.41
     Shortest transaction:           5.33
-
-
-
-
-
-
-
-
+    
 
 #### Benchmarking prime256v1 (NIST curve P-256) EC key without HSM
 
 Self signed with OpenSSL:
 
+    
+    
     #key
     openssl ecparam -out ec_key.pem -name pi1.hsmcluster.nl.key -name prime256v1 -genkey
     #certificate
     openssl req -new -key pi1.hsmcluster.nl.key -x509 -nodes -days 365 -out pi1.hsmcluster.nl.cert -subj "/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=pi1.hsmcluster.nl"
+    
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     41 hits
     Availability:                 100.00 %
     Elapsed time:                  29.79 secs
@@ -1083,16 +1444,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.12
     Shortest transaction:           1.29
-
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
 
+    
+    
     Transactions:                     70 hits
     Availability:                 100.00 %
     Elapsed time:                  29.31 secs
@@ -1105,14 +1469,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.46
     Shortest transaction:           1.29
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     76 hits
     Availability:                 100.00 %
     Elapsed time:                  29.35 secs
@@ -1125,16 +1494,22 @@ Result:
     Failed transactions:               0
     Longest transaction:            6.59
     Shortest transaction:           1.33
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
-This benchmark was done against THREE Pi's, one or two would fail and give the Pi a load of +100.
+This benchmark was done against THREE Pi's, one or two would fail and give the
+Pi a load of +100.
 
 Result:
 
+    
+    
     Transactions:                     60 hits
     Availability:                 100.00 %
     Elapsed time:                  29.66 secs
@@ -1147,13 +1522,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           26.21
     Shortest transaction:          20.71
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     86 hits
     Availability:                 100.00 %
     Elapsed time:                  29.18 secs
@@ -1166,14 +1547,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.49
     Shortest transaction:           0.05
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     80 hits
     Availability:                 100.00 %
     Elapsed time:                  29.19 secs
@@ -1186,22 +1572,22 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.17
     Shortest transaction:           6.10
-
-
-
-
-
-
-
-
+    
 
 ### OpenSC benchmarks
 
-The below benchmarks utilize the `opensc-pkcs11` module with `mod_nss`. We're benchmarking one small page with only the contents 'Jeej it works!'. We're also benchmarking a Wordpress 4.5.3 install with the default content after install and the Hemmingway theme.
+The below benchmarks utilize the `opensc-pkcs11` module with `mod_nss`. We're
+benchmarking one small page with only the contents 'Jeej it works!'. We're also
+benchmarking a Wordpress 4.5.3 install with the default content after install
+and the Hemmingway theme.
 
-Note to self, the below command formats the `siege` output directly to space-seperated (instead of tab) markdown code output:
+Note to self, the below command formats the `siege` output directly to space-
+seperated (instead of tab) markdown code output:
 
+    
+    
     siege  -c10 -d5 -t30S 'https://hsmcluster.nl/' 2>&1 | grep -v '==> GET ' | expand | sed 's/^/    /'
+    
 
 #### 1 HSM (OpenSC)
 
@@ -1209,10 +1595,15 @@ Note to self, the below command formats the `siege` output directly to space-sep
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     52 hits
     Availability:                 100.00 %
     Elapsed time:                  29.52 secs
@@ -1225,14 +1616,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.06
     Shortest transaction:           0.22
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    101 hits
     Availability:                 100.00 %
     Elapsed time:                  29.07 secs
@@ -1245,13 +1641,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.06
     Shortest transaction:           0.22
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    142 hits
     Availability:                 100.00 %
     Elapsed time:                  29.86 secs
@@ -1264,15 +1666,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            5.07
     Shortest transaction:           0.23
-
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    126 hits
     Availability:                 100.00 %
     Elapsed time:                  29.37 secs
@@ -1285,14 +1691,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           19.99
     Shortest transaction:           0.60
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    162 hits
     Availability:                 100.00 %
     Elapsed time:                  29.13 secs
@@ -1305,14 +1716,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.85
     Shortest transaction:           0.04
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    165 hits
     Availability:                 100.00 %
     Elapsed time:                  29.77 secs
@@ -1325,16 +1741,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           10.86
     Shortest transaction:           0.05
-
+    
 
 ##### Benchmarking 2048 bit RSA key with 1 HSM (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     35 hits
     Availability:                 100.00 %
     Elapsed time:                  29.01 secs
@@ -1347,14 +1768,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.48
     Shortest transaction:           0.66
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     45 hits
     Availability:                 100.00 %
     Elapsed time:                  29.92 secs
@@ -1367,14 +1793,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           17.70
     Shortest transaction:           0.68
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     44 hits
     Availability:                 100.00 %
     Elapsed time:                  29.15 secs
@@ -1387,13 +1818,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           27.20
     Shortest transaction:           0.69
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     42 hits
     Availability:                 100.00 %
     Elapsed time:                  29.35 secs
@@ -1406,14 +1843,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           28.97
     Shortest transaction:           0.00
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     49 hits
     Availability:                 100.00 %
     Elapsed time:                  29.24 secs
@@ -1426,14 +1868,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           24.25
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     46 hits
     Availability:                 100.00 %
     Elapsed time:                  29.98 secs
@@ -1446,16 +1893,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           29.81
     Shortest transaction:           0.05
-
+    
 
 ##### Benchmarking EC prime256v1 key with 1 HSM (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     52 hits
     Availability:                 100.00 %
     Elapsed time:                  29.95 secs
@@ -1468,14 +1920,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.91
     Shortest transaction:           0.27
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     92 hits
     Availability:                 100.00 %
     Elapsed time:                  29.49 secs
@@ -1488,13 +1945,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.65
     Shortest transaction:           0.27
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    103 hits
     Availability:                 100.00 %
     Elapsed time:                  29.96 secs
@@ -1507,14 +1970,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.37
     Shortest transaction:           0.28
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     97 hits
     Availability:                 100.00 %
     Elapsed time:                  29.90 secs
@@ -1527,14 +1995,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           29.19
     Shortest transaction:           0.00
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    120 hits
     Availability:                 100.00 %
     Elapsed time:                  29.84 secs
@@ -1547,16 +2020,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.04
     Shortest transaction:           0.04
- 
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
-
+    
+    
     Transactions:                    116 hits
     Availability:                 100.00 %
     Elapsed time:                  29.87 secs
@@ -1569,8 +2045,7 @@ Result:
     Failed transactions:               0
     Longest transaction:           14.15
     Shortest transaction:           0.05
-
-
+    
 
 #### 2 HSM's (OpenSC)
 
@@ -1578,10 +2053,15 @@ Result:
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     51 hits
     Availability:                 100.00 %
     Elapsed time:                  29.17 secs
@@ -1594,14 +2074,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.06
     Shortest transaction:           0.22
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    107 hits
     Availability:                 100.00 %
     Elapsed time:                  29.23 secs
@@ -1614,14 +2099,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.31
     Shortest transaction:           0.22
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    217 hits
     Availability:                 100.00 %
     Elapsed time:                  29.96 secs
@@ -1634,14 +2124,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.26
     Shortest transaction:           0.22
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    277 hits
     Availability:                 100.00 %
     Elapsed time:                  29.72 secs
@@ -1654,14 +2149,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           18.27
     Shortest transaction:           0.47
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    286 hits
     Availability:                 100.00 %
     Elapsed time:                  29.76 secs
@@ -1674,14 +2174,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.67
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    298 hits
     Availability:                 100.00 %
     Elapsed time:                  29.12 secs
@@ -1694,17 +2199,21 @@ Result:
     Failed transactions:               0
     Longest transaction:            9.48
     Shortest transaction:           0.04
-
-
+    
 
 ##### Benchmarking 2048 bit RSA key with 2 HSM's (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     47 hits
     Availability:                 100.00 %
     Elapsed time:                  29.00 secs
@@ -1717,14 +2226,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.08
     Shortest transaction:           0.66
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     75 hits
     Availability:                 100.00 %
     Elapsed time:                  29.05 secs
@@ -1737,13 +2251,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            7.71
     Shortest transaction:           0.66
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     82 hits
     Availability:                 100.00 %
     Elapsed time:                  29.74 secs
@@ -1756,14 +2276,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           17.67
     Shortest transaction:           0.67
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     46 hits
     Availability:                 100.00 %
     Elapsed time:                  29.11 secs
@@ -1776,14 +2301,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           28.88
     Shortest transaction:           2.22
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     92 hits
     Availability:                 100.00 %
     Elapsed time:                  29.44 secs
@@ -1796,15 +2326,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           13.43
     Shortest transaction:           0.05
-
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     75 hits
     Availability:                 100.00 %
     Elapsed time:                  29.60 secs
@@ -1817,16 +2351,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           21.47
     Shortest transaction:           0.00
- 
+    
 
 ##### Benchmarking EC prime256v1 key with 2 HSM's (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     60 hits
     Availability:                 100.00 %
     Elapsed time:                  29.30 secs
@@ -1839,14 +2378,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.09
     Shortest transaction:           0.26
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    106 hits
     Availability:                 100.00 %
     Elapsed time:                  29.71 secs
@@ -1859,14 +2403,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.58
     Shortest transaction:           0.26
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    184 hits
     Availability:                 100.00 %
     Elapsed time:                  29.61 secs
@@ -1879,13 +2428,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.12
     Shortest transaction:           0.26  
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    201 hits
     Availability:                 100.00 %
     Elapsed time:                  29.50 secs
@@ -1898,14 +2453,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           27.49
     Shortest transaction:           0.26
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    237 hits
     Availability:                 100.00 %
     Elapsed time:                  29.56 secs
@@ -1918,14 +2478,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.72
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    240 hits
     Availability:                 100.00 %
     Elapsed time:                  29.28 secs
@@ -1938,24 +2503,23 @@ Result:
     Failed transactions:               0
     Longest transaction:            7.64
     Shortest transaction:           0.04
+    
 
-
-
-
-
-
-
-
-#### 3 HSM's  (OpenSC)
+#### 3 HSM's (OpenSC)
 
 ##### Benchmarking 1024 bit RSA key with 3 HSM's (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     54 hits
     Availability:                 100.00 %
     Elapsed time:                  29.88 secs
@@ -1968,13 +2532,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.66
     Shortest transaction:           0.22
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    118 hits
     Availability:                 100.00 %
     Elapsed time:                  29.72 secs
@@ -1987,14 +2557,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.66
     Shortest transaction:           0.22 
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    205 hits
     Availability:                 100.00 %
     Elapsed time:                  29.85 secs
@@ -2007,14 +2582,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.69
     Shortest transaction:           0.22
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    407 hits
     Availability:                 100.00 %
     Elapsed time:                  29.07 secs
@@ -2027,14 +2607,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           17.38
     Shortest transaction:           0.25
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    382 hits
     Availability:                 100.00 %
     Elapsed time:                  29.48 secs
@@ -2047,14 +2632,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.99
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    449 hits
     Availability:                 100.00 %
     Elapsed time:                  29.31 secs
@@ -2067,17 +2657,21 @@ Result:
     Failed transactions:               0
     Longest transaction:            6.49
     Shortest transaction:           0.04
+    
 
-
- 
 ##### Benchmarking 2048 bit RSA key with 3 HSM's (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     44 hits
     Availability:                 100.00 %
     Elapsed time:                  29.10 secs
@@ -2090,14 +2684,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.50
     Shortest transaction:           0.66
+    
 
-   
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     89 hits
     Availability:                 100.00 %
     Elapsed time:                  29.34 secs
@@ -2110,15 +2709,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.67
     Shortest transaction:           0.66
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
-     
+
+    
+    
     Transactions:                    127 hits
     Availability:                 100.00 %
     Elapsed time:                  29.99 secs
@@ -2131,14 +2734,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           11.20
     Shortest transaction:           0.66
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    128 hits
     Availability:                 100.00 %
     Elapsed time:                  29.53 secs
@@ -2151,15 +2759,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           23.46
     Shortest transaction:           0.66
-
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    139 hits
     Availability:                 100.00 %
     Elapsed time:                  29.43 secs
@@ -2172,14 +2784,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           11.38
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    140 hits
     Availability:                 100.00 %
     Elapsed time:                  29.39 secs
@@ -2192,16 +2809,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           21.96
     Shortest transaction:           0.05
-
+    
 
 ##### Benchmarking EC prime256v1 key with 3 HSM's (OpenSC)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     51 hits
     Availability:                 100.00 %
     Elapsed time:                  29.73 secs
@@ -2214,14 +2836,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.67
     Shortest transaction:           0.25    
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    110 hits
     Availability:                 100.00 %
     Elapsed time:                  29.41 secs
@@ -2234,14 +2861,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.29
     Shortest transaction:           0.25
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    221 hits
     Availability:                 100.00 %
     Elapsed time:                  29.82 secs
@@ -2254,15 +2886,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.12
     Shortest transaction:           0.24
-  
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    331 hits
     Availability:                 100.00 %
     Elapsed time:                  29.64 secs
@@ -2279,10 +2915,15 @@ Result:
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    336 hits
     Availability:                 100.00 %
     Elapsed time:                  29.48 secs
@@ -2295,13 +2936,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.70
     Shortest transaction:           0.04
- 
+    
+
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    377 hits
     Availability:                 100.00 %
     Elapsed time:                  29.86 secs
@@ -2314,26 +2961,17 @@ Result:
     Failed transactions:               0
     Longest transaction:            5.02
     Shortest transaction:           0.04
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 ### sc-hsm-embedded benchmarks
 
-The below benchmarks utilize the read only `libsc-hsm-embedded` module with `mod_nss`. Read more on the [sc-hsm-embedded](https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html) module here.
+The below benchmarks utilize the read only `libsc-hsm-embedded` module with
+`mod_nss`. Read more on the [sc-hsm-embedded][13] module here.
 
-This module is targeted at embedded use in devices, but can also be used regularly. I recommend it over the OpenSC module, since in production you don't want to be able to write to the HSM. You should have a seperate, non-networked workstation for that.
+This module is targeted at embedded use in devices, but can also be used
+regularly. I recommend it over the OpenSC module, since in production you don't
+want to be able to write to the HSM. You should have a seperate, non-networked
+workstation for that.
 
 #### 1 HSM (sc-hsm-embedded)
 
@@ -2341,10 +2979,15 @@ This module is targeted at embedded use in devices, but can also be used regular
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     56 hits
     Availability:                 100.00 %
     Elapsed time:                  29.48 secs
@@ -2357,13 +3000,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.13
     Shortest transaction:           0.24
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    100 hits
     Availability:                 100.00 %
     Elapsed time:                  29.18 secs
@@ -2376,13 +3025,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.24
     Shortest transaction:           0.24
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    131 hits
     Availability:                 100.00 %
     Elapsed time:                  29.17 secs
@@ -2395,14 +3050,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            6.56
     Shortest transaction:           0.28
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    124 hits
     Availability:                 100.00 %
     Elapsed time:                  29.50 secs
@@ -2415,14 +3075,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           19.99
     Shortest transaction:           0.94
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    148 hits
     Availability:                 100.00 %
     Elapsed time:                  29.63 secs
@@ -2435,14 +3100,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            5.48
     Shortest transaction:           0.04
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    144 hits
     Availability:                 100.00 %
     Elapsed time:                  29.12 secs
@@ -2455,17 +3125,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           11.69
     Shortest transaction:           0.04
-
+    
 
 ##### Benchmarking 2048 bit RSA key with 1 HSM (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
-
+    
+    
     Transactions:                     36 hits
     Availability:                 100.00 %
     Elapsed time:                  29.78 secs
@@ -2478,14 +3152,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.89
     Shortest transaction:           0.67
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     44 hits
     Availability:                 100.00 %
     Elapsed time:                  29.19 secs
@@ -2498,16 +3177,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            9.43
     Shortest transaction:           0.68
-
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
 
+    
+    
     Transactions:                     39 hits
     Availability:                 100.00 %
     Elapsed time:                  29.06 secs
@@ -2520,14 +3202,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           16.25
     Shortest transaction:           1.60
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     23 hits
     Availability:                 100.00 %
     Elapsed time:                  29.82 secs
@@ -2540,13 +3227,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           29.12
     Shortest transaction:           0.00
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     40 hits
     Availability:                 100.00 %
     Elapsed time:                  29.75 secs
@@ -2559,14 +3252,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           16.12
     Shortest transaction:           1.66
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     33 hits
     Availability:                 100.00 %
     Elapsed time:                  29.01 secs
@@ -2579,19 +3277,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           26.08
     Shortest transaction:           3.18
-
-
-
- 
+    
 
 ##### Benchmarking EC prime256v1 key with 1 HSM (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     59 hits
     Availability:                 100.00 %
     Elapsed time:                  29.15 secs
@@ -2604,15 +3304,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.22
     Shortest transaction:           0.25
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
-
+    
+    
     Transactions:                    103 hits
     Availability:                 100.00 %
     Elapsed time:                  29.67 secs
@@ -2625,13 +3329,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.86
     Shortest transaction:           0.25
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    122 hits
     Availability:                 100.00 %
     Elapsed time:                  29.85 secs
@@ -2644,14 +3354,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            6.55
     Shortest transaction:           0.30
-  
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    109 hits
     Availability:                 100.00 %
     Elapsed time:                  29.45 secs
@@ -2664,14 +3379,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           23.97
     Shortest transaction:           0.52
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    137 hits
     Availability:                 100.00 %
     Elapsed time:                  29.04 secs
@@ -2684,15 +3404,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.49
     Shortest transaction:           0.04
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
+    
+    
     Transactions:                    138 hits
     Availability:                 100.00 %
     Elapsed time:                  29.64 secs
@@ -2705,15 +3429,7 @@ Result:
     Failed transactions:               0
     Longest transaction:           12.19
     Shortest transaction:           0.05
-
-
-
-
-
-
-
-
-
+    
 
 #### 2 HSM's (sc-hsm-embedded)
 
@@ -2721,10 +3437,15 @@ Result:
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     59 hits
     Availability:                 100.00 %
     Elapsed time:                  29.34 secs
@@ -2737,14 +3458,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.62
     Shortest transaction:           0.22
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    109 hits
     Availability:                 100.00 %
     Elapsed time:                  29.04 secs
@@ -2757,14 +3483,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.13
     Shortest transaction:           0.22
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    211 hits
     Availability:                 100.00 %
     Elapsed time:                  29.36 secs
@@ -2777,13 +3508,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.45
     Shortest transaction:           0.22
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    253 hits
     Availability:                 100.00 %
     Elapsed time:                  29.04 secs
@@ -2796,14 +3533,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           18.60
     Shortest transaction:           0.25
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    308 hits
     Availability:                 100.00 %
     Elapsed time:                  29.22 secs
@@ -2816,14 +3558,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.29
     Shortest transaction:           0.04
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    318 hits
     Availability:                 100.00 %
     Elapsed time:                  29.94 secs
@@ -2836,16 +3583,21 @@ Result:
     Failed transactions:               0
     Longest transaction:            7.03
     Shortest transaction:           0.04
-
+    
 
 ##### Benchmarking 2048 bit RSA key with 2 HSM's (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     47 hits
     Availability:                 100.00 %
     Elapsed time:                  29.86 secs
@@ -2858,14 +3610,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.93
     Shortest transaction:           0.66
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     74 hits
     Availability:                 100.00 %
     Elapsed time:                  29.90 secs
@@ -2878,14 +3635,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.43
     Shortest transaction:           0.66
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                     84 hits
     Availability:                 100.00 %
     Elapsed time:                  29.03 secs
@@ -2898,14 +3660,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           14.70
     Shortest transaction:           0.69
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     72 hits
     Availability:                 100.00 %
     Elapsed time:                  29.87 secs
@@ -2918,14 +3685,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           27.91
     Shortest transaction:           2.27
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     95 hits
     Availability:                 100.00 %
     Elapsed time:                  29.51 secs
@@ -2938,14 +3710,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.09
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                     87 hits
     Availability:                 100.00 %
     Elapsed time:                  29.89 secs
@@ -2958,18 +3735,21 @@ Result:
     Failed transactions:               0
     Longest transaction:           17.31
     Shortest transaction:           0.05
-
-
-
+    
 
 ##### Benchmarking EC prime256v1 key with 2 HSM's (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     59 hits
     Availability:                 100.00 %
     Elapsed time:                  29.14 secs
@@ -2982,14 +3762,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.71
     Shortest transaction:           0.24
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     98 hits
     Availability:                 100.00 %
     Elapsed time:                  29.19 secs
@@ -3002,14 +3787,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.20
     Shortest transaction:           0.24
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    217 hits
     Availability:                 100.00 %
     Elapsed time:                  29.94 secs
@@ -3022,15 +3812,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.39
     Shortest transaction:           0.24
-
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    232 hits
     Availability:                 100.00 %
     Elapsed time:                  29.22 secs
@@ -3043,14 +3837,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           20.16
     Shortest transaction:           0.27
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    276 hits
     Availability:                 100.00 %
     Elapsed time:                  29.35 secs
@@ -3063,14 +3862,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.42
     Shortest transaction:           0.04
- 
+    
+
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
+    
+    
     Transactions:                    288 hits
     Availability:                 100.00 %
     Elapsed time:                  29.86 secs
@@ -3083,15 +3887,7 @@ Result:
     Failed transactions:               0
     Longest transaction:            8.33
     Shortest transaction:           0.04
-
-
-
-
-
-
-
-
-
+    
 
 #### 3 HSM's (sc-hsm-embedded)
 
@@ -3099,10 +3895,15 @@ Result:
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     55 hits
     Availability:                 100.00 %
     Elapsed time:                  29.81 secs
@@ -3115,13 +3916,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.47
     Shortest transaction:           0.22
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    116 hits
     Availability:                 100.00 %
     Elapsed time:                  29.33 secs
@@ -3134,15 +3941,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.81
     Shortest transaction:           0.22
-
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    227 hits
     Availability:                 100.00 %
     Elapsed time:                  29.82 secs
@@ -3155,14 +3966,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.58
     Shortest transaction:           0.22
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    420 hits
     Availability:                 100.00 %
     Elapsed time:                  29.90 secs
@@ -3179,10 +3995,15 @@ Result:
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    430 hits
     Availability:                 100.00 %
     Elapsed time:                  29.46 secs
@@ -3195,15 +4016,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.96
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
- 
+    
+    
     Transactions:                    494 hits
     Availability:                 100.00 %
     Elapsed time:                  29.72 secs
@@ -3216,16 +4041,21 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.93
     Shortest transaction:           0.04
- 
+    
 
 ##### Benchmarking 2048 bit RSA key with 3 HSM's (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     50 hits
     Availability:                 100.00 %
     Elapsed time:                  29.58 secs
@@ -3238,14 +4068,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            1.50
     Shortest transaction:           0.66
+    
 
-   
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                     99 hits
     Availability:                 100.00 %
     Elapsed time:                  29.82 secs
@@ -3262,10 +4097,15 @@ Result:
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
+
+    
+    
     Transactions:                    126 hits
     Availability:                 100.00 %
     Elapsed time:                  29.85 secs
@@ -3278,14 +4118,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            7.04
     Shortest transaction:           0.66     
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    118 hits
     Availability:                 100.00 %
     Elapsed time:                  29.28 secs
@@ -3298,14 +4143,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           29.13
     Shortest transaction:           0.66    
-
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    141 hits
     Availability:                 100.00 %
     Elapsed time:                  29.05 secs
@@ -3318,14 +4168,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            4.63
     Shortest transaction:           0.04
-
+    
 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    145 hits
     Availability:                 100.00 %
     Elapsed time:                  29.27 secs
@@ -3338,18 +4193,20 @@ Result:
     Failed transactions:               0
     Longest transaction:           12.44
     Shortest transaction:           0.04
-
-
-
+    
 
 ##### Benchmarking EC prime256v1 key with 3 HSM's (sc-hsm-embedded)
 
 A siege test with 5 concurrent users, 30 seconds:
 
+    
+    
     siege -c5 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
     
     Transactions:                     57 hits
     Availability:                 100.00 %
@@ -3363,14 +4220,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.56
     Shortest transaction:           0.24
-
+    
 
 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    104 hits
     Availability:                 100.00 %
     Elapsed time:                  29.02 secs
@@ -3383,15 +4245,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            0.94
     Shortest transaction:           0.25
-
+    
 
 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S https://hsmcluster.nl
+    
 
 Result:
-  
-  
+
+    
+    
     Transactions:                    220 hits
     Availability:                 100.00 %
     Elapsed time:                  29.82 secs
@@ -3404,14 +4270,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.16
     Shortest transaction:           0.25
-
+    
 
 60 benchmark mode:
 
+    
+    
     siege -c60 -b -t30S https://hsmcluster.nl
+    
 
 Result:
 
+    
+    
     Transactions:                    360 hits
     Availability:                 100.00 %
     Elapsed time:                  29.99 secs
@@ -3424,13 +4295,19 @@ Result:
     Failed transactions:               0
     Longest transaction:           18.87
     Shortest transaction:           0.30    
+    
 
 Wordpress site with 10 concurrent users:
 
+    
+    
     siege -c10 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
+    
+    
     Transactions:                    382 hits
     Availability:                 100.00 %
     Elapsed time:                  29.57 secs
@@ -3443,15 +4320,19 @@ Result:
     Failed transactions:               0
     Longest transaction:            2.32
     Shortest transaction:           0.04
+    
 
- 
 Wordpress site with 20 concurrent users:
 
+    
+    
     siege -c20 -d5 -t30S 'https://hsmcluster.nl/wordpress/'
+    
 
 Result:
 
-
+    
+    
     Transactions:                    427 hits
     Availability:                 100.00 %
     Elapsed time:                  29.96 secs
@@ -3464,9 +4345,53 @@ Result:
     Failed transactions:               0
     Longest transaction:            3.71
     Shortest transaction:           0.04
+    
 
-
-
+   [1]: https://raymii.org/s/inc/img/hsmcluster.jpg
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: https://raymii.org/s/inc/img/sc-hsm-nitrokey.jpg
+   [4]: http://nitrokey.com
+   [5]: http://www.smartcard-hsm.com/
+   [6]: http://www.smartcard-hsm.com/opensource.html
+   [7]: https://github.com/nitrokey
+   [8]: https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM
+   [9]: https://raymii.org/s/inc/img/sc-hsm.jpg
+   [10]: https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html
+   [11]: https://raymii.org/s/tags/nitrokey.html
+   [12]: https://raymii.org/s/inc/img/3hsm.jpg
+   [13]: https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html
+   [14]: https://github.com/CardContact/sc-hsm-embedded/issues/12
+   [15]: https://raymii.org/s/inc/img/hsmshare.png
+   [16]: https://www.kiwi-electronics.nl/
+   [17]: https://www.kiwi-electronics.nl/raspberry-pi-stackable-case-kit-black?search=stack
+   [18]: https://www.modmypi.com/blog/multi-pi-assembly-guide
+   [19]: https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html
+   [20]: https://www.nginx.com/resources/admin-guide/tcp-load-balancing/
+   [21]: https://www.redhat.com/archives/mod_nss-list/2016-July/msg00000.html
+   [22]: https://raymii.org/s/inc/img/ansible_nss.png
+   [23]: https://raymii.org/s/inc/img/hsmkeycord.jpg
+   [24]: https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html
+   [25]: https://raymii.org/s/tags/haproxy.html
+   [26]: https://hsmcluster.nl
+   [27]: https://www.joedog.org/siege-manual/#a08
+   [28]: https://raymii.org/s/inc/img/hsm/no-hsm-mod_ssl.png
+   [29]: https://raymii.org/s/inc/img/hsm/1024-bit-rsa.png
+   [30]: https://raymii.org/s/inc/img/hsm/1024-bit-rsa-hsm.png
+   [31]: https://raymii.org/s/inc/img/hsm/2048-bit-rsa.png
+   [32]: https://raymii.org/s/inc/img/hsm/2048-bit-rsa-hsm.png
+   [33]: https://raymii.org/s/inc/img/hsm/prime256v1-ec.png
+   [34]: https://raymii.org/s/inc/img/hsm/different-keys-hsms.png
+   [35]: https://security.stackexchange.com/a/78624
+   [36]: https://www.nsa.gov/ia/programs/suiteb_cryptography/
+   [37]: https://raymii.org/s/inc/img/hsm/60-1024.png
+   [38]: https://raymii.org/s/inc/img/hsm/60-1024-hsm.png
+   [39]: https://raymii.org/s/inc/img/hsm/60-2048.png
+   [40]: https://raymii.org/s/inc/img/hsm/60-2048-hsm.png
+   [41]: https://raymii.org/s/inc/img/hsm/60-prime256v1.png
+   [42]: https://raymii.org/s/inc/img/pudding.jpg
+   [43]: https://raymii.org/s/inc/img/hsm/example.png
+   [44]: https://datawrapper.de
+   [45]: https://github.com/datawrapper/datawrapper
 
 ---
 

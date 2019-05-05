@@ -69,14 +69,18 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up an SSL Certificate for use with Ejabberd. It covers both the creation of the Certificate Signing Request, the preparing of the certificate for use with Ejabberd and the installation of the certificate.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up an SSL Certificate for use with Ejabberd.
+It covers both the creation of the Certificate Signing Request, the preparing of
+the certificate for use with Ejabberd and the installation of the certificate.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><a href="https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html">If you need to set up an ejabberd server then you can read my tutorial here how to do that</a>. </p>
+<p><a href="https://raymii.org/s/tutorials/Set_up_a_federated_XMPP_Chat_Network_with_ejabberd.html">If you need to set up an ejabberd server then you can read my tutorial here how
+to do that</a>.</p>
 
-<p>This tutorial assumes a working ejabberd installation. It is tested on Debian and Ubuntu, but should work on any ejabberd installation.</p>
+<p>This tutorial assumes a working ejabberd installation. It is tested on Debian
+and Ubuntu, but should work on any ejabberd installation.</p>
 
 <h3>Steps and Explanation</h3>
 
@@ -89,16 +93,19 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Install the certificate in ejabberd</li>
 </ul>
 
-<p>With a certificate we can secure our XMPP connection and conversations. This way it is much harder for others to spy on your conversations. Combined with OTR this enabled a super secure channel for conversation. </p>
+<p>With a certificate we can secure our XMPP connection and conversations. This way
+it is much harder for others to spy on your conversations. Combined with OTR
+this enabled a super secure channel for conversation.</p>
 
 <h3>Creating the Certificate Signing Request</h3>
 
 <p>Create a folder to store all the files and cd to that:</p>
 
-<p>mkdir -p ~/Certificates/xmpp
-  cd ~/Certificates/xmpp</p>
+<p>mkdir -p ~/Certificates/xmpp cd ~/Certificates/xmpp</p>
 
-<p>Now use OpenSSL to create both a Private Key and a CSR. The first command will do it interactively, the second command will do it non-interactive. Make sure to set the correct values, your Common Name (CN) should be your XMPP server URL:</p>
+<p>Now use OpenSSL to create both a Private Key and a CSR. The first command will
+do it interactively, the second command will do it non-interactive. Make sure to
+set the correct values, your Common Name (CN) should be your XMPP server URL:</p>
 
 <p>Interactive:</p>
 
@@ -106,15 +113,21 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>Non-interactive:</p>
 
-<p>openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj &quot;/C=NL/ST=State/L=City/O=Company Name/OU=Department/CN=chat.example.org&quot;</p>
+<p>openssl req -nodes -newkey rsa:2048 -keyout private.key -out CSR.csr -subj
+&quot;/C=NL/ST=State/L=City/O=Company Name/OU=Department/CN=chat.example.org&quot;</p>
 
-<p>This will result in two files, <code>CSR.csr</code> and <code>private.key</code>. You now have to submit the CSR to a Certificate Authority. This can be any CA, I myself have good experiences with <a href="https://sslcertificaten.nl">Xolphin</a>, but there are others like Digicert and Verisign.</p>
+<p>This will result in two files, <code>CSR.csr</code> and <code>private.key</code>. You now have to
+submit the CSR to a Certificate Authority. This can be any CA, I myself have
+good experiences with <a href="https://sslcertificaten.nl">Xolphin</a>, but there are others like Digicert and
+Verisign.</p>
 
 <p>Once you have submitted your CSR and have gotten a Certificate you can continue.</p>
 
 <h3>Creating the ejabberd certificate</h3>
 
-<p>Once you have all the files (private key, certificate and certificate chain), put them all in a folder and continue. We are going to <code>cat</code> all the required files into a <code>ejabberd.pem</code> file. </p>
+<p>Once you have all the files (private key, certificate and certificate chain),
+put them all in a folder and continue. We are going to <code>cat</code> all the required
+files into a <code>ejabberd.pem</code> file.</p>
 
 <p>This needs to happen in a specific order:</p>
 
@@ -126,10 +139,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>So adapt the following commands to your filenames and create the pem file:</p>
 
-<p>cat private.key &gt;&gt; ejabberd.pem
-  cat certificate.pem &gt;&gt; ejabberd.pem
-  cat chain-1.pem &gt;&gt; ejabberd.pem
-  cat chain-2.pem &gt;&gt; ejabberd.pem</p>
+<p>cat private.key &gt;&gt; ejabberd.pem cat certificate.pem &gt;&gt; ejabberd.pem cat
+chain-1.pem &gt;&gt; ejabberd.pem cat chain-2.pem &gt;&gt; ejabberd.pem</p>
 
 <p>If that all works out continue.</p>
 
@@ -149,19 +160,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>Check/change the following to point to the new certificate:</p>
 
-<p>[...]
-  {listen,
-    [
-    {5222, ejabberd<em>c2s, [
-                          {access, c2s},
-                          {shaper, c2s</em>shaper},
-                          {max<em>stanza</em>size, 65536},
-                          starttls, {certfile, &quot;/etc/ejabberd/ejabberd.pem&quot;}
-                         ]},
-  [...]
-  {s2s<em>use</em>starttls, true}.
-  {s2s_certfile, &quot;/etc/ejabberd/ejabberd.pem&quot;}.
-  [...]</p>
+<p>[...] {listen, [ {5222, ejabberd <em>c2s, [ {access, c2s}, {shaper, c2s</em> shaper},
+{max <em>stanza</em> size, 65536}, starttls, {certfile, &quot;/etc/ejabberd/ejabberd.pem&quot;}
+]}, [...] {s2s <em>use</em> starttls, true}. {s2s_certfile,
+&quot;/etc/ejabberd/ejabberd.pem&quot;}. [...]</p>
 
 <p>Afterwards restart ejabberd:</p>
 

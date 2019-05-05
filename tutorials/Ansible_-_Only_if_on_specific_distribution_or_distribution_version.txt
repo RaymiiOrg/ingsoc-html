@@ -157,7 +157,6 @@ If a package has different names on different distributions, like Apache
 Read more about the package module on [the ansible Docs website][2].
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: https://docs.ansible.com/ansible/package_module.html
 
 ---

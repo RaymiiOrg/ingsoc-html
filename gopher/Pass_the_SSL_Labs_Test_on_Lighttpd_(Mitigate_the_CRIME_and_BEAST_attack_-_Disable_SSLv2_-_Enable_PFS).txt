@@ -9,10 +9,13 @@ Format      : 	Markdown/HTML
 
 
 
-<a href="https://www.ssllabs.com/ssltest/analyze.html?d=raymii.org"><img src="https://raymii.org/s/inc/img/ssl-labs-lighttpd.png" alt="A on ssl labs test" /></a>
+[![A on ssl labs test][1]][2]
 
-[This tutorial has moved. View the new URL here.](https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html)
+[This tutorial has moved. View the new URL here.][3]
 
+   [1]: https://raymii.org/s/inc/img/ssl-labs-lighttpd.png
+   [2]: https://www.ssllabs.com/ssltest/analyze.html?d=raymii.org
+   [3]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_lighttpd.html
 
 ---
 

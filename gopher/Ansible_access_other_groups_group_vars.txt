@@ -204,11 +204,8 @@ or to change the group_vars to `all`. However, this environment has certain
 constraints set, so this 'suboptimal' workaround works.
 
    [1]: https://raymii.org/s/inc/img/ansible-logo.png
-
    [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [3]: https://stackoverflow.com/questions/34614337/ansible-get-other-group-vars
-
    [4]: https://docs.ansible.com/ansible/intro_inventory.html#groups-of-groups-and-group-variables
 
 ---

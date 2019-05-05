@@ -9,16 +9,14 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/installatron.png" alt="installatron" />
+![installatron][1]
 
 One of the servers I use to host email and a few small websites for friend and
 family comes with Installatron installed by default. It is a way to easily
-install web applications and keep them up to date automatically. 
+install web applications and keep them up to date automatically.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 It is a paid service, but it is free for one domain. It can be confusing for
 some users on the server since the button is in the controlpanel.
@@ -27,17 +25,26 @@ I decided to remove Installatron from the machine. First remove the plugin from
 Directadmin (or other) controlpanel. Then execute the following commands. Remove
 the RPM (if CentOS):
 
+    
+    
     rpm -e installatron-plugin-directadmin 
+    
 
 Remove all the files:
 
+    
+    
     rm -rf /usr/local/directadmin/plugins/installatron 
     rm -rf /usr/local/installatron 
     rm -rf /var/installatron 
     rm -rf /etc/cron.d/installatron 
     rm -rf /home/*/.installatron
+    
 
 That's it. Installatron has been removed
+
+   [1]: https://raymii.org/s/inc/img/installatron.png
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

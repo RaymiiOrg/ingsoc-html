@@ -69,38 +69,65 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/A20-OLinuXino-LIME.jpeg" alt=olimex></img></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/A20-OLinuXino-LIME.jpeg" alt="olimex"></p>
 
-<p>This is a guide to build a linux image with Debian and the mainline 4.0 kernel for the Olimex A20-Lime2 board, from scratch. By default it comes with an 3.4 kernel with binary blobs and patches from Allwinner. Recently the mainline kernel has gained support for these boards, you can now run and use the mainline kernel without these awfull non-free binary blobs.</p>
+<p>This is a guide to build a linux image with Debian and the mainline 4.0 kernel
+for the Olimex A20-Lime2 board, from scratch. By default it comes with an 3.4
+kernel with binary blobs and patches from Allwinner. Recently the mainline
+kernel has gained support for these boards, you can now run and use the mainline
+kernel without these awfull non-free binary blobs.</p>
 
-<p>I have an Olimex A10 LIME board for which I&#39;ve made a minimal image, see <a href="https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html">this page for details</a>. It is a very awesome and powerfull ARM dev board with open source hardware. I like it so much that I decided to also get the A20. </p>
+<p>I have an Olimex A10 LIME board for which I&#39;ve made a minimal image, see <a href="https://raymii.org/s/articles/Olimex_A10-OLinuXino-LIME_minimal_debian_7_image.html">this
+page for details</a>. It is a very awesome and powerfull ARM dev board with open
+source hardware. I like it so much that I decided to also get the A20.</p>
 
-<p>The Olimex A20-LIME2 is the big brother of the A10. The <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXIno-LIME2/open-source-hardware">Olimex Olinuxino A20 LIME2</a>, an open source hardware ARM (Allwinner A20) dual core based dev board with 160 GPIO&#39;s, 1,2 GHz/1 GB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port, USB-OTG, 1 gbit lan (not via the usb bus) and more of those nice features. The price is even more awesome, the device costs 45 euro&#39;s, add 5 euro&#39;s and you have yourself a nice black case. It consumes very little power, combined with all the features a perfect dev / tinkerboard.</p>
+<p>The Olimex A20-LIME2 is the big brother of the A10. The <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXIno-LIME2/open-source-hardware">Olimex Olinuxino A20
+LIME2</a>, an open source hardware ARM (Allwinner A20) dual core based dev board
+with 160 GPIO&#39;s, 1,2 GHz/1 GB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port,
+USB-OTG, 1 gbit lan (not via the usb bus) and more of those nice features. The
+price is even more awesome, the device costs 45 euro&#39;s, add 5 euro&#39;s and you
+have yourself a nice black case. It consumes very little power, combined with
+all the features a perfect dev / tinkerboard.</p>
 
-<p><a href="http://olimex.com/">Olimex</a> sponsored a board for me to create the image, I would like to thank them very much for them.</p>
+<p><a href="http://olimex.com/">Olimex</a> sponsored a board for me to create the image, I would like to thank
+them very much for them.</p>
 
-<p>The difference with the A10-LIME is the dual core ARM processor, 1 GB of ram instead of 512 and gigabit networking.</p>
+<p>The difference with the A10-LIME is the dual core ARM processor, 1 GB of ram
+instead of 512 and gigabit networking.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This tutorial is inspired by the build scripts of Igor Pecovnik, <a href="www.igorpecovnik.com">www.igorpecovnik.com</a>. They&#39;ve made a script which does this all for you in one easy go. If you just want an image and do not want to learn anything or experience the fun, enjoyment and fullfillment of doing it yourself you can use it.</p>
+<p>This tutorial is inspired by the build scripts of Igor Pecovnik,
+<a href="www.igorpecovnik.com">www.igorpecovnik.com</a>. They&#39;ve made a script which does this all for you in
+one easy go. If you just want an image and do not want to learn anything or
+experience the fun, enjoyment and fullfillment of doing it yourself you can use
+it.</p>
 
 <h3>Kernel 4.0 and Allwinner</h3>
 
-<p>Allwinner has done a code dump of the 3.4 kernel with specifics for their devices. 3.4 is quite an old kernel nowdays. If you run your Olimex (or other ARM) board as a server you might want to upgrade to a more recent kernel. This will have a few benefits, speed and newer features for example. </p>
+<p>Allwinner has done a code dump of the 3.4 kernel with specifics for their
+devices. 3.4 is quite an old kernel nowdays. If you run your Olimex (or other
+ARM) board as a server you might want to upgrade to a more recent kernel. This
+will have a few benefits, speed and newer features for example.</p>
 
-<p>There are a few downsides, mostly driver and hardware support. For example, if you need graphical output (hdmi) or sound it will not work with the 4.0 kernel. </p>
+<p>There are a few downsides, mostly driver and hardware support. For example, if
+you need graphical output (hdmi) or sound it will not work with the 4.0 kernel.</p>
 
-<p>The 4.0 kernel does have basic support so you can run the A20-Lime2 as a server and use the GPIO&#39;s without problems. </p>
+<p>The 4.0 kernel does have basic support so you can run the A20-Lime2 as a server
+and use the GPIO&#39;s without problems.</p>
 
-<p>This tutorial is easily adaptable to newer kernels, other distributions or other boards. The instructions are largely the same.</p>
+<p>This tutorial is easily adaptable to newer kernels, other distributions or other
+boards. The instructions are largely the same.</p>
 
-<p>You can read more about the Linux Sunxi project on their, excellent, wiki and website: <a href="https://linux-sunxi.org/Main_Page">https://linux-sunxi.org</a>. </p>
+<p>You can read more about the Linux Sunxi project on their, excellent, wiki and
+website: <a href="https://linux-sunxi.org/Main_Page">https://linux-sunxi.org</a>.</p>
 
-<p>If you want to build an image with the 3.4 kernel provided by Olimex/Allwinner, you can read my <a href="https://raymii.org/s/articles/Olimex_OlinuXino%20_10%20Lime_uBoot_Kernel.html">tutorial on it</a>.</p>
+<p>If you want to build an image with the 3.4 kernel provided by Olimex/Allwinner,
+you can read my <a href="https://raymii.org/s/articles/Olimex_OlinuXino%20_10%20Lime_uBoot_Kernel.html">tutorial on it</a>.</p>
 
-<p>We are building the 4.0.0-rc4 version of the kernel, when 4.0 will be released this guide will be updated so that the commands and such are up to date.</p>
+<p>We are building the 4.0.0-rc4 version of the kernel, when 4.0 will be released
+this guide will be updated so that the commands and such are up to date.</p>
 
 <p>This tutorial was tested on Ubuntu 14.04.</p>
 
@@ -119,7 +146,9 @@ cd /root/Lime-Debian/
 
 <h3>U Boot Bootloader</h3>
 
-<p>U-boot, or universal boot is the bootloader used by ARM and other embedded devices. It is similar to GRUB or LILO however much smaller. We&#39;ll be building it from source for the Olimex A20 LIME2 board. </p>
+<p>U-boot, or universal boot is the bootloader used by ARM and other embedded
+devices. It is similar to GRUB or LILO however much smaller. We&#39;ll be building
+it from source for the Olimex A20 LIME2 board.</p>
 
 <p>Get the code:</p>
 
@@ -127,7 +156,9 @@ cd /root/Lime-Debian/
 cd output/u-boot
 </code></pre>
 
-<p>Start the compile for the A20. See below if you have another board. I have 12 cores in my machine so I use <code>-j12</code>, if you have more or less cores, change the number to that, <code>-j8</code> for example.</p>
+<p>Start the compile for the A20. See below if you have another board. I have 12
+cores in my machine so I use <code>-j12</code>, if you have more or less cores, change the
+number to that, <code>-j8</code> for example.</p>
 
 <pre><code>make -s CROSS_COMPILE=arm-linux-gnueabihf- clean
 make -j12 A20-OLinuXino-Lime2_defconfig CROSS_COMPILE=arm-linux-gnueabihf-
@@ -144,7 +175,8 @@ make -j12 CROSS_COMPILE=arm-linux-gnueabihf-
 <pre><code>cd /root/Lime-Debian/
 </code></pre>
 
-<p>I&#39;m building this for the Olimex A20 Lime2. To find all device targets from the <code>linux-sunxi</code> project, clone the u-boot repo from Hans de Goede:</p>
+<p>I&#39;m building this for the Olimex A20 Lime2. To find all device targets from the
+<code>linux-sunxi</code> project, clone the u-boot repo from Hans de Goede:</p>
 
 <pre><code>git clone https://github.com/jwrdegoede/u-boot-sunxi.git -b sunxi
 </code></pre>
@@ -154,16 +186,20 @@ make -j12 CROSS_COMPILE=arm-linux-gnueabihf-
 <pre><code>grep sunxi boards.cfg | awk &#39;{print $7}&#39;
 </code></pre>
 
-<p>Find your board model and add <code>_config</code> to the make command, like so: <code>make CROSS_COMPILE arm-linux-gnueabihf $target_config</code> line.</p>
+<p>Find your board model and add <code>_config</code> to the make command, like so: <code>make
+CROSS_COMPILE arm-linux-gnueabihf $target_config</code> line.</p>
 
 <h3>Build the mainline kernel</h3>
 
-<p>First get the code. Do note that this is quite a lot of code so the clone might take some time.</p>
+<p>First get the code. Do note that this is quite a lot of code so the clone might
+take some time.</p>
 
 <pre><code>git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git /root/Lime-Debian/output/linux-mainline
 </code></pre>
 
-<p>We also need the <code>sunxi-tools</code>. This is some code specific for the Allwinner boards. Allwinner uses the <code>sunxi</code> codename for their boards. The A10 is the <code>sunxi-4i</code>, the A20 is the <code>sunxi-5i</code> and so on. </p>
+<p>We also need the <code>sunxi-tools</code>. This is some code specific for the Allwinner
+boards. Allwinner uses the <code>sunxi</code> codename for their boards. The A10 is the
+<code>sunxi-4i</code>, the A20 is the <code>sunxi-5i</code> and so on.</p>
 
 <p>Clone that git repo as well:</p>
 
@@ -185,19 +221,24 @@ make -j12 CROSS_COMPILE=arm-linux-gnueabihf-
 <pre><code>wget -O /root/Lime-Debian/output/linux-mainline/.config https://raymii.org/s/inc/software/olimex/linux-sunxi-next.config.txt
 </code></pre>
 
-<p>If you want to make changes to the default kernel config, you can now do a <code>make menuconfig</code>:</p>
+<p>If you want to make changes to the default kernel config, you can now do a <code>make
+menuconfig</code>:</p>
 
 <pre><code> make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 </code></pre>
 
-<p>You can for example remove all kinds of drivers. If you are not going to use a firewall, you can leave out netfilter. Or networking entirely if you want.</p>
+<p>You can for example remove all kinds of drivers. If you are not going to use a
+firewall, you can leave out netfilter. Or networking entirely if you want.</p>
 
-<p>We start the compile of the uImage (u-boot bootloader image) and the kernel modules:</p>
+<p>We start the compile of the uImage (u-boot bootloader image) and the kernel
+modules:</p>
 
 <pre><code>make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- all zImage modules_prepare    
 </code></pre>
 
-<p>You might get a compiler error about it being to old or buggy. This is a bug and has been fixed upstream. Remove that message for now with the following patch. Open the following file:</p>
+<p>You might get a compiler error about it being to old or buggy. This is a bug and
+has been fixed upstream. Remove that message for now with the following patch.
+Open the following file:</p>
 
 <pre><code>vim /root/Lime-Debian/output/linux-mainline/arch/arm/kernel/asm-offsets.c
 </code></pre>
@@ -214,7 +255,9 @@ make -j12 CROSS_COMPILE=arm-linux-gnueabihf-
 #endif
 </code></pre>
 
-<p>We then start the debian package building of the kernel. We don&#39;t use threading here. Change my name and email address, otherwise it will seem like I&#39;ve built your debian kernel packages:</p>
+<p>We then start the debian package building of the kernel. We don&#39;t use threading
+here. Change my name and email address, otherwise it will seem like I&#39;ve built
+your debian kernel packages:</p>
 
 <pre><code>make -j1 deb-pkg KDEB_PKGVERSION=1.5 LOCALVERSION=-lime2 KBUILD_DEBARCH=armhf ARCH=arm &#39;DEBFULLNAME=Raymii&#39; DEBEMAIL=olimex@kernel.raymii CROSS_COMPILE=arm-linux-gnueabihf-
 </code></pre>
@@ -224,24 +267,30 @@ make -j12 CROSS_COMPILE=arm-linux-gnueabihf-
 <pre><code>mkdir -p /root/Lime-Debian/output/kernel
 </code></pre>
 
-<p>Create a tar archive of the kernel, headers, libc and other packages and place it in the folder:</p>
+<p>Create a tar archive of the kernel, headers, libc and other packages and place
+it in the folder:</p>
 
 <pre><code>cd ..
 tar -cPf /root/Lime-Debian/output/kernel/4.0.0-rc4-lime2-next.tar linux-headers-4.0.0-rc4-lime2_1.5_armhf.deb linux-image-4.0.0-rc4-lime2_1.5_armhf.deb linux-libc-dev_1.5_armhf.deb
 </code></pre>
 
-<p>If you need to save some space, you can now remove the packages from the working directory:</p>
+<p>If you need to save some space, you can now remove the packages from the working
+directory:</p>
 
 <pre><code>rm linux-headers-4.0.0-rc4-lime2_1.5_armhf.deb linux-image-4.0.0-rc4-lime2_1.5_armhf.deb linux-libc-dev_1.5_armhf.deb
 </code></pre>
 
 <h3>Bootstrap Debian</h3>
 
-<p>We&#39;ve built a kernel and we&#39;ve built a boot loader. The only thing left now is to build a root filesystem and put it all together. </p>
+<p>We&#39;ve built a kernel and we&#39;ve built a boot loader. The only thing left now is
+to build a root filesystem and put it all together.</p>
 
-<p>The root filesystem defines what distribution you run. I choose to set up Debian, but you can also get Ubuntu or for example Arch. </p>
+<p>The root filesystem defines what distribution you run. I choose to set up
+Debian, but you can also get Ubuntu or for example Arch.</p>
 
-<p>We are building the root filesystem (rootfs from now on) in an image. We mount the image as a loopback device, that is easier to work and build in. First create some folders:</p>
+<p>We are building the root filesystem (rootfs from now on) in an image. We mount
+the image as a loopback device, that is easier to work and build in. First
+create some folders:</p>
 
 <pre><code>mkdir -p /root/Lime-Debian/output/rootfs /root/Lime-Debian/output/sdcard/ /root/Lime-Debian/output/kernel
 </code></pre>
@@ -251,7 +300,8 @@ tar -cPf /root/Lime-Debian/output/kernel/4.0.0-rc4-lime2-next.tar linux-headers-
 <pre><code>cd /root/Lime-Debian/output/
 </code></pre>
 
-<p>Create an empty image. The size in my case is 1.2 gigabytes, you can specify a larger or smaller image if you want. 512MB is a safe lowest choice.</p>
+<p>Create an empty image. The size in my case is 1.2 gigabytes, you can specify a
+larger or smaller image if you want. 512MB is a safe lowest choice.</p>
 
 <pre><code>dd if=/dev/zero of=/root/Lime-Debian/output/rootfs/wheezy.raw bs=1M count=1200 status=noxfer
 </code></pre>
@@ -261,7 +311,10 @@ tar -cPf /root/Lime-Debian/output/kernel/4.0.0-rc4-lime2-next.tar linux-headers-
 <pre><code>losetup /dev/loop0 /root/Lime-Debian/output/rootfs/wheezy.raw
 </code></pre>
 
-<p>We will a DOS partition table and 2 ext4 partitions. Other tutorials might specify a FAT based partition for the bootloader, we don&#39;t need that because we are using mainline u-boot and mainline kernel which both support ext4 and do not need a FAT boot partition anymore.</p>
+<p>We will a DOS partition table and 2 ext4 partitions. Other tutorials might
+specify a FAT based partition for the bootloader, we don&#39;t need that because we
+are using mainline u-boot and mainline kernel which both support ext4 and do not
+need a FAT boot partition anymore.</p>
 
 <p>Create the DOS partition table:</p>
 
@@ -278,7 +331,8 @@ tar -cPf /root/Lime-Debian/output/kernel/4.0.0-rc4-lime2-next.tar linux-headers-
 <pre><code>partprobe /dev/loop0
 </code></pre>
 
-<p>We detach the loop device and mount it again at a different offset to create the ext4 filesystem:</p>
+<p>We detach the loop device and mount it again at a different offset to create the
+ext4 filesystem:</p>
 
 <pre><code>losetup -d /dev/loop0
 losetup -o 1048576 /dev/loop0 /root/Lime-Debian/output/rootfs/wheezy.raw
@@ -290,7 +344,13 @@ mkfs.ext4 /dev/loop0
 <pre><code>tune2fs -o journal_data_writeback /dev/loop0
 </code></pre>
 
-<p>This basically means that data may be written to the disk before the journal. The data consistency guarantees are the same as the ext3 file system. The downside is that if your system crashes before the journal gets written then you may loose new data, the old data may magically reappear. This is still better than ext2 because file system integrity is maintained, so the file system is at least consistent even after an unclean shutdown. In other words, you may loose data, but you won&#39;t have corrupt data. </p>
+<p>This basically means that data may be written to the disk before the journal.
+The data consistency guarantees are the same as the ext3 file system. The
+downside is that if your system crashes before the journal gets written then you
+may loose new data, the old data may magically reappear. This is still better
+than ext2 because file system integrity is maintained, so the file system is at
+least consistent even after an unclean shutdown. In other words, you may loose
+data, but you won&#39;t have corrupt data.</p>
 
 <p>We give the filesystem a name:</p>
 
@@ -302,7 +362,8 @@ mkfs.ext4 /dev/loop0
 <pre><code>mount -t ext4 /dev/loop0 /root/Lime-Debian/output/sdcard/
 </code></pre>
 
-<p>We can now start the debian bootstrap. The following command will start a basic debian bootstrap for the ARM board, to our freslhy mounted image:</p>
+<p>We can now start the debian bootstrap. The following command will start a basic
+debian bootstrap for the ARM board, to our freslhy mounted image:</p>
 
 <pre><code>debootstrap --include=openssh-server,debconf-utils --arch=armhf --foreign wheezy /root/Lime-Debian/output/sdcard/
 </code></pre>
@@ -312,14 +373,17 @@ mkfs.ext4 /dev/loop0
 <pre><code>cp /usr/bin/qemu-arm-static /root/Lime-Debian/output/sdcard/usr/bin/
 </code></pre>
 
-<p>We need to do this because this is required for the next steps of the image build bootstrapping. That next step is the so called second stage of the bootstrap. You need to execute that in a chroot on the image.</p>
+<p>We need to do this because this is required for the next steps of the image
+build bootstrapping. That next step is the so called second stage of the
+bootstrap. You need to execute that in a chroot on the image.</p>
 
 <p>The chroot will use the qemu binary to make it look like it is an ARM system.</p>
 
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;/debootstrap/debootstrap --second-stage&#39;
 </code></pre>
 
-<p>This might take a while. When it is finished we set up a few mounts for <code>/proc/</code> and <code>/sys/</code> and such:</p>
+<p>This might take a while. When it is finished we set up a few mounts for <code>/proc/</code>
+and <code>/sys/</code> and such:</p>
 
 <pre><code>mount -t proc chproc /root/Lime-Debian/output/sdcard/proc
 mount -t sysfs chsys /root/Lime-Debian/output/sdcard/sys
@@ -354,7 +418,8 @@ LANG=C
 chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;apt-get -y update&#39;
 </code></pre>
 
-<p>Change the <code>inittab</code> file to not clean the first <code>tty</code> and not start up 6 other, unneeded <code>tty&#39;s</code>. We do want to statup a serial console for UART access:</p>
+<p>Change the <code>inittab</code> file to not clean the first <code>tty</code> and not start up 6 other,
+unneeded <code>tty&#39;s</code>. We do want to statup a serial console for UART access:</p>
 
 <pre><code>sed -e &#39;s/1:2345:respawn:\/sbin\/getty 38400 tty1/1:2345:respawn:\/sbin\/getty --noclear 38400 tty1/g&#39; -i /root/Lime-Debian/output/sdcard/etc/inittab
 sed -e s/3:23:respawn/#3:23:respawn/g -i /root/Lime-Debian/output/sdcard/etc/inittab
@@ -376,7 +441,8 @@ chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;locale-gen en_US.UTF-8&
 chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive  LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_MESSAGES=POSIX update-locale&#39;
 </code></pre>
 
-<p>Install a few more packages in the VM. You can leave out the ones you don&#39;t like. Remember you can also remove them later on.</p>
+<p>Install a few more packages in the VM. You can leave out the ones you don&#39;t
+like. Remember you can also remove them later on.</p>
 
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;apt-get -y install automake bash-completion bc bridge-utils build-essential cmake curl dosfstools evtest figlet fping git haveged hddtemp hdparm  htop i2c-tools ifenslave-2.6 iperf ir-keytable iw less libbluetooth-dev libbluetooth3 libtool libwrap0-dev libfuse2 libnl-dev libssl-dev lsof makedev module-init-tools mtp-tools nano ntfs-3g ntp parted pkg-config pciutils pv python-smbus rfkill rsync screen stress sudo sysfsutils toilet u-boot-tools unattended-upgrades unzip usbutils wget&#39;
 </code></pre>
@@ -391,7 +457,8 @@ chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;LANG=en_US.UTF-8 LANGUA
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;(echo olimex;echo olimex;) | passwd root&#39;
 </code></pre>
 
-<p>If you want, you can set the expiry date of the root password to 0, that means that the first time you boot the image you need to set a new root password:</p>
+<p>If you want, you can set the expiry date of the root password to 0, that means
+that the first time you boot the image you need to set a new root password:</p>
 
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;chage -d 0 root&#39;
 </code></pre>
@@ -401,7 +468,10 @@ chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;LANG=en_US.UTF-8 LANGUA
 <pre><code>echo &#39;/dev/mmcblk0p1  /           ext4    defaults,noatime,nodiratime,data=writeback,commit=600,errors=remount-ro        0       0&#39; &gt; /root/Lime-Debian/output/sdcard/etc/fstab
 </code></pre>
 
-<p>On the first boot of the image you need to regenerate the SSH host keys. Otherwise all boards with this image will have the same SSH host keys. You can place the following in <code>/etc/rc.local</code>. On this image build that is <code>/root/Lime-Debian/output/sdcard/etc/rc.local</code>.</p>
+<p>On the first boot of the image you need to regenerate the SSH host keys.
+Otherwise all boards with this image will have the same SSH host keys. You can
+place the following in <code>/etc/rc.local</code>. On this image build that is <code>/root/Lime-
+Debian/output/sdcard/etc/rc.local</code>.</p>
 
 <pre><code>if [[ ! -f /var/lib/firstboot_ssh_host_keys ]]; then
     rm -f /etc/ssh/ssh_host*
@@ -412,12 +482,14 @@ chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;LANG=en_US.UTF-8 LANGUA
 fi
 </code></pre>
 
-<p>Also add the following to <code>/etc/rc.local</code> to enable <code>irq</code> on the second core on the lime2:</p>
+<p>Also add the following to <code>/etc/rc.local</code> to enable <code>irq</code> on the second core on
+the lime2:</p>
 
 <pre><code>echo 2 &gt; /proc/irq/$(cat /proc/interrupts | grep eth0 | cut -f 1 -d &quot;:&quot; | tr -d &quot; &quot;)/smp_affinity
 </code></pre>
 
-<p>The above is NOT a command. Don&#39;t execute it, copy and paste it in <code>/etc/rc.local</code>.</p>
+<p>The above is NOT a command. Don&#39;t execute it, copy and paste it in
+<code>/etc/rc.local</code>.</p>
 
 <p>Set a default hostname of the board:</p>
 
@@ -441,14 +513,21 @@ ff02::2     ip6-allrouters
 
 <h3>Installing the kernel in the rootfs image</h3>
 
-<p>We&#39;ve built a few nice kernel packages. To install these in the root fs image we need to execute a few more steps. We also do some more changes to setup kernel module loading, cpu frequency and network settings.Module loading:</p>
+<p>We&#39;ve built a few nice kernel packages. To install these in the root fs image we
+need to execute a few more steps. We also do some more changes to setup kernel
+module loading, cpu frequency and network settings.Module loading:</p>
 
 <pre><code>echo &#39;hci_uart gpio_sunxi rfcomm hidp bonding spi_sun7i&#39; &gt; /root/Lime-Debian/output/sdcard/etc/modules
 </code></pre>
 
-<p>The actual kernel install in the image is actually quite easy. We mount the <code>/tmp/</code> folder of the image over our actual compile machine&#39;s <code>/tmp/</code> folder. We place the packages we&#39;ve built earlier in <code>/tmp/</code>, then chroot in the image and install them.</p>
+<p>The actual kernel install in the image is actually quite easy. We mount the
+<code>/tmp/</code> folder of the image over our actual compile machine&#39;s <code>/tmp/</code> folder. We
+place the packages we&#39;ve built earlier in <code>/tmp/</code>, then chroot in the image and
+install them.</p>
 
-<p>The bind mount is required because the paths need to be correct. You don&#39;t want to overwrite your compile machine&#39;s kernel with a ARM specific kernel. It will probably not boot anymore afterwards.</p>
+<p>The bind mount is required because the paths need to be correct. You don&#39;t want
+to overwrite your compile machine&#39;s kernel with a ARM specific kernel. It will
+probably not boot anymore afterwards.</p>
 
 <pre><code>rm -rf /tmp/kernel
 mkdir -p /tmp/kernel
@@ -458,12 +537,14 @@ mount --bind /tmp/kernel/ /root/Lime-Debian/output/sdcard/tmp
 chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;dpkg -i /tmp/*.deb&#39;
 </code></pre>
 
-<p>Once the kernel is installed in the chroot we can build some kernel header scripts:</p>
+<p>Once the kernel is installed in the chroot we can build some kernel header
+scripts:</p>
 
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash -c &#39;cd /usr/src/linux-headers-4.0.0-rc4-lime2 &amp;&amp; make scripts&#39;
 </code></pre>
 
-<p>We are going to build and setup a new device tree. This is, as said earlier, the hardware layout of the board needed for the bootloader. </p>
+<p>We are going to build and setup a new device tree. This is, as said earlier, the
+hardware layout of the board needed for the bootloader.</p>
 
 <pre><code>rm -rf /root/Lime-Debian/output/sdcard/boot/dtb/4.0.0-rc4-lime2.old
 vim /root/Lime-Debian/output/sdcard/boot/boot-next.cmd
@@ -478,7 +559,8 @@ env set fdt_high ffffffff
 bootz 0x46000000 - 0x49000000
 </code></pre>
 
-<p>We use this boot command file to create the binary form if it, the boot script file:</p>
+<p>We use this boot command file to create the binary form if it, the boot script
+file:</p>
 
 <pre><code>mkimage -C none -A arm -T script -d /root/Lime-Debian/output/sdcard/boot/boot-next.cmd /root/Lime-Debian/output/sdcard/boot/boot.scr
 </code></pre>
@@ -493,7 +575,8 @@ unzip /root/Lime-Debian/linux-firmware.zip -d /root/Lime-Debian/output/sdcard/li
 
 <h3>Finishing up the rootfs</h3>
 
-<p>You can do any other changes to the image you want from in the chroot. You can start an interactive chroot with the following command:</p>
+<p>You can do any other changes to the image you want from in the chroot. You can
+start an interactive chroot with the following command:</p>
 
 <pre><code>chroot /root/Lime-Debian/output/sdcard /bin/bash 
 </code></pre>
@@ -518,7 +601,8 @@ umount -l /root/Lime-Debian/output/sdcard/sys
 
 <h3>Install the bootloader</h3>
 
-<p>We are going to install the bootloader on the image. We mount and attach the loop device without the special offset we gave earlier:</p>
+<p>We are going to install the bootloader on the image. We mount and attach the
+loop device without the special offset we gave earlier:</p>
 
 <pre><code>cd /root/Lime-Debian/
 
@@ -536,7 +620,8 @@ dd if=u-boot-sunxi-with-spl.bin of=/dev/loop1 bs=1024 seek=8 status=noxfer
 
 <h3>Packing it up</h3>
 
-<p>We are going to create a zip file with the image and the md5sum of the image for easy shipping. Copy the image and create the md5sum:</p>
+<p>We are going to create a zip file with the image and the md5sum of the image for
+easy shipping. Copy the image and create the md5sum:</p>
 
 <pre><code>mv /root/Lime-Debian/output/rootfs/wheezy.raw /root/Lime-Debian/output/Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw
 
@@ -550,18 +635,24 @@ md5sum Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw &gt; Lime2_Debian_1.5_wheezy_4.0.0-
 <pre><code>zip Lime2_Debian_1.5_wheezy_4.0.0-rc4.zip Lime2_Debian_1.5_wheezy_4.0.0-rc4.md5 Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw
 </code></pre>
 
-<p>And that&#39;s it. You now have a fully working image for the Olimex a20-Lime2. You can copy and distribute the zipfile anywhere you like.</p>
+<p>And that&#39;s it. You now have a fully working image for the Olimex a20-Lime2. You
+can copy and distribute the zipfile anywhere you like.</p>
 
 <h3>Installing the image</h3>
 
-<p>To install the image on your SD card, we take the zip file and extract it, so that we have the <code>Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw</code> file. We use <code>dd</code> to put it on our SD card, which is at device <code>/dev/mmcblk0</code>:</p>
+<p>To install the image on your SD card, we take the zip file and extract it, so
+that we have the <code>Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw</code> file. We use <code>dd</code> to
+put it on our SD card, which is at device <code>/dev/mmcblk0</code>:</p>
 
 <pre><code>dd if=Lime2_Debian_1.5_wheezy_4.0.0-rc4.raw of=/dev/mmcblk0 bs=1M
 </code></pre>
 
-<p>Put the SD card in the machine and boot it up. You can hook up UART to your machine or wait for the board to get DHCP. The SSH server will start up and you can login using your set root password.</p>
+<p>Put the SD card in the machine and boot it up. You can hook up UART to your
+machine or wait for the board to get DHCP. The SSH server will start up and you
+can login using your set root password.</p>
 
-<p>The first boot might take a little longer since it will regenerate the host keys for the device.</p>
+<p>The first boot might take a little longer since it will regenerate the host keys
+for the device.</p>
 </div><hr>Tags: <a href="../tags/a20.html" class="link">a20 &nbsp;</a><a href="../tags/allwinner.html" class="link">allwinner &nbsp;</a><a href="../tags/arm.html" class="link">arm &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/gpio.html" class="link">gpio &nbsp;</a><a href="../tags/minimal.html" class="link">minimal &nbsp;</a><a href="../tags/olimex.html" class="link">olimex &nbsp;</a><a href="../tags/olinuxino.html" class="link">olinuxino &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

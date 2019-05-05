@@ -9,21 +9,42 @@ Format      : 	Markdown/HTML
 
 
 
-Chef supports a very powerfull search syntax which allows you for example to search all nodes with the graphite-server role and get their IP addresses. This tutorial shows you how to search based on a role a node has or a recipe a node has, plus an example config file with erb syntax. It has an example cookbook which sets up collectd as client and graphite as server. It shows you how to use the search function of Chef to get the IP addresses of the graphite servers and place those in the collectd config files. This technique is applicable to all kinds of services that use a client-server model, for example, munin, haproxy, zabbix and many more.
+Chef supports a very powerfull search syntax which allows you for example to
+search all nodes with the graphite-server role and get their IP addresses. This
+tutorial shows you how to search based on a role a node has or a recipe a node
+has, plus an example config file with erb syntax. It has an example cookbook
+which sets up collectd as client and graphite as server. It shows you how to use
+the search function of Chef to get the IP addresses of the graphite servers and
+place those in the collectd config files. This technique is applicable to all
+kinds of services that use a client-server model, for example, munin, haproxy,
+zabbix and many more.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+Lets say you want to build a graphite server which gets data from a lot of
+collectd clients. You can hard code it in the `collectd.conf` file, but this is
+not preferred, what if your graphite server changes? What if you want to add a
+graphite server and have all your clients automagically also send data to that
+server? Here is where the following comes in handy.
 
-Lets say you want to build a graphite server which gets data from a lot of collectd clients. You can hard code it in the `collectd.conf` file, but this is not preferred, what if your graphite server changes? What if you want to add a graphite server and have all your clients automagically also send data to that server? Here is where the following comes in handy.
+You can use [this graphite cookbook][2]. If you add the `graphite` recipe to a
+node, it will install everything needed for a graphite server, including the web
+ui. Now, you can also create a role `graphite_server` and add the recipe to
+that, then add the role to a node. This way you have a graphite server running.
 
-You can use [this graphite cookbook][1]. If you add the `graphite` recipe to a node, it will install everything needed for a graphite server, including the web ui. Now, you can also create a role `graphite_server` and add the recipe to that, then add the role to a node. This way you have a graphite server running.
+collectd 5.1 or higher is required for graphite support. My environment
+currently runs mostly on Ubuntu 12.04 LTS, which has collectd 4 in the
+repositories. Therefore I build a package myself, but there are also PPA's
+available. I also run my own repositories, so I can just use the `collectd-core`
+package, if you don't have a collectd 5.1 or higher package then the following
+example won't work for you.
 
-collectd 5.1 or higher is required for graphite support. My environment currently runs mostly on Ubuntu 12.04 LTS, which has collectd 4 in the repositories. Therefore I build a package myself, but there are also PPA's available. I also run my own repositories, so I can just use the `collectd-core` package, if you don't have a collectd 5.1 or higher package then the following example won't work for you.
+This very simple cookbook installs the collectd package and sets the config
+file. Take a look at it:
 
-This very simple cookbook installs the collectd package and sets the config file. Take a look at it:
-
+    
+    
     package "collectd-core" do
         action :install
     end
@@ -47,21 +68,38 @@ This very simple cookbook installs the collectd package and sets the config file
             :graphite_servers => graphite_servers
         )
     end
+    
 
 The following line does the search magic:
 
+    
+    
     graphite_servers = search(:node, 'recipes:"graphite"')
+    
 
-It searches the Chef server for all nodes with the `graphite` recipe and makes that available in this cookbook. Then it passes it on to the template, which we will discuss below. If you don't want to search on recipes but for example on roles, you can use the following code:
+It searches the Chef server for all nodes with the `graphite` recipe and makes
+that available in this cookbook. Then it passes it on to the template, which we
+will discuss below. If you don't want to search on recipes but for example on
+roles, you can use the following code:
 
+    
+    
     graphite_servers = search(:node, 'role:graphite-server')
+    
 
 or on an attribute set in the node:
 
+    
+    
     graphite_servers = search(:node, 'graphite_server:true')
+    
 
-Now the template (`collectd.conf.erb`) is a standard collectd template with some erb to enumerate the information in the `graphite_servers` variable. Skip to the bottom to see it:
+Now the template (`collectd.conf.erb`) is a standard collectd template with some
+erb to enumerate the information in the `graphite_servers` variable. Skip to the
+bottom to see it:
 
+    
+    
     # Managed by Chef for node <%= node['fqdn'] -%>.
     # Do not edit manually, your changes will be overwritten.
     Hostname <%= node['fqdn'] -%>
@@ -98,26 +136,42 @@ Now the template (`collectd.conf.erb`) is a standard collectd template with some
      </Carbon>
      <% end -%>
     </Plugin>
+    
 
-This part starts a loop, which will loop trough all the values in the array it got from the cookbook:
+This part starts a loop, which will loop trough all the values in the array it
+got from the cookbook:
 
+    
+    
     <% @graphite_servers.each do |graphite_server| -%>
+    
 
 Then this part does another lookup to get the node's IP address:
-    
-   Host "<%= graphite_server['ipaddress'] -%>" 
 
-You can change that to get any other attribute from a node, in this example we need the IP address.
+Host "<%= graphite_server['ipaddress'] -%>"
+
+You can change that to get any other attribute from a node, in this example we
+need the IP address.
 
 This last part ends the loop:
 
+    
+    
      <% end -%>
+    
 
-This will result in a config file with all the graphite servers you have in your Chef environment. One of the big plus points is that you can add or remove graphite servers whenever you want without the nodes having issues. Need to scale up a few servers? Just deploy some new nodes and all the clients will use them. Scaling down? No issue, all the clients will stop using them without manual action.
+This will result in a config file with all the graphite servers you have in your
+Chef environment. One of the big plus points is that you can add or remove
+graphite servers whenever you want without the nodes having issues. Need to
+scale up a few servers? Just deploy some new nodes and all the clients will use
+them. Scaling down? No issue, all the clients will stop using them without
+manual action.
 
-This technique is very applicable to other client-server models, like Munin. Or, any other setup like this.
+This technique is very applicable to other client-server models, like Munin. Or,
+any other setup like this.
 
-[1]: https://github.com/hw-cookbooks/graphite
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://github.com/hw-cookbooks/graphite
 
 ---
 

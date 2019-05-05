@@ -69,16 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>LibreNMS is becoming one of my favorite monitoring tools. Setup and getting started is easy and it has enough advanced options and tunables. I recently discovered that LibreNMS is able to check services as well. Services, in this context, means, executing Nagios plugins (like check<em>http, check</em>ping, etc). This allows you to check services that SNMP does not cover by default, like HTTP(s) health checks, certificate expiry, tcp port checks (e.g. rdp) and anything for which you can write a Nagios plugin yourself. The performance data, if available, is graphed automatically. Alerting is done with the regular LibreNMS alerts. This guide covers the setup of services (it&#39;s not enabled by default) and a few basic checks, like an http health check, certificate expiry and SSH monitoring.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>LibreNMS is becoming one of my favorite monitoring tools. Setup and getting
+started is easy and it has enough advanced options and tunables. I recently
+discovered that LibreNMS is able to check services as well. Services, in this
+context, means, executing Nagios plugins (like check <em>http, check</em> ping, etc).
+This allows you to check services that SNMP does not cover by default, like
+HTTP(s) health checks, certificate expiry, tcp port checks (e.g. rdp) and
+anything for which you can write a Nagios plugin yourself. The performance data,
+if available, is graphed automatically. Alerting is done with the regular
+LibreNMS alerts. This guide covers the setup of services (it&#39;s not enabled by
+default) and a few basic checks, like an http health check, certificate expiry
+and SSH monitoring.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>You need a LibreNMS server for this guide to work. The project provides excellent documentation. To get started, get a <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean VPS</a> and follow the <a href="http://web.archive.org/web/20180910120958/https://docs.librenms.org/#Installation/Installation-Ubuntu-1804-Nginx/">official guide for Ubuntu</a>.</p>
+<p>You need a LibreNMS server for this guide to work. The project provides
+excellent documentation. To get started, get a <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean VPS</a> and follow
+the <a href="http://web.archive.org/web/20180910120958/https://docs.librenms.org/#Installation/Installation-Ubuntu-1804-Nginx/">official guide for Ubuntu</a>.</p>
 
 <h3>Nagios check plugins</h3>
 
-<p>For those unfamiliar with Nagios, it is a monitoring system which can execute checks. These checks are scripts and progams which take input (for example, which host to check, tresholds), do a check and then return an exit code and some performance data. The plugins can be in any language, Nagios only cares about the exit codes. They can be the following:</p>
+<p>For those unfamiliar with Nagios, it is a monitoring system which can execute
+checks. These checks are scripts and progams which take input (for example,
+which host to check, tresholds), do a check and then return an exit code and
+some performance data. The plugins can be in any language, Nagios only cares
+about the exit codes. They can be the following:</p>
 
 <ul>
 <li>0: OK</li>
@@ -88,17 +104,28 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>4 and up: UNKNOWN</li>
 </ul>
 
-<p>For example, to check if a website is working, you would use the <code>check_http</code> plugin. This plugin checks if the site returns a <code>200 OK</code> and if so, gives exit status <code>0</code>. If not, for example because of a timeout, access denied or <code>50x error</code>, it will return status <code>1</code> or <code>2</code>. Nagios then can do all kinds of alerting based on those statusses. </p>
+<p>For example, to check if a website is working, you would use the <code>check_http</code>
+plugin. This plugin checks if the site returns a <code>200 OK</code> and if so, gives exit
+status <code>0</code>. If not, for example because of a timeout, access denied or <code>50x
+error</code>, it will return status <code>1</code> or <code>2</code>. Nagios then can do all kinds of
+alerting based on those statusses.</p>
 
-<p>Performance data is comma seperated value data added after the status output in the command result. This can be anything, for example, the time the HTTP request took. </p>
+<p>Performance data is comma seperated value data added after the status output in
+the command result. This can be anything, for example, the time the HTTP request
+took.</p>
 
-<p>Since you can write these scripts yourself any monitoring system that uses these plugins is very extensible. It can check anything you want as long as you can write a script for it. This makes the monitoring tool very powerfull, you&#39;re not limited to what they provide. </p>
+<p>Since you can write these scripts yourself any monitoring system that uses these
+plugins is very extensible. It can check anything you want as long as you can
+write a script for it. This makes the monitoring tool very powerfull, you&#39;re not
+limited to what they provide.</p>
 
 <p>To read more about monitoring, <a href="https://raymii.org/s/articles/Essential_Monitoring_checks.html">you can read one of my other articles</a>.</p>
 
 <h3>Enabling service checks</h3>
 
-<p>Service checks are not enabled by default in LibreNMS. <a href="http://web.archive.org/web/20180910121438/https://github.com/librenms/librenms/blob/master/doc/Extensions/Services.md">The documentation</a> explains how to enable the module. In this guide I asume your path is <code>/opt/librenms/</code>. Edit your config file:</p>
+<p>Service checks are not enabled by default in LibreNMS. <a href="http://web.archive.org/web/20180910121438/https://github.com/librenms/librenms/blob/master/doc/Extensions/Services.md">The documentation</a>
+explains how to enable the module. In this guide I asume your path is
+<code>/opt/librenms/</code>. Edit your config file:</p>
 
 <pre><code>vim /opt/librenms/config.php
 </code></pre>
@@ -108,7 +135,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>$config[&#39;show_services&#39;]           = 1;
 </code></pre>
 
-<p>Save the file. </p>
+<p>Save the file.</p>
 
 <p>Edit the LibreNMS cronjob to include service checks:</p>
 
@@ -137,15 +164,22 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h4>Adding a (dummy) host</h4>
 
-<p>You must have a host in LibreNMS to be able to add service checks. Normally you would use <code>snmp</code> to monitor devices, but if you just want to do simple (HTTP) checks without SNMP you can add a host without SNMP or TCP checks. Via <code>Devices</code>, <code>Add Device</code> you can enter an URL/IP. Uncheck the SNMP checkbox and check the <code>Force add</code> button:</p>
+<p>You must have a host in LibreNMS to be able to add service checks. Normally you
+would use <code>snmp</code> to monitor devices, but if you just want to do simple (HTTP)
+checks without SNMP you can add a host without SNMP or TCP checks. Via
+<code>Devices</code>, <code>Add Device</code> you can enter an URL/IP. Uncheck the SNMP checkbox and
+check the <code>Force add</code> button:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_2.png" alt=""></p>
 
-<p>If this device does not accept ICMP (ping) traffic, you can disable that as well. Go to the device, select the Cog menu, Edit, &quot;Misc&quot; tab, then check &quot;Disable ICMP Test?&quot;:</p>
+<p>If this device does not accept ICMP (ping) traffic, you can disable that as
+well. Go to the device, select the Cog menu, Edit, &quot;Misc&quot; tab, then check
+&quot;Disable ICMP Test?&quot;:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_3.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_3.png" alt=""></p>
 
-<p>If you do want to use SNMP, here is a quick guide for Ubuntu. First install <code>snmpd</code>:</p>
+<p>If you do want to use SNMP, here is a quick guide for Ubuntu. First install
+<code>snmpd</code>:</p>
 
 <pre><code>apt-get install snmpd
 </code></pre>
@@ -170,30 +204,40 @@ defaultMonitors         yes
 linkUpDownNotifications yes
 </code></pre>
 
-<p>Change <code>username</code> and <code>password</code> to a long and secure name and password (8 characters minimum). Restart snmpd:</p>
+<p>Change <code>username</code> and <code>password</code> to a long and secure name and password (8
+characters minimum). Restart snmpd:</p>
 
 <pre><code>service snmpd restart
 </code></pre>
 
-<p><strong>Add a rule in your firewall to only allow access to UDP port 161 from your monitoring service and deny all other traffic.</strong></p>
+<p><strong>Add a rule in your firewall to only allow access to UDP port 161 from your
+monitoring service and deny all other traffic.</strong></p>
 
-<p>You can now add this machine in LibreNMS using SNMPv3 and the authentication data you provided.</p>
+<p>You can now add this machine in LibreNMS using SNMPv3 and the authentication
+data you provided.</p>
 
 <h3>Configuring services in LibreNMS</h3>
 
-<p>In LibreNMS you should now have a new tab button in the top menu, named &quot;Services&quot;:</p>
+<p>In LibreNMS you should now have a new tab button in the top menu, named
+&quot;Services&quot;:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_1.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_1.png" alt=""></p>
 
-<p>Make sure you added a host as described above. You can navigate to a host and click the &quot;Services&quot; tab, then click &quot;Add service&quot;. In the top menu bar you can also click &quot;Services&quot;, &quot;Add Service&quot;. You then have to select the host as well.</p>
+<p>Make sure you added a host as described above. You can navigate to a host and
+click the &quot;Services&quot; tab, then click &quot;Add service&quot;. In the top menu bar you can
+also click &quot;Services&quot;, &quot;Add Service&quot;. You then have to select the host as well.</p>
 
-<p>The <code>type</code> is the nagios plugin you want to use. In our case, <code>http</code> (the <code>check_</code> part is not shown). </p>
+<p>The <code>type</code> is the nagios plugin you want to use. In our case, <code>http</code> (the
+<code>check_</code> part is not shown).</p>
 
-<p>Enter a meaningfull description. For example, &quot;HTTP Check https://example.org/path/to/data&quot;. </p>
+<p>Enter a meaningfull description. For example, &quot;HTTP Check
+https://example.org/path/to/data&quot;.</p>
 
-<p>The IP address can be the hostname or the IP. It is recommended to make this the same as the host the services are coupled to.</p>
+<p>The IP address can be the hostname or the IP. It is recommended to make this the
+same as the host the services are coupled to.</p>
 
-<p>The &quot;Parameters&quot; are the Nagios check command parameters, from the shell. In the case of an HTTP check for one of the servers hosting raymii.org it would be:</p>
+<p>The &quot;Parameters&quot; are the Nagios check command parameters, from the shell. In the
+case of an HTTP check for one of the servers hosting raymii.org it would be:</p>
 
 <pre><code>-E -I 80.211.96.38 -S -p 443 -u &quot;/s/index.html&quot;
 </code></pre>
@@ -207,17 +251,20 @@ linkUpDownNotifications yes
 <li><code>-u &quot;/s/index.html&quot;</code>: the URL to request. (optional)</li>
 </ul>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_6.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_6.png" alt=""></p>
 
-<p>All parameters can be found on the <a href="https://www.monitoring-plugins.org/doc/man/check_http.html">monitoring-plugins</a> website. You can test on the shell first before you add the check to LibreNMS.</p>
+<p>All parameters can be found on the <a href="https://www.monitoring-plugins.org/doc/man/check_http.html">monitoring-plugins</a> website. You can test
+on the shell first before you add the check to LibreNMS.</p>
 
 <p>Save the dialog box and wait a few minutes for the check to run.</p>
 
-<p>An SSH check is even simpler, just select <code>SSH</code> as the type and add the check. Here is an example of a Cisco switch where SSH is checked:</p>
+<p>An SSH check is even simpler, just select <code>SSH</code> as the type and add the check.
+Here is an example of a Cisco switch where SSH is checked:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_7.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_7.png" alt=""></p>
 
-<p>A certificate check, to get an alert when a certificate is about to expire, can also be done. The <code>type</code> is <code>http</code> and the parameters are:</p>
+<p>A certificate check, to get an alert when a certificate is about to expire, can
+also be done. The <code>type</code> is <code>http</code> and the parameters are:</p>
 
 <pre><code>--sni -S -p 443 -C 30
 </code></pre>
@@ -231,7 +278,8 @@ linkUpDownNotifications yes
 <pre><code>services.service_status != 0 AND macros.device_up = 1
 </code></pre>
 
-<p>If you want to differentiate between WARNING and CRITICAL Nagios alerts, you can create two rules:</p>
+<p>If you want to differentiate between WARNING and CRITICAL Nagios alerts, you can
+create two rules:</p>
 
 <pre><code># warning
 services.service_status = 1 AND macros.device_up = 1
@@ -243,19 +291,27 @@ services.service_status = 2 AND macros.device_up = 1
 
 <h3>Limits</h3>
 
-<p>Specific alerting and rechecking when a check fails is not as configurable in Icinga or Nagios. The check will run, and alert you on a failure. Icinga/Nagios allow you to configure escalation paths and advanced re-checking. For example, when a check fails, recheck it 4 times with an interval of X seconds (instead of the regular check interval) and only alert if it still fails. </p>
+<p>Specific alerting and rechecking when a check fails is not as configurable in
+Icinga or Nagios. The check will run, and alert you on a failure. Icinga/Nagios
+allow you to configure escalation paths and advanced re-checking. For example,
+when a check fails, recheck it 4 times with an interval of X seconds (instead of
+the regular check interval) and only alert if it still fails.</p>
 
-<p>In Icinga you can define (service or host) groups and apply service checks to these groups. LibreNMS doesn&#39;t allow this, so you cannot define a check and apply it to a group. If you need to check 100 servers, it means defining 100 checks by hand per server.</p>
+<p>In Icinga you can define (service or host) groups and apply service checks to
+these groups. LibreNMS doesn&#39;t allow this, so you cannot define a check and
+apply it to a group. If you need to check 100 servers, it means defining 100
+checks by hand per server.</p>
 
 <h3>Examples</h3>
 
 <p>Here is an example of services that are down:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_5.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_5.png" alt=""></p>
 
-<p>Here is an example of a dummy host (no ICMP or SNMP) with a HTTP check and alerting enabled:</p>
+<p>Here is an example of a dummy host (no ICMP or SNMP) with a HTTP check and
+alerting enabled:</p>
 
-<p><img src="https://raymii.org/s/inc/img/librenms_svc_4.png"></p>
+<p><img src="https://raymii.org/s/inc/img/librenms_svc_4.png" alt=""></p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/icinga.html" class="link">icinga &nbsp;</a><a href="../tags/librenms.html" class="link">librenms &nbsp;</a><a href="../tags/logging.html" class="link">logging &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/nagios.html" class="link">nagios &nbsp;</a><a href="../tags/observium.html" class="link">observium &nbsp;</a><a href="../tags/plugin.html" class="link">plugin &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

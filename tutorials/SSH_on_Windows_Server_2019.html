@@ -69,16 +69,23 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On <a href="https://news.ycombinator.com/item?id=18659635">hackernews</a> I saw a <a href="https://blogs.windows.com/buildingapps/2018/12/11/windows-server-2019-includes-openssh/">Microsoft blog post</a> stating that Windows Server 2019 now includes OpenSSH. In this post I&#39;ll try out both the client and server on a Windows 2019 server, including how to login as a Active Directory Domain user. All documentation from Microsoft on OpenSSH <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview">can be found here</a>. The bonus this time is how to elevate permissions via SSH on Windows, sudo but way more complicated. This guide is also applicable on Windows 10, build 1809 and up.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On <a href="https://news.ycombinator.com/item?id=18659635">hackernews</a> I saw a <a href="https://blogs.windows.com/buildingapps/2018/12/11/windows-server-2019-includes-openssh/">Microsoft blog post</a> stating that Windows Server
+2019 now includes OpenSSH. In this post I&#39;ll try out both the client and server
+on a Windows 2019 server, including how to login as a Active Directory Domain
+user. All documentation from Microsoft on OpenSSH <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview">can be found here</a>. The
+bonus this time is how to elevate permissions via SSH on Windows, sudo but way
+more complicated. This guide is also applicable on Windows 10, build 1809 and
+up.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/server-2019-ssh.png"></p>
+<p><img src="https://raymii.org/s/inc/img/server-2019-ssh.png" alt=""></p>
 
 <h3>Installing OpenSSH on Windows</h3>
 
-<p>Fire up a powershell prompt as administrator and execute the following command to see if it&#39;s installed already:</p>
+<p>Fire up a powershell prompt as administrator and execute the following command
+to see if it&#39;s installed already:</p>
 
 <pre><code>Get-WindowsCapability -Online | ? Name -like &#39;OpenSSH*&#39;
 </code></pre>
@@ -104,47 +111,59 @@ Online        : True
 RestartNeeded : False
 </code></pre>
 
-<p>I had to install all Windows updates before the server part would install (up to december 2018).</p>
+<p>I had to install all Windows updates before the server part would install (up to
+december 2018).</p>
 
-<p>Start the openssh server and make sure it starts up automatically. Not required when you only want to use the openssh client.</p>
+<p>Start the openssh server and make sure it starts up automatically. Not required
+when you only want to use the openssh client.</p>
 
 <pre><code>Start-Service sshd
 Set-Service -Name sshd -StartupType &#39;Automatic&#39;
 </code></pre>
 
-<p>The setup automatically creates a firewall rule to allow OpenSSH. Check to make sure it is actually created.</p>
+<p>The setup automatically creates a firewall rule to allow OpenSSH. Check to make
+sure it is actually created.</p>
 
 <pre><code>Get-NetFirewallRule -Name *ssh*
 </code></pre>
 
 <h4>CMD or Powershell?</h4>
 
-<p>The default prompt when SSHing in to a windows server is <code>cmd.exe</code>. Rather bare and sparse, I recommend you change that to Powershell. It&#39;s Windows, so it has to be changed in the registry, but there is a powershell command to do so:</p>
+<p>The default prompt when SSHing in to a windows server is <code>cmd.exe</code>. Rather bare
+and sparse, I recommend you change that to Powershell. It&#39;s Windows, so it has
+to be changed in the registry, but there is a powershell command to do so:</p>
 
 <pre><code>New-ItemProperty -Path &quot;HKLM:\SOFTWARE\OpenSSH&quot; -Name DefaultShell -Value &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PropertyType String -Force
 </code></pre>
 
-<p>If you have installed <code>bash</code> you can set that to be the default shell by changing the full <code>-Value</code> path to the <code>bash.exe</code> binary.</p>
+<p>If you have installed <code>bash</code> you can set that to be the default shell by
+changing the full <code>-Value</code> path to the <code>bash.exe</code> binary.</p>
 
 <h3>Windows OpenSSH client</h3>
 
-<p>Using SSH on Windows (open up a powershell window) is as simple as typing in the command and the server to connect to:</p>
+<p>Using SSH on Windows (open up a powershell window) is as simple as typing in the
+command and the server to connect to:</p>
 
 <pre><code>ssh user@example.org
 </code></pre>
 
 <p>You will be prompted for a password, type it, and you&#39;re in.</p>
 
-<p>However, using passwords is insecure and will get your server compromised (eventually). SSH has the concept of keys, cryptographicly secure public private keys which can be used for authentication. The rest of this section covers the creation and placement of an SSH keypair on Windows.</p>
+<p>However, using passwords is insecure and will get your server compromised
+(eventually). SSH has the concept of keys, cryptographicly secure public private
+keys which can be used for authentication. The rest of this section covers the
+creation and placement of an SSH keypair on Windows.</p>
 
-<p>You want to install the <code>ssh-agent</code> if you are going to use Windows as ssh client:</p>
+<p>You want to install the <code>ssh-agent</code> if you are going to use Windows as ssh
+client:</p>
 
 <pre><code>Install-Module -Force OpenSSHUtils -Scope AllUsers
 Start-Service ssh-agent
 Set-Service -Name ssh-agent -StartupType &#39;Automatic&#39;
 </code></pre>
 
-<p>With an <code>ssh-agent</code>, you don&#39;t have to type the password for your private key every time you SSH to a server.</p>
+<p>With an <code>ssh-agent</code>, you don&#39;t have to type the password for your private key
+every time you SSH to a server.</p>
 
 <h4>Generating an SSH keypair on Windows</h4>
 
@@ -178,31 +197,45 @@ The key&#39;s randomart image is:
 +----[SHA256]-----+
 </code></pre>
 
-<p>Make sure to enter a passphrase. Create a backup of the folder (<code>C:\Users\Username\.ssh</code>), if you loose that private key you won&#39;t be able to login anymore.</p>
+<p>Make sure to enter a passphrase. Create a backup of the folder
+(<code>C:\Users\Username\.ssh</code>), if you loose that private key you won&#39;t be able to
+login anymore.</p>
 
-<p>Remember that private key files are the equivalent of a password should be protected the same way you protect your password. To help with that, use <code>ssh-agent</code> to securely store the private keys within a Windows security context, associated with your Windows login. To do that, start the <code>ssh-agent</code> service as Administrator (we already did that when installing) and use <code>ssh-add</code> to store the private key:</p>
+<p>Remember that private key files are the equivalent of a password should be
+protected the same way you protect your password. To help with that, use <code>ssh-
+agent</code> to securely store the private keys within a Windows security context,
+associated with your Windows login. To do that, start the <code>ssh-agent</code> service as
+Administrator (we already did that when installing) and use <code>ssh-add</code> to store
+the private key:</p>
 
 <pre><code>ssh-add ~\.ssh\id_rsa
 </code></pre>
 
 <h4>Add the key to another Windows server</h4>
 
-<p>Using the following commands we can copy our public key (not the private, never share your private parts) to a server running SSH. I assume you know how to do this on Linux, this example is for another Windows server. The permissions are managed differently.</p>
+<p>Using the following commands we can copy our public key (not the private, never
+share your private parts) to a server running SSH. I assume you know how to do
+this on Linux, this example is for another Windows server. The permissions are
+managed differently.</p>
 
-<p>In this example I use the user <code>remy</code> in the AD domain <code>SPCS</code>. The format then to login is <code>remy@spcs@example.org</code>, the first part (<code>remy@spcs</code>) is the username (and AD domain), the last part (<code>@example.org</code>) is the server to connect to.</p>
+<p>In this example I use the user <code>remy</code> in the AD domain <code>SPCS</code>. The format then
+to login is <code>remy@spcs@example.org</code>, the first part (<code>remy@spcs</code>) is the
+username (and AD domain), the last part (<code>@example.org</code>) is the server to
+connect to.</p>
 
 <p>Create the folder where the <code>authorized_keyfile</code> belongs:</p>
 
 <pre><code>ssh remy@spcs@example.org mkdir C:\users\remy\.ssh\
 </code></pre>
 
-<p>Use scp to copy the public key file generated previously: </p>
+<p>Use scp to copy the public key file generated previously:</p>
 
 <pre><code>scp C:\Users\Remy\.ssh\id_ed25519.pub remy@spcs@example.org:C:\Users\remy\.ssh\authorized_keys
 # note that my local user (leftmost part) is also remy. The server path is the rightmost part.
 </code></pre>
 
-<p>Change the permissions on the <code>authorized_keys</code> file on the server, otherwise ssh will ignore the file:</p>
+<p>Change the permissions on the <code>authorized_keys</code> file on the server, otherwise
+ssh will ignore the file:</p>
 
 <pre><code>ssh --% remy@spcs@example.org powershell -c $ConfirmPreference = &#39;None&#39;; Repair-AuthorizedKeyPermission C:\Users\Remy\.ssh\authorized_keys
 </code></pre>
@@ -218,7 +251,8 @@ Shall I make the above change?
       Repaired permissions
 </code></pre>
 
-<p>The <code>OpenSSHUtils</code> powershell module needs to be installed for the <code>Repair-AuthorizedKeyPermission</code> cmdlet to work.</p>
+<p>The <code>OpenSSHUtils</code> powershell module needs to be installed for the <code>Repair-
+AuthorizedKeyPermission</code> cmdlet to work.</p>
 
 <pre><code>Install-Module -Force OpenSSHUtils -Scope AllUsers
 </code></pre>
@@ -227,26 +261,38 @@ Shall I make the above change?
 
 <h3>Windows OpenSSH server</h3>
 
-<p>The Windows OpenSSH server is quite simple to configure. It has the regular <code>sshd_config</code> file for settings, with some parts specific to Windows. </p>
+<p>The Windows OpenSSH server is quite simple to configure. It has the regular
+<code>sshd_config</code> file for settings, with some parts specific to Windows.</p>
 
-<p>This is a screenshot where I SSH into a Windows server using my linux workstation:</p>
+<p>This is a screenshot where I SSH into a Windows server using my linux
+workstation:</p>
 
-<p><img src="https://raymii.org/s/inc/img/server-2019-ssh-2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/server-2019-ssh-2.png" alt=""></p>
 
 <h4>OpenSSH server configuration</h4>
 
-<p>This section is specifically for Windows related settings. I assume you know how to configure openssh on linux.</p>
+<p>This section is specifically for Windows related settings. I assume you know how
+to configure openssh on linux.</p>
 
-<p>The server reads it&#39;s configuration from <code>%programdata%\ssh\sshd_config</code>. You can copy and paste that path into a Windows Run dialog (<code>WIN+R</code>) to open Explorer in the correct location. </p>
+<p>The server reads it&#39;s configuration from <code>%programdata%\ssh\sshd_config</code>. You
+can copy and paste that path into a Windows Run dialog (<code>WIN+R</code>) to open
+Explorer in the correct location.</p>
 
-<p>When configuring user/group based rules with a domain user or group, use the following format: <code>user?domain*.</code> Windows allows multiple of formats for specifying domain principals, but many will conflict with standard Linux patterns. For that reason, <code>*</code> is added to cover FQDNs. Also, this approach uses <code>?</code> instead of <code>@</code> avoids conflict with the <code>username@host</code> format. </p>
+<p>When configuring user/group based rules with a domain user or group, use the
+following format: <code>user?domain*.</code> Windows allows multiple of formats for
+specifying domain principals, but many will conflict with standard Linux
+patterns. For that reason, <code>*</code> is added to cover FQDNs. Also, this approach uses
+<code>?</code> instead of <code>@</code> avoids conflict with the <code>username@host</code> format.</p>
 
-<p>To allow all users from the domain <code>EXAMPLE</code> in group <code>Domain Admins</code> to login via SSH:</p>
+<p>To allow all users from the domain <code>EXAMPLE</code> in group <code>Domain Admins</code> to login
+via SSH:</p>
 
 <pre><code>AllowGroups &quot;EXAMPLE\Domain Admins&quot;
 </code></pre>
 
-<p>It&#39;s better to create a specific security group (e.g. <code>sshusers</code>) and add the <code>Domain Admins</code> as a member. With a seperate group you can give or restrict the ssh permissions more granulary.</p>
+<p>It&#39;s better to create a specific security group (e.g. <code>sshusers</code>) and add the
+<code>Domain Admins</code> as a member. With a seperate group you can give or restrict the
+ssh permissions more granulary.</p>
 
 <p>To allow local users (non-domain) or local groups:</p>
 
@@ -256,18 +302,24 @@ AllowGroups sshusers
 
 <h4>PermitRootLogin on Windows</h4>
 
-<p><code>PermitRootLogin</code> is not applicable in Windows. To deny administrators from logging in via SSH, use a <code>DenyGroups</code> directive:</p>
+<p><code>PermitRootLogin</code> is not applicable in Windows. To deny administrators from
+logging in via SSH, use a <code>DenyGroups</code> directive:</p>
 
 <pre><code>DenyGroups Administrators
 </code></pre>
 
-<p>For Windows OpenSSH, the only available authentication methods are <code>password</code> and <code>publickey</code>.</p>
+<p>For Windows OpenSSH, the only available authentication methods are <code>password</code>
+and <code>publickey</code>.</p>
 
-<p>At the bottom of this article there is an alternative to <code>sudo</code>. How otherwise would you elevate permissions? Do note that it is quite complex.</p>
+<p>At the bottom of this article there is an alternative to <code>sudo</code>. How otherwise
+would you elevate permissions? Do note that it is quite complex.</p>
 
 <h4>AuthorizedKeysFile location on Windows</h4>
 
-<p>The default <code>AuthorizedKeysFile</code> locations are <code>.ssh/authorized_keys</code> and <code>.ssh/authorized_keys2</code>. This is in the users home folder (<code>C:\Users\Username</code>) (or the profile image path). If required, an absolute path can be provided (<code>D:\folder\authorized_keys</code>). </p>
+<p>The default <code>AuthorizedKeysFile</code> locations are <code>.ssh/authorized_keys</code> and
+<code>.ssh/authorized_keys2</code>. This is in the users home folder (<code>C:\Users\Username</code>)
+(or the profile image path). If required, an absolute path can be provided
+(<code>D:\folder\authorized_keys</code>).</p>
 
 <h3>Tips and tricks</h3>
 
@@ -275,7 +327,8 @@ AllowGroups sshusers
 
 <h4>ssh-copy-id</h4>
 
-<p>From a linux machine, the command ssh-copy-id can be used to copy your public key easily to another linux machine. This does not work on Windows:</p>
+<p>From a linux machine, the command ssh-copy-id can be used to copy your public
+key easily to another linux machine. This does not work on Windows:</p>
 
 <pre><code>$ ssh-copy-id administrator@10.0.0.133
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
@@ -288,17 +341,28 @@ operable program or batch file.
 The system cannot find the path specified.
 </code></pre>
 
-<p>You need to use the above commands listed under the SSH client section to copy the key and fix the permissions.</p>
+<p>You need to use the above commands listed under the SSH client section to copy
+the key and fix the permissions.</p>
 
 <h4>sudo</h4>
 
-<p>As you&#39;ve denied access to Administrators via SSH (just as you would not allow root login on Linux), you now need to have a way for people to elevate their permissions. On linux you would use <code>sudo su -</code> or the likes. On Windows, there is no sudo.  There is also no <a href="https://web.archive.org/web/20181218112521/https://superuser.com/questions/1200239/is-there-a-command-which-can-elevate-the-command-prompt-in-place/1200271">way to elevate permissions of an already running process</a>.</p>
+<p>As you&#39;ve denied access to Administrators via SSH (just as you would not allow
+root login on Linux), you now need to have a way for people to elevate their
+permissions. On linux you would use <code>sudo su -</code> or the likes. On Windows, there
+is no sudo. There is also no <a href="https://web.archive.org/web/20181218112521/https://superuser.com/questions/1200239/is-there-a-command-which-can-elevate-the-command-prompt-in-place/1200271">way to elevate permissions of an already running
+process</a>.</p>
 
-<p>Using the <code>runas</code> command fails because it cannot create a new window or ask UAC (because you&#39;re in a console SSH session).</p>
+<p>Using the <code>runas</code> command fails because it cannot create a new window or ask UAC
+(because you&#39;re in a console SSH session).</p>
 
-<p>There is a complex way of elevating your privileges. You need to run this in a powershell session as your user. First you create a <code>Credentials</code> object which has the username and password of the Administrator user. Then you use that <code>$Cred</code> object with either <code>Invoke-Command</code> to run a single noninteractive command, or with <code>Enter-PSSession</code> to get an interactive Powershell.</p>
+<p>There is a complex way of elevating your privileges. You need to run this in a
+powershell session as your user. First you create a <code>Credentials</code> object which
+has the username and password of the Administrator user. Then you use that
+<code>$Cred</code> object with either <code>Invoke-Command</code> to run a single noninteractive
+command, or with <code>Enter-PSSession</code> to get an interactive Powershell.</p>
 
-<p>Note that you first need to <code>ssh</code> into your windows server and start powershell. This can be done with one command:</p>
+<p>Note that you first need to <code>ssh</code> into your windows server and start powershell.
+This can be done with one command:</p>
 
 <pre><code>ssh user@windows.example.org powershell
 </code></pre>
@@ -313,7 +377,7 @@ $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $User
 Invoke-Command -Credential $Cred -ComputerName localhost -scriptblock { cmd.exe /c whoami }
 </code></pre>
 
-<p>Example output: </p>
+<p>Example output:</p>
 
 <pre><code>win-doipgfhik47\administrator
 </code></pre>
@@ -336,11 +400,13 @@ win-doipgfhik47\administrator
 
 <p>This is a screenshot of the entire process:</p>
 
-<p><img src="https://raymii.org/s/inc/img/server-2019-ssh-3.png"></p>
+<p><img src="https://raymii.org/s/inc/img/server-2019-ssh-3.png" alt=""></p>
 
-<p>Note that this by default only works on localhost, not from a remote computer. Unless you change the trustedhosts you will get an <code>Access denied</code> error. </p>
+<p>Note that this by default only works on localhost, not from a remote computer.
+Unless you change the trustedhosts you will get an <code>Access denied</code> error.</p>
 
-<p>This is also not really like sudo, but more like setting up a new <code>ssh</code> session from  <code>localhost</code> to <code>localhost</code> as root. (But, with powershell remoting). </p>
+<p>This is also not really like sudo, but more like setting up a new <code>ssh</code> session
+from <code>localhost</code> to <code>localhost</code> as root. (But, with powershell remoting).</p>
 </div><hr>Tags: <a href="../tags/microsoft.html" class="link">microsoft &nbsp;</a><a href="../tags/openssh.html" class="link">openssh &nbsp;</a><a href="../tags/server.html" class="link">server &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/windows.html" class="link">windows &nbsp;</a><a href="../tags/windows-server.html" class="link">windows-server &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

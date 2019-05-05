@@ -9,22 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
-This little nginx config snippet shows you how to catch all error codes and show a single unified error page.
+This little nginx config snippet shows you how to catch all error codes and show
+a single unified error page.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+This will respond to all HTTP error codes and return the `error.html` page from
+the site `root` folder.
 
-This will respond to all HTTP error codes and return the `error.html` page from the site `root` folder. 
+    
+    
+    error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 420 422 423 424 426 428 429 431 444 449 450 451 500 501 502 503 504 505 506 507 508 509 510 511 /error.html;
+    location  /error.html {
+        internal;
+    }
+    
 
-	error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 420 422 423 424 426 428 429 431 444 449 450 451 500 501 502 503 504 505 506 507 508 509 510 511 /error.html;
-	location  /error.html {
-		internal;
-	}
+[Official documentation][2] on error page. Sadly, there is no wildcard for this.
 
-
-[Official documentation](http://wiki.nginx.org/HttpCoreModule#error_page) on error page. Sadly, there is no wildcard for this.
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://wiki.nginx.org/HttpCoreModule#error_page
 
 ---
 

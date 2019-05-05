@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/mosaic.png">
+![][1]
 
 > The first webbrowser, created in 1992, displaying this website
 
@@ -22,92 +22,108 @@ distributions. I installed it, after huge download (1.5 MB), playing around with
 it is quite fun. Another fun fact according to Wikipedia is that Microsoft
 licensed Mosaic to create Internet Explorer in 1995.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 ### snap install mosaic
 
 Using the `snap` package manager you can install mosaic quite easily:
 
-	sudo snap install mosaic
+    
+    
+    sudo snap install mosaic
+    
 
 Output:
 
-	mosaic 2.7b6 from 'snapcrafters' installed
+    
+    
+    mosaic 2.7b6 from 'snapcrafters' installed
+    
 
 There is now a new application in your application menu or Desktop, which you
 can click on. If you want to run it from the command line, it's in `/snap`;
 
-	/snap/bin/mosaic
-
-
+    
+    
+    /snap/bin/mosaic
+    
 
 ### What does work?
 
 As a browser from so long ago, it works quite well. Not fancy, but fast and to
 the point.
 
-* Displaying text
-* Following links
-* Back and forward
-* Refresh
-* Bookmarks
-* Image viewing
-* View source
-* Save pages locally
-* FTP 
-* Gopher (not go, the precursor the HTTP)
-* NNTP (newsgroups)
+  * Displaying text
+  * Following links
+  * Back and forward
+  * Refresh
+  * Bookmarks
+  * Image viewing
+  * View source
+  * Save pages locally
+  * FTP 
+  * Gopher (not go, the precursor the HTTP)
+  * NNTP (newsgroups)
 
-A site like [CNN Lite (text only)](http://lite.cnn.io/en) works really well.
+A site like [CNN Lite (text only)][3] works really well.
 
 You can add notes to web pages with the "Annotate" menu, something modern
 browsers lack.
-
-
 
 ### What doesn't work?
 
 There is no javascript support, so you might see things like:
 
-	(adsbygoogle = window.adsbygoogle || []).push({}); 
+    
+    
+    (adsbygoogle = window.adsbygoogle || []).push({}); 
+    
 
 instead of the Google Adsense advertisement that should be there. So no tracking
 
 SSL/TLS also is not available. Any secure site will fail with the following
 error message:
 
-	ERROR
-
-	Requested document (URL https://raymii.org/s/) could not be accessed.
-
-	The information server either is not accessible or is refusing to serve the document
-	to you.
+    
+    
+    ERROR
+    
+    Requested document (URL https://raymii.org/s/) could not be accessed.
+    
+    The information server either is not accessible or is refusing to serve the document
+    to you.
+    
 
 Because there is no SSL and no Javascript, most of the sites you try will not
 work due to an SSL redirect or a Cookiewall.
 
 If you have a spare server somewhere you can setup a reverse proxy for sites you
-frequent, stripping SSL from it. 
+frequent, stripping SSL from it.
 
 ### Manual install (no snap)
 
-If you're not on Ubuntu or don't have snap installed, you can use the upstream
-source of the snap package [here](https://github.com/alandipert/ncsa-mosaic):
+If you're not on Ubuntu or don't have snap installed, you can use the upstream source of the snap package [here][4]:
+    
+    
+    sudo apt-get install build-essential libmotif-dev libjpeg62-dev libpng12-dev x11proto-print-dev libxmu-headers libxpm-dev libxmu-dev git
+    
+    git clone https://github.com/alandipert/ncsa-mosaic
+    
+    cd ncsa-mosaic
+    
+    make linux
+    
+    src/Mosaic
+    
 
-	sudo apt-get install build-essential libmotif-dev libjpeg62-dev libpng12-dev x11proto-print-dev libxmu-headers libxpm-dev libxmu-dev git
+[Read more on Mosaic][5] on Wikipedia.
 
-	git clone https://github.com/alandipert/ncsa-mosaic
-
-	cd ncsa-mosaic
-
-	make linux
-
-	src/Mosaic
-
-[Read more on Mosaic](https://en.wikipedia.org/wiki/Mosaic_(web_browser)) on Wikipedia.
+   [1]: https://raymii.org/s/inc/img/mosaic.png
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: http://lite.cnn.io/en
+   [4]: https://github.com/alandipert/ncsa-mosaic
+   [5]: https://en.wikipedia.org/wiki/Mosaic_(web_browser)
 
 ---
 

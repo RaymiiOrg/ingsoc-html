@@ -9,48 +9,58 @@ Format      : 	Markdown/HTML
 
 
 
-The Nitrokey (start) can be upgraded to a newer GNUK firmware. However, this can only be done via ST Link or DFU, if you use the Gnuk USB firmware upgrade you will brick the device. This guide shows you how to attach a DFU adapter and how to flash firmware to a Nitrokey, both for upgrading or unbricking an USB upgraded one. 
+The Nitrokey (start) can be upgraded to a newer GNUK firmware. However, this can
+only be done via ST Link or DFU, if you use the Gnuk USB firmware upgrade you
+will brick the device. This guide shows you how to attach a DFU adapter and how
+to flash firmware to a Nitrokey, both for upgrading or unbricking an USB
+upgraded one.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+You need to build the `gnuk` firmware. The Device ID needs to be changed to
+`20a0:4211` in the file `gnuk/USB_DEBVICE_ID`:
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-You need to build the `gnuk` firmware. The Device ID needs to be changed to `20a0:4211` in the file `gnuk/USB_DEBVICE_ID`:
-
+    
+    
     $ cat GNUK_USB_DEVICE_ID 
     # VID:PID bcdDev  Product_STRING  Vendor_STRING
     234b:0000 0200  Gnuk Token  Free Software Initiative of Japan
     20a0:4211 0200  Nitrokey
     ##########<TAB> ##<TAB> ##########<TAB> #################
+    
 
-For the `gnuk` firmware compilation, please see [this article](https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html). I will not cover that here any further.
+For the `gnuk` firmware compilation, please see [this article][2]. I will not
+cover that here any further.
 
 ### Requirements and connection
 
 You do need the following:
 
-- USB header ([like this](https://raymii.org/s/inc/img/stdemo/usb-header.png), I hot-aired one of an old motherboard)
-- Small bridge wire
-- USB to RS-232 serial adapter ([like this](https://raymii.org/s/inc/img/usb-serial.jpg))
-- Small wires
-- Caseless Nitrokey (note that you probably will break the case).
-- [stm32flash](https://sourceforge.net/p/stm32flash/wiki/Home/)
-- 
+  * USB header ([like this][3], I hot-aired one of an old motherboard)
+  * Small bridge wire
+  * USB to RS-232 serial adapter ([like this][4])
+  * Small wires
+  * Caseless Nitrokey (note that you probably will break the case).
 
-DFU is a simple protocol via serial port which allows programming but no debugging. On the Nitrokey hardware the appropriate pins are exposed over the USB connector. 
+## \- [stm32flash][5]
 
-Connect the wires from the USB serial adapter to the USB header (Nitrokey USB Plug <-> Serial/TTL adapter):
+DFU is a simple protocol via serial port which allows programming but no
+debugging. On the Nitrokey hardware the appropriate pins are exposed over the
+USB connector.
 
-- Pin 1, VCC <-> VCC (5v)
-- Pin 2, D-  <-> TX
-- Pin 3, D+  <-> RX
-- Pin 4, GND <-> GND
+Connect the wires from the USB serial adapter to the USB header (Nitrokey USB
+Plug <-> Serial/TTL adapter):
+
+  * Pin 1, VCC <-> VCC (5v)
+  * Pin 2, D- <-> TX
+  * Pin 3, D+ <-> RX
+  * Pin 4, GND <-> GND
 
 This diagram represents the pinout of the USB socket:
 
-
+    
+    
       ################### 
       #                 # 
       # ############### # 
@@ -59,34 +69,42 @@ This diagram represents the pinout of the USB socket:
       ################### 
          #   #   #   #   
          #   #   #   #    
-
+    
          1   2   3   4
+    
 
-(This nice ascii art comes from the [Nitrokey Pro Hardware](https://github.com/Nitrokey/nitrokey-pro-hardware/blob/master/README) repo.)
+(This nice ascii art comes from the [Nitrokey Pro Hardware][6] repo.)
 
-You also need a small wire to bridge the two holes before you attach the Nitrokey so that it boots into DFU mode. 
+You also need a small wire to bridge the two holes before you attach the
+Nitrokey so that it boots into DFU mode.
 
 Here is a picture of my setup:
 
-<img src="https://raymii.org/s/inc/img/nitrokey-dfu-2.png"> 
+![][7]
 
 This was my complete workspace:
 
-<img src="https://raymii.org/s/inc/img/nitrokey-dfu-1.png"> 
-
+![][8]
 
 ### Unblocking the flash
 
-The STM32 controller has a flash-protection bit which prohibits writing to the flash. The `stm32flash` tool says it's able to unblock that, but for the Nitrokey this fails:
+The STM32 controller has a flash-protection bit which prohibits writing to the
+flash. The `stm32flash` tool says it's able to unblock that, but for the
+Nitrokey this fails:
 
+    
+    
     sudo stm32flash -u /dev/ttyUSB0 
+    
 
 Output:
 
+    
+    
     stm32flash 0.5
-
+    
     http://stm32flash.sourceforge.net/
-
+    
     Interface serial_posix: 57600 8E1
     Version      : 0x22
     Option 1     : 0x00
@@ -99,53 +117,65 @@ Output:
     Write-unprotecting flash
     Got NACK from device on command 0x73
     Done.
+    
 
-So sadly I have to use Windows software, the [ST Demo Loader](http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/flasher-stm32.html). Download and install it and connect the DFU-Nitrokey to the Windows machine.
+So sadly I have to use Windows software, the [ST Demo Loader][9]. Download and
+install it and connect the DFU-Nitrokey to the Windows machine.
 
 **Update**
 
-[This post](https://lists.alioth.debian.org/pipermail/gnuk-users/2016q4/000403.html) on the mailinglist states that you could use the `-k` flag with `stm32flash` to remove the `read` protection as well. It also states to not forget to use the `-j` to read-protect the Nitrokey again after you're done flashing if you intend to put real keys on there.
+[This post][10] on the mailinglist states that you could use the `-k` flag with
+`stm32flash` to remove the `read` protection as well. It also states to not
+forget to use the `-j` to read-protect the Nitrokey again after you're done
+flashing if you intend to put real keys on there.
 
-I tested this and it works, so you don't need the Windows tool in the end. Scroll down for the Linux/`stm32flash` way.
+I tested this and it works, so you don't need the Windows tool in the end.
+Scroll down for the Linux/`stm32flash` way.
 
 **End update**
 
-Also copy the compiled GNUK binary (`gnuk/src/build/gnuk.bin`) to the Windows machine.
+Also copy the compiled GNUK binary (`gnuk/src/build/gnuk.bin`) to the Windows
+machine.
 
 ### Flashing via Windows
 
 Start the utility up and select the correct COM port (COM4 for me):
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-1.png">
+![][11]
 
-If the protection is set the tool will show a red traffic light and a `Remove Protection` button. Click and complete that, then click next:
+If the protection is set the tool will show a red traffic light and a `Remove
+Protection` button. Click and complete that, then click next:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-2.png">
+![][12]
 
 Click Next:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-3.png">
+![][13]
 
-Select `Download to device`, `Erase the necessary pages` and choose the `gnuk.bin` file:
+Select `Download to device`, `Erase the necessary pages` and choose the
+`gnuk.bin` file:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-4.png">
+![][14]
 
 It will erase the flash:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-5.png">
+![][15]
 
 Then upload the firmware:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-6.png"> 
+![][16]
 
 It will complete with a nice green bar:
 
-<img src="https://raymii.org/s/inc/img/stdemo/flash-7.png"> 
+![][17]
 
-Now the binary is flashed and your Nitrokey should work. In my case, it sucessfully worked with gnuk 1.2:
+Now the binary is flashed and your Nitrokey should work. In my case, it
+sucessfully worked with gnuk 1.2:
 
+    
+    
     $ gpg --card-status
-
+    
     Reader ...........: Nitrokey Nitrokey Start (FSIJ-1.2.1-87042430) 00 00
     Application ID ...: D276000124010200FFFE870424300000
     Version ..........: 2.0
@@ -174,12 +204,14 @@ Now the binary is flashed and your Nitrokey should work. In my case, it sucessfu
                                       card-no: FFFE 87042430
     ssb>  rsa2048/0x637A80D631D521C2  created: 2016-10-11  expires: 2016-10-18
                                       card-no: FFFE 87042430
-
+    
 
 An EC 25519 key can now also be used:
 
+    
+    
     $ gpg --card-status
-
+    
     Reader ...........: Nitrokey Nitrokey Start (FSIJ-1.2.1-87042430) 00 00
     Application ID ...: D276000124010200FFFE870424300000
     Version ..........: 2.0
@@ -202,20 +234,26 @@ An EC 25519 key can now also be used:
     General key info..: pub  ed25519/0x101D491F08E7FD60 2016-10-11 test remy ecc (gnuk 1.2) <nitrokey@raymii.nl>
     sec>  ed25519/0x101D491F08E7FD60  created: 2016-10-11  expires: 2016-10-18
                                       card-no: FFFE 87042430
-
+    
 
 ### Flashing via Linux
 
-First remote the read protection bit from the device (Device should be in bootloader mode with the wire bridge for all these actions):
+First remote the read protection bit from the device (Device should be in
+bootloader mode with the wire bridge for all these actions):
 
+    
+    
     sudo stm32flash -k /dev/ttyUSB0 
+    
 
 Output:
 
+    
+    
     stm32flash 0.5
-
+    
     http://stm32flash.sourceforge.net/
-
+    
     Interface serial_posix: 57600 8E1
     Version      : 0x22
     Option 1     : 0x00
@@ -227,18 +265,23 @@ Output:
     - System RAM : 2KiB
     Read-UnProtecting flash
     Done.
-
+    
 
 Flash the binary and start it up after the flash:
 
+    
+    
     sudo stm32flash -w build/gnuk.bin -g 0x0 /dev/ttyUSB0 
+    
 
 Output:
 
+    
+    
     stm32flash 0.5
-
+    
     http://stm32flash.sourceforge.net/
-
+    
     Using Parser : Raw BINARY
     Interface serial_posix: 57600 8E1
     Version      : 0x22
@@ -252,20 +295,26 @@ Output:
     Write to memory
     Erasing memory
     Wrote address 0x0801b000 (100.00%) Done.
-
+    
     Starting execution at address 0x08000000... done.
+    
 
+Do set the `read protection` back on after flashing, otherwise your keys might
+be exposed:
 
-Do set the `read protection`  back on after flashing, otherwise your keys might be exposed:
-
+    
+    
     sudo stm32flash -j /dev/ttyUSB0 
+    
 
 Output:
 
+    
+    
     stm32flash 0.5
-
+    
     http://stm32flash.sourceforge.net/
-
+    
     Interface serial_posix: 57600 8E1
     Version      : 0x22
     Option 1     : 0x00
@@ -277,20 +326,26 @@ Output:
     - System RAM : 2KiB
     Read-Protecting flash
     Done.
-
+    
 
 ### NeuG on the Nitrokey Start
 
-I did try to flash NeuG to the device, but that resulted in a blinking green LED and nothing else. Here's the command for reference.
+I did try to flash NeuG to the device, but that resulted in a blinking green LED
+and nothing else. Here's the command for reference.
 
+    
+    
     sudo stm32flash -w ../../neug/src/build/neug.bin -g 0x0 /dev/ttyUSB0 
+    
 
 Output:
 
+    
+    
     stm32flash 0.5
-
+    
     http://stm32flash.sourceforge.net/
-
+    
     Using Parser : Raw BINARY
     Interface serial_posix: 57600 8E1
     Version      : 0x22
@@ -304,13 +359,29 @@ Output:
     Write to memory
     Erasing memory
     Wrote address 0x08005c24 (100.00%) Done.
-
+    
     Starting execution at address 0x08000000... done.
-
+    
 
 NeuG does work on the FST-01.
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html
+   [3]: https://raymii.org/s/inc/img/stdemo/usb-header.png
+   [4]: https://raymii.org/s/inc/img/usb-serial.jpg
+   [5]: https://sourceforge.net/p/stm32flash/wiki/Home/
+   [6]: https://github.com/Nitrokey/nitrokey-pro-hardware/blob/master/README
+   [7]: https://raymii.org/s/inc/img/nitrokey-dfu-2.png
+   [8]: https://raymii.org/s/inc/img/nitrokey-dfu-1.png
+   [9]: http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/flasher-stm32.html
+   [10]: https://lists.alioth.debian.org/pipermail/gnuk-users/2016q4/000403.html
+   [11]: https://raymii.org/s/inc/img/stdemo/flash-1.png
+   [12]: https://raymii.org/s/inc/img/stdemo/flash-2.png
+   [13]: https://raymii.org/s/inc/img/stdemo/flash-3.png
+   [14]: https://raymii.org/s/inc/img/stdemo/flash-4.png
+   [15]: https://raymii.org/s/inc/img/stdemo/flash-5.png
+   [16]: https://raymii.org/s/inc/img/stdemo/flash-6.png
+   [17]: https://raymii.org/s/inc/img/stdemo/flash-7.png
 
 ---
 

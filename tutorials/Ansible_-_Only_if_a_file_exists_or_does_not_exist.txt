@@ -105,9 +105,7 @@ is `False`, like so:
     
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-
    [3]: http://docs.ansible.com/command_module.html
 
 ---

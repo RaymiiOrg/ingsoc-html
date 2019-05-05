@@ -69,12 +69,16 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>These are quick and dirty notes on generating a certificate authority (CA), intermediate certificate authorities and end certificates using OpenSSL. It includes OCSP, CRL and CA Issuer information and specific issue and expiry dates.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>These are quick and dirty notes on generating a certificate authority (CA),
+intermediate certificate authorities and end certificates using OpenSSL. It
+includes OCSP, CRL and CA Issuer information and specific issue and expiry
+dates.</p>
 
-<p>We&#39;ll set up our own root CA. We&#39;ll use the root CA to generate an example intermediate CA. We&#39;ll use the intermediate CA to sign end user certificates.</p>
+<p>We&#39;ll set up our own root CA. We&#39;ll use the root CA to generate an example
+intermediate CA. We&#39;ll use the intermediate CA to sign end user certificates.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <ul>
 <li>31-03-2015: initial article</li>
@@ -104,7 +108,8 @@ e is 65537 (0x10001)
 
 <p>If you want to password-protect this key, add the option <code>-aes256</code>.</p>
 
-<p>Create the self-signed root CA certificate <code>ca.crt</code>; you&#39;ll need to provide an identity for your root CA:</p>
+<p>Create the self-signed root CA certificate <code>ca.crt</code>; you&#39;ll need to provide an
+identity for your root CA:</p>
 
 <pre><code>openssl req -sha256 -new -x509 -days 1826 -key rootca.key -out rootca.crt
 </code></pre>
@@ -204,7 +209,8 @@ authorityKeyIdentifier=keyid:always
  OCSP;URI.1 = http://pki.backup.com/ocsp/
 </code></pre>
 
-<p>If you need to set a specific certificate start / expiry date, add the following to <code>[myca]</code></p>
+<p>If you need to set a specific certificate start / expiry date, add the following
+to <code>[myca]</code></p>
 
 <pre><code># format: YYYYMMDDHHMMSS
 default_enddate = 20191222035911
@@ -365,9 +371,12 @@ authorityKeyIdentifier=keyid:always
  OCSP;URI.1 = http://pki.backup.com/ocsp/
 </code></pre>
 
-<p>Change the <code>[alt_names]</code> section to whatever you need as Subject Alternative names. Remove it including the <code>subjectAltName  = @alt_names</code> line if you don&#39;t want a Subject Alternative Name.</p>
+<p>Change the <code>[alt_names]</code> section to whatever you need as Subject Alternative
+names. Remove it including the <code>subjectAltName = @alt_names</code> line if you don&#39;t
+want a Subject Alternative Name.</p>
 
-<p>If you need to set a specific certificate start / expiry date, add the following to <code>[myca]</code></p>
+<p>If you need to set a specific certificate start / expiry date, add the following
+to <code>[myca]</code></p>
 
 <pre><code># format: YYYYMMDDHHMMSS
 default_enddate = 20191222035911
@@ -381,11 +390,14 @@ default_startdate = 20181222035911
 openssl crl -inform PEM -in intermediate1.crl.pem -outform DER -out intermediate1.crl
 </code></pre>
 
-<p>If you get an error here about openssl not able to find a file (<code>certindex.attr</code>), that can happen. We&#39;ll retry these commands after you&#39;ve signed your first end user certiicate.</p>
+<p>If you get an error here about openssl not able to find a file
+(<code>certindex.attr</code>), that can happen. We&#39;ll retry these commands after you&#39;ve
+signed your first end user certiicate.</p>
 
 <h3>Creating end user certificates</h3>
 
-<p>We use this new intermediate CA to generate an end user certificate. Repeat these steps for every end user certificate you want to sign with this CA.</p>
+<p>We use this new intermediate CA to generate an end user certificate. Repeat
+these steps for every end user certificate you want to sign with this CA.</p>
 
 <pre><code>mkdir enduser-certs
 </code></pre>
@@ -467,7 +479,8 @@ Revoking Certificate 1000.
 Data Base Updated
 </code></pre>
 
-<p>Create the certificate chain file by concatenating the Root and intermediate 1 certificates together.</p>
+<p>Create the certificate chain file by concatenating the Root and intermediate 1
+certificates together.</p>
 
 <pre><code>cat ../root/rootca.crt intermediate1.crt &gt; enduser-certs/enduser-example.com.chain
 </code></pre>
@@ -479,17 +492,20 @@ enduser-example.com.key
 enduser-example.com.chain
 </code></pre>
 
-<p>You can also let the end user supply their own CSR and just send them the <code>.crt</code> file. Do not delete that from the server, otherwise you cannot revoke it.</p>
+<p>You can also let the end user supply their own CSR and just send them the <code>.crt</code>
+file. Do not delete that from the server, otherwise you cannot revoke it.</p>
 
 <h3>Validating the certificate</h3>
 
-<p>You can validate the end user certificate against the chain using the following command:</p>
+<p>You can validate the end user certificate against the chain using the following
+command:</p>
 
 <pre><code>openssl verify -CAfile enduser-certs/enduser-example.com.chain enduser-certs/enduser-example.com.crt 
 enduser-certs/enduser-example.com.crt: OK
 </code></pre>
 
-<p>You can also validate it against the CRL. Concatenate the PEM CRL and the chain together first:</p>
+<p>You can also validate it against the CRL. Concatenate the PEM CRL and the chain
+together first:</p>
 
 <pre><code>cat ../root/rootca.crt intermediate1.crt intermediate1.crl.pem &gt; enduser-certs/enduser-example.com.crl.chain
 </code></pre>

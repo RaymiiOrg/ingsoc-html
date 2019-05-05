@@ -69,22 +69,31 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>pfSense is a fast and simple FreeBSD based firewall appliance with a nice web managent interface and the power of the pf firewall underneath. Normally the web interface is only accessible from the management LAN (or LAN by default) interface. If you for whatever reason locked yourself out or need access from a different IP via the WAN interface you can use the easyrule command line to temporarly add a rule that allows your remote IP in. This simple snippet shows you how.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>pfSense is a fast and simple FreeBSD based firewall appliance with a nice web
+managent interface and the power of the pf firewall underneath. Normally the web
+interface is only accessible from the management LAN (or LAN by default)
+interface. If you for whatever reason locked yourself out or need access from a
+different IP via the WAN interface you can use the easyrule command line to
+temporarly add a rule that allows your remote IP in. This simple snippet shows
+you how.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>The following command adds a firewall rule, allowing tcp traffic in on port 443 from remote IP XX.XX.XX.XX: to the WAN IP on YY.YY.YY.YY:</p>
+<p>The following command adds a firewall rule, allowing tcp traffic in on port 443
+from remote IP XX.XX.XX.XX: to the WAN IP on YY.YY.YY.YY:</p>
 
 <pre><code>easyrule pass wan tcp XX.XX.XX.XX YY.YY.YY.YY 443
 </code></pre>
 
-<p>You can also allow SSH access and set up a remote port forward (<code>ssh -L localport:remoteip:remoteport remoteip</code>):</p>
+<p>You can also allow SSH access and set up a remote port forward (<code>ssh -L
+localport:remoteip:remoteport remoteip</code>):</p>
 
 <pre><code>easyrule pass wan tcp XX.XX.XX.XX YY.YY.YY.YY 22
 </code></pre>
 
-<p>Remember to remove the rule when you&#39;ve restored access to the web interface via your regular way.</p>
+<p>Remember to remove the rule when you&#39;ve restored access to the web interface via
+your regular way.</p>
 
 <p>See other methods to get back in the webinterface on the <a href="https://doc.pfsense.org/index.php/Locked_out_of_the_WebGUI">pfSense Wiki.</a></p>
 </div><hr>Tags: <a href="../tags/bsd.html" class="link">bsd &nbsp;</a><a href="../tags/firewall.html" class="link">firewall &nbsp;</a><a href="../tags/freebsd.html" class="link">freebsd &nbsp;</a><a href="../tags/iptables.html" class="link">iptables &nbsp;</a><a href="../tags/pf.html" class="link">pf &nbsp;</a><a href="../tags/pfsense.html" class="link">pfsense &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">

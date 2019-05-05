@@ -69,20 +69,33 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add command line arguments to your script. It is very simple, non-positional and does not use getopts.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to add command line arguments to your script. It is very simple, non-
+positional and does not use getopts.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
 
-<p>Sometimes a script need to have a variable which you don&#39;t know on forehand or can change later. Or you have a script which works on a file, therefore you need a filename. For example, when you have a script that adds a watermark to an image. It is nice if you can give both the filename and the watermark as parameters to the script.</p>
+<p>Sometimes a script need to have a variable which you don&#39;t know on forehand or
+can change later. Or you have a script which works on a file, therefore you need
+a filename. For example, when you have a script that adds a watermark to an
+image. It is nice if you can give both the filename and the watermark as
+parameters to the script.</p>
 
-<p>Note that this is very very simple. The arguments must be given in order and it does not support parameters like <code>--file/-f</code>. If you need something quick and simple, this is very usable, if you need something more advanced it might be better to take a look at <code>getopts</code> or <code>shift</code>.</p>
+<p>Note that this is very very simple. The arguments must be given in order and it
+does not support parameters like <code>--file/-f</code>. If you need something quick and
+simple, this is very usable, if you need something more advanced it might be
+better to take a look at <code>getopts</code> or <code>shift</code>.</p>
 
-<p>The following example takes one required parameter, and one optional one. If the first (filename) is not given, an error message plus usage is printed and the script exits. A second parameter can be given but is optional. If that is not given the script will use the default.</p>
+<p>The following example takes one required parameter, and one optional one. If the
+first (filename) is not given, an error message plus usage is printed and the
+script exits. A second parameter can be given but is optional. If that is not
+given the script will use the default.</p>
 
-<p>By using the <code>-z</code> option in the <code>if</code> statement, we check if the variable is null, that is, has zero length.</p>
+<p>By using the <code>-z</code> option in the <code>if</code> statement, we check if the variable is
+null, that is, has zero length.</p>
 
 <pre><code>if [[ -z &quot;${1}&quot; ]]; then
     echo -e &quot;[ERROR] Please give a filename to watermark and an optional watermark. Otherwise the default is used.&quot;

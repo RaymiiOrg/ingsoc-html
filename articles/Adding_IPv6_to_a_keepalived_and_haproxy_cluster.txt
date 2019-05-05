@@ -9,69 +9,109 @@ Format      : 	Markdown/HTML
 
 
 
+At work I regularly build high-available clusters for customers, where the setup
+is distributed over multiple datacenters with failover software. If one
+component fails, the service doesn't experience issues or downtime due to the
+failure. Recently I was tasked with expanding a cluster setup to be also
+reachable via IPv6. This article goes over the settings and configuration
+required for haproxy and keepalived for IPv6. The internal cluster will only be
+IPv4, the loadbalancer terminates HTTP and HTTPS connections.
 
-At work I regularly build high-available clusters for customers, where the setup is distributed over multiple datacenters with failover software. If one component fails, the service doesn't experience issues or downtime due to the failure. Recently I was tasked with expanding a cluster setup to be also reachable via IPv6. This article goes over the settings and configuration required for haproxy and keepalived for IPv6. The internal cluster will only be IPv4, the loadbalancer terminates HTTP and HTTPS connections.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+### Cluster setup
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+![cluster][2]
 
-### Cluster setup 
+This diagram gives a general idea of the clusters I often build at work. The
+CloudVPS network is fully redundant over multiple data centers, so I don't have
+to worry about that part. A setup often consist out of the following components
+per data center: a loadbalancer, multiple application servers (php, apache,
+rails, python, java), a database server (mysql/galera or postgresql). So you
+have three loadbalancer, three databaseservers and three or more application
+servers in total. Often there are extra components like DRBD/NFS for file
+storage, Redis as a key/value store, mongodb or elasticsearch. (All which can be
+clustered). Because we have three datacenters there is enough for a quorum.
+Sometimes customers choose just two datacenters for cost reasons, then we
+explain the issues without quorum and make them sign off the risks in the
+contract.
 
-<img src="https://raymii.org/s/inc/img/cloudvps-cluster.png" alt=cluster>
+The clusters are IPv4 internally, with keepalived or Corosync/Pacemaker handling
+the High Available IP addres (VIP). The loadbalancers all have their own IP and
+share one or more external VIP's via the cluster software. They also have a
+internal VIP because they function as a gateway for the internal servers. If one
+loadbalancer fails, VRRP detects that and the VIP becomes active on one of the
+other servers.
 
-This diagram gives a general idea of the clusters I often build at work. The CloudVPS network is fully redundant over multiple data centers, so I don't have to worry about that part. A setup often consist out of the following components per data center: a loadbalancer, multiple application servers (php, apache, rails, python, java), a database server (mysql/galera or postgresql). So you have three loadbalancer, three databaseservers and three or more application servers in total. Often there are extra components like DRBD/NFS for file storage, Redis as a key/value store, mongodb or elasticsearch. (All which can be clustered). Because we have three datacenters there is enough for a quorum. Sometimes customers choose just two datacenters for cost reasons, then we explain the issues without quorum and make them sign off the risks in the contract.
+For complex setups with depencencies and orders we use Corosync, for example
+with DRBD/NFS, so make sure the starting order is correct. First DRBD mount,
+then the VIP, then NFS. Most of the time keepalived is enough.
 
-The clusters are IPv4 internally, with keepalived or Corosync/Pacemaker handling the High Available IP addres (VIP). The loadbalancers all have their own IP and share one or more external VIP's via the cluster software. They also have a internal VIP because they function as a gateway for the internal servers. If one loadbalancer fails, VRRP detects that and the VIP becomes active on one of the other servers. 
+Adding IPv6 is suprisingly easy, so this is a short article covering the
+following:
 
-For complex setups with depencencies and orders we use Corosync, for example with DRBD/NFS, so make sure the starting order is correct. First DRBD mount, then the VIP, then NFS. Most of the time keepalived is enough.
+  * IPv6 on the OS
+  * keepalived
+  * haproxy
 
-Adding IPv6 is suprisingly easy, so this is a short article covering the following:
+The internal network stays the same, the load balancer terminates all traffic
+and sends it on over IPv4 to the application servers, which do not need to be
+configured with IPv6.
 
-- IPv6 on the OS
-- keepalived
-- haproxy
-
-The internal network stays the same, the load balancer terminates all traffic and sends it on over IPv4 to the application servers, which do not need to be configured with IPv6.
-
-In our case all serves come with a /64 IPv6 natively so there is no network configuration on switches or routers included in this guide.
+In our case all serves come with a /64 IPv6 natively so there is no network
+configuration on switches or routers included in this guide.
 
 ### Operating System
 
-The clusters run Ubuntu (16.04) most of the time, so in `/etc/network/interfaces` there must be an IPv6 address:
+The clusters run Ubuntu (16.04) most of the time, so in
+`/etc/network/interfaces` there must be an IPv6 address:
 
+    
+    
     iface eth0 inet6 static
     address 2a02:123:45:67ab::1/48
     netmask 48
     gateway 2a02:123:45::1
+    
 
-This is not the IPv6 address you'll use as the VIP, but a local IPv6 address for the machine. You don't configure the VIP on the OS.
+This is not the IPv6 address you'll use as the VIP, but a local IPv6 address for
+the machine. You don't configure the VIP on the OS.
 
-We have ACL rules on the backend in our hypervisor environment so I added an extra IPv6 range to the cluster for use with high-availability:
+We have ACL rules on the backend in our hypervisor environment so I added an
+extra IPv6 range to the cluster for use with high-availability:
 
+    
+    
     2a02:123:45:67bb::1/48
+    
 
-(example range in this case, which will be used inside haproxy and keepalived as IPv6 VIP.)
+(example range in this case, which will be used inside haproxy and keepalived as
+IPv6 VIP.)
 
 You also don't need to configure the following sysctl for ipv6:
 
+    
+    
     net.ipv4.ip_nonlocal_bind=1
+    
 
 We handle that inside of haproxy and keepalived.
 
-
 ### Keepalived
 
-This is tested with keepalived in ubuntu 16.04, version 1.2.19. Adding the IPv6 address to the `virtual_ipaddress` section and restarting keepalived is enough:
+This is tested with keepalived in ubuntu 16.04, version 1.2.19. Adding the IPv6
+address to the `virtual_ipaddress` section and restarting keepalived is enough:
 
+    
+    
     vrrp_sync_group VG_1 {
          group {
             EXTERN
             INTERN
          }
     }
-
+    
     vrrp_instance EXTERN {
         interface eth0
         virtual_router_id 12
@@ -79,54 +119,65 @@ This is tested with keepalived in ubuntu 16.04, version 1.2.19. Adding the IPv6 
         advert_int 1
         smtp_alert
         notify /usr/local/bin/keepalived-extern.sh
-
+    
         authentication {
             auth_type PASS
             auth_pass hunter2
         }
-
+    
         virtual_ipaddress {
             1.2.3.4/32
             2a02:123:45:67bb::1/32
         }
     }
-
-
+    
 
 ### haproxy
 
-haproxy is suprisingly easy with IPv6. Just add it to your `frontend` section as a `bind` option:
+haproxy is suprisingly easy with IPv6. Just add it to your `frontend` section as
+a `bind` option:
 
-	frontend http-in
-	      mode http
-	      bind 1.2.3.4:80
-	      bind 2a02:123:45:67bb::1:80 transparent
-	      option httplog
-	      option forwardfor
-	      option http-server-close
-	      option httpclose
-	      reqadd X-Forwarded-Proto:\ http
-	      http-request add-header X-Real-IP %[src]
-	      default_backend appserver
+    
+    
+    frontend http-in
+          mode http
+          bind 1.2.3.4:80
+          bind 2a02:123:45:67bb::1:80 transparent
+          option httplog
+          option forwardfor
+          option http-server-close
+          option httpclose
+          reqadd X-Forwarded-Proto:\ http
+          http-request add-header X-Real-IP %[src]
+          default_backend appserver
+    
 
-You must add the `transparant` option. Otherwise, haproxy will not start if the VIP is not on the machine itself. (kind of like nonlocal.bind sysctl).
+You must add the `transparant` option. Otherwise, haproxy will not start if the
+VIP is not on the machine itself. (kind of like nonlocal.bind sysctl).
 
 haproxy is intelligent enough to understand the port number in the address. No need to screw around with brackets like `[2a02:123:45:67bb::1]:80` or special options.
 
 Restart haproxy and it's configured:
 
+    
+    
     netstat -tlpn | grep haproxy
+    
 
 Output:
 
+    
+    
     tcp        0      0 1.2.3.4:80       0.0.0.0:*               LISTEN      1163/haproxy
     tcp        0      0 1.2.3.4:443        0.0.0.0:*               LISTEN      1163/haproxy
     tcp6       0      0 2a02:123:45:67bb::1:80  :::*                    LISTEN      1163/haproxy
     tcp6       0      0 2a02:124:45:67bb::1:443 :::*                    LISTEN      1163/haproxy
-
-
+    
 
 The version of haproxy is the one from Ubuntu 16.04, 1.6.3.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/inc/img/cloudvps-cluster.png
 
 ---
 

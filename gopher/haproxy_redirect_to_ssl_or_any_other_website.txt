@@ -9,24 +9,31 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to use haproxy to redirect http traffic to https or any other website. 
+This snippet shows you how to use haproxy to redirect http traffic to https or
+any other website.
 
 This snippet was tested on haproxy 1.5.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 To redirect traffic from a haproxy frontend, use the following config:
 
-	frontend example-frontend
-	  bind 10.20.30.40:80
-	  redirect location https://example.org:443
+    
+    
+    frontend example-frontend
+      bind 10.20.30.40:80
+      redirect location https://example.org:443
+    
 
-As you can see, the `redirect location` can be anything, for example, the ssl version of the frontend or any other website.  
+As you can see, the `redirect location` can be anything, for example, the ssl
+version of the frontend or any other website.
 
-[More info: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#redirect](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#redirect)
+[More info: http://cbonte.github.io/haproxy-
+dconv/configuration-1.5.html#redirect][2]
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#redirect
 
 ---
 

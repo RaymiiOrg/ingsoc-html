@@ -9,17 +9,23 @@ Format      : 	Markdown/HTML
 
 
 
-Synergy is an application to control remote screens with your local mouse and keyboard over the network, cross platform. You could use Linux as your main OS and have a seperate box with Windows next to it, and use your Linux mouse to control windows. On Ubuntu 17.10 the mouse cursor is not visible, but does work. This snippet provides a fix. Hint, wayland is in the way.
+Synergy is an application to control remote screens with your local mouse and
+keyboard over the network, cross platform. You could use Linux as your main OS
+and have a seperate box with Windows next to it, and use your Linux mouse to
+control windows. On Ubuntu 17.10 the mouse cursor is not visible, but does work.
+This snippet provides a fix. Hint, wayland is in the way.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+Log out to the Login screen, open the Cog menu and select "Ubuntu on Xorg" as
+the desktop session. Then the cursor is displayed. zx
 
-Log out to the Login screen, open the Cog menu and select "Ubuntu on Xorg" as the desktop session. Then the cursor is displayed.
-zx
+The bug is reported [here:
+https://bugs.launchpad.net/ubuntu/+source/synergy/+bug/1728465][2]
 
-The bug is reported [here: https://bugs.launchpad.net/ubuntu/+source/synergy/+bug/1728465](https://bugs.launchpad.net/ubuntu/+source/synergy/+bug/1728465)
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://bugs.launchpad.net/ubuntu/+source/synergy/+bug/1728465
 
 ---
 

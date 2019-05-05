@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-<a href="https://tls.so/?host=&port=&ciphersuites=1&csr=-----BEGIN+CERTIFICATE-----%0D%0AMIIGPzCCBSegAwIBAgIQUoRGnb96CUDTxIqVry6LBjANBgkqhkiG9w0BAQsFADCBk%0D%0ADELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1%0D%0AUEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNVBAM%0D%0ATLUNPTU9ETyBSU0EgRG9tYWluIFZhbGlkYXRpb24gU2VjdXJlIFNlcnZlciBDQTAe%0D%0AFw0xNTAzMjAwMDAwMDBaFw0xNjAzMTkyMzU5NTlaME0xITAfBgNVBAsTGERvbWFpb%0D%0AiBDb250cm9sIFZhbGlkYXRlZDEUMBIGA1UECxMLUG9zaXRpdmVTU0wxEjAQBgNVBA%0D%0AMTCXhzNGFsbC5ubDCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAOPUpIn%0D%0AAWGzv8AuzlwPF8jeztIxZLZxQBDcEL7Ax36Hn%2Bm14JT0a4QxIfU6vO%2F9X1%2BUZhf59%0D%0A%2BP6QM6CwS44bqYZLanBw97Qi3pBimY%2B6QowgY3QWXSkjTwjh4g9zFw%2F0I%2FOGa0wkC%0D%0AsEonc%2BCc59QWRLMFWC7V2RxE2%2BzBDgzWdOfZ84HDoUiohlTURt2PEDJS6IMFAUQb%2F%0D%0AKzbmy2laZgF9EvvLcZsFoZspik6RC2bmRo9EKd47J6F%2BlLzZmNqwFYj2m6oi7iVAa%0D%0AZqHIUcaXzJZuBknoMZ5tzXBGoaZYbmWVfZJZB9JF1tybPqCugKNwzkCB6fpdy4HyT%0D%0A6SKjuCiEWAj6OxcI6MTOZ9RQI1wOfp0MP%2FGMQVODfG6yxH3F%2B2jLpQackY08nS4gl%0D%0AjvEsfrtWMI3%2Fh6oisnqo0ldjWC%2BiGgnKsxu4%2B9VI4V6%2FK3tLw4xA8cQut0Smohd71%0D%0AguVOd4alhoO%2BN4vA%2BIPrM8LgWeVGyh2%2BKbAb7mkp2nIk1JF%2BF4uspq%2Fp7%2F0oCAr3u%0D%0AgEBcqV%2FEx5PA4iEsMYggYxYoqGKwMtdKzSuLU3ly6d9RemaEZqwvngqZp6%2BvimSCb%0D%0AvIRq9Lywh3icshIPNlf6c%2BziZJBbasgyaTu2Tvh9xTYIE4uwYA%2BQB5nEoP6iudLjM%0D%0AGtNnO1%2BLqLXxFIBDt1phxIijfCHAgMBAAGjggHVMIIB0TAfBgNVHSMEGDAWgBSQr2%0D%0Ao6lFoL2JDqElZz30O0Oija5zAdBgNVHQ4EFgQUKlP%2BGFwjyZGkcWpp%2FrDbb3krQ9g%0D%0AwDgYDVR0PAQH%2FBAQDAgWgMAwGA1UdEwEB%2FwQCMAAwHQYDVR0lBBYwFAYIKwYBBQUH%0D%0AAwEGCCsGAQUFBwMCME8GA1UdIARIMEYwOgYLKwYBBAGyMQECAgcwKzApBggrBgEFB%0D%0AQcCARYdaHR0cHM6Ly9zZWN1cmUuY29tb2RvLmNvbS9DUFMwCAYGZ4EMAQIBMFQGA1%0D%0AUdHwRNMEswSaBHoEWGQ2h0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQUR%0D%0AvbWFpblZhbGlkYXRpb25TZWN1cmVTZXJ2ZXJDQS5jcmwwgYUGCCsGAQUFBwEBBHkw%0D%0AdzBPBggrBgEFBQcwAoZDaHR0cDovL2NydC5jb21vZG9jYS5jb20vQ09NT0RPUlNBR%0D%0AG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNydDAkBggrBgEFBQcwAYYYaH%0D%0AR0cDovL29jc3AuY29tb2RvY2EuY29tMCMGA1UdEQQcMBqCCXhzNGFsbC5ubIINd3d%0D%0A3LnhzNGFsbC5ubDANBgkqhkiG9w0BAQsFAAOCAQEAM9ZRhzy1fymnWElURXPI3qtB%0D%0AzWwTbcTnyLSF3bJtkTR7ddlxForneRqyFn%2Bu1SphHWy%2BCxCvG8%2Bntn5RfEkgB9orq%0D%0AixyG3Crasqtjrp7mPpeEkC0y4%2FdNRY7i7QUWVaMMrxbNDbU%2FDrWh3Nw7%2BX%2BQ89VPV%0D%0APY7CvKBhtyjWrCX0xGprQSGgv%2F%2BEChIWMxpkDGncNnxj8obha2OcqEZA2389wvdsp%0D%0AaYwwjK1rSfRPVd40kOP6sc5Ze%2BpHfNm6%2BTpxSxpLz9Kb%2BRUc75FJt3wl2WFApD7kA%0D%0AgL83MG4ysIDWl7ood3DwL6Bm%2F5OodIm0XTlXPtooTgZIoWyB%2FeHwWstUXQ%3D%3D%0D%0A-----END+CERTIFICATE-----+&s="><img src="https://raymii.org/s/inc/img/xs4all2.png" alt=cert></a>
+[![cert][1]][2]
 
 Click the image to see the certificate.
 
@@ -19,20 +19,18 @@ I got a valid SSL certificate for a domain that is not mine by creating an email
 alias. In this article I'll explain what happened, why that was possible and how
 we all can prevent this.
 
-
-My ISP, [xs4all](http://xs4all.nl), allows me to create personal mailboxes and
-email aliases. 
+My ISP, [xs4all][3], allows me to create personal mailboxes and email aliases.
 
 An SSL domain validation certificate requires you to click on a link sent to a
 pre-specified set of email addresses. I was able to register one of those email
 addresses (`administrator@xs4all.nl`). With that email address, I was able to
-receive a validation link for a certificate. 
+receive a validation link for a certificate.
 
 The certificate provider Comodo thus issues me a certificate for the domain
-[xs4all.nl](https://xs4all.nl), because I was able to "provide ownership".
+[xs4all.nl][4], because I was able to "provide ownership".
 
 This should not be possible, the provider should have a blacklist for those
-addresses. 
+addresses.
 
 With this certificate I would be able to do a Man in the Middle attack against
 users, provided I can intercept their connections, for example, at a coffee shop
@@ -41,31 +39,29 @@ they would connect to `xs4all.nl` over my, snooped, connection because it is a
 valid certificate trusted by all major browsers and operating systems.
 
 With the email address I could also request more certificates, for example, for
-[webmail.xs4all.nl](https://webmail.xs4all.nl) or [their service
-portal](https://service.xs4all.nl).
+[webmail.xs4all.nl][5] or [their service portal][6].
 
-I directly contacted xs4all and the dutch [National Cyber Security
-Center](https://www.ncsc.nl/) to inform them and other ISP's. The certificate
-was also revoked a few minutes after issueing.
+I directly contacted xs4all and the dutch [National Cyber Security Center][7] to
+inform them and other ISP's. The certificate was also revoked a few minutes
+after issueing.
 
 xs4all have blocked the `administrator@` email address from the aliasses list,
 so this should not be possible in the future.
 
-<img src="https://raymii.org/s/inc/img/xs4all1.png" alt=alias>
+![alias][8]
 
 ### How does SSL validation work
 
 When you request an SSL certificate for a domain you need to proof that you are
 the owner of that domain. There are multiple ways to do that, as there are
 multiple types of certificates. These types of certificates are technically the
-same, the validation behind it is what is different. 
+same, the validation behind it is what is different.
 
 The CA/Browser forum, the standards body for Certificate Authorities has set
-[baseline
-requirements](https://www.cabforum.org/wp-content/uploads/Baseline_Requirements_V1.pdf)
-which describe exactly how these validations should occur. The certificate
-provider, Comodo in this case, was not at fault here. They have followed the
-procedure, the ISP was at fault because they allowed that email alias.
+[baseline requirements][9] which describe exactly how these validations should
+occur. The certificate provider, Comodo in this case, was not at fault here.
+They have followed the procedure, the ISP was at fault because they allowed that
+email alias.
 
 #### Domain Validation certificates
 
@@ -75,18 +71,16 @@ name. No company identity information is vetted.
 
 Chapter 3.2.2 (Authentication of Organization and Domain Identity", respectively
 "3.2.2.4. Authorization by Domain Name Registrant") of the [CAB
-requirements](https://cabforum.org/baseline-requirements-documents/) states the
-following for this verification:
+requirements][10] states the following for this verification:
 
 If the CA uses the Internet mail system to confirm that the Applicant has
 authorization from the Domain Name Registrant to obtain a Certificate for the
 requested Fully-Qualified Domain Name, the CA SHALL use a mail system address
 formed in one of the following ways:
 
-1. Supplied by the Domain Name Registrar;
-2. Taken from the Domain Name Registrant's "registrant", "technical", or "administrative" contactinformation, as it appears in the Domain's WHOIS record; or;
-3. By pre-pending a local part to a Domain Name as follows: a. Local part - One of the following: 'admin', 'administrator', 'webmaster', 'hostmaster', or
-'postmaster'; and b. Domain Name - Formed by pruning zero or more components from the Registered Domain Name or the requested Fully-Qualified Domain Name. 
+  1. Supplied by the Domain Name Registrar;
+  2. Taken from the Domain Name Registrant's "registrant", "technical", or "administrative" contactinformation, as it appears in the Domain's WHOIS record; or;
+  3. By pre-pending a local part to a Domain Name as follows: a. Local part - One of the following: 'admin', 'administrator', 'webmaster', 'hostmaster', or 'postmaster'; and b. Domain Name - Formed by pruning zero or more components from the Registered Domain Name or the requested Fully-Qualified Domain Name. 
 
 So, if you are able to receive an email on one of those addresses you can
 provide domain ownership to the certificate provider.
@@ -97,13 +91,12 @@ This is one level up from the DV certificate, the Organization Validation, or OV
 certificate. The CA checks the right of the applicant to use a specific domain
 name PLUS it conducts some vetting of the organization. This means that the
 WHOIS company information is compared to the local country's business registry.
-For example, in The Netherlands that is the [Kamer van
-Koophandel](http://kvk.nl/) and in the UK that is the [Companies
-House](https://www.gov.uk/government/organisations/companies-house).
+For example, in The Netherlands that is the [Kamer van Koophandel][11] and in
+the UK that is the [Companies House][12].
 
 The same email verification is done as with a DV certificate, plus your
 company's WHOIS address and company number is compared to data in such a
-registry. 
+registry.
 
 The false certificate would not have been issues if I have tried to get the OV
 variant of this certificate. If I would have given the correct company data
@@ -130,14 +123,12 @@ getting the number changed...
 
 There are a lot of certificate authorities, and by a lot I mean hundreds. They
 are all trusted by your browser, and all can issue certificates for any given
-domain. 
+domain.
 
 This ranges from large companies like Comodo, Thawte or Verisign, but also
 countries. For example, The Netherlands have a ceritifcate tree ([Staat der
-Nederlanden Root CA](https://cert.pkioverheid.nl/)) which is trusted by all
-major platforms. China, via the [Hong Kong Post
-Office](https://www.hongkongpost.gov.hk/product/ecert/apply/certapply.html) as
-well.
+Nederlanden Root CA][13]) which is trusted by all major platforms. China, via
+the [Hong Kong Post Office][14] as well.
 
 Any CA can issue a certificate for ANY domain. That is a problem as well as a
 benefit. A benefit because it allows you to choose the CA. It also allows you to
@@ -150,9 +141,7 @@ communication when they are in China, without them noticing.
 We've had issues with this system, Diginotar was hacked, Turktrust has issued
 wrong certificates, TrustWave issued a CA (subordinate) certificate to one of
 it's customers instead of a regular certificate, Malasyan DigiCert Sdn. Bhd
-issues weak certificates and even Microsofts
-[live.fi](http://arstechnica.com/security/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/)
-domain was not safe.
+issues weak certificates and even Microsofts [live.fi][15] domain was not safe.
 
 There are a few ways to mitigate this problem. Certificate Transparency, Public
 Key Pinning (HPKP) and DNS based authentication of Named Entities (DANE).
@@ -164,16 +153,16 @@ measurements here below.
 
 ### Certificate Transparency
 
-<img src="https://raymii.org/s/inc/img/ct_intro_system.png" alt=ct>
+![ct][16]
 
-The [Certificate Transparency](http://www.certificate-transparency.org) project
-aims to remedy these certificate-based threats by making the issuance and
-existence of SSL certificates open to scrutiny by domain owners, CAs, and domain
-users. Specifically, Certificate Transparency has three main goals:
+The [Certificate Transparency][17] project aims to remedy these certificate-
+based threats by making the issuance and existence of SSL certificates open to
+scrutiny by domain owners, CAs, and domain users. Specifically, Certificate
+Transparency has three main goals:
 
-1. Make it impossible (or at least very difficult) for a CA to issue a SSL certificate for a domain without the certificate being visible to the owner of that domain.
-2. Provide an open auditing and monitoring system that lets any domain owner or CA determine whether certificates have been mistakenly or maliciously issued.
-3. Protect users (as much as possible) from being duped by certificates that were mistakenly or maliciously issued.
+  1. Make it impossible (or at least very difficult) for a CA to issue a SSL certificate for a domain without the certificate being visible to the owner of that domain.
+  2. Provide an open auditing and monitoring system that lets any domain owner or CA determine whether certificates have been mistakenly or maliciously issued.
+  3. Protect users (as much as possible) from being duped by certificates that were mistakenly or maliciously issued.
 
 They do this with Certificate Logs, Auditors and Monitors. It would provide
 faster detection of mis-issued certificates and rouge CA's, plus faster
@@ -205,17 +194,14 @@ CA Company A), browsers will not accept certificates from CA Company B and CA
 Company C, even if they have a valid trust path. HPKP also allows your browser
 to report back the failure to the bank, so that they know they are under attack.
 
-I've written [an article about
-HPKP](https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html)
-which explains this in more detail and provides configuration examples for
-Apache, NGINX and Lighttpd.
+I've written [an article about HPKP][18] which explains this in more detail and
+provides configuration examples for Apache, NGINX and Lighttpd.
 
 #### DNS based authentication of Named Entities (DANE)
 
-[DANE](https://tools.ietf.org/html/rfc6698) enables the administrator of a
-[domain name to certify the keys used in that domain's TLS clients or servers by
-[storing them in the Domain Name System (DNS). DANE needs DNS records to be
-[signed with DNSSEC. 
+[DANE][19] enables the administrator of a [domain name to certify the keys used
+in that domain's TLS clients or servers by [storing them in the Domain Name
+System (DNS). DANE needs DNS records to be [signed with DNSSEC.
 
 The difference with HTTP Public Key Pinning is that this data is in a DNS
 record, not in the HTTP headers. For HPKP to work you need to have visited the
@@ -223,7 +209,7 @@ website at least once, DANE does not have this requirement because a DNS lookup
 happens before the HTTP connection.
 
 None of the major browsers sadly support DANE validation. There [is a browser
-extension](https://www.dnssec-validator.cz/) available which does support this.
+extension][20] available which does support this.
 
 My ISP, xs4all, does have DANE record set up. If all the major browsers
 supported this, my attempt to set up an MITM attack would fail and the
@@ -231,29 +217,40 @@ certificate would be worthless.
 
 This is the TLSA record for xs4all.nl, port 443:
 
+    
+    
     $ dig +dnssec +noall +answer +multi _443._tcp.www.xs4all.nl. TLSA
     _443._tcp.www.xs4all.nl. 21599 IN TLSA 1 0 1 (
                                     223A6659D06E9A81390938659E9EF241579E82B820D6
                                     AFD8E17D548AEDEA3F13 )
+    
 
-If we take the current, valid, [public
-key](https://tls.so/?host=xs4all.nl&port=&ciphersuites=1&csr=&s=) for xs4all.nl
-we can validate this. 
+If we take the current, valid, [public key][21] for xs4all.nl we can validate
+this.
 
 First convert the PEM file (`xs4all.pem`) to DER.
 
+    
+    
     openssl x509 -inform PEM -in xs4all.pem -outform DER -out xs4all.der
+    
 
 Then we calculate the SHA 256 hash of this DER file:
 
+    
+    
     openssl sha256 xs4all.der 
     SHA256(xs4all.der)= 223a6659d06e9a81390938659e9ef241579e82b820d6afd8e17d548aedea3f13
+    
 
 This is the same as the TLSA record above. If we take (valid) the certificate I
 got it gives us a different SHA 256 hash:
 
+    
+    
     $ openssl x509 -inform PEM -in xs4all.nl.pem -outform DER | openssl sha256                                                                    
     (stdin)= 83618f932d6947744d5ecca299d4b2820c01483947bd16be814e683f7436be24  
+    
 
 That would not be valid according to the TLSA record.
 
@@ -263,25 +260,26 @@ DNSSEC signatures, this will permit better and more secure ways for applications
 to authenticate certificates. The record can be used in 4 different ways
 (defined by a "Usage" field):
 
-- (Usage 0) Specify authorized public CAs - this can prevent certificates signed by CAs that you didn't explicitly specify from being trusted by client software.
-- (Usage 1) Specify which specific server certificate can be trusted. The public CA certificate validation chain all the way to the server certificate must still be validated.
-- (Usage 2) Authorize a new non-public CA (eg. a CA that the domain owner operates itself)
-- (Usage 3) Directly specify the server certificate in the DNS - no certificate chain from a public CA needs to be used. This is called a "Domain issued certificate"
+  * (Usage 0) Specify authorized public CAs - this can prevent certificates signed by CAs that you didn't explicitly specify from being trusted by client software.
+  * (Usage 1) Specify which specific server certificate can be trusted. The public CA certificate validation chain all the way to the server certificate must still be validated.
+  * (Usage 2) Authorize a new non-public CA (eg. a CA that the domain owner operates itself)
+  * (Usage 3) Directly specify the server certificate in the DNS - no certificate chain from a public CA needs to be used. This is called a "Domain issued certificate"
 
 If you're looking for a way to not use public CAs, Usage 3 is probably the one
 for you. That allows you to just create a self signed certificate and put the
 hash in a TLSA record, not requiring a certificate from a trusted certificate
 authority.
 
-[This webpage](https://www.huque.com/bin/gen_tlsa) has a generator if you want to set up your own certificate TLSA record.
-
-
+[This webpage][22] has a generator if you want to set up your own certificate
+TLSA record.
 
 ### Proof
 
 A few screenshots and a nice article don't make a whole. Here is the textual
 output of the certificate:
 
+    
+    
     $ openssl x509 -noout -text -in xs4all.nl.pem 
     Certificate:
         Data:
@@ -337,7 +335,7 @@ output of the certificate:
             X509v3 extensions:
                 X509v3 Authority Key Identifier: 
                     keyid:90:AF:6A:3A:94:5A:0B:D8:90:EA:12:56:73:DF:43:B4:3A:28:DA:E7
-
+    
                 X509v3 Subject Key Identifier: 
                     2A:53:FE:18:5C:23:C9:91:A4:71:6A:69:FE:B0:DB:6F:79:2B:43:D8
                 X509v3 Key Usage: critical
@@ -350,16 +348,16 @@ output of the certificate:
                     Policy: 1.3.6.1.4.1.6449.1.2.2.7
                       CPS: https://secure.comodo.com/CPS
                     Policy: 2.23.140.1.2.1
-
+    
                 X509v3 CRL Distribution Points: 
-
+    
                     Full Name:
                       URI:http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl
-
+    
                 Authority Information Access: 
                     CA Issuers - URI:http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt
                     OCSP - URI:http://ocsp.comodoca.com
-
+    
                 X509v3 Subject Alternative Name: 
                     DNS:xs4all.nl, DNS:www.xs4all.nl
         Signature Algorithm: sha256WithRSAEncryption
@@ -378,10 +376,12 @@ output of the certificate:
              30:6e:32:b0:80:d6:97:ba:28:77:70:f0:2f:a0:66:ff:93:a8:
              74:89:b4:5d:39:57:3e:da:28:4e:06:48:a1:6c:81:fd:e1:f0:
              5a:cb:54:5d
-
     
+
 Here is the public key in PEM:
 
+    
+    
     # cat xs4all.nl.pem
     -----BEGIN CERTIFICATE-----
     MIIGPzCCBSegAwIBAgIQUoRGnb96CUDTxIqVry6LBjANBgkqhkiG9w0BAQsFADCBk
@@ -418,9 +418,12 @@ Here is the public key in PEM:
     aYwwjK1rSfRPVd40kOP6sc5Ze+pHfNm6+TpxSxpLz9Kb+RUc75FJt3wl2WFApD7kA
     gL83MG4ysIDWl7ood3DwL6Bm/5OodIm0XTlXPtooTgZIoWyB/eHwWstUXQ==
     -----END CERTIFICATE-----
+    
 
 Here is the private key:
 
+    
+    
     # cat xs4all.nl.key 
     -----BEGIN PRIVATE KEY-----
     MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQDj1KSJwFhs7/AL
@@ -474,84 +477,143 @@ Here is the private key:
     smydcNi4uKoOEPIKiiKbdZvnuxw4T1ub0K+Mv9dkMuJApbHltFh0JVLwJGHg3z1m
     6kWBQA69iw0FQ/ICf4fbi+xvkKQuSZCM
     -----END PRIVATE KEY-----
-
+    
 
 Using OpenSSL we can calculate the hashes of this pair to see that they match:
-    
+
 Public Key:
 
+    
+    
     $ openssl x509 -noout -modulus -in xs4all.nl.pem | openssl md5
     (stdin)= f4ef82e22bed048e5c48b4da5e46afa7
+    
 
 Private Key:
 
+    
+    
     $ openssl rsa -noout -modulus -in xs4all.nl.key | openssl md5
     (stdin)= f4ef82e22bed048e5c48b4da5e46afa7
+    
 
 We can also use Openssl to validate that this certificate is revoked. First get
 the CRL URL from the certificate:
 
+    
+    
     $ openssl x509 -noout -text -in xs4all.nl.pem | grep -A 4 'X509v3 CRL Distribution Points'
         X509v3 CRL Distribution Points: 
-
+    
             Full Name:
               URI:http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl
+    
 
 Download the CRL:
 
+    
+    
     wget http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl
+    
 
 Transform the CRL to a PEM file:
 
+    
+    
     $ openssl crl -inform DER -outform PEM -in COMODORSADomainValidationSecureServerCA.crl -out COMODORSADomainValidationSecureServerCA.crl.pem
+    
 
 We also need the full certificate chain. In this case it you can get it from
-[Comodo](https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/979/108/domain-validation-sha-2).
-I've placed it in the `COMODORSADomainValidationSecureServerCA.pem` file. The
-`openssl verify` command needs this concatenated together with the PEM CRL file
-to be able to do a CRL check. Concatenate the two PEM files:
+[Comodo][23]. I've placed it in the
+`COMODORSADomainValidationSecureServerCA.pem` file. The `openssl verify` command
+needs this concatenated together with the PEM CRL file to be able to do a CRL
+check. Concatenate the two PEM files:
 
+    
+    
     $ cat COMODORSADomainValidationSecureServerCA.crl.pem COMODORSADomainValidationSecureServerCA.pem > CA_CRL.pem
+    
 
 Perform the actual certificate validation.
 
+    
+    
     $ openssl verify -crl_check -CAfile CA_CRL.pem xs4all.nl.pem 
     xs4all.nl.pem: OU = Domain Control Validated, OU = PositiveSSL, CN = xs4all.nl
     error 23 at 0 depth lookup:certificate revoked
+    
 
-If we would validate the certificate without the CRL check it would turn out valid:
+If we would validate the certificate without the CRL check it would turn out
+valid:
 
+    
+    
     $ openssl verify -CAfile COMODORSADomainValidationSecureServerCA.pem xs4all.nl.pem 
     xs4all.nl.pem: OK
-
+    
 
 If you want to this manually, you can try it like more verbosely. First get the
 CRL from the certificate:
 
+    
+    
     $ openssl x509 -noout -text -in xs4all.nl.pem | grep -A 4 'X509v3 CRL Distribution Points'
         X509v3 CRL Distribution Points: 
-
+    
             Full Name:
               URI:http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl
+    
 
 Download the CRL:
 
+    
+    
     wget http://crl.comodoca.com/COMODORSADomainValidationSecureServerCA.crl
+    
 
 Get the serial from the certificate:
 
+    
+    
     $ openssl x509 -noout -serial -in xs4all.nl.pem 
     serial=5284469DBF7A0940D3C48A95AF2E8B06
+    
 
 Find out if the serial number is on the CRL:
 
+    
+    
     $ openssl crl -inform DER -text -noout -in COMODORSADomainValidationSecureServerCA.crl | grep -A 1 5284469DBF7A0940D3C48A95AF2E8B06
-
+    
         Serial Number: 5284469DBF7A0940D3C48A95AF2E8B06
             Revocation Date: Mar 20 04:32:29 2015 GMT
+    
 
 As we see it is, the certificate has been revoked.
 
+   [1]: https://raymii.org/s/inc/img/xs4all2.png
+   [2]: https://tls.so/?host=&port=&ciphersuites=1&csr=-----BEGIN+CERTIFICATE-----%0D%0AMIIGPzCCBSegAwIBAgIQUoRGnb96CUDTxIqVry6LBjANBgkqhkiG9w0BAQsFADCBk%0D%0ADELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1%0D%0AUEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNVBAM%0D%0ATLUNPTU9ETyBSU0EgRG9tYWluIFZhbGlkYXRpb24gU2VjdXJlIFNlcnZlciBDQTAe%0D%0AFw0xNTAzMjAwMDAwMDBaFw0xNjAzMTkyMzU5NTlaME0xITAfBgNVBAsTGERvbWFpb%0D%0AiBDb250cm9sIFZhbGlkYXRlZDEUMBIGA1UECxMLUG9zaXRpdmVTU0wxEjAQBgNVBA%0D%0AMTCXhzNGFsbC5ubDCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAOPUpIn%0D%0AAWGzv8AuzlwPF8jeztIxZLZxQBDcEL7Ax36Hn%2Bm14JT0a4QxIfU6vO%2F9X1%2BUZhf59%0D%0A%2BP6QM6CwS44bqYZLanBw97Qi3pBimY%2B6QowgY3QWXSkjTwjh4g9zFw%2F0I%2FOGa0wkC%0D%0AsEonc%2BCc59QWRLMFWC7V2RxE2%2BzBDgzWdOfZ84HDoUiohlTURt2PEDJS6IMFAUQb%2F%0D%0AKzbmy2laZgF9EvvLcZsFoZspik6RC2bmRo9EKd47J6F%2BlLzZmNqwFYj2m6oi7iVAa%0D%0AZqHIUcaXzJZuBknoMZ5tzXBGoaZYbmWVfZJZB9JF1tybPqCugKNwzkCB6fpdy4HyT%0D%0A6SKjuCiEWAj6OxcI6MTOZ9RQI1wOfp0MP%2FGMQVODfG6yxH3F%2B2jLpQackY08nS4gl%0D%0AjvEsfrtWMI3%2Fh6oisnqo0ldjWC%2BiGgnKsxu4%2B9VI4V6%2FK3tLw4xA8cQut0Smohd71%0D%0AguVOd4alhoO%2BN4vA%2BIPrM8LgWeVGyh2%2BKbAb7mkp2nIk1JF%2BF4uspq%2Fp7%2F0oCAr3u%0D%0AgEBcqV%2FEx5PA4iEsMYggYxYoqGKwMtdKzSuLU3ly6d9RemaEZqwvngqZp6%2BvimSCb%0D%0AvIRq9Lywh3icshIPNlf6c%2BziZJBbasgyaTu2Tvh9xTYIE4uwYA%2BQB5nEoP6iudLjM%0D%0AGtNnO1%2BLqLXxFIBDt1phxIijfCHAgMBAAGjggHVMIIB0TAfBgNVHSMEGDAWgBSQr2%0D%0Ao6lFoL2JDqElZz30O0Oija5zAdBgNVHQ4EFgQUKlP%2BGFwjyZGkcWpp%2FrDbb3krQ9g%0D%0AwDgYDVR0PAQH%2FBAQDAgWgMAwGA1UdEwEB%2FwQCMAAwHQYDVR0lBBYwFAYIKwYBBQUH%0D%0AAwEGCCsGAQUFBwMCME8GA1UdIARIMEYwOgYLKwYBBAGyMQECAgcwKzApBggrBgEFB%0D%0AQcCARYdaHR0cHM6Ly9zZWN1cmUuY29tb2RvLmNvbS9DUFMwCAYGZ4EMAQIBMFQGA1%0D%0AUdHwRNMEswSaBHoEWGQ2h0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQUR%0D%0AvbWFpblZhbGlkYXRpb25TZWN1cmVTZXJ2ZXJDQS5jcmwwgYUGCCsGAQUFBwEBBHkw%0D%0AdzBPBggrBgEFBQcwAoZDaHR0cDovL2NydC5jb21vZG9jYS5jb20vQ09NT0RPUlNBR%0D%0AG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNydDAkBggrBgEFBQcwAYYYaH%0D%0AR0cDovL29jc3AuY29tb2RvY2EuY29tMCMGA1UdEQQcMBqCCXhzNGFsbC5ubIINd3d%0D%0A3LnhzNGFsbC5ubDANBgkqhkiG9w0BAQsFAAOCAQEAM9ZRhzy1fymnWElURXPI3qtB%0D%0AzWwTbcTnyLSF3bJtkTR7ddlxForneRqyFn%2Bu1SphHWy%2BCxCvG8%2Bntn5RfEkgB9orq%0D%0AixyG3Crasqtjrp7mPpeEkC0y4%2FdNRY7i7QUWVaMMrxbNDbU%2FDrWh3Nw7%2BX%2BQ89VPV%0D%0APY7CvKBhtyjWrCX0xGprQSGgv%2F%2BEChIWMxpkDGncNnxj8obha2OcqEZA2389wvdsp%0D%0AaYwwjK1rSfRPVd40kOP6sc5Ze%2BpHfNm6%2BTpxSxpLz9Kb%2BRUc75FJt3wl2WFApD7kA%0D%0AgL83MG4ysIDWl7ood3DwL6Bm%2F5OodIm0XTlXPtooTgZIoWyB%2FeHwWstUXQ%3D%3D%0D%0A-----END+CERTIFICATE-----+&s=
+   [3]: http://xs4all.nl
+   [4]: https://xs4all.nl
+   [5]: https://webmail.xs4all.nl
+   [6]: https://service.xs4all.nl
+   [7]: https://www.ncsc.nl/
+   [8]: https://raymii.org/s/inc/img/xs4all1.png
+   [9]: https://www.cabforum.org/wp-content/uploads/Baseline_Requirements_V1.pdf
+   [10]: https://cabforum.org/baseline-requirements-documents/
+   [11]: http://kvk.nl/
+   [12]: https://www.gov.uk/government/organisations/companies-house
+   [13]: https://cert.pkioverheid.nl/
+   [14]: https://www.hongkongpost.gov.hk/product/ecert/apply/certapply.html
+   [15]: http://arstechnica.com/security/2015/03/man-who-obtained-windows-live-cert-said-his-warnings-went-unanswered/
+   [16]: https://raymii.org/s/inc/img/ct_intro_system.png
+   [17]: http://www.certificate-transparency.org
+   [18]: https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html
+   [19]: https://tools.ietf.org/html/rfc6698
+   [20]: https://www.dnssec-validator.cz/
+   [21]: https://tls.so/?host=xs4all.nl&port=&ciphersuites=1&csr=&s=
+   [22]: https://www.huque.com/bin/gen_tlsa
+   [23]: https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/979/108/domain-validation-sha-2
 
 ---
 

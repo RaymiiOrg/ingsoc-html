@@ -9,36 +9,39 @@ Format      : 	Markdown/HTML
 
 
 
-Bash Bits are small examples and tips for Bash Scripts. 
-This bash bit shows you how to randomize the time a cronjob runs in /etc/cron.d/
+Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to randomize the time a cronjob runs in /etc/cron.d/
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 [All Bash Bits can be found using this link][2]
 
 ### Randomize cronjob time
 
-I've used this in the past in a [backup script][1] I wrote. During the installation,
-a cronjob was placed and later the time was randomized between 00:00 AM and 06:00 AM.
-This way the load on the backup targets wouldn't be a huge peak but more spread
-out.
+I've used this in the past in a [backup script][3] I wrote. During the
+installation, a cronjob was placed and later the time was randomized between
+00:00 AM and 06:00 AM. This way the load on the backup targets wouldn't be a
+huge peak but more spread out.
 
-First, place your cronjob in `/etc/cron.d/`, as a file. In this case, 
+First, place your cronjob in `/etc/cron.d/`, as a file. In this case,
 `/etc/cron.d/my_example`. Use the regular `cron.d` format (include the username
 between the time and executable):
 
+    
+    
     #!/bin/bash
     RANDM RANDH * * * root /usr/local/bin/my_binary
+    
 
-Note the two variables, `RANDM` and `RANDH`. These will be replaced to the random
-hour and minute. 
+Note the two variables, `RANDM` and `RANDH`. These will be replaced to the
+random hour and minute.
 
-The following code will replace the variables with random digits, but in the range
-you specify:
+The following code will replace the variables with random digits, but in the
+range you specify:
 
+    
+    
     # use awk to get a number between 0 and 6 for the hour
     RANDH="$(awk 'BEGIN{srand();print int(rand()*(0-6))+6 }')"
     # and 0 to 59 for the minutes. 
@@ -47,12 +50,14 @@ you specify:
     sed -i -e "s/RANDH/${RANDH}/g" -e "s/RANDM/${RANDM}/g" /etc/cron.d/my_example
     # show the user
     echo "Randomized cronjob time, will run on ${RANDH}:${RANDM}."
+    
 
-You could use the bash builtin `$RANDOM`, but then you cannot specify a range. 
+You could use the bash builtin `$RANDOM`, but then you cannot specify a range.
 You could get an illigal time that way.
 
-[1]: https://github.com/RaymiiOrg/CloudVPS-Boss
-[2]: https://raymii.org/s/tags/bash-bits.html
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tags/bash-bits.html
+   [3]: https://github.com/RaymiiOrg/CloudVPS-Boss
 
 ---
 

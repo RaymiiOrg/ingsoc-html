@@ -9,51 +9,71 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial will show you how to set up a shared git repo with multiple accounts over ssh. Only ssh, not gitolite or any other software. This is usefull if you have a small team of people that don't often need access to the repo and don't want something like github or bitbucket. With this you can use existing infrastructure.
+This tutorial will show you how to set up a shared git repo with multiple
+accounts over ssh. Only ssh, not gitolite or any other software. This is usefull
+if you have a small team of people that don't often need access to the repo and
+don't want something like github or bitbucket. With this you can use existing
+infrastructure.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 I have used this for a sysadmin team which had a few scripts scattered.
 
 ### Folders and Permissions
 
-First set up a new group for the users of the repository. You can use the groupadd command but I find it easier to edit `/etc/group` and add a line line this:
+First set up a new group for the users of the repository. You can use the
+groupadd command but I find it easier to edit `/etc/group` and add a line line
+this:
 
+    
+    
     gitusers:x:2222:user1,user2,user3,user4
+    
 
-Do note that all the users you add above should have an account on the system. (`adduser user/useradd user`)
+Do note that all the users you add above should have an account on the system.
+(`adduser user/useradd user`)
 
 Now create a folder to house the repo's:
 
+    
+    
     mkdir -p /var/git/repository1
+    
 
 Then change the group permissions on that folder:
 
+    
+    
     chgrp gitusers /var/git/repository1
     chmod g+ws /var/git/repository1
-
+    
 
 ### Repository
 
-We can now create the repository. Navigate to the folder and initialize the repository:
+We can now create the repository. Navigate to the folder and initialize the
+repository:
 
+    
+    
     cd /var/git/repository
     git init --bare --shared=group
-
+    
 
 That's it. Now you can clone, pull, push and commit the repo like normal:
 
+    
+    
     git clone git+ssh://user1@gitserver/var/git/repository1
-
-
+    
 
 ### Script
 
-A simple script which makes the above easier. This assuming the group is `gitusers` and the root path is `/var/git/`.
+A simple script which makes the above easier. This assuming the group is
+`gitusers` and the root path is `/var/git/`.
 
+    
+    
     #!/bin/bash
     GITGROUP="gitusers"
     REPOPATH="/var/git"
@@ -70,8 +90,13 @@ A simple script which makes the above easier. This assuming the group is `gituse
     popd
     echo "Created repo $1."
     echo "Clone URL: git+ssh://$(hostname -f)${PATH}/$1"
+    
 
-If you need to trigger a Jenkins build after a commit you can add the following [`post-receive` hook](https://github.com/mika/jenkins-debian-glue/blob/master/git/post-receive).
+If you need to trigger a Jenkins build after a commit you can add the following
+[`post-receive` hook][2].
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://github.com/mika/jenkins-debian-glue/blob/master/git/post-receive
 
 ---
 

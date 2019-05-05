@@ -69,29 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo"></p>
 
-<p>This is a guide on installing the Openstack Horizon dashboard on Ubuntu 12.04 or 14.04, including SSL setup. It features nice screenshots and even an Ansible playbook to automate it all. We will set up the Icehouse version of Horizon.</p>
+<p>This is a guide on installing the Openstack Horizon dashboard on Ubuntu 12.04 or
+14.04, including SSL setup. It features nice screenshots and even an Ansible
+playbook to automate it all. We will set up the Icehouse version of Horizon.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
+<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword
+bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
 
 <pre><code>OpenStack is a free and open-source software cloud computing platform. It is primarily deployed as an infrastructure as a service (IaaS) solution. The technology consists of a series of interrelated projects that control pools of processing, storage, and networking resources throughout a data center, able to be managed or provisioned through a web-based dashboard, command-line tools, or a RESTful API. It is released under the terms of the Apache License.
 </code></pre>
 
-<p>This tutorial does not cover a full openstack cluster setup, just the Dashboard. In this tutorial my Dashboard talks to the <a href="https://cloudvps.com">CloudVPS</a> Openstack service, change this for your own Openstack installation.</p>
+<p>This tutorial does not cover a full openstack cluster setup, just the Dashboard.
+In this tutorial my Dashboard talks to the <a href="https://cloudvps.com">CloudVPS</a> Openstack service,
+change this for your own Openstack installation.</p>
 
-<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related tutorials here</a>. For example, how to use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a>.  </p>
+<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related tutorials here</a>. For example, how to
+use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object
+Store</a>.</p>
 
-<p><img src="https://raymii.org/s/inc/img/horizon-openstack-theme.png" alt=openstack /></p>
+<p><img src="https://raymii.org/s/inc/img/horizon-openstack-theme.png" alt="openstack"></p>
 
 <h3>Requirements</h3>
 
 <ul>
 <li>Ubuntu 12.04 or 14.04 machine</li>
-<li>An Openstack cluster with at least:
+<li>An Openstack cluster with at least: 
 
 <ul>
 <li>compute (kvm)</li>
@@ -102,17 +109,22 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 </ul></li>
 </ul>
 
-<p>Just swift (object store) and keystone are also OK, just to manage Object storage.</p>
+<p>Just swift (object store) and keystone are also OK, just to manage Object
+storage.</p>
 
-<p>I&#39;ll be using the <a href="https://cloudvps.com">CloudVPS</a> public Openstack cloud in this example. </p>
+<p>I&#39;ll be using the <a href="https://cloudvps.com">CloudVPS</a> public Openstack cloud in this example.</p>
 
-<p>If you order a VPS or Objectstore at <a href="https://cloudvps.com">CloudVPS</a>, please mention my name or this article. I&#39;ll get a little referal bonus, which will be used to keep this awesome website running.</p>
+<p>If you order a VPS or Objectstore at <a href="https://cloudvps.com">CloudVPS</a>, please mention my name or
+this article. I&#39;ll get a little referal bonus, which will be used to keep this
+awesome website running.</p>
 
-<p>Note that this article is not sponsored nor endorsed by <a href="https://cloudvps.com">CloudVPS</a>, nor am I speaking for or as <a href="https://cloudvps.com">CloudVPS</a>. </p>
+<p>Note that this article is not sponsored nor endorsed by <a href="https://cloudvps.com">CloudVPS</a>, nor am I
+speaking for or as <a href="https://cloudvps.com">CloudVPS</a>.</p>
 
 <h3>Install packages</h3>
 
-<p>Because Ubuntu 14.04 has Cloudy Support (as in, Openstack Icehouse in the main repo) we can just install it. First update the system:</p>
+<p>Because Ubuntu 14.04 has Cloudy Support (as in, Openstack Icehouse in the main
+repo) we can just install it. First update the system:</p>
 
 <pre><code>apt-get update
 </code></pre>
@@ -122,14 +134,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>apt-get install -y apache2 memcached libapache2-mod-wsgi openstack-dashboard
 </code></pre>
 
-<p>Remove the ubuntu dashboard theme, this prevents the network map, translations and some menu&#39;s from working:</p>
+<p>Remove the ubuntu dashboard theme, this prevents the network map, translations
+and some menu&#39;s from working:</p>
 
 <pre><code>apt-get remove -y --purge openstack-dashboard-ubuntu-theme
 </code></pre>
 
 <p>Here&#39;s a picture of Horizon with the Ubuntu theme:</p>
 
-<p><img src="https://raymii.org/s/inc/img/horizon-icehouse-ubuntu.png" alt=openstack />    </p>
+<p><img src="https://raymii.org/s/inc/img/horizon-icehouse-ubuntu.png" alt="openstack"></p>
 
 <p>If you run 12.04 you should add the Icehouse Openstack repository first:</p>
 
@@ -138,7 +151,9 @@ add-apt-repository cloud-archive:icehouse
 apt-get update
 </code></pre>
 
-<p>If you only want the dashboard you don&#39;t need the backported kernel on 12.04. Otherwise, install the following extra packages: <code>linux-image-generic-lts-saucy linux-headers-generic-lts-saucy</code> and reboot.</p>
+<p>If you only want the dashboard you don&#39;t need the backported kernel on 12.04.
+Otherwise, install the following extra packages: <code>linux-image-generic-lts-saucy
+linux-headers-generic-lts-saucy</code> and reboot.</p>
 
 <h3>Configure Apache</h3>
 
@@ -147,7 +162,8 @@ apt-get update
 <pre><code>a2enconf openstack-dashboard
 </code></pre>
 
-<p>On 12.04 this is not needed. The config is already enabled there in <code>/etc/apache2/conf.d/</code>.</p>
+<p>On 12.04 this is not needed. The config is already enabled there in
+<code>/etc/apache2/conf.d/</code>.</p>
 
 <p>Enable HTTPS:</p>
 
@@ -155,7 +171,8 @@ apt-get update
 a2enmod ssl
 </code></pre>
 
-<p>If you want to redirect all traffic from HTTP to HTTPS, which you should, enable <code>mod_rewrite</code>:</p>
+<p>If you want to redirect all traffic from HTTP to HTTPS, which you should, enable
+<code>mod_rewrite</code>:</p>
 
 <pre><code>a2enmod rewrite
 </code></pre>
@@ -179,7 +196,9 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 <p>Somewhere in the <code>&lt;Virtualhost&gt;</code> part.</p>
 
-<p>Make sure to set up a correct certificate if you are going to run HTTPS in production. If you need tips to <a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html">Set up strong SSL security on Apache, see my tutorial</a>.</p>
+<p>Make sure to set up a correct certificate if you are going to run HTTPS in
+production. If you need tips to <a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html">Set up strong SSL security on Apache, see my
+tutorial</a>.</p>
 
 <p>Don&#39;t forget to restart Apache:</p>
 
@@ -207,7 +226,8 @@ OPENSTACK_KEYSTONE_URL = &quot;http://%s:5000/v2.0&quot; % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = &quot;_member_&quot;
 </code></pre>
 
-<p>I&#39;m using <a href="https://cloudvps.com">CloudVPS</a>&#39;s Openstack service, so for me the variables are like this:</p>
+<p>I&#39;m using <a href="https://cloudvps.com">CloudVPS</a>&#39;s Openstack service, so for me the variables are like
+this:</p>
 
 <pre><code>OPENSTACK_KEYSTONE_URL = &quot;https://identity.stack.cloudvps.com/v2.0&quot;
 </code></pre>
@@ -216,11 +236,12 @@ OPENSTACK_KEYSTONE_DEFAULT_ROLE = &quot;_member_&quot;
 
 <p>Here&#39;s another screenshot showing the Swift (Object Storage) part of Horizon:</p>
 
-<p><img src="https://raymii.org/s/inc/img/horizon-containers.png" alt=openstack />    </p>
+<p><img src="https://raymii.org/s/inc/img/horizon-containers.png" alt="openstack"></p>
 
 <h3>Ansible Playbook</h3>
 
-<p>I&#39;ve also written an simple Ansible playbook to install a Horizon instance. You can find it in this <a href="https://github.com/RaymiiOrg/ansible-openstack-horizon-dashboard">Github repository.</a></p>
+<p>I&#39;ve also written an simple Ansible playbook to install a Horizon instance. You
+can find it in this <a href="https://github.com/RaymiiOrg/ansible-openstack-horizon-dashboard">Github repository.</a></p>
 </div><hr>Tags: <a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/compute.html" class="link">compute &nbsp;</a><a href="../tags/dashboard.html" class="link">dashboard &nbsp;</a><a href="../tags/gpg.html" class="link">gpg &nbsp;</a><a href="../tags/horizon.html" class="link">horizon &nbsp;</a><a href="../tags/keystone.html" class="link">keystone &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

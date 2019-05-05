@@ -69,18 +69,30 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The NGINX blog recently had a <a href="http://web.archive.org/web/20180806131633/https://www.nginx.com/blog/running-non-ssl-protocols-over-ssl-port-nginx-1-15-2/">nice article on a new feature of NGINX 1.15.2, $ssl<em>preread</em>protocol</a>. This allows you to multiplex HTTPS and other SSL protocols on the same port, or as their blog states, &#39;to distinguish between SSL/TLS and other protocols when forwarding traffic using a TCP (stream) proxy&#39;. This can be used to run SSH and HTTPS on the same port (or any other SSL protocol next to HTTPS). By running SSH and HTTPS on the same port, one can circumvent certain firewall restrictions. If the session looks like HTTPS, nginx will handle it, if it looks like something else, it will forward it to the configured other program. I used to use <a href="https://github.com/yrutschle/sslh">SSLH</a> to get this functionality, but now it&#39;s built into the nginx webserver. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The NGINX blog recently had a <a href="http://web.archive.org/web/20180806131633/https://www.nginx.com/blog/running-non-ssl-protocols-over-ssl-port-nginx-1-15-2/">nice article on a new feature of NGINX 1.15.2,
+$ssl <em>preread</em> protocol</a>. This allows you to multiplex HTTPS and other SSL
+protocols on the same port, or as their blog states, &#39;to distinguish between
+SSL/TLS and other protocols when forwarding traffic using a TCP (stream) proxy&#39;.
+This can be used to run SSH and HTTPS on the same port (or any other SSL
+protocol next to HTTPS). By running SSH and HTTPS on the same port, one can
+circumvent certain firewall restrictions. If the session looks like HTTPS, nginx
+will handle it, if it looks like something else, it will forward it to the
+configured other program. I used to use <a href="https://github.com/yrutschle/sslh">SSLH</a> to get this functionality, but
+now it&#39;s built into the nginx webserver.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This small guide will cover the installation of the latest version of nginx on Ubuntu (16.04) and configuring this multiplex feature.</p>
+<p>This small guide will cover the installation of the latest version of nginx on
+Ubuntu (16.04) and configuring this multiplex feature.</p>
 
-<p>You must use NGINX in proxy mode. This means that nginx will act as a load balancer or proxy in front of your application (like Django, Rails, etc). </p>
+<p>You must use NGINX in proxy mode. This means that nginx will act as a load
+balancer or proxy in front of your application (like Django, Rails, etc).</p>
 
 <h3>Install the latest version of NGINX</h3>
 
-<p>nginx provides <a href="http://nginx.org/en/linux_packages.html#mainline">a repository</a> for both CentOS, Debian/Ubuntu and SUSE. In this example we will use Ubuntu. </p>
+<p>nginx provides <a href="http://nginx.org/en/linux_packages.html#mainline">a repository</a> for both CentOS, Debian/Ubuntu and SUSE. In
+this example we will use Ubuntu.</p>
 
 <p>Download the signing key:</p>
 
@@ -101,11 +113,16 @@ echo &quot;deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx&quot;
 apt-get install nginx
 </code></pre>
 
-<h3>Configure nginx for ssl<em>preread</em>protocol</h3>
+<h3>Configure nginx for ssl <em>preread</em> protocol</h3>
 
 <p>Quoted from the <a href="http://web.archive.org/web/20180806131633/https://www.nginx.com/blog/running-non-ssl-protocols-over-ssl-port-nginx-1-15-2/">nginx blog</a>:</p>
 
-<p>The following configuration snippet uses the <code>$ssl_preread_protocol</code> variable in a map block to set the <code>$upstream variable</code> to the name of the upstream group appropriate for the protocol being used on the connection. The <code>proxy_pass</code> directive then forwards the request to the selected upstream group. Note that the <code>ssl_preread</code> on directive must be included in the server block for the <code>$ssl_preread_protocol</code> variable to work.</p>
+<p>The following configuration snippet uses the <code>$ssl_preread_protocol</code> variable in
+a map block to set the <code>$upstream variable</code> to the name of the upstream group
+appropriate for the protocol being used on the connection. The <code>proxy_pass</code>
+directive then forwards the request to the selected upstream group. Note that
+the <code>ssl_preread</code> on directive must be included in the server block for the
+<code>$ssl_preread_protocol</code> variable to work.</p>
 
 <pre><code>stream {
     upstream ssh {
@@ -131,7 +148,9 @@ apt-get install nginx
 }
 </code></pre>
 
-<p>In this case, if the protocol detected is <code>TLSv1.2</code>, HTTPS is assumed and the traffix is forwarded to the HTTPS server (192.0.2.20). Otherwise the traffic is forwarded to the SSH host (192.0.2.10).</p>
+<p>In this case, if the protocol detected is <code>TLSv1.2</code>, HTTPS is assumed and the
+traffix is forwarded to the HTTPS server (192.0.2.20). Otherwise the traffic is
+forwarded to the SSH host (192.0.2.10).</p>
 
 <h3>More fun with ssl_preread</h3>
 
@@ -159,7 +178,8 @@ server {
 }
 </code></pre>
 
-<p>Do note that this also requires a newer version of nginx than by default in the Ubuntu 16.04 release.</p>
+<p>Do note that this also requires a newer version of nginx than by default in the
+Ubuntu 16.04 release.</p>
 </div><hr>Tags: <a href="../tags/firewall.html" class="link">firewall &nbsp;</a><a href="../tags/folder.html" class="link">folder &nbsp;</a><a href="../tags/multiplex.html" class="link">multiplex &nbsp;</a><a href="../tags/nginx.html" class="link">nginx &nbsp;</a><a href="../tags/proxy.html" class="link">proxy &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/sslh.html" class="link">sslh &nbsp;</a><a href="../tags/subfolder.html" class="link">subfolder &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

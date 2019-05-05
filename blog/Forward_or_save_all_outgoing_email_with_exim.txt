@@ -9,25 +9,36 @@ Format      : 	Markdown/HTML
 
 
 
-I have a specific server where requirements state that all outgoing email should be saved for archival and auditing purposes. The server uses the Exim mail transfer agent, which makes this easy to configure. The outgoing email is also forwarded to an off-site mailbox, both for backup and easy consulting. This captures all outgoing email, sent by PHP scripts or cronjobs, or user accounts that send via exim. This tutorial also shows how to forward or save all outgoing email for a specific domain.
+I have a specific server where requirements state that all outgoing email should
+be saved for archival and auditing purposes. The server uses the Exim mail
+transfer agent, which makes this easy to configure. The outgoing email is also
+forwarded to an off-site mailbox, both for backup and easy consulting. This
+captures all outgoing email, sent by PHP scripts or cronjobs, or user accounts
+that send via exim. This tutorial also shows how to forward or save all outgoing
+email for a specific domain.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Exim configuration
 
-There are two things that need to be configured. The system filter and the specific transport. If you only want to forward emails and not save them to the filesystem, the transport section is not needed. 
+There are two things that need to be configured. The system filter and the
+specific transport. If you only want to forward emails and not save them to the
+filesystem, the transport section is not needed.
 
 Edit your exim configuration and add these lines at the top:
 
+    
+    
     # /etc/exim.conf top
     system_filter = /etc/system_filter.exim
     system_filter_directory_transport = local_copy_outgoing
+    
 
 Add these lines lower in the configuration, in your transports section:
 
+    
+    
     # /etc/exim.conf transpors section
     local_copy_outgoing:
       driver = appendfile
@@ -39,44 +50,67 @@ Add these lines lower in the configuration, in your transports section:
       mode = 0660
       maildir_format = true
       create_directory = true
+    
 
-Change the `mail` user to the specific user account on your system exim runs at. It could be named `exim`. You can check that with the `getent passwd` command. 
+Change the `mail` user to the specific user account on your system exim runs at.
+It could be named `exim`. You can check that with the `getent passwd` command.
 
-To configure the actual saving and filtering create or edit the `/etc/system_filter.exim` file. The below snippets should be placed in that file, according to what you're trying to acomplish.
+To configure the actual saving and filtering create or edit the
+`/etc/system_filter.exim` file. The below snippets should be placed in that
+file, according to what you're trying to acomplish.
 
-To save all outgoing mail from a specific domain to a maildir folder in `/var/mail/`:
+To save all outgoing mail from a specific domain to a maildir folder in
+`/var/mail/`:
 
+    
+    
     if $sender_address_domain is example.tld
     then
     unseen save /var/mail/example.tld/mailarchive/.${tr{$sender_address}{.}{_}}.outgoing/
     endif
+    
 
 Forward all outgoing from specific domain to specific email address:
 
+    
+    
     if $sender_address_domain is example.tld
     then
     unseen deliver othermailbox@otherdomain.com
     endif
+    
 
 Forward ALL outgoing mail to email address:
 
+    
+    
     unseen deliver othermailbox@otherdomain.com
+    
 
 Save ALL outgoing email to maildir folder:
 
+    
+    
     unseen save /var/mail/${tr{$sender_address_domain}{.}{_}}/mailarchive/${tr{$sender_address}{.}{_}}.outgoing/
-
+    
 
 The files are saved in a maildir structure:
 
+    
+    
     ls -la /var/mail/example.tld/mailarchive/example\@example.tld.outgoing/new/
     total 16
     -rw-rw---- 1 mail mail 1632 Dec 15 20:31 1450207897.H829447P10443.example.tld
     drwx------ 5 mail mail 4096 Dec 15 20:31 ..
     -rw-rw---- 1 mail mail 1747 Dec 15 20:33 1450207983.H51962P10484.example.tld
     drwx------ 2 mail mail 4096 Dec 15 20:33 .
+    
 
-You can check the [exim documentation](http://www.exim.org/exim-html-3.30/doc/html/filter_34.html) for more variables you can use in this filter document.
+You can check the [exim documentation][2] for more variables you can use in this
+filter document.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://www.exim.org/exim-html-3.30/doc/html/filter_34.html
 
 ---
 

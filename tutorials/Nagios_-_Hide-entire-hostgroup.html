@@ -69,20 +69,40 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to hide all hosts from a hostgroup in Nagios, including the webinterface and email/sms notifications. It does however monitors and checks all the hosts in the hostgroup, so when there are problems you can view the hosts in Nagios. This is usefull for example when you have a staging, preproduction and production environment monitored by the same Nagios host, or by a Nagios cluster, and want to hide all of staging, but do want to quickly view the status when developers complain about a node.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to hide all hosts from a hostgroup in Nagios,
+including the webinterface and email/sms notifications. It does however monitors
+and checks all the hosts in the hostgroup, so when there are problems you can
+view the hosts in Nagios. This is usefull for example when you have a staging,
+preproduction and production environment monitored by the same Nagios host, or
+by a Nagios cluster, and want to hide all of staging, but do want to quickly
+view the status when developers complain about a node.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>First you needble all notifications for the hostgroup of choice, in my case &quot;staging&quot;. Navigate in the Web interface to the Hostgroup Overview, Click on the second hostgroup link (like: staging <em>(staging)</em> ) and then select &quot;Disable notifications for all services in this hostgroup&quot;. On the next page, select the checkbox &quot;Disable for hosts too&quot; and click Commit. You could also go to the following url, replacing the values for your environment: <code>http(s)://&amp;lt;nagios-url.tld&amp;gt;/&amp;lt;cgi-folder&amp;gt;/cmd.cgi?cmd_type=64&amp;amp;hostgroup=&amp;lt;hostgroup-name&amp;gt;</code>.</p>
+<p>First you needble all notifications for the hostgroup of choice, in my case
+&quot;staging&quot;. Navigate in the Web interface to the Hostgroup Overview, Click on the
+second hostgroup link (like: staging <em>(staging)</em> ) and then select &quot;Disable
+notifications for all services in this hostgroup&quot;. On the next page, select the
+checkbox &quot;Disable for hosts too&quot; and click Commit. You could also go to the
+following url, replacing the values for your environment: <code>http(s)://&amp;lt;nagios-
+url.tld&amp;gt;/&amp;lt;cgi-folder&amp;gt;/cmd.cgi?cmd_type=64&amp;amp;hostgroup=&amp;lt;hostgroup-
+name&amp;gt;</code>.</p>
 
-<p>Now navigate to the following page, again replacing the values for your environment: <code>http(s)://&amp;lt;nagios-url.tld&amp;gt;/&amp;lt;cgi-folder&amp;gt;/status.cgi?host=all&amp;amp;type=detail&amp;amp;servicestatustypes=28&amp;amp;serviceprops=8202</code>. This will open the view for the Service Status, with the properties <code>Not In Scheduled Downtime &amp;amp; Has Not Been Acknowledged &amp;amp; Notifications Enabled</code>. There are all your notifications, but not from the &quot;hidden&quot; hostgroup.</p>
+<p>Now navigate to the following page, again replacing the values for your
+environment: <code>http(s)://&amp;lt;nagios-url.tld&amp;gt;/&amp;lt;cgi-
+folder&amp;gt;/status.cgi?host=all&amp;amp;type=detail&amp;amp;servicestatustypes=28&amp;amp;serviceprops=8202</code>.
+This will open the view for the Service Status, with the properties <code>Not In
+Scheduled Downtime &amp;amp; Has Not Been Acknowledged &amp;amp; Notifications Enabled</code>.
+There are all your notifications, but not from the &quot;hidden&quot; hostgroup.</p>
 
-<p>You can also change the HTML files (index.html or side.html) to either change the frame to go directly to this page, or add a link in the menu to this page.</p>
+<p>You can also change the HTML files (index.html or side.html) to either change
+the frame to go directly to this page, or add a link in the menu to this page.</p>
 
 <h3>URL Properties</h3>
 
-<p>You can fiddle with the Nagios URL properties, below are the values you can use, which you can also find in the Nagios Source Code, in <code>include/cgiutils.h</code>.</p>
+<p>You can fiddle with the Nagios URL properties, below are the values you can use,
+which you can also find in the Nagios Source Code, in <code>include/cgiutils.h</code>.</p>
 
 <pre><code>/****************** HOST AND SERVICE FILTER PROPERTIES  *******************/
 
@@ -126,7 +146,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 #define SERVICE_ACTIVE_CHECK            131072
 </code></pre>
 
-<p>In our example above we added the 8192 with 8 and 2 to get 8202, so we have selected <code>SERVICE_NOTIFICATIONS_ENABLED</code>, <code>SERVICE_STATE_UNACKNOWLEDGED</code> and <code>SERVICE_NO_SCHEDULED_DOWNTIME</code>. </p>
+<p>In our example above we added the 8192 with 8 and 2 to get 8202, so we have
+selected <code>SERVICE_NOTIFICATIONS_ENABLED</code>, <code>SERVICE_STATE_UNACKNOWLEDGED</code> and
+<code>SERVICE_NO_SCHEDULED_DOWNTIME</code>.</p>
 </div><hr>Tags: <a href="../tags/dtap.html" class="link">dtap &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/nagios.html" class="link">nagios &nbsp;</a><a href="../tags/staging.html" class="link">staging &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

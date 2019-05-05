@@ -9,24 +9,33 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to redirect the Apache access log to syslog using the Customlog statement, and the Error log to syslog via the ErrorLog statement.
+This snippet shows you how to redirect the Apache access log to syslog using the
+Customlog statement, and the Error log to syslog via the ErrorLog statement.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+Using the double pipe prevents spawning a shell for every hit. Append the below
+line to a vhost to have everything logged to syslog.
 
-Using the double pipe prevents spawning a shell for every hit. Append the below line to a vhost to have everything logged to syslog.
-
-	CustomLog "||/usr/bin/logger -t apache -i -p local5.notice" combine
+    
+    
+    CustomLog "||/usr/bin/logger -t apache -i -p local5.notice" combine
+    
 
 The error log can be appended to syslog using the following statement:
 
-	 ErrorLog syslog:local6
+    
+    
+     ErrorLog syslog:local6
+    
 
-- [More info on the Errorlog: http://httpd.apache.org/docs/2.2/mod/core.html#errorlog](http://httpd.apache.org/docs/2.2/mod/core.html#errorlog)
-- [More info on the Customlog module: http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#customlog](http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#customlog)
+  * [More info on the Errorlog: http://httpd.apache.org/docs/2.2/mod/core.html#errorlog][2]
+  * [More info on the Customlog module: http://httpd.apache.org/docs/2.2/mod/mod _log_ config.html#customlog][3]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://httpd.apache.org/docs/2.2/mod/core.html#errorlog
+   [3]: http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#customlog
 
 ---
 

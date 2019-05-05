@@ -69,25 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial will cover the setup of an ubuntu/debian repository mirror. This is quite handy if you have multiple machines in your network running ubuntu. You only have to update the mirror, and the rest downloads the packages from there, so instead of having to download it 6 times (for 6 computers) you only download it once. Saves you and the mirrorservers some bandwidth.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial will cover the setup of an ubuntu/debian repository mirror. This
+is quite handy if you have multiple machines in your network running ubuntu. You
+only have to update the mirror, and the rest downloads the packages from there,
+so instead of having to download it 6 times (for 6 computers) you only download
+it once. Saves you and the mirrorservers some bandwidth.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>We will be using the apt-mirror tool to do all the magic.</p>
 
-<p>Please note that all the command need to be executed as root unless otherwise noted.</p>
+<p>Please note that all the command need to be executed as root unless otherwise
+noted.</p>
 
 <h2>Installing apt-mirror</h2>
 
-<p>If you are on a recent ubuntu/debian version (+lucid or +lenny) you can execute the following command to install apt-mirror:</p>
+<p>If you are on a recent ubuntu/debian version (+lucid or +lenny) you can execute
+the following command to install apt-mirror:</p>
 
 <pre><code>apt-get install apt-mirror
 </code></pre>
 
 <h2>Configuring apt-mirror</h2>
 
-<p>Apt-mirrors config is quite easy. Below you can find my config file with comments, please adapt where needed.</p>
+<p>Apt-mirrors config is quite easy. Below you can find my config file with
+comments, please adapt where needed.</p>
 
 <p>To edit:</p>
 
@@ -150,9 +157,13 @@ deb-amd64 http://ftp.nl.debian.org/debian testing main contrib non-free
 
 <h2>Downloading the packages</h2>
 
-<p>Now if the config is set up the way you want, we can start downloading the packages and filling the repository.  </p>
+<p>Now if the config is set up the way you want, we can start downloading the
+packages and filling the repository.</p>
 
-<p>Execute the following command to start downloading. Note that this can take a while, here it took half an hour, so be patient. The packages will be stored in subdirectories of the <em>/var/spool/apt-mirror/mirror</em> directory, so make sure the partition that holds that directory has enough disk space left.</p>
+<p>Execute the following command to start downloading. Note that this can take a
+while, here it took half an hour, so be patient. The packages will be stored in
+subdirectories of the <em>/var/spool/apt-mirror/mirror</em> directory, so make sure the
+partition that holds that directory has enough disk space left.</p>
 
 <pre><code>root@repo:/var/repo# su - apt-mirror -c apt-mirror
 </code></pre>
@@ -184,14 +195,18 @@ Post Mirror script has completed. See above output for any possible errors.
 
 <h2>Installing and configuring a web server</h2>
 
-<p>To be able to access the repo from other computers you need a webserver. You can also do it via ftp but I choose to use a webserver. You can install apache, lighttpd, cherokee, nginx or whatever suits you (boa, thttpd, awk-http). </p>
+<p>To be able to access the repo from other computers you need a webserver. You can
+also do it via ftp but I choose to use a webserver. You can install apache,
+lighttpd, cherokee, nginx or whatever suits you (boa, thttpd, awk-http).</p>
 
 <p>Install a webserver (in this example, nginx)</p>
 
 <pre><code>apt-get install nginx
 </code></pre>
 
-<p>The packages are in <em>/var/spool/apt-mirror/mirror</em>. We are going to create a symlink to make them available. Make sure you edit the names and folders of the repo if your config is not the same as above.</p>
+<p>The packages are in <em>/var/spool/apt-mirror/mirror</em>. We are going to create a
+symlink to make them available. Make sure you edit the names and folders of the
+repo if your config is not the same as above.</p>
 
 <pre><code>ln -s /var/spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu/ /var/www/ubuntu
 ln -s /var/spool/apt-mirror/mirror/ftp.nl.debian.org/debian/ /var/www/debian
@@ -204,28 +219,35 @@ lrwxrwxrwx  1 root root   54 Sep 17 15:54 debian -&gt; /var/spool/apt-mirror/mir
 lrwxrwxrwx  1 root root   55 Sep 17 14:22 ubuntu -&gt; /var/spool/apt-mirror/mirror/archive.ubuntu.com/ubuntu/    
 </code></pre>
 
-<p>Make sure you can see them via the webserver, go to the url of the server. If you&#39;ve are doing the repo locally you can use this URL:</p>
+<p>Make sure you can see them via the webserver, go to the url of the server. If
+you&#39;ve are doing the repo locally you can use this URL:</p>
 
 <pre><code>http://127.0.0.1/ubuntu
 </code></pre>
 
-<p>Note, for lighttpd you need to make sure that in the config the following option is enabled: </p>
+<p>Note, for lighttpd you need to make sure that in the config the following option
+is enabled:</p>
 
 <pre><code>server.follow-symlink = enabled    
 </code></pre>
 
 <h2>Setting up the clients</h2>
 
-<p>Now we have a working repo, we need to set up the clients to use this repo instead of the other (main) ubuntu repo&#39;s.</p>
+<p>Now we have a working repo, we need to set up the clients to use this repo
+instead of the other (main) ubuntu repo&#39;s.</p>
 
-<p>If you only have the standard repositories then you can use sed to comment all the default lines. If you are not sure, or have other repo&#39;s, please skip this step.</p>
+<p>If you only have the standard repositories then you can use sed to comment all
+the default lines. If you are not sure, or have other repo&#39;s, please skip this
+step.</p>
 
 <p>sed command to comment the entire /etc/apt/sources.list file:</p>
 
 <pre><code>sed -i &#39;s/(.*)/#1/g&#39; /etc/apt/sources.list /etc/apt/sources.list
 </code></pre>
 
-<p>Now edit the /etc/apt/sources.list file. Make sure to replace [[MYREPO]] with the http address of your repo (http://127.0.0.1 or http://myrepo.localdomain or whatever)</p>
+<p>Now edit the /etc/apt/sources.list file. Make sure to replace [[MYREPO]] with
+the http address of your repo (http://127.0.0.1 or http://myrepo.localdomain or
+whatever)</p>
 
 <pre><code>vim /etc/apt/sources.list 
 </code></pre>
@@ -261,7 +283,9 @@ Reading package lists... Done
 
 <h2>Cleaning up</h2>
 
-<p>If the repo becomes to big, you can use apt-mirror to clean up some space. This will delete older packages. I choose to not do that automatically, so I can install earlier versions of packages, or downgrade existing ones.</p>
+<p>If the repo becomes to big, you can use apt-mirror to clean up some space. This
+will delete older packages. I choose to not do that automatically, so I can
+install earlier versions of packages, or downgrade existing ones.</p>
 
 <p>Run the following command to clean up:</p>
 

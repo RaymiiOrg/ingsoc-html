@@ -64,17 +64,17 @@ below:
 
 `./check-file.py -e "admin@domain.com" -a -o /var/lib/aide/aide.db.gz`
 
-  2. Monitor the file `/var/lib/aide/aide.db.gz` against known checksum and mail to `admin@domain.com`:
+  1. Monitor the file `/var/lib/aide/aide.db.gz` against known checksum and mail to `admin@domain.com`:
 
 `./check-file.py -e "admin@domain.com" -a -c "41ce523dd72a67039df2db9b4542411c"
 /var/lib/aide/aide.db.gz`
 
-  3. Monitor file `/etc/passwd`, send even if md5sum matches, from `customer@kpn.nl` using smtp server `smtp.kpnmail.com`, do not attach it to the email and do not overwrite the checksum file:
+  1. Monitor file `/etc/passwd`, send even if md5sum matches, from `customer@kpn.nl` using smtp server `smtp.kpnmail.com`, do not attach it to the email and do not overwrite the checksum file:
 
 `./check-file.py -e "admin@domain.com" -f "customer@kpn.nl" -s
 "smtp.kpnmail.com" -m /etc/passwd`
 
-  4. Cron job to monitor the AIDE database and mail changes every night at 10 PM:
+  1. Cron job to monitor the AIDE database and mail changes every night at 10 PM:
 
 `1 22 * * * /usr/bin/python /root/scripts/check-file.py -e "admin@domain.com" -a
 -o /var/lib/aide/aide.db.gz`
@@ -102,8 +102,7 @@ below:
 
 ### More info:
 
-See <https://raymii.org/s/software/Python-script-to-monitor-a-file-for-changes-
-and-then-mail-the-report-with-the-file-attached.html>.
+See .
 
 ### License
 

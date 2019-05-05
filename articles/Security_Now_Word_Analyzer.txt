@@ -9,32 +9,43 @@ Format      : 	Markdown/HTML
 
 
 
-Security Now is a podcast by Leo Laporte and Steve Gibson released on the Twit.tv network.
+Security Now is a podcast by Leo Laporte and Steve Gibson released on the
+Twit.tv network.
 
-Steve pays to get the podcast transcribed, and the files are up over are [grc.com](http://grc.com). 
+Steve pays to get the podcast transcribed, and the files are up over are
+[grc.com][1].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-I decided to run my [analyzer](https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html) over the complete podcast text archive. This is from episode 001 to 371.
+I decided to run my [analyzer][3] over the complete podcast text archive. This
+is from episode 001 to 371.
 
 #### Get the files:
 
+    
+    
     for i in {001..371}; do curl http://www.grc.com/sn/sn-${i}.txt >> sn.txt; echo $i; done
+    
 
 #### Clean the files up:
 
+    
+    
     cat sn.txt | LC_CTYPE=C tr -cd '[:alnum:] [:space:]' > csn.txt
+    
 
 #### Analyze the text file:
 
+    
+    
     cat csn.txt | LC_CTYPE=C tr [:space:] '\n' | grep -v "^\s*$" | sort | uniq -c | sort -bnr > count-combined.txt
+    
 
 #### Result:
 
-        
+    
+    
     ed count-combined.txt 
     461930
     1,20np
@@ -58,22 +69,25 @@ I decided to run my [analyzer](https://raymii.org/s/articles/Word_occurrence_cou
     18      13711 for
     19      12847 have
     20      11599 on
+    
 
-
-
-
-[Full result](/s/inc/downloads/securitynow/sn-full.txt)
+[Full result][4]
 
 ### Steve only
 
+    
+    
     cat sn.txt | grep "STEVE:" > stonly.txt     
-
+    
     cat stonly.txt | LC_CTYPE=C tr -cd '[:alnum:] [:space:]' > stonlyclean.txt
-
+    
     cat stonlyclean.txt | LC_CTYPE=C tr [:space:] '\n' | grep -v "^\s*$" | sort | uniq -c | sort -bnr > sto.txt
+    
 
 #### Result
 
+    
+    
     ed sto.txt 
     461930
     1,20np
@@ -97,20 +111,25 @@ I decided to run my [analyzer](https://raymii.org/s/articles/Word_occurrence_cou
     18      13711 for
     19      12847 have
     20      11599 on 
+    
 
-[Steve only](/s/inc/downloads/securitynow/sn-steve.txt)
+[Steve only][5]
 
 ### Leo Only
 
+    
+    
     cat sn.txt | grep "LEO:" > leoonly.txt     
-
+    
     cat leoonly.txt | LC_CTYPE=C tr -cd '[:alnum:] [:space:]' > leoonlyclean.txt
-
+    
     cat leoonlyclean.txt | LC_CTYPE=C tr [:space:] '\n' | grep -v "^\s*$" | sort | uniq -c | sort -bnr > leoc.txt
-
+    
 
 #### Result
 
+    
+    
     ed leoc.txt 
     367236
     1,20np
@@ -134,11 +153,16 @@ I decided to run my [analyzer](https://raymii.org/s/articles/Word_occurrence_cou
     18      6492 its
     19      6032 do
     20      5922 know    
+    
 
+[Leo only][6]
 
-[Leo only](/s/inc/downloads/securitynow/sn-leo.txt)       
-
-
+   [1]: http://grc.com
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html
+   [4]: /s/inc/downloads/securitynow/sn-full.txt
+   [5]: /s/inc/downloads/securitynow/sn-steve.txt
+   [6]: /s/inc/downloads/securitynow/sn-leo.txt
 
 ---
 

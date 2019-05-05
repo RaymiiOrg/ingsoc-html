@@ -69,18 +69,27 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently a rather large amount of new infrastructure was added to one of my monitoring instances. Using SNMP exclusively, but not the fastest network or infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts, which look like false positives and give unclean logs. Raising the SNMP timeout for the checks above 60 seconds was not that easy since the 60 second timeout is hardcoded in the underlying library (NET::SNMP). This article shows you how to raise that timeout on an Ubuntu 16.04 system.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently a rather large amount of new infrastructure was added to one of my
+monitoring instances. Using SNMP exclusively, but not the fastest network or
+infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts,
+which look like false positives and give unclean logs. Raising the SNMP timeout
+for the checks above 60 seconds was not that easy since the 60 second timeout is
+hardcoded in the underlying library (NET::SNMP). This article shows you how to
+raise that timeout on an Ubuntu 16.04 system.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>In the webinterface of Icinga2 the logs are unclean, making it harder to find actual errors:</p>
+<p>In the webinterface of Icinga2 the logs are unclean, making it harder to find
+actual errors:</p>
 
-<p><img src="https://raymii.org/s/inc/img/icinga_timeout.png"></p>
+<p><img src="https://raymii.org/s/inc/img/icinga_timeout.png" alt=""></p>
 
 <h3>Timeout in the Manubulon SNMP checks</h3>
 
-<p>The plugins used for the SNMP monitoring are <a href="http://nagios.manubulon.com/">from Manubulon</a>, Icinga2 has them integrated, and using Ansible I generate the configuration for the servers. An example apply rule could look like this:</p>
+<p>The plugins used for the SNMP monitoring are <a href="http://nagios.manubulon.com/">from Manubulon</a>, Icinga2 has
+them integrated, and using Ansible I generate the configuration for the servers.
+An example apply rule could look like this:</p>
 
 <pre><code>apply Service &quot;snmp-win-service-Microsoft-Exchange-IMAP4&quot; {
   import &quot;generic-service&quot;
@@ -100,13 +109,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>/usr/share/icinga2/include/command-plugins-manubulon.conf
 </code></pre>
 
-<p>Raising this timeout higher than 60 gives an error for the check. Let&#39;s dive on the commandline and check what goes wrong:</p>
+<p>Raising this timeout higher than 60 gives an error for the check. Let&#39;s dive on
+the commandline and check what goes wrong:</p>
 
 <pre><code>/usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n &quot;Microsoft Exchange IMAP4&quot;
 Timeout must be &gt;1 and &lt;60 !
 </code></pre>
 
-<p>Looking through the perl code, <code>$o_timeout</code> is checked to not be greater then 60 seconds. Let&#39;s change that:</p>
+<p>Looking through the perl code, <code>$o_timeout</code> is checked to not be greater then 60
+seconds. Let&#39;s change that:</p>
 
 <pre><code>sed -i &#39;s/$o_timeout &gt; 60/$o_timeout &gt; 900/g&#39; /usr/lib/nagios/plugins/check_snmp_process.pl
 </code></pre>
@@ -123,7 +134,9 @@ ERROR: The timeout value 88 is out of range (1..60).
 
 <p><a href="http://web.archive.org/web/20180516054845/https://webcache.googleusercontent.com/search?q=cache:QbXBdQJ8bzoJ:https://support.nagios.com/forum/viewtopic.php%3Ft%3D40836%26p%3D200360+&amp;cd=2&amp;hl=nl&amp;ct=clnk&amp;gl=nl&amp;client=ubuntu">This post</a> (the site is behind a login now, so I had to archive the google cache, neat), had more information where this error came from, hardcoded in the SNMP library used by the Icinga2 checks. </p>
 
-<p>I was unable to find out why this limit was choosen and not made configurable. <a href="http://web.archive.org/web/20180516064030/http://search.cpan.org/%7Edtown/Net-SNMP-v6.0.1/lib/Net/SNMP.pm">This</a> was the closest, but that does not give a reason. Now, 60 seconds is a long timeout and I&#39;d also rather not raise it, but this case is an exception.</p>
+<p>I was unable to find out why this limit was choosen and not made configurable.
+<a href="http://web.archive.org/web/20180516064030/http://search.cpan.org/%7Edtown/Net-SNMP-v6.0.1/lib/Net/SNMP.pm">This</a> was the closest, but that does not give a reason. Now, 60 seconds is a
+long timeout and I&#39;d also rather not raise it, but this case is an exception.</p>
 
 <p>Change it in library:</p>
 
@@ -136,9 +149,13 @@ ERROR: The timeout value 88 is out of range (1..60).
 1 services active (matching &quot;Microsoft Exchange IMAP4&quot;) : OK
 </code></pre>
 
-<p>Not the most pretty fix, but a suitable workaround. Do note that my checks are not done every minute, but every 15 minutes or every hour. Otherwise it could clog up and cause a waterfall of load everywhere in this, lets call it vintage, infrastructure.</p>
+<p>Not the most pretty fix, but a suitable workaround. Do note that my checks are
+not done every minute, but every 15 minutes or every hour. Otherwise it could
+clog up and cause a waterfall of load everywhere in this, lets call it vintage,
+infrastructure.</p>
 
-<p>Also note that when you do system upgrades, these changes will be overwritten. You might want to <code>chattr +i</code> some files.</p>
+<p>Also note that when you do system upgrades, these changes will be overwritten.
+You might want to <code>chattr +i</code> some files.</p>
 </div><hr>Tags: <a href="../tags/health.html" class="link">health &nbsp;</a><a href="../tags/icinga.html" class="link">icinga &nbsp;</a><a href="../tags/icinga2.html" class="link">icinga2 &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/nagios.html" class="link">nagios &nbsp;</a><a href="../tags/perl.html" class="link">perl &nbsp;</a><a href="../tags/timeout.html" class="link">timeout &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

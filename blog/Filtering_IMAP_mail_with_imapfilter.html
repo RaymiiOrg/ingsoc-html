@@ -81,8 +81,8 @@ filters on the server using IMAP queries. It is a lightweight command line
 utility, the configuration can be versioned and is simple text and it is very
 fast.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Imapfilter is configured via a config file. This article will discuss this
 config file with filtering and other examples. Start with a blank one:</p>
@@ -130,8 +130,7 @@ account2 = IMAP {
 }
 </code></pre>
 
-<p>You can define as much accounts as needed. You can even <a href="http://thomaslevine.com/!/imapfilter/">get your accounts from
-offlineimap</a>:</p>
+<p>You can define as much accounts as needed. You can even <a href="http://thomaslevine.com/!/imapfilter/">get your accounts from offlineimap</a>:</p>
 
 <pre><code>function offlineimap (key)
   local status
@@ -182,8 +181,7 @@ my inbox by moving messages to another folder. If a message matched a filter it
 is moved, if it would then lower on match another filter that would not apply to
 that mail because it is already moved.</p>
 
-<p>See the <a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> for all
-configuration options. </p>
+<p>See the <a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> for all configuration options.</p>
 
 <p>If you simply want to filter a message based on the sender, receipient or
 subject you can use the following. It moves all messages with the Duplicity
@@ -211,7 +209,7 @@ with a certain subject line:</p>
   messages:move_messages(account1[&quot;Monitoring/Nagios&quot;])    
 </code></pre>
 
-<p>As you can see the <code>mark_seen()</code> operator marks messages as read. </p>
+<p>As you can see the <code>mark_seen()</code> operator marks messages as read.</p>
 
 <p>With these operators you can construct advanced filters.</p>
 
@@ -231,10 +229,9 @@ messages as read, for archival purposes for example, use the following filter:</
 
 <h3>pipe_to</h3>
 
-<p>Taken from the <a href="https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua">extended configuration
-example</a>
-here is an example piece of code which sends mail to an external program and
-based on the output deletes the messages the program marked as spam.</p>
+<p>Taken from the <a href="https://raw.githubusercontent.com/lefcha/imapfilter/master/samples/extend.lua">extended configuration example</a> here is an example piece of
+code which sends mail to an external program and based on the output deletes the
+messages the program marked as spam.</p>
 
 <pre><code>-- The auxiliary function pipe_to() is supplied for conveniency.  For
 -- example if there was a utility named &quot;bayesian-spam-filter&quot;, which
@@ -257,10 +254,7 @@ results:delete_messages()
 <h3>Conclusion</h3>
 
 <p>The above examples will get you started with message filtering right away. The
-<a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/config.lua">example
-config</a> and
-the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua">extended example
-config</a>
+<a href="http://linux.die.net/man/5/imapfilter_config">manpage</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/config.lua">example config</a> and the <a href="https://github.com/lefcha/imapfilter/blob/master/samples/extend.lua">extended example config</a>
 will get you even further.</p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dovecot.html" class="link">dovecot &nbsp;</a><a href="../tags/filter.html" class="link">filter &nbsp;</a><a href="../tags/gmail.html" class="link">gmail &nbsp;</a><a href="../tags/imap.html" class="link">imap &nbsp;</a><a href="../tags/imapfilter.html" class="link">imapfilter &nbsp;</a><a href="../tags/lua.html" class="link">lua &nbsp;</a><a href="../tags/mail.html" class="link">mail &nbsp;</a><a href="../tags/sieve.html" class="link">sieve &nbsp;</a><a href="../tags/smtp.html" class="link">smtp &nbsp;</a><div class="footer">
                 <hr>

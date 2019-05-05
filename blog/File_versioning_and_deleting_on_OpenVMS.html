@@ -69,27 +69,27 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
 <p>I&#39;m now a few weeks into my OpenVMS adventure and my home folder on the
-<a href="http://decus.org">DECUS</a> system is quite cluttered with files. More
-specifically, with different versions of files, since OpenVMS by default has
-file versioning built in. This means that when you edit a file, or copy a file
-over an existing file, the old file is not overwritten but a new file with a new
-version is written. The old file still is there. This is one of the best things
-in my humble opinion so far on OpenVMS, but it does require maintenance to not
-have the disk get filled up fast. This article goes into the PURGE and DELETE
-commands which help you deal with file versioning and removal.</p>
+<a href="http://decus.org">DECUS</a> system is quite cluttered with files. More specifically, with
+different versions of files, since OpenVMS by default has file versioning built
+in. This means that when you edit a file, or copy a file over an existing file,
+the old file is not overwritten but a new file with a new version is written.
+The old file still is there. This is one of the best things in my humble opinion
+so far on OpenVMS, but it does require maintenance to not have the disk get
+filled up fast. This article goes into the PURGE and DELETE commands which help
+you deal with file versioning and removal.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>DIR flags</h3>
 
-<p>My home folder <a href="http://decus.org">DECUS</a> is getting filled up with test files
-and other titbits. </p>
+<p>My home folder <a href="http://decus.org">DECUS</a> is getting filled up with test files and other
+titbits.</p>
 
 <pre><code>   $ DIR /SIZE /OWNER /DATE /PROTECTION
 </code></pre>
@@ -206,10 +206,9 @@ versions are working copies that can be removed now that this poem is done.</p>
 
 <h3>PURGE</h3>
 
-<p>The <a href="http://web.archive.org/web/20180415125506/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_159.html">PURGE command</a>
-removes all but the highest version of a file. The <code>DELETE</code> command, which we
-will cover in the next section, only removes specific files and it requires you
-to specify a version number as well.</p>
+<p>The <a href="http://web.archive.org/web/20180415125506/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_159.html">PURGE command</a> removes all but the highest version of a file. The
+<code>DELETE</code> command, which we will cover in the next section, only removes specific
+files and it requires you to specify a version number as well.</p>
 
 <p>The <code>PURGE</code> command is therefore usefull to clean up old versions of a file.
 There are a few usefull flags, for example the <code>/SINCE</code> flag. It removes only
@@ -222,7 +221,7 @@ saved that way.</p>
 <p>The opposite of that flags is <code>/BEFORE</code> flag. It removes all versions of a file
 before the given time. If I wanted to save all versions that I created yesterday
 and today, but remove all earlier versions, the command would be <code>PURGE
-/BEFORE=YESTERDAY $FILE</code>. </p>
+/BEFORE=YESTERDAY $FILE</code>.</p>
 
 <p>If you do want to keep some versions, the <code>/KEEP</code> flag allows you to specify a
 number of versions to keep. To keep the 5 last versions, specify <code>/KEEP=5</code>.</p>
@@ -297,8 +296,8 @@ Total of 2 files.
 <p>You can read most of my delete adventures <a href="https://raymii.org/s/blog/Delete_a_directory_in_OpenVMS.html">here when I tried to remove a
 folder</a>.</p>
 
-<p><a href="http://web.archive.org/web/20180415131447/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">Reading the documentation</a> on <code>DELETE</code>, the same usefull flags 
-like <code>/BEFORE</code> and <code>/SINCE</code> can be used. However, they will not remove previous 
+<p><a href="http://web.archive.org/web/20180415131447/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">Reading the documentation</a> on <code>DELETE</code>, the same usefull flags like
+<code>/BEFORE</code> and <code>/SINCE</code> can be used. However, they will not remove previous
 versions, but all previous files and must be used with wildcards:</p>
 
 <pre><code>/BEFORE[=time]
@@ -321,7 +320,8 @@ When you delete a file, the area in which the file was stored is returned to the
 Recursively deletes all files and sub directories excluding the parent directory.
 </code></pre>
 
-<p>As said, <code>DELETE</code> requires a version number. Just trying to delete my <code>REMY.DAT</code> file will fail:</p>
+<p>As said, <code>DELETE</code> requires a version number. Just trying to delete my <code>REMY.DAT</code>
+file will fail:</p>
 
 <pre><code> $ DELETE REMY.DAT
 %DELETE-E-DELVER, explicit version number or wild card required

@@ -69,14 +69,20 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/OpenSSL_logo_small.png" alt=Openssl /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/OpenSSL_logo_small.png" alt="Openssl"></p>
 
-<p>When you update OpenSSL, the software that currently has the ssl libraries loaded in memory do not automatically load the updated libraries. A full system reboot resolves that problem, but sometimes that is not possible. This command shows you all the software that has loaded the libraries, allowing you to restart only those services. If you don&#39;t restart or reload after an update, the software might still be vulnerable to issues that the update fixed.</p>
+<p>When you update OpenSSL, the software that currently has the ssl libraries
+loaded in memory do not automatically load the updated libraries. A full system
+reboot resolves that problem, but sometimes that is not possible. This command
+shows you all the software that has loaded the libraries, allowing you to
+restart only those services. If you don&#39;t restart or reload after an update, the
+software might still be vulnerable to issues that the update fixed.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Make sure you have the <code>lsof</code> command installed. Your package manager probably has this package.</p>
+<p>Make sure you have the <code>lsof</code> command installed. Your package manager probably
+has this package.</p>
 
 <p>Using the following command you get a list of services currently using libssl:</p>
 
@@ -97,7 +103,8 @@ pure-ftpd
 spamd
 </code></pre>
 
-<p>Not all the filenames are complete but you can fill those in. If you leave out the last part of the command you can also see which specific library is in use:</p>
+<p>Not all the filenames are complete but you can fill those in. If you leave out
+the last part of the command you can also see which specific library is in use:</p>
 
 <pre><code>lsof | grep libssl
 </code></pre>
@@ -110,9 +117,11 @@ httpd       876    apache  mem       REG              202,1    539869      85375
 spamd     13513      root  mem       REG              202,1    444168      85398 /usr/lib64/libssl.so.1.0.1e
 </code></pre>
 
-<p>Here you can see some services using a different library, those still need a restart.</p>
+<p>Here you can see some services using a different library, those still need a
+restart.</p>
 
-<p><em>Update</em>. Tzu sent me an email with his command to find all updated libraries and services using the old ones:</p>
+<p><em>Update</em>. Tzu sent me an email with his command to find all updated libraries
+and services using the old ones:</p>
 
 <pre><code>lsof | grep &#39;DEL.*lib&#39; | cut -f 1 -d &#39; &#39; | sort -u
 </code></pre>

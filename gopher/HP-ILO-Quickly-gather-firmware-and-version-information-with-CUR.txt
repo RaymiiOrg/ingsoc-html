@@ -9,37 +9,53 @@ Format      : 	Markdown/HTML
 
 
 
-Have a lot of HP servers with ILO cards, and want to gather information from them quicly? By default you can get some information in XML format, for ILO, ILO2, ILO3 and ILO4, with curl. You don't have to log in via SSH, and can script it/loop it.
+Have a lot of HP servers with ILO cards, and want to gather information from
+them quicly? By default you can get some information in XML format, for ILO,
+ILO2, ILO3 and ILO4, with curl. You don't have to log in via SSH, and can script
+it/loop it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+On the command line, make sure you're in the right VLAN/management network
+(replace the IP with your ILO IP) :
 
-On the command line, make sure you're in the right VLAN/management network (replace the IP with your ILO IP) :
-
+    
+    
     curl http://10.2.76.22/xmldata?item=All
+    
 
 For https:
 
+    
+    
     curl -k https://10.2.76.22/xmldata?item=All
+    
 
 Example response:
 
+    
+    
     <?xml version="1.0"?><RIMP><HSI><SBSN>CZCxxxx </SBSN><SPN>ProLiant DL380 G5</SPN><UUID>xxxxxxxx</UUID><SP>1</SP><cUUID>0000-0000-0000-0000</cUUID><VIRTUAL><STATE>Inactive</STATE><VID><BSN></BSN><cUUID></cUUID></VID></VIRTUAL></HSI><MP><ST>1</ST><PN>Integrated Lights-Out 2 (iLO 2)</PN><FWRI>2.02</FWRI><BBLK>3; Jul 11 2004</BBLK><HWRI>ASIC:  7</HWRI><SN>00xx00xx00xx      </SN><UUID>ILO000xxx000</UUID><IPM>1</IPM><SSO>0</SSO><PWRM>3.4</PWRM></MP></RIMP>
+    
 
-A quick tip, to know the ILO version look at the `HWRI>ASIC:` value: 
+A quick tip, to know the ILO version look at the `HWRI>ASIC:` value:
 
-- ASIC 2 = ILO 1
-- ASIC 7 = ILO 2
-- ASIC 16 = ILO 4
+  * ASIC 2 = ILO 1
+  * ASIC 7 = ILO 2
+  * ASIC 16 = ILO 4
 
 With curl you can loop as well:
 
+    
+    
     curl http://10.2.76.[1-120]/xmldata?item=All
+    
 
-Also, here is a script to find all the ILO's on your network: [http://blog.nachotech.com/?p=63](http://blog.nachotech.com/?p=63)
+Also, here is a script to find all the ILO's on your network:
+<http://blog.nachotech.com/?p=63>
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

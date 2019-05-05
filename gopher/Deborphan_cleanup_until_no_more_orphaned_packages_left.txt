@@ -11,24 +11,30 @@ Format      : 	Markdown/HTML
 
 ### Deborphan
 
-Deborphan removes packages it thinks your system doesn't need anymore. It is a great tool for package cleanup and maintenance. Sometimes, after cleaning up the packages, it will find new packages that are orphaned (because you just cleaned up). 
+Deborphan removes packages it thinks your system doesn't need anymore. It is a
+great tool for package cleanup and maintenance. Sometimes, after cleaning up the
+packages, it will find new packages that are orphaned (because you just cleaned
+up).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-This is a small script that cleans up with deborphan until there is nothing more to cleanup.
+This is a small script that cleans up with deborphan until there is nothing more
+to cleanup.
 
 ### Script
 
 First install deborphan, otherwise the script will not work:
 
+    
+    
     apt-get install deborphan
+    
 
 This is the script:
 
-
+    
+    
     #!/bin/bash
     # run deborphan and remove the output packages untill there are no more
     while true; do
@@ -39,8 +45,12 @@ This is the script:
             break
         fi
     done
+    
 
-Make sure to review the packages that are going to be deleted, not keeping an eye could result in a broken system. If you add `-y` you're on your own. 
+Make sure to review the packages that are going to be deleted, not keeping an
+eye could result in a broken system. If you add `-y` you're on your own.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -17,7 +17,7 @@ interesting for others. It also has an HTTP status overview of the nodes.
 ### Active Servers for Raymii.org
 
 Status | Name | Provider | Location | RAM | HDD | OS | Type  
----|---|---|---|---|---|---|---  
+\---|---|---|---|---|---|---|---  
 ![ball][1] | [d1][2] | ScaleWay | ![FR][3] | 2 GB | 50 GB | ![Ubuntu][4] |
 ![Dedicated][5]  
 ![ball][6] | [s1][7] | Digital Ocean | ![NL][8] | 1 GB | 25 GB | ![Ubuntu][4] |
@@ -41,12 +41,12 @@ Status | Name | Provider | Location | RAM | HDD | OS | Type
 ![ball][31] | [s13][32] | Vultr | ![US][15] | 512 MB | 20 GB | ![Ubuntu][4] |
 ![KVM][9]  
 ![ball][33] | [s14][34] | BuyVM | ![US][15] | 512 MB | 10 GB | ![Ubuntu][4] |
-![KVM][9]  
-  
+![KVM][9]
+
 ### Other Servers
 
 Status | Name | Provider | Location | RAM | HDD | OS | Type | Purpose  
----|---|---|---|---|---|---|---|---  
+\---|---|---|---|---|---|---|---|---  
 ![ball][35] | s7 | Digital Ocean | ![US][15] | 1 GB | 25 GB | ![Ubuntu][4] |
 ![KVM][9] |
 
@@ -54,8 +54,6 @@ Status | Name | Provider | Location | RAM | HDD | OS | Type | Purpose
   * [Cipherli.st][37]
   * [Certificate Monitoring][38]
 
-  
-  
 [Broken link on purpose][39]
 
    [1]: http://d1.spnw.nl/s/inc/img/online.png

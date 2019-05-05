@@ -9,19 +9,21 @@ Format      : 	Markdown/HTML
 
 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+This is a one liner for OpenSSL to generate a self signed certificate and
+private key.
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-This is a one liner for OpenSSL to generate a self signed certificate and private key.
-
+    
+    
     openssl req -nodes -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 356
+    
 
 This is the output. Fill it in as required:
 
+    
+    
     Generating a 2048 bit RSA private key
     ......................+++
     ....................................+++
@@ -41,9 +43,11 @@ This is the output. Fill it in as required:
     Organizational Unit Name (eg, section) []:QA
     Common Name (e.g. server FQDN or YOUR name) []:example.sparklingnetwork.nl
     Email Address []:
+    
 
 If you want a password on the private key, remove the `-nodes` option.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -69,18 +69,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Sometimes I need to manage a few systems with either low resources or a very restricted set of packages. On those systems no compilers or development libraries are available, however it is allowed to bring binaries. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Sometimes I need to manage a few systems with either low resources or a very
+restricted set of packages. On those systems no compilers or development
+libraries are available, however it is allowed to bring binaries.</p>
 
-<p>A few of those systems are 32 bit x68 systems, some are MIPS systems, even worse. They serve a secure purpose, I cannot go in to much detail about them, except for they require a high level of security, they process certificates.</p>
+<p>A few of those systems are 32 bit x68 systems, some are MIPS systems, even
+worse. They serve a secure purpose, I cannot go in to much detail about them,
+except for they require a high level of security, they process certificates.</p>
 
-<p>I really like vim as my editor, the only editor available by default on those systems is <code>ed</code>. I have an <a href="https://raymii.org/s/tutorials/ed_cheatsheet.html">ed cheatsheet</a> for this purpose. </p>
+<p>I really like vim as my editor, the only editor available by default on those
+systems is <code>ed</code>. I have an <a href="https://raymii.org/s/tutorials/ed_cheatsheet.html">ed cheatsheet</a> for this purpose.</p>
 
-<p>The solution for this problem is to create a statically (cross) compiled version of <code>vim</code>.</p>
+<p>The solution for this problem is to create a statically (cross) compiled version
+of <code>vim</code>.</p>
 
-<p>These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit machine. </p>
+<p>These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit
+machine.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Install required packages</h3>
 
@@ -89,12 +96,14 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>apt-get install libncurses5-dev git build-essential
 </code></pre>
 
-<p>If you need to cross compile from 64 bit to 32 bit, also install <code>libc6-dev-i386</code>:</p>
+<p>If you need to cross compile from 64 bit to 32 bit, also install
+<code>libc6-dev-i386</code>:</p>
 
 <pre><code>apt-get install libc6-dev-i386
 </code></pre>
 
-<p>The MIPS hardware has a special toolchain which have specific instructions not covered here. The manufacturer probably covers this in their documentation.</p>
+<p>The MIPS hardware has a special toolchain which have specific instructions not
+covered here. The manufacturer probably covers this in their documentation.</p>
 
 <h3>Vim source code</h3>
 
@@ -118,9 +127,13 @@ export CFLAGS=&quot;&quot;
 ./configure --with-features=small  --with-compiledby=&#39;Remy &lt;relst@relst.nl&gt;&#39;  --with-x=no  --disable-gui  --disable-netbeans  --disable-pythoninterp  --disable-python3interp  --disable-rubyinterp  --disable-luainterp 
 </code></pre>
 
-<p>The above <code>LDFLAGS</code> make sure Vim gets statically compiled. The other options disable any GUI support (x) and enable a portion of the features, namely the <code>small</code> featureset. This lacks syntax highlighting and such. See below for a vim <code>:version</code> output.</p>
+<p>The above <code>LDFLAGS</code> make sure Vim gets statically compiled. The other options
+disable any GUI support (x) and enable a portion of the features, namely the
+<code>small</code> featureset. This lacks syntax highlighting and such. See below for a vim
+<code>:version</code> output.</p>
 
-<p>If you need to compile on a 64 bit machine for a 32 bit machine, export the following <code>CFLAGS</code>:</p>
+<p>If you need to compile on a 64 bit machine for a 32 bit machine, export the
+following <code>CFLAGS</code>:</p>
 
 <pre><code>export CFLAGS=&quot;-m32&quot;
 </code></pre>
@@ -177,15 +190,19 @@ $ ls -la vim
 -rwxr-xr-x 1 remy remy 1.3M Sep 17 04:04 vim
 </code></pre>
 
-<p>The same <code>vim</code>, dynamically compiled (without the <code>LDFLAGS=&quot;-static&quot;</code>), is a little bit smaller:</p>
+<p>The same <code>vim</code>, dynamically compiled (without the <code>LDFLAGS=&quot;-static&quot;</code>), is a
+little bit smaller:</p>
 
 <pre><code>$ ls -la vim
 -rwxr-xr-x 1 remy remy 793K Sep 17 04:17 vim
 </code></pre>
 
-<p>That&#39;s it. You can copy/<code>scp</code> the <code>vim</code> file anywhere and use it, as long as it is the correct architecture. Even on restricted systems in my case.</p>
+<p>That&#39;s it. You can copy/<code>scp</code> the <code>vim</code> file anywhere and use it, as long as it
+is the correct architecture. Even on restricted systems in my case.</p>
 
-<p>These instructions work for almost all programs you can compile. The <code>LDFLAGS=&quot;-static&quot;</code> is the magic part here. You can try it for yourself with other software.</p>
+<p>These instructions work for almost all programs you can compile. The
+<code>LDFLAGS=&quot;-static&quot;</code> is the magic part here. You can try it for yourself with
+other software.</p>
 
 <h3>Version info</h3>
 

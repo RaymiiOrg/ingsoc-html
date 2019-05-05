@@ -69,17 +69,29 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This small tutorial will show you how to use the openssl command line to encrypt and decrypt a file using a public key. We will first generate a random key, encrypt that random key against the public key of the other person and use that random key to encrypt the actual file with using symmetric encryption.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This small tutorial will show you how to use the openssl command line to encrypt
+and decrypt a file using a public key. We will first generate a random key,
+encrypt that random key against the public key of the other person and use that
+random key to encrypt the actual file with using symmetric encryption.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Because of how the RSA algorithm works it is not possible to encrypt large files. If you create a key of <code>n</code> bits, then the file you want to encrypt must not larger than (<code>n</code> minus 11) bits. The most effective use of RSA crypto is to encrypt a random generated password,  then encrypt the file with the password using symmetric crypto. If the file is larger then the key size the encryption command will fail:</p>
+<p>Because of how the RSA algorithm works it is not possible to encrypt large
+files. If you create a key of <code>n</code> bits, then the file you want to encrypt must
+not larger than (<code>n</code> minus 11) bits. The most effective use of RSA crypto is to
+encrypt a random generated password, then encrypt the file with the password
+using symmetric crypto. If the file is larger then the key size the encryption
+command will fail:</p>
 
 <pre><code>RSA operation error:  020:error:0406D06E:rsa routines:RSA_padding_add_PKCS1_type_2:data too large for key size:.\crypto\rsa\rsa_pk1.c:151:
 </code></pre>
 
-<p>We generate a random file and use that as the key to encrypt the large file with symmetric crypto. That random file acts as the password so to say. We encrypt the large file with the small password file as password. Then we send the encrypted file and the encrypted key to the other party and then can decrypt the key with their public key, the use that key to decrypt the large file.</p>
+<p>We generate a random file and use that as the key to encrypt the large file with
+symmetric crypto. That random file acts as the password so to say. We encrypt
+the large file with the small password file as password. Then we send the
+encrypted file and the encrypted key to the other party and then can decrypt the
+key with their public key, the use that key to decrypt the large file.</p>
 
 <p>The following commands are relevant when you work with RSA keys:</p>
 
@@ -89,11 +101,14 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><code>openssl rsautl</code>: Encrypt and decrypt files with RSA keys.</li>
 </ul>
 
-<p>The key is just a string of random bytes. We use a base64 encoded string of 128 bytes, which is 175 characters. Since 175 characters is 1400 bits, even a small RSA key will be able to encrypt it.</p>
+<p>The key is just a string of random bytes. We use a base64 encoded string of 128
+bytes, which is 175 characters. Since 175 characters is 1400 bits, even a small
+RSA key will be able to encrypt it.</p>
 
 <h3>Get the public key</h3>
 
-<p>Let the other party send you a certificate or their public key. If they send to a certificate you can extract the public key using this command:</p>
+<p>Let the other party send you a certificate or their public key. If they send to
+a certificate you can extract the public key using this command:</p>
 
 <pre><code>openssl rsa -in certificate.pem -out publickey.pem -outform PEM -pubout
 </code></pre>
@@ -109,7 +124,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p><strong>Update 25-10-2018</strong></p>
 
-<p>The key format is HEX because the base64 format adds newlines. The <code>-pass</code> argument later on only takes the first line of the file, so the full key is not used. (Thanks Ken Larson for pointing this to me)</p>
+<p>The key format is HEX because the base64 format adds newlines. The <code>-pass</code>
+argument later on only takes the first line of the file, so the full key is not
+used. (Thanks Ken Larson for pointing this to me)</p>
 
 <h3>Encrypt the file with the random key</h3>
 
@@ -136,18 +153,22 @@ Linux-Voice-Issue-020.pdf.enc: data
 
 <h3>Encrypt the random key with the public keyfile</h3>
 
-<p>Use the following command to encrypt the random keyfile with the other persons public key:</p>
+<p>Use the following command to encrypt the random keyfile with the other persons
+public key:</p>
 
 <pre><code>openssl rsautl -encrypt -inkey publickey.pem -pubin -in key.bin -out key.bin.enc
 </code></pre>
 
-<p>You can safely send the <code>key.bin.enc</code> and the <code>largefile.pdf.enc</code> to the other party.</p>
+<p>You can safely send the <code>key.bin.enc</code> and the <code>largefile.pdf.enc</code> to the other
+party.</p>
 
 <p>You might want to <a href="https://raymii.org/s/tutorials/Sign_and_verify_text_files_to_public_keys_via_the_OpenSSL_Command_Line.html">sign the two files with your public key as well</a>.</p>
 
 <h3>Decrypt the random key with our private key file</h3>
 
-<p>If you want to decrypt a file encrypted with this setup, use the following command with your privte key (beloning to the pubkey the random key was crypted to) to decrypt the random key:</p>
+<p>If you want to decrypt a file encrypted with this setup, use the following
+command with your privte key (beloning to the pubkey the random key was crypted
+to) to decrypt the random key:</p>
 
 <pre><code>openssl rsautl -decrypt -inkey privatekey.pem -in key.bin.enc -out key.bin
 </code></pre>
@@ -156,7 +177,8 @@ Linux-Voice-Issue-020.pdf.enc: data
 
 <h3>Decrypt the large file with the random key</h3>
 
-<p>Once you have the random key, you can decrypt the encrypted file with the decrypted key:</p>
+<p>Once you have the random key, you can decrypt the encrypted file with the
+decrypted key:</p>
 
 <pre><code>openssl enc -d -aes-256-cbc -in largefile.pdf.enc -out largefile.pdf -pass file:./bin.key
 </code></pre>

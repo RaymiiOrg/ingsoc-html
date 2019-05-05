@@ -69,20 +69,20 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>While working on the <a href="http://decus.org">DECUServe OpenVMS</a> system I found out
-quickly that pressing BACKSPACE moves the cursor on the shell to the beginning
-of the line instead of deleting the character to the left of the cursor. This
-made me very aware of my typing, since when I made an error I had to retype the
-entire line (the terminal is in insert mode it seems). After reading through
-some documentation it seems that is default behaviour but there are terminal
-options to change it.</p>
+<p>While working on the <a href="http://decus.org">DECUServe OpenVMS</a> system I found out quickly that
+pressing BACKSPACE moves the cursor on the shell to the beginning of the line
+instead of deleting the character to the left of the cursor. This made me very
+aware of my typing, since when I made an error I had to retype the entire line
+(the terminal is in insert mode it seems). After reading through some
+documentation it seems that is default behaviour but there are terminal options
+to change it.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>DCL (shell)</h3>
 
@@ -90,9 +90,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 DCL is an attempt to have one shell for all systems of DEC, so that one only has
 to learn one shell environment usable on many systems.</p>
 
-<p>I use SSH to connect to the <a href="http://decus.org">DECUServe system</a> and doing that
-from a linux computer I had no problem with backspace. As in, the backspace key
-removes the character left of the cursor.</p>
+<p>I use SSH to connect to the <a href="http://decus.org">DECUServe system</a> and doing that from a linux
+computer I had no problem with backspace. As in, the backspace key removes the
+character left of the cursor.</p>
 
 <p>From a windows system with Putty for SSH, I noticed that the Backspace key moves
 the cursor to the beginning of the line. The terminal is set on insert mode, so
@@ -105,10 +105,9 @@ I was hoping it would remove a character.</p>
 
 <h3>Terminal input features</h3>
 
-<p>The first clue came when I read <a href="https://web.archive.org/web/20180408095639/http://h41379.www4.hpe.com/doc/84final/ba554_90018/ch05s01.html">this
-documentation</a>
-on shell features such as go to the end or beginning of a line. Like <code>CTRL+A</code>
-and <code>CTRL+E</code> in bash emacs mode (default).</p>
+<p>The first clue came when I read <a href="https://web.archive.org/web/20180408095639/http://h41379.www4.hpe.com/doc/84final/ba554_90018/ch05s01.html">this documentation</a> on shell features such
+as go to the end or beginning of a line. Like <code>CTRL+A</code> and <code>CTRL+E</code> in bash
+emacs mode (default).</p>
 
 <p>To correct a typo when the shell is in BACKSPACE to the start of the line mode,
 I used the <code>CTRL+J</code> key combo. That deletes an entire word. So I pressed
@@ -131,9 +130,8 @@ you are used to certain backspace key behaviour.</p>
 
 <h3>SET TERMINAL</h3>
 
-<p>Reading <a href="https://web.archive.org/web/20180408100057/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_222.html">more
-documentation</a>
-on terminal options I found the specific option I was looking for:</p>
+<p>Reading <a href="https://web.archive.org/web/20180408100057/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_222.html">more documentation</a> on terminal options I found the specific option
+I was looking for:</p>
 
 <pre><code>/BACKSPACE=keyword
 Controls how the system responds to the backspace key (Ctrl/H) in line editing mode. There are two possible keywords:

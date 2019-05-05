@@ -69,48 +69,79 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on using the <a href="https://www.nitrokey.com/">Nitrokey HSM</a> with <code>mod_nss</code> and the Apache webserver. The HSM allows you to store the private key for a SSL certificate inside the HSM (instead of on the filesystem), so that it can never leave the device and thus never be stolen. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on using the <a href="https://www.nitrokey.com/">Nitrokey HSM</a> with <code>mod_nss</code> and the Apache
+webserver. The HSM allows you to store the private key for a SSL certificate
+inside the HSM (instead of on the filesystem), so that it can never leave the
+device and thus never be stolen.</p>
 
-<p>The guide covers the installation and configuration of <code>mod_nss</code>, coupling the HSM to NSS, generating the keys and configuring Apache, and last but not least we also do some benchmarks on Apache with the HSM and different key sizes.</p>
+<p>The guide covers the installation and configuration of <code>mod_nss</code>, coupling the
+HSM to NSS, generating the keys and configuring Apache, and last but not least
+we also do some benchmarks on Apache with the HSM and different key sizes.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Introduction</h3>
 
-<p><img src="https://raymii.org/s/inc/img/nitrokey1.jpg" width="500" height="600"></p>
+<p><img src="https://raymii.org/s/inc/img/nitrokey1.jpg" alt=""></p>
 
 <blockquote>
 <p>The Nitrokey HSM in a sealed package</p>
 </blockquote>
 
-<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a> project.</p>
+<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB
+version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey
+HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a>
+project.</p>
 
-<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting started</a> article. It explains what the HSM is, how to set it up and how to use it with OpenSSH for example.</p>
+<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting
+started</a> article. It explains what the HSM is, how to set it up and how to
+use it with OpenSSH for example.</p>
 
-<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the others as well.</p>
+<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the
+others as well.</p>
 
-<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg" alt=""></p>
 
 <blockquote>
 <p>The SmartCard-HSM</p>
 </blockquote>
 
-<p>In this entire tutorial I will be using slot 1 and ID 1 of the Nitrokey HSM. The User PIN is <code>648219</code> as in all the examples. It is very important to read my <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">tutorial to get started with the Nitrokey HSM first</a> as that explains a lot of concepts and usage. The guide was tested on both Arch Linux and Ubuntu 16.04, both with the available latest version of Apache 2.4.</p>
+<p>In this entire tutorial I will be using slot 1 and ID 1 of the Nitrokey HSM. The
+User PIN is <code>648219</code> as in all the examples. It is very important to read my
+<a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">tutorial to get started with the Nitrokey HSM first</a> as that explains a lot
+of concepts and usage. The guide was tested on both Arch Linux and Ubuntu 16.04,
+both with the available latest version of Apache 2.4.</p>
 
-<p>The default <code>mod_ssl</code> of Apache has no support for the PKCS#11 protocol. PKCS#11 is the protocol HSM&#39;s use to communicate their crypto operations. Instead of the software using the private keyfiles directly themselves, they ask the HSM things like &quot;hey, here&#39;s some data, sign/encrypt that please with key X&quot;, which then the HSM does that and returns the result of the requested action. </p>
+<p>The default <code>mod_ssl</code> of Apache has no support for the PKCS#11 protocol. PKCS#11
+is the protocol HSM&#39;s use to communicate their crypto operations. Instead of the
+software using the private keyfiles directly themselves, they ask the HSM things
+like &quot;hey, here&#39;s some data, sign/encrypt that please with key X&quot;, which then
+the HSM does that and returns the result of the requested action.</p>
 
-<p><code>mod_ssl</code> <a href="https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslcryptodevice">does support</a> the <code>SSLCryptoDevice</code>, but the documentation states that it only <code>enables use of a cryptographic hardware accelerator board to offload some of the SSL processing overhead</code>. The Nitrokey HSM uses the <a href="https://github.com/OpenSC/OpenSC/">OpenSC</a> projects code, and they do have a <a href="https://github.com/OpenSC/libp11">openssl engine wrapper</a> but I could not find any documentation and small tests resulted in nothing.</p>
+<p><code>mod_ssl</code> <a href="https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslcryptodevice">does support</a> the <code>SSLCryptoDevice</code>, but the documentation states
+that it only <code>enables use of a cryptographic hardware accelerator board to
+offload some of the SSL processing overhead</code>. The Nitrokey HSM uses the
+<a href="https://github.com/OpenSC/OpenSC/">OpenSC</a> projects code, and they do have a <a href="https://github.com/OpenSC/libp11">openssl engine wrapper</a> but
+I could not find any documentation and small tests resulted in nothing.</p>
 
-<p><code>mod_nss</code> however does support PKCS#11. The website of <a href="https://fedorahosted.org/mod_nss/">mod_nss</a> tells us that it <code>is an SSL provider derived from the mod_ssl module for the Apache web server that uses the Network Security Services (NSS) libraries. For the most part there is a 1-1 mapping between the capabilities of mod_nss and mod_ssl.</code></p>
+<p><code>mod_nss</code> however does support PKCS#11. The website of <a href="https://fedorahosted.org/mod_nss/">mod_nss</a> tells us
+that it <code>is an SSL provider derived from the mod_ssl module for the Apache web
+server that uses the Network Security Services (NSS) libraries. For the most
+part there is a 1-1 mapping between the capabilities of mod_nss and mod_ssl.</code></p>
 
-<p>The management of <code>mod_nss</code> is different from the usual with <code>mod_ssl</code>. You need to use the <code>nss</code> tools like <code>certutil</code> and <code>modutil</code> for certificate management, no more simple files.</p>
+<p>The management of <code>mod_nss</code> is different from the usual with <code>mod_ssl</code>. You need
+to use the <code>nss</code> tools like <code>certutil</code> and <code>modutil</code> for certificate management,
+no more simple files.</p>
 
-<p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Certificate_System/8.0/html/Admin_Guide/Managing_the_Certificate_Database.html">This is a</a> good guide on <code>certutil</code> and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Reference/NSS_tools_:_certutil">here</a> is more documentation on <code>certutil</code>. The <code>man</code> page also helps. Here is a <a href="http://firstyear.id.au/blog/html/2014/07/10/NSS-OpenSSL_Command_How_to:_The_complete_list..html">list with copy paste</a> actions for the NSS suite.</p>
+<p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Certificate_System/8.0/html/Admin_Guide/Managing_the_Certificate_Database.html">This is a</a> good guide on <code>certutil</code> and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Reference/NSS_tools_:_certutil">here</a> is more documentation on
+<code>certutil</code>. The <code>man</code> page also helps. Here is a <a href="http://firstyear.id.au/blog/html/2014/07/10/NSS-OpenSSL_Command_How_to:_The_complete_list..html">list with copy paste</a>
+actions for the NSS suite.</p>
 
 <h3>mod_nss installation</h3>
 
-<p>In Ubuntu you can install the <code>mod_nss</code> Apache module with the following command:</p>
+<p>In Ubuntu you can install the <code>mod_nss</code> Apache module with the following
+command:</p>
 
 <pre><code>apt-get install libapache2-mod-nss apache2 libpkcs11-helper1 libengine-pkcs11-openssl libnss3-tools opensc-pkcs11
 </code></pre>
@@ -125,7 +156,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>a2dismod ssl
 </code></pre>
 
-<p>On other Linux distro&#39;s you might need to manually change config files. On my Arch installation I had to add the following to <code>/etc/http/conf/http.conf</code>:</p>
+<p>On other Linux distro&#39;s you might need to manually change config files. On my
+Arch installation I had to add the following to <code>/etc/http/conf/http.conf</code>:</p>
 
 <pre><code>Include conf/extra/nss.conf
 </code></pre>
@@ -137,7 +169,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>NSS and Certutil config</h3>
 
-<p>NSS requires a certificate database. We also need to tell NSS to load the <code>pkcs11</code> module.</p>
+<p>NSS requires a certificate database. We also need to tell NSS to load the
+<code>pkcs11</code> module.</p>
 
 <p>Create the database folder:</p>
 
@@ -149,7 +182,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>certutil -N -d /etc/nss/db/
 </code></pre>
 
-<p>It will ask you for a password. Enter a secure one, or, when testing, just pres RETURN twice. Output:</p>
+<p>It will ask you for a password. Enter a secure one, or, when testing, just pres
+RETURN twice. Output:</p>
 
 <pre><code>Enter a password which will be used to encrypt your keys.
 The password should be at least 8 characters long,
@@ -197,19 +231,22 @@ Slot &quot;Nitrokey Nitrokey HSM (010000000000000000000000) 00 00&quot; enabled.
 
 <h3>HSM Key generation and NSS usage</h3>
 
-<p><img src="https://raymii.org/s/inc/img/hsm-icon.png"></p>
+<p><img src="https://raymii.org/s/inc/img/hsm-icon.png" alt=""></p>
 
 <p>Generate a 2048 bit RSA key in the HSM:</p>
 
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --keypairgen --key-type rsa:2048 --id 1 --label &quot;httpd hsm&quot;
 </code></pre>
 
-<p>Generate a new certificate with that key. This one is self signed. See <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html#Using_the_keys">my tutorial on the Nitrokey if you want to generate a CSR and what to put in</a> <code>hsm.conf</code>:</p>
+<p>Generate a new certificate with that key. This one is self signed. See <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html#Using_the_keys">my
+tutorial on the Nitrokey if you want to generate a CSR and what to put in</a>
+<code>hsm.conf</code>:</p>
 
 <pre><code>OPENSSL_CONF=./hsm.conf openssl req -engine pkcs11 -keyform engine -new -key 1:1 -nodes -days 3560 -x509 -sha256 -out &quot;rsahsm.tst.raymii.org.pem&quot; -subj &quot;/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=rsahsm.tst.raymii.org&quot;
 </code></pre>
 
-<p>Do note that you can also generate a CSR and submit that to your certificate provider. </p>
+<p>Do note that you can also generate a CSR and submit that to your certificate
+provider.</p>
 
 <p>Convert the PEM certificate into DER format, since DER is what the HSM uses:</p>
 
@@ -230,7 +267,8 @@ Certificate Object, type = X.509 cert
   ID:         01
 </code></pre>
 
-<p>Find out the correct names for the HSM. The tooling is very picky about naming, it took me quite a while to figure it out:</p>
+<p>Find out the correct names for the HSM. The tooling is very picky about naming,
+it took me quite a while to figure it out:</p>
 
 <pre><code>modutil -dbdir /etc/nss/db/ -list pkcs11
 </code></pre>
@@ -265,12 +303,14 @@ Login Type: Login required
 User Pin: Initialized
 </code></pre>
 
-<p>In this case the <code>Token name</code> is: <code>SmartCard-HSM (UserPIN)</code>. Now we want to know the exact certificate name. Find that using the following command:</p>
+<p>In this case the <code>Token name</code> is: <code>SmartCard-HSM (UserPIN)</code>. Now we want to know
+the exact certificate name. Find that using the following command:</p>
 
 <pre><code>certutil -d /etc/nss/db -h &#39;SmartCard-HSM (UserPIN)&#39; -L 
 </code></pre>
 
-<p>(<code>-L</code> is list all certificates. <code>-h</code> indicats the specific token we want to use.)</p>
+<p>(<code>-L</code> is list all certificates. <code>-h</code> indicats the specific token we want to
+use.)</p>
 
 <pre><code>Certificate Nickname    Trust Attributes
                         SSL,S/MIME,JAR/XPI
@@ -279,14 +319,16 @@ Enter Password or Pin for &quot;SmartCard-HSM (UserPIN)&quot;: 648219
 SmartCard-HSM (UserPIN):httpdcert                          u,u,u
 </code></pre>
 
-<p>In this case the name of the certificate is: <code>SmartCard-HSM (UserPIN):httpdcert</code>.</p>
+<p>In this case the name of the certificate is: <code>SmartCard-HSM
+(UserPIN):httpdcert</code>.</p>
 
 <p>View the PEM certificate:</p>
 
 <pre><code>certutil -d /etc/nss/db -h &#39;SmartCard-HSM (UserPIN)&#39; -L -n &quot;SmartCard-HSM (UserPIN):httpdcert&quot; -a
 </code></pre>
 
-<p>(<code>-n</code> names the specific certificate we want to list/show. <code>-a</code> enables ASCII output.)</p>
+<p>(<code>-n</code> names the specific certificate we want to list/show. <code>-a</code> enables ASCII
+output.)</p>
 
 <p>Output:</p>
 
@@ -337,7 +379,8 @@ Certificate:
 &quot;SmartCard-HSM (UserPIN):httpdcert&quot; [CN=rsahsm.tst.raymii.org,OU=IT Dept,O=Sparkling Network,L=Rotterdam,ST=Zuid Holland,C=NL]
 </code></pre>
 
-<p>If you use a self-signed certificate it will be just one line. If you have an official certificate it will show the full chain:</p>
+<p>If you use a self-signed certificate it will be just one line. If you have an
+official certificate it will show the full chain:</p>
 
 <pre><code>&quot;COMODORSAAddTrustCA&quot; [CN=COMODO RSA Certification Authority,O=COMODO CA Limited,L=Salford,ST=Greater Manchester,C=GB]
 
@@ -346,11 +389,15 @@ Certificate:
     &quot;SmartCard-HSM (UserPIN):webrsa2048&quot; [CN=rsa2048hsm.tst.raymii.org,OU=PositiveSSL,OU=Domain Control Validated]
 </code></pre>
 
-<p>If it doesn&#39;t show the full chain you might need to import root certificates in the NSS database.</p>
+<p>If it doesn&#39;t show the full chain you might need to import root certificates in
+the NSS database.</p>
 
 <h3>Import Root CA Chains</h3>
 
-<p>To make sure the correct certificate chain is sent we need to import root certificates in our NSS database. If you use a self signed certificate then you won&#39;t need to do this, but if you use an actual signed certificate by a CA you need to do this.</p>
+<p>To make sure the correct certificate chain is sent we need to import root
+certificates in our NSS database. If you use a self signed certificate then you
+won&#39;t need to do this, but if you use an actual signed certificate by a CA you
+need to do this.</p>
 
 <p>The <a href="https://curl.haxx.se/docs/caextract.html">curl project</a> has a good Root CA Chain. Download it:</p>
 
@@ -359,7 +406,8 @@ cd ssl
 wget https://curl.haxx.se/ca/cacert.pem
 </code></pre>
 
-<p>We need to remove all the comments from the file and just keep the chains. Use the following command to do so:</p>
+<p>We need to remove all the comments from the file and just keep the chains. Use
+the following command to do so:</p>
 
 <pre><code>sed -n &#39;/-----BEGIN/,/-----END/p&#39; cacert.pem &gt; chains.pem
 </code></pre>
@@ -369,7 +417,7 @@ wget https://curl.haxx.se/ca/cacert.pem
 <pre><code>csplit -f cert- chains.pem &#39;/-----BEGIN CERTIFICATE-----/&#39; &#39;{*}&#39;
 </code></pre>
 
-<p>That creates a lot of files named <code>cert-###</code>. </p>
+<p>That creates a lot of files named <code>cert-###</code>.</p>
 
 <p>Import the seperate chains with <code>certutil</code>:</p>
 
@@ -380,9 +428,13 @@ wget https://curl.haxx.se/ca/cacert.pem
 done
 </code></pre>
 
-<p>The <code>-t &quot;CT,,&quot;</code> flags make sure the certificates are trusted. (<code>+ T - Trusted CA to issue client certificates, C - Trusted CA to issue server certificates</code>). The <code>-A</code> flag adds an existing certificate to the DB. The sleep is added to make  sure everything is imported and the HSM is not overloaded.</p>
+<p>The <code>-t &quot;CT,,&quot;</code> flags make sure the certificates are trusted. (<code>+ T - Trusted CA
+to issue client certificates, C - Trusted CA to issue server certificates</code>). The
+<code>-A</code> flag adds an existing certificate to the DB. The sleep is added to make
+sure everything is imported and the HSM is not overloaded.</p>
 
-<p>If you just need to import one (PEM) certificate use the following command, this example is for the <code>Addtrust External Root CA</code>:</p>
+<p>If you just need to import one (PEM) certificate use the following command, this
+example is for the <code>Addtrust External Root CA</code>:</p>
 
 <pre><code>certutil -d /etc/nss/db -A -n &#39;ADDTUST&#39; -t &quot;CT,,&quot; -a -i addtrust.pem 
 </code></pre>
@@ -402,13 +454,15 @@ SmartCard-HSM (UserPIN):648219
 <pre><code>chown -R http:root /etc/nss/db/
 </code></pre>
 
-<p>If <code>http</code> is not your apache user, change it to the correct username. Otherwise your apache error log will fill up with errors like:</p>
+<p>If <code>http</code> is not your apache user, change it to the correct username. Otherwise
+your apache error log will fill up with errors like:</p>
 
 <pre><code>[:error] [pid 4873:tid 139841160738688] NSS_Initialize failed. Certificate database: /etc/nss/db.
 [:error] [pid 4873:tid 139841160738688] SSL Library Error: -8038 SEC_ERROR_NOT_INITIALIZED
 </code></pre>
 
-<p>Make sure you have disabled <code>mod_ssl</code> in the Apache configuration and have enabled <code>mod_nss</code>. This is my <code>nss.conf</code> file:</p>
+<p>Make sure you have disabled <code>mod_ssl</code> in the Apache configuration and have
+enabled <code>mod_nss</code>. This is my <code>nss.conf</code> file:</p>
 
 <pre><code># grep -v -e &quot;#&quot; -e &#39;^$&#39; /etc/httpd/conf/extra/nss.conf
 LoadModule nss_module modules/libmodnss.so
@@ -443,7 +497,10 @@ NSSRequireSafeNegotiation off
 &lt;/VirtualHost&gt;  
 </code></pre>
 
-<p>On Arch I had to comment out <code>NSSSessionCacheSize</code> and replace <code>NSSPassPhraseHelper /usr/libexec/nss_pcache</code> with <code>NSSPassPhraseHelper /usr/bin/nss_pcache</code>. For the testing certificate I also had to add <code>NSSEnforceValidCerts off</code>. The rest is just the example config.</p>
+<p>On Arch I had to comment out <code>NSSSessionCacheSize</code> and replace
+<code>NSSPassPhraseHelper /usr/libexec/nss_pcache</code> with <code>NSSPassPhraseHelper
+/usr/bin/nss_pcache</code>. For the testing certificate I also had to add
+<code>NSSEnforceValidCerts off</code>. The rest is just the example config.</p>
 
 <p>Make sure the certificate name is correct here:</p>
 
@@ -487,11 +544,13 @@ Certificate chain
 ---
 </code></pre>
 
-<p>And below is a screenshot of a signed certificate from Comodo (via <a href="https://xolphin.nl">Xolphin</a>), with the private key on the HSM:</p>
+<p>And below is a screenshot of a signed certificate from Comodo (via
+<a href="https://xolphin.nl">Xolphin</a>), with the private key on the HSM:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm_httpd.png"></p>
+<p><img src="https://raymii.org/s/inc/img/hsm_httpd.png" alt=""></p>
 
-<p>Just to show that it will work with all major browsers. No trust issues or exceptions here.</p>
+<p>Just to show that it will work with all major browsers. No trust issues or
+exceptions here.</p>
 
 <p>Here&#39;s the command line to show that the chain is also included:</p>
 
@@ -518,13 +577,21 @@ Certificate chain
 ---
 </code></pre>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a></p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
 <h3>Benchmarking 2048 bit RSA</h3>
 
-<p>The Nitrokey HSM is not a fast HSM. I&#39;ve worked with HSM&#39;s that are capable of multiple hundreds of signs per second, and this HSM is not one that can do that. But, as we know, that&#39;s not the intended target for the device. It&#39;s meant for safe and secure key storage, for example to encrypt files or protect SSH or S/MIME keys. I did a few <code>siege</code> benchmarks, and as you can see it is quite slow.</p>
+<p>The Nitrokey HSM is not a fast HSM. I&#39;ve worked with HSM&#39;s that are capable of
+multiple hundreds of signs per second, and this HSM is not one that can do that.
+But, as we know, that&#39;s not the intended target for the device. It&#39;s meant for
+safe and secure key storage, for example to encrypt files or protect SSH or
+S/MIME keys. I did a few <code>siege</code> benchmarks, and as you can see it is quite
+slow.</p>
 
-<p>The page that was being loaded is a plain text file containing only the text <code>Jeej it works!</code>. </p>
+<p>The page that was being loaded is a plain text file containing only the text
+<code>Jeej it works!</code>.</p>
 
 <p>A siege test with 5 concurrent users, 30 seconds:</p>
 
@@ -556,7 +623,7 @@ Longest transaction:      4.76
 Shortest transaction:     0.74
 </code></pre>
 
-<p>That&#39;s quite reasonable. </p>
+<p>That&#39;s quite reasonable.</p>
 
 <p>A siege test with 10 concurrent users, 30 seconds:</p>
 
@@ -579,9 +646,10 @@ Longest transaction:      17.85
 Shortest transaction:     0.75
 </code></pre>
 
-<p>It starts taking longer. </p>
+<p>It starts taking longer.</p>
 
-<p>Comparing the above siege to a test against <code>raymii.org</code>, with all the assets and such loaded:</p>
+<p>Comparing the above siege to a test against <code>raymii.org</code>, with all the assets
+and such loaded:</p>
 
 <pre><code>siege -c10 -d5 -t30S https://raymii.org/s/
 </code></pre>
@@ -670,11 +738,14 @@ Longest transaction:      4.87
 Shortest transaction:     0.27
 </code></pre>
 
-<p>As you can see, the HSM and <code>mod_nss</code> isn&#39;t that fast, but it is very secure. The 1 second request overhead comes from the fact that every HTTP request requires HSM access.</p>
+<p>As you can see, the HSM and <code>mod_nss</code> isn&#39;t that fast, but it is very secure.
+The 1 second request overhead comes from the fact that every HTTP request
+requires HSM access.</p>
 
 <h3>Benchmarking EC keys</h3>
 
-<p>Let&#39;s try it with an EC key to see if that makes any difference. Generate an EC key in the HSM, using a different ID:</p>
+<p>Let&#39;s try it with an EC key to see if that makes any difference. Generate an EC
+key in the HSM, using a different ID:</p>
 
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login -pin 648219 --keypairgen --key-type EC:prime256v1 --id 3 --label &quot;web ecc&quot;
 </code></pre>
@@ -696,7 +767,8 @@ Public Key Object; EC  EC_POINT 256 bits
   Usage:      verify
 </code></pre>
 
-<p>Generate a self signed certificate from it. See above to find out what to put in the <code>hsm.conf</code> file. Do note that <code>id 3</code> is used:</p>
+<p>Generate a self signed certificate from it. See above to find out what to put in
+the <code>hsm.conf</code> file. Do note that <code>id 3</code> is used:</p>
 
 <pre><code>OPENSSL_CONF=./hsm.conf openssl req -engine pkcs11 -keyform engine -new -key 1:3 -nodes -days 3560 -x509 -sha256 -out &quot;echsm.tst.raymii.org.ec.pem&quot; -subj &quot;/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=echsm.tst.raymii.org&quot;
 </code></pre>
@@ -711,7 +783,8 @@ Public Key Object; EC  EC_POINT 256 bits
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --write-object echsm.tst.raymii.org.der --type cert --id 3 --label &#39;webec&#39;
 </code></pre>
 
-<p>I gave the certificate object a different label. If we don&#39;t do that then <code>certutil</code> can&#39;t differentiate between them.</p>
+<p>I gave the certificate object a different label. If we don&#39;t do that then
+<code>certutil</code> can&#39;t differentiate between them.</p>
 
 <p>There should be two certificates now:</p>
 
@@ -743,7 +816,8 @@ SmartCard-HSM (UserPIN):webec             u,u,u
 <pre><code>NSSCipherSuite +aes_128_sha_256,+aes_256_sha_256,+ecdhe_ecdsa_aes_128_gcm_sha_256,+ecdhe_ecdsa_aes_128_sha,+ecdhe_ecdsa_aes_256_gcm_sha_384,+ecdhe_ecdsa_aes_256_sha,+ecdhe_rsa_aes_128_gcm_sha_256,+ecdhe_rsa_aes_128_sha,+ecdhe_rsa_aes_256_gcm_sha_384,+ecdhe_rsa_aes_256_sha,+rsa_aes_128_gcm_sha_256,+rsa_aes_128_sha,+rsa_aes_256_gcm_sha_384,+rsa_aes_256_sha
 </code></pre>
 
-<p>Restart the webserver and you should be good to go. Except for, in my case, when connecting it fails and this is in the <code>error_log</code>:</p>
+<p>Restart the webserver and you should be good to go. Except for, in my case, when
+connecting it fails and this is in the <code>error_log</code>:</p>
 
 <pre><code>[:info] [pid 25561:tid 140498883753856] Using nickname SmartCard-HSM (UserPIN):webec.
 [:info] [pid 25561:tid 140498711348992] Connection to child 64 established (server echsm.tst.raymii.org:8443, client 127.0.0.1)
@@ -751,11 +825,14 @@ SmartCard-HSM (UserPIN):webec             u,u,u
 [:error] [pid 25561:tid 140498711348992] SSL Library Error: -12192 Peer reports failure of signature verification or key exchange
 </code></pre>
 
-<p>Playing around with different settings, ciphersuites and protocols didn&#39;t help. Time for a bugreport.</p>
+<p>Playing around with different settings, ciphersuites and protocols didn&#39;t help.
+Time for a bugreport.</p>
 
 <h3>Benchmarking a 1024 bit RSA key</h3>
 
-<p>A <a href="http://www.cardcontact.de/products/SmartCard-HSM_V1.1.pdf">product folder</a> mentions that the HSM should be a bit faster with smaller keys. Now do note that it&#39;s not recommended to use a 1024 bit key in production. But, this is just a  benchmark test.</p>
+<p>A <a href="http://www.cardcontact.de/products/SmartCard-HSM_V1.1.pdf">product folder</a> mentions that the HSM should be a bit faster with smaller
+keys. Now do note that it&#39;s not recommended to use a 1024 bit key in production.
+But, this is just a benchmark test.</p>
 
 <p>Generate the key:</p>
 
@@ -777,7 +854,8 @@ Public Key Object; RSA 1024 bits
   Usage:      encrypt, verify, wrap
 </code></pre>
 
-<p>Generate a certificate. See above to find out what to put in the <code>hsm.conf</code> file. Do note that <code>id 4</code> is used:</p>
+<p>Generate a certificate. See above to find out what to put in the <code>hsm.conf</code>
+file. Do note that <code>id 4</code> is used:</p>
 
 <pre><code>OPENSSL_CONF=./hsm.conf openssl req -engine pkcs11 -keyform engine -new -key 1:4 -nodes -days 3560 -x509 -sha256 -out &quot;rsa1024hsm.tst.raymii.org.pem&quot; -subj &quot;/C=NL/ST=Zuid Holland/L=Rotterdam/O=Sparkling Network/OU=IT Dept/CN=rsa1024hsm.tst.raymii.org&quot;
 </code></pre>
@@ -792,7 +870,8 @@ Public Key Object; RSA 1024 bits
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --write-object rsa1024hsm.tst.raymii.org.der --type cert --id 4 --label &#39;webrsa1024&#39;
 </code></pre>
 
-<p>I gave the certificate object a different label. If we don&#39;t do that then <code>certutil</code> can&#39;t differentiate between them.</p>
+<p>I gave the certificate object a different label. If we don&#39;t do that then
+<code>certutil</code> can&#39;t differentiate between them.</p>
 
 <p>There should be three certificates now:</p>
 
@@ -820,7 +899,8 @@ SmartCard-HSM (UserPIN):webec            u,u,u
 <pre><code>NSSNickname &quot;SmartCard-HSM (UserPIN):webrsa1024&quot;
 </code></pre>
 
-<p>Restart the server and you&#39;re good to go. No errors this time. Lets see how the benchmarks compare.</p>
+<p>Restart the server and you&#39;re good to go. No errors this time. Lets see how the
+benchmarks compare.</p>
 
 <p>5 concurrent users:</p>
 
@@ -889,7 +969,8 @@ Longest transaction:      7.53
 Shortest transaction:     0.23
 </code></pre>
 
-<p>No failed connections as we saw with the 2048 bit key, but the response time is higher.</p>
+<p>No failed connections as we saw with the 2048 bit key, but the response time is
+higher.</p>
 
 <p>60 benchmark mode:</p>
 
@@ -912,13 +993,19 @@ Longest transaction:      20.54
 Shortest transaction:     0.25
 </code></pre>
 
-<p>And as expected that results in failed connections. But, with a 2048 bit key we had 48% Availability, now we have 74%.</p>
+<p>And as expected that results in failed connections. But, with a 2048 bit key we
+had 48% Availability, now we have 74%.</p>
 
-<p>As we can see the HSM is faster with a smaller keysize, which is not a strange thing. I&#39;m sad that the EC keys didn&#39;t work, since EC is a lot less CPU intensive.</p>
+<p>As we can see the HSM is faster with a smaller keysize, which is not a strange
+thing. I&#39;m sad that the EC keys didn&#39;t work, since EC is a lot less CPU
+intensive.</p>
 
 <h3>Clustering</h3>
 
-<p>If you have multiple HSM&#39;s you can use a tool like <code>haproxy</code> in TCP mode to load balance connections. Using the HSM&#39;s DKEK backup and restore functionality you can have the same private key on multiple devices. I only have one HSM, but my guess is that with more HSM&#39;s the speed increase will be noticable.</p>
+<p>If you have multiple HSM&#39;s you can use a tool like <code>haproxy</code> in TCP mode to load
+balance connections. Using the HSM&#39;s DKEK backup and restore functionality you
+can have the same private key on multiple devices. I only have one HSM, but my
+guess is that with more HSM&#39;s the speed increase will be noticable.</p>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/cryptoki.html" class="link">cryptoki &nbsp;</a><a href="../tags/hsm.html" class="link">hsm &nbsp;</a><a href="../tags/mod_nss.html" class="link">mod_nss &nbsp;</a><a href="../tags/nitrokey.html" class="link">nitrokey &nbsp;</a><a href="../tags/nitrokey-hsm.html" class="link">nitrokey-hsm &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/pkcs11.html" class="link">pkcs11 &nbsp;</a><a href="../tags/safenet.html" class="link">safenet &nbsp;</a><a href="../tags/smartcard.html" class="link">smartcard &nbsp;</a><a href="../tags/smartcard-hsm.html" class="link">smartcard-hsm &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

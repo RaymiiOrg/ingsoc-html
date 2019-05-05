@@ -69,7 +69,10 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how to manually verfify a certificate against an OCSP server. OCSP stands for the Online Certificate Status Protocol and is one way to validate a certificate status. It is an alternative to the CRL, certificate revocation list.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how to manually verfify a certificate against an OCSP
+server. OCSP stands for the Online Certificate Status Protocol and is one way to
+validate a certificate status. It is an alternative to the CRL, certificate
+revocation list.</p>
 
 <p>Compared to CRL&#39;s:</p>
 
@@ -81,10 +84,11 @@
 
 <p>You can read more about the OCSP on <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">wikipedia</a></p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>If you want to verify a certificate against a CRL manually <a href="https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html">you can read my article on that here</a>.</p>
+<p>If you want to verify a certificate against a CRL manually <a href="https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html">you can read my
+article on that here</a>.</p>
 
 <p>We will be using OpenSSL in this article. I&#39;m using the following version:</p>
 
@@ -94,7 +98,8 @@ OpenSSL 1.0.1g 7 Apr 2014
 
 <h3>Get a certificate with an OCSP</h3>
 
-<p>First we will need a certificate from a website. I&#39;ll be using Wikipedia as an example here. We can retreive this with the following openssl command:</p>
+<p>First we will need a certificate from a website. I&#39;ll be using Wikipedia as an
+example here. We can retreive this with the following openssl command:</p>
 
 <pre><code>openssl s_client -connect wikipedia.org:443 2&gt;&amp;1 &lt; /dev/null | sed -n &#39;/-----BEGIN/,/-----END/p&#39;
 </code></pre>
@@ -110,11 +115,15 @@ OpenSSL 1.0.1g 7 Apr 2014
 http://ocsp.digicert.com
 </code></pre>
 
-<p>If it does not give any output, the certificate has no OCSP URI. You cannot valdiate it against an OCSP.</p>
+<p>If it does not give any output, the certificate has no OCSP URI. You cannot
+valdiate it against an OCSP.</p>
 
 <h3>Getting the certificate chain</h3>
 
-<p>It is required to send the certificate chain along with the certificate you want to validate. So, we need to get the certificate chain for our domain, wikipedia.org. Using the <code>-showcerts</code> option with <code>openssl s_client</code>, we can see all the certificates, including the chain:</p>
+<p>It is required to send the certificate chain along with the certificate you want
+to validate. So, we need to get the certificate chain for our domain,
+wikipedia.org. Using the <code>-showcerts</code> option with <code>openssl s_client</code>, we can see
+all the certificates, including the chain:</p>
 
 <pre><code>openssl s_client -connect wikipedia.org:443 -showcerts 2&gt;&amp;1 &lt; /dev/null
 </code></pre>
@@ -161,11 +170,17 @@ Ib4p1I5eFdZCSucyb6Sxa1GDWL4/bcf72gMhy2oWGU4K8K2Eyl2Us1p292E=
 -----END CERTIFICATE-----
 </code></pre>
 
-<p>As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we already have that. If your site has more certificates in its chain, you will see more here. Save them all, in the order OpenSSL sends them (as in, first the one which directly issued your server certificate, then the one that issues that certificate and so on, with the root or most-root at the end of the file) to a file, named <code>chain.pem</code>.</p>
+<p>As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we
+already have that. If your site has more certificates in its chain, you will see
+more here. Save them all, in the order OpenSSL sends them (as in, first the one
+which directly issued your server certificate, then the one that issues that
+certificate and so on, with the root or most-root at the end of the file) to a
+file, named <code>chain.pem</code>.</p>
 
 <h3>Sending the OCSP request</h3>
 
-<p>We now have all the data we need to do an OCSP request. Using the following Openssl command we can send an OCSP request and only get the text output:</p>
+<p>We now have all the data we need to do an OCSP request. Using the following
+Openssl command we can send an OCSP request and only get the text output:</p>
 
 <pre><code>openssl ocsp -issuer chain.pem -cert wikipedia.pem -text -url http://ocsp.digicert.com
 </code></pre>
@@ -220,7 +235,8 @@ wikipedia.pem: good
     Next Update: Apr 16 09:00:00 2014 GMT
 </code></pre>
 
-<p>If you want to have a more summarized output, leave out the <code>-text</code> option. I most of the time include it to find out problems with an OCSP.</p>
+<p>If you want to have a more summarized output, leave out the <code>-text</code> option. I
+most of the time include it to find out problems with an OCSP.</p>
 
 <p>This is how a good certificate status looks:</p>
 
@@ -232,7 +248,8 @@ wikipedia.pem: good
 
 <h3>Revoked certificate</h3>
 
-<p>If you have a revoked certificate, you can also test it the same way as stated above. The response looks like this:</p>
+<p>If you have a revoked certificate, you can also test it the same way as stated
+above. The response looks like this:</p>
 
 <pre><code>Response verify OK
 test-revoked.pem: revoked
@@ -241,11 +258,13 @@ test-revoked.pem: revoked
     Revocation Time: Mar 25 15:45:55 2014 GMT
 </code></pre>
 
-<p>You can test this using the certificate and chain on the Verisign revoked certificate test page: <a href="https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html">https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html</a></p>
+<p>You can test this using the certificate and chain on the Verisign revoked
+certificate test page:</p>
 
 <h3>Other errors</h3>
 
-<p>If we send this request to another OCSP, one who did not issued this certificate, we should receive an unauthorized error:</p>
+<p>If we send this request to another OCSP, one who did not issued this
+certificate, we should receive an unauthorized error:</p>
 
 <pre><code>openssl ocsp -issuer chain.pem -cert wikipedia.pem -url http://rapidssl-ocsp.geotrust.com
 Responder Error: unauthorized (6)
@@ -276,7 +295,8 @@ Response Verify Failure
 wikipedia.pem: ERROR: No Status found.
 </code></pre>
 
-<p>If we do include the <code>-text</code> option here we can see that a response is sent, however, that it has no data in it:</p>
+<p>If we do include the <code>-text</code> option here we can see that a response is sent,
+however, that it has no data in it:</p>
 
 <pre><code>OCSP Response Data:
     OCSP Response Status: successful (0x0)
@@ -325,7 +345,7 @@ wikipedia.pem: unknown
 <ul>
 <li><a href="https://www.openssl.org/docs/apps/s_client.html">https://www.openssl.org/docs/apps/s_client.html</a></li>
 <li><a href="https://www.openssl.org/docs/apps/ocsp.html">https://www.openssl.org/docs/apps/ocsp.html</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">https://en.wikipedia.org/wiki/Online<em>Certificate</em>Status_Protocol</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">https://en.wikipedia.org/wiki/Online <em>Certificate</em> Status_Protocol</a></li>
 </ul>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/certificate.html" class="link">certificate &nbsp;</a><a href="../tags/crl.html" class="link">crl &nbsp;</a><a href="../tags/ocsp.html" class="link">ocsp &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><div class="footer">
                 <hr>

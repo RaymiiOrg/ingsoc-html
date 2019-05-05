@@ -69,14 +69,18 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>If you need to install VMWare ESXi 5.1 and your shiny new server does not have a CD/DVD drive but 8 SSD&#39;s, what do you do? You convert the ISO image to a USB install disk.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>If you need to install VMWare ESXi 5.1 and your shiny new server does not have a
+CD/DVD drive but 8 SSD&#39;s, what do you do? You convert the ISO image to a USB
+install disk.</p>
 
 <p>This also works for the special HP version of ESXi with all the drivers.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>These steps come from the <a href="https://pubs.vmware.com/vsphere-51/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-51-installation-setup-guide.pdf">VMware install guide</a>, but the VMWare website and their search function are both shit. And the steps in the manual don&#39;t completely work, so here&#39;s the fix for it.</p>
+<p>These steps come from the <a href="https://pubs.vmware.com/vsphere-51/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-51-installation-setup-guide.pdf">VMware install guide</a>, but the VMWare website and
+their search function are both shit. And the steps in the manual don&#39;t
+completely work, so here&#39;s the fix for it.</p>
 
 <h3>Preparation</h3>
 
@@ -95,7 +99,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 apt-get install dosfstools mtools syslinux
 </code></pre>
 
-<p>Insert your USB drive in your linux server and find the device name (dmesg), in my case it was <code>/dev/sdc</code>.</p>
+<p>Insert your USB drive in your linux server and find the device name (dmesg), in
+my case it was <code>/dev/sdc</code>.</p>
 
 <h3>Preparing the USB drive</h3>
 
@@ -123,12 +128,14 @@ Units = cylinders of 16065 * 512 = 8225280 bytes
 
 <ul>
 <li><p>Type <code>w</code> to write the partition table and quit.</p></li>
-<li><p>Format the USB flash drive with the Fat32 file system.  </p>
-
-<p>/sbin/mkfs.vfat -F 32 -n USB /dev/sdc1</p></li>
+<li><p>Format the USB flash drive with the Fat32 file system. </p></li>
 </ul>
 
-<p>Now we are going to install the syslinux bootloader to the USB device. Please replace the path below with the location where your downloaded and extracted version of syslinux is.</p>
+<p>/sbin/mkfs.vfat -F 32 -n USB /dev/sdc1</p>
+
+<p>Now we are going to install the syslinux bootloader to the USB device. Please
+replace the path below with the location where your downloaded and extracted
+version of syslinux is.</p>
 
 <pre><code>syslinux /dev/sdc1
 cat /path/to/syslinux/download/mbr/mbr.bin &amp;gt; /dev/sdC

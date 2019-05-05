@@ -69,12 +69,19 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/lgchromebase.png" alt=chromebase></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/lgchromebase.png" alt="chromebase"></p>
 
-<p>I recently acquired the LG Chromebase 22CV241-W. It is an All in One type machine with Chrome OS. The hardware, excluding the screen and lack of battery, is largely the same as the Acer C720. Of course I removed Chrome OS and installed a real Linux on it, of which you&#39;ll find instructions below. In my case it is Ubuntu Mate. Arch Linux also works fine, but this was for someone else, so a more beginner friendly distro seemed to be a better choise. This article will cover the removal of Chrome OS and the installation of Ubuntu Mate on the LG Chromebase.</p>
+<p>I recently acquired the LG Chromebase 22CV241-W. It is an All in One type
+machine with Chrome OS. The hardware, excluding the screen and lack of battery,
+is largely the same as the Acer C720. Of course I removed Chrome OS and
+installed a real Linux on it, of which you&#39;ll find instructions below. In my
+case it is Ubuntu Mate. Arch Linux also works fine, but this was for someone
+else, so a more beginner friendly distro seemed to be a better choise. This
+article will cover the removal of Chrome OS and the installation of Ubuntu Mate
+on the LG Chromebase.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Hardware</h3>
 
@@ -93,21 +100,35 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>1x HDMI In</li>
 </ul>
 
-<p>With the HDMI in port you can use it as an external display for another PC or laptop. If you don&#39;t like Chrome OS or Linux you can just plug this in to your PC or laptop and use it as a second screen.</p>
+<p>With the HDMI in port you can use it as an external display for another PC or
+laptop. If you don&#39;t like Chrome OS or Linux you can just plug this in to your
+PC or laptop and use it as a second screen.</p>
 
-<p>The USB 3.0 port is on the side of the screen, the rest in on the back. </p>
+<p>The USB 3.0 port is on the side of the screen, the rest in on the back.</p>
 
-<p>The hardware is more than enough to do basic Word processing, browsing, a bit of LaTeX and Python programming. Which are exactly the things the machine was going to be used for.</p>
+<p>The hardware is more than enough to do basic Word processing, browsing, a bit of
+LaTeX and Python programming. Which are exactly the things the machine was going
+to be used for.</p>
 
 <h3>Software</h3>
 
-<p>By default the machine runs Chrome OS. That is a fine OS, well enough for basic computer usage for 90% of the population. It features all the stuff you&#39;d expect, in a browser. I have a Chromebook myself and I often use it on the go for notes, email and basic browsing, since it is very light and boots in under 2 seconds. </p>
+<p>By default the machine runs Chrome OS. That is a fine OS, well enough for basic
+computer usage for 90% of the population. It features all the stuff you&#39;d
+expect, in a browser. I have a Chromebook myself and I often use it on the go
+for notes, email and basic browsing, since it is very light and boots in under 2
+seconds.</p>
 
-<p>If you want to do other things than browsing, like using LibreOffice, VLC or other programs, you&#39;re out of luck with a Chrome[book/base/box]. It runs only Google-sanctioned software, which is just Chrome and a simple desktop shell.</p>
+<p>If you want to do other things than browsing, like using LibreOffice, VLC or
+other programs, you&#39;re out of luck with a Chrome[book/base/box]. It runs only
+Google-sanctioned software, which is just Chrome and a simple desktop shell.</p>
 
-<p>Google however uses a lot of Open Source software in Chrome OS. The machine runs Coreboot as the BIOS. You do need to flash another version of Coreboot since this one doesn&#39;t understand the USB keyboard. That is covered later on.</p>
+<p>Google however uses a lot of Open Source software in Chrome OS. The machine runs
+Coreboot as the BIOS. You do need to flash another version of Coreboot since
+this one doesn&#39;t understand the USB keyboard. That is covered later on.</p>
 
-<p>You&#39;ll need a USB stick of at least 2 GB to install Ubuntu MATE from. You also need to download the Ubuntu Mate ISO and write it to the USB stick. You can do this with the <a href="https://en.wikipedia.org/wiki/Startup_Disk_Creator">Startup Disk Creator</a> or by using <code>dd</code>:</p>
+<p>You&#39;ll need a USB stick of at least 2 GB to install Ubuntu MATE from. You also
+need to download the Ubuntu Mate ISO and write it to the USB stick. You can do
+this with the <a href="https://en.wikipedia.org/wiki/Startup_Disk_Creator">Startup Disk Creator</a> or by using <code>dd</code>:</p>
 
 <pre><code># replace sdX with your device.
 dd if=ubuntu-mate-15.04-desktop-i386.iso of=/dev/sdX bs=1M; sync
@@ -125,9 +146,10 @@ dd if=ubuntu-mate-15.04-desktop-i386.iso of=/dev/sdX bs=1M; sync
 
 <h3>Booting Recovery Mode &amp; Enabling Developer Mode</h3>
 
-<p>You need to boot in to Recovery Mode before you can enable Developer Mode. Here&#39;s how to boot in to Recovery Mode.</p>
+<p>You need to boot in to Recovery Mode before you can enable Developer Mode.
+Here&#39;s how to boot in to Recovery Mode.</p>
 
-<p><img src="https://raymii.org/s/inc/img/chromebase-dev.png" alt=recovery></p>
+<p><img src="https://raymii.org/s/inc/img/chromebase-dev.png" alt="recovery"></p>
 
 <ul>
 <li>Turn off the Chromebase</li>
@@ -139,45 +161,60 @@ dd if=ubuntu-mate-15.04-desktop-i386.iso of=/dev/sdX bs=1M; sync
 <li>Press CTRL+D again to boot in Developer Mode</li>
 </ul>
 
-<p>Booting in to Developer Mode will wipe the Chromebook. All data stored is removed, except for Chrome OS.</p>
+<p>Booting in to Developer Mode will wipe the Chromebook. All data stored is
+removed, except for Chrome OS.</p>
 
 <h3>Flashing SeaBIOS</h3>
 
-<p>As said, you need to flash the SeaBIOS part of coreboot to make the USB keyboard work. </p>
+<p>As said, you need to flash the SeaBIOS part of coreboot to make the USB keyboard
+work.</p>
 
-<p>Start up in Developer Mode, open a terminal (<code>CTRL+ALT+T</code>) and type <code>shell</code>. You&#39;re now in the shell. </p>
+<p>Start up in Developer Mode, open a terminal (<code>CTRL+ALT+T</code>) and type <code>shell</code>.
+You&#39;re now in the shell.</p>
 
-<p>Visit <a href="https://johnlewis.ie/custom-chromebook-firmware/rom-download/">this site</a> and read the documentation and FAQ. </p>
+<p>Visit <a href="https://johnlewis.ie/custom-chromebook-firmware/rom-download/">this site</a> and read the documentation and FAQ.</p>
 
-<p>If you&#39;ve done that you&#39;ve also found the command to flash the BIOS. It&#39;s here as well for reference:</p>
+<p>If you&#39;ve done that you&#39;ve also found the command to flash the BIOS. It&#39;s here
+as well for reference:</p>
 
 <pre><code>cd; rm -f flash_chromebook_rom.sh; curl -k -L -O https://johnlewis.ie/flash_chromebook_rom.sh; sudo -E bash flash_chromebook_rom.sh
 </code></pre>
 
-<p>If you&#39;ve flashed the Bios you need to also enable Legacy Boot and USB Boot. Still in the shell, execute these commands to do so:</p>
+<p>If you&#39;ve flashed the Bios you need to also enable Legacy Boot and USB Boot.
+Still in the shell, execute these commands to do so:</p>
 
 <pre><code>sudo bash
 crossystem dev_boot_usb=1 dev_boot_legacy=1 
 </code></pre>
 
-<p>You can now reboot the machine with the <code>reboot</code> command. Plug the USB install stick in and when the big scary ERROR screen pops up, press <code>CTRL+L</code> (for Legacy boot). Press <code>ESC</code> and select your USB install disk. </p>
+<p>You can now reboot the machine with the <code>reboot</code> command. Plug the USB install
+stick in and when the big scary ERROR screen pops up, press <code>CTRL+L</code> (for Legacy
+boot). Press <code>ESC</code> and select your USB install disk.</p>
 
 <h3>Install Ubuntu MATE</h3>
 
-<p>The install is pretty straight forward. If you get the following error at installer boot:</p>
+<p>The install is pretty straight forward. If you get the following error at
+installer boot:</p>
 
 <pre><code>error loading gfxboot
 </code></pre>
 
 <p>Then just type <code>help</code> and a RETURN, the installer will start up as you&#39;d expect.</p>
 
-<p>It is a normal Ubuntu install, so finish it and reboot. I wiped all the partitions and created one big <code>/</code> ext4 partition.</p>
+<p>It is a normal Ubuntu install, so finish it and reboot. I wiped all the
+partitions and created one big <code>/</code> ext4 partition.</p>
 
-<p>Do note that you need to press <code>CTRL+L</code> at every boot to start up in Legacy mode. NEVER EVER PRESS THE SPACE BAR TO RE-ENABLE OS VERIFICATION! You will need to make a Chrome OS recovery image, which will wipe the entire disk and your Linux install.</p>
+<p>Do note that you need to press <code>CTRL+L</code> at every boot to start up in Legacy
+mode. NEVER EVER PRESS THE SPACE BAR TO RE-ENABLE OS VERIFICATION! You will need
+to make a Chrome OS recovery image, which will wipe the entire disk and your
+Linux install.</p>
 
-<p>If you want to solder in your device you can read <a href="http://www.martynthomas.co.uk/index.php/turning-your-lg-chromebase-into-a-fully-functional-desktop/">here</a> how to make the BIOS fully writable. Using the above BIOS script you can then totally skip the Chrome OS screens on boot.</p>
+<p>If you want to solder in your device you can read <a href="http://www.martynthomas.co.uk/index.php/turning-your-lg-chromebase-into-a-fully-functional-desktop/">here</a> how to make the BIOS
+fully writable. Using the above BIOS script you can then totally skip the Chrome
+OS screens on boot.</p>
 
-<p>After the install, reboot in to your new shiny Linux. Remember to press <code>CTLR+L</code> every time you boot, and never press the Space Bar.</p>
+<p>After the install, reboot in to your new shiny Linux. Remember to press <code>CTLR+L</code>
+every time you boot, and never press the Space Bar.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/chrome.html" class="link">chrome &nbsp;</a><a href="../tags/chrome-os.html" class="link">chrome-os &nbsp;</a><a href="../tags/chromebase.html" class="link">chromebase &nbsp;</a><a href="../tags/chromebook.html" class="link">chromebook &nbsp;</a><a href="../tags/coreboot.html" class="link">coreboot &nbsp;</a><a href="../tags/mate.html" class="link">mate &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

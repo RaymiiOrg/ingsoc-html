@@ -69,34 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/boot-to-vim-1.png" alt="image" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/boot-to-vim-1.png" alt="image"></p>
 
-<p>This is a response on a great article from <a href="http://www.informatimago.com/index.html">Pascal
-Bourguignon</a>, namely how to run 
-<a href="http://www.informatimago.com/linux/emacs-on-user-mode-linux.html?raymii.org">Emacsas PID
-1</a>.</p>
+<p>This is a response on a great article from <a href="http://www.informatimago.com/index.html">Pascal Bourguignon</a>, namely how
+to run <a href="http://www.informatimago.com/linux/emacs-on-user-mode-linux.html?raymii.org">Emacsas PID 1</a>.</p>
 
-<p>As we all know, nobody uses emacs. </p>
+<p>As we all know, nobody uses emacs.</p>
 
 <p>The above statement is ment to start a flamewar. Please do so, see the contact
-page to contact me. </p>
+page to contact me.</p>
 
 <p>No, all joking aside, I found it to be a good article and wanted to see how I
 could do that with Vim. Not in User Mode Linux, but by creating an actual ISO.
 Boot to Vim, as you might want to call it.</p>
 
 <p>This is actually fairly simple. Compile vim statically, set it as <code>init=</code> at
-boot and you&#39;re done. </p>
+boot and you&#39;re done.</p>
 
-<p>We are going to use small (9MB) distro named <a href="http://distro.ibiblio.org/tinycorelinux/">Tiny Core, Core edition</a> 
-and customize that to boot right into our static build of Vim.</p>
+<p>We are going to use small (9MB) distro named <a href="http://distro.ibiblio.org/tinycorelinux/">Tiny Core, Core edition</a> and
+customize that to boot right into our static build of Vim.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Building Vim</h3>
 
-<p>Please read and follow my <a href="https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html">tutorial on building a statically linked Vim</a>. 
+<p>Please read and follow my <a href="https://raymii.org/s/blog/Statically_cross_compiled_vim_for_x86_x86-64_and_mips.html">tutorial on building a statically linked Vim</a>.
 This will give you an executable we will use later on in the tutorial.</p>
 
 <h3>Preparation</h3>
@@ -196,7 +194,7 @@ tty1::respawn:/bin/vim
 <p>Do note that this does not actually make Vim PID 1. Init will still manage Vim,
 and do stuff like <code>fsck</code> and mount the root partition read/write. If you want to
 go barebones, add <code>init=/bin/vim</code> to the bootloader (<code>isolinux.cfg</code>). Then, from
-Vim, do <code>:!fsck /dev/sda</code> and <code>mount -o remount,rw /</code>. </p>
+Vim, do <code>:!fsck /dev/sda</code> and <code>mount -o remount,rw /</code>.</p>
 
 <h3>Building a new ISO</h3>
 
@@ -206,7 +204,8 @@ build a new <code>tinycore.gz</code> file which the ISO will use as it&#39;s <co
 <pre><code>find | cpio -o -H newc | gzip -2 &gt; ../tinycore.gz
 </code></pre>
 
-<p>Copy that over the original <code>core.gz</code> file in <code>/tmp/boot</code> which we copied ealier:</p>
+<p>Copy that over the original <code>core.gz</code> file in <code>/tmp/boot</code> which we copied
+ealier:</p>
 
 <pre><code>cp ../tinycore.gz /tmp/boot/core.gz
 </code></pre>
@@ -234,14 +233,14 @@ mkisofs -l -J -R -V Boot_To_Vim -no-emul-boot -boot-load-size 4 -boot-info-table
 </code></pre>
 
 <p>You can use this to boot a VM, or burn an ISO. If you exit <code>vim</code>, it will
-restart. </p>
+restart.</p>
 
 <p>You can start up a real shell by giving the <code>:!sh</code> command, in command mode. To
 shut down, issue the <code>:!halt</code> command.</p>
 
 <p>More info on remastering Tiny Core can be found <a href="http://wiki.tinycorelinux.net/wiki:remastering">here</a>.</p>
 
-<p><img src="https://raymii.org/s/inc/img/boot-to-vim-2.png" alt="image" /></p>
+<p><img src="https://raymii.org/s/inc/img/boot-to-vim-2.png" alt="image"></p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/compile.html" class="link">compile &nbsp;</a><a href="../tags/emacs.html" class="link">emacs &nbsp;</a><a href="../tags/mips.html" class="link">mips &nbsp;</a><a href="../tags/tiny-core.html" class="link">tiny-core &nbsp;</a><a href="../tags/vim.html" class="link">vim &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

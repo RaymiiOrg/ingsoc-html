@@ -70,14 +70,15 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>At work we need to image laptops. We do that with clonezilla.<br>
-But some people think the clonezilla menu is to hard. So A colleague and I made a script to do it in 2 steps (mount and enter image name).<br>
+But some people think the clonezilla menu is to hard. So A colleague and I made
+a script to do it in 2 steps (mount and enter image name).<br>
 But that had to be integrated in to the clonezilla live CD.<br>
 That is a pain to do if you&#39;re on a windows vista PC.<br>
 But it worked, and I wanted to share it with the rest of the world.<br>
-Our script to backup can be found at <a href="#example">the bottom of the page.</a><br>
+Our script to backup can be found at the bottom of the page.<br>
 But how do I get that script on to the live USB?</p>
 
-<p>This is how I do it:  </p>
+<p>This is how I do it:</p>
 
 <pre><code>mkdir rw.fs  
 mkdir clonscript  
@@ -95,8 +96,8 @@ mksquashfs ./rw.fs ./filesystem.squashfs
 </code></pre>
 
 <p>Now the 2 filesystems are being put together.<br>
-The next time, mount it again, make a new directory (say clondir2) and   cp all
-the scripts from clondir1 into clondir2, and edit them from there.   Also change
+The next time, mount it again, make a new directory (say clondir2) and cp all
+the scripts from clondir1 into clondir2, and edit them from there. Also change
 your root launch script to the new dir.</p>
 
 <p>Now edit the isolinux/isolinux.cfg file. To start a script as root,<br>
@@ -119,7 +120,7 @@ ENDTEXT
 *  
 </code></pre>
 
-<p>Note this part: ocs_live_run=&quot;/path/to/your/root/launcher/script.sh&quot;. Change
+<p>Note this part: ocs <em>live</em> run=&quot;/path/to/your/root/launcher/script.sh&quot;. Change
 that every time you make a change to the script. (For every change to the script
 you make you must make a new directory and change your root launcher script.
 This is because your merging a read only file system. And read only cannot be
@@ -131,13 +132,11 @@ folder2iso <a href="http://www.trustfm.net/divx/SoftwareFolder2Iso.php?b2=1">whi
 <p>You can remove the USB stick or CD when clonezilla is imaging, because this boot
 script loads it into the ram.</p>
 
-<p>If this can be done with less work, please post it in a comment, I   hate this
-way... (first start fcking vista, then virtualbox a mint,   then share a folder,
-then mount and edit, then folder2iso and at last   unetbootin...)... And thanks
-to the people of clonezilla for making such a wonderfull alternative to ghost
-and acronis ^.^ </p>
-
-<p><a id="example"></a> </p>
+<p>If this can be done with less work, please post it in a comment, I hate this
+way... (first start fcking vista, then virtualbox a mint, then share a folder,
+then mount and edit, then folder2iso and at last unetbootin...)... And thanks to
+the people of clonezilla for making such a wonderfull alternative to ghost and
+acronis ^.^</p>
 
 <h5>Example Backup Script</h5>
 

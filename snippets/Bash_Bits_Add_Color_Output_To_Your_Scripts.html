@@ -69,24 +69,38 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add coloured output to your scripts. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to add coloured output to your scripts.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
 
-<p>A little background first on how this all works. Coloured output has to be supported by your terminal emulator, but most modern ones support it. It works by sending specific control codes to your terminal.  </p>
+<p>A little background first on how this all works. Coloured output has to be
+supported by your terminal emulator, but most modern ones support it. It works
+by sending specific control codes to your terminal.</p>
 
-<p>Terminal (control-)codes are needed to give specific commands to your terminal. A terminal control code is a special sequence of characters that is printed (like any other text). If the terminal understands the code, it won&#39;t display the character-sequence, but will perform some action. You can always print the codes with a simple echo command.  </p>
+<p>Terminal (control-)codes are needed to give specific commands to your terminal.
+A terminal control code is a special sequence of characters that is printed
+(like any other text). If the terminal understands the code, it won&#39;t display
+the character-sequence, but will perform some action. You can always print the
+codes with a simple echo command.</p>
 
-<p>Because there&#39;s a large number of different terminal control languages, usually a system has an intermediate-layer to talk to it. The real codes are looked up in a database for the currently detected terminal type and you give standardized requests to an API or (from the shell) to a command.  </p>
+<p>Because there&#39;s a large number of different terminal control languages, usually
+a system has an intermediate-layer to talk to it. The real codes are looked up
+in a database for the currently detected terminal type and you give standardized
+requests to an API or (from the shell) to a command.</p>
 
-<p>One of these commands is tput - it accepts a set of acronymes and parameters for them, looks up the correct codes for the detected terminal in the terminfo database and prints the correct codes (the terminal hopefully understands).  </p>
+<p>One of these commands is tput - it accepts a set of acronymes and parameters for
+them, looks up the correct codes for the detected terminal in the terminfo
+database and prints the correct codes (the terminal hopefully understands).</p>
 
-<p><a href="http://linux.die.net/man/5/terminfo">You can read more about terminal control codes and tput in the terminfo(5) manual page, click this link for the online version</a>  </p>
+<p><a href="http://linux.die.net/man/5/terminfo">You can read more about terminal control codes and tput in the terminfo(5)
+manual page, click this link for the online version</a></p>
 
-<p>When I need to use colours in my scripts I often just use red and green. I have a set of functions which I use named after the colour:</p>
+<p>When I need to use colours in my scripts I often just use red and green. I have
+a set of functions which I use named after the colour:</p>
 
 <pre><code>black() { echo &quot;$(tput setaf 0)$*$(tput setaf 9)&quot;; }
 red() { echo &quot;$(tput setaf 1)$*$(tput setaf 9)&quot;; }
@@ -98,7 +112,9 @@ cyan() { echo &quot;$(tput setaf 6)$*$(tput setaf 9)&quot;; }
 white() { echo &quot;$(tput setaf 7)$*$(tput setaf 9)&quot;; }
 </code></pre>
 
-<p>Then when I need to colourize some output I can just use the function like so: <code>red &quot;Error: Something went horribly wrong...&quot;</code>. Down below you can find sample code which should print text in all the above defined colours:</p>
+<p>Then when I need to colourize some output I can just use the function like so:
+<code>red &quot;Error: Something went horribly wrong...&quot;</code>. Down below you can find sample
+code which should print text in all the above defined colours:</p>
 
 <pre><code>black &quot;This is black text&quot;
 red &quot;This is red text&quot;
@@ -111,9 +127,11 @@ white &quot;This is white text&quot;
 </code></pre>
 
 <p>This image shows you how it looks on my terminal:<br>
-<img src="https://raymii.org/s/inc/img/terminal-colors.png" alt="Terminal Colours" /></p>
+<img src="https://raymii.org/s/inc/img/terminal-colors.png" alt="Terminal Colours"></p>
 
-<p>And last but not least here is a bash command which prints out all colour that your terminal supports. Good to test if you have 256 colours enabled or not, plus it shows you the number to use with tput for that colour.</p>
+<p>And last but not least here is a bash command which prints out all colour that
+your terminal supports. Good to test if you have 256 colours enabled or not,
+plus it shows you the number to use with tput for that colour.</p>
 
 <pre><code>( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )
 </code></pre>

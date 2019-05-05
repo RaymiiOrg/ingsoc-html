@@ -8,9 +8,15 @@ Format      : 	Markdown/HTML
 ---
 
 
-<a href="https://www.ssllabs.com/ssltest/analyze.html?d=raymii.org"><img src="https://raymii.org/s/inc/img/ssl-labs-a.png" alt="A on ssl labs test" /></a>
 
-This tutorial has moved. Please visit the new page: [https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html](https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html)
+[![A on ssl labs test][1]][2]
+
+This tutorial has moved. Please visit the new page:
+[https://raymii.org/s/tutorials/Strong _SSL_ Security _On_ Apache2.html][3]
+
+   [1]: https://raymii.org/s/inc/img/ssl-labs-a.png
+   [2]: https://www.ssllabs.com/ssltest/analyze.html?d=raymii.org
+   [3]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
 
 ---
 

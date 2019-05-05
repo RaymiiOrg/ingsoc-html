@@ -9,32 +9,32 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/owncloud-logo.png" alt="owncloud" />
+![owncloud][1]
 
 I keep a few servers around for shared webhosting for friends, family and some
 other domains. Most of them run Directadmin, because it is easier to work with
 for the target audience. I'm very good with the command line, they've never
-heard of it. 
+heard of it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 One of my friends runs Owncloud, a wonderfull piece of software to get cloud
 services under your control. He does not use the file part but rather the
 calendar and contacts a lot. A recent update of Apache to 2.4.10 broke that
 functionality on a Directadmin machine with the error AH01797: client denied by
-server configuration. 
+server configuration.
 
 I started by checking the vhosts file,
 `/usr/local/directadmin/data/users/$USER/httpd.conf` and see if changing or
-adding the `Require all granted` part solved it. But, it did not. 
+adding the `Require all granted` part solved it. But, it did not.
 
 A combination of `httpd -S` to see all sites and `httpd -V` to see all compile
-settings led me to a Directadmin configuration file,
-`/etc/httpd/conf/extra/httpd-directories.conf` which contains the following:
+settings led me to a Directadmin configuration file, `/etc/httpd/conf/extra
+/httpd-directories.conf` which contains the following:
 
+    
+    
     <Directory /home>
             AllowOverride All
             Options -MultiViews -Indexes +FollowSymLinks +IncludesNoExec +Includes
@@ -47,13 +47,17 @@ settings led me to a Directadmin configuration file,
                    Deny from all
            </LimitExcept>
     </Directory>
+    
 
-The [PROPFIND](http://www.webdav.org/specs/rfc2518.html#METHOD_PROPFIND) HTTP
-method is specific to Webdav, Owncloud used that a lot with Carddav and Caldav
-sync. Commenting out or removing the `PROPFIND` method from the last `Deny from
-all` block solved the syncing problem. I'm not sure how that got in there, it
-seems incorrect with 2.4, but still, after removing it, Owncloud works as it did
-again.
+The [PROPFIND][3] HTTP method is specific to Webdav, Owncloud used that a lot
+with Carddav and Caldav sync. Commenting out or removing the `PROPFIND` method
+from the last `Deny from all` block solved the syncing problem. I'm not sure how
+that got in there, it seems incorrect with 2.4, but still, after removing it,
+Owncloud works as it did again.
+
+   [1]: https://raymii.org/s/inc/img/owncloud-logo.png
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: http://www.webdav.org/specs/rfc2518.html#METHOD_PROPFIND
 
 ---
 

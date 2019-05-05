@@ -69,20 +69,32 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The FST-01 (Flying Stone 1) (<a href="http://wiki.seeedstudio.com/wiki/FST-01">wiki link</a>), <a href="http://www.gniibe.org/FST-01/fst-01.html">niibe link</a> is a small STM32F103TB based USB device designed to run <code>gnuk</code> and <code>neug</code> (gpg usb token or true random number generator). (<a href="https://www.seeedstudio.com/FST-01-with-White-Enclosure-p-1279.html">order here</a>, no affiliate link). This guide shows you how to upgrade the firmware on the FST-01 so that you can enjoy newer gnuk features like 4096 bit RSA keys.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The FST-01 (Flying Stone 1) (<a href="http://wiki.seeedstudio.com/wiki/FST-01">wiki link</a>), <a href="http://www.gniibe.org/FST-01/fst-01.html">niibe link</a> is a small
+STM32F103TB based USB device designed to run <code>gnuk</code> and <code>neug</code> (gpg usb token or
+true random number generator). (<a href="https://www.seeedstudio.com/FST-01-with-White-Enclosure-p-1279.html">order here</a>, no affiliate link). This guide
+shows you how to upgrade the firmware on the FST-01 so that you can enjoy newer
+gnuk features like 4096 bit RSA keys.</p>
 
-<p>I&#39;m a huge fan of <a href="https://raymii.org/s/tags/nitrokey.html">the Nitrokey</a> line of devices. The <a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">Nitrokey Start</a> is a software-only USB token for gnupg. The other Nitrokey devices all use a smartcard (SmartCard-HSM for the Nitrokey HSM and OpenGPG Card for the Nitrokey Pro) for their key storage, but the Nitrokey Start does that all in the microcontroller. The Nitrokey Start is based on the FST-01 device, as are the other Nitrokeys, since the Nitrokey Start runs the same firmware, gnuk 1.0.4.</p>
+<p>I&#39;m a huge fan of <a href="https://raymii.org/s/tags/nitrokey.html">the Nitrokey</a> line of devices. The <a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">Nitrokey Start</a> is
+a software-only USB token for gnupg. The other Nitrokey devices all use a
+smartcard (SmartCard-HSM for the Nitrokey HSM and OpenGPG Card for the Nitrokey
+Pro) for their key storage, but the Nitrokey Start does that all in the
+microcontroller. The Nitrokey Start is based on the FST-01 device, as are the
+other Nitrokeys, since the Nitrokey Start runs the same firmware, gnuk 1.0.4.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/FST-01_board.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/FST-01_board.jpg" alt=""></p>
 
 <blockquote>
 <p>The FST-01 device</p>
 </blockquote>
 
-<p>This guide will show you how to compile and upgrade the latest firmware onto the device via USB. The recommended way is to upgrade via the ST-Link protocol, but that requires opening the device, soldering wires and a special adapter. The USB upgrade works most of the time.</p>
+<p>This guide will show you how to compile and upgrade the latest firmware onto the
+device via USB. The recommended way is to upgrade via the ST-Link protocol, but
+that requires opening the device, soldering wires and a special adapter. The USB
+upgrade works most of the time.</p>
 
 <h3>Why upgrade?</h3>
 
@@ -99,35 +111,43 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Improvements in the RSA code (Prime number generation is done by Fouque-Tibouchi method, changes from upstream PolarSSL 1.2.10</li>
 </ul>
 
-<p>You could also flash the NeuG firmware onto the device so that you get a True random number generator instead of a crypto token.</p>
+<p>You could also flash the NeuG firmware onto the device so that you get a True
+random number generator instead of a crypto token.</p>
 
 <h3>A word of caution</h3>
 
-<p><img src="https://raymii.org/s/inc/img/caution.png"></p>
+<p><img src="https://raymii.org/s/inc/img/caution.png" alt=""></p>
 
 <p><strong>Do not try to upgrade the Nitrokey.</strong> It <a href="https://lists.alioth.debian.org/pipermail/gnuk-users/2016q3/000369.html">fails at the moment</a>.</p>
 
-<p>If you want to upgrade the Nitrokey Start, <a href="https://raymii.org/s/tutorials/Nitrokey_gnuk_firmware_update_via_DFU.html">you need to use DFU, see my guide here</a></p>
+<p>If you want to upgrade the Nitrokey Start, <a href="https://raymii.org/s/tutorials/Nitrokey_gnuk_firmware_update_via_DFU.html">you need to use DFU, see my guide
+here</a></p>
 
-<p>Also, <strong>do not try to upgrade if you don&#39;t have a backup of the key material</strong>. The upgrade will WIPE the entire device.</p>
+<p>Also, <strong>do not try to upgrade if you don&#39;t have a backup of the key material</strong>.
+The upgrade will WIPE the entire device.</p>
 
-<p>Last, <strong>you will probably brick the device</strong>. Make sure you have another way to access and recover the device, like an ST-Link V2 adapter <a href="https://www.aliexpress.com/item/FREE-SHIPPING-1PCS-ST-Link-V2-stlink-mini-STM8STM32-STLINK-simulator-download-programming-With-Cover/32329418477.html">link</a>.</p>
+<p>Last, <strong>you will probably brick the device</strong>. Make sure you have another way to
+access and recover the device, like an ST-Link V2 adapter <a href="https://www.aliexpress.com/item/FREE-SHIPPING-1PCS-ST-Link-V2-stlink-mini-STM8STM32-STLINK-simulator-download-programming-With-Cover/32329418477.html">link</a>.</p>
 
-<p>So to wrap up, if you&#39;re not comfortable with a few bricked devices and all key material wiped, then don&#39;t try to upgrade.</p>
+<p>So to wrap up, if you&#39;re not comfortable with a few bricked devices and all key
+material wiped, then don&#39;t try to upgrade.</p>
 
 <h3>Build dependencies</h3>
 
-<p>You need to install the entire arm cross compilation toolchain. On Arch Linux this requires installing the entire <code>base-dev</code> group and the following packages:</p>
+<p>You need to install the entire arm cross compilation toolchain. On Arch Linux
+this requires installing the entire <code>base-dev</code> group and the following packages:</p>
 
 <pre><code>pacman -Sy arm-none-eabi-gcc arm-none-eabi-newlib arm-none-eabi-binutils python2-pyusb
 </code></pre>
 
-<p>You also need <code>git</code> installed. On Ubuntu the package names are the same, so you can install those as well:</p>
+<p>You also need <code>git</code> installed. On Ubuntu the package names are the same, so you
+can install those as well:</p>
 
 <pre><code>apt-get install git build-essential arm-none-eabi-gcc arm-none-eabi-newlib arm-none-eabi-binutils python-usb
 </code></pre>
 
-<p>To make sure we can update the token as a regular user, we need to add some <code>udev</code> rules:</p>
+<p>To make sure we can update the token as a regular user, we need to add some
+<code>udev</code> rules:</p>
 
 <pre><code>vim /etc/udev/rules.d/69-gnuk.rules
 </code></pre>
@@ -153,9 +173,12 @@ rm -rf chopstx
 git clone https://anonscm.debian.org/cgit/gnuk/chopstx/chopstx.git chopstx
 </code></pre>
 
-<p>They use git submodules upstream but that fails for me, therefore the chopstx folder is removed and the repository is cloned over.</p>
+<p>They use git submodules upstream but that fails for me, therefore the chopstx
+folder is removed and the repository is cloned over.</p>
 
-<p>This guide uses commit <code>452c15c908b1d10fe14d71c3314c6550c3e3a471</code>, (<code>* 452c15c - (HEAD -&gt; master, tag: release/1.2.1, origin/master, origin/HEAD) Version 1.2.1 (8 weeks ago) &lt;NIIBE Yutaka&gt;</code>).</p>
+<p>This guide uses commit <code>452c15c908b1d10fe14d71c3314c6550c3e3a471</code>, (<code>* 452c15c -
+(HEAD -&gt; master, tag: release/1.2.1, origin/master, origin/HEAD) Version 1.2.1
+(8 weeks ago) &lt;NIIBE Yutaka&gt;</code>).</p>
 
 <p>Go in the <code>src</code> folder and start the compile:</p>
 
@@ -215,11 +238,13 @@ make
 arm-none-eabi-objcopy -Oihex regnual.elf regnual.hex
 </code></pre>
 
-<p>All the required compilations are done now. The next step is testing the token before we use it.</p>
+<p>All the required compilations are done now. The next step is testing the token
+before we use it.</p>
 
 <h3>Test the token</h3>
 
-<p>It is important to test if the scripts and GPG recognize the token before we upgrade, so that we know that it worked. </p>
+<p>It is important to test if the scripts and GPG recognize the token before we
+upgrade, so that we know that it worked.</p>
 
 <p>In the <code>gnuk/tools</code> folder is a script called <code>usb_strings.py</code>:</p>
 
@@ -264,7 +289,8 @@ General key info..: [none]
 <pre><code>$ python2 ./upgrade_by_passwd.py ../regnual/regnual.bin ../src/build/gnuk.bin 
 </code></pre>
 
-<p>It will ask you for the admin password. The output afterwars is like below, if the upgrade goes correct:</p>
+<p>It will ask you for the admin password. The output afterwars is like below, if
+the upgrade goes correct:</p>
 
 <pre><code>../regnual/regnual.bin: 4412
 ../src/build/gnuk.bin: 110592
@@ -337,13 +363,16 @@ General key info..: [none]
 
 <h3>If it goes wrong?</h3>
 
-<p>You need to use the ST Link v2 adapter to reflash the firmware. <a href="http://blog.nodonogard.net/2015/11/compiling-and-flashing-gnuk-binaries-to.html">See this tutorial</a> for a guide.</p>
+<p>You need to use the ST Link v2 adapter to reflash the firmware. <a href="http://blog.nodonogard.net/2015/11/compiling-and-flashing-gnuk-binaries-to.html">See this
+tutorial</a> for a guide.</p>
 
 <h3>Now what?</h3>
 
-<p>You can put 4096 bit keys on the card, or use any of the new algorithms. See my <a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">Nitrokey Start Getting Started</a> guide for how to put keys on the card.</p>
+<p>You can put 4096 bit keys on the card, or use any of the new algorithms. See my
+<a href="https://raymii.org/s/articles/Nitrokey_Start_Getting_started_guide.html">Nitrokey Start Getting Started</a> guide for how to put keys on the card.</p>
 
-<p>You can also reflash the device to NeuG firmware, then it will become a True Random Number Generator. But that is for another tutorial.</p>
+<p>You can also reflash the device to NeuG firmware, then it will become a True
+Random Number Generator. But that is for another tutorial.</p>
 </div><hr>Tags: <a href="../tags/fst-01.html" class="link">fst-01 &nbsp;</a><a href="../tags/gnuk.html" class="link">gnuk &nbsp;</a><a href="../tags/gnupg.html" class="link">gnupg &nbsp;</a><a href="../tags/gpg.html" class="link">gpg &nbsp;</a><a href="../tags/neug.html" class="link">neug &nbsp;</a><a href="../tags/nitrokey.html" class="link">nitrokey &nbsp;</a><a href="../tags/nitrokey-start.html" class="link">nitrokey-start &nbsp;</a><a href="../tags/start.html" class="link">start &nbsp;</a><a href="../tags/stm32f103tb.html" class="link">stm32f103tb &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

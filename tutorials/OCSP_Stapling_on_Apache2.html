@@ -69,24 +69,46 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>When connecting to a server, clients should verify the validity of the server certificate using either a Certificate Revocation List (CRL), or an Online Certificate Status Protocol (OCSP) record. The problem with CRL is that the lists have grown huge and takes forever to download.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>When connecting to a server, clients should verify the validity of the server
+certificate using either a Certificate Revocation List (CRL), or an Online
+Certificate Status Protocol (OCSP) record. The problem with CRL is that the
+lists have grown huge and takes forever to download.</p>
 
-<p>OCSP is much more lightweight, as only one record is retrieved at a time. But the side effect is that OCSP requests must be made to a 3rd party OCSP responder when connecting to a server, which adds latency and potential failures. In fact, the OCSP responders operated by CAs are often so unreliable that browser will fail silently if no response is received in a timely manner. This reduces security, by allowing an attacker to DoS an OCSP responder to disable the validation.</p>
+<p>OCSP is much more lightweight, as only one record is retrieved at a time. But
+the side effect is that OCSP requests must be made to a 3rd party OCSP responder
+when connecting to a server, which adds latency and potential failures. In fact,
+the OCSP responders operated by CAs are often so unreliable that browser will
+fail silently if no response is received in a timely manner. This reduces
+security, by allowing an attacker to DoS an OCSP responder to disable the
+validation.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>The solution is to allow the server to send its cached OCSP record during the TLS handshake, therefore bypassing the OCSP responder. This mechanism saves a roundtrip between the client and the OCSP responder, and is called OCSP Stapling.</p>
+<p>The solution is to allow the server to send its cached OCSP record during the
+TLS handshake, therefore bypassing the OCSP responder. This mechanism saves a
+roundtrip between the client and the OCSP responder, and is called OCSP
+Stapling.</p>
 
-<p>The server will send a cached OCSP response only if the client requests it, by announcing support for the status_request TLS extension in its CLIENT HELLO.</p>
+<p>The server will send a cached OCSP response only if the client requests it, by
+announcing support for the status_request TLS extension in its CLIENT HELLO.</p>
 
-<p>Most servers will cache OCSP response for up to 48 hours. At regular intervals, the server will connect to the OCSP responder of the CA to retrieve a fresh OCSP record. The location of the OCSP responder is taken from the Authority Information Access field of the signed certificate.</p>
+<p>Most servers will cache OCSP response for up to 48 hours. At regular intervals,
+the server will connect to the OCSP responder of the CA to retrieve a fresh OCSP
+record. The location of the OCSP responder is taken from the Authority
+Information Access field of the signed certificate.</p>
 
 <p><a href="https://raymii.org/s/tutorials/OCSP_Stapling_on_nginx.html">This tutorial is also available for nginx</a></p>
 
 <h3>What is OCSP Stapling</h3>
 
-<p>OCSP stapling is defined in the <a href="http://tools.ietf.org/html/rfc6066">IETF RFC 6066</a>. The term &quot;stapling&quot; is a popular term used to describe how the OCSP response is obtained by the web server. The web server caches the response from the CA that issued the certificate.  When an SSL/TLS handshake is initiated, the response is returned by the web server to the client by attaching the cached OCSP response to the CertificateStatus message.  To make use of OCSP stapling, a client must include the &quot;status_request&quot; extension with its SSL/TSL Client &quot;Hello&quot; message.</p>
+<p>OCSP stapling is defined in the <a href="http://tools.ietf.org/html/rfc6066">IETF RFC 6066</a>. The term &quot;stapling&quot; is a
+popular term used to describe how the OCSP response is obtained by the web
+server. The web server caches the response from the CA that issued the
+certificate. When an SSL/TLS handshake is initiated, the response is returned by
+the web server to the client by attaching the cached OCSP response to the
+CertificateStatus message. To make use of OCSP stapling, a client must include
+the &quot;status_request&quot; extension with its SSL/TSL Client &quot;Hello&quot; message.</p>
 
 <p>OCSP stapling presents several advantages including the following:</p>
 
@@ -96,13 +118,19 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>OCSP stapling provides added security by reducing the number of attack vectors.</li>
 </ul>
 
-<p><a href="http://en.wikipedia.org/wiki/OCSP_stapling">Read</a> <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">one</a> <a href="http://security.stackexchange.com/questions/29686/how-does-ocsp-stapling-work">of</a> <a href="https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/">the</a> <a href="http://www.thawte.com/assets/documents/whitepaper/ocsp-stapling.pdf">following</a> <a href="http://news.netcraft.com/archives/2013/04/16/certificate-revocation-and-the-performance-of-ocsp.html">links</a> for more information on OCSP and OCSP stapling.</p>
+<p><a href="http://en.wikipedia.org/wiki/OCSP_stapling">Read</a> <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">one</a> <a href="http://security.stackexchange.com/questions/29686/how-does-ocsp-stapling-work">of</a> <a href="https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/">the</a> <a href="http://www.thawte.com/assets/documents/whitepaper/ocsp-stapling.pdf">following</a> <a href="http://news.netcraft.com/archives/2013/04/16/certificate-revocation-and-the-performance-of-ocsp.html">links</a> for more
+information on OCSP and OCSP stapling.</p>
 
 <h3>Requirements</h3>
 
-<p>You need at least Apache 2.3.3 and later plus OpenSSL 0.9.8h or later for this to work. This is not available in the current Ubuntu LTS releases (12.04), <a href="http://packages.ubuntu.com/precise/apache2">it has 2.2.22</a> and <a href="http://mirror.centos.org/centos/6/os/x86_64/Packages/">CentOS 6 has 2.2.15</a>. Either search for PPA&#39;s/unofficial repositories or compile them yourself.</p>
+<p>You need at least Apache 2.3.3 and later plus OpenSSL 0.9.8h or later for this
+to work. This is not available in the current Ubuntu LTS releases (12.04), <a href="http://packages.ubuntu.com/precise/apache2">it
+has 2.2.22</a> and <a href="http://mirror.centos.org/centos/6/os/x86_64/Packages/">CentOS 6 has 2.2.15</a>. Either search for
+PPA&#39;s/unofficial repositories or compile them yourself.</p>
 
-<p>You also need create a firewall exception to allow your server to make outbound connections to the upstream OCSP&#39;s. You can view all OCSP URI&#39;s from a website using this one liner:</p>
+<p>You also need create a firewall exception to allow your server to make outbound
+connections to the upstream OCSP&#39;s. You can view all OCSP URI&#39;s from a website
+using this one liner:</p>
 
 <pre><code>OLDIFS=$IFS; IFS=&#39;:&#39; certificates=$(openssl s_client -connect google.com:443 -showcerts -tlsextdebug -tls1 2&gt;&amp;1 &lt;/dev/null | sed -n &#39;/-----BEGIN/,/-----END/ {/-----BEGIN/ s/^/:/; p}&#39;); for certificate in ${certificates#:}; do echo $certificate | openssl x509 -noout -ocsp_uri; done; IFS=$OLDIFS
 </code></pre>
@@ -113,7 +141,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 http://gtglobal-ocsp.geotrust.com
 </code></pre>
 
-<p>Replace google.com with your domain. Also note that you need the GNU version of sed and bash. It does not work on OS X or BSD.</p>
+<p>Replace google.com with your domain. Also note that you need the GNU version of
+sed and bash. It does not work on OS X or BSD.</p>
 
 <h3>Apache Configuration</h3>
 
@@ -140,14 +169,17 @@ SSLStaplingCache &quot;shmcb:logs/stapling-cache(150000)&quot;
 <pre><code>This makes use of a high-performance cyclic buffer (approx. size bytes in size) inside a shared memory segment in RAM (established via /path/to/datafile) to synchronize the local OpenSSL memory caches of the server processes. This is the recommended session cache. To use this, ensure that mod_socache_shmcb is loaded.
 </code></pre>
 
-<p>You can also give a few more options. For example, a freshness timeout, how old the OCSP response can be:</p>
+<p>You can also give a few more options. For example, a freshness timeout, how old
+the OCSP response can be:</p>
 
 <pre><code>SSLStaplingResponseMaxAge 900
 </code></pre>
 
 <p>This lets the response only be max 15 minutes old (900 seconds).</p>
 
-<p>If your apache server is behind a HTTP proxy and you need to do your OCSP queries through a proxy you can use <code>SSLStaplingForceURL</code>. This overrides the URL provided by the certificate:</p>
+<p>If your apache server is behind a HTTP proxy and you need to do your OCSP
+queries through a proxy you can use <code>SSLStaplingForceURL</code>. This overrides the
+URL provided by the certificate:</p>
 
 <pre><code>SSLStaplingForceURL http://internal-proxy.example.org
 </code></pre>
@@ -161,7 +193,8 @@ SSLStaplingCache &quot;shmcb:logs/stapling-cache(150000)&quot;
 
 <h3>Testing it</h3>
 
-<p>Fire up a terminal and use the following OpenSSL command to connect to your website:</p>
+<p>Fire up a terminal and use the following OpenSSL command to connect to your
+website:</p>
 
 <pre><code>openssl s_client -connect example.org:443 -tls1 -tlsextdebug -status
 </code></pre>
@@ -197,10 +230,10 @@ OCSP Response Data:
 <h3>Sources</h3>
 
 <ul>
-<li><a href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslusestapling">Apache documentation for SSLUseStapling</a><br></li>
-<li><a href="http://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslstaplingcache">Apache documentation for SSLStaplingCache</a><br></li>
-<li><a href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#SSLStaplingForceURL">Apache documentation for SSLStaplingForceURL</a><br></li>
-<li><a href="http://httpd.apache.org/docs/trunk/mod/mod_ssl.html#SSLStaplingResponderTimeout">Apache documentation for SSLStaplingResponderTimeout</a><br></li>
+<li><p><a href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslusestapling">Apache documentation for SSLUseStapling</a></p></li>
+<li><p><a href="http://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslstaplingcache">Apache documentation for SSLStaplingCache</a></p></li>
+<li><p><a href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#SSLStaplingForceURL">Apache documentation for SSLStaplingForceURL</a></p></li>
+<li><p><a href="http://httpd.apache.org/docs/trunk/mod/mod_ssl.html#SSLStaplingResponderTimeout">Apache documentation for SSLStaplingResponderTimeout</a></p></li>
 </ul>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/crl.html" class="link">crl &nbsp;</a><a href="../tags/ocsp.html" class="link">ocsp &nbsp;</a><a href="../tags/ocsp-stapling.html" class="link">ocsp-stapling &nbsp;</a><a href="../tags/revocation.html" class="link">revocation &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/ssl-labs.html" class="link">ssl-labs &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>

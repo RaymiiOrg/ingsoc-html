@@ -69,16 +69,24 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Keepalived supports running scripts on VRRP state change. This can come in handy when you need to execute an action when a failover occurs. In my case, I have a VPN running on a Virtual IP and want to make sure the VPN only runs on the node with the Virtual IP.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Keepalived supports running scripts on VRRP state change. This can come in handy
+when you need to execute an action when a failover occurs. In my case, I have a
+VPN running on a Virtual IP and want to make sure the VPN only runs on the node
+with the Virtual IP.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>If you want to set up a simple keepalived cluster, see <a href="https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html">my tutorial on that</a>.</p>
 
-<p>The VPN uses <code>strongswan</code> and is a simple ipsec site to site VPN. The two nodes are datacenter redundant. The nodes function as NAT/firewall proxies for a backend network. The backend servers need access to some other servers only reachable over the VPN.</p>
+<p>The VPN uses <code>strongswan</code> and is a simple ipsec site to site VPN. The two nodes
+are datacenter redundant. The nodes function as NAT/firewall proxies for a
+backend network. The backend servers need access to some other servers only
+reachable over the VPN.</p>
 
-<p>A notify script can be used to take actions, not only removing or adding an IP to an interface. It can for example start or stop a daemon, depending on the VRRP state. </p>
+<p>A notify script can be used to take actions, not only removing or adding an IP
+to an interface. It can for example start or stop a daemon, depending on the
+VRRP state.</p>
 
 <p>It is defined in the keepalived config like this:</p>
 
@@ -88,7 +96,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 }
 </code></pre>
 
-<p>The script can be written in any language as long as it is executable. It receives the following parameters:</p>
+<p>The script can be written in any language as long as it is executable. It
+receives the following parameters:</p>
 
 <ul>
 <li>$1 = &quot;INSTANCE&quot; or &quot;GROUP&quot;</li>

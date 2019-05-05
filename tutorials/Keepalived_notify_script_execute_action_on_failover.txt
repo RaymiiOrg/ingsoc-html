@@ -9,34 +9,46 @@ Format      : 	Markdown/HTML
 
 
 
-Keepalived supports running scripts on VRRP state change. This can come in handy when you need to execute an action when a failover occurs. In my case, I have a VPN running on a Virtual IP and want to make sure the VPN only runs on the node with the Virtual IP.
+Keepalived supports running scripts on VRRP state change. This can come in handy
+when you need to execute an action when a failover occurs. In my case, I have a
+VPN running on a Virtual IP and want to make sure the VPN only runs on the node
+with the Virtual IP.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+If you want to set up a simple keepalived cluster, see [my tutorial on that][2].
 
-If you want to set up a simple keepalived cluster, see [my tutorial on that](https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html).
+The VPN uses `strongswan` and is a simple ipsec site to site VPN. The two nodes
+are datacenter redundant. The nodes function as NAT/firewall proxies for a
+backend network. The backend servers need access to some other servers only
+reachable over the VPN.
 
-The VPN uses `strongswan` and is a simple ipsec site to site VPN. The two nodes are datacenter redundant. The nodes function as NAT/firewall proxies for a backend network. The backend servers need access to some other servers only reachable over the VPN.
-
-A notify script can be used to take actions, not only removing or adding an IP to an interface. It can for example start or stop a daemon, depending on the VRRP state. 
+A notify script can be used to take actions, not only removing or adding an IP
+to an interface. It can for example start or stop a daemon, depending on the
+VRRP state.
 
 It is defined in the keepalived config like this:
 
+    
+    
     vrrp_instance Example_VRRP {
         [...]
         notify /usr/local/sbin/notify-keepalived.sh
     }
+    
 
-The script can be written in any language as long as it is executable. It receives the following parameters:
+The script can be written in any language as long as it is executable. It
+receives the following parameters:
 
-- $1 = "INSTANCE" or "GROUP"
-- $2 = name of instance or group
-- $3 = target state of transition, "MASTER", "BACKUP" or "FAULT"
+  * $1 = "INSTANCE" or "GROUP"
+  * $2 = name of instance or group
+  * $3 = target state of transition, "MASTER", "BACKUP" or "FAULT"
 
 This is the bash script I use for the strongswan VPN:
 
+    
+    
     #!/bin/bash
     TYPE=$1
     NAME=$2
@@ -53,9 +65,10 @@ This is the bash script I use for the strongswan VPN:
                       exit 1
                       ;;
     esac
+    
 
-
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tutorials/Keepalived-Simple-IP-failover-on-Ubuntu.html
 
 ---
 

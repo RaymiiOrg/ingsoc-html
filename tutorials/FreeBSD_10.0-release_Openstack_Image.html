@@ -69,14 +69,21 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>We are going to prepare a FreeBSD image for Openstack deployment. We do this by creating a FreeBSD 10.0-RELEASE instance, installing it and converting it using <a href="http://pellaeon.github.io/bsd-cloudinit/">bsd-cloudinit</a>. We&#39;ll use the <a href="https://cloudvps.com">CloudVPS</a> public Openstack cloud for this. Create an account there and install the Openstack command line tools, like <code>nova</code>, <code>cinder</code> and <code>glance</code>. This tutorial is more a collection of notes than what you are used of me, it has less explanation and such, just right on steps to get started.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>We are going to prepare a FreeBSD image for Openstack deployment. We do this by
+creating a FreeBSD 10.0-RELEASE instance, installing it and converting it using
+<a href="http://pellaeon.github.io/bsd-cloudinit/">bsd-cloudinit</a>. We&#39;ll use the <a href="https://cloudvps.com">CloudVPS</a> public Openstack cloud for this.
+Create an account there and install the Openstack command line tools, like
+<code>nova</code>, <code>cinder</code> and <code>glance</code>. This tutorial is more a collection of notes than
+what you are used of me, it has less explanation and such, just right on steps
+to get started.</p>
 
-<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related articles here</a>. For example, how to use <a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a></p>
+<p>You can see all my <a href="https://raymii.org/s/tags/openstack.html">Openstack related articles here</a>. For example, how to use
+<a href="https://raymii.org/s/tutorials/Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.html">Duplicity to create Encrypted backups to the Openstack Swift Object Store</a></p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>This tutorial is available for: </p>
+<p>This tutorial is available for:</p>
 
 <ul>
 <li><a href="https://raymii.org/s/tutorials/FreeBSD_10.0-release_Openstack_Image.html">FreeBSD 10.0-RELEASE.</a></li>
@@ -120,7 +127,7 @@ export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 <li>default keymap</li>
 <li>hostname: freebsd.public.cloudvps.com</li>
 <li>Just lib32 and ports, no doc, games or src</li>
-<li>Partition Layout:
+<li>Partition Layout: 
 
 <ul>
 <li>ada0 GPT</li>
@@ -129,7 +136,7 @@ export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 <li>ada0p3 7GB freebsd-root mountpoint /</li>
 </ul></li>
 <li>Root password P@ssw0rd</li>
-<li>Network:
+<li>Network: 
 
 <ul>
 <li>adapter: vtnet0</li>
@@ -139,7 +146,7 @@ export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 </ul></li>
 <li>UTC: no, timezone 8 EUROPE 34 NETHERLANDS</li>
 <li>Services at boot: sshd, ntpd, moused, dumpd</li>
-<li>Extra user:
+<li>Extra user: 
 
 <ul>
 <li>Username: freebsd</li>
@@ -162,7 +169,8 @@ export OS_TENANT_ID=&quot;&lt;tenant id&gt;&quot;
 <li>Exit</li>
 </ul>
 
-<p>After install, edit <code>/etc/fstab</code>, changing <code>ada0</code> to <code>vtbd0</code>. This is for VirtIO support.</p>
+<p>After install, edit <code>/etc/fstab</code>, changing <code>ada0</code> to <code>vtbd0</code>. This is for VirtIO
+support.</p>
 
 <p>Shut the instance from FreeBSD using <code>shutdown -p now</code> and after that via nova:</p>
 
@@ -239,7 +247,8 @@ history -c
 <pre><code>shutdown -p now
 </code></pre>
 
-<p>Terminate the machine, otherwise you cannot detach the volume (ERROR: Can&#39;t detach root device volume (HTTP 403)):</p>
+<p>Terminate the machine, otherwise you cannot detach the volume (ERROR: Can&#39;t
+detach root device volume (HTTP 403)):</p>
 
 <pre><code>nova delete &lt;id of freebsd-configure vm)
 </code></pre>
@@ -251,7 +260,8 @@ history -c
 
 <p>This might take a while.</p>
 
-<p>Set the min-disk and min-ram requirements, plus some more properties for the image:</p>
+<p>Set the min-disk and min-ram requirements, plus some more properties for the
+image:</p>
 
 <pre><code>glance image-update --min-disk 8 --min-ram 1024 --property architecture=x86_64 --property image_supports_keypair=true --property image_supports_password=true --property supported=false &lt;id from the converted volume image&gt;
 </code></pre>
@@ -268,7 +278,8 @@ history -c
 <pre><code>nova boot --image &lt;id from the converted volume image&gt; --flavor &quot;Standard 4&quot; --availability-zone NL1 --nic net-id=00000000-0000-0000-0000-000000000000 --key-name &lt;your ssh key&gt; FreeBSD-10.0-RELEASE-cloudinit
 </code></pre>
 
-<p>When the instance has spawned you can login as the freebsd user, freebsd@ipaddress.</p>
+<p>When the instance has spawned you can login as the freebsd user,
+freebsd@ipaddress.</p>
 </div><hr>Tags: <a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/cloudinit.html" class="link">cloudinit &nbsp;</a><a href="../tags/compute.html" class="link">compute &nbsp;</a><a href="../tags/freebsd.html" class="link">freebsd &nbsp;</a><a href="../tags/image.html" class="link">image &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -69,14 +69,17 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article shows you how to manually verfify a certificate against a CRL. CRL
+stands for Certificate Revocation List and is one way to validate a certificate
+status. It is an alternative to the OCSP, Online Certificate Status Protocol.</p>
 
 <p>You can read more about CRL&#39;s on <a href="https://en.wikipedia.org/wiki/Revocation_list">Wikipedia</a>.</p>
 
-<p>If you want to validate a certificate against an OCSP, see <a href="https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html">my article on that here</a>.</p>
+<p>If you want to validate a certificate against an OCSP, see <a href="https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html">my article on that
+here</a>.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>We will be using OpenSSL in this article. I&#39;m using the following version:</p>
 
@@ -86,7 +89,8 @@ OpenSSL 1.0.2 22 Jan 2015
 
 <h3>Get a certificate with a CRL</h3>
 
-<p>First we will need a certificate from a website. I&#39;ll be using Wikipedia as an example here. We can retreive this with the following openssl command:</p>
+<p>First we will need a certificate from a website. I&#39;ll be using Wikipedia as an
+example here. We can retreive this with the following openssl command:</p>
 
 <pre><code>openssl s_client -connect wikipedia.org:443 2&gt;&amp;1 &lt; /dev/null | sed -n &#39;/-----BEGIN/,/-----END/p&#39;
 </code></pre>
@@ -104,21 +108,26 @@ X509v3 CRL Distribution Points:
       URI:http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl
 </code></pre>
 
-<p>If it does not give any output, the certificate has no CRL URI. You cannot valdiate it against a CRL.</p>
+<p>If it does not give any output, the certificate has no CRL URI. You cannot
+valdiate it against a CRL.</p>
 
 <p>Download the CRL:</p>
 
 <pre><code>wget -O crl.der http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl
 </code></pre>
 
-<p>The CRL will be in <code>DER</code> (binary) format. The OpenSSL command needs it in PEM (base64 encoded DER) format, so convert it:</p>
+<p>The CRL will be in <code>DER</code> (binary) format. The OpenSSL command needs it in PEM
+(base64 encoded DER) format, so convert it:</p>
 
 <pre><code>openssl crl -inform DER -in crl.der -outform PEM -out crl.pem
 </code></pre>
 
 <h3>Getting the certificate chain</h3>
 
-<p>It is required to have the certificate chain together with the certificate you want to validate. So, we need to get the certificate chain for our domain, <code>wikipedia.org</code>. Using the <code>-showcerts</code> option with <code>openssl s_client</code>, we can see all the certificates, including the chain:</p>
+<p>It is required to have the certificate chain together with the certificate you
+want to validate. So, we need to get the certificate chain for our domain,
+<code>wikipedia.org</code>. Using the <code>-showcerts</code> option with <code>openssl s_client</code>, we can
+see all the certificates, including the chain:</p>
 
 <pre><code>openssl s_client -connect wikipedia.org:443 -showcerts 2&gt;&amp;1 &lt; /dev/null
 </code></pre>
@@ -165,23 +174,34 @@ Ib4p1I5eFdZCSucyb6Sxa1GDWL4/bcf72gMhy2oWGU4K8K2Eyl2Us1p292E=
 -----END CERTIFICATE-----
 </code></pre>
 
-<p>As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we already have that. If your site has more certificates in its chain, you will see more here. Save them all, in the order OpenSSL sends them (as in, first the one which directly issued your server certificate, then the one that issues that certificate and so on, with the root or most-root at the end of the file) to a file, named <code>chain.pem</code>.</p>
+<p>As you can see, this is number 1. Number 0 is the certificate for Wikipedia, we
+already have that. If your site has more certificates in its chain, you will see
+more here. Save them all, in the order OpenSSL sends them (as in, first the one
+which directly issued your server certificate, then the one that issues that
+certificate and so on, with the root or most-root at the end of the file) to a
+file, named <code>chain.pem</code>.</p>
 
-<p>You can use the following command to save all the certificates OpenSSL command returns to a file named <code>chain.pem</code>. See [this article for more information)[https://raymii.org/s/articles/OpenSSL<em>-</em>Get<em>all</em>certificates<em>from</em>a<em>website</em>in<em>plain</em>text.html).</p>
+<p>You can use the following command to save all the certificates OpenSSL command
+returns to a file named <code>chain.pem</code>. See [this article for more
+information)[https://raymii.org/s/articles/OpenSSL <em>-</em> Get <em>all</em> certificates
+<em>from</em> a <em>website</em> in <em>plain</em> text.html).</p>
 
 <pre><code>OLDIFS=$IFS; IFS=&#39;:&#39; certificates=$(openssl s_client -connect wikipedia.org:443 -showcerts -tlsextdebug -tls1 2&gt;&amp;1 &lt;/dev/null | sed -n &#39;/-----BEGIN/,/-----END/ {/-----BEGIN/ s/^/:/; p}&#39;); for certificate in ${certificates#:}; do echo $certificate | tee -a chain.pem ; done; IFS=$OLDIFS 
 </code></pre>
 
 <h3>Combining the CRL and the Chain</h3>
 
-<p>The Openssl command needs both the certificate chain and the CRL, in PEM format concatenated together for the validation to work. You can omit the CRL, but then the CRL check will not work, it will just validate the certificate against the chain.</p>
+<p>The Openssl command needs both the certificate chain and the CRL, in PEM format
+concatenated together for the validation to work. You can omit the CRL, but then
+the CRL check will not work, it will just validate the certificate against the
+chain.</p>
 
 <pre><code>cat chain.pem crl.pem &gt; crl_chain.pem
 </code></pre>
 
 <h3>OpenSSL Verify</h3>
 
-<p>We now have all the data we need can validate the certificate. </p>
+<p>We now have all the data we need can validate the certificate.</p>
 
 <pre><code>$ openssl verify -crl_check -CAfile crl_chain.pem wikipedia.pem 
 wikipedia.pem: OK
@@ -191,14 +211,16 @@ wikipedia.pem: OK
 
 <h3>Revoked certificate</h3>
 
-<p>If you have a revoked certificate, you can also test it the same way as stated above. The response looks like this:</p>
+<p>If you have a revoked certificate, you can also test it the same way as stated
+above. The response looks like this:</p>
 
 <pre><code>$ openssl verify -crl_check -CAfile crl_chain.pem revoked-test.pem 
 revoked-test.pem: OU = Domain Control Validated, OU = PositiveSSL, CN = xs4all.nl
 error 23 at 0 depth lookup:certificate revoked
 </code></pre>
 
-<p>You can test this using the certificate and chain on the Verisign revoked certificate test page: <a href="https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html">https://test-sspev.verisign.com:2443/test-SSPEV-revoked-verisign.html</a>.</p>
+<p>You can test this using the certificate and chain on the Verisign revoked
+certificate test page: .</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/certificate.html" class="link">certificate &nbsp;</a><a href="../tags/crl.html" class="link">crl &nbsp;</a><a href="../tags/ocsp.html" class="link">ocsp &nbsp;</a><a href="../tags/openssl.html" class="link">openssl &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/ssl.html" class="link">ssl &nbsp;</a><a href="../tags/tls.html" class="link">tls &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -9,79 +9,120 @@ Format      : 	Markdown/HTML
 
 
 
-Debian 6 by default ships with python 2.6.6. If for some reason need a newer version of python you can either mess with repo's, compile from source or use pythonbrew. This tutorial will show you how to install python 2.7 or 3 under debian 6 using pythonbrew. 
+Debian 6 by default ships with python 2.6.6. If for some reason need a newer
+version of python you can either mess with repo's, compile from source or use
+pythonbrew. This tutorial will show you how to install python 2.7 or 3 under
+debian 6 using pythonbrew.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### What is pythonbrew
 
-> pythonbrew is a program to automate the building and installation of Python in the users $HOME. pythonbrew is inspired by [perlbrew](http://github.com/gugod/App-perlbrew) and [rvm](https://github.com/wayneeseguin/rvm).  
-[More info about pythonbrew](http://pypi.python.org/pypi/pythonbrew/)
+> pythonbrew is a program to automate the building and installation of Python in
+the users $HOME. pythonbrew is inspired by [perlbrew][2] and [rvm][3].  
+>  [More info about pythonbrew][4]
 
-### Install pip 
+### Install pip
 
 We first need to install pip, which we will use to install pythonbrew:
 
+    
+    
     sudo apt-get install python-pip
+    
 
 ### Install pythonbrew
 
 We now use pip to install pythonbrew
 
+    
+    
     sudo pip install pythonbrew
- 
+    
+
 Now we finish the install of pythonbrew as it instructs us:
 
+    
+    
     pythonbrew_install
+    
 
 Then we make sure the pythonbrew files are loaded in our shell:
 
+    
+    
     source "$HOME/.pythonbrew/etc/bashrc"
+    
 
 ### Install python 2.7
 
 We can now instruct pythonbrew to install and compile python 2.7 for us:
 
+    
+    
     pythonbrew install 2.7.3
+    
 
-This takes a while, it will go and compile python for you. When it it finished, we can tell our shell to use the freshly installed python:
+This takes a while, it will go and compile python for you. When it it finished,
+we can tell our shell to use the freshly installed python:
 
+    
+    
     pythonbrew use 2.7.3
-
+    
 
 ### Install python 3
 
-To install python 3, we execute the following command. Note that this may take a while, because it compiles python:
+To install python 3, we execute the following command. Note that this may take a
+while, because it compiles python:
 
+    
+    
     pythonbrew install 3.2
+    
 
 To use this python, execute the following command:
 
+    
+    
     pythonbrew use 3.2
-
-
+    
 
 ### Pythonbrew extra's
 
 List all installed pythons:
 
+    
+    
     pythonbrew list
+    
 
 List the available installation pythons:
 
+    
+    
     pythonbrew list -k
+    
 
 Uninstall a python version (2.7.3 for this example):
 
+    
+    
     pythonbrew uninstall 2.7.3
+    
 
 Clean up stale source folders and archives:
 
+    
+    
     pythonbrew cleanup
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://github.com/gugod/App-perlbrew
+   [3]: https://github.com/wayneeseguin/rvm
+   [4]: http://pypi.python.org/pypi/pythonbrew/
 
 ---
 

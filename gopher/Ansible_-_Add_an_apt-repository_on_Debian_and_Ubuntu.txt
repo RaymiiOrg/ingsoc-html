@@ -158,11 +158,8 @@ site: [apt_repository][2] and [apt_key][3].
 You can also check out my other [Ansible articles][4].
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: https://docs.ansible.com/ansible/apt_repository_module.html
-
    [3]: https://docs.ansible.com/ansible/apt_key_module.html
-
    [4]: https://raymii.org/s/tags/ansible.html
 
 ---

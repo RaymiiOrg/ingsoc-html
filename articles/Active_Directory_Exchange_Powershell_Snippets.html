@@ -69,16 +69,24 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a collection of Powershell snippets to install Active Directory, create a new Active Directory Domain, join an existing Active Directory domain, create an Active Directory user and to install Microsoft Exchange 2013. The snippets were tested on Windows Server 2012 R2.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a collection of Powershell snippets to install Active Directory, create
+a new Active Directory Domain, join an existing Active Directory domain, create
+an Active Directory user and to install Microsoft Exchange 2013. The snippets
+were tested on Windows Server 2012 R2.</p>
 
-<p>I&#39;m quite suprised with how easy it is to do the above tasks with Powershell. Much faster than the GUI wizards. </p>
+<p>I&#39;m quite suprised with how easy it is to do the above tasks with Powershell.
+Much faster than the GUI wizards.</p>
 
-<p>As a Linux admin, I do also like that these tasks can be automated via the command line. Also, my Windows knowledge is very limited. There are probably better ways to do the below things, if you know how, please shoot me an email via the contact page.</p>
+<p>As a Linux admin, I do also like that these tasks can be automated via the
+command line. Also, my Windows knowledge is very limited. There are probably
+better ways to do the below things, if you know how, please shoot me an email
+via the contact page.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Start with a freshly installed Server 2012 R2 machine (or VM). Fire up a Powershell session.</p>
+<p>Start with a freshly installed Server 2012 R2 machine (or VM). Fire up a
+Powershell session.</p>
 
 <h3>Install Active Directory</h3>
 
@@ -110,11 +118,14 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 -Force:$true
 </code></pre>
 
-<p>Replace the <code>DomainName</code> and <code>DomainNetbiosName</code> with your chosen domain name. PowerShell will then ask you for the AD Recovery Password, make it a strong one.</p>
+<p>Replace the <code>DomainName</code> and <code>DomainNetbiosName</code> with your chosen domain name.
+PowerShell will then ask you for the AD Recovery Password, make it a strong one.</p>
 
 <h3>Add a server to a domain</h3>
 
-<p>This adds a server to an existing domain, as a backup domain controller. First install the AD Domain Services as described above and import it in your powershell session.</p>
+<p>This adds a server to an existing domain, as a backup domain controller. First
+install the AD Domain Services as described above and import it in your
+powershell session.</p>
 
 <p>First test the existing domain to make sure you can join:</p>
 
@@ -131,7 +142,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Create an Active Directory user account</h3>
 
-<p>To create a new Active Directory user account, use the below command. It&#39;s enabled and has a password:</p>
+<p>To create a new Active Directory user account, use the below command. It&#39;s
+enabled and has a password:</p>
 
 <pre><code>New-ADUser -Name &quot;John Doe&quot; -GivenName John -Surname Doe `
   -SamAccountName jdoe -UserPrincipalName jdoe@craymii.nl `
@@ -139,16 +151,19 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
   -PassThru | Enable-ADAccount
 </code></pre>
 
-<p>The user is able to login right away after this. The user is created in the default <code>Users</code> OU.</p>
+<p>The user is able to login right away after this. The user is created in the
+default <code>Users</code> OU.</p>
 
 <h3>Create an Active Directory group</h3>
 
-<p>Use the below command to create a new global group in the default <code>Users</code> folder of Active Directory called &quot;Managers&quot;:</p>
+<p>Use the below command to create a new global group in the default <code>Users</code> folder
+of Active Directory called &quot;Managers&quot;:</p>
 
 <pre><code>New-ADGroup -name &quot;Managers&quot; -groupscope Global
 </code></pre>
 
-<p>If it needs to exist in different path in Active Directory, specify the path by its distinguished name:</p>
+<p>If it needs to exist in different path in Active Directory, specify the path by
+its distinguished name:</p>
 
 <pre><code>New-ADGroup -name &quot;Managers&quot; -groupscope Global -path &quot;OU=OtherOU,DC=Raymii,DC=nl&quot;
 </code></pre>
@@ -160,7 +175,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>Add-ADGroupMember -Identity &quot;Managers&quot; -Member &quot;jdoe&quot;
 </code></pre>
 
-<p>To add a user in a different OU to a group in a different OU, you can specify the full DN:</p>
+<p>To add a user in a different OU to a group in a different OU, you can specify
+the full DN:</p>
 
 <pre><code>Add-ADGroupMember -Identity &quot;CN=SupportSlavesGroup,OU=SupportSlaves,DC=raymii,DC=nl&quot; -Members &quot;CN=jdoe,OU=OtherUserOU,DC=raymii,DC=nl&quot; 
 </code></pre>
@@ -192,7 +208,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>Install-WindowsFeature AS-HTTP-Activation, Desktop-Experience, NET-Framework-45-Features, RPC-over-HTTP-proxy, RSAT-Clustering, RSAT-Clustering-CmdInterface, WAS-Process-Model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth, Web-Digest-Auth, Web-Dir-Browsing, Web-Dyn-Compression, Web-Http-Errors, Web-Http-Logging, Web-Http-Redirect, Web-Http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service, Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content, Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation
 </code></pre>
 
-<p>You need to download and install the following setups manually from the Microsoft website and install them in the order listed below:</p>
+<p>You need to download and install the following setups manually from the
+Microsoft website and install them in the order listed below:</p>
 
 <ul>
 <li>Unified Communications Managed API 4.0 Runtime</li>

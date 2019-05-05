@@ -9,46 +9,67 @@ Format      : 	Markdown/HTML
 
 
 
-This tutorial will show you how you can use the nagios plugin "check_ssl_cert" to monitor locally stored SSL certificates.
+This tutorial will show you how you can use the nagios plugin "check _ssl_ cert"
+to monitor locally stored SSL certificates.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Installing the nagios-plugin
 
-The plugin needs the expect program to be installed on the hosts which will check their certificates.
+The plugin needs the expect program to be installed on the hosts which will
+check their certificates.
 
 Install it with the following command:
 
+    
+    
     sudo apt-get install expect
+    
 
 Now install the plugin:
 
+    
+    
     sudo wget -O /etc/nagios-plugins/check_ssl_cert --no-check-certificate https://trac.id.ethz.ch/projects/nagios_plugins/export/1315/check_ssl_cert/check_ssl_cert
+    
 
 Also, make it executable:
 
+    
+    
     sudo chmod +x /etc/nagios-plugins/check_ssl_cert
+    
 
 ### Setting up the host
 
-On the nagios client where the certificates are, you have to edit the NRPE config to do the checks locally
+On the nagios client where the certificates are, you have to edit the NRPE
+config to do the checks locally
 
+    
+    
     vim /etc/nagios/nrpe_local.cfg
+    
 
 Add:
 
+    
+    
     command[check_local_ssl]=/etc/nagios-plugins/check_ssl_cert -H localhost -f /home/so_ad/7days.pem -c 30
     command[check_local_ssl]=/etc/nagios-plugins/check_ssl_cert -H localhost -f /home/so_ad/7days.pem -c 5    
+    
 
 ### Setting up the nagios server
 
-I have the hostgroup *nodes* defined, and in my nagios config file I add the following service:
+I have the hostgroup _nodes_ defined, and in my nagios config file I add the
+following service:
 
+    
+    
     vim /etc/nagios3/conf.d/services-hostgroups.cfg
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

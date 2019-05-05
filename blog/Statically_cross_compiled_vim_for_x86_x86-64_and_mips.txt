@@ -9,80 +9,122 @@ Format      : 	Markdown/HTML
 
 
 
-Sometimes I need to manage a few systems with either low resources or a very restricted set of packages. On those systems no compilers or development libraries are available, however it is allowed to bring binaries. 
+Sometimes I need to manage a few systems with either low resources or a very
+restricted set of packages. On those systems no compilers or development
+libraries are available, however it is allowed to bring binaries.
 
-A few of those systems are 32 bit x68 systems, some are MIPS systems, even worse. They serve a secure purpose, I cannot go in to much detail about them, except for they require a high level of security, they process certificates.
+A few of those systems are 32 bit x68 systems, some are MIPS systems, even
+worse. They serve a secure purpose, I cannot go in to much detail about them,
+except for they require a high level of security, they process certificates.
 
-I really like vim as my editor, the only editor available by default on those systems is `ed`. I have an [ed cheatsheet](https://raymii.org/s/tutorials/ed_cheatsheet.html) for this purpose. 
+I really like vim as my editor, the only editor available by default on those
+systems is `ed`. I have an [ed cheatsheet][1] for this purpose.
 
-The solution for this problem is to create a statically (cross) compiled version of `vim`.
+The solution for this problem is to create a statically (cross) compiled version
+of `vim`.
 
-These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit machine. 
+These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit
+machine.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 ### Install required packages
 
 First install the required development libraries and git:
 
+    
+    
     apt-get install libncurses5-dev git build-essential
+    
 
-If you need to cross compile from 64 bit to 32 bit, also install `libc6-dev-i386`:
+If you need to cross compile from 64 bit to 32 bit, also install
+`libc6-dev-i386`:
 
+    
+    
     apt-get install libc6-dev-i386
+    
 
-The MIPS hardware has a special toolchain which have specific instructions not covered here. The manufacturer probably covers this in their documentation.
+The MIPS hardware has a special toolchain which have specific instructions not
+covered here. The manufacturer probably covers this in their documentation.
 
 ### Vim source code
 
-Clone the vim source from [github](https://github.com/b4winckler/vim):
-
+Clone the vim source from [github][3]:
+    
+    
     git clone https://github.com/b4winckler/vim.git
+    
 
 Go to the `vim/src` folder:
 
+    
+    
     cd vim/src/
+    
 
 ### Compile time
 
 Set the compile flags for vim and start the compile:
 
+    
+    
     export LDFLAGS="-static"
     export MAKEFLAGS="-j4"
     export CFLAGS=""
     ./configure --with-features=small  --with-compiledby='Remy <relst@relst.nl>'  --with-x=no  --disable-gui  --disable-netbeans  --disable-pythoninterp  --disable-python3interp  --disable-rubyinterp  --disable-luainterp 
+    
 
-The above `LDFLAGS` make sure Vim gets statically compiled. The other options disable any GUI support (x) and enable a portion of the features, namely the `small` featureset. This lacks syntax highlighting and such. See below for a vim `:version` output.
+The above `LDFLAGS` make sure Vim gets statically compiled. The other options
+disable any GUI support (x) and enable a portion of the features, namely the
+`small` featureset. This lacks syntax highlighting and such. See below for a vim
+`:version` output.
 
-If you need to compile on a 64 bit machine for a 32 bit machine, export the following `CFLAGS`:
+If you need to compile on a 64 bit machine for a 32 bit machine, export the
+following `CFLAGS`:
 
+    
+    
     export CFLAGS="-m32"
+    
 
 To compile for `mips`:
 
+    
+    
     ./configure --with-features=small  --with-compiledby='Remy <relst@relst.nl>'  --with-x=no  --disable-gui  --disable-netbeans  --disable-pythoninterp  --disable-python3interp  --disable-rubyinterp  --disable-luainterp --target=mipsel-safenet # or mipsel-linux
+    
 
 Start the actual compile:
 
+    
+    
     make
+    
 
 ### Results
 
 When it is finished you should have a fairly small `vim` file:
 
+    
+    
     $ ls -la vim
     -rwxr-xr-x 1 remy remy 1.4M Sep 17 04:06 vim
+    
 
 Check that it is statically linked:
 
+    
+    
     $ ldd vim
         not a dynamic executable
+    
 
 A non-statically compiled vim gives me this:
 
+    
+    
     $ ldd /usr/bin/vim
             linux-gate.so.1 =>  (0xb77c7000)
             libm.so.6 => /lib/i386-linux-gnu/libm.so.6 (0xb7799000)
@@ -94,32 +136,47 @@ A non-statically compiled vim gives me this:
             libdl.so.2 => /lib/i386-linux-gnu/libdl.so.2 (0xb75f6000)
             /lib/ld-linux.so.2 (0xb77c8000)
             libattr.so.1 => /lib/i386-linux-gnu/libattr.so.1 (0xb75ef000)
+    
 
 You can also use the `file` command:
 
+    
+    
     $ file vim
     vim: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, for GNU/Linux 2.6.26, BuildID[sha1]=0x97cb04dde25cd539487369524b0787fd422044be, not stripped
+    
 
 You can decease the filesize with 0.1 MB by stripping:
 
+    
+    
     $ strip vim
     $ ls -la vim
     -rwxr-xr-x 1 remy remy 1.3M Sep 17 04:04 vim
+    
 
-The same `vim`, dynamically compiled (without the `LDFLAGS="-static"`), is a little bit smaller:
+The same `vim`, dynamically compiled (without the `LDFLAGS="-static"`), is a
+little bit smaller:
 
+    
+    
     $ ls -la vim
     -rwxr-xr-x 1 remy remy 793K Sep 17 04:17 vim
+    
 
-That's it. You can copy/`scp` the `vim` file anywhere and use it, as long as it is the correct architecture. Even on restricted systems in my case.
+That's it. You can copy/`scp` the `vim` file anywhere and use it, as long as it
+is the correct architecture. Even on restricted systems in my case.
 
-These instructions work for almost all programs you can compile. The `LDFLAGS="-static"` is the magic part here. You can try it for yourself with other software.
-
+These instructions work for almost all programs you can compile. The
+`LDFLAGS="-static"` is the magic part here. You can try it for yourself with
+other software.
 
 ### Version info
 
 Here is the output of the `:version` in `vim` itself:
 
+    
+    
     :version
     VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Sep 17 2014 04:04:32)
     Included patches: 1-430
@@ -146,9 +203,11 @@ Here is the output of the `:version` in `vim` itself:
       fall-back for $VIM: "/usr/local/share/vim"
     Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -O2 -fno-strength-reduce -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
     Linking: gcc   -static -L/usr/local/lib -Wl,--as-needed -o vim        -lm -ltinfo  -ldl
+    
 
-
-
+   [1]: https://raymii.org/s/tutorials/ed_cheatsheet.html
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: https://github.com/b4winckler/vim
 
 ---
 

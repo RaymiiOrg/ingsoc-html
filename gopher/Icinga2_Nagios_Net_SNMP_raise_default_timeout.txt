@@ -9,74 +9,113 @@ Format      : 	Markdown/HTML
 
 
 
-Recently a rather large amount of new infrastructure was added to one of my monitoring instances. Using SNMP exclusively, but not the fastest network or infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts, which look like false positives and give unclean logs. Raising the SNMP timeout for the checks above 60 seconds was not that easy since the 60 second timeout is hardcoded in the underlying library (NET::SNMP). This article shows you how to raise that timeout on an Ubuntu 16.04 system.
+Recently a rather large amount of new infrastructure was added to one of my
+monitoring instances. Using SNMP exclusively, but not the fastest network or
+infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts,
+which look like false positives and give unclean logs. Raising the SNMP timeout
+for the checks above 60 seconds was not that easy since the 60 second timeout is
+hardcoded in the underlying library (NET::SNMP). This article shows you how to
+raise that timeout on an Ubuntu 16.04 system.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+In the webinterface of Icinga2 the logs are unclean, making it harder to find
+actual errors:
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-In the webinterface of Icinga2 the logs are unclean, making it harder to find actual errors:
-
- <img src="https://raymii.org/s/inc/img/icinga_timeout.png">
-
+![][2]
 
 ### Timeout in the Manubulon SNMP checks
 
-The plugins used for the SNMP monitoring are [from Manubulon](http://nagios.manubulon.com/), Icinga2 has them integrated, and using Ansible I generate the configuration for the servers. An example apply rule could look like this:
+The plugins used for the SNMP monitoring are [from Manubulon][3], Icinga2 has
+them integrated, and using Ansible I generate the configuration for the servers.
+An example apply rule could look like this:
 
-	apply Service "snmp-win-service-Microsoft-Exchange-IMAP4" {
-	  import "generic-service"
-	  check_command                 = "snmp-service"
-	  vars.snmp_perf                = "true"
-	  vars.snmp_v2                  = "true"
-	  vars.snmp_service_name        = "Microsoft Exchange IMAP4"
-	  vars.snmp_community           = "example"
-	  vars.snmp_timeout             = "60"
-	  vars.snmp_service_count       = "1"
-	  assign where match("example", host.name)
-	}
+    
+    
+    apply Service "snmp-win-service-Microsoft-Exchange-IMAP4" {
+      import "generic-service"
+      check_command                 = "snmp-service"
+      vars.snmp_perf                = "true"
+      vars.snmp_v2                  = "true"
+      vars.snmp_service_name        = "Microsoft Exchange IMAP4"
+      vars.snmp_community           = "example"
+      vars.snmp_timeout             = "60"
+      vars.snmp_service_count       = "1"
+      assign where match("example", host.name)
+    }
+    
 
 All the variables can be found in:
 
-	/usr/share/icinga2/include/command-plugins-manubulon.conf
+    
+    
+    /usr/share/icinga2/include/command-plugins-manubulon.conf
+    
 
+Raising this timeout higher than 60 gives an error for the check. Let's dive on
+the commandline and check what goes wrong:
 
-Raising this timeout higher than 60 gives an error for the check. Let's dive on the commandline and check what goes wrong:
+    
+    
+    /usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
+    Timeout must be >1 and <60 !
+    
 
-	/usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
-	Timeout must be >1 and <60 !
+Looking through the perl code, `$o_timeout` is checked to not be greater then 60
+seconds. Let's change that:
 
-Looking through the perl code, `$o_timeout` is checked to not be greater then 60 seconds. Let's change that:
-
-	sed -i 's/$o_timeout > 60/$o_timeout > 900/g' /usr/lib/nagios/plugins/check_snmp_process.pl
+    
+    
+    sed -i 's/$o_timeout > 60/$o_timeout > 900/g' /usr/lib/nagios/plugins/check_snmp_process.pl
+    
 
 Should be fixed right?
 
-	/usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
-	ERROR: The timeout value 88 is out of range (1..60).
+    
+    
+    /usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
+    ERROR: The timeout value 88 is out of range (1..60).
+    
 
 And that error message is nowhere to be found in the plugin.
 
 ### Net::SNMP perl code
 
-[This post](http://web.archive.org/web/20180516054845/https://webcache.googleusercontent.com/search?q=cache:QbXBdQJ8bzoJ:https://support.nagios.com/forum/viewtopic.php%3Ft%3D40836%26p%3D200360+&cd=2&hl=nl&ct=clnk&gl=nl&client=ubuntu) (the site is behind a login now, so I had to archive the google cache, neat), had more information where this error came from, hardcoded in the SNMP library used by the Icinga2 checks. 
+[This post][4] (the site is behind a login now, so I had to archive the google cache, neat), had more information where this error came from, hardcoded in the SNMP library used by the Icinga2 checks. 
 
-I was unable to find out why this limit was choosen and not made configurable. [This](http://web.archive.org/web/20180516064030/http://search.cpan.org/~dtown/Net-SNMP-v6.0.1/lib/Net/SNMP.pm) was the closest, but that does not give a reason. Now, 60 seconds is a long timeout and I'd also rather not raise it, but this case is an exception.
+I was unable to find out why this limit was choosen and not made configurable.
+[This][5] was the closest, but that does not give a reason. Now, 60 seconds is a
+long timeout and I'd also rather not raise it, but this case is an exception.
 
 Change it in library:
 
-	sed -i 's/sub TIMEOUT_MAXIMUM      { 60/sub TIMEOUT_MAXIMUM      { 900/g' /usr/share/perl5/Net/SNMP/Transport.pm 
+    
+    
+    sed -i 's/sub TIMEOUT_MAXIMUM      { 60/sub TIMEOUT_MAXIMUM      { 900/g' /usr/share/perl5/Net/SNMP/Transport.pm 
+    
 
 Which does allows for a larger timeout:
 
-	/usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
-	1 services active (matching "Microsoft Exchange IMAP4") : OK
+    
+    
+    /usr/bin/perl -w /usr/lib/nagios/plugins/check_snmp_process.pl -H example -C example -t 88 -n "Microsoft Exchange IMAP4"
+    1 services active (matching "Microsoft Exchange IMAP4") : OK
+    
 
-Not the most pretty fix, but a suitable workaround. Do note that my checks are not done every minute, but every 15 minutes or every hour. Otherwise it could clog up and cause a waterfall of load everywhere in this, lets call it vintage, infrastructure.
+Not the most pretty fix, but a suitable workaround. Do note that my checks are
+not done every minute, but every 15 minutes or every hour. Otherwise it could
+clog up and cause a waterfall of load everywhere in this, lets call it vintage,
+infrastructure.
 
-Also note that when you do system upgrades, these changes will be overwritten. You might want to `chattr +i` some files.
+Also note that when you do system upgrades, these changes will be overwritten.
+You might want to `chattr +i` some files.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/inc/img/icinga_timeout.png
+   [3]: http://nagios.manubulon.com/
+   [4]: http://web.archive.org/web/20180516054845/https://webcache.googleusercontent.com/search?q=cache:QbXBdQJ8bzoJ:https://support.nagios.com/forum/viewtopic.php%3Ft%3D40836%26p%3D200360+&cd=2&hl=nl&ct=clnk&gl=nl&client=ubuntu
+   [5]: http://web.archive.org/web/20180516064030/http://search.cpan.org/%7Edtown/Net-SNMP-v6.0.1/lib/Net/SNMP.pm
 
 ---
 

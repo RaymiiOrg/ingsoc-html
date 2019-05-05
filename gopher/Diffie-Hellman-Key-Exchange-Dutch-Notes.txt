@@ -9,79 +9,80 @@ Format      : 	Markdown/HTML
 
 
 
-*This is a Dutch article on a Diffie Hellman Key Exchange, including an example. I wrote this to better understand the Diffie Hellman Key Exchange.*
+_This is a Dutch article on a Diffie Hellman Key Exchange, including an example.
+I wrote this to better understand the Diffie Hellman Key Exchange._
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+* * *
 
-<hr />
-Notities Diffie Hellman Key Exchange  
+Notities Diffie Hellman Key Exchange
 
-Alice & Bob kiezen een priemgetal P en een getal N. Deze zijn publiek.  
+Alice & Bob kiezen een priemgetal P en een getal N. Deze zijn publiek.
 
-Alice kiest een getal A (Prive)  
+Alice kiest een getal A (Prive)
 
-Bob kiest een getal B (Prive)  
+Bob kiest een getal B (Prive)
 
-A & B delen geen factoren met P.  
+A & B delen geen factoren met P.
 
-<hr />
+* * *
 
-Alice berekent J = N^A (modulo P)  
+Alice berekent J = N^A (modulo P)
 
-Bob berekent K = N^B (modulo P)  
+Bob berekent K = N^B (modulo P)
 
-<hr />
+* * *
 
-Alice stuurt J naar Bob (Publiek)  
+Alice stuurt J naar Bob (Publiek)
 
-Bob stuurt K naar Alice (Publiek)  
+Bob stuurt K naar Alice (Publiek)
 
-<hr />
+* * *
 
-Alice berekent K^A (modulo P)  
+Alice berekent K^A (modulo P)
 
-Bob berekent J^B (modulo P)  
+Bob berekent J^B (modulo P)
 
-Deze 2 getallen zijn hetzelfde en kunnen worden gebruikt als sleutel of om een symmetrische sleutel te versleutelen.  
+Deze 2 getallen zijn hetzelfde en kunnen worden gebruikt als sleutel of om een
+symmetrische sleutel te versleutelen.
 
-<hr />
+* * *
 
-Voorbeeld:  
+Voorbeeld:
 
 P = 127  
 N = 23  
 A = 34  
-B = 16  
+B = 16
 
 J = N^A (mod P)  
 23^34 = 19895113660064588580108197261066338165074766609  
 19895113660064588580108197261066338165074766609 (mod 127) = 115  
-J = 115  
+J = 115
 
 K = N^B (mod P)  
 23^16 = 6132610415680998648961  
 6132610415680998648961 (mod 127) = 31  
-K = 31  
-
+K = 31
 
 Geheim A = K^A (mod P)  
 31^34 = 508507766528375922442969666478706045897328683433921  
 508507766528375922442969666478706045897328683433921 (mod 127) = 120  
-Geheim A = 120  
+Geheim A = 120
 
 Geheim B = J^B (mod P)  
 115^16 = 935762087353668006738433837890625  
 935762087353668006738433837890625 (mod 127) = 120  
-Geheim B = 120  
+Geheim B = 120
 
-Geheim A == Geheim B  
+Geheim A == Geheim B
 
+[Help][2]
 
-[Help](http://www.math.cornell.edu/~mec/2003-2004/cryptography/diffiehellman/diffiehellman.html)
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://www.math.cornell.edu/%7Emec/2003-2004/cryptography/diffiehellman/diffiehellman.html
 
 ---
 

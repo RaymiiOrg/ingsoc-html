@@ -282,7 +282,7 @@ all seem to spend a lot of time doing, whether that's moving a download into a
 better folder, or copying photos from a camera. The old file manager, Konqueror,
 was one of the best reasons for using KDE in the first place, and while
 Konqueror has been superseded by Dolphin in KDE 4.x, it's still knocking around
-- even if it is labelled a web browser.
+\- even if it is labelled a web browser.
 
 ![dolphin][12]
 
@@ -310,7 +310,7 @@ orientation, or the artist, title and duration of an audio file, all from within
 the contents of the data. This is KDE's semantic desktop in action, and it's
 been growing in functionality for the last couple of years. Apple's OS X, for
 example, has only just started pushing its ability to tag files and applications
-- we've been able to do this from KDE for a long time. We don't know any other
+\- we've been able to do this from KDE for a long time. We don't know any other
 desktop that comes close to providing that level of control.
 
 ### Window management

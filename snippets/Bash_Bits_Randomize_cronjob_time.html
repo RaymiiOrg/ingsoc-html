@@ -69,22 +69,22 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. 
-This bash bit shows you how to randomize the time a cronjob runs in /etc/cron.d/</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to randomize the time a cronjob runs in /etc/cron.d/</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
 
 <h3>Randomize cronjob time</h3>
 
-<p>I&#39;ve used this in the past in a <a href="https://github.com/RaymiiOrg/CloudVPS-Boss">backup script</a> I wrote. During the installation,
-a cronjob was placed and later the time was randomized between 00:00 AM and 06:00 AM.
-This way the load on the backup targets wouldn&#39;t be a huge peak but more spread
-out.</p>
+<p>I&#39;ve used this in the past in a <a href="https://github.com/RaymiiOrg/CloudVPS-Boss">backup script</a> I wrote. During the
+installation, a cronjob was placed and later the time was randomized between
+00:00 AM and 06:00 AM. This way the load on the backup targets wouldn&#39;t be a
+huge peak but more spread out.</p>
 
-<p>First, place your cronjob in <code>/etc/cron.d/</code>, as a file. In this case, 
+<p>First, place your cronjob in <code>/etc/cron.d/</code>, as a file. In this case,
 <code>/etc/cron.d/my_example</code>. Use the regular <code>cron.d</code> format (include the username
 between the time and executable):</p>
 
@@ -92,11 +92,11 @@ between the time and executable):</p>
 RANDM RANDH * * * root /usr/local/bin/my_binary
 </code></pre>
 
-<p>Note the two variables, <code>RANDM</code> and <code>RANDH</code>. These will be replaced to the random
-hour and minute. </p>
+<p>Note the two variables, <code>RANDM</code> and <code>RANDH</code>. These will be replaced to the
+random hour and minute.</p>
 
-<p>The following code will replace the variables with random digits, but in the range
-you specify:</p>
+<p>The following code will replace the variables with random digits, but in the
+range you specify:</p>
 
 <pre><code># use awk to get a number between 0 and 6 for the hour
 RANDH=&quot;$(awk &#39;BEGIN{srand();print int(rand()*(0-6))+6 }&#39;)&quot;
@@ -108,7 +108,7 @@ sed -i -e &quot;s/RANDH/${RANDH}/g&quot; -e &quot;s/RANDM/${RANDM}/g&quot; /etc/
 echo &quot;Randomized cronjob time, will run on ${RANDH}:${RANDM}.&quot;
 </code></pre>
 
-<p>You could use the bash builtin <code>$RANDOM</code>, but then you cannot specify a range. 
+<p>You could use the bash builtin <code>$RANDOM</code>, but then you cannot specify a range.
 You could get an illigal time that way.</p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/bash-bits.html" class="link">bash-bits &nbsp;</a><a href="../tags/command.html" class="link">command &nbsp;</a><a href="../tags/cron.html" class="link">cron &nbsp;</a><a href="../tags/crontab.html" class="link">crontab &nbsp;</a><a href="../tags/random.html" class="link">random &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><a href="../tags/time.html" class="link">time &nbsp;</a><div class="footer">
                 <hr>

@@ -69,26 +69,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
 <p>My OpenVMS adventure continues, in this small item I talk about the removal of
-folders on OpenVMS. As you might expect, different than on linux. </p>
+folders on OpenVMS. As you might expect, different than on linux.</p>
 
 <p>I tried to set up SSH public key authentication so that I can use my regular SSH
-key instead of typing my password on the DECUServe system. I found <a href="https://web.archive.org/web/20180403184752/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">a
-guide</a>
+key instead of typing my password on the DECUServe system. I found <a href="https://web.archive.org/web/20180403184752/http://h41379.www4.hpe.com/doc/83final/ba548_90007/ch03s08.html">a guide</a>
 for that in the HPe documentation. That however required the creation of some
 files and folders and I made a typo in the creation of a folder. Of course I
-noticed that way too late so there were files in there as well. </p>
+noticed that way too late so there were files in there as well.</p>
 
 <p>As you might have guessed, I went down a different rabbit hole to remove this
-folder, SSH public key authentication does not work yet. The
-<a href="http://decus.org">DECUServe</a> system allows SSH login with a password initially.</p>
+folder, SSH public key authentication does not work yet. The <a href="http://decus.org">DECUServe</a>
+system allows SSH login with a password initially.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>DIR [.SSH]</h3>
 
@@ -168,7 +167,7 @@ right:</p>
 %DELETE-E-DELVER, explicit version number or wild card required
 </code></pre>
 
-<p>A version number you say? This excellent filesystem has versioning built in. </p>
+<p>A version number you say? This excellent filesystem has versioning built in.</p>
 
 <pre><code> $ DEL [.SSH];1
 %DELETE-W-SEARCHFAIL, error searching for EISNER$DRA3:[DECUSERVE_USER.EXAMPLE.SSH].;1
@@ -218,9 +217,8 @@ Total of 2 files.
 %DELETE-E-DELVER, explicit version number or wild card required
 </code></pre>
 
-<p>Sadly not. Reading through the
-<a href="https://web.archive.org/web/20180403191730/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">docs</a>
-I figured out the correct command to recursively delete all files in a folder:</p>
+<p>Sadly not. Reading through the <a href="https://web.archive.org/web/20180403191730/http://h41379.www4.hpe.com/doc/84final/9996/9996pro_50.html">docs</a> I figured out the correct command to
+recursively delete all files in a folder:</p>
 
 <pre><code>   $ DEL [.SSH]*.*;*
    $
@@ -252,13 +250,12 @@ brackets and no leading perion:</p>
 <p>Different error message, so we&#39;re getting there. The manual states:</p>
 
 <blockquote>
-<p>This command requires delete (D) access to the file and write (W) access to the parent directory. </p>
+<p>This command requires delete (D) access to the file and write (W) access to
+the parent directory.</p>
 </blockquote>
 
-<p>Reading, again, the excellent
-<a href="https://web.archive.org/web/20180403192635/http://h41379.www4.hpe.com/doc/84final/ba554_90015/ch04s09.html">documentation</a>
-shows me that there is an <code>ACL</code> system and a permission system. For now I tried
-the permission system first.</p>
+<p>Reading, again, the excellent <a href="https://web.archive.org/web/20180403192635/http://h41379.www4.hpe.com/doc/84final/ba554_90015/ch04s09.html">documentation</a> shows me that there is an <code>ACL</code>
+system and a permission system. For now I tried the permission system first.</p>
 
 <p>I figured out that <code>SHOW SECURITY</code> is the command to see the permissions.
 Permissions on OpenVMS are very different as well from your standard *NIX
@@ -313,7 +310,8 @@ $
 <li>Deleting a directory requires the explicit <code>D</code> (DELETE) permission to be set on that folder</li>
 </ul>
 
-<p>And still no OpenSSH Public key authentication. Enough OpenVMS for this evening, SSH will be next.</p>
+<p>And still no OpenSSH Public key authentication. Enough OpenVMS for this evening,
+SSH will be next.</p>
 </div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

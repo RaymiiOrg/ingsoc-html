@@ -69,20 +69,27 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I wanted to change the default login prompt on the <code>tty1</code> console on an OpenStack instance to automatically run <code>htop</code>. Instead of logging in via the console, I wanted it to start up <code>htop</code> right away and nothing else. Ubuntu 14.04 uses <code>init</code> and Ubuntu 16.04 uses systemd. Both ways are shown in this tutorial.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Recently I wanted to change the default login prompt on the <code>tty1</code> console on an
+OpenStack instance to automatically run <code>htop</code>. Instead of logging in via the
+console, I wanted it to start up <code>htop</code> right away and nothing else. Ubuntu
+14.04 uses <code>init</code> and Ubuntu 16.04 uses systemd. Both ways are shown in this
+tutorial.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Here&#39;s what the default login prompt on the console looks:</p>
 
-<p><img src="https://raymii.org/s/inc/img/console1.png"></p>
+<p><img src="https://raymii.org/s/inc/img/console1.png" alt=""></p>
 
 <p>And here is the result, <code>htop</code> running without ever logging in:</p>
 
-<p><img src="https://raymii.org/s/inc/img/console2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/console2.png" alt=""></p>
 
-<p>Do note that you loose the ability to login via the regular console this way. <code>ssh</code> is your only means of access. Do note that the software is run as root. If you for example want to run <code>vim</code> you also can escape to a shell. <code>htop</code> as far as I know doesn&#39;t allow command execution.</p>
+<p>Do note that you loose the ability to login via the regular console this way.
+<code>ssh</code> is your only means of access. Do note that the software is run as root. If
+you for example want to run <code>vim</code> you also can escape to a shell. <code>htop</code> as far
+as I know doesn&#39;t allow command execution.</p>
 
 <p>On Ubuntu 14.04, edit the following file:</p>
 
@@ -99,9 +106,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>exec /usr/bin/htop &lt;/dev/tty1 &gt;/dev/tty1 2&gt;&amp;1
 </code></pre>
 
-<p>Use full paths and make sure output and input are redirected (<code>&lt;/dev/tty1 &gt;/dev/tty1 2&gt;&amp;1</code>).</p>
+<p>Use full paths and make sure output and input are redirected (`&lt;/dev/tty1</p>
 
-<p>On Ubuntu 16.04 stuff changes due to <code>systemd</code>. No longer can you use output redirection, this is now all handled via <code>systemd</code>. Create an override folder for the <code>getty@tty1</code> service first:</p>
+<blockquote>
+<p>/dev/tty1 2&gt;&amp;1`).</p>
+</blockquote>
+
+<p>On Ubuntu 16.04 stuff changes due to <code>systemd</code>. No longer can you use output
+redirection, this is now all handled via <code>systemd</code>. Create an override folder
+for the <code>getty@tty1</code> service first:</p>
 
 <pre><code>mkdir /etc/systemd/system/getty@tty1.service.d/
 </code></pre>
@@ -120,7 +133,8 @@ StandardInput=tty
 StandardOutput=tty
 </code></pre>
 
-<p>Now reload the unit files and restart the service. <code>htop</code> should appear on your prompt:</p>
+<p>Now reload the unit files and restart the service. <code>htop</code> should appear on your
+prompt:</p>
 
 <pre><code>systemctl daemon-reload; systemctl restart getty@tty1.service
 </code></pre>
@@ -132,14 +146,15 @@ StandardOutput=tty
 <pre><code>apt-get install tmux hollywood # fill your console with Hollywood melodrama technobabble
 </code></pre>
 
-<p>and set that up to autorun on the console. Use the following in the <code>systemd</code> file otherwise <code>byobu</code> will complain about wrong permissions on your homefolder:</p>
+<p>and set that up to autorun on the console. Use the following in the <code>systemd</code>
+file otherwise <code>byobu</code> will complain about wrong permissions on your homefolder:</p>
 
 <pre><code>/usr/bin/sudo -H /usr/bin/hollywood
 </code></pre>
 
 <p>Much fun:</p>
 
-<p><img src="https://raymii.org/s/inc/img/console3.png"></p>
+<p><img src="https://raymii.org/s/inc/img/console3.png" alt=""></p>
 </div><hr>Tags: <a href="../tags/console.html" class="link">console &nbsp;</a><a href="../tags/htop.html" class="link">htop &nbsp;</a><a href="../tags/systemd.html" class="link">systemd &nbsp;</a><a href="../tags/tty.html" class="link">tty &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

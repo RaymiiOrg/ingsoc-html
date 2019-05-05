@@ -99,7 +99,6 @@ actions are not executed with sudo.
 [Ansible documentation regarding sudo][2]
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: http://www.ansibleworks.com/docs/playbooks.html
 
 ---

@@ -69,36 +69,35 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Markdown has two options to create a link. A link is the <a href="https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html">piece of text</a> 
-you click to go to another webpage. Actually, three ways, since you can just
-embed HTML code in Markdown. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Markdown has two options to create a link. A link is the <a href="https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html">piece of text</a> you
+click to go to another webpage. Actually, three ways, since you can just embed
+HTML code in Markdown.</p>
 
 <p>I write all the content for this site in Markdown files, which are then
 converted by <a href="https://raymii.org/s/software/ingsoc.html">my static site generator</a> to HTML, text and a <a href="https://raymii.org/s/blog/Site_updates_raymii.org_now_on_gopher.html">gopher
-version</a>. I&#39;m used to using the inline link style, which is  where you paste
-the link right in the text. Since I&#39;ve enabled the Gopher  version of
-raymii.org, I noticed that there was no line wrapping. </p>
+version</a>. I&#39;m used to using the inline link style, which is where you paste
+the link right in the text. Since I&#39;ve enabled the Gopher version of raymii.org,
+I noticed that there was no line wrapping.</p>
 
-<p>The HTML  website all arranges that via CSS, but the text-only Gopher does not.
-Sometimes  Gopher clients wrap text, but most don&#39;t. I&#39;m re-wrapping all
-articles to make them fit, but the wrapping is way off with inline style
-markdown links. By  converting them to reference style markdown links, the
-wrapping looks way better, and as an added bonus, reference style links give a
-better overview. </p>
+<p>The HTML website all arranges that via CSS, but the text-only Gopher does not.
+Sometimes Gopher clients wrap text, but most don&#39;t. I&#39;m re-wrapping all articles
+to make them fit, but the wrapping is way off with inline style markdown links.
+By converting them to reference style markdown links, the wrapping looks way
+better, and as an added bonus, reference style links give a better overview.</p>
 
-<p>There are a few scripts floating around to convert these links, but either  Ruby
-or NodeJS. It turns out after a bit of research that Pandoc, the 
-anything-to-anything text conversion tool, has <a href="https://pandoc.org/MANUAL.html#option--reference-links">an option</a> to use reference style
-links. With this option, I converted all the articles here (almost 400) to the 
+<p>There are a few scripts floating around to convert these links, but either Ruby
+or NodeJS. It turns out after a bit of research that Pandoc, the anything-to-
+anything text conversion tool, has <a href="https://pandoc.org/MANUAL.html#option--reference-links">an option</a> to use reference style links.
+With this option, I converted all the articles here (almost 400) to the
 reference style Markdown links.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Markdown style links</h3>
 
-<p>In Markdown you can <a href="https://daringfireball.net/projects/markdown/syntax#link">create links using two styles</a>. The first is inline, it looks
-like this:</p>
+<p>In Markdown you can <a href="https://daringfireball.net/projects/markdown/syntax#link">create links using two styles</a>. The first is inline, it
+looks like this:</p>
 
 <pre><code>[link title](https://url.tld/)
 </code></pre>
@@ -118,26 +117,26 @@ like this:</p>
 <p>Reference style links have the advantage that you can link multiple parts to the
 same ID, instead of pasting the link multiple times.</p>
 
-<p>With a long URL inline link, the text gets cluttered and, as in my case, wrapping
-fails. </p>
+<p>With a long URL inline link, the text gets cluttered and, as in my case,
+wrapping fails.</p>
 
 <h3>Pandoc conversion</h3>
 
 <p>Pandoc is a tool to convert one markup language to another. It can for example
-convert markdown to mediawiki syntax, or markdown to Word/OpenOffice, or vice 
-versa. It can, in this usecase, also convert to the same format as you put in. 
-This can be useful to change the wrapping or add a table of contents. </p>
+convert markdown to mediawiki syntax, or markdown to Word/OpenOffice, or vice
+versa. It can, in this usecase, also convert to the same format as you put in.
+This can be useful to change the wrapping or add a table of contents.</p>
 
 <p>In this case it can convert inline style links to reference style links.</p>
 
-<p>The following command will convert a markdown document to a markdown document 
+<p>The following command will convert a markdown document to a markdown document
 with inline links, while not touching the wrapping.</p>
 
 <pre><code>pandoc --from markdown --to markdown --wrap=preserve --reference-links \ 
  --output outputfile.md inputfile.md
 </code></pre>
 
-<p>A small annoyance is that the links are not referenced by a numeric ID. </p>
+<p>A small annoyance is that the links are not referenced by a numeric ID.</p>
 
 <p>This is an example document:</p>
 
@@ -177,8 +176,8 @@ with inline links, while not touching the wrapping.</p>
 [3]: http://raymii.org
 </code></pre>
 
-<p>Doesn&#39;t matter syntax wise, it will still be valid markdown, but since the 
-goal was to have the plain text version more readable, in my opinion this doesn&#39;t
+<p>Doesn&#39;t matter syntax wise, it will still be valid markdown, but since the goal
+was to have the plain text version more readable, in my opinion this doesn&#39;t
 really fit the bill.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/ingsoc.html" class="link">ingsoc &nbsp;</a><a href="../tags/markdown.html" class="link">markdown &nbsp;</a><a href="../tags/pandoc.html" class="link">pandoc &nbsp;</a><a href="../tags/raymiiorg.html" class="link">raymiiorg &nbsp;</a><a href="../tags/site.html" class="link">site &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>

@@ -69,14 +69,21 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The recent spectre and meltdown vulnerabilities require BIOS and firmware updates. Dell provides binaries for Windows and Linux, but just for Red Hat and SUSE. Some firmware updates can be run on Ubuntu or Debian, but some fail with the error that RPM could not be found. Which is correct since it&#39;s not Red Hat. In this small article I&#39;ll show you how to upgrade the firmware via the iDrac, which I recently discovered.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The recent spectre and meltdown vulnerabilities require BIOS and firmware
+updates. Dell provides binaries for Windows and Linux, but just for Red Hat and
+SUSE. Some firmware updates can be run on Ubuntu or Debian, but some fail with
+the error that RPM could not be found. Which is correct since it&#39;s not Red Hat.
+In this small article I&#39;ll show you how to upgrade the firmware via the iDrac,
+which I recently discovered.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Upgrade via the shell</h3>
 
-<p>Usually I do upgrades automated with Ansible, via the shell. Manually this can be done as well, in this example a firmware for the power supply unit of a Dell R620:</p>
+<p>Usually I do upgrades automated with Ansible, via the shell. Manually this can
+be done as well, in this example a firmware for the power supply unit of a Dell
+R620:</p>
 
 <pre><code># Download the firmware
 wget https://downloads.dell.com/FOLDER01988261M/1/Power_Firmware_JX7PR_LN_09.2B.80_A00.BIN
@@ -92,11 +99,15 @@ Make sure the following utilities are in the path:
 rpm stat stty cut fmt tty tar gzip tail rm mkdir mktemp chmod ls basename dirname wc sleep
 </code></pre>
 
-<p>You could use the iDrac console (if you have an enterprise license) or a KVM switch to boot up a CentOS live DVD, but in this case there was no KVM or license available.</p>
+<p>You could use the iDrac console (if you have an enterprise license) or a KVM
+switch to boot up a CentOS live DVD, but in this case there was no KVM or
+license available.</p>
 
 <h3>Upgrade via the iDrac</h3>
 
-<p>I was unaware of this feature, but using the iDrac web interface you can upgrade the firmware as well. I found <a href="https://web.archive.org/web/20180126122320/https://www.dell.com/support/article/us/en/04/sln292363/poweredge-server-updating-firmware-through-the-idrac?lang=en">this</a> article on the Dell site which explains it.</p>
+<p>I was unaware of this feature, but using the iDrac web interface you can upgrade
+the firmware as well. I found <a href="https://web.archive.org/web/20180126122320/https://www.dell.com/support/article/us/en/04/sln292363/poweredge-server-updating-firmware-through-the-idrac?lang=en">this</a> article on the Dell site which explains
+it.</p>
 
 <p>Quoting the important parts:</p>
 
@@ -113,7 +124,7 @@ rpm stat stty cut fmt tty tar gzip tail rm mkdir mktemp chmod ls basename dirnam
 <pre><code>    Go to Overview &gt; iDRAC Settings &gt; Update and Rollback. The Firmware Update page is displayed.
 </code></pre>
 
-<p><img src="https://raymii.org/s/inc/img/idrac-1.png"></p>
+<p><img src="https://raymii.org/s/inc/img/idrac-1.png" alt=""></p>
 
 <p>Using the job queue, reboot the machine to apply the update.</p>
 
@@ -125,7 +136,9 @@ rpm stat stty cut fmt tty tar gzip tail rm mkdir mktemp chmod ls basename dirnam
 <li>Progress can be monitored even when the machine is rebooting</li>
 </ul>
 
-<p>It is also possible to SSH into the iDrac and use <code>racadm</code> to upgrade the firmware. This process involves a remote NFS or SMB share where the upgrade file is hosted, which we may cover in another article.</p>
+<p>It is also possible to SSH into the iDrac and use <code>racadm</code> to upgrade the
+firmware. This process involves a remote NFS or SMB share where the upgrade file
+is hosted, which we may cover in another article.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/dell.html" class="link">dell &nbsp;</a><a href="../tags/firmware.html" class="link">firmware &nbsp;</a><a href="../tags/hardware.html" class="link">hardware &nbsp;</a><a href="../tags/idrac.html" class="link">idrac &nbsp;</a><a href="../tags/meltdown.html" class="link">meltdown &nbsp;</a><a href="../tags/spectre.html" class="link">spectre &nbsp;</a><a href="../tags/upgrade.html" class="link">upgrade &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

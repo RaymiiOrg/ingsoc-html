@@ -69,16 +69,22 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to capture a Control C signal in a bash script, for example, to clean up any temp or pid files when your script is killed or closed.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to capture a Control C signal in a bash script, for example, to clean up any
+temp or pid files when your script is killed or closed.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
 
-<p>Exit signals are sent when for example you use <code>pkill</code> or <code>killall</code>. If you do not specify a number, a <code>SIGTERM</code> is sent. If you for example do a <code>pkill -9 firefox</code>, it sents a <code>SIGKILL</code>. If you have a bash script which places a temp file, or a pid file, you might want to clean that up before you exit. </p>
+<p>Exit signals are sent when for example you use <code>pkill</code> or <code>killall</code>. If you do
+not specify a number, a <code>SIGTERM</code> is sent. If you for example do a <code>pkill -9
+firefox</code>, it sents a <code>SIGKILL</code>. If you have a bash script which places a temp
+file, or a pid file, you might want to clean that up before you exit.</p>
 
-<p>We create a function to catch the exit signals first, then we bind this function to the exit signals. </p>
+<p>We create a function to catch the exit signals first, then we bind this function
+to the exit signals.</p>
 
 <p>This is the <code>control_c</code> function:</p>
 
@@ -89,13 +95,16 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 }
 </code></pre>
 
-<p>Then we use the trap command to bind the function to an exit signal. Here I bind it to both <code>SIGINT</code> and <code>SIGTERM</code>:</p>
+<p>Then we use the trap command to bind the function to an exit signal. Here I bind
+it to both <code>SIGINT</code> and <code>SIGTERM</code>:</p>
 
 <pre><code>trap control_c SIGINT
 trap control_c SIGTERM
 </code></pre>
 
-<p>Now when the script gets killed or you do a control c, the script will remove it&#39;s pid file. You can put anything in the <code>control_c</code> function, I mostly use it for cleanup.</p>
+<p>Now when the script gets killed or you do a control c, the script will remove
+it&#39;s pid file. You can put anything in the <code>control_c</code> function, I mostly use it
+for cleanup.</p>
 
 <p><a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_01.html">Read more about Signals here on The Linux Documentation Project</a></p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/bash-bits.html" class="link">bash-bits &nbsp;</a><a href="../tags/control-c.html" class="link">control-c &nbsp;</a><a href="../tags/exit-signals.html" class="link">exit-signals &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/sigterm.html" class="link">sigterm &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">

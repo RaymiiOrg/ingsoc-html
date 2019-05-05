@@ -69,10 +69,13 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This page covers my notes about csf and lfd. csf is an easy SPI iptables firewall suite. lfd is the login failure daemon, which scans log files for failed authentication and blocks the IP&#39;s doing that. This page covers installation, populair command line options and popular config file options.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This page covers my notes about csf and lfd. csf is an easy SPI iptables
+firewall suite. lfd is the login failure daemon, which scans log files for
+failed authentication and blocks the IP&#39;s doing that. This page covers
+installation, populair command line options and popular config file options.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>CSF Installation</h3>
 
@@ -150,14 +153,18 @@ csf -d 192.168.0/24
 <pre><code>csf -a 172.16.20.1
 </code></pre>
 
-<p>Do note that when you allow an IP, it will still be blocked by lfd if it starts brute forcing. See below, &quot;Don&#39;t block IP addresses from the allow list with lfd&quot; to see how to disable it.</p>
+<p>Do note that when you allow an IP, it will still be blocked by lfd if it starts
+brute forcing. See below, &quot;Don&#39;t block IP addresses from the allow list with
+lfd&quot; to see how to disable it.</p>
 
 <h4>Search for an IP:</h4>
 
 <pre><code>csf -g 192.168.1.2
 </code></pre>
 
-<h4>View Ports listening for external connections and the executables running behind them</h4>
+<h4>View Ports listening for external connections and the executables running</h4>
+
+<p>behind them</p>
 
 <pre><code>csf -p
 </code></pre>
@@ -216,20 +223,24 @@ u/g=UID  : EITHER UID or GID of source packet, implies outgoing connections,
 
 <h3>csf.conf highlights</h3>
 
-<p>The <code>/etc/csf/csf/csf.conf</code> file is huge and I recommend you read through it. Below I&#39;ll highlight some parts of the config I use more often.</p>
+<p>The <code>/etc/csf/csf/csf.conf</code> file is huge and I recommend you read through it.
+Below I&#39;ll highlight some parts of the config I use more often.</p>
 
 <h4>Don&#39;t block IP addresses from the allow list with lfd</h4>
 
-<p>By default <code>lfd</code> will also block IP addresses listed in the <code>csf.allow</code> file. Change the following to make <code>lfd</code> ignore IP addresses on that list.</p>
+<p>By default <code>lfd</code> will also block IP addresses listed in the <code>csf.allow</code> file.
+Change the following to make <code>lfd</code> ignore IP addresses on that list.</p>
 
 <pre><code>IGNORE_ALLOW = &quot;1&quot;
 </code></pre>
 
-<p>Do note that if one of those IP&#39;s starts brute forcing the server, they will not be blocked.</p>
+<p>Do note that if one of those IP&#39;s starts brute forcing the server, they will not
+be blocked.</p>
 
 <h4>Open/Allow ports</h4>
 
-<p>To allow incoming connections to a specific port, edit the following part of the config:</p>
+<p>To allow incoming connections to a specific port, edit the following part of the
+config:</p>
 
 <pre><code># Allow incoming TCP ports
 TCP_IN = &quot;20,21,22,25,53,80,110,143,443,465,587,993,995,2222&quot;
@@ -275,11 +286,13 @@ ICMP_OUT = &quot;1&quot;
 <pre><code>PT_LIMIT = &quot;0&quot;
 </code></pre>
 
-<p>If that is set to 1 you will receive a lot of mails when process resource usage spikes or they run longer than a minute.</p>
+<p>If that is set to 1 you will receive a lot of mails when process resource usage
+spikes or they run longer than a minute.</p>
 
 <h4>Enable a Web Management UI</h4>
 
-<p>To enable the CSF web management UI, without having a controlpanel (like cpanel/directadmin):</p>
+<p>To enable the CSF web management UI, without having a controlpanel (like
+cpanel/directadmin):</p>
 
 <pre><code>UI = &quot;0&quot;
 UI_PORT = &quot;6666&quot;

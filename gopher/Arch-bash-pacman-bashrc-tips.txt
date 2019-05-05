@@ -9,57 +9,74 @@ Format      : 	Markdown/HTML
 
 
 
+So, I have some nice tips for your .bashrc, with screenshots. Also a handy
+command to show your biggest packages in pacman/arch.
 
-So, I have some nice tips for your .bashrc, with screenshots. Also a handy command to show your biggest packages in pacman/arch. 
-  
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+##### Simple Calendar with today marked as
 
-##### Simple Calendar with today marked as \#\#  
+![tcal][2]
 
-![tcal][1]
-
+    
+    
     alias tcal='cal | sed "s/^/ /;s/$/ /;s/ $(date +%e) / $(date +%e | sed '''s/./#/g''') /"' 
     
+
 ##### Fast cd up:
 
+    
+    
     alias ..='cd ..'
     alias ...='cd ../..' 
-                
-##### Network Info (LAN IP, IP and MAC):
-  
-![netinf][2]
+    
 
+##### Network Info (LAN IP, IP and MAC):
+
+![netinf][3]
+
+    
+    
     netinfo ()
     {
     echo "Internal IPv4 address of eth0: "; ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'
     echo "External IPv4 address: "; wget -q -O - checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/
-                
-                
-##### Biggest folders in directory Gigabyte version:  
+    
 
-![dug][3]
+##### Biggest folders in directory Gigabyte version:
 
+![dug][4]
+
+    
+    
     alias dug='du -h | grep ^[0-9.]*G | sort -rn | head -n 20'
-                
-##### Biggest folders in directory Megabyte version:   
+    
 
-![dum][4]
+##### Biggest folders in directory Megabyte version:
 
+![dum][5]
+
+    
+    
     alias dum='du -h | grep ^[0-9.]*M | sort -rn | head -n 20'
-                                
-##### Process Grep:
-      
-![pg][5]
+    
 
+##### Process Grep:
+
+![pg][6]
+
+    
+    
     alias pg='ps -ef | grep '
-                                    
+    
+
 ##### Nice greeting when opening a bash shell:
 
-![welcome][6]
+![welcome][7]
 
+    
+    
     PS1="u@h  -  tn${PWD}/ -$ "
     echo "Welkom Remy,"
     echo "Het is vandaag:";
@@ -68,29 +85,33 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
     /bin/uname -p
     echo ""
     netinfo;
+    
 
 (put this one at the end of your .bashrc file)
-    
-      
-##### And the huge packages finder:  
-![dup][7]
 
+##### And the huge packages finder:
+
+![dup][8]
+
+    
+    
     #!/bin/bash
     pacman -Qi | awk '/Name/ { name=$3 } /Size/ { printf "%.3fMBt%sn", $4/1024, name }' | sort -rh | head -n $1
     exit 0
-        
-(I've put this in /usr/bin/dup and chmodded it to 755).
     
+
+(I've put this in /usr/bin/dup and chmodded it to 755).
+
 Thanks to the arch forum for most of these tips!
 
- [1]: /s/inc/img/bash/tcal.png
- [2]: /s/inc/img/bash/netinfo.png
- [3]: /s/inc/img/bash/dug.png
- [4]: /s/inc/img/bash/dum.png
- [5]: /s/inc/img/bash/pg.png
- [6]: /s/inc/img/bash/ps1.png
- [7]: /s/inc/img/bash/dup.png
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: /s/inc/img/bash/tcal.png
+   [3]: /s/inc/img/bash/netinfo.png
+   [4]: /s/inc/img/bash/dug.png
+   [5]: /s/inc/img/bash/dum.png
+   [6]: /s/inc/img/bash/pg.png
+   [7]: /s/inc/img/bash/ps1.png
+   [8]: /s/inc/img/bash/dup.png
 
 ---
 

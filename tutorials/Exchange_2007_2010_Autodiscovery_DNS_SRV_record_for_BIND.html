@@ -69,46 +69,61 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Note: This article is targeted at *NIX administrators who have to manage Exchange installations, but are not Microsoft specialists. Therefore the BIND setup does not have an explanation, but the Exchange part has.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Note: This article is targeted at *NIX administrators who have to manage
+Exchange installations, but are not Microsoft specialists. Therefore the BIND
+setup does not have an explanation, but the Exchange part has.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>What is Exchange Autodiscovery</h3>
 
-<p>Exchange 2007/2010 Autodiscovery is the ability for Outlook to automatically configure itself to an Exchange 2007/2010 server. 
-The main benefit is for remote users to use Outlook on the Internet as if it was connected on the LAN, this is called Outlook Anywhere or Outlook RPC over HTTP. 
-This is very easily accomplished by having a specific DNS record available for the domain. </p>
+<p>Exchange 2007/2010 Autodiscovery is the ability for Outlook to automatically
+configure itself to an Exchange 2007/2010 server. The main benefit is for remote
+users to use Outlook on the Internet as if it was connected on the LAN, this is
+called Outlook Anywhere or Outlook RPC over HTTP. This is very easily
+accomplished by having a specific DNS record available for the domain.</p>
 
 <h4>How does Exchange Autodiscovery work?</h4>
 
-<p>Outlook has a few ways to look for domain information when configuring itself based on the users email address. Lets say I want to set up Outlook as <code>john.doe@example.org</code>, but my site does not have the required Autodiscovery XML files set up. I enter that email address in Outlook, now Outlook do the following things to get its information:</p>
+<p>Outlook has a few ways to look for domain information when configuring itself
+based on the users email address. Lets say I want to set up Outlook as
+<code>john.doe@example.org</code>, but my site does not have the required Autodiscovery XML
+files set up. I enter that email address in Outlook, now Outlook do the
+following things to get its information:</p>
 
 <ul>
 <li>Autodiscover posts to https://example.org/Autodiscover/Autodiscover.xml. This fails.</li>
 <li>Autodiscover posts to https://autodiscover.example.org/Autodiscover/Autodiscover.xml. This fails.</li>
 <li>Autodiscover performs the following redirect check: GET http://autodiscover.example.org/Autodiscover/Autodiscover.xml. This fails.</li>
-<li>Autodiscover uses DNS SRV lookup for <em>autodiscover.</em>tcp.example.org, and then &quot;mail.example.org&quot; is returned.</li>
+<li>Autodiscover uses DNS SRV lookup for <em>autodiscover.</em> tcp.example.org, and then &quot;mail.example.org&quot; is returned.</li>
 <li>Outlook asks permission from the user to continue with Autodiscover to post to https://mail.example.org/autodiscover/autodiscover.xml.</li>
-<li>Autodiscover&#39;s  POST request is successfully posted to https://mail.example.org/autodiscover/autodiscover.xml.</li>
+<li>Autodiscover&#39;s POST request is successfully posted to https://mail.example.org/autodiscover/autodiscover.xml.</li>
 </ul>
 
-<p>There are various reasons not to set up the Autodiscovery XML on the main website or the Autodiscover.example.org. Mainly because it requires extra certificates, IP addresses and maintenance. Maybe a company does not have Windows servers to host their main website, or they don&#39;t want the hassle. In those cases the DNS SRV record works very nice.</p>
+<p>There are various reasons not to set up the Autodiscovery XML on the main
+website or the Autodiscover.example.org. Mainly because it requires extra
+certificates, IP addresses and maintenance. Maybe a company does not have
+Windows servers to host their main website, or they don&#39;t want the hassle. In
+those cases the DNS SRV record works very nice.</p>
 
 <h3>BIND DNS Record</h3>
 
-<p>The following record line should be put in your zone config file (<code>/etc/bind/example.org</code>):</p>
+<p>The following record line should be put in your zone config file
+(<code>/etc/bind/example.org</code>):</p>
 
 <pre><code>; Exchange autodiscovery
 _autodiscover._tcp                      IN      SRV 0 0 443 mail.example.org.
 </code></pre>
 
-<p>After a <code>rndc reload</code> you should be able to use the Autodiscovery service without problems. It is tested with BIND 9.8.</p>
+<p>After a <code>rndc reload</code> you should be able to use the Autodiscovery service
+without problems. It is tested with BIND 9.8.</p>
 
 <h3>Sources</h3>
 
 <p><a href="http://technet.microsoft.com/en-us/library/bb332063.aspx">White Paper: Exchange 2007 Autodiscover Service</a><br>
-<a href="http://support.microsoft.com/kb/940881/en-us">A new feature is available that enables Outlook 2007 to use DNS Service Location (SRV) records to locate the Exchange Autodiscover service</a>  </p>
+<a href="http://support.microsoft.com/kb/940881/en-us">A new feature is available that enables Outlook 2007 to use DNS Service
+Location (SRV) records to locate the Exchange Autodiscover service</a></p>
 </div><hr>Tags: <a href="../tags/bind.html" class="link">bind &nbsp;</a><a href="../tags/dns.html" class="link">dns &nbsp;</a><a href="../tags/exchange.html" class="link">exchange &nbsp;</a><a href="../tags/microsoft.html" class="link">microsoft &nbsp;</a><a href="../tags/nameserver.html" class="link">nameserver &nbsp;</a><a href="../tags/outlook.html" class="link">outlook &nbsp;</a><a href="../tags/outlook-anywhere.html" class="link">outlook-anywhere &nbsp;</a><a href="../tags/outlook-rpc.html" class="link">outlook-rpc &nbsp;</a><a href="../tags/owa.html" class="link">owa &nbsp;</a><a href="../tags/server-2008.html" class="link">server-2008 &nbsp;</a><a href="../tags/srv.html" class="link">srv &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/windows.html" class="link">windows &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

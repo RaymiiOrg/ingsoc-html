@@ -69,14 +69,19 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>OpenSSH has a lot of nice features which let you control how it is used. For example, you can disallow the root account to login, set the port number, protocol version and a lot of other features. This tutorial will show you how to enable certain features for certain hosts, users, groups and addresses with the Match keyword in sshd_config. And as a bonus it also covers the iptables firewall.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>OpenSSH has a lot of nice features which let you control how it is used. For
+example, you can disallow the root account to login, set the port number,
+protocol version and a lot of other features. This tutorial will show you how to
+enable certain features for certain hosts, users, groups and addresses with the
+Match keyword in sshd_config. And as a bonus it also covers the iptables
+firewall.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h4>Securing sshd</h4>
 
-<p>First a few general tips about securing ssh. </p>
+<p>First a few general tips about securing ssh.</p>
 
 <ul>
 <li>Disable login with username/pasword and use key based authentication.</li>
@@ -87,7 +92,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h4>Examples</h4>
 
-<p>You of course have disabled password authentication and you use public/private key based authentication, right? Buy, you might have that one host which is for whatever reason is not able to use ssh keys. The below config line disables password authentication for everyone, and then it enables it for the IP address 1.2.3.4:</p>
+<p>You of course have disabled password authentication and you use public/private
+key based authentication, right? Buy, you might have that one host which is for
+whatever reason is not able to use ssh keys. The below config line disables
+password authentication for everyone, and then it enables it for the IP address
+1.2.3.4:</p>
 
 <pre><code>PasswordAuthentication no
 
@@ -97,7 +106,11 @@ Match Address 1.2.3.4
     PasswordAuthentication yes
 </code></pre>
 
-<p>Or you might have a user which needs to use a graphical application on a server. But all the other users do not have to use that. For example, you might have Matlab for one user. You can install a desktop for them, but you can also let them use X forwarding. The below config allows X forwarding for the user John, but disallows it for everyone else.</p>
+<p>Or you might have a user which needs to use a graphical application on a server.
+But all the other users do not have to use that. For example, you might have
+Matlab for one user. You can install a desktop for them, but you can also let
+them use X forwarding. The below config allows X forwarding for the user John,
+but disallows it for everyone else.</p>
 
 <pre><code>X11Forwarding no
 ### add this to the bottom of the sshd_config
@@ -105,7 +118,9 @@ Match User John
     X11Forwarding yes
 </code></pre>
 
-<p>But lets say John can only use matlab (X-forwarding) from the internal network and you want to X forwarding for every other user, only allowing it from the local 172.16.1.* network, you might want to use this config lines:</p>
+<p>But lets say John can only use matlab (X-forwarding) from the internal network
+and you want to X forwarding for every other user, only allowing it from the
+local 172.16.1.* network, you might want to use this config lines:</p>
 
 <pre><code>X11Forwarding no
 ### add this to the bottom of the sshd_config
@@ -113,7 +128,10 @@ Match User John Address 172.16.1.*
     X11Forwarding yes
 </code></pre>
 
-<p>And what if you want to allow a few IP addresses and one hostname to login with a password, as root? <em>Note that this is a bad thing to do, you should not allow root to login but use su or sudo, and preferably all users should login with ssh keys</em>.</p>
+<p>And what if you want to allow a few IP addresses and one hostname to login with
+a password, as root? <em>Note that this is a bad thing to do, you should not allow
+root to login but use su or sudo, and preferably all users should login with ssh
+keys</em>.</p>
 
 <pre><code>PaswordAuthentication no
 PermitRootLogin no
@@ -125,7 +143,9 @@ Match Address 10.20.30.40,80.90.100.200 Host dispatch.raymii.org
 
 <h4>Restrict access via the firewall</h4>
 
-<p>Using iptables is also a good way to restrict access to a few IP addresses. The below example allows the IP addresses 2.3.4.5, 3.4.5.6 and 10.2.3.40 to talk to port 22, and discards all the other traffic.</p>
+<p>Using iptables is also a good way to restrict access to a few IP addresses. The
+below example allows the IP addresses 2.3.4.5, 3.4.5.6 and 10.2.3.40 to talk to
+port 22, and discards all the other traffic.</p>
 
 <pre><code>iptables -I INPUT -s 2.3.4.5 -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -I INPUT -s 3.4.5.6 -p tcp -m tcp --dport 22 -j ACCEPT

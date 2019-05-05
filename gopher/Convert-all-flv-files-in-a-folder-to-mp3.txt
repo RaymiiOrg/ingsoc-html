@@ -12,40 +12,51 @@ Format      : 	Markdown/HTML
 If you've got a large folder of .flv files (lets say you've ripped them from
 youtube) and you want to put them on a music player, you can use this script.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 First make a file called `convert.sh`.
 
+    
+    
     vim convert.sh
+    
 
 Then paste the following in it:
 
+    
+    
     #!/bin/bash
     for f in *.flv; do
         echo "Converting $f"
         ffmpeg -i "$f" "${f%.flv}.mp3"
     done
+    
 
-Save, and make it executable:  
+Save, and make it executable:
+
+    
     
     chmod +x ./convert.sh
+    
 
-Now copy all your FLV's in that folder, and then open a terminal there:  
+Now copy all your FLV's in that folder, and then open a terminal there:
 
+    
+    
     ./convert.sh
+    
 
-Then, when finished remove all the flv's you copied:  
+Then, when finished remove all the flv's you copied:
 
+    
+    
     rm ./*.flv
+    
 
 Now you have a folder full of mp3's instead of .flv's.
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

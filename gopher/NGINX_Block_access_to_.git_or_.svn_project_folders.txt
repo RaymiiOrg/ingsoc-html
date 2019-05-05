@@ -9,14 +9,18 @@ Format      : 	Markdown/HTML
 
 
 
-This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx
+This little nginx config snippets helps you prohibit access to .git or .svn
+folders in nginx
 
+    
+    
     location ~ /\.git {
       deny all;
     }
+    
 
-
-It should be places in a `server` block. Works for both `http` as well as `https`.
+It should be places in a `server` block. Works for both `http` as well as
+`https`.
 
 ---
 

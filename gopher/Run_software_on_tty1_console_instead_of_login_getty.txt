@@ -9,74 +9,113 @@ Format      : 	Markdown/HTML
 
 
 
-Recently I wanted to change the default login prompt on the `tty1` console on an OpenStack instance to automatically run `htop`. Instead of logging in via the console, I wanted it to start up `htop` right away and nothing else. Ubuntu 14.04 uses `init` and Ubuntu 16.04 uses systemd. Both ways are shown in this tutorial.
+Recently I wanted to change the default login prompt on the `tty1` console on an
+OpenStack instance to automatically run `htop`. Instead of logging in via the
+console, I wanted it to start up `htop` right away and nothing else. Ubuntu
+14.04 uses `init` and Ubuntu 16.04 uses systemd. Both ways are shown in this
+tutorial.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Here's what the default login prompt on the console looks:
 
-<img src="https://raymii.org/s/inc/img/console1.png">
+![][2]
 
 And here is the result, `htop` running without ever logging in:
 
-<img src="https://raymii.org/s/inc/img/console2.png">
+![][3]
 
-Do note that you loose the ability to login via the regular console this way. `ssh` is your only means of access. Do note that the software is run as root. If you for example want to run `vim` you also can escape to a shell. `htop` as far as I know doesn't allow command execution.
+Do note that you loose the ability to login via the regular console this way.
+`ssh` is your only means of access. Do note that the software is run as root. If
+you for example want to run `vim` you also can escape to a shell. `htop` as far
+as I know doesn't allow command execution.
 
 On Ubuntu 14.04, edit the following file:
 
+    
+    
     vim /etc/init/tty1.conf
+    
 
 Replace:
 
+    
+    
     exec /sbin/getty -8 38400 tty1
+    
 
 with:
 
+    
+    
     exec /usr/bin/htop </dev/tty1 >/dev/tty1 2>&1
+    
 
-Use full paths and make sure output and input are redirected (`</dev/tty1 >/dev/tty1 2>&1`).
+Use full paths and make sure output and input are redirected (`</dev/tty1
 
-On Ubuntu 16.04 stuff changes due to `systemd`. No longer can you use output redirection, this is now all handled via `systemd`. Create an override folder for the `getty@tty1` service first:
+> /dev/tty1 2>&1`).
 
+On Ubuntu 16.04 stuff changes due to `systemd`. No longer can you use output
+redirection, this is now all handled via `systemd`. Create an override folder
+for the `getty@tty1` service first:
+
+    
+    
     mkdir /etc/systemd/system/getty@tty1.service.d/
+    
 
 Edit the override file:
 
+    
+    
     vim /etc/systemd/system/getty@tty1.service.d/override.conf
-
+    
 
 Place the following:
 
+    
+    
     [Service]
     ExecStart=
     ExecStart=-/usr/bin/htop
     StandardInput=tty
     StandardOutput=tty
+    
 
+Now reload the unit files and restart the service. `htop` should appear on your
+prompt:
 
-Now reload the unit files and restart the service. `htop` should appear on your prompt:
-
+    
+    
     systemctl daemon-reload; systemctl restart getty@tty1.service
-
+    
 
 Or just do a `reboot`.
 
 As a bonus, you can also install `hollywood`:
 
+    
+    
     apt-get install tmux hollywood # fill your console with Hollywood melodrama technobabble
+    
 
-and set that up to autorun on the console. Use the following in the `systemd` file otherwise `byobu` will complain about wrong permissions on your homefolder:
+and set that up to autorun on the console. Use the following in the `systemd`
+file otherwise `byobu` will complain about wrong permissions on your homefolder:
 
+    
+    
     /usr/bin/sudo -H /usr/bin/hollywood
+    
 
 Much fun:
 
-<img src="https://raymii.org/s/inc/img/console3.png">
+![][4]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/inc/img/console1.png
+   [3]: https://raymii.org/s/inc/img/console2.png
+   [4]: https://raymii.org/s/inc/img/console3.png
 
 ---
 

@@ -69,12 +69,15 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This little tutorial will show you how to set up the Munin plugin to monitor NGINX (nginx<em>request and nginx</em>status) and graph it. You need to change some URLs in the config because by default this is wrong.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This little tutorial will show you how to set up the Munin plugin to monitor
+NGINX (nginx <em>request and nginx</em> status) and graph it. You need to change some
+URLs in the config because by default this is wrong.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>For this tutorial you need to have a munin server and a NGINX server. All commands need to be run as root or a superuser.</p>
+<p>For this tutorial you need to have a munin server and a NGINX server. All
+commands need to be run as root or a superuser.</p>
 
 <p>First enable the nginx status page:</p>
 
@@ -87,9 +90,12 @@ location /nginx_status {
 }
 </code></pre>
 
-<p>The above config will enable the status module only for the localhost, without access logging. This means that nobody other than munin can access the status page.</p>
+<p>The above config will enable the status module only for the localhost, without
+access logging. This means that nobody other than munin can access the status
+page.</p>
 
-<p>Now execute this command to change the munin configuration to have the correct URL for the plugin:</p>
+<p>Now execute this command to change the munin configuration to have the correct
+URL for the plugin:</p>
 
 <pre><code>if [[ $(cat /etc/munin/plugin-conf.d/munin-node | grep &quot;nginx&quot;) = &quot;&quot; ]]; then echo -e &quot;\n[nginx*]\nenv.url http://localhost/nginx_status&quot; &gt;&gt; /etc/munin/plugin-conf.d/munin-node; fi
 </code></pre>
@@ -99,7 +105,8 @@ location /nginx_status {
 <pre><code>munin-node-configure --suggest --shell | sh
 </code></pre>
 
-<p>This creates the symlinks in the <code>/etc/munin/plugins/</code> folder. If they are note there, <code>ln -s</code> them yourself.</p>
+<p>This creates the symlinks in the <code>/etc/munin/plugins/</code> folder. If they are note
+there, <code>ln -s</code> them yourself.</p>
 
 <p>Finally restart munin:</p>
 

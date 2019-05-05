@@ -9,21 +9,32 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to use haproxy to restrict certain URLs to certain IP addresses. For example, to make sure your admin interface can only be accessed from your company IP address.
+This snippet shows you how to use haproxy to restrict certain URLs to certain IP
+addresses. For example, to make sure your admin interface can only be accessed
+from your company IP address.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-This example restricts access to the `/admin/` and `/helpdesk` URL's. It only allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other IP addresses will get the standard haproxy 403 forbidden error.
+This example restricts access to the `/admin/` and `/helpdesk` URL's. It only
+allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other
+IP addresses will get the standard haproxy 403 forbidden error.
 
 ### ACL for URL's
 
-It uses the acl option. If the requested path begins with either `/admin` or `/helpdesk` haproxy sets the `restricted_page` acl. haproxy also looks at the requesting source IP address. If that matches any of the two IP addresses, it sets the `network_allowed` acl. If the `allowed_network` acl is set and the `restricted_page` is also set, it allows a visitor to go to the page. If the `restricted_page` acl is set but the `allowed_network` is not, haproxy will serve a 403 error, thus, disallowing access to that specific URL.
+It uses the acl option. If the requested path begins with either `/admin` or
+`/helpdesk` haproxy sets the `restricted_page` acl. haproxy also looks at the
+requesting source IP address. If that matches any of the two IP addresses, it
+sets the `network_allowed` acl. If the `allowed_network` acl is set and the
+`restricted_page` is also set, it allows a visitor to go to the page. If the
+`restricted_page` acl is set but the `allowed_network` is not, haproxy will
+serve a 403 error, thus, disallowing access to that specific URL.
 
-Note that you can use IP addresses but also networks in the `src` acl. Both `192.168.20.0/24` and `192.168.10.3` work.
+Note that you can use IP addresses but also networks in the `src` acl. Both
+`192.168.20.0/24` and `192.168.10.3` work.
 
+    
+    
     frontend example-frontend
       [...]
       acl network_allowed src 20.30.40.50 20.30.40.40
@@ -31,10 +42,13 @@ Note that you can use IP addresses but also networks in the `src` acl. Both `192
       acl restricted_page path_beg /helpdesk
       block if restricted_page !network_allowed
       [...]
+    
 
+To use a specific file as error page, use the following config in the defaults
+section:
 
-To use a specific file as error page, use the following config in the defaults section:
-
+    
+    
     defaults
       [...]
       errorfile 400 /etc/haproxy/errors/400.http
@@ -44,9 +58,12 @@ To use a specific file as error page, use the following config in the defaults s
       errorfile 502 /etc/haproxy/errors/502.http
       errorfile 503 /etc/haproxy/errors/503.http
       errorfile 504 /etc/haproxy/errors/504.http
+    
 
 The `http` files are regular HTML files with a HTTP response on top, like so:
 
+    
+    
       HTTP/1.0 403 Forbidden
       Cache-Control: no-cache
       Connection: close
@@ -61,6 +78,7 @@ The `http` files are regular HTML files with a HTTP response on top, like so:
       <hr>
       <address>Apache/2.4.12 (Ubuntu) Server at example.org Port 443</address>
       </body></html>
+    
 
 This is the default apache error page.
 
@@ -68,36 +86,46 @@ This is the default apache error page.
 
 ** update 2017-01-09 **
 
-If you have a non-http service you want to restrict to a few IP's you can use an ACL together with the `tcp-request connection reject` optio. Here below is a simple example for a MySQL service. Do note that this also works in a `frontend` block:
+If you have a non-http service you want to restrict to a few IP's you can use an
+ACL together with the `tcp-request connection reject` optio. Here below is a
+simple example for a MySQL service. Do note that this also works in a `frontend`
+block:
 
+    
+    
     listen mysql
           bind            1.2.3.4:3306
           mode            tcp
           acl             network_allowed src 20.30.40.50 8.9.9.0/27
           tcp-request     connection reject if !network_allowed
           server          mysqlvip 10.0.0.30:3306
+    
 
-
-
-[More info on acl: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl)
-[More info on errorfile: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile)
-
+[More info on acl: http://cbonte.github.io/haproxy-
+dconv/configuration-1.5.html#acl][2] [More info on errorfile:
+http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile][3]
 
 ### Password if not from whitelisted network
 
-If you want access to the resource, but are not on the whitelisted network, the recommended way is to setup a VPN. But, if that is not feasable, the below trick allows you to prompt for a password if you're from a different network.
+If you want access to the resource, but are not on the whitelisted network, the
+recommended way is to setup a VPN. But, if that is not feasable, the below trick
+allows you to prompt for a password if you're from a different network.
 
 First setup a `userlist`:
 
+    
+    
     userlist UsersFor_Example
       user user1 insecure-password password1
       user user2 insecure-password password2
-
+    
 
 This is comparable with your `.htpasswd` file.
 
 In your frontend, where you have the ACL:
 
+    
+    
     frontend example-frontend
       [...]
       acl network_allowed src 20.30.40.50 20.30.40.40
@@ -105,9 +133,12 @@ In your frontend, where you have the ACL:
       acl restricted_page path_beg /helpdesk
       block if restricted_page !network_allowed
       [...]
+    
 
 Remove the last line (`block if`) and make the section look like below:
 
+    
+    
     frontend example-frontend
       [...]
       acl network_allowed src 20.30.40.50 20.30.40.40
@@ -116,9 +147,15 @@ Remove the last line (`block if`) and make the section look like below:
       acl auth_ok http_auth(UsersFor_Example)
       http-request auth if restricted_page !network_allowed !auth_ok
       [...]
+    
 
-If you're on the whitelisted network, you are given access. If you're on a different network, you will be prompted for a password. Make sure you're only using this over an HTTPS protected frontend.
+If you're on the whitelisted network, you are given access. If you're on a
+different network, you will be prompted for a password. Make sure you're only
+using this over an HTTPS protected frontend.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#acl
+   [3]: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#errorfile
 
 ---
 

@@ -9,32 +9,41 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to add a header to a haproxy response, for example, the HSTS header (http strict transport security).
+This snippet shows you how to add a header to a haproxy response, for example,
+the HSTS header (http strict transport security).
 
 This snippet was tested on haproxy 1.5.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-This for example can be used when haproxy is used for ssl offloading and you want to offer hsts, while the backends not support it.
+This for example can be used when haproxy is used for ssl offloading and you
+want to offer hsts, while the backends not support it.
 
 The following config is required in a `frontend` section:
 
-	frontend example-frontend
-	  reqadd X-Forwarded-Proto:\ https
-	  rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
-	  default_backend example-backend
+    
+    
+    frontend example-frontend
+      reqadd X-Forwarded-Proto:\ https
+      rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
+      default_backend example-backend
+    
 
 The important part is:
 
-  	rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
+    
+    
+    rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
+    
 
-This adds the header to every response haproxy sends to a client. 
+This adds the header to every response haproxy sends to a client.
 
-[More Info: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#rspadd](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#rspadd)
+[More Info: http://cbonte.github.io/haproxy-
+dconv/configuration-1.5.html#rspadd][2]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#rspadd
 
 ---
 

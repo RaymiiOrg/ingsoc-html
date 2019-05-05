@@ -9,32 +9,48 @@ Format      : 	Markdown/HTML
 
 
 
-This simple snippet shows you how to update the root ca certificate bundle on CentOS 5. Some websites have certificates signed by authorities not in the default bundle and those websites will not work with tools like git, curl, wget or anything else that uses https.
+This simple snippet shows you how to update the root ca certificate bundle on
+CentOS 5. Some websites have certificates signed by authorities not in the
+default bundle and those websites will not work with tools like git, curl, wget
+or anything else that uses https.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-When trying to clone a repository from Github on an older CentOS 5 machine I ran into an SSL certificate verification issue. As it turns out, the Github certificate was no longer singed by one of the trusted root certificate authorities in CentOS 5. Therefore I could not clone the repo over https.
+When trying to clone a repository from Github on an older CentOS 5 machine I ran
+into an SSL certificate verification issue. As it turns out, the Github
+certificate was no longer singed by one of the trusted root certificate
+authorities in CentOS 5. Therefore I could not clone the repo over https.
 
 The error looks a bit like this:
 
+    
+    
     *** error: SSL certificate problem, verify that the CA cert is OK. Details:
     *** error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed while accessing https://github.com/RaymiiOrg/nopriv.py.git/info/refs
     *** fatal: HTTP request failed
     *** Clone of 'https://github.com/RaymiiOrg/NoPriv.py.git' failed
+    
 
-By updating the root ca bundle we can fix this problem. The [cURL website](http://curl.haxx.se) has a bundle ready that also ships with cURL, and work on CentOS 5.
+By updating the root ca bundle we can fix this problem. The [cURL website][2]
+has a bundle ready that also ships with cURL, and work on CentOS 5.
 
 First, backup the old bundle:
 
+    
+    
     cp /etc/pki/tls/certs/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt.bak
+    
 
 Then download the new bundle:
 
+    
+    
     wget -O /etc/pki/tls/certs/ca-bundle.crt http://curl.haxx.se/ca/cacert.pem 
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://curl.haxx.se
 
 ---
 

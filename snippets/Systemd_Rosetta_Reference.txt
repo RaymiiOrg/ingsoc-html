@@ -9,94 +9,36 @@ Format      : 	Markdown/HTML
 
 
 
-The below table has systemd versus init examples. the service used as example is *nginx*:
+The below table has systemd versus init examples. the service used as example is
+_nginx_ :
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+Action | Debian Init | Ubuntu Upstart | Red Hat/CentOS Init | **Systemd**  
+\---|---|---|---|---  
+Start service | `/etc/init.d/nginx start` | `initctl start nginx`  
+`/etc/init.d/nginx start` | `/etc/init.d/nginx start` | `systemctl start
+nginx.service`  
+Stop service | `/etc/init.d/nginx stop` | `initctl stop nginx`  
+`/etc/init.d/nginx stop` | `/etc/init.d/nginx stop` | `systemctl stop
+nginx.service`  
+Restart service | `/etc/init.d/nginx restart` | `initctl restart nginx`  
+`/etc/init.d/nginx restart` | `/etc/init.d/nginx restart` | `systemctl restart
+nginx.service`  
+Enable service at boot / startup | `update-rc.d nginx defaults` | edit
+`/etc/init/nginx.conf`, add `start on local-filesystems` line  
+`update-rc.d nginx defaults` | `chkconfig nginx on`  
+`ntsysv` | `systemctl enable nginx.service`  
+Disable service at startup / boot | `update-rc.d nginx remove` | `echo 'manual'
 
-<table class="table-striped">
-	<thead>
-		<tr>
-			<th>Action</th>
-			<th>Debian Init</th>
-			<th>Ubuntu Upstart</th>
-			<th>Red Hat/CentOS Init</th>
-			<th><b>Systemd</b></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Start service</td>
-			<td><code>/etc/init.d/nginx start</code></td>
-			<td><code>initctl start nginx</code><br />
-			<code>/etc/init.d/nginx start</code></td>
-			<td><code>/etc/init.d/nginx start</code></td>
-			<td><code>systemctl start nginx.service</code></td>
-		</tr>
-		<tr>
-			<td>Stop service</td>
-			<td><code>/etc/init.d/nginx stop</code></td>
-			<td><code>initctl stop nginx</code><br />
-			<code>/etc/init.d/nginx stop</code></td>
-			<td><code>/etc/init.d/nginx stop</code></td>
-			<td><code>systemctl stop nginx.service</code></td>
-		</tr>
-		<tr>
-			<td>Restart service</td>
-			<td><code>/etc/init.d/nginx restart</code></td>
-			<td><code>initctl restart nginx</code><br />
-				<code>/etc/init.d/nginx restart</code></td>
-			<td><code>/etc/init.d/nginx restart</code></td>
-			<td><code>systemctl restart nginx.service</code></td>
-		</tr>
-		<tr>
-			<td>Enable service at boot / startup</td>
-			<td><code>update-rc.d nginx defaults</code></td>
-			<td>edit <code>/etc/init/nginx.conf</code>, add <code>start on local-filesystems</code> line<br />
-				<code>update-rc.d nginx defaults</code> 
-			</td>
-			<td><code>chkconfig nginx on</code><br />
-				<code>ntsysv</code></td>
-			<td><code>systemctl enable nginx.service</code></td>
-		</tr>
-		<tr>
-			<td>Disable service at startup / boot</td>
-			<td><code>update-rc.d nginx remove</code></td>
-			<td><code>echo 'manual' > /etc/init/nginx.override</code><br />
-			<code>update-rc.d nginx remove</code></td>
-			<td><code>chkconfig nginx off</code><br />
-				<code>ntsysv</code></td>
-			<td><code>systemctl disable nginx.service</code></td>
-		</tr>
-		<tr>
-			<td>List all available services</td>
-			<td><code>ls /etc/init.d/</code></td>
-			<td><code>initctl list</code></td>
-			<td><code>chkconfig --list</code><br />
-				<code>ntsysv</code></td>
-			<td><code>systemctl list-units -t service --all</code></td>
-		</tr>
-		<tr>
-			<td>Get a service status</td>
-			<td><code>/etc/init.d/nginx status</code></td>
-			<td><code>initctl status nginx</code></td>
-			<td><code>/etc/init.d/nginx status</code></td>
-			<td><code>systemctl status nginx.service</code></td>
-		</tr>
-		<!--
-		<tr>
-			<td><code></code></td>
-			<td><code></code></td>
-			<td><code></code></td>
-			<td><code></code></td>
-			<td><code></code></td>
-		</tr>
-		-->
-	</tbody>
-</table>
+> /etc/init/nginx.override` `update-rc.d nginx remove`|`chkconfig nginx off`
+`ntsysv`|`systemctl disable nginx.service` List all available services |`ls
+/etc/init.d/`|`initctl list`|`chkconfig \--list` `ntsysv`|`systemctl list-units
+-t service --all` Get a service status |`/etc/init.d/nginx status`|`initctl
+status nginx`| `/etc/init.d/nginx status`|`systemctl status nginx.service`
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

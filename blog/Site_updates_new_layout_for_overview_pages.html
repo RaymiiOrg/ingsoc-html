@@ -69,23 +69,17 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This site is generated with my <a href="https://raymii.org/s/software/ingsoc.html">self-written open source static site generator
-named ingsoc</a> (named after 1984).
-I&#39;ve updated the overview pages with a new layout so that items are sorted by
-their publishing date instead of alphabetically. I&#39;ve also rewritten some
-internal logic regarding tags and categories. This article shows the difference
-before and after and includes some old screenshots of raymii.org</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This site is generated with my <a href="https://raymii.org/s/software/ingsoc.html">self-written open source static site generator named ingsoc</a> (named after 1984). I&#39;ve updated the overview pages with a new layout so that items are sorted by their publishing date instead of alphabetically. I&#39;ve also rewritten some internal logic regarding tags and categories. This article shows the difference before and after and includes some old screenshots of raymii.org</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Semantics</h3>
 
 <p>The software suite is named <code>ingsoc</code>, the actual site generator is named
-<code>newspeak.py</code>. Read more on it
-<a href="https://raymii.org/s/software/ingsoc.html">here</a>. Before the generator this was
-a PHP site, but who needs a dynamic scripting language if all you do is host
-non-dynamic content.</p>
+<code>newspeak.py</code>. Read more on it <a href="https://raymii.org/s/software/ingsoc.html">here</a>. Before the generator this was a PHP
+site, but who needs a dynamic scripting language if all you do is host non-
+dynamic content.</p>
 
 <p><code>ingsoc</code> has the concept of categories. My site is divided into the following
 categories:</p>
@@ -107,7 +101,7 @@ would not fit the target, an article can only have one category.</p>
 
 <p>Tags to the rescue. I built in tags to the generator and created seperate RSS
 feeds per tag and an overview page for each tag listing the articles per tag.
-Like categories, but way more. </p>
+Like categories, but way more.</p>
 
 <p>Tags are cheap, the current site has 927 tags, v.s. 5 categories.</p>
 
@@ -127,7 +121,7 @@ thought it was more logical to sort it by date. Which I agreed with</p>
 
 <p>Oh if you are wondering, this is how the code output looks during a deploy:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/ingsoc.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/ingsoc.png" alt=""></p>
 
 <h3>Before and after</h3>
 
@@ -139,11 +133,11 @@ maintain or change. Look at what they are now with the pictures below.</p>
 
 <p>This is the old &#39;tag&#39; view:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_tag_openvms.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_tag_openvms.png" alt=""></p>
 
 <p>This is the new &#39;tag&#39; view:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_tag_openvms.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_tag_openvms.png" alt=""></p>
 
 <p>As you can see, the date is added and sorting is on that date now. If I want I
 can later on easily add some javascript to make that table sortable ascending or
@@ -153,11 +147,11 @@ descending, but that is for a later time.</p>
 
 <p>This is the old &#39;category&#39; view:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_category_blog.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_category_blog.png" alt=""></p>
 
 <p>This is the new &#39;category&#39; view:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_category_blog.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_category_blog.png" alt=""></p>
 
 <p>As you might notice, it looks very similar to a tag page. That is because it is
 a tag page, not a category page. I added the category as a tag to all pages, so
@@ -168,11 +162,11 @@ into redirects. Instead of two code paths, I now have only one.</p>
 
 <p>This is the old &#39;everything&#39; page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_all.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/before_all.png" alt=""></p>
 
 <p>This is the new &#39;everything&#39; page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_all.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/after_all.png" alt=""></p>
 
 <p>Here again, you might notice it looks like a tag page as well. Again, it is. I
 sneakily add the <code>all</code> tag to all items and filter it out in the HTML. It is
@@ -185,7 +179,7 @@ timeframe.</p>
 
 <p>By reducing the code paths it is both simpler for me to maintain and change the
 code and the layout is the same in all three cases. Plus it was fun to go into
-my code and add sorting with <code>DateTime</code>. </p>
+my code and add sorting with <code>DateTime</code>.</p>
 
 <p>If you are wondering how this site has looked before, here are screenshots.</p>
 
@@ -193,24 +187,24 @@ my code and add sorting with <code>DateTime</code>. </p>
 
 <p>The frontpage in 2010, when this was still PHP:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-frontpage.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-frontpage.png" alt=""></p>
 
 <p>A news item:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-news.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-news.png" alt=""></p>
 
 <p>A tutorial:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-tutorial.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-tutorial.png" alt=""></p>
 
 <p>An overview page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-category.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-category.png" alt=""></p>
 
 <p>The links page, with a dynamic thumbnailer that also did borders and site
 screenshots (in PHP with gd):</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-links.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2010-links.png" alt=""></p>
 
 <h4>2012, PHP</h4>
 
@@ -219,20 +213,20 @@ it.</p>
 
 <p>The frontpage:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-frontpage.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-frontpage.png" alt=""></p>
 
 <p>An overview page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-category.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-category.png" alt=""></p>
 
 <p>An article:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-page.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-page.png" alt=""></p>
 
 <p>I had a special text-only version of the articles for text based browsers and
 mobile phones:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-text-only.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2012-text-only.png" alt=""></p>
 
 <h4>2014, static site and themes</h4>
 
@@ -242,27 +236,27 @@ This layout and site is still mostly in use today.</p>
 
 <p>The &#39;Dark&#39; frontpage:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-frontpage.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-frontpage.png" alt=""></p>
 
 <p>The regular frontpage:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-frontpage.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-frontpage.png" alt=""></p>
 
 <p>A dark overview page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-category.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-category.png" alt=""></p>
 
 <p>A regular overview page:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-overview.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-overview.png" alt=""></p>
 
 <p>A dark article:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-article.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-dark-article.png" alt=""></p>
 
 <p>A regular article:</p>
 
-<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-article.png"></p>
+<p><img src="https://raymii.org/s/inc/img/raymiiorg/2014-light-article.png" alt=""></p>
 </div><hr>Tags: <a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/ingsoc.html" class="link">ingsoc &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/raymiiorg.html" class="link">raymiiorg &nbsp;</a><a href="../tags/site.html" class="link">site &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

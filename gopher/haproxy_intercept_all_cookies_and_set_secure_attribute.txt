@@ -9,33 +9,41 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to use haproxy to set the secure attribute on cookies. You might have a backend application which is not able to set the secure attribute on cookies or for which haproxy does the ssl offloading. This simple frontend rspirep sets the secure attribute for all cookies.
+This snippet shows you how to use haproxy to set the secure attribute on
+cookies. You might have a backend application which is not able to set the
+secure attribute on cookies or for which haproxy does the ssl offloading. This
+simple frontend rspirep sets the secure attribute for all cookies.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Add the following to a `frontend` block:
 
-	rspirep ^(set-cookie:.*)  \1;\ Secure
+    
+    
+    rspirep ^(set-cookie:.*)  \1;\ Secure
+    
 
 Like so:
 
-	frontend example-frontend
-	  reqadd X-Forwarded-Proto:\ https
-	  rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
-	  option forwardfor except 127.0.0.1
-	  maxconn 2000
-	  rspirep ^(set-cookie:.*)  \1;\ Secure
-	  bind 10.20.30.40:443 ssl crt /etc/haproxy/pem/example.pem ciphers ECDHE+RSA+AES256+GCM+SHA384:ECDHE+RSA+AES128+GCM+SHA256:DHE+RSA+AES256+GCM+SHA384:DHE+RSA+AES128+GCM+SHA256:ECDHE+RSA+AES256+SHA384:ECDHE+RSA+AES128+SHA256:ECDHE+RSA+AES256+SHA:ECDHE+RSA+AES128+SHA:DHE+RSA+AES256+SHA256:DHE+RSA+AES128+SHA256:DHE+RSA+AES256+SHA:DHE+RSA+AES128+SHA:ECDHE+RSA+DES+CBC3+SHA:EDH+RSA+DES+CBC3+SHA:AES256+GCM+SHA384:AES128+GCM+SHA256:AES256+SHA256:AES128+SHA256:AES256+SHA:AES128+SHA:DES+CBC3+SHA:HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4
-	  default_backend example-backend
+    
+    
+    frontend example-frontend
+      reqadd X-Forwarded-Proto:\ https
+      rspadd Strict-Transport-Security:\ max-age=31536000;\ includeSubDomains
+      option forwardfor except 127.0.0.1
+      maxconn 2000
+      rspirep ^(set-cookie:.*)  \1;\ Secure
+      bind 10.20.30.40:443 ssl crt /etc/haproxy/pem/example.pem ciphers ECDHE+RSA+AES256+GCM+SHA384:ECDHE+RSA+AES128+GCM+SHA256:DHE+RSA+AES256+GCM+SHA384:DHE+RSA+AES128+GCM+SHA256:ECDHE+RSA+AES256+SHA384:ECDHE+RSA+AES128+SHA256:ECDHE+RSA+AES256+SHA:ECDHE+RSA+AES128+SHA:DHE+RSA+AES256+SHA256:DHE+RSA+AES128+SHA256:DHE+RSA+AES256+SHA:DHE+RSA+AES128+SHA:ECDHE+RSA+DES+CBC3+SHA:EDH+RSA+DES+CBC3+SHA:AES256+GCM+SHA384:AES128+GCM+SHA256:AES256+SHA256:AES128+SHA256:AES256+SHA:AES128+SHA:DES+CBC3+SHA:HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4
+      default_backend example-backend
+    
 
-This will set (and re-set) all your cookies with the secure attribute on. 
+This will set (and re-set) all your cookies with the secure attribute on.
 
+[Documentation on rspirep][2]
 
-[Documentation on rspirep](http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#rspirep)
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://cbonte.github.io/haproxy-dconv/configuration-1.5.html#rspirep
 
 ---
 

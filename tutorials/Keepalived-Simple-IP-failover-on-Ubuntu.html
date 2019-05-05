@@ -69,16 +69,28 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>We are going to set up very simple keepalived IP failover on Ubuntu 14.04. Keepalived is a piece of software which can be used to achieve high availability by assigning two or more nodes a virtual IP and monitoring those nodes, failing over when one goes down.  Keepalived can do more, like load balancing and monitoring, but this tutorial focusses on a very simple setup, just IP failover.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>We are going to set up very simple keepalived IP failover on Ubuntu 14.04.
+Keepalived is a piece of software which can be used to achieve high availability
+by assigning two or more nodes a virtual IP and monitoring those nodes, failing
+over when one goes down. Keepalived can do more, like load balancing and
+monitoring, but this tutorial focusses on a very simple setup, just IP failover.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Internally keepalived uses VRRP. The VRRP protocol ensures that one of participating nodes is master. The backup node(s) listens for multicast packets from a node with a higher priority. If the backup node fails to receive VRRP advertisements for a period longer than three times of the advertisement timer, the backup node takes the master state and assigns the configured IP(s) to itself. In case there are more than one backup nodes with the same priority, the one with the highest IP wins the election. </p>
+<p>Internally keepalived uses VRRP. The VRRP protocol ensures that one of
+participating nodes is master. The backup node(s) listens for multicast packets
+from a node with a higher priority. If the backup node fails to receive VRRP
+advertisements for a period longer than three times of the advertisement timer,
+the backup node takes the master state and assigns the configured IP(s) to
+itself. In case there are more than one backup nodes with the same priority, the
+one with the highest IP wins the election.</p>
 
-<p>I&#39;m also a fan of Corosync/Pacemaker, you can see my articles about <a href="https://raymii.org/s/tags/corosync.html">Corosync here</a>.</p>
+<p>I&#39;m also a fan of Corosync/Pacemaker, you can see my articles about <a href="https://raymii.org/s/tags/corosync.html">Corosync
+here</a>.</p>
 
-<p>We&#39;ll install nginx and edit the default webpage, just to see where the IP is pointing to. </p>
+<p>We&#39;ll install nginx and edit the default webpage, just to see where the IP is
+pointing to.</p>
 
 <h3>Requirements</h3>
 
@@ -88,7 +100,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>2 servers in the same network</li>
 </ul>
 
-<p>I&#39;ll be using Ubuntu 14.04 servers in this example. These servers are in the <code>10.32.75.0/24</code> network. The virtual IP will be <code>10.32.75.200</code>.</p>
+<p>I&#39;ll be using Ubuntu 14.04 servers in this example. These servers are in the
+<code>10.32.75.0/24</code> network. The virtual IP will be <code>10.32.75.200</code>.</p>
 
 <h3>Install packages</h3>
 
@@ -149,11 +162,16 @@ vrrp_instance VI_1 {
 }
 </code></pre>
 
-<p>The <code>priority</code> must be highest on the server you want to be the master/primary. It can be 150 on the master, and 100, 99, 98, 97  on the slaves. The <code>virtual_router_id</code> must be the same on all nodes and the <code>auth_pass</code> must also be the same. My network configuration is on <code>eth0</code>, change it if yours is on another one.</p>
+<p>The <code>priority</code> must be highest on the server you want to be the master/primary.
+It can be 150 on the master, and 100, 99, 98, 97 on the slaves. The
+<code>virtual_router_id</code> must be the same on all nodes and the <code>auth_pass</code> must also
+be the same. My network configuration is on <code>eth0</code>, change it if yours is on
+another one.</p>
 
 <h3>Configuring NGINX</h3>
 
-<p>For this example I have set up a very simple NGINX server with a very simple HTML page. </p>
+<p>For this example I have set up a very simple NGINX server with a very simple
+HTML page.</p>
 
 <pre><code>vim /usr/share/nginx/html/index.html
 </code></pre>
@@ -200,7 +218,8 @@ vrrp_instance VI_1 {
 
 <h4>sysctl</h4>
 
-<p>In order to be able to bind on a IP which is not yet defined on the system, we need to enable non local binding at the kernel level. </p>
+<p>In order to be able to bind on a IP which is not yet defined on the system, we
+need to enable non local binding at the kernel level.</p>
 
 <p>Temporary:</p>
 
@@ -221,20 +240,23 @@ vrrp_instance VI_1 {
 
 <h3>Start &amp; Failover</h3>
 
-<p>When the website is set up we can start both NGINX and Keepalived on both servers:</p>
+<p>When the website is set up we can start both NGINX and Keepalived on both
+servers:</p>
 
 <pre><code>service keepalived start
 service nginx start
 </code></pre>
 
-<p>Visit the IP you configured as a failover IP in your browser. You should see the page for server 1. </p>
+<p>Visit the IP you configured as a failover IP in your browser. You should see the
+page for server 1.</p>
 
 <p>Let&#39;s do a test failover. On server 1, stop keepalived:</p>
 
 <pre><code>service keepalived stop
 </code></pre>
 
-<p>Refresh the webpage. You should see the page for server 2. The logging will show something like this:</p>
+<p>Refresh the webpage. You should see the page for server 2. The logging will show
+something like this:</p>
 
 <pre><code>tail /var/log/syslog
 </code></pre>
@@ -248,9 +270,11 @@ Jun 13 22:51:01 ha2-ubu1 ntpd[1445]: peers refreshed
 Jun 13 22:51:01 ha2-ubu1 ntpd[1445]: new interface(s) found: waking up resolver
 </code></pre>
 
-<p>As you can see, for a simple IP failover, keepalived is much simpler than corosync/pacemaker to set up. </p>
+<p>As you can see, for a simple IP failover, keepalived is much simpler than
+corosync/pacemaker to set up.</p>
 
-<p>You can read more on keepalived on <a href="http://keepalived.org">their website</a>. Another article <a href="http://gcharriere.com/blog/?p=339">here</a> describes how to do load balancing with keepalived.</p>
+<p>You can read more on keepalived on <a href="http://keepalived.org">their website</a>. Another article <a href="http://gcharriere.com/blog/?p=339">here</a>
+describes how to do load balancing with keepalived.</p>
 </div><hr>Tags: <a href="../tags/cluster.html" class="link">cluster &nbsp;</a><a href="../tags/heartbeat.html" class="link">heartbeat &nbsp;</a><a href="../tags/high-availability.html" class="link">high-availability &nbsp;</a><a href="../tags/keepalived.html" class="link">keepalived &nbsp;</a><a href="../tags/network.html" class="link">network &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/vrrp.html" class="link">vrrp &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

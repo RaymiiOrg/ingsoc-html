@@ -9,42 +9,58 @@ Format      : 	Markdown/HTML
 
 
 
-This guide will show you how to convert an OpenVZ (Proxmox) container to a template. You can then use this template on any other OpenVZ (or proxmox) host. This can be used either to migrate containers or to create a kind of master image to deploy new hosts from.
+This guide will show you how to convert an OpenVZ (Proxmox) container to a
+template. You can then use this template on any other OpenVZ (or proxmox) host.
+This can be used either to migrate containers or to create a kind of master
+image to deploy new hosts from.
 
 This guide is tested on a proxmox machine running proxmox version 3.2.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Login as root to the proxmox machine via ssh.
 
 Get a list of containers using `vzlist`:
 
+    
+    
      CTID      NPROC STATUS    IP_ADDR         HOSTNAME
      100         85 running   10.21.21.5      master.raymii.nl
      101         34 running   10.21.21.6      test-master.raymii.nl
+    
 
 I want to create a template of `master.raymii.nl` which has ID 100.
 
 You must stop the container before creating the image:
 
+    
+    
     vzctl stop 101
     Stopping container ...
     Container was stopped
     Container is unmounted
+    
 
 Go to the container folder:
 
+    
+    
     cd /var/lib/vz/private/100
+    
 
 Then start the image creation:
 
+    
+    
     tar -cvzpf /var/lib/vz/template/cache/master.raymii.nl.tar.gz .
+    
 
-This will place the image in `/var/lib/vz/template/cache/master.raymii.nl.tar.gz`. This file can be copied and deployed on another host, or used on the same host as a template.
+This will place the image in
+`/var/lib/vz/template/cache/master.raymii.nl.tar.gz`. This file can be copied
+and deployed on another host, or used on the same host as a template.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -71,18 +71,18 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/nagios4.0.8.png" alt="Nagios 4"></p>
 
-<p>This is a guide on installing the latest Nagios Core (4.2.1) on Ubuntu 12.04
-and 14.04. Nagios is an open source computer system monitoring, network
-monitoring and infrastructure monitoring software application. Nagios offers
-monitoring and alerting services for servers, switches, applications, and
-services. It alerts the users when things go wrong and alerts them a second
-time when the problem has been resolved. The version in the Ubuntu 12.04
-repositories is quite old, it is still the in the 3 branch. This guide helps
-to fix that by using the latest Nagios version. We also install Nagiosgraph, a
-plugin for Nagios which gives you graps of the metrics.</p>
+<p>This is a guide on installing the latest Nagios Core (4.2.1) on Ubuntu 12.04 and
+14.04. Nagios is an open source computer system monitoring, network monitoring
+and infrastructure monitoring software application. Nagios offers monitoring and
+alerting services for servers, switches, applications, and services. It alerts
+the users when things go wrong and alerts them a second time when the problem
+has been resolved. The version in the Ubuntu 12.04 repositories is quite old, it
+is still the in the 3 branch. This guide helps to fix that by using the latest
+Nagios version. We also install Nagiosgraph, a plugin for Nagios which gives you
+graps of the metrics.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>You can find more information about Nagios on the official website: <a href="http://www.nagios.org/projects/nagioscore">http://ww
 w.nagios.org/projects/nagioscore</a>.</p>
@@ -115,57 +115,34 @@ on Linux/*nix systems.
 </ul>
 
 <p>At the end of this tutorial you will have a fully up to date Nagios Core
-installation, with the latest plugins, the latest NRPE, the webinterface set
-up with authentication and ssl, Nagios Graph integrated and MRTG installed to
+installation, with the latest plugins, the latest NRPE, the webinterface set up
+with authentication and ssl, Nagios Graph integrated and MRTG installed to
 monitor the health of Nagios.</p>
 
 <p>This was written and tested on Ubuntu 12.04 and 14.04, both 32 and 64 bit.</p>
 
 <h3>Whats new in Nagios Core 4?</h3>
 
-<p><strong>Major performance increases</strong>:  </p>
+<p><strong>Major performance increases</strong> :</p>
 
 <ul>
-<li><p>Core Workers - Core workers are lightweight processes whose only job is to
-perform checks. Because they are smaller they spawn much more quickly than the
-the old process which forked the full Nagios Core. In addition, they
-communicate with the main Nagios Core process using in-memory techniques,
-eliminating the disk I/O latencies that could previously slow things down,
-especially in large installations.</p></li>
-<li><p>Configuration Verification - Configuration verification has been improved so
-that each configuration item is verified only once. Previously configuration
-verification was an O(n2) operation.</p></li>
-<li><p>Event Queue - The event queue now uses a data structure that has O(log n)
-insertion times versus the O(n) insertion time previously. This means that
-inserting events into the queue uses much less CPU than in Nagios Core 3.</p></li>
+<li><p>Core Workers - Core workers are lightweight processes whose only job is to perform checks. Because they are smaller they spawn much more quickly than the the old process which forked the full Nagios Core. In addition, they communicate with the main Nagios Core process using in-memory techniques, eliminating the disk I/O latencies that could previously slow things down, especially in large installations.</p></li>
+<li><p>Configuration Verification - Configuration verification has been improved so that each configuration item is verified only once. Previously configuration verification was an O(n2) operation.</p></li>
+<li><p>Event Queue - The event queue now uses a data structure that has O(log n) insertion times versus the O(n) insertion time previously. This means that inserting events into the queue uses much less CPU than in Nagios Core 3.</p></li>
 </ul>
 
-<p><strong>Other nice changes</strong>:  </p>
+<p><strong>Other nice changes</strong> :</p>
 
 <ul>
-<li><p>The host address attribute is now optional. The address attribute is set to
-the host name when it is absent. Most configurations set the host name
-attribute to the DNS host name making the address attribute redundant.</p></li>
-<li><p>Both hosts and services now support an hourly value attribute. The hourly
-value attribute is intended to represent the value of a host or service to an
-organization and is used by the new minimum value contact attribute.</p></li>
-<li><p>Services now support a parents attribute. A service parent performs a function
-similar to host parents and can be used in place of service dependencies in
-simple circumstances.</p></li>
+<li><p>The host address attribute is now optional. The address attribute is set to the host name when it is absent. Most configurations set the host name attribute to the DNS host name making the address attribute redundant.</p></li>
+<li><p>Both hosts and services now support an hourly value attribute. The hourly value attribute is intended to represent the value of a host or service to an organization and is used by the new minimum value contact attribute.</p></li>
+<li><p>Services now support a parents attribute. A service parent performs a function similar to host parents and can be used in place of service dependencies in simple circumstances.</p></li>
 </ul>
 
-<p><strong>No more embedded perl</strong>: </p>
+<p><strong>No more embedded perl</strong> :</p>
 
 <ul>
-<li>Embedded Perl - Embedded Perl has historically been the least tested and the
-most problem prone part of Nagios Core. A significant part of the issue is
-that there are so many versions of Perl available. The performance
-enhancements provided by the new worker process architecture make up for any
-performance loss due to the removal of embeddd Perl. In addition, the worker
-process architecture makes possible the implementation of a special purpose
-worker to persistently load and run Perl plugins. The following configuration
-variables that were related to embedded Perl have been obsoleted:
-use<em>embedded</em>perl<em>implicitly, enable</em>embedded<em>perl, p1</em>file.</li>
+<li>Embedded Perl - Embedded Perl has historically been the least tested and the most problem prone part of Nagios Core. A significant part of the issue is that there are so many versions of Perl available. The performance enhancements provided by the new worker process architecture make up for any performance loss due to the removal of embeddd Perl. In addition, the worker process architecture makes possible the implementation of a special purpose worker to persistently load and run Perl plugins. The following configuration variables that were related to embedded Perl have been obsoleted: use <em>embedded</em> perl <em>implicitly, enable</em> embedded <em>perl, p1</em> file.</li>
 </ul>
 
 <p><a href="http://nagios.sourceforge.n%0Aet/docs/nagioscore/4/en/whatsnew.html">See this page for the full listing of new stuff in Nagios 4</a></p>
@@ -208,9 +185,9 @@ libgd-gd2-perl
 
 <h3>Create the Nagios user</h3>
 
-<p>Nagios runs as its own user and has its own groups. We need to create this
-user and groups. We also make sure the user Apache runs as can access the
-Nagios files by adding the www-data user to the nagios groups.</p>
+<p>Nagios runs as its own user and has its own groups. We need to create this user
+and groups. We also make sure the user Apache runs as can access the Nagios
+files by adding the www-data user to the nagios groups.</p>
 
 <pre><code>groupadd -g 3000 nagios
 groupadd -g 3001 nagcmd
@@ -294,7 +271,9 @@ type &#39;make all&#39; to compile the main program and CGIs.
 checkinstall
 </code></pre>
 
-<p>In the depends section of the package, make sure to add <code>libc6, perl</code>. Name the package <code>nagios4</code> and give it the correct version, namely <code>4.2.1</code>. Repeat for all following packages created.</p>
+<p>In the depends section of the package, make sure to add <code>libc6, perl</code>. Name the
+package <code>nagios4</code> and give it the correct version, namely <code>4.2.1</code>. Repeat for
+all following packages created.</p>
 
 <pre><code># This installs the init script in /etc/init.d
 checkinstall --pkgname=nagios-init make install-init
@@ -357,7 +336,8 @@ cd nagios-plugins-2.1.2
 checkinstall
 </code></pre>
 
-<p>Here again, make sure to set <code>libc6, perl</code> as dependencies, name it <code>nagios-plugins</code> and give it the correct version (<code>2.1.2)</code>.</p>
+<p>Here again, make sure to set <code>libc6, perl</code> as dependencies, name it <code>nagios-
+plugins</code> and give it the correct version (<code>2.1.2)</code>.</p>
 
 <p>This should also go fine. Continue on to NRPE.</p>
 
@@ -379,7 +359,8 @@ tar -xf nrpe-2.15.tar.gz
 cd nrpe-2.15
 </code></pre>
 
-<p>Because of <a href="http://askubuntu.com/questions/133184/nagios-nrpe-installation-errorconfigure-error-cannot-find-ssl-libraries">an issue with the openssl library folder</a> we need to use another path than <code>/usr/lib</code>:</p>
+<p>Because of <a href="http://askubuntu.com/questions/133184/nagios-nrpe-installation-errorconfigure-error-cannot-find-ssl-libraries">an issue with the openssl library folder</a> we need to use another
+path than <code>/usr/lib</code>:</p>
 
 <pre><code>./configure --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu
 </code></pre>
@@ -406,8 +387,8 @@ Ubuntu 12.1.24. See this stackoverflow topic:
 <a href="http://stackoverflow.com/questions/19606049/nagios-4%0A-cant-open-etc-rc-d-init-d-functions">http://stackoverflow.com/questions/19606049/nagios-4-cant-open-etc-
 rc-d-init-d-functions</a>.</p>
 
-<p>The fixes in that topic and on the Nagios forum did not work for me, so I
-wrote a very simple upstart script.</p>
+<p>The fixes in that topic and on the Nagios forum did not work for me, so I wrote
+a very simple upstart script.</p>
 
 <p>Place it in <code>/etc/init/nagios.conf</code>:</p>
 
@@ -446,8 +427,8 @@ end script
 chown nagios:nagcmd /usr/local/nagios/etc/htpasswd.users
 </code></pre>
 
-<p>Then we create a certificate. This is a self signed one, you can also request
-a certificate at a provider such as Digicert or Verisign.</p>
+<p>Then we create a certificate. This is a self signed one, you can also request a
+certificate at a provider such as Digicert or Verisign.</p>
 
 <pre><code>mkdir /etc/apache2/ssl
 cd /etc/apache2/ssl
@@ -466,8 +447,8 @@ chown www-data:www-data /var/www/nagios4
 <pre><code>ln -s /usr/local/src/nagios4/nagios-4.2.1/contrib/exfoliation/images/favicon.ico /var/www/favicon.ico
 </code></pre>
 
-<p>Set up a vhost for Nagios. The below file can be used on Ubuntu 12.04. Place
-it in <code>/etc/apache2/sites-available/nagios.conf</code>:</p>
+<p>Set up a vhost for Nagios. The below file can be used on Ubuntu 12.04. Place it
+in <code>/etc/apache2/sites-available/nagios.conf</code>:</p>
 
 <pre><code>&lt;VirtualHost *:443&gt;
     ServerAdmin webmaster@example.org
@@ -492,7 +473,8 @@ it in <code>/etc/apache2/sites-available/nagios.conf</code>:</p>
 &lt;/VirtualHost&gt;
 </code></pre>
 
-<p>On Ubuntu 14.04 the apache version was changed from 2.2 to 2.4 so we need a different config file:</p>
+<p>On Ubuntu 14.04 the apache version was changed from 2.2 to 2.4 so we need a
+different config file:</p>
 
 <pre><code>&lt;VirtualHost *:443&gt;
     ServerAdmin webmaster@example.org
@@ -518,9 +500,8 @@ it in <code>/etc/apache2/sites-available/nagios.conf</code>:</p>
 
 <p>Remember to replace <code>example.org</code> with your domain.</p>
 
-<p>On Ubuntu 14.04 we also need to enable the cgi module, otherwise Nagios will
-say the process is not running, and viewing cgi files results in downloading
-them:</p>
+<p>On Ubuntu 14.04 we also need to enable the cgi module, otherwise Nagios will say
+the process is not running, and viewing cgi files results in downloading them:</p>
 
 <pre><code>a2enmod cgi
 </code></pre>
@@ -542,12 +523,13 @@ them:</p>
 <pre><code>/etc/init.d/apache2 restart
 </code></pre>
 
-<p>Now we are finished with the installation. Read on for some tweaks I like to make.</p>
+<p>Now we are finished with the installation. Read on for some tweaks I like to
+make.</p>
 
 <h3>Tweaks</h3>
 
-<p>I like to have my config files in <code>/etc/nagios4/conf.d</code>. To do that, we create
-a symlink first:</p>
+<p>I like to have my config files in <code>/etc/nagios4/conf.d</code>. To do that, we create a
+symlink first:</p>
 
 <pre><code>ln -s /usr/local/nagios/etc/ /etc/nagios4
 </code></pre>
@@ -652,7 +634,8 @@ Path of Nagios commands file? /usr/local/nagios/etc/objects/commands.cfg
 Modify the Apache configuration? [n] y
 </code></pre>
 
-<p>If you are on Ubuntu 14.04, change the Apache configuration because the default is for Apache 2.2:</p>
+<p>If you are on Ubuntu 14.04, change the Apache configuration because the default
+is for Apache 2.2:</p>
 
 <p>Edit the following file:</p>
 
@@ -683,14 +666,16 @@ Alias /nagiosgraph &quot;/usr/local/nagiosgraph/share&quot;
 service apache2 restart
 </code></pre>
 
-<p>You can now view the graphs at <code>https://example.org/nagiosgraph/cgi-bin/show.cgi</code>. </p>
+<p>You can now view the graphs at <code>https://example.org/nagiosgraph/cgi-
+bin/show.cgi</code>.</p>
 
 <p>We can integrate these graphs into Nagios with a little hack. Nagios supports
 <code>notes_url</code> and <code>action_url</code>. These can be put per host/service in the Nagios
-config and allow for a link to a internal knowledge base article or a
-procedure page or whatever for that host.</p>
+config and allow for a link to a internal knowledge base article or a procedure
+page or whatever for that host.</p>
 
-<p>We can also place a javascript url to the graphs there. Place this inside a service check:</p>
+<p>We can also place a javascript url to the graphs there. Place this inside a
+service check:</p>
 
 <pre><code>action_url      /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&amp;service=$SERVICEDESC$&amp;geom=1000x200&#39; onMouseOver=&#39;showGraphPopup(this)&#39; onMouseOut=&#39;hideGraphPopup()&#39; rel=&#39;/nagiosgraph/cgi-bin/showgraph.cgi?host=$HOSTNAME$&amp;service=$SERVICEDESC$
 </code></pre>
@@ -738,9 +723,9 @@ mouseover works. Edit or create the following file:</p>
 
 <h3>MRTG</h3>
 
-<p>We are going to use MRTG to create some information about how Nagios is
-running. It shows you stats about how many check run and how long they take.
-This gives you insight in your monitoring system.</p>
+<p>We are going to use MRTG to create some information about how Nagios is running.
+It shows you stats about how many check run and how long they take. This gives
+you insight in your monitoring system.</p>
 
 <p>Copy the included configuration from Nagios:</p>
 
@@ -807,7 +792,8 @@ This gives you insight in your monitoring system.</p>
 &lt;/div&gt;
 </code></pre>
 
-<p>Save and reload Nagios. You can now start to configure the clients and enjoy your awesome Nagios.</p>
+<p>Save and reload Nagios. You can now start to configure the clients and enjoy
+your awesome Nagios.</p>
 </div><hr>Tags: <a href="../tags/apache.html" class="link">apache &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/nagios.html" class="link">nagios &nbsp;</a><a href="../tags/nagios-core.html" class="link">nagios-core &nbsp;</a><a href="../tags/nrpe.html" class="link">nrpe &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

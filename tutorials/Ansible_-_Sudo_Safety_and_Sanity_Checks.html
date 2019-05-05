@@ -119,7 +119,7 @@ different hosts. However, if you start of clean, then a template file for
 </code></pre>
 
 <ul>
-<li><p>We create the <code>admins</code> group, to which all users that need sudo are added by other playbooks.  </p></li>
+<li><p>We create the <code>admins</code> group, to which all users that need sudo are added by other playbooks. </p></li>
 <li><p>We copy the remote sudoers file to a temp one and perform all actions on the temp sudoers file. We also back up the sudoers file.</p></li>
 <li><p>We enable the <code>admins</code> group to sudo</p></li>
 <li><p>We make sure <code>ssh-agent</code> works via sudo. This was used for a git repository on the root user account, to show our own names in the commits.</p></li>

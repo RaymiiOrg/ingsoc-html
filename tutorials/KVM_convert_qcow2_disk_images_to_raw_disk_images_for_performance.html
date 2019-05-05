@@ -69,38 +69,49 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to convert KVM qcow2 disk images to raw disk images. The qcow2 disk format has some decent features like encryption, compression and copy to write support. However, the compression and the copy processes make it quite a bit slower than raw disk images. Sometimes you want to convert the disk images so that the VM will perform better.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to convert KVM qcow2 disk images to raw disk images.
+The qcow2 disk format has some decent features like encryption, compression and
+copy to write support. However, the compression and the copy processes make it
+quite a bit slower than raw disk images. Sometimes you want to convert the disk
+images so that the VM will perform better.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Benchmark</h3>
 
-<p>For me it has a performance boost. Using a RAID 1 setup with two 5900 RPM disks and the <code>deadline</code> on the host and the <code>noop</code> scheduler without caching on a raw image in the guest resulted in a boost over the default <code>deadline</code> scheduler on a qcow2 image on the guest:</p>
+<p>For me it has a performance boost. Using a RAID 1 setup with two 5900 RPM disks
+and the <code>deadline</code> on the host and the <code>noop</code> scheduler without caching on a raw
+image in the guest resulted in a boost over the default <code>deadline</code> scheduler on
+a qcow2 image on the guest:</p>
 
 <p>Test command:</p>
 
 <pre><code>dd if=/dev/zero of=test bs=64k count=16k conv=fdatasync
 </code></pre>
 
-<p>Default Ubuntu 12.04 vmbuilder created vm on a qcow2 image without caching and with the deadline scheduler in the VM:</p>
+<p>Default Ubuntu 12.04 vmbuilder created vm on a qcow2 image without caching and
+with the deadline scheduler in the VM:</p>
 
 <pre><code>1073741824 bytes (1.1 GB) copied, 658.396 s, 1.6 MB/s
 </code></pre>
 
-<p>The same VM, disk image converted to raw image without caching and using the noop scheduler in the VM:</p>
+<p>The same VM, disk image converted to raw image without caching and using the
+noop scheduler in the VM:</p>
 
 <pre><code>1073741824 bytes (1.1 GB) copied, 13.646 s, 78.7 MB/s
 </code></pre>
 
-<p>That&#39;s quite a performance boost. The KVM host has the following result with the <code>dd</code> command:</p>
+<p>That&#39;s quite a performance boost. The KVM host has the following result with the
+<code>dd</code> command:</p>
 
 <pre><code>1073741824 bytes (1.1 GB) copied, 10.4034 s, 103 MB/s
 </code></pre>
 
 <h3>Converting the image</h3>
 
-<p>I&#39;ll convert the disk image for the example vm <code>vm1</code>. Change the name and disk paths for your setup.</p>
+<p>I&#39;ll convert the disk image for the example vm <code>vm1</code>. Change the name and disk
+paths for your setup.</p>
 
 <p>First shut down the VM:</p>
 
@@ -119,7 +130,10 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>Change the <code>disk</code> section to point to the new raw image:</p>
 
-<p>Change the lines <code>&lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;</code> and <code>&lt;source file=&#39;/var/lib/libvirt/images/vm1/ubuntu-kvm/tmp20ePgc.qcow2&#39;/&gt;</code> to <code>&lt;driver name=&#39;qemu&#39; type=&#39;raw&#39;/&gt;</code> and <code>&lt;source file=&#39;/var/lib/libvirt/images/vm1/ubuntu-kvm/tmp20ePgc.raw&#39;/&gt;</code>. Like so:</p>
+<p>Change the lines <code>&lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;</code> and <code>&lt;source
+file=&#39;/var/lib/libvirt/images/vm1/ubuntu-kvm/tmp20ePgc.qcow2&#39;/&gt;</code> to <code>&lt;driver
+name=&#39;qemu&#39; type=&#39;raw&#39;/&gt;</code> and <code>&lt;source file=&#39;/var/lib/libvirt/images/vm1/ubuntu-
+kvm/tmp20ePgc.raw&#39;/&gt;</code>. Like so:</p>
 
 <pre><code>&amp;lt;disk type=&#39;file&#39; device=&#39;disk&#39;&amp;gt;
   &amp;lt;driver name=&#39;qemu&#39; type=&#39;raw&#39; cache=&#39;none&#39;/&amp;gt;
@@ -141,7 +155,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Disk scheduler</h3>
 
-<p>To change the default disk scheduler in your VM, you can use the following command:</p>
+<p>To change the default disk scheduler in your VM, you can use the following
+command:</p>
 
 <pre><code>echo $scheduler &gt; /sys/block/$device/queue/scheduler
 </code></pre>
@@ -167,7 +182,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 [noop] deadline cfq
 </code></pre>
 
-<p>Remember to add this command to <code>/etc/rc.local</code> to make it survive a reboot. On ubuntu you can also define it in <code>/etc/default/grub</code>. Change <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;</code> to <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash elevator=noop&quot;</code> and run an <code>update-grub2</code> to make it permanent</p>
+<p>Remember to add this command to <code>/etc/rc.local</code> to make it survive a reboot. On
+ubuntu you can also define it in <code>/etc/default/grub</code>. Change
+<code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;</code> to
+<code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash elevator=noop&quot;</code> and run an <code>update-
+grub2</code> to make it permanent</p>
 </div><hr>Tags: <a href="../tags/dd.html" class="link">dd &nbsp;</a><a href="../tags/deadline.html" class="link">deadline &nbsp;</a><a href="../tags/disk.html" class="link">disk &nbsp;</a><a href="../tags/kvm.html" class="link">kvm &nbsp;</a><a href="../tags/noop.html" class="link">noop &nbsp;</a><a href="../tags/performance.html" class="link">performance &nbsp;</a><a href="../tags/scheduler.html" class="link">scheduler &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><a href="../tags/virsh.html" class="link">virsh &nbsp;</a><a href="../tags/virtualization.html" class="link">virtualization &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

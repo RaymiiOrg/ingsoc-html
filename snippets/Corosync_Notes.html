@@ -71,23 +71,31 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>What are all the components?</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <ul>
 <li>Pacemaker: Resource manager</li>
 <li>Corosync: Messaging layer</li>
 <li>Heartbeat: Also a messaging layer</li>
-<li><p>Resource Agents: Scripts that know how to control various services</p>
-
-<p>Pacemaker is the thing that starts and stops services (like your database or mail server) and contains logic for ensuring both that they are running, and that they are only running in one location (to avoid data corruption).</p>
-
-<p>But it cant do that without the ability to talk to instances of itself on the other node(s), which is where Heartbeat and/or Corosync come in.</p>
-
-<p>Think of Heartbeat and Corosync as dbus but between nodes. Somewhere that any node can throw messages on and know that they&#39;ll be received by all its peers. This bus also ensures that everyone agrees who is (and is not) connected to the bus and tells Pacemaker when that list changes.</p></li>
+<li>Resource Agents: Scripts that know how to control various services</li>
 </ul>
 
-<p>If you want to make sure that the commands below execute on all cluster nodes, append the <code>-w</code> parameter to the crm command, it stands for <code>wait</code>. Like so: <code>crm -w resource stop virtual-ip</code>.</p>
+<p>Pacemaker is the thing that starts and stops services (like your database or
+mail server) and contains logic for ensuring both that they are running, and
+that they are only running in one location (to avoid data corruption).</p>
+
+<p>But it cant do that without the ability to talk to instances of itself on the
+other node(s), which is where Heartbeat and/or Corosync come in.</p>
+
+<p>Think of Heartbeat and Corosync as dbus but between nodes. Somewhere that any
+node can throw messages on and know that they&#39;ll be received by all its peers.
+This bus also ensures that everyone agrees who is (and is not) connected to the
+bus and tells Pacemaker when that list changes.</p>
+
+<p>If you want to make sure that the commands below execute on all cluster nodes,
+append the <code>-w</code> parameter to the crm command, it stands for <code>wait</code>. Like so:
+<code>crm -w resource stop virtual-ip</code>.</p>
 
 <h4>Get corosync cluster status</h4>
 
@@ -113,7 +121,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>crm node online
 </code></pre>
 
-<p>If you want to put a node online or in standby from another cluster node, append the node name to the commands above, like so:</p>
+<p>If you want to put a node online or in standby from another cluster node, append
+the node name to the commands above, like so:</p>
 
 <pre><code>crm node standby NODENAME
 </code></pre>
@@ -128,7 +137,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>crm configure primitive failover-ip ocf:heartbeat:IPaddr2 params ip=10.0.2.10 cidr_netmask=32 op monitor interval=10s
 </code></pre>
 
-<p>This tells Pacemaker three things about the resource you want to add. The first field, ocf, is the standard to which the resource script conforms to and where to find it. The second field is specific to OCF resources and tells the cluster which namespace to find the resource script in, in this case heartbeat. The last field indicates the name of the resource script. </p>
+<p>This tells Pacemaker three things about the resource you want to add. The first
+field, ocf, is the standard to which the resource script conforms to and where
+to find it. The second field is specific to OCF resources and tells the cluster
+which namespace to find the resource script in, in this case heartbeat. The last
+field indicates the name of the resource script.</p>
 
 <h5>View all available resource classes</h5>
 
@@ -191,7 +204,9 @@ syslog-ng            tomcat               vmware
 <pre><code>crm configure colocation apache-with-ip inf: apache-ha failover-ip
 </code></pre>
 
-<h4>Make sure that when either one crashes they both are recovered on another node:</h4>
+<h4>Make sure that when either one crashes they both are recovered on another</h4>
+
+<p>node:</p>
 
 <pre><code>crm configure order apache-after-ip mandatory: failover-ip apache-ha
 </code></pre>
@@ -238,7 +253,8 @@ syslog-ng            tomcat               vmware
 
 <h4>sysctl</h4>
 
-<p>In order to be able to bind on a IP which is not yet defined on the system, we need to enable non local binding at the kernel level. </p>
+<p>In order to be able to bind on a IP which is not yet defined on the system, we
+need to enable non local binding at the kernel level.</p>
 
 <p>Temporary:</p>
 
@@ -260,7 +276,7 @@ syslog-ng            tomcat               vmware
 <h3>Sources</h3>
 
 <ul>
-<li><a href="http://clusterlabs.org/doc/en-US/Pacemaker/1.1-crmsh/html-single/Clusters_from_Scratch/index.html">http://clusterlabs.org/doc/en-US/Pacemaker/1.1-crmsh/html-single/Clusters<em>from</em>Scratch/index.html</a></li>
+<li><a href="http://clusterlabs.org/doc/en-US/Pacemaker/1.1-crmsh/html-single/Clusters_from_Scratch/index.html">http://clusterlabs.org/doc/en-US/Pacemaker/1.1-crmsh/html-single/Clusters <em>from</em> Scratch/index.html</a></li>
 <li><a href="http://blog.clusterlabs.org/blog/2010/pacemaker-heartbeat-corosync-wtf/">http://blog.clusterlabs.org/blog/2010/pacemaker-heartbeat-corosync-wtf/</a></li>
 <li><a href="http://blog.clusterlabs.org/blog/2009/highly-available-data-corruption/">http://blog.clusterlabs.org/blog/2009/highly-available-data-corruption/</a></li>
 <li><a href="http://ourobengr.com/ha/">http://ourobengr.com/ha/</a></li>

@@ -9,76 +9,95 @@ Format      : 	Markdown/HTML
 
 
 
+Recently I was asked to get one value from a json object using only shell tools.
+The json in question is from a [dutch radio station][1] and it lists the current
+song that is played. Using this together with a few shell commands and `notify-
+send` we can show the current song when it changes as a desktop notification.
+I'd rather use Python or `jq` if it has to be shell. In this case the co-worker
+asked to just use simple shell tools and no external dependencies.
 
-Recently I was asked to get one value from a json object using only shell tools. The json in question is from a [dutch radio station](https://www.grootnieuwsradio.nl/) and it lists the current song that is played. Using this together with a few shell commands and `notify-send` we can show the current song when it changes as a desktop notification. I'd rather use Python or `jq` if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 This is the `json` file, formatted:
 
-	# curl -s 'https://api.grootnieuwsradio.nl/playing.json'
-	{
-	    "Stream_information":{
-	        "Name":"grootnieuws_ipad",
-	        "NameByClient":"grootnieuwsradio_website_aac",
-	        "Limit":"2000",
-	        "Account":"calculation",
-	        "IncomingSignal":"offline",
-	        "SecureTokenSharedSecret":"",
-	        "SecureTokenQueryParametersPrefix":"",
-	        "SecureTokenIncludeClientIPInHash":"false",
-	        "MultiBitrateEnable":"false",
-	        "DVREnable":"false",
-	        "PlayIPWhiteList":"",
-	        "PublishIPWhitelist":"",
-	        "SimultaneousConnections":"1729",
-	        "Auto_recording":"off",
-	        "PlayingNow":"Joke Buis - Welk Een Vriend Is Onze Jezus",
-	        "Encoder_visitors_statistics":{
-	            "REST_URI":"https:\/\/api.streampartner.nl\/grootnieuws_ipad\/stream_information\/encoder_visitors_statistics",
-	            "Options":[
-	                "GET"
-	            ]
-	        }
-	    }
-	}
+    
+    
+    # curl -s 'https://api.grootnieuwsradio.nl/playing.json'
+    {
+        "Stream_information":{
+            "Name":"grootnieuws_ipad",
+            "NameByClient":"grootnieuwsradio_website_aac",
+            "Limit":"2000",
+            "Account":"calculation",
+            "IncomingSignal":"offline",
+            "SecureTokenSharedSecret":"",
+            "SecureTokenQueryParametersPrefix":"",
+            "SecureTokenIncludeClientIPInHash":"false",
+            "MultiBitrateEnable":"false",
+            "DVREnable":"false",
+            "PlayIPWhiteList":"",
+            "PublishIPWhitelist":"",
+            "SimultaneousConnections":"1729",
+            "Auto_recording":"off",
+            "PlayingNow":"Joke Buis - Welk Een Vriend Is Onze Jezus",
+            "Encoder_visitors_statistics":{
+                "REST_URI":"https:\/\/api.streampartner.nl\/grootnieuws_ipad\/stream_information\/encoder_visitors_statistics",
+                "Options":[
+                    "GET"
+                ]
+            }
+        }
+    }
+    
 
-The field we want is the `PlayingNow` field. Using `sed`, a regular expression with a backreference (`\1`) it can be shown:
+The field we want is the `PlayingNow` field. Using `sed`, a regular expression
+with a backreference (`\1`) it can be shown:
 
-	sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p'
+    
+    
+    sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p'
+    
 
 Example output:
 
-	curl -s 'https://api.grootnieuwsradio.nl/playing.json' | sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p'
-     
-	Joke Buis - Welk Een Vriend Is Onze Jezus
-
+    
+    
+    curl -s 'https://api.grootnieuwsradio.nl/playing.json' | sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p'
+    
+    Joke Buis - Welk Een Vriend Is Onze Jezus
+    
 
 The full script to send the desktop notifications:
 
-	#!/bin/bash
-	PATH="/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
-	if [[ ! -f /tmp/gnr-prev.txt ]]; then touch /tmp/gnr-prev.txt; fi
-	PREVSONG="$(cat /tmp/gnr-prev.txt)"
-	curl -s 'https://api.grootnieuwsradio.nl/playing.json' | sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p' > /tmp/gnr-cur.txt
-	CURSONG="$(cat /tmp/gnr-cur.txt)"
-	if [[ "$PREVSONG" != "$CURSONG" ]]; then
-		mv /tmp/gnr-prev.txt /tmp/gnr.$(date +%s).txt;
-		mv /tmp/gnr-cur.txt /tmp/gnr-prev.txt;
-		notify-send "GNR: $CURSONG";
-	fi
+    
+    
+    #!/bin/bash
+    PATH="/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+    if [[ ! -f /tmp/gnr-prev.txt ]]; then touch /tmp/gnr-prev.txt; fi
+    PREVSONG="$(cat /tmp/gnr-prev.txt)"
+    curl -s 'https://api.grootnieuwsradio.nl/playing.json' | sed -n 's|.*"PlayingNow":"\([^"]*\)".*|\1|p' > /tmp/gnr-cur.txt
+    CURSONG="$(cat /tmp/gnr-cur.txt)"
+    if [[ "$PREVSONG" != "$CURSONG" ]]; then
+        mv /tmp/gnr-prev.txt /tmp/gnr.$(date +%s).txt;
+        mv /tmp/gnr-cur.txt /tmp/gnr-prev.txt;
+        notify-send "GNR: $CURSONG";
+    fi
+    
 
-Put it in `cron` for regular execution. Add this to your crontab as well if you use KDE:
+Put it in `cron` for regular execution. Add this to your crontab as well if you
+use KDE:
 
-	DISPLAY=:0.0
-	XAUTHORITY=/home/remy/.Xauthority
+    
+    
+    DISPLAY=:0.0
+    XAUTHORITY=/home/remy/.Xauthority
+    
 
 Replace `remy` with your username.
 
+   [1]: https://www.grootnieuwsradio.nl/
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

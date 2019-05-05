@@ -19,18 +19,7 @@ administration. Besides that I also develop [software][1].
 I currently work for [VolkerWessels][2], the largest Dutch civil engineering
 construction company as an (Azure) cloud specialist.
 
-I've worked as a sysadmin (in a devops role) for [the Erasmus University Medical
-Center][3]  (a large hospital and medical university in Rotterdam),
-[Digidentity][4] (a Dutch [certificate authority][5], the company that develops
-[DigiD][6] and other Ruby on Rails applications), [CloudVPS][7] (an OpenStack
-cloud provider) and a few other smaller companies. I like to design, build,
-document and manage large, complex and high-available systems. I'm a team player
-that loves to work with configuration management tools and version control
-systems. If I do something more than three times, I automate it. **Planning,
-documentation, monitoring and backups are things I do first, not when the time
-allows it later.** Last but not least I have an interest in legacy systems like
-the PDP-11, PDP-8 and operating systems like OpenVMS, HP-UX and old UNIX
-systems.
+I've worked as a sysadmin (in a devops role) for [the Erasmus University Medical Center][3] (a large hospital and medical university in Rotterdam), [Digidentity][4] (a Dutch [certificate authority][5], the company that develops [DigiD][6] and other Ruby on Rails applications), [CloudVPS][7] (an OpenStack cloud provider) and a few other smaller companies. I like to design, build, document and manage large, complex and high-available systems. I'm a team player that loves to work with configuration management tools and version control systems. If I do something more than three times, I automate it. **Planning, documentation, monitoring and backups are things I do first, not when the time allows it later.** Last but not least I have an interest in legacy systems like the PDP-11, PDP-8 and operating systems like OpenVMS, HP-UX and old UNIX systems.
 
 To get in touch, [click here][8].
 

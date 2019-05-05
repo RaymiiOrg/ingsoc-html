@@ -9,35 +9,49 @@ Format      : 	Markdown/HTML
 
 
 
-Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add debug logging to a bash script. 
+Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to add debug logging to a bash script.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[All Bash Bits can be found using this link][2]
 
-[All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
-
-Debug logging can be very usefull when scripts or programs don't do what you want. I use it in most of my scripts. 
+Debug logging can be very usefull when scripts or programs don't do what you
+want. I use it in most of my scripts.
 
 First we create a simple one line function named `debug`:
 
+    
+    
     function debug() { ((DEBUG_LOG)) && echo "### $*"; }
+    
 
-As you can see, very simple. If the variable `DEBUG_LOG` is set, then it prints all the text given to the function. If the variable is not set, it does nothing.
+As you can see, very simple. If the variable `DEBUG_LOG` is set, then it prints
+all the text given to the function. If the variable is not set, it does nothing.
 
-Now if we want to debug log something, we place the following line in our script:
+Now if we want to debug log something, we place the following line in our
+script:
 
+    
+    
     debug "This is debug output".
+    
 
-When we want to see the debug logging, before we run the script, we set the variable `DEBUG_LOG` to 1:
+When we want to see the debug logging, before we run the script, we set the
+variable `DEBUG_LOG` to 1:
 
+    
+    
     export DEBUG_LOG=1
     # or just for this script run:
     DEBUG_LOG=1 ./script.sh
+    
 
 Example with debug logging:
 
+    
+    
     [10:52:51] [remy@gateway] [ ~/conf (master) ]
     $ export DEBUG_LOG=1
     [10:52:56] [remy@gateway] [ ~/conf (master) ]
@@ -45,14 +59,20 @@ Example with debug logging:
     ### vimrc done
     ### screenrc done
     ### bash done
+    
 
 Example without debug logging:
 
+    
+    
     [10:53:11] [remy@gateway] [ ~/conf (master) ]
     $ unset DEBUG_LOG
     [10:53:11] [remy@gateway] [ ~/conf (master) ]
     $ ./setup.sh
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/tags/bash-bits.html
 
 ---
 

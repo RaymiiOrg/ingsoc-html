@@ -69,7 +69,7 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
@@ -89,8 +89,8 @@ version or trial and EmuVM Alphaserver also stopped with their free version.</p>
 company and spend a big sum of money, you will have all the resources you&#39;ll
 ever need.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Limits of commercial Alpha emulators</h3>
 
@@ -104,8 +104,8 @@ told me that they stopped the free version because it was used commercially,
 thus hurting the sale of their commercial offering. If you&#39;re a serious hobbyist
 their product is available for $400, which, comparing the prices to Charon-AXP
 and Avanti (freeAXP&#39;s commercial counterpart) is very cheap. The CTO, <a href="https://nl.linkedin.com/in/artemalimarin">Artem
-Alimarin</a> has, according to LinkedIn,
-also worked at Stromasys and created Charon-AXP, so he knows Alpha emulation. </p>
+Alimarin</a> has, according to LinkedIn, also worked at Stromasys and created
+Charon-AXP, so he knows Alpha emulation.</p>
 
 <p>I was given a 30 day trial version of AlphaVM basic, with both a Windows and
 Linux version download. The product does require to be always online due to a
@@ -134,10 +134,8 @@ your hands on actual hardware.</p>
 
 <h3>es40</h3>
 
-<p>I tried to install <a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40 on Ubuntu
-16.04</a>
-and in that, install OpenVMS 8.4. That works up to halfway through the
-installer, then it crashes:</p>
+<p>I tried to install <a href="https://raymii.org/s/blog/Installing_the_es40_AlphaServer_emulator_0.18_on_Ubuntu_16.04_and_trying_to_install_openVMS_8.4_on_es40.html">es40 on Ubuntu 16.04</a> and in that, install OpenVMS 8.4.
+That works up to halfway through the installer, then it crashes:</p>
 
 <pre><code>%SYSTEM-F-ACCVIO, access violation, reason mask=00, virtual address=FFFFFFFFFFFFFFB8, PC=000000007
 FDC5210, PS=0000001B
@@ -160,7 +158,9 @@ pci0.15(ali_ide).disk0.0(file): Closing file.
 <h3>FreeAXP</h3>
 
 <blockquote>
-<p>FreeAXP is a free Avanti virtual Alpha technology demonstrator. It provides a virtual AlphaServer 400 equipped with 1 CPU, 128MB memory, 7 disk drives, two NICs, and two virtual serial ports. </p>
+<p>FreeAXP is a free Avanti virtual Alpha technology demonstrator. It provides a
+virtual AlphaServer 400 equipped with 1 CPU, 128MB memory, 7 disk drives, two
+NICs, and two virtual serial ports.</p>
 </blockquote>
 
 <p>I downloaded version 3.0.0.617 on Windows 10 x64 (1709 build 16299.125).
@@ -169,12 +169,11 @@ install OpenVMS 8.4. The next try, actually running OpenVMS, fails horribly. The
 software crashes after loading the config file, and even killing the process via
 the task manager fails:</p>
 
-<p><img src="https://raymii.org/s/inc/img/freeaxp_1.png" alt=freeaxp></p>
+<p><img src="https://raymii.org/s/inc/img/freeaxp_1.png" alt="freeaxp"></p>
 
-<p>That adventure ended way to quickly. There is <a href="https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU">a topic
-here</a> on
-<code>os.comp.vms</code> where this issue is discussed, but sadly without a fix yet.
-Downgrading winPCAP had no effect for me.</p>
+<p>That adventure ended way to quickly. There is <a href="https://groups.google.com/forum/#!topic/comp.os.vms/AqZWDbpcIXU">a topic here</a> on <code>os.comp.vms</code>
+where this issue is discussed, but sadly without a fix yet. Downgrading winPCAP
+had no effect for me.</p>
 
 <h3>EmuVM basic</h3>
 
@@ -182,7 +181,7 @@ Downgrading winPCAP had no effect for me.</p>
 It runs both on Windows and on linux (without GUI). Here is a picture of the
 Windows version:</p>
 
-<p><img src="https://raymii.org/s/inc/img/emuvm_1.png" alt=emuvm></p>
+<p><img src="https://raymii.org/s/inc/img/emuvm_1.png" alt="emuvm"></p>
 
 <p>I experienced no problems at all, the installation went without issues and
 subsequent starts all went fine.</p>
@@ -196,7 +195,7 @@ with <code>dd</code> and in Windows they provide a tool.</p>
 
 <p>Here is a screenshot of the Linux version:</p>
 
-<p><img src="https://raymii.org/s/inc/img/emuvm_2.png" alt=emuvm></p>
+<p><img src="https://raymii.org/s/inc/img/emuvm_2.png" alt="emuvm"></p>
 
 <h3>Conclusion</h3>
 
@@ -205,12 +204,12 @@ and the Windows version doesn&#39;t work for me.</p>
 
 <p>The only working option is EmuVM&#39;s AlphaVM, which for me works both on Windows
 and on Linux without issues. The customer support is good and the product is
-featurefull. </p>
+featurefull.</p>
 
 <p>If I ever would have to do a commercial OpenVMS deployment on Alpha, based on my
 experience now I would let the company buy the AlphaVM Pro version. That does
 not require an always online license check but a USB dongle or special hardware
-bind (also for virtual machines). </p>
+bind (also for virtual machines).</p>
 
 <p>I do hope that EmuVM rethink their free offering. I suggested not to limit on
 emulated hardware like FreeAXP, but to just let the product run for two hours

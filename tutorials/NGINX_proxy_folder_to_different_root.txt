@@ -7,18 +7,20 @@ URL         : 	https://raymii.org/s/tutorials/NGINX_proxy_folder_to_different_ro
 Format      : 	Markdown/HTML
 ---
 
-  
-
-This tutorial shows you how to have NGINX use different folders as different upstream proxy's.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+This tutorial shows you how to have NGINX use different folders as different
+upstream proxy's.
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-By default, if you have a `location` block which has a proxy pass, and the `location` block is a folder, for example `/wiki`, the folder is sent back to the proxied server:
+By default, if you have a `location` block which has a proxy pass, and the
+`location` block is a folder, for example `/wiki`, the folder is sent back to
+the proxied server:
 
+    
+    
     location /nagios/ {
         proxy_pass  http://10.0.21.8:80/;
         proxy_set_header Host $host;
@@ -27,12 +29,16 @@ By default, if you have a `location` block which has a proxy pass, and the `loca
         proxy_set_header X-Forwarded-Proto https;
         proxy_redirect    off;
     }
+    
 
-The above block will, when browsed, sent you to `http://10.0.21.8/nagios/`, because that is the nginx location. However, if you want it to go to `http://10.0.21.8/` you either have to rewrite or use the `/` location.
+The above block will, when browsed, sent you to `http://10.0.21.8/nagios/`,
+because that is the nginx location. However, if you want it to go to
+`http://10.0.21.8/` you either have to rewrite or use the `/` location.
 
 The below example has the correct rewrite rule:
 
-
+    
+    
     location /nagios/ {
         rewrite ^/nagios(/.*)$ $1 break;
         proxy_pass  http://10.0.21.8:80/;
@@ -42,15 +48,19 @@ The below example has the correct rewrite rule:
         proxy_set_header X-Forwarded-Proto https;
         proxy_redirect    off;
     }
+    
 
 As you can see, this line:
 
+    
+    
     rewrite ^/collectd(/.*)$ $1 break;
+    
 
-fixes the above problem, and sends you to `http://10.0.21.8/` instead of `http://10.0.21.8/nagios`.
+fixes the above problem, and sends you to `http://10.0.21.8/` instead of
+`http://10.0.21.8/nagios`.
 
-
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -271,9 +271,7 @@ Now in a template (example for nginx):
 This makes sure nginx runs on non-ipv6 nodes.
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: http://ansible.github.com/
-
    [3]: https://github.com/RaymiiOrg/ansible
 
 ---

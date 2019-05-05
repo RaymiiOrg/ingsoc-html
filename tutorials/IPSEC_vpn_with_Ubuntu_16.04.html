@@ -69,38 +69,58 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on setting up an IPSEC VPN server on Ubuntu 16.04 using StrongSwan as the IPsec server and for authentication. It has a detailed explanation with every step. We choose the IPSEC protocol stack because of vulnerabilities found in pptpd VPNs and because it is supported on all recent operating systems by default. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a guide on setting up an IPSEC VPN server on Ubuntu 16.04 using
+StrongSwan as the IPsec server and for authentication. It has a detailed
+explanation with every step. We choose the IPSEC protocol stack because of
+vulnerabilities found in pptpd VPNs and because it is supported on all recent
+operating systems by default.</p>
 
 <h3>Why a VPN?</h3>
 
-<p>More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can&#39;t see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</p>
+<p>More than ever, your freedom and privacy when online is under threat.
+Governments and ISPs want to control what you can and can&#39;t see while keeping a
+record of everything you do, and even the shady-looking guy lurking around your
+coffee shop or the airport gate can grab your bank details easier than you may
+think. A self hosted VPN lets you surf the web the way it was intended:
+anonymously and without oversight.</p>
 
-<p>A VPN (virtual private network) creates a secure, encrypted tunnel through which all of your online data passes back and forth. Any application that requires an internet connection works with this self hosted VPN, including your web browser, email client, and instant messaging program, keeping everything you do online hidden from prying eyes while masking your physical location and giving you unfettered access to any website or web service no matter where you happen to live or travel to.</p>
+<p>A VPN (virtual private network) creates a secure, encrypted tunnel through which
+all of your online data passes back and forth. Any application that requires an
+internet connection works with this self hosted VPN, including your web browser,
+email client, and instant messaging program, keeping everything you do online
+hidden from prying eyes while masking your physical location and giving you
+unfettered access to any website or web service no matter where you happen to
+live or travel to.</p>
 
 <p>This tutorial is available for the following platforms:</p>
 
 <ul>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a><br></li>
-<li><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a><br></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_a_Raspberry_Pi_with_Arch_Linux.html">Raspberry Pi with Arch Linux ARM</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html">CentOS 7, Scientific Linux 7 or Red Hat Enterprise Linux 7 (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_on_CentOS_-_Red_Hat_Enterprise_Linux_or_Scientific_-_Linux_6.html">CentOS 6, Scientific Linux 6 or Red Hat Enterprise Linux 6</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_16.04.html">Ubuntu 16.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.10.html">Ubuntu 15.10, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_vpn_with_Ubuntu_15.04.html">Ubuntu 15.04, (IKEv2,no L2TP)</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html">Ubuntu 14.04 LTS</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html">Ubuntu 13.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.04.html">Ubuntu 13.04</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html">Ubuntu 12.10</a></p></li>
+<li><p><a href="https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html">Ubuntu 12.04 LTS</a></p></li>
 </ul>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>IPSEC encrypts your IP packets to provide encryption and authentication, so no one can decrypt or forge data between your clients and your server. It also provides a tunnel to send data to the server.</p>
+<p>IPSEC encrypts your IP packets to provide encryption and authentication, so no
+one can decrypt or forge data between your clients and your server. It also
+provides a tunnel to send data to the server.</p>
 
-<p>This VPN setup is called a road-warrior setup, because clients can connect from anywhere. Another much used VPN setup is called site-to-site, where two VPN servers connect two networks with one another. In a road warrior setup your local network isn&#39;t shared, but you do get access to the server&#39;s network.</p>
+<p>This VPN setup is called a road-warrior setup, because clients can connect from
+anywhere. Another much used VPN setup is called site-to-site, where two VPN
+servers connect two networks with one another. In a road warrior setup your
+local network isn&#39;t shared, but you do get access to the server&#39;s network.</p>
 
-<p>To work trough this tutorial you should have:  </p>
+<p>To work trough this tutorial you should have:</p>
 
 <ul>
 <li>1 Ubuntu 16.04 server with at least 1 public IP address and root access</li>
@@ -108,13 +128,18 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Ports 4500/UDP, 500/UDP, 51/UDP and 50/UDP opened in the firewall.</li>
 </ul>
 
-<p>I do all the steps as the root user. You should do to, but only via <code>sudo -i</code> or <code>su -</code>.</p>
+<p>I do all the steps as the root user. You should do to, but only via <code>sudo -i</code> or
+<code>su -</code>.</p>
 
 <h3>No L2TP?</h3>
 
-<p>A few of the previous tutorials used L2TP to set up the VPN tunnel and use IPSEC only for the encryption. With the IKEv2 protocol and newer operating systems (like OS X 10.8+, Android 4+, iOS 6+ and Windows 7+) supporting IKEv2 we can also use IPSEC to set up the tunnel, before we used IPSEC to do that.</p>
+<p>A few of the previous tutorials used L2TP to set up the VPN tunnel and use IPSEC
+only for the encryption. With the IKEv2 protocol and newer operating systems
+(like OS X 10.8+, Android 4+, iOS 6+ and Windows 7+) supporting IKEv2 we can
+also use IPSEC to set up the tunnel, before we used IPSEC to do that.</p>
 
-<p>This VPN will therefore not work out of the box on older operating systems. See my other tutorials with L2TP on how to do that.</p>
+<p>This VPN will therefore not work out of the box on older operating systems. See
+my other tutorials with L2TP on how to do that.</p>
 
 <h3>Overview</h3>
 
@@ -131,16 +156,25 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>Install Strongswan</h3>
 
-<p>StrongSwan is a descendant of FreeS/WAN, just like Openswan or LibreSwan. Strongswan however is actively developed, whereas the other ones, except LibreSwan are less. StrongSwan is in default in the Ubuntu repositories. You can read more about Strongswan on <a href="http://en.wikipedia.org/wiki/StrongSwan">wikipedia</a> or their <a href="http://strongswan.org">website</a>.</p>
+<p>StrongSwan is a descendant of FreeS/WAN, just like Openswan or LibreSwan.
+Strongswan however is actively developed, whereas the other ones, except
+LibreSwan are less. StrongSwan is in default in the Ubuntu repositories. You can
+read more about Strongswan on <a href="http://en.wikipedia.org/wiki/StrongSwan">wikipedia</a> or their <a href="http://strongswan.org">website</a>.</p>
 
 <pre><code>apt-get install strongswan strongswan-plugin-af-alg strongswan-plugin-agent strongswan-plugin-certexpire strongswan-plugin-coupling strongswan-plugin-curl strongswan-plugin-dhcp strongswan-plugin-duplicheck strongswan-plugin-eap-aka strongswan-plugin-eap-aka-3gpp2 strongswan-plugin-eap-dynamic strongswan-plugin-eap-gtc strongswan-plugin-eap-mschapv2 strongswan-plugin-eap-peap strongswan-plugin-eap-radius strongswan-plugin-eap-tls strongswan-plugin-eap-ttls strongswan-plugin-error-notify strongswan-plugin-farp strongswan-plugin-fips-prf strongswan-plugin-gcrypt strongswan-plugin-gmp strongswan-plugin-ipseckey strongswan-plugin-kernel-libipsec strongswan-plugin-ldap strongswan-plugin-led strongswan-plugin-load-tester strongswan-plugin-lookip strongswan-plugin-ntru strongswan-plugin-pgp strongswan-plugin-pkcs11 strongswan-plugin-pubkey strongswan-plugin-radattr strongswan-plugin-sshkey strongswan-plugin-systime-fix strongswan-plugin-whitelist strongswan-plugin-xauth-eap strongswan-plugin-xauth-generic strongswan-plugin-xauth-noauth strongswan-plugin-xauth-pam 
 </code></pre>
 
 <h3>Certificates</h3>
 
-<p>The VPN server will identify itself with a certificate to the clients. The clients should use a certificate to authenticate themself. Previous tutorials also configured usernames and password and pre-shared keys, this tutorial does not. Certificates are easier to use, can be revoked and are less hassle than managing usernames and passwords.</p>
+<p>The VPN server will identify itself with a certificate to the clients. The
+clients should use a certificate to authenticate themself. Previous tutorials
+also configured usernames and password and pre-shared keys, this tutorial does
+not. Certificates are easier to use, can be revoked and are less hassle than
+managing usernames and passwords.</p>
 
-<p>On Android with the StrongSwan Application you can just import the <code>.p12</code> we are going to create later on. OS X and iOS from 10.10 and 9 upwards also support this authentication method. </p>
+<p>On Android with the StrongSwan Application you can just import the <code>.p12</code> we are
+going to create later on. OS X and iOS from 10.10 and 9 upwards also support
+this authentication method.</p>
 
 <p>You might want to install <code>haveged</code> to speed up the key generation process:</p>
 
@@ -188,22 +222,31 @@ keyid:     88:ef:88:13:7f:da:5a:28:13:77:4b:4c:81:df:ee:db:fb:5c:69:54
 subjkey:   d1:ad:f7:76:ad:10:02:7f:1d:04:e1:80:46:9d:b2:c7:fb:4d:d3:bb
 </code></pre>
 
-<p>Generate the VPN Host key. This is the keypair the VPN server host will use to authenticate itself to clients. First the private key:</p>
+<p>Generate the VPN Host key. This is the keypair the VPN server host will use to
+authenticate itself to clients. First the private key:</p>
 
 <pre><code>ipsec pki --gen --type rsa --size 4096 --outform der &gt; private/vpnHostKey.der
 chmod 600 private/vpnHostKey.der
 </code></pre>
 
-<p>Generate the public key and use our earlier created root ca to sign the public key:</p>
+<p>Generate the public key and use our earlier created root ca to sign the public
+key:</p>
 
 <pre><code>ipsec pki --pub --in private/vpnHostKey.der --type rsa | ipsec pki --issue --lifetime 730 --cacert cacerts/strongswanCert.der --cakey private/strongswanKey.der --dn &quot;C=NL, O=Example Company, CN=vpn.example.org&quot; --san vpn.example.com --san vpn.example.net --san 85.222.227.169  --san @85.222.227.169 --flag serverAuth --flag ikeIntermediate --outform der &gt; certs/vpnHostCert.der
 </code></pre>
 
-<p>The domain name or IP address of your VPN server, which is later entered in the clients connection properties, MUST be contained either in the subject Distinguished Name (CN) and/or in a subject Alternative Name (<code>--san</code>). If this does not match the clients will fail to connect.</p>
+<p>The domain name or IP address of your VPN server, which is later entered in the
+clients connection properties, MUST be contained either in the subject
+Distinguished Name (CN) and/or in a subject Alternative Name (<code>--san</code>). If this
+does not match the clients will fail to connect.</p>
 
-<p>The built in Windows 7 VPN client needs the <code>serverAuth</code> extended key usage flag in your host certificate as shown above, or the client will refuse to connect. In addition, OS X 10.7.3 or older requires the <code>ikeIntermediate</code> flag, which we also add here. </p>
+<p>The built in Windows 7 VPN client needs the <code>serverAuth</code> extended key usage flag
+in your host certificate as shown above, or the client will refuse to connect.
+In addition, OS X 10.7.3 or older requires the <code>ikeIntermediate</code> flag, which we
+also add here.</p>
 
-<p>We add the IP address twice, one with an <code>@</code> in front so that it gets added as an <code>subjectAltName</code> of the <code>DNSName</code> type and one of the <code>IPAddess</code> type.</p>
+<p>We add the IP address twice, one with an <code>@</code> in front so that it gets added as
+an <code>subjectAltName</code> of the <code>DNSName</code> type and one of the <code>IPAddess</code> type.</p>
 
 <p>Let&#39;s view the certificate:</p>
 
@@ -260,9 +303,14 @@ subjkey:   27:c7:87:de:83:38:6c:f7:56:57:c2:b3:1f:05:11:ca:b9:2f:89:d4
     Signature Algorithm: sha1WithRSAEncryption
 </code></pre>
 
-<p>The private key (<code>/etc/ipsec.d/private/strongswanKey.der</code>) of the CA should be moved somewhere safe, possibly to a special signing host without access to the Internet. Theft of this master signing key would completely compromise your public key infrastructure. Use it only to generate client certificates when needed.</p>
+<p>The private key (<code>/etc/ipsec.d/private/strongswanKey.der</code>) of the CA should be
+moved somewhere safe, possibly to a special signing host without access to the
+Internet. Theft of this master signing key would completely compromise your
+public key infrastructure. Use it only to generate client certificates when
+needed.</p>
 
-<p>This key needs to be added into <code>/etc/ipsec.secrets</code>, otherwise StrongSwan will not use it.</p>
+<p>This key needs to be added into <code>/etc/ipsec.secrets</code>, otherwise StrongSwan will
+not use it.</p>
 
 <pre><code>vim /etc/ipsec.secrets
 </code></pre>
@@ -276,7 +324,9 @@ subjkey:   27:c7:87:de:83:38:6c:f7:56:57:c2:b3:1f:05:11:ca:b9:2f:89:d4
 : RSA vpnHostKey.der
 </code></pre>
 
-<p>The format <code>: RSA keyname</code> is important, don&#39;t forget the space. You can check afterwards if StrongSwan has the private key available with the <code>ipsec listcerts</code> command:</p>
+<p>The format <code>: RSA keyname</code> is important, don&#39;t forget the space. You can check
+afterwards if StrongSwan has the private key available with the <code>ipsec
+listcerts</code> command:</p>
 
 <pre><code>ipsec listcerts
 </code></pre>
@@ -297,11 +347,14 @@ subjkey:   27:c7:87:de:83:38:6c:f7:56:57:c2:b3:1f:05:11:ca:b9:2f:89:d4
   authkey:   f8:3a:98:f3:b5:a6:c2:ec:8c:c3:95:56:b9:1d:9c:17:6f:1c:be:e5
 </code></pre>
 
-<p>If it doesn&#39;t say <code>has private key</code> on the <code>pubkey</code> line your filename or syntax is wrong.</p>
+<p>If it doesn&#39;t say <code>has private key</code> on the <code>pubkey</code> line your filename or syntax
+is wrong.</p>
 
 <h4>Client certificate</h4>
 
-<p>Any client will require a personal certificate in order to use the VPN. The process is analogous to generating a host certificate, except that we identify a client certificate by the clients e-mail address rather than a hostname.</p>
+<p>Any client will require a personal certificate in order to use the VPN. The
+process is analogous to generating a host certificate, except that we identify a
+client certificate by the clients e-mail address rather than a hostname.</p>
 
 <p>We create a keypair for the example user &quot;John&quot;.</p>
 
@@ -316,7 +369,9 @@ chmod 600 private/JohnKey.der
 <pre><code>ipsec pki --pub --in private/JohnKey.der --type rsa | ipsec pki --issue --lifetime 730 --cacert cacerts/strongswanCert.der --cakey private/strongswanKey.der --dn &quot;C=NL, O=Example Company, CN=john@example.org&quot; --san &quot;john@example.org&quot; --san &quot;john@example.net&quot; --san &quot;john@185.3.211.43&quot; --outform der &gt; certs/JohnCert.der
 </code></pre>
 
-<p>A VPN client needs a client certificate, its corresponding private key, and the signing CA certificate. The most convenient way is to put everything in a single signed PKCS#12 file and export it with a paraphrase.</p>
+<p>A VPN client needs a client certificate, its corresponding private key, and the
+signing CA certificate. The most convenient way is to put everything in a single
+signed PKCS#12 file and export it with a paraphrase.</p>
 
 <p>Convert the required keys to PEM formt before converting to a .p12:</p>
 
@@ -334,15 +389,22 @@ openssl x509 -inform DER -in cacerts/strongswanCert.der -out cacerts/strongswanC
 <pre><code>openssl pkcs12 -export -inkey private/JohnKey.pem -in certs/JohnCert.pem -name &quot;John&#39;s VPN Certificate&quot; -certfile cacerts/strongswanCert.pem -caname &quot;strongSwan Root CA&quot; -out p12/John.p12
 </code></pre>
 
-<p>Enter a passphrase twice, then you have a .p12. You can send <code>John.p12</code> and its export paraphrase to the person who is going to install it onto the client. In some cases (iOS for example) you have to separately include the CA certificate <code>cacerts/strongswanCert.pem</code>.</p>
+<p>Enter a passphrase twice, then you have a .p12. You can send <code>John.p12</code> and its
+export paraphrase to the person who is going to install it onto the client. In
+some cases (iOS for example) you have to separately include the CA certificate
+<code>cacerts/strongswanCert.pem</code>.</p>
 
-<p>Transport this <code>John.p12</code> file and the password over seperate channels to a client.</p>
+<p>Transport this <code>John.p12</code> file and the password over seperate channels to a
+client.</p>
 
-<p>If you need any more user certificates, repeat the above steps with other user data. You can also do this later on.</p>
+<p>If you need any more user certificates, repeat the above steps with other user
+data. You can also do this later on.</p>
 
 <h4>Revoking a certificate</h4>
 
-<p>If a certificate is lost or stolen, it must be revoked so nobody can use it to connect to your VPN server. Assuming the certificate from the previous step got stolen, we revoke it with:</p>
+<p>If a certificate is lost or stolen, it must be revoked so nobody can use it to
+connect to your VPN server. Assuming the certificate from the previous step got
+stolen, we revoke it with:</p>
 
 <pre><code>cd /etc/ipsec.d/
 ipsec pki --signcrl --reason key-compromise --cacert cacerts/strongswanCert.der --cakey private/strongswanKey.der --cert certs/JohnCert.der --outform der &gt; crls/crl.der
@@ -353,14 +415,18 @@ ipsec pki --signcrl --reason key-compromise --cacert cacerts/strongswanCert.der 
 <pre><code>ipsec restart
 </code></pre>
 
-<p>This generates the new certificate revocation list (CRL) <code>crls/crl.der</code>. When someone tries to authenticate with the stolen certificate, he&#39;ll receive an authentication credentials error message, and your log file will contain something like:</p>
+<p>This generates the new certificate revocation list (CRL) <code>crls/crl.der</code>. When
+someone tries to authenticate with the stolen certificate, he&#39;ll receive an
+authentication credentials error message, and your log file will contain
+something like:</p>
 
 <pre><code>04[CFG] using trusted certificate &quot;C=NL, O=Example Company, CN=strongSwan Root CA&quot;
 04[CFG]   crl correctly signed by &quot;C=NL, O=Example Company, CN=strongSwan Root CA&quot;
 04[CFG] certificate was revoked on Sep 10 10:15:33 UTC 2016, reason: key compromise
 </code></pre>
 
-<p>To add another revoked certificate to the same list, we need to copy the existing list into a temporary file:</p>
+<p>To add another revoked certificate to the same list, we need to copy the
+existing list into a temporary file:</p>
 
 <pre><code>cd /etc/ipsec.d/
 cp crls/crl.der crl.der.tmp
@@ -375,7 +441,8 @@ rm crl.der.tmp
 
 <h3>IPSEC Configuration</h3>
 
-<p>The main <code>ipsec</code> configuration file is located in <code>/etc/</code>. We are going to edit it:</p>
+<p>The main <code>ipsec</code> configuration file is located in <code>/etc/</code>. We are going to edit
+it:</p>
 
 <pre><code>vim /etc/ipsec.conf
 </code></pre>
@@ -408,23 +475,31 @@ conn IPSec-IKEv2
     auto=add
 </code></pre>
 
-<p>The configuration has settings for IKEv2 + RSA certificates. This is, as stated above, the most secure method. Older tutorials also set up IKEv1 (xauth) and username-password combo, but that is considered insecure.</p>
+<p>The configuration has settings for IKEv2 + RSA certificates. This is, as stated
+above, the most secure method. Older tutorials also set up IKEv1 (xauth) and
+username-password combo, but that is considered insecure.</p>
 
-<p>Apple added support for IKEv2 in iOS 8, but it needs to be configured using a <a href="https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile">custom configuration profile</a>. OS X 10.9 and lower do not support IKEv2. </p>
+<p>Apple added support for IKEv2 in iOS 8, but it needs to be configured using a
+<a href="https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile">custom configuration profile</a>. OS X 10.9 and lower do not support IKEv2.</p>
 
-<p>Beginning with iOS 9, IKEv2 connections are natively supported. However, iOS9 only supports the use of certificates or username/password, but not both. </p>
+<p>Beginning with iOS 9, IKEv2 connections are natively supported. However, iOS9
+only supports the use of certificates or username/password, but not both.</p>
 
-<p>For iOS 9+ and OS X 10.10+ you need to make sure the <code>leftid=</code> is the same as the <code>CN</code> in your certificate. You also need to enter that on the devices, otherwise you&#39;ll get a <code>no matching peer config found</code> log error.</p>
+<p>For iOS 9+ and OS X 10.10+ you need to make sure the <code>leftid=</code> is the same as
+the <code>CN</code> in your certificate. You also need to enter that on the devices,
+otherwise you&#39;ll get a <code>no matching peer config found</code> log error.</p>
 
 <p>Android 4+ and Windows 7+ support IKEv2.</p>
 
-<p>Clients will get the Google DNS servers and an IP address in the <code>10.42.42.0/24</code> range. We use a strong ciphersuite.</p>
+<p>Clients will get the Google DNS servers and an IP address in the <code>10.42.42.0/24</code>
+range. We use a strong ciphersuite.</p>
 
-<p>The <code>leftcert=vpnHostCert.der</code> expands to the path <code>/etc/ipsec.d/certs/vpnHostCert.der</code>.</p>
+<p>The <code>leftcert=vpnHostCert.der</code> expands to the path
+<code>/etc/ipsec.d/certs/vpnHostCert.der</code>.</p>
 
 <h3>Firewall &amp; Packet Routing</h3>
 
-<p>Configure the iptables firewall to allow vpn traffic and to forward packets:  </p>
+<p>Configure the iptables firewall to allow vpn traffic and to forward packets:</p>
 
 <pre><code># for ISAKMP (handling of security associations)
 iptables -A INPUT -p udp --dport 500 --j ACCEPT
@@ -436,9 +511,11 @@ iptables -A INPUT -p esp -j ACCEPT
 iptables -t nat -A POSTROUTING -j SNAT --to-source %SERVERIP% -o eth+
 </code></pre>
 
-<p>Replace <code>%SERVERIP%</code> with the external IP of the VPN server. If your external interface is not named ethX (<code>+</code> is a wildcard) then rename appropriately.</p>
+<p>Replace <code>%SERVERIP%</code> with the external IP of the VPN server. If your external
+interface is not named ethX (<code>+</code> is a wildcard) then rename appropriately.</p>
 
-<p>Execute the below commands to enable kernel IP packet forwarding and disable ICP redirects.  </p>
+<p>Execute the below commands to enable kernel IP packet forwarding and disable ICP
+redirects.</p>
 
 <pre><code>echo &quot;net.ipv4.ip_forward = 1&quot; |  tee -a /etc/sysctl.conf
 echo &quot;net.ipv4.conf.all.accept_redirects = 0&quot; |  tee -a /etc/sysctl.conf
@@ -461,7 +538,8 @@ echo &quot;net.ipv4.icmp_ignore_bogus_error_responses = 1&quot; |  tee -a /etc/s
 
 <h5>Persistent settings via /etc/rc.local</h5>
 
-<p>To make sure this keeps working at boot you might want to add the following to /etc/rc.local:  </p>
+<p>To make sure this keeps working at boot you might want to add the following to
+/etc/rc.local:</p>
 
 <pre><code>for vpn in /proc/sys/net/ipv4/conf/*; do echo 0 &gt; $vpn/accept_redirects; echo 0 &gt; $vpn/send_redirects; done
 iptables -t nat -A POSTROUTING -j SNAT --to-source %SERVERIP% -o eth+
@@ -470,7 +548,8 @@ iptables -A INPUT -p udp --dport 4500 --j ACCEPT
 iptables -A INPUT -p esp -j ACCEPT
 </code></pre>
 
-<p>Add it before the <code>exit 0</code> line and replace <code>%SERVERIP%</code> with the external IP of your server.</p>
+<p>Add it before the <code>exit 0</code> line and replace <code>%SERVERIP%</code> with the external IP of
+your server.</p>
 
 <h3>Start the VPN</h3>
 
@@ -530,15 +609,17 @@ Security Associations (0 up, 0 connecting):
 
 <h3>Client Configuration</h3>
 
-<p>See the <a href="https://wiki.strongswan.org/projects/strongswan/wiki/Windows7">Strongswan Wiki</a> for guides on configuring Windows and <a href="https://wiki.strongswan.org/projects/strongswan/wiki/IOS_(Apple)">OS X/iOS clients</a></p>
+<p>See the <a href="https://wiki.strongswan.org/projects/strongswan/wiki/Windows7">Strongswan Wiki</a> for guides on configuring Windows and <a href="https://wiki.strongswan.org/projects/strongswan/wiki/IOS_(Apple)">OS X/iOS
+clients</a></p>
 
-<p>On Android, the easiest way is to install the <a href="https://play.google.com/store/apps/details?id=org.strongswan.android">StrongSwan app</a>, copy over the <code>.p12</code> and connect with the IP and option <code>IKEv2 Certificate</code>. Nothing more:</p>
+<p>On Android, the easiest way is to install the <a href="https://play.google.com/store/apps/details?id=org.strongswan.android">StrongSwan app</a>, copy over
+the <code>.p12</code> and connect with the IP and option <code>IKEv2 Certificate</code>. Nothing more:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/1604_android.png"></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/1604_android.png" alt=""></p>
 
 <p>Just one tap to <code>Connect</code> and you&#39;re good to go:</p>
 
-<p><img src="https://raymii.org/s/inc/img/vpn/1604_android2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/vpn/1604_android2.png" alt=""></p>
 
 <h3>Sources</h3>
 

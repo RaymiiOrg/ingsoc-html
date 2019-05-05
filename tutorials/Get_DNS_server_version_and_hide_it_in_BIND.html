@@ -69,10 +69,13 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The BIND nameserver (and many others) return their version number when queried a special DNS query. This gives exposure and that is most of the time a bad thing. This tutorial shows you how to query DNS servers for their version and how to stop/change your own BIND server version exposure.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The BIND nameserver (and many others) return their version number when queried a
+special DNS query. This gives exposure and that is most of the time a bad thing.
+This tutorial shows you how to query DNS servers for their version and how to
+stop/change your own BIND server version exposure.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Chaos Query</h3>
 
@@ -94,11 +97,14 @@ Address:        81.4.97.217#53
 version.bind    text = &quot;Served by PowerDNS - http://www.powerdns.com&quot;
 </code></pre>
 
-<p>What is <code>chaos</code> or CH class you ask? <a href="https://en.wikipedia.org/wiki/Chaosnet">It is/was a network technology, see the wikipedia page for more info.</a>. There is also the <a href="https://en.wikipedia.org/wiki/Hesiod_(name_service)">HS class, that stands for Hesiod.</a></p>
+<p>What is <code>chaos</code> or CH class you ask? <a href="https://en.wikipedia.org/wiki/Chaosnet">It is/was a network technology, see the
+wikipedia page for more info.</a>. There is also the <a href="https://en.wikipedia.org/wiki/Hesiod_(name_service)">HS class, that stands for
+Hesiod.</a></p>
 
 <h3>Hide it in BIND</h3>
 
-<p>When running a BIND nameserver, edit your <code>/etc/bind/named.conf.options</code> file (or the config file where you have your options) and add the following option:</p>
+<p>When running a BIND nameserver, edit your <code>/etc/bind/named.conf.options</code> file
+(or the config file where you have your options) and add the following option:</p>
 
 <pre><code>options {
     [...]
@@ -106,7 +112,8 @@ version.bind    text = &quot;Served by PowerDNS - http://www.powerdns.com&quot;
 }
 </code></pre>
 
-<p>You can of course put whatever you like in there, for example you can spoof a Microsoft DNS server:</p>
+<p>You can of course put whatever you like in there, for example you can spoof a
+Microsoft DNS server:</p>
 
 <pre><code>version &quot;Microsoft DNS 6.0.6100 (2AEF76E)&quot;;
 </code></pre>
@@ -119,11 +126,13 @@ version.bind    text = &quot;Served by PowerDNS - http://www.powerdns.com&quot;
 version.bind.       86400   CH  TXT &quot;TransDNS 2.1.1&quot;
 </code></pre>
 
-<p>Make sure to reload/restart your BIND servers after the change. Do note that you need BIND 8.2 or later for this option to work.</p>
+<p>Make sure to reload/restart your BIND servers after the change. Do note that you
+need BIND 8.2 or later for this option to work.</p>
 
 <h3>db.bind zone</h3>
 
-<p>You can also add a .bind zone, this way your queries will also be logged and you can block possible attempts.</p>
+<p>You can also add a .bind zone, this way your queries will also be logged and you
+can block possible attempts.</p>
 
 <p><code>/etc/bind/named.conf.local</code>:</p>
 
@@ -153,7 +162,8 @@ version             CH  TXT &quot;Microsoft DNS 6.0.6100 (2AEF76E)&quot;
 authors             CH  TXT &quot;Raymii.org&quot; 
 </code></pre>
 
-<p>However this gets complicated very fast, you need to wrap all your other zones in views as well:</p>
+<p>However this gets complicated very fast, you need to wrap all your other zones
+in views as well:</p>
 
 <pre><code>view &quot;default&quot; IN {
   match-clients { any; };

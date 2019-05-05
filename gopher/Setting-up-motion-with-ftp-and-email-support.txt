@@ -9,40 +9,44 @@ Format      : 	Markdown/HTML
 
 
 
-I have set up Motion in a way that it Emails me when it detects movement, and
-it automatically saves the pictures to my FTP server. I do not autostart
-motion in deamon mode, because it only needs to run while I'm away.   
+I have set up Motion in a way that it Emails me when it detects movement, and it
+automatically saves the pictures to my FTP server. I do not autostart motion in
+deamon mode, because it only needs to run while I'm away.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 It requires little config adaption. First we need to install motion, wput, and
 sendemail:
 
+    
+    
     sudo apt-get install wput sendemail motion
+    
 
 Motion for the capturing, wput for the ftp-ing and sendemail for the emailing.
 
 Now edit the config file of motion:
 
+    
+    
     sudo gedit /etc/motion/motion.conf
+    
 
 I will list the things i've changed here, my situation is a single USB webcam.
 
+    
+    
     # Start in daemon (background) mode and release terminal (default: off)  
     daemon off
     
     # Maximum number of frames to be captured per second.  
     # Valid range: 2-100. Default: 100 (almost no limit).  
     framerate 8
-  
+    
     # Number of frames to capture after motion is no longer detected (default: 0)  
     post_capture 5
-   
+    
     # Use ffmpeg to encode mpeg movies in realtime (default: off)  
     ffmpeg_cap_new off
     
@@ -50,7 +54,7 @@ I will list the things i've changed here, my situation is a single USB webcam.
     # Recommended to use absolute path. (Default: current working directory)  
     ## **sudo mkdir /motion &amp;&amp; sudo chmod 777 /motion**  
     target_dir /motion
-
+    
     # Command to be executed when an event starts. (default: none)  
     # An event starts at first motion detected after a period of no motion defined by gap  
     ## **This is the situation on a Gmail account, just change the CAPS values to yours.**  
@@ -62,16 +66,22 @@ I will list the things i've changed here, my situation is a single USB webcam.
     # The filename of the picture is appended as an argument for the command.  
     ##**Here also, change the CAPS values to yours**  
     on_picture_save wput ftp://USERNAME:PASSWORD@YOUTFTP.COM %f
+    
 
-This will email and upload the pictures when motion is detected. It works quite good for me.
+This will email and upload the pictures when motion is detected. It works quite
+good for me.
 
-Note that when you want to put motion on, like when you go to school/work, fire up a terminal:
+Note that when you want to put motion on, like when you go to school/work, fire
+up a terminal:
 
+    
+    
     sudo motion
     
-Or put it in /etc/rc.local for auto start at boot.    
 
+Or put it in /etc/rc.local for auto start at boot.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

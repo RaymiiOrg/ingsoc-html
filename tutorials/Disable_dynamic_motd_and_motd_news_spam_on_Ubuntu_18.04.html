@@ -70,24 +70,24 @@
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On Ubuntu 18.04 and up, when you login via SSH you are greeted with some news
-via <code>motd</code> (message of the day) that includes advertisements and messages 
-from Canonical (via <code>motd.ubuntu.com</code>). This small guide shows you how to 
-disable news, (parts of) the dynamic motd or just revert back to a plain old
-<code>/etc/motd</code> file.</p>
+via <code>motd</code> (message of the day) that includes advertisements and messages from
+Canonical (via <code>motd.ubuntu.com</code>). This small guide shows you how to disable
+news, (parts of) the dynamic motd or just revert back to a plain old <code>/etc/motd</code>
+file.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>(Dynamic) motd</h3>
 
 <p>Since 2009 Ubuntu has had a dynamic <code>motd</code>. It uses a bunch of files and scripts
-in <code>/etc/update-motd/</code> to construct a message. I think since Ubuntu 17.04, but 
+in <code>/etc/update-motd/</code> to construct a message. I think since Ubuntu 17.04, but
 I&#39;m not sure, the online service was introduced. It&#39;s just a webpage that your
-server <a href="https://bugs.launchpad.net/ubuntu/+source/base-files/+bug/1701068/comments/11">checks every 12 hours and puts in a file</a> that ends up in your <code>motd</code>. 
-<a href="https://motd.ubuntu.com">You can visist motd.ubuntu.com in your browser</a> to 
-check the current news. (But why would you when it&#39;s in your face when you login)</p>
+server <a href="https://bugs.launchpad.net/ubuntu/+source/base-files/+bug/1701068/comments/11">checks every 12 hours and puts in a file</a> that ends up in your
+<code>motd</code>. <a href="https://motd.ubuntu.com">You can visist motd.ubuntu.com in your browser</a> to check the current
+news. (But why would you when it&#39;s in your face when you login)</p>
 
-<p><img src="https://raymii.org/s/inc/img/motd-ubuntu.png"></p>
+<p><img src="https://raymii.org/s/inc/img/motd-ubuntu.png" alt=""></p>
 
 <blockquote>
 <p>The dynamic motd page in a browser</p>
@@ -127,28 +127,29 @@ check the current news. (But why would you when it&#39;s in your face when you l
 </code></pre>
 
 <p>Lot&#39;s of useful information (load, zombie processes, reboot required, updates),
-but also stuff I&#39;m not interested in (Canonical live patching, support kubernetes).</p>
+but also stuff I&#39;m not interested in (Canonical live patching, support
+kubernetes).</p>
 
-<p>It&#39;s also a way for canonical to measure how many ubuntu servers there are active.
-If every server connects at least every 12 hours back to the mothership, they
-will be able to get measurements on when and where Ubuntu is used. Nothing wrong
-with that, but I don&#39;t like the fact that they shoved it in via the <code>motd</code>. Yes
-it could be useful for a <code>heartbleed</code> scale problem but my guess is that this
-was aimed at metrics for Canonical first and they sought an excuse why users
-might want it later. But again, nothing wrong with that. They let you disable 
-it and are open about it. </p>
+<p>It&#39;s also a way for canonical to measure how many ubuntu servers there are
+active. If every server connects at least every 12 hours back to the mothership,
+they will be able to get measurements on when and where Ubuntu is used. Nothing
+wrong with that, but I don&#39;t like the fact that they shoved it in via the
+<code>motd</code>. Yes it could be useful for a <code>heartbleed</code> scale problem but my guess is
+that this was aimed at metrics for Canonical first and they sought an excuse why
+users might want it later. But again, nothing wrong with that. They let you
+disable it and are open about it.</p>
 
 <h3>Disabling motd news</h3>
 
-<p>Disabling the news part (the pingback to canonical) is simple. Edit the following
-file:</p>
+<p>Disabling the news part (the pingback to canonical) is simple. Edit the
+following file:</p>
 
 <pre><code>vim /etc/default/motd-news
 </code></pre>
 
 <p>Change <code>ENABLED=1</code> to <code>ENABLED=0</code>.</p>
 
-<p>That&#39;s it for the small news part. If you dont want to see the other messages 
+<p>That&#39;s it for the small news part. If you dont want to see the other messages
 you need to disable those as well.</p>
 
 <h3>Disabling parts of the dynamic motd</h3>
@@ -163,8 +164,8 @@ you need to disable those as well.</p>
 
 <p>Some of them are useful for system information or to see if your ubuntu version
 is still supported, but a few are, if you&#39;re not using canonical services, IMHO
-not useful. These scripts must be executable <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">according to the manpage</a>. 
-By removing the execute bit you can have some scripts not shown in your dynamic
+not useful. These scripts must be executable <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">according to the manpage</a>. By
+removing the execute bit you can have some scripts not shown in your dynamic
 motd:</p>
 
 <pre><code>chmod -x /etc/update-motd.d/80-livepatch
@@ -197,9 +198,8 @@ Last login: Mon Mar 18 06:27:00 2019 from 192.10.20.30
 <h3>Disabling dynamic motd entirely</h3>
 
 <p>I&#39;m unsure how to actually do this since the documentation is not that clear
-about it. The manpage for <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">dynamic motd</a> refers to the manpage for 
-<a href="http://manpages.ubuntu.com/manpages/bionic/man8/pam_motd.8.html">pam_motd</a> and both 
-are unclear. </p>
+about it. The manpage for <a href="http://manpages.ubuntu.com/manpages/bionic/man5/update-motd.5.html">dynamic motd</a> refers to the manpage for
+<a href="http://manpages.ubuntu.com/manpages/bionic/man8/pam_motd.8.html">pam_motd</a> and both are unclear.</p>
 
 <p>There seems to be not dynamic motd systemd service:</p>
 
@@ -211,7 +211,8 @@ motd-news.timer                        enabled
 
 <p>and on my system there was no actual <code>/etc/motd</code> file, just the dynamic scripts.</p>
 
-<p>But the manpage states that <code>pam</code> is responsible for the motd so let&#39;s check there:</p>
+<p>But the manpage states that <code>pam</code> is responsible for the motd so let&#39;s check
+there:</p>
 
 <pre><code>grep motd /etc/pam.d/*
 /etc/pam.d/login:session    optional   pam_motd.so motd=/run/motd.dynamic
@@ -252,28 +253,28 @@ Because <code>OpenSSH</code>, by default sets the <code>PrintMotd</code> option 
    default is &quot;yes&quot;.
 </code></pre>
 
-<p>Change that to <code>no</code> to have <code>pam</code> do the motd printing. </p>
+<p>Change that to <code>no</code> to have <code>pam</code> do the motd printing.</p>
 
 <h3>Conclusion</h3>
 
-<p>Disabling the entire <code>dynamic-motd</code> can be done by commenting out two lines
-in <code>/etc/pam.d/sshd</code>:</p>
+<p>Disabling the entire <code>dynamic-motd</code> can be done by commenting out two lines in
+<code>/etc/pam.d/sshd</code>:</p>
 
 <pre><code>session    optional     pam_motd.so  motd=/run/motd.dynamic
 session    optional     pam_motd.so noupdate
 </code></pre>
 
-<p>and letting <code>OpenSSH</code> handle the <code>motd</code>. You need to put stuff in <code>/etc/motd</code> 
+<p>and letting <code>OpenSSH</code> handle the <code>motd</code>. You need to put stuff in <code>/etc/motd</code>
 yourself for that to work. <code>OpenSSH</code> does this by default if that file exists.</p>
 
-<p>Disabling specific parts of the dynamic motd can be done by removing scripts 
-(or making them not executable) in <code>/etc/update-motd.d/</code>.</p>
+<p>Disabling specific parts of the dynamic motd can be done by removing scripts (or
+making them not executable) in <code>/etc/update-motd.d/</code>.</p>
 
-<p>Disabling the pingback to the canonical mothership, the <code>motd-news</code> part can
-be done by changing <code>ENABLED=1</code> to <code>ENABLED=0</code> in <code>/etc/default/motd-news</code>.</p>
+<p>Disabling the pingback to the canonical mothership, the <code>motd-news</code> part can be
+done by changing <code>ENABLED=1</code> to <code>ENABLED=0</code> in <code>/etc/default/motd-news</code>.</p>
 
-<p>Never thought that a simple message on your console could be so complex and
-used for statistics and spam.</p>
+<p>Never thought that a simple message on your console could be so complex and used
+for statistics and spam.</p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/canonical.html" class="link">canonical &nbsp;</a><a href="../tags/dynamic-motd.html" class="link">dynamic-motd &nbsp;</a><a href="../tags/motd.html" class="link">motd &nbsp;</a><a href="../tags/openssh.html" class="link">openssh &nbsp;</a><a href="../tags/pam.html" class="link">pam &nbsp;</a><a href="../tags/security.html" class="link">security &nbsp;</a><a href="../tags/ssh.html" class="link">ssh &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -69,21 +69,20 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. 
-This bash bit shows you how to find all files containing specific text, and 
-how to remove them.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
+how to find all files containing specific text, and how to remove them.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
 
 <h3>Finding all files with specific text in them</h3>
 
 <p>For <a href="https://txtn.ws">text news</a> I convert news articles to plain text with readability.
-Recently one of the sites I convert changed their HTML, causing the parsing
-to fail. I fixed that in the parser, but had over 200 failed parsed articles.
-I wanted to remove them all. They all contain the following string:</p>
+Recently one of the sites I convert changed their HTML, causing the parsing to
+fail. I fixed that in the parser, but had over 200 failed parsed articles. I
+wanted to remove them all. They all contain the following string:</p>
 
 <pre><code>Wij willen graag weten in welke omgeving u woont
 </code></pre>
@@ -108,8 +107,8 @@ write the filename of the file that contains the string.</p>
 ./Dutch/www.rtvdrenthe.nl/20190503T0557_Drankrijder_A28_is_rijbewijs_kwijt.txt
 </code></pre>
 
-<p>Check them by hand, and if you&#39;re sure you want to remove them, use the following
-command:</p>
+<p>Check them by hand, and if you&#39;re sure you want to remove them, use the
+following command:</p>
 
 <pre><code>find -iname &quot;*.txt&quot; | xargs grep -l &quot;Wij willen graag weten in welke omgeving&quot; | awk &#39;{print &quot;rm &quot;$1}&#39; | bash
 </code></pre>

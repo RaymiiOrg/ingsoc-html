@@ -69,74 +69,109 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>In my box of sysadmin tools there are multiple gems I use for troubleshooting servers. Since I work at a cloud provider sometimes I have to fix servers that are not mine. One of those tools is <code>ncdu</code>. It&#39;s a very usefull tool when a server has a full disk, both full of used space or full of used inodes. This article covers ncdu and shows the process of finding the culprit when you&#39;re out of disk space or inodes.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>In my box of sysadmin tools there are multiple gems I use for troubleshooting
+servers. Since I work at a cloud provider sometimes I have to fix servers that
+are not mine. One of those tools is <code>ncdu</code>. It&#39;s a very usefull tool when a
+server has a full disk, both full of used space or full of used inodes. This
+article covers ncdu and shows the process of finding the culprit when you&#39;re out
+of disk space or inodes.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>ncdu</h3>
 
 <p>On the <a href="https://dev.yorhel.nl/ncdu">homepage</a> ncdu describes itself as:</p>
 
 <blockquote>
-<p>Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find space hogs on a remote server where you don&#39;t have an entire graphical setup available, but it is a useful tool even on regular desktop systems. Ncdu aims to be fast, simple and easy to use, and should be able to run in any minimal POSIX-like environment with ncurses installed.</p>
+<p>Ncdu is a disk usage analyzer with an ncurses interface. It is designed to
+find space hogs on a remote server where you don&#39;t have an entire graphical
+setup available, but it is a useful tool even on regular desktop systems. Ncdu
+aims to be fast, simple and easy to use, and should be able to run in any
+minimal POSIX-like environment with ncurses installed.</p>
 </blockquote>
 
-<p>When the root disk is full, a server will behave strangely. Some daemons still work, others will work for a bit and some refuse to start at all. If you use <code>ext4</code> the server will boot up most of the time since there is a bit of reserved space in the filesystem. </p>
+<p>When the root disk is full, a server will behave strangely. Some daemons still
+work, others will work for a bit and some refuse to start at all. If you use
+<code>ext4</code> the server will boot up most of the time since there is a bit of reserved
+space in the filesystem.</p>
 
 <h3>Space and inodes</h3>
 
-<p>A disk can be full because of too much space being used. You can check that with the <code>df -h</code> command:</p>
+<p>A disk can be full because of too much space being used. You can check that with
+the <code>df -h</code> command:</p>
 
 <pre><code>root@s1:~# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda1        20G   19G     0 100% /
 </code></pre>
 
-<p>A disk can also be full because there are to many files and folders. You&#39;ve ran out of <a href="https://en.wikipedia.org/wiki/Inode">inodes</a>. <code>df -i</code> shows you that:</p>
+<p>A disk can also be full because there are to many files and folders. You&#39;ve ran
+out of <a href="https://en.wikipedia.org/wiki/Inode">inodes</a>. <code>df -i</code> shows you that:</p>
 
 <pre><code>root@s1:~# df -i
 Filesystem      Inodes   IUsed  IFree IUse% Mounted on
 /dev/vda1      1305600 1305600      0  100% /
 </code></pre>
 
-<p>In this case one of my own servers has ran out of inodes. I know where they are, one of the users has no quota and has synced an entire 10 years of Maildir, which resulted in too many small files. If I wouldn&#39;t have known where the storage was being used, ncdu would be my go to tool for finding out.</p>
+<p>In this case one of my own servers has ran out of inodes. I know where they are,
+one of the users has no quota and has synced an entire 10 years of Maildir,
+which resulted in too many small files. If I wouldn&#39;t have known where the
+storage was being used, ncdu would be my go to tool for finding out.</p>
 
-<p>Yes you can use <code>du</code> and <code>df</code>. <code>du</code> takes a long time and it doesn&#39;t tell you where the inodes are used. A shell loop with find for finding inodes has the same problem. You also can&#39;t easily navigate the results. </p>
+<p>Yes you can use <code>du</code> and <code>df</code>. <code>du</code> takes a long time and it doesn&#39;t tell you
+where the inodes are used. A shell loop with find for finding inodes has the
+same problem. You also can&#39;t easily navigate the results.</p>
 
-<p>ncdu gives a graphical overview of the files and folders, sorted by most space used. In the lower right corner there is a counter for the number of files in the current folder. Using that counter, you can navigate around the filesystem and see where the millions of inodes are used. Sorting by inode usage can also be done with the <code>C</code> key. No other tool I know of has that option.</p>
+<p>ncdu gives a graphical overview of the files and folders, sorted by most space
+used. In the lower right corner there is a counter for the number of files in
+the current folder. Using that counter, you can navigate around the filesystem
+and see where the millions of inodes are used. Sorting by inode usage can also
+be done with the <code>C</code> key. No other tool I know of has that option.</p>
 
-<p>ncdu also allows exporting the results. You can then see them on another machine. Usefull if you have a weird ARM nas with terminal display issues. ncdu runs remotely without the TUI, <code>scp</code> over the results file and use the local terminal to find out what&#39;s wrong.</p>
+<p>ncdu also allows exporting the results. You can then see them on another
+machine. Usefull if you have a weird ARM nas with terminal display issues. ncdu
+runs remotely without the TUI, <code>scp</code> over the results file and use the local
+terminal to find out what&#39;s wrong.</p>
 
 <h3>Installing ncdu</h3>
 
-<p>ncdu is available for almost every operating system imaginable and probably in your package manager:</p>
+<p>ncdu is available for almost every operating system imaginable and probably in
+your package manager:</p>
 
 <pre><code>apt-get install ncdu
 yum install ncdu
 </code></pre>
 
-<p>If you have trouble with a full disk or your package manager doesn&#39;t work, the developer even has static binaries on the page:</p>
+<p>If you have trouble with a full disk or your package manager doesn&#39;t work, the
+developer even has static binaries on the page:</p>
 
 <ul>
 <li><a href="https://dev.yorhel.nl/download/ncdu-linux-i486-1.12.tar.gz">i468</a></li>
 <li><a href="https://dev.yorhel.nl/download/ncdu-linux-arm-1.12.tar.gz">arm</a></li>
 </ul>
 
-<p>Sometimes you can remove a few files to make space for this download, where the package manager doesn&#39;t work.</p>
+<p>Sometimes you can remove a few files to make space for this download, where the
+package manager doesn&#39;t work.</p>
 
 <h3>Using ncdu</h3>
 
-<p><img src="https://raymii.org/s/inc/img/ncdu1.png" alt=ncdu></p>
+<p><img src="https://raymii.org/s/inc/img/ncdu1.png" alt="ncdu"></p>
 
-<p>Start up ncdu. If you don&#39;t give any parameters, it will scan the current folder. If you give a filesystem path, it will scan that:</p>
+<p>Start up ncdu. If you don&#39;t give any parameters, it will scan the current
+folder. If you give a filesystem path, it will scan that:</p>
 
 <pre><code>ncdu /
 </code></pre>
 
-<p>Will start a scan of the entire system. When the scan is finished, use the arrow keys and ENTER to navigate around. Files and folders can be deleted right away using <code>d</code>. You can change the display from the bar to percentage or both using the <code>g</code> key. Sorting based on filesize with <code>s</code>, by name with <code>n</code> and by inodes with <code>C</code>. That option is very usefull when your disk has run out of inodes.</p>
+<p>Will start a scan of the entire system. When the scan is finished, use the arrow
+keys and ENTER to navigate around. Files and folders can be deleted right away
+using <code>d</code>. You can change the display from the bar to percentage or both using
+the <code>g</code> key. Sorting based on filesize with <code>s</code>, by name with <code>n</code> and by inodes
+with <code>C</code>. That option is very usefull when your disk has run out of inodes.</p>
 
-<p>ncdu is not real time. If you remove files outside of ncdu you need to run a rescan. </p>
+<p>ncdu is not real time. If you remove files outside of ncdu you need to run a
+rescan.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/disk.html" class="link">disk &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/ncdu.html" class="link">ncdu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

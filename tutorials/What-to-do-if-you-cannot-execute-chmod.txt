@@ -9,31 +9,38 @@ Format      : 	Markdown/HTML
 
 
 
-Sometimes you do strange stuff with your Linux PC.   
-I did yesterday, when I was experimenting with what would happen if I would chmod /usr/bin/chmod to 000. That gave me some problems. Solution from: [Linux Magazine][1]
+Sometimes you do strange stuff with your Linux PC.  
+I did yesterday, when I was experimenting with what would happen if I would
+chmod /usr/bin/chmod to 000. That gave me some problems. Solution from: [Linux
+Magazine][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-If the CHMOD program is not executable anymore, you should start it via the linker.   
+If the CHMOD program is not executable anymore, you should start it via the
+linker.
 
 Execute this command:
 
+    
+    
     /lib/ld-linux.so.2 /bin/chmod 755 /bin/chmod 
     
-This also works for other programs, just as long you know the original path to it... 
 
-Edit: 777 edited to 755,   
-Here is another solution thanks to: [ Rainer Weikusat][2]   
+This also works for other programs, just as long you know the original path to
+it...
 
+Edit: 777 edited to 755,  
+Here is another solution thanks to: [ Rainer Weikusat][3]
+
+    
+    
     perl -e 'chmod(0755, "/bin/chmod")'
+    
 
-
- [1]: http://www.linuxmag.nl
- [2]: http://www.linuxtoday.com/infrastructure/2009052500335OPSWUB
-
+   [1]: http://www.linuxmag.nl
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: http://www.linuxtoday.com/infrastructure/2009052500335OPSWUB
 
 ---
 

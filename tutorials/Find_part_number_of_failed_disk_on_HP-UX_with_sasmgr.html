@@ -69,14 +69,22 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On one of my regular scheduled datacenter visits one of the older HP-UX Itanium machines had an orange light on the front. These systems are not (yet) monitored, but still in use so the disk had to be replaced. Not knowing anything about this system or which parts were used, I managed to find the exact part number and device type so we could order a spare. This small guide uses sasmgr to get the data on HP-UX 11.31.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>On one of my regular scheduled datacenter visits one of the older HP-UX Itanium
+machines had an orange light on the front. These systems are not (yet)
+monitored, but still in use so the disk had to be replaced. Not knowing anything
+about this system or which parts were used, I managed to find the exact part
+number and device type so we could order a spare. This small guide uses sasmgr
+to get the data on HP-UX 11.31.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Hardware Information on HP-UX</h3>
 
-<p>Since I normally don&#39;t manage these systems and have little experience with HP-UX, I first had to find out some information on the system. Using a few regular Unix tools like <code>netstat</code>, <code>uname</code> and a few HP-UX specific tools like <code>model</code>, <code>machinfo</code> I was able to gather basic hardware information of this machine.</p>
+<p>Since I normally don&#39;t manage these systems and have little experience with HP-
+UX, I first had to find out some information on the system. Using a few regular
+Unix tools like <code>netstat</code>, <code>uname</code> and a few HP-UX specific tools like <code>model</code>,
+<code>machinfo</code> I was able to gather basic hardware information of this machine.</p>
 
 <pre><code>$ TERM=vt100 ssh hpux09 -l root
 
@@ -161,15 +169,22 @@ OS info:
     It was created with Ignite-UX revision C.7.7.93.
 </code></pre>
 
-<p>This will go into the hardware documentation, since, sadly, that is very incomplete. </p>
+<p>This will go into the hardware documentation, since, sadly, that is very
+incomplete.</p>
 
 <h3>Disk information</h3>
 
-<p>Now to the good part, for which we logged in to this machine. Find the serial number and order a new (probably refurbished) disk.  The system uses LVM with RAID 1 underneath via a SAS card so when the disk is ordered we can just replace it. If it was just LVM we had to do some configuration</p>
+<p>Now to the good part, for which we logged in to this machine. Find the serial
+number and order a new (probably refurbished) disk. The system uses LVM with
+RAID 1 underneath via a SAS card so when the disk is ordered we can just replace
+it. If it was just LVM we had to do some configuration</p>
 
-<p>This PDF <a href="https://raymii.org/s/inc/downloads/When_Good_Disks_Go_Bad.pdf">When<em>Good</em>Disks<em>Go</em>Bad.pdf</a> is very helpfull in preparing and researching this issue.  When the new disk is here, <a href="http://web.archive.org/web/20180518071714/http://unixpedia.blogspot.nl/2013/11/hpux-sas-physical-disk-replacement_22.html">this page</a> will be helpfull for the replacement.</p>
+<p>This PDF <a href="https://raymii.org/s/inc/downloads/When_Good_Disks_Go_Bad.pdf">When <em>Good</em> Disks <em>Go</em> Bad.pdf</a> is very helpfull in preparing and
+researching this issue. When the new disk is here, <a href="http://web.archive.org/web/20180518071714/http://unixpedia.blogspot.nl/2013/11/hpux-sas-physical-disk-replacement_22.html">this page</a> will be
+helpfull for the replacement.</p>
 
-<p>The first command shows which disk is the failed one plus the raid configuration:</p>
+<p>The first command shows which disk is the failed one plus the raid
+configuration:</p>
 
 <pre><code>sasmgr get_info -D /dev/sasd0 -q raid
 </code></pre>
@@ -215,7 +230,8 @@ SAS Address         Enc   Bay   Size(MB)      Type            State
 0x5000c5000b9f5965   1     7    70007         PRIMARY         ONLINE         
 </code></pre>
 
-<p>The second command shows the location (controller-wise) and the part number of the disk:</p>
+<p>The second command shows the location (controller-wise) and the part number of
+the disk:</p>
 
 <pre><code>sasmgr get_info -D /dev/sasd0 -q lun=all -q lun_locate 
 </code></pre>
@@ -244,7 +260,7 @@ Physical disks in volume are :
         1     2     OFF           HP            DG146ABAB4         HPD5
 </code></pre>
 
-<p>With this part number we can order a new disk. </p>
+<p>With this part number we can order a new disk.</p>
 
 <p><code>dmesg</code> was also spitting out warning about this disk issue:</p>
 

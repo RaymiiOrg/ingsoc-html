@@ -69,50 +69,51 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
 <p>OpenVMS 7.3 is the latest version of OpenVMS for the VAX architecture. Since the
-<a href="http://decus.org">DECUS</a> system uses OpenVMS 8.4 there were some version
-differences. I could not set my &#39;BACKSPACE=DELETE&#39; (<a href="https://raymii.org/s/blog/Backspace_and_delete_key_behaviour_on_OpenVMS.html">see my article
-here</a>)
-on 7.3. The hobbyist license also covers the Alpha and Itanium versions of
-OpenVMS so I want to try the Alpha version, which is consequently also 8.4, the
-latest release. This article describes my attempt to compile and install the
-es40 open source Alpha emulator on Ubuntu 16.04 and subsequently the
-installation of OpenVMS Alpha. The emulator is not under active development
-since 2008, and the installation of OpenVMS fails. OpenVMS does boot however,
-very very slowly.</p>
+<a href="http://decus.org">DECUS</a> system uses OpenVMS 8.4 there were some version differences. I could
+not set my &#39;BACKSPACE=DELETE&#39; (<a href="https://raymii.org/s/blog/Backspace_and_delete_key_behaviour_on_OpenVMS.html">see my article here</a>) on 7.3. The hobbyist
+license also covers the Alpha and Itanium versions of OpenVMS so I want to try
+the Alpha version, which is consequently also 8.4, the latest release. This
+article describes my attempt to compile and install the es40 open source Alpha
+emulator on Ubuntu 16.04 and subsequently the installation of OpenVMS Alpha. The
+emulator is not under active development since 2008, and the installation of
+OpenVMS fails. OpenVMS does boot however, very very slowly.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>AlphaServer and ES40</h3>
 
 <p>Wikipedia defines the Alphaserver, of which ES40 is a type:</p>
 
 <blockquote>
-<p>AlphaServer was the name given to a series of server computers, produced from 1994 onwards by Digital Equipment Corporation, and later by Compaq and HP. As the name suggests, the AlphaServers were based on the DEC Alpha 64-bit microprocessor. As part of the roadmap to phase out Alpha-, MIPS- and PA-RISC-based systems in favor of Itanium-based systems at HP, the most recent AlphaServer systems reached their end of general availability on 27 April 2007. The availability of upgrades and options was discontinued on 25 April 2008, approximately one year after the systems were discontinued. </p>
+<p>AlphaServer was the name given to a series of server computers, produced from
+1994 onwards by Digital Equipment Corporation, and later by Compaq and HP. As
+the name suggests, the AlphaServers were based on the DEC Alpha 64-bit
+microprocessor. As part of the roadmap to phase out Alpha-, MIPS- and PA-RISC-
+based systems in favor of Itanium-based systems at HP, the most recent
+AlphaServer systems reached their end of general availability on 27 April 2007.
+The availability of upgrades and options was discontinued on 25 April 2008,
+approximately one year after the systems were discontinued.</p>
 </blockquote>
 
-<p>The <a href="http://es40.org">es40</a> project is the only open source Alpha emulator for
-Linux but sadly the development halted around 2009. The author, Camiel
-Vanderhoeven, is now working for VMS Software inc, the company that now develops
-OpenVMS and the x86 port. He is also doing <a href="https://www.youtube.com/user/ibm360m65/videos">talks and
-video&#39;s</a> on OpenVMS:</p>
-
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/FZN6LjuEgdw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<p>The <a href="http://es40.org">es40</a> project is the only open source Alpha emulator for Linux but sadly
+the development halted around 2009. The author, Camiel Vanderhoeven, is now
+working for VMS Software inc, the company that now develops OpenVMS and the x86
+port. He is also doing <a href="https://www.youtube.com/user/ibm360m65/videos">talks and video&#39;s</a> on OpenVMS:</p>
 
 <p>The ES40 Emulator Project aims to create portable emulator for the HP (DEC,
-Compaq) AlphaServer ES40. </p>
+Compaq) AlphaServer ES40.</p>
 
-<p>There are other Alpha emulators, like FreeAXP, but those are Windows only. </p>
+<p>There are other Alpha emulators, like FreeAXP, but those are Windows only.</p>
 
-<p>Via <a href="http://dipc.ehu.es/cc/computing_resources/erebo.html">this page</a> I found a
-picture of the actual hardware ES40:</p>
+<p>Via <a href="http://dipc.ehu.es/cc/computing_resources/erebo.html">this page</a> I found a picture of the actual hardware ES40:</p>
 
-<p><img src="https://raymii.org/s/inc/img/es-40.jpg"></p>
+<p><img src="https://raymii.org/s/inc/img/es-40.jpg" alt=""></p>
 
 <p><a href="http://web.archive.org/web/20180424094256/http://vaxhaven.com/AlphaServer_ES40">Here</a> are more pictures and manuals of the ES40 hardware.</p>
 
@@ -256,10 +257,9 @@ CXXFLAGS = -g -O2 -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -DHAVE_SDL -I/
 <pre><code>X11/Intrinsic.h
 </code></pre>
 
-<p>According to the <a href="https://packages.ubuntu.com/search?suite=lucid&amp;arch=any&amp;mode=exactfilename&amp;searchon=contents&amp;keywords=X11%2FIntrinsic.h">Ubuntu package
-site</a>
-that file is in the <code>libxt-dev</code> package. I missed that when installing the
-dependencies. After installing it, the make ran without breaking errors:</p>
+<p>According to the <a href="https://packages.ubuntu.com/search?suite=lucid&amp;arch=any&amp;mode=exactfilename&amp;searchon=contents&amp;keywords=X11%2FIntrinsic.h">Ubuntu package site</a> that file is in the <code>libxt-dev</code>
+package. I missed that when installing the dependencies. After installing it,
+the make ran without breaking errors:</p>
 
 <pre><code>make
 </code></pre>
@@ -341,12 +341,12 @@ Segmentation fault (core dumped)
 <p>My favorite program output, I love me a good segfault. Lets debug with <code>strace</code>.</p>
 
 <ul>
-<li><code>-f</code>:  Follow threads and child processes that are created</li>
-<li><code>-T</code>:  Print time spent in system call</li>
-<li><p><code>-e trace=open,read,write,close</code>: Trace only specific system calls</p>
-
-<p>strace -Tfe trace=open,read,write,close ./src/es40</p></li>
+<li><code>-f</code>: Follow threads and child processes that are created</li>
+<li><code>-T</code>: Print time spent in system call</li>
+<li><code>-e trace=open,read,write,close</code>: Trace only specific system calls</li>
 </ul>
+
+<p>strace -Tfe trace=open,read,write,close ./src/es40</p>
 
 <p>Relevant output:</p>
 
@@ -369,7 +369,8 @@ the software from your system and overall general house keeping. After
 <pre><code>cp src/es40.cfg /etc/es40.cfg
 </code></pre>
 
-<p>Since there is no documentation on the configuration format, I&#39;ll run it and see where the ship sails. </p>
+<p>Since there is no documentation on the configuration format, I&#39;ll run it and see
+where the ship sails.</p>
 
 <p>Let&#39;s run it again.</p>
 
@@ -451,7 +452,8 @@ Emulator Failure: Illegal state: More than one SCSI device at the same ID: SCSIB
 Segmentation fault (core dumped)
 </code></pre>
 
-<p>There is an IDE controller defined in the config and an SCSI controller. Comment out the SCSI controller:</p>
+<p>There is an IDE controller defined in the config and an SCSI controller. Comment
+out the SCSI controller:</p>
 
 <pre><code>  // Symbios SCSI controller
   //
@@ -501,7 +503,8 @@ es40[0x43ade9]
 es40[0x45597f]
 </code></pre>
 
-<p>In this case the VGA bios. Later on I ended up turning this off, but for now lets download it:</p>
+<p>In this case the VGA bios. Later on I ended up turning this off, but for now
+lets download it:</p>
 
 <pre><code>wget http://savannah.gnu.org/download/vgabios/vgabios-0.6a.debug.bin -O &quot;rom\vgabios-0.6a.debug.bin&quot;
 </code></pre>
@@ -526,7 +529,8 @@ es40[0x45597f]
 //  }
 </code></pre>
 
-<p>As you might have guessed I had to figure out all these issues by slowly tweaking the configuration until it booted up.</p>
+<p>As you might have guessed I had to figure out all these issues by slowly
+tweaking the configuration until it booted up.</p>
 
 <h3>Configuration that boots without segfaults</h3>
 
@@ -608,22 +612,18 @@ as AlphaBIOS.)</p>
 <p>When the system is booted, the SRM console is displayed as a blue screen with a
 prompt. The prompt looks like <code>P00&gt;&gt;&gt;</code> (the <code>00</code> indicates the primary
 processor). On multi-processor machines, the prompt could be <code>P01&gt;&gt;&gt;</code>, <code>P02&gt;&gt;&gt;</code>,
-etc.  It views your NVRAM and devices as a pseudo-filesystem. You can see this
-if you use the <code>ls</code> command. Also, it contains a fairly large set of diagnostic,
+etc. It views your NVRAM and devices as a pseudo-filesystem. You can see this if
+you use the <code>ls</code> command. Also, it contains a fairly large set of diagnostic,
 setup, and debugging utilities As well, SRM has environment variables, a number
 of which are pre-defined and correspond to locations in NVRAM. You can view the
 entire list of environment variables and their values with the <code>show</code> command
 (there are quite a few of them, so you will probably want to pipe its output to
 <code>more</code>). You can also show variables matching a &quot;glob&quot; pattern, for example,
 <code>show boot*</code> will show all the variables starting in &quot;boot&quot;. Read more about the
-<a href="https://web.archive.org/web/20140106183813/http://www.alphalinux.org/faq/SRM-HOWTO/srm-whatis.html">SRM
-here</a>
-or <a href="https://en.wikipedia.org/wiki/System_Reference_Manual">on wikipedia</a>.</p>
+<a href="https://web.archive.org/web/20140106183813/http://www.alphalinux.org/faq/SRM-HOWTO/srm-whatis.html">SRM here</a> or <a href="https://en.wikipedia.org/wiki/System_Reference_Manual">on wikipedia</a>.</p>
 
-<p>Download rom image <a href="https://raymii.org/s/inc/downloads/es40-srmon/cl67srmrom.exe">from here:
-cl67srmrom.exe</a>.
-It can be found on HP&#39;s public FTP servers as well if needed, see the link
-above.</p>
+<p>Download rom image <a href="https://raymii.org/s/inc/downloads/es40-srmon/cl67srmrom.exe">from here: cl67srmrom.exe</a>. It can be found on HP&#39;s
+public FTP servers as well if needed, see the link above.</p>
 
 <p>Make sure the filename in the configuration matches:</p>
 
@@ -683,7 +683,8 @@ boot up and connect to telnet to access the emulator.</p>
   Start threads: cpu0 cpu1 ali kbd ide0 ide1 cirrus
 </code></pre>
 
-<p>It will wait with booting until you connect to telnet, then it will boot through:</p>
+<p>It will wait with booting until you connect to telnet, then it will boot
+through:</p>
 
 <pre><code>  serial0(serial): Waiting for connection on port 21264.
   serial0(serial): $Id: Serial.cpp,v 1.51 2008/06/03 09:07:56 iamcamiel Exp $
@@ -721,7 +722,8 @@ Escape character is &#39;^]&#39;.
 <p>Quoting from the <a href="http://es40.org">es40</a> site:</p>
 
 <blockquote>
-<p>The port 21264 was choosen on purpose. Actually this was the first EV6 Alpha processor CPU model number. </p>
+<p>The port 21264 was choosen on purpose. Actually this was the first EV6 Alpha
+processor CPU model number.</p>
 </blockquote>
 
 <p>There seems to be a GUI option, but that window was very tall and small and was
@@ -779,15 +781,18 @@ exception context saved starting at 001ACD10
 </code></pre>
 
 <p>And it hang. My happiness was short. Searching around the internet lead me to
-<a href="https://web.archive.org/web/20180424175732/https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c03082736">the following support
-information</a>.
-It states:</p>
+<a href="https://web.archive.org/web/20180424175732/https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c03082736">the following support information</a>. It states:</p>
 
 <blockquote>
-<p>This is not an error caused by a hardware failure. The SRM console decreases or increases its dynamic memory allocation (called heap space) to accomodate the hardware configuration, to include the PCI devices installed. The system will add 64kb of heap space for each re-init until it has adequate space. A few re-inits are possible until it has enough.</p>
+<p>This is not an error caused by a hardware failure. The SRM console decreases
+or increases its dynamic memory allocation (called heap space) to accomodate the
+hardware configuration, to include the PCI devices installed. The system will
+add 64kb of heap space for each re-init until it has adequate space. A few re-
+inits are possible until it has enough.</p>
 </blockquote>
 
-<p>The windows way of solving problems. Reboot until it works. I tried it a few times, and suprisingly, it worked.</p>
+<p>The windows way of solving problems. Reboot until it works. I tried it a few
+times, and suprisingly, it worked.</p>
 
 <pre><code>     OpenVMS PALcode V  1  .  9  8  -  1  0  4    , Tru64 UNIX PALcode V 1  .  9  2  -  1  0  5
 
@@ -894,7 +899,7 @@ out the second CPU from the config, so that we emulate a single CPU machine:</p>
 
 <h3>Installing OpenVMS 8.4</h3>
 
-<p>Finally, after a few hours of compiling, tinkering and tweaking, it boots up! </p>
+<p>Finally, after a few hours of compiling, tinkering and tweaking, it boots up!</p>
 
 <pre><code>       OpenVMS (TM) Alpha Operating System, Version V8.4
       Copyright 1976-2010 Hewlett-Packard Development Company, L.P.
@@ -992,7 +997,7 @@ Do you want to initialize with ODS-2 or ODS-5? (2/5/?) 5
 </code></pre>
 
 <p>ODS, meaning <code>on disk structure</code>, is part of the <code>Files-11</code> filesystem. Compare
-it with <code>ext2/3/4</code>. </p>
+it with <code>ext2/3/4</code>.</p>
 
 <p>&quot;Files-11&quot; is the general term for five separate file systems, known as on-disk
 &quot;structure (ODS) levels 1 through 5.</p>
@@ -1038,7 +1043,8 @@ Is this OK? (Yes/No) yes
     installation may succeed, but it may also introduce subtle problems.
 </code></pre>
 
-<p>A failure again? Remember, I&#39;m several hours into this project without success. Let&#39;s try again then.</p>
+<p>A failure again? Remember, I&#39;m several hours into this project without success.
+Let&#39;s try again then.</p>
 
 <pre><code>Enter device name for target disk: [DQA0] (? for choices) ?
 
@@ -1094,7 +1100,8 @@ Is this OK? (Yes/No) yes
     Creating page and swap files....
 </code></pre>
 
-<p>That&#39;s weird, none of my choices were different but the result is that it does continue with the installation.</p>
+<p>That&#39;s weird, none of my choices were different but the result is that it does
+continue with the installation.</p>
 
 <pre><code>    You must enter a password for the SYSTEM account.
 
@@ -1157,7 +1164,8 @@ Enter DECnet (Phase IV) Address: [1.1]
           (DECnet area number * 1024) + DECnet node number
 </code></pre>
 
-<p>This is the networking stuff for DECnet. Since this is a test setup we can use the defaults.</p>
+<p>This is the networking stuff for DECnet. Since this is a test setup we can use
+the defaults.</p>
 
 <pre><code>  Configuring the Local Time Zone
 
@@ -1206,7 +1214,7 @@ You selected ETC / GMTPLUS1 as your time zone.
 Is this correct? (Yes/No) [YES]: yes
 </code></pre>
 
-<p>Time zone here in The Netherlands is GMT+1. </p>
+<p>Time zone here in The Netherlands is GMT+1.</p>
 
 <pre><code>    Configuring the Time Differential Factor (TDF)
 
@@ -1328,12 +1336,12 @@ FDC5210, PS=0000001B
 Press Return to continue...
 </code></pre>
 
-<p>Reading through <a href="https://web.archive.org/web/20180424184218/http://es40.org/dox/guest_os.html">more dev docs from the
-emulator</a>,
-I found this:</p>
+<p>Reading through <a href="https://web.archive.org/web/20180424184218/http://es40.org/dox/guest_os.html">more dev docs from the emulator</a>, I found this:</p>
 
 <blockquote>
-<p>There is a permissions violation during install. Do not abort it, and the install will work anyway. (note Camiel: differing results of installation reported. A lot seems to depend on timing).</p>
+<p>There is a permissions violation during install. Do not abort it, and the
+install will work anyway. (note Camiel: differing results of installation
+reported. A lot seems to depend on timing).</p>
 </blockquote>
 
 <p>I tried a few more times, playing with the config file (different CPU speed,
@@ -1364,10 +1372,9 @@ es40[0x405c09]
 </code></pre>
 
 <p>Since I already spent a few hours tinkering without result, <a href="https://web.archive.org/web/20180424185148/http://www.openvmshobbyist.com/forum/viewthread.php?forum_id=163&amp;thread_id=1616&amp;rowstart=20">the only post
-here</a>
-wasn&#39;t very usefull since my disk is only 600 MB, and I didn&#39;t find any other
-information, I decided to stop here and try it in another emulator, probably
-FreeAXP for Windows.</p>
+here</a> wasn&#39;t very usefull since my disk is only 600 MB, and I didn&#39;t find
+any other information, I decided to stop here and try it in another emulator,
+probably FreeAXP for Windows.</p>
 
 <p>Let&#39;s hope the x86 port is finished soon so it can run under KVM and virtualbox.</p>
 </div><hr>Tags: <a href="../tags/alpha.html" class="link">alpha &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/dec.html" class="link">dec &nbsp;</a><a href="../tags/decus.html" class="link">decus &nbsp;</a><a href="../tags/es40.html" class="link">es40 &nbsp;</a><a href="../tags/itanium.html" class="link">itanium &nbsp;</a><a href="../tags/openvms.html" class="link">openvms &nbsp;</a><a href="../tags/pdp.html" class="link">pdp &nbsp;</a><a href="../tags/simh.html" class="link">simh &nbsp;</a><a href="../tags/vax.html" class="link">vax &nbsp;</a><a href="../tags/vms.html" class="link">vms &nbsp;</a><div class="footer">

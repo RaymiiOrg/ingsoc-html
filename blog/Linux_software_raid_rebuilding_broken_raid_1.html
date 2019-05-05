@@ -72,17 +72,18 @@
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Last week Nagios alerted me about a broken disk in one of my clients testing
 servers. There is a best effort SLA on the thing, and there were spare drives of
 the same type and size in the datacenter. Lucky me. This particular data center
-is on biking distance, so I enjoyed a sunny ride there. </p>
+is on biking distance, so I enjoyed a sunny ride there.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Simply put, I needed to replace the disk and rebuild the raid 1 array. This
 server is a simple Ubuntu 12.04 LTS server with two disks running in raid 1, no
 spare. Client has a tight budget, and with a best effort SLA not in production,
 fine with me. Consultant tip, make sure you have those things signed.</p>
 
-<p>The <code>_</code> in the <code>cat /proc/mdstat</code> tells me the second disk (<code>/dev/sdb</code>) has failed:</p>
+<p>The <code>_</code> in the <code>cat /proc/mdstat</code> tells me the second disk (<code>/dev/sdb</code>) has
+failed:</p>
 
 <pre><code>Personalities : [raid1] [raid6] [raid5] [raid4]
 md0 : active raid1 sda1[0] sdb1[1]
@@ -117,10 +118,10 @@ using the following command:</p>
 <p>Replacing the disk was an issue on itself, it is a <a href="http://www.supermicro.com/products/chassis/1U/512/SC512L-260.cfm">Supermicro 512L-260B</a>
 chassis where the disks are not in a drive bay, rather they are screwed in from
 the bottom. Therefore the whole server needs to be removed from the rack (no
-rails...) when replacing the disk. </p>
+rails...) when replacing the disk.</p>
 
 <p>Normally I would replace them while the server is on, but this server has no hot
-swap disks so that would be kind of an issue in a full rack. </p>
+swap disks so that would be kind of an issue in a full rack.</p>
 
 <p>After that, boot the server from the first disk (via the BIOS/UEFI). Make sure
 you boot to recovery mode. Select the root shell and mount the disk read/write:</p>

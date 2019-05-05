@@ -9,60 +9,69 @@ Format      : 	Markdown/HTML
 
 
 
-tping is a bash alias I once got from an old co-worker. It's ping, but with a timestamp. Instead of looking at the increased icmp_seq number you now have a timestamp. Here's how it looks like:
+tping is a bash alias I once got from an old co-worker. It's ping, but with a
+timestamp. Instead of looking at the increased icmp_seq number you now have a
+timestamp. Here's how it looks like:
 
+    
+    
+    $ tping 192.0.2.10
+    09:31:55: PING 192.0.2.10 (192.0.2.10) 56(84) bytes of data.
+    09:31:55: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=30 ttl=63 time=0.399 ms
+    09:31:56: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=31 ttl=63 time=0.530 ms
+    09:31:57: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=32 ttl=63 time=0.412 ms
+    09:31:58: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=33 ttl=63 time=0.469 ms
+    09:31:59: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=34 ttl=63 time=0.383 ms
+    09:32:00: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=35 ttl=63 time=0.402 ms
+    09:32:01: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=36 ttl=63 time=0.483 ms
+    09:32:02: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=37 ttl=63 time=0.409 ms
+    09:32:03: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=38 ttl=63 time=0.346 ms
+    
+    
+    09:36:20: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=289 ttl=63 time=1.51 ms
+    09:36:21: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=290 ttl=63 time=0.474 ms
+    09:36:22: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=291 ttl=63 time=0.698 ms
+    09:36:23: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=292 ttl=63 time=0.483 ms
+    09:36:24: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=293 ttl=63 time=0.482 ms
+    09:36:25: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=294 ttl=63 time=0.619 ms
+    09:36:26: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=295 ttl=63 time=0.498 ms
+    09:36:27: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=296 ttl=63 time=0.491 ms
+    
 
-	$ tping 192.0.2.10
-	09:31:55: PING 192.0.2.10 (192.0.2.10) 56(84) bytes of data.
-	09:31:55: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=30 ttl=63 time=0.399 ms
-	09:31:56: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=31 ttl=63 time=0.530 ms
-	09:31:57: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=32 ttl=63 time=0.412 ms
-	09:31:58: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=33 ttl=63 time=0.469 ms
-	09:31:59: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=34 ttl=63 time=0.383 ms
-	09:32:00: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=35 ttl=63 time=0.402 ms
-	09:32:01: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=36 ttl=63 time=0.483 ms
-	09:32:02: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=37 ttl=63 time=0.409 ms
-	09:32:03: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=38 ttl=63 time=0.346 ms
+The host went down on 09:32 and was back up on 09:36. This was a scheduled
+reboot.
 
-
-	09:36:20: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=289 ttl=63 time=1.51 ms
-	09:36:21: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=290 ttl=63 time=0.474 ms
-	09:36:22: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=291 ttl=63 time=0.698 ms
-	09:36:23: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=292 ttl=63 time=0.483 ms
-	09:36:24: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=293 ttl=63 time=0.482 ms
-	09:36:25: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=294 ttl=63 time=0.619 ms
-	09:36:26: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=295 ttl=63 time=0.498 ms
-	09:36:27: 64 bytes from 192.0.2.10 (192.0.2.10): icmp_seq=296 ttl=63 time=0.491 ms
-
-
-The host went down on 09:32 and was back up on 09:36. This was a scheduled reboot.
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### .bashrc function
 
 The shell code for in your `.bashrc` file:
 
-	tping() {
-	    ping $@ | while read pong; do 
-	        echo "$(date +"%T"): $pong"; 
-	    done
-	}
-	alias tping=tping
+    
+    
+    tping() {
+        ping $@ | while read pong; do 
+            echo "$(date +"%T"): $pong"; 
+        done
+    }
+    alias tping=tping
+    
 
 Start a new shell our `source .bashrc` after you added this function.
 
-
 ### Prettyping
 
-Another tool to get more visual information from ping is `prettyping`. It's [open source on github](https://github.com/denilsonsa/prettyping) and looks like this:
+Another tool to get more visual information from ping is `prettyping`. It's
+[open source on github][2] and looks like this:
 
-<img src="https://raymii.org/s/inc/img/prettyping.png">
+![][3]
 
 The red exclamation marks in the image represent a reboot of that server.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://github.com/denilsonsa/prettyping
+   [3]: https://raymii.org/s/inc/img/prettyping.png
 
 ---
 

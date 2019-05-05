@@ -9,30 +9,41 @@ Format      : 	Markdown/HTML
 
 
 
-When running dnsmasq under OpenVZ I sometimes get an error when restarting: set capabilities failed. This is because dnsmasq starts as root, then does privileged stuff and then drops to the configured run user. In OpenVZ these permissions are not passed to the VPS, sadly. These three commands fix the problem.
+When running dnsmasq under OpenVZ I sometimes get an error when restarting: set
+capabilities failed. This is because dnsmasq starts as root, then does
+privileged stuff and then drops to the configured run user. In OpenVZ these
+permissions are not passed to the VPS, sadly. These three commands fix the
+problem.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Replace 195 with your container ID in the steps below.
 
 Stop the container:
+
+    
     
     vzctl stop 195
+    
 
 Give it extra permissions:
 
+    
+    
     vzctl set 195 --capability setuid:on --save
     vzctl set 195 --capability net_admin:on --save
     vzctl set 195 --capability net_raw:on --save
+    
 
 Then start it again:
 
+    
+    
     vzctl start 195
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

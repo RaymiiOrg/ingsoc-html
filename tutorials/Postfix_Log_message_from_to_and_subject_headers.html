@@ -69,13 +69,13 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a little trick for Postfix, it lets you log the <code>subject</code>, <code>from</code> and <code>to</code>
-of all the emails postfix sends (or which pass through it if you run it as a
-relay). It comes in handy when you need to debug an email issue and need to
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This is a little trick for Postfix, it lets you log the <code>subject</code>, <code>from</code> and
+<code>to</code> of all the emails postfix sends (or which pass through it if you run it as
+a relay). It comes in handy when you need to debug an email issue and need to
 confirm your mailserver has sent the message.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>First create the file <code>/etc/postfix/header_checks</code> and insert this into it:</p>
 
@@ -87,7 +87,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 /^From:/         WARN
 </code></pre>
 
-<p>Now, in your postfix <code>/etc/postfix/main.cf</code> add the following to the end of the file:</p>
+<p>Now, in your postfix <code>/etc/postfix/main.cf</code> add the following to the end of the
+file:</p>
 
 <pre><code>header_checks = regexp:/etc/postfix/header_checks
 </code></pre>
@@ -97,7 +98,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>service postfix restart
 </code></pre>
 
-<p>You will hopefully now get log items like below, and if not you have a problem with your mailserver:</p>
+<p>You will hopefully now get log items like below, and if not you have a problem
+with your mailserver:</p>
 
 <pre><code>Dec  4 08:23:05 localhost postfix/cleanup[2278]: 90CA714: warning: header
 Subject: This is a testmail which gets logged from localhost[127.0.0.1];

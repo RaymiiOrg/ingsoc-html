@@ -69,18 +69,29 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/openstack.jpg" alt="openStack Logo"></p>
 
-<p>This is a guide on backing up your data to an Openstack Swift (Objectstore) instance using Duplicity. It provides encrypted backups using gpg so that you can safely use any public cloud storage to store them. This tutorial is for Ubuntu and CentOS and includes initial setup plus a script to automate it all.</p>
+<p>This is a guide on backing up your data to an Openstack Swift (Objectstore)
+instance using Duplicity. It provides encrypted backups using gpg so that you
+can safely use any public cloud storage to store them. This tutorial is for
+Ubuntu and CentOS and includes initial setup plus a script to automate it all.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>We will be using the Dutch provider <a href="http://www.cloudvps.com">CloudVPS</a>, which is not bound to the Patriot Act, so your data is more safe than it is with a provider that is vulnerable to the Patriot Act. Although your data is already encrypted with GPG, you can never be to sure. <a href="http://www.cloudvps.com">CloudVPS</a> provides 10GB free ObjectStore, if you have VPS with them, the data is stored on at least 3 machines in 3 locations and they have a boatload of certifications.</p>
+<p>We will be using the Dutch provider <a href="http://www.cloudvps.com">CloudVPS</a>, which is not bound to the
+Patriot Act, so your data is more safe than it is with a provider that is
+vulnerable to the Patriot Act. Although your data is already encrypted with GPG,
+you can never be to sure. <a href="http://www.cloudvps.com">CloudVPS</a> provides 10GB free ObjectStore, if you
+have VPS with them, the data is stored on at least 3 machines in 3 locations and
+they have a boatload of certifications.</p>
 
-<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com">CloudVPS</a>, please mention my name or this article. I&#39;ll get a little referal bonus, which will be used to keep this awesome website running.</p>
+<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com">CloudVPS</a>, please mention my name or
+this article. I&#39;ll get a little referal bonus, which will be used to keep this
+awesome website running.</p>
 
-<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
+<p>Openstack is one of those cloudy cloud projects. Warning, keep your buzzword
+bingo cards ready for the <a href="https://en.wikipedia.org/wiki/OpenStack">Wikipedia</a> definition:</p>
 
 <pre><code>OpenStack is a free and open-source software cloud computing platform. It is primarily deployed as an infrastructure as a service (IaaS) solution. The technology consists of a series of interrelated projects that control pools of processing, storage, and networking resources throughout a data center, able to be managed or provisioned through a web-based dashboard, command-line tools, or a RESTful API. It is released under the terms of the Apache License.
 </code></pre>
@@ -95,11 +106,15 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Be open source. There is no vendor lock in, you can switch between any provider providing OpenStack.</li>
 </ol>
 
-<p>My summary is, lets say, sparse. For the sake of this tutorial, we will be using the Swift service (Object Store) to store backups we make with Duplicity.</p>
+<p>My summary is, lets say, sparse. For the sake of this tutorial, we will be using
+the Swift service (Object Store) to store backups we make with Duplicity.</p>
 
-<p>Duplicity is another wonderfull open source project which lets you easily make (encrypted) (remote) full or incremental backups. I&#39;ve been using it for many years now, it is awesome and very easy to manage.</p>
+<p>Duplicity is another wonderfull open source project which lets you easily make
+(encrypted) (remote) full or incremental backups. I&#39;ve been using it for many
+years now, it is awesome and very easy to manage.</p>
 
-<p>As we all know, your data is not backed up until it is at least backed up in three places:</p>
+<p>As we all know, your data is not backed up until it is at least backed up in
+three places:</p>
 
 <ol>
 <li>Locally (homeserver)</li>
@@ -107,31 +122,49 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Offline (DVD / Tape in a box at your bank)</li>
 </ol>
 
-<p>Why would we want to use the Openstack Swift service to send our backups to instead of your own ssh server? Duplicity supports that as well, right?</p>
+<p>Why would we want to use the Openstack Swift service to send our backups to
+instead of your own ssh server? Duplicity supports that as well, right?</p>
 
-<p>To be honest, you can use both to your preference. Objectstore provides a nice scalable way to acces data. Because it only needs to provide access to data, it (can be)/(mostly is) faster than one VPS or off site Rasberry Pi. It (depending on the provider) can also be stored on more than one place, without to much user hassle. </p>
+<p>To be honest, you can use both to your preference. Objectstore provides a nice
+scalable way to acces data. Because it only needs to provide access to data, it
+(can be)/(mostly is) faster than one VPS or off site Rasberry Pi. It (depending
+on the provider) can also be stored on more than one place, without to much user
+hassle.</p>
 
-<p>An example can be a company providing managed services with their own (Openstack based) &quot;private cloud&quot;. They also provide backups, of course, and most of the time they use Duplicity to make them. It is easier to scale up ObjectStore then it is to scale up an SSH server. Both can be done of course, take a SAN or NFS backend and it also scales. </p>
+<p>An example can be a company providing managed services with their own (Openstack
+based) &quot;private cloud&quot;. They also provide backups, of course, and most of the
+time they use Duplicity to make them. It is easier to scale up ObjectStore then
+it is to scale up an SSH server. Both can be done of course, take a SAN or NFS
+backend and it also scales.</p>
 
-<p>Therefore, the choice is up to you. Both can complement each other, sometimes one is better and sometimes the other. Speaking like a lawyer, it depends. </p>
+<p>Therefore, the choice is up to you. Both can complement each other, sometimes
+one is better and sometimes the other. Speaking like a lawyer, it depends.</p>
 
 <h3>CloudVPS</h3>
 
-<p><a href="http://www.cloudvps.com">CloudVPS</a> is the only Dutch company providing Openstack and Objectstore as far as I know. It is not bound by the patriot act, because it has no American locations and it has no American data centers. As far as I know, they only use Dutch Data Centers.</p>
+<p><a href="http://www.cloudvps.com">CloudVPS</a> is the only Dutch company providing Openstack and Objectstore as
+far as I know. It is not bound by the patriot act, because it has no American
+locations and it has no American data centers. As far as I know, they only use
+Dutch Data Centers.</p>
 
 <p><a href="http://www.cloudvps.com">CloudVPS</a> has the following points listed on <a href="http://www.cloudvps.com/openstack/object-store/">their website</a>:</p>
 
 <ul>
-<li>Durable:  Your data is stored 3 times on 3 different machines in at least two different datacenters. This means you do not have to worry about data loss. You are getting the security of a datacenter redundant file cluster at a fraction of the cost.</li>
+<li>Durable: Your data is stored 3 times on 3 different machines in at least two different datacenters. This means you do not have to worry about data loss. You are getting the security of a datacenter redundant file cluster at a fraction of the cost.</li>
 <li>Privacy concious: We are not subject to the Patriot Act like Amazon and others. This means our cloud storage can be used to store privacy sensitive data.</li>
 <li>Certification: The <a href="http://www.cloudvps.com">CloudVPS</a> Object Store is covered by our strict certification. This platform is covered by the ISO 27002, NEN 7510 and the CloudControls that we developed together with KPMG.</li>
 </ul>
 
-<p>The latter can be very important for companies. I like the first and the second most, because it takes away hassle for me to set up multiple backup locations.</p>
+<p>The latter can be very important for companies. I like the first and the second
+most, because it takes away hassle for me to set up multiple backup locations.</p>
 
-<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com">CloudVPS</a>, please mention my name or this article. I&#39;ll get a little referal bonus, which will be used to keep this awesome website running.</p>
+<p>If you order a VPS or Objectstore at <a href="http://www.cloudvps.com">CloudVPS</a>, please mention my name or
+this article. I&#39;ll get a little referal bonus, which will be used to keep this
+awesome website running.</p>
 
-<p><strong>Note that this article is not sponsored nor endorsed by <a href="http://www.cloudvps.com">CloudVPS</a>, nor am I speaking for or as <a href="http://www.cloudvps.com">CloudVPS</a>. They just happen to be the best Dutch Openstack provider.</strong></p>
+<p><strong>Note that this article is not sponsored nor endorsed by<a href="http://www.cloudvps.com">CloudVPS</a>, nor am I
+speaking for or as <a href="http://www.cloudvps.com">CloudVPS</a>. They just happen to be the best Dutch
+Openstack provider.</strong></p>
 
 <h3>Requirements</h3>
 
@@ -143,18 +176,24 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Openstack Swift/Objectstore access</li>
 </ul>
 
-<p>You will need Duplicity version v0.6.22 or higher. <a href="http://duplicity.nongnu.org/CHANGELOG">v0.6.22</a> added support for Openstack Swift as a backend.</p>
+<p>You will need Duplicity version v0.6.22 or higher. <a href="http://duplicity.nongnu.org/CHANGELOG">v0.6.22</a> added support
+for Openstack Swift as a backend.</p>
 
-<p>This tutorial was written for and tested on Ubuntu 12.04, 14.04 and CentOS 6. 
-It also works on any other distro where the above requirements are met.</p>
+<p>This tutorial was written for and tested on Ubuntu 12.04, 14.04 and CentOS 6. It
+also works on any other distro where the above requirements are met.</p>
 
-<p>Note that there are more Openstack providers, for example <a href="http://www.rackspace.com/cloud/files/">Rackspace</a>. Do note, that they fall under the Patriot Act and thus the NSA probably can access your data.</p>
+<p>Note that there are more Openstack providers, for example <a href="http://www.rackspace.com/cloud/files/">Rackspace</a>. Do
+note, that they fall under the Patriot Act and thus the NSA probably can access
+your data.</p>
 
-<p>I will be using an example data set containing photo&#39;s in this tutorial. Since the cost can sometimes be unclear with these Cloud providers, it is best to start with a small data set.</p>
+<p>I will be using an example data set containing photo&#39;s in this tutorial. Since
+the cost can sometimes be unclear with these Cloud providers, it is best to
+start with a small data set.</p>
 
 <h3>Install packages</h3>
 
-<p>We will be using pip to install the required python modules. We also install gpg plus of course Duplicity itself. The following commands wil install them.</p>
+<p>We will be using pip to install the required python modules. We also install gpg
+plus of course Duplicity itself. The following commands wil install them.</p>
 
 <p>For debian/ubuntu:</p>
 
@@ -166,18 +205,23 @@ It also works on any other distro where the above requirements are met.</p>
 <pre><code>yum install python-pip gnupg2 duplicity
 </code></pre>
 
-<p>If the version of Duplicity in the repositories is to old, you can download offcial RPM packages from the <a href="http://duplicity.nongnu.org/">Duplicity Website</a>. There is also an <a href="https://launchpad.net/%7Eduplicity-team/+archive/ppa">official PPA</a> for Ubuntu users. The duplicity versions in the Ubuntu 12.04 and CentOS 6 repositories are to old, so those OS versions require manual install.</p>
+<p>If the version of Duplicity in the repositories is to old, you can download
+offcial RPM packages from the <a href="http://duplicity.nongnu.org/">Duplicity Website</a>. There is also an <a href="https://launchpad.net/%7Eduplicity-team/+archive/ppa">official
+PPA</a> for Ubuntu users. The duplicity versions in the Ubuntu 12.04 and CentOS
+6 repositories are to old, so those OS versions require manual install.</p>
 
-<p>Use <code>pip</code> to install the packages Duplicity uses for the Openstack authentication (keystone) and the actual storage (swift):</p>
+<p>Use <code>pip</code> to install the packages Duplicity uses for the Openstack
+authentication (keystone) and the actual storage (swift):</p>
 
 <pre><code>pip install python-swiftclient python-keystoneclient
 </code></pre>
 
 <h3>Generate Keys</h3>
 
-<p>Because we trust nobody except ourselves with our backups, we will be encrypting the backups using GPG.</p>
+<p>Because we trust nobody except ourselves with our backups, we will be encrypting
+the backups using GPG.</p>
 
-<p>We will be creating two different keys, one for signing and one for encrypting. </p>
+<p>We will be creating two different keys, one for signing and one for encrypting.</p>
 
 <p>First generate the encryption key:</p>
 
@@ -245,7 +289,8 @@ uid                  Objectstore Backup Encryption &lt;user@example.com&gt;
 sub   4096R/7695ED36 2014-05-19
 </code></pre>
 
-<p>Remember your passphrase! Do the same thing again, now to create the Signing key:</p>
+<p>Remember your passphrase! Do the same thing again, now to create the Signing
+key:</p>
 
 <pre><code>gpg --gen-key
 </code></pre>
@@ -303,7 +348,8 @@ uid                  Objectstore Backup Signing &lt;user@example.com&gt;
 sub   4096R/B569F653 2014-05-19
 </code></pre>
 
-<p>We now have two keys, <code>B569F653</code> for backup signing, and <code>7695ED36</code> for backup encryption. You can check it with the command <code>gpg --list-keys</code>:</p>
+<p>We now have two keys, <code>B569F653</code> for backup signing, and <code>7695ED36</code> for backup
+encryption. You can check it with the command <code>gpg --list-keys</code>:</p>
 
 <pre><code>[root@vps2 ~]# gpg --list-keys
 /root/.gnupg/pubring.gpg
@@ -317,9 +363,11 @@ uid                  Objectstore Backup Signing &lt;user@example.com&gt;
 sub   4096R/B569F653 2014-05-19
 </code></pre>
 
-<p>Make a backup of these keys! Store it on a safe place. The key (hopefully) has a password, but still should be kept as secret as possible.</p>
+<p>Make a backup of these keys! Store it on a safe place. The key (hopefully) has a
+password, but still should be kept as secret as possible.</p>
 
-<p>Use the <code>--export-secret-keys</code> option to backup both keys (as ascii, hence the <code>-a</code>) to two files:</p>
+<p>Use the <code>--export-secret-keys</code> option to backup both keys (as ascii, hence the
+<code>-a</code>) to two files:</p>
 
 <pre><code>[root@vps2 ~]# gpg --export-secret-keys -a B569F653 &gt; signing.asc
 [root@vps2 ~]# gpg --export-secret-keys -a 7695ED36 &gt; encryption.asc
@@ -342,7 +390,8 @@ gpg:       secret keys read: 1
 gpg:   secret keys imported: 1
 </code></pre>
 
-<p>The key setup part is now complete. Let&#39;s continue on to making the actual backups.</p>
+<p>The key setup part is now complete. Let&#39;s continue on to making the actual
+backups.</p>
 
 <h3>Duplicity</h3>
 
@@ -351,13 +400,15 @@ gpg:   secret keys imported: 1
 <ul>
 <li>SWIFT_USERNAME: your username, in the form tenant:user</li>
 <li>SWIFT_PASSWORD: your password</li>
-<li>SWIFT_AUTHURL: URL to the Keystone service. For CloudVPS, it would be  <a href="http://www.cloudvps.com/community/knowledge-base/cloudvps-object-store-quickstart/">https://identity.stack.cloudvps.com/v2.0/</a></li>
+<li>SWIFT_AUTHURL: URL to the Keystone service. For CloudVPS, it would be <a href="http://www.cloudvps.com/community/knowledge-base/cloudvps-object-store-quickstart/">https://identity.stack.cloudvps.com/v2.0/</a></li>
 <li>SWIFT_AUTHVERSION: for keystone authentication, set it to 2.</li>
 </ul>
 
-<p>More information on CloudVPS Object Store can be found on their <a href="http://www.cloudvps.com/community/knowledge-base/cloudvps-object-store-quickstart/">quickstart</a> page. Change this to fit your Cloud Providers settings.</p>
+<p>More information on CloudVPS Object Store can be found on their <a href="http://www.cloudvps.com/community/knowledge-base/cloudvps-object-store-quickstart/">quickstart</a>
+page. Change this to fit your Cloud Providers settings.</p>
 
-<p>You have to create a container/project at your Openstack Provider. I&#39;ve created a project named Duplicity, that is what will be used in this example.</p>
+<p>You have to create a container/project at your Openstack Provider. I&#39;ve created
+a project named Duplicity, that is what will be used in this example.</p>
 
 <p>Set the variables in your shell:</p>
 
@@ -372,9 +423,14 @@ export SWIFT_AUTHVERSION=&quot;2&quot;
 <pre><code>duplicity ~/test-backup swift://duplicity
 </code></pre>
 
-<p>The whole credentials part was a bit confusing to me. Why do I have a tenant, project, bucket, user, password, url and what more? I got errors like <code>Connection failed: ClientException No tenant specified</code> and <code>Connection failed: ClientException Unauthorised. Check username, password and tenant name/id</code>. </p>
+<p>The whole credentials part was a bit confusing to me. Why do I have a tenant,
+project, bucket, user, password, url and what more? I got errors like
+<code>Connection failed: ClientException No tenant specified</code> and <code>Connection failed:
+ClientException Unauthorised. Check username, password and tenant name/id</code>.</p>
 
-<p>The format of SWIFT_USERNAME should be &quot;tenant:username&quot;. I did not know my tenant name, so I used the <a href="http://docs.openstack.org/api/quick-start/content/">Openstack API</a> to find out. First get an Auth Token, using cURL:</p>
+<p>The format of SWIFT_USERNAME should be &quot;tenant:username&quot;. I did not know my
+tenant name, so I used the <a href="http://docs.openstack.org/api/quick-start/content/">Openstack API</a> to find out. First get an Auth
+Token, using cURL:</p>
 
 <pre><code>curl -i &#39;https://identity.stack.cloudvps.com/v2.0/tokens&#39; -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Accept: application/json&quot;  -d &#39;{&quot;auth&quot;: {&quot;tenantName&quot;: &quot;&quot;, &quot;passwordCredentials&quot;: {&quot;username&quot;: &quot;user@example.com&quot;, &quot;password&quot;: &quot;passw0rd&quot;}}}&#39;
 </code></pre>
@@ -410,7 +466,8 @@ Connection: close
 }
 </code></pre>
 
-<p>The token is the first <code>id</code>. In this case: <code>8g2CeQ3kM0tkRAEiu6KmGaI6M8NLFDJ8WQ</code>. Use the token to get a list of tenants for that token:</p>
+<p>The token is the first <code>id</code>. In this case: <code>8g2CeQ3kM0tkRAEiu6KmGaI6M8NLFDJ8WQ</code>.
+Use the token to get a list of tenants for that token:</p>
 
 <pre><code>curl -i -X GET &#39;https://identity.stack.cloudvps.com/v2.0/tenants&#39; -H &quot;User-Agent: python-keystoneclient&quot; -H &quot;X-Auth-Token: 8g2CeQ3kM0tkRAEiu6KmGaI6M8NLFDJ8WQ&quot;
 </code></pre>
@@ -444,9 +501,10 @@ Connection: close
 }
 </code></pre>
 
-<p>The part you want to have is the <code>&quot;name&quot;: &quot;HANDLE Projectname&quot;</code> part. That is your tenant.</p>
+<p>The part you want to have is the <code>&quot;name&quot;: &quot;HANDLE Projectname&quot;</code> part. That is
+your tenant.</p>
 
-<p>In my case, the SWIFT_USERNAME should be: </p>
+<p>In my case, the SWIFT_USERNAME should be:</p>
 
 <pre><code>SWIFT_USERNAME=&quot;HANDLE Projectname:user@example.com&quot;
 </code></pre>
@@ -456,7 +514,8 @@ Connection: close
 <pre><code>duplicity ~/backup-test swift://https://zORIDFV4ybpbV9bRg1gwNi7NNnTiCw.objectstore.eu/duplicity
 </code></pre>
 
-<p>Well that is because Duplicity is smart enough to get that data from the API. If you do try it, you will get an error like this:</p>
+<p>Well that is because Duplicity is smart enough to get that data from the API. If
+you do try it, you will get an error like this:</p>
 
 <pre><code>Connection failed: ClientException Container PUT failed: https://zORIDFV4ybpbV9bRg1gwNi7NNnTiCw.objectstore.eu/zORIDFV4ybpbV9bRg1gwNi7NNnTiCw.objectstore.eu/duplicity 404 Not Found  [first 60 chars of response] &lt;html&gt;
  &lt;head&gt;
@@ -465,7 +524,8 @@ Connection: close
  &lt;bod
 </code></pre>
 
-<p>If the authentication details are correct, Duplicity should ask for the password of your gpg keys and then do its magic:</p>
+<p>If the authentication details are correct, Duplicity should ask for the password
+of your gpg keys and then do its magic:</p>
 
 <pre><code>Local and Remote metadata are synchronized, no sync needed.
 Last full backup date: none
@@ -526,13 +586,17 @@ drwxrwxrwt 20 root root  440 May 19 05:49 ..
 -rwxr-xr-x  1 remy remy  92K May 19 05:19 Metro-5110-5124 brand bij Rho 2-06-1993.jpg
 </code></pre>
 
-<p>And you know what the cloud provider/a three letter american agency has? Just a bunch of encrypted blobs:</p>
+<p>And you know what the cloud provider/a three letter american agency has? Just a
+bunch of encrypted blobs:</p>
 
-<p><img src="https://raymii.org/s/inc/img/haha-nsa2.png" alt="CloudVPS" /></p>
+<p><img src="https://raymii.org/s/inc/img/haha-nsa2.png" alt="CloudVPS"></p>
 
 <h3>Script</h3>
 
-<p>The below script automates the entire thing and lets you run a backup from a cronjob. It requires that you put in your GPG passphrase to make unattended backups possible, so make sure you keep the script just as safe as the keys themselves.</p>
+<p>The below script automates the entire thing and lets you run a backup from a
+cronjob. It requires that you put in your GPG passphrase to make unattended
+backups possible, so make sure you keep the script just as safe as the keys
+themselves.</p>
 
 <p>The below script takes a full backup every 7 days, the rest is incremental.</p>
 

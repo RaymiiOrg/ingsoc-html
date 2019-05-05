@@ -69,36 +69,63 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article describes how to use a template in a wrapper-cookbook in Chef. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article describes how to use a template in a wrapper-cookbook in Chef.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Background on Wrapper Cookbooks</h3>
 
-<p>The Chef Cookbook Wrapper Pattern is based upon a design convention where you customize an existing library cookbook by using a separate wrapper cookbook, which wraps the original cookbook with any related configuration changes. </p>
+<p>The Chef Cookbook Wrapper Pattern is based upon a design convention where you
+customize an existing library cookbook by using a separate wrapper cookbook,
+which wraps the original cookbook with any related configuration changes.</p>
 
-<p>A library cookbook is an existing cookbook, typically an open-source contribution from a user in the Chef community, designed for server configuration purposes. </p>
+<p>A library cookbook is an existing cookbook, typically an open-source
+contribution from a user in the Chef community, designed for server
+configuration purposes.</p>
 
-<p>A wrapper cookbook is a cookbook that wraps the original library cookbook with custom modifications or additions such as overriding a Chef attribute, changing a Chef template, converting a Chef attribute to a user-definable input, etc. </p>
+<p>A wrapper cookbook is a cookbook that wraps the original library cookbook with
+custom modifications or additions such as overriding a Chef attribute, changing
+a Chef template, converting a Chef attribute to a user-definable input, etc.</p>
 
-<p>As the Chef community continues to grow, both in the number of active Chef developers and the range of available applications, finding an existing community cookbook that you want to leverage will become more of the norm than the exception. Therefore, it will be easier to find an existing cookbook that you can either use as-is or slightly modify for your own purposes. When possible, it&#39;s best to leverage an existing cookbook (assuming that it&#39;s actively being maintained) than trying to create your own custom cookbook from scratch or forking a cookbook repository. </p>
+<p>As the Chef community continues to grow, both in the number of active Chef
+developers and the range of available applications, finding an existing
+community cookbook that you want to leverage will become more of the norm than
+the exception. Therefore, it will be easier to find an existing cookbook that
+you can either use as-is or slightly modify for your own purposes. When
+possible, it&#39;s best to leverage an existing cookbook (assuming that it&#39;s
+actively being maintained) than trying to create your own custom cookbook from
+scratch or forking a cookbook repository.</p>
 
-<p>Although forking a repository may initially seem like the easiest way to modify an existing cookbook, it will likely cause you more headaches over time as you try to maintain and upgrade your codebase over time. Therefore, it&#39;s recommended that you spend the extra time and effort to integrate a Wrapper Cookbook Pattern into your development routine because you will have a more manageable upgrade path for integrating future bug fixes and new functionality. </p>
+<p>Although forking a repository may initially seem like the easiest way to modify
+an existing cookbook, it will likely cause you more headaches over time as you
+try to maintain and upgrade your codebase over time. Therefore, it&#39;s recommended
+that you spend the extra time and effort to integrate a Wrapper Cookbook Pattern
+into your development routine because you will have a more manageable upgrade
+path for integrating future bug fixes and new functionality.</p>
 
 <p><a href="http://support.rightscale.com/12-Guides/Chef_Cookbooks_Developer_Guide/04-Developer/06-Development_Resources/Chef_Cookbook_Design_Patterns/Wrapper_Cookbook_Pattern">Source</a></p>
 
 <h3>Templates in wrapper-cookbooks</h3>
 
-<p>To override a template by just defining it again would result in it being written two times every Chef run, which is not what we want. Using this method, you can override the template from the default cookbook with a template in your wrapper-cookbook. </p>
+<p>To override a template by just defining it again would result in it being
+written two times every Chef run, which is not what we want. Using this method,
+you can override the template from the default cookbook with a template in your
+wrapper-cookbook.</p>
 
-<p>One of my clients uses graphite and wants to limit which users can login using LDAP in Apache. The <a href="https://github.com/hw-cookbooks/graphite">graphite</a> cookbook does not support this by default, but it works for all the other things.</p>
+<p>One of my clients uses graphite and wants to limit which users can login using
+LDAP in Apache. The <a href="https://github.com/hw-cookbooks/graphite">graphite</a> cookbook does not support this by default, but
+it works for all the other things.</p>
 
-<p>Graphite itself has support for LDAP login, however, the client has experience with Apache LDAP and wants to use that so that other admins can manage it as well.</p>
+<p>Graphite itself has support for LDAP login, however, the client has experience
+with Apache LDAP and wants to use that so that other admins can manage it as
+well.</p>
 
-<p>So what we want to do is overwrite the default apache template from the graphite cookbook with our template which has the LDAP data. </p>
+<p>So what we want to do is overwrite the default apache template from the graphite
+cookbook with our template which has the LDAP data.</p>
 
-<p>In the graphite cookbook we see the following piece of code which places the template for the graphite website in the apache <code>sites-available</code> folder:</p>
+<p>In the graphite cookbook we see the following piece of code which places the
+template for the graphite website in the apache <code>sites-available</code> folder:</p>
 
 <pre><code>template &quot;#{node[&#39;apache&#39;][&#39;dir&#39;]}/sites-available/graphite&quot; do
   source &quot;graphite-vhost.conf.erb&quot;
@@ -116,9 +143,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 end
 </code></pre>
 
-<p>We are going to override this template with extra variables for the LDAP connection in Apache.</p>
+<p>We are going to override this template with extra variables for the LDAP
+connection in Apache.</p>
 
-<p>Add a few node attributes, or place them in a data bag, whatever you like, for the LDAP:</p>
+<p>Add a few node attributes, or place them in a data bag, whatever you like, for
+the LDAP:</p>
 
 <pre><code>{
     &quot;tags&quot;: [],
@@ -149,7 +178,8 @@ end
 <pre><code>cp cookbooks/graphite/templates/default/graphite-vhost.conf.erb cookbooks/wrapper-graphite/templates/default/graphite-vhost.conf.erb
 </code></pre>
 
-<p>Add the LDAP settings to the template <code>graphite-vhost.conf.erb</code> in the wrapper-cookbook folder:</p>
+<p>Add the LDAP settings to the template <code>graphite-vhost.conf.erb</code> in the wrapper-
+cookbook folder:</p>
 
 <pre><code>&lt;Location /&gt;
   Order deny,allow
@@ -167,7 +197,8 @@ end
 &lt;/Location&gt;
 </code></pre>
 
-<p>Then edit your recipe, <code>cookbooks/wrapper-graphite/recipes/default.rb</code>. Add the basic header boilerplate and include the <code>graphite</code> recipe:</p>
+<p>Then edit your recipe, <code>cookbooks/wrapper-graphite/recipes/default.rb</code>. Add the
+basic header boilerplate and include the <code>graphite</code> recipe:</p>
 
 <pre><code>#
 # Cookbook Name:: wrapper-graphite
@@ -185,7 +216,8 @@ include_recipe &quot;graphite&quot;
 <pre><code>depends         &quot;graphite&quot;
 </code></pre>
 
-<p>Add the following magic to the wrapper cookbook. This is the part that overrides the template in the normal cookbook with the template from the wrapper cookbook:</p>
+<p>Add the following magic to the wrapper cookbook. This is the part that overrides
+the template in the normal cookbook with the template from the wrapper cookbook:</p>
 
 <pre><code>begin
     r = resources(:template =&gt; &quot;#{node[&#39;apache&#39;][&#39;dir&#39;]}/sites-available/graphite&quot;)
@@ -215,17 +247,28 @@ include_recipe &quot;graphite&quot;
 end
 </code></pre>
 
-<p>This works because a chef-client run has <a href="http://docs.opscode.com/essentials_nodes_chef_run.html">multiple phases</a>. The <a href="http://docs.opscode.com/chef/resources.html#run-resources-from-the-resource-collection">resource collection</a> is the ordered list of resources, from the recipes in your expanded run list, that are to be run on a node. </p>
+<p>This works because a chef-client run has <a href="http://docs.opscode.com/essentials_nodes_chef_run.html">multiple phases</a>. The <a href="http://docs.opscode.com/chef/resources.html#run-resources-from-the-resource-collection">resource
+collection</a> is the ordered list of resources, from the recipes in your
+expanded run list, that are to be run on a node.</p>
 
-<p>During the resource collection phase we can manipulate attributes of the resources in the resource collection. </p>
+<p>During the resource collection phase we can manipulate attributes of the
+resources in the resource collection.</p>
 
-<p>Because Chef uses a two-phase execution model (compile, then converge), you can manipulate the results of that compilation in many different ways before convergence happens.</p>
+<p>Because Chef uses a two-phase execution model (compile, then converge), you can
+manipulate the results of that compilation in many different ways before
+convergence happens.</p>
 
-<p>As you can see we need to set all of the variables, even the ones that were already declared in the original cookbook. If you don&#39;t do this, it will bork.</p>
+<p>As you can see we need to set all of the variables, even the ones that were
+already declared in the original cookbook. If you don&#39;t do this, it will bork.</p>
 
-<p>Now by adding the wrapper-graphite recipe to a node instead of the graphite recipe, it will do all the things from the graphite recipe, except for the override we define here.</p>
+<p>Now by adding the wrapper-graphite recipe to a node instead of the graphite
+recipe, it will do all the things from the graphite recipe, except for the
+override we define here.</p>
 
-<p>The big advantage of this approach for me is that I can update the upstream cookbook at any moment (for example, when a new graphite is releases or the upstream cookbook changes) while my own changes do not need to be backported in there. </p>
+<p>The big advantage of this approach for me is that I can update the upstream
+cookbook at any moment (for example, when a new graphite is releases or the
+upstream cookbook changes) while my own changes do not need to be backported in
+there.</p>
 
 <p><a href="http://www.getchef.com/blog/2013/12/03/doing-wrapper-cookbooks-right/">Here</a> is a blog entry from Opscode about wrapper cookbooks.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/chef.html" class="link">chef &nbsp;</a><a href="../tags/deployment.html" class="link">deployment &nbsp;</a><a href="../tags/devops.html" class="link">devops &nbsp;</a><a href="../tags/graphite.html" class="link">graphite &nbsp;</a><a href="../tags/ldap.html" class="link">ldap &nbsp;</a><a href="../tags/ruby.html" class="link">ruby &nbsp;</a><div class="footer">

@@ -69,18 +69,39 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Chef supports a very powerfull search syntax which allows you for example to search all nodes with the graphite-server role and get their IP addresses. This tutorial shows you how to search based on a role a node has or a recipe a node has, plus an example config file with erb syntax. It has an example cookbook which sets up collectd as client and graphite as server. It shows you how to use the search function of Chef to get the IP addresses of the graphite servers and place those in the collectd config files. This technique is applicable to all kinds of services that use a client-server model, for example, munin, haproxy, zabbix and many more.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Chef supports a very powerfull search syntax which allows you for example to
+search all nodes with the graphite-server role and get their IP addresses. This
+tutorial shows you how to search based on a role a node has or a recipe a node
+has, plus an example config file with erb syntax. It has an example cookbook
+which sets up collectd as client and graphite as server. It shows you how to use
+the search function of Chef to get the IP addresses of the graphite servers and
+place those in the collectd config files. This technique is applicable to all
+kinds of services that use a client-server model, for example, munin, haproxy,
+zabbix and many more.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Lets say you want to build a graphite server which gets data from a lot of collectd clients. You can hard code it in the <code>collectd.conf</code> file, but this is not preferred, what if your graphite server changes? What if you want to add a graphite server and have all your clients automagically also send data to that server? Here is where the following comes in handy.</p>
+<p>Lets say you want to build a graphite server which gets data from a lot of
+collectd clients. You can hard code it in the <code>collectd.conf</code> file, but this is
+not preferred, what if your graphite server changes? What if you want to add a
+graphite server and have all your clients automagically also send data to that
+server? Here is where the following comes in handy.</p>
 
-<p>You can use <a href="https://github.com/hw-cookbooks/graphite">this graphite cookbook</a>. If you add the <code>graphite</code> recipe to a node, it will install everything needed for a graphite server, including the web ui. Now, you can also create a role <code>graphite_server</code> and add the recipe to that, then add the role to a node. This way you have a graphite server running.</p>
+<p>You can use <a href="https://github.com/hw-cookbooks/graphite">this graphite cookbook</a>. If you add the <code>graphite</code> recipe to a
+node, it will install everything needed for a graphite server, including the web
+ui. Now, you can also create a role <code>graphite_server</code> and add the recipe to
+that, then add the role to a node. This way you have a graphite server running.</p>
 
-<p>collectd 5.1 or higher is required for graphite support. My environment currently runs mostly on Ubuntu 12.04 LTS, which has collectd 4 in the repositories. Therefore I build a package myself, but there are also PPA&#39;s available. I also run my own repositories, so I can just use the <code>collectd-core</code> package, if you don&#39;t have a collectd 5.1 or higher package then the following example won&#39;t work for you.</p>
+<p>collectd 5.1 or higher is required for graphite support. My environment
+currently runs mostly on Ubuntu 12.04 LTS, which has collectd 4 in the
+repositories. Therefore I build a package myself, but there are also PPA&#39;s
+available. I also run my own repositories, so I can just use the <code>collectd-core</code>
+package, if you don&#39;t have a collectd 5.1 or higher package then the following
+example won&#39;t work for you.</p>
 
-<p>This very simple cookbook installs the collectd package and sets the config file. Take a look at it:</p>
+<p>This very simple cookbook installs the collectd package and sets the config
+file. Take a look at it:</p>
 
 <pre><code>package &quot;collectd-core&quot; do
     action :install
@@ -112,7 +133,10 @@ end
 <pre><code>graphite_servers = search(:node, &#39;recipes:&quot;graphite&quot;&#39;)
 </code></pre>
 
-<p>It searches the Chef server for all nodes with the <code>graphite</code> recipe and makes that available in this cookbook. Then it passes it on to the template, which we will discuss below. If you don&#39;t want to search on recipes but for example on roles, you can use the following code:</p>
+<p>It searches the Chef server for all nodes with the <code>graphite</code> recipe and makes
+that available in this cookbook. Then it passes it on to the template, which we
+will discuss below. If you don&#39;t want to search on recipes but for example on
+roles, you can use the following code:</p>
 
 <pre><code>graphite_servers = search(:node, &#39;role:graphite-server&#39;)
 </code></pre>
@@ -122,7 +146,9 @@ end
 <pre><code>graphite_servers = search(:node, &#39;graphite_server:true&#39;)
 </code></pre>
 
-<p>Now the template (<code>collectd.conf.erb</code>) is a standard collectd template with some erb to enumerate the information in the <code>graphite_servers</code> variable. Skip to the bottom to see it:</p>
+<p>Now the template (<code>collectd.conf.erb</code>) is a standard collectd template with some
+erb to enumerate the information in the <code>graphite_servers</code> variable. Skip to the
+bottom to see it:</p>
 
 <pre><code># Managed by Chef for node &lt;%= node[&#39;fqdn&#39;] -%&gt;.
 # Do not edit manually, your changes will be overwritten.
@@ -162,25 +188,33 @@ LoadPlugin &quot;write_graphite&quot;
 &lt;/Plugin&gt;
 </code></pre>
 
-<p>This part starts a loop, which will loop trough all the values in the array it got from the cookbook:</p>
+<p>This part starts a loop, which will loop trough all the values in the array it
+got from the cookbook:</p>
 
 <pre><code>&lt;% @graphite_servers.each do |graphite_server| -%&gt;
 </code></pre>
 
 <p>Then this part does another lookup to get the node&#39;s IP address:</p>
 
-<p>Host &quot;&lt;%= graphite_server[&#39;ipaddress&#39;] -%&gt;&quot; </p>
+<p>Host &quot;&lt;%= graphite_server[&#39;ipaddress&#39;] -%&gt;&quot;</p>
 
-<p>You can change that to get any other attribute from a node, in this example we need the IP address.</p>
+<p>You can change that to get any other attribute from a node, in this example we
+need the IP address.</p>
 
 <p>This last part ends the loop:</p>
 
 <pre><code> &lt;% end -%&gt;
 </code></pre>
 
-<p>This will result in a config file with all the graphite servers you have in your Chef environment. One of the big plus points is that you can add or remove graphite servers whenever you want without the nodes having issues. Need to scale up a few servers? Just deploy some new nodes and all the clients will use them. Scaling down? No issue, all the clients will stop using them without manual action.</p>
+<p>This will result in a config file with all the graphite servers you have in your
+Chef environment. One of the big plus points is that you can add or remove
+graphite servers whenever you want without the nodes having issues. Need to
+scale up a few servers? Just deploy some new nodes and all the clients will use
+them. Scaling down? No issue, all the clients will stop using them without
+manual action.</p>
 
-<p>This technique is very applicable to other client-server models, like Munin. Or, any other setup like this.</p>
+<p>This technique is very applicable to other client-server models, like Munin. Or,
+any other setup like this.</p>
 </div><hr>Tags: <a href="../tags/chef.html" class="link">chef &nbsp;</a><a href="../tags/collectd.html" class="link">collectd &nbsp;</a><a href="../tags/cookbooks.html" class="link">cookbooks &nbsp;</a><a href="../tags/deployment.html" class="link">deployment &nbsp;</a><a href="../tags/devops.html" class="link">devops &nbsp;</a><a href="../tags/graphite.html" class="link">graphite &nbsp;</a><a href="../tags/roles.html" class="link">roles &nbsp;</a><a href="../tags/ruby.html" class="link">ruby &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

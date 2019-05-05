@@ -9,57 +9,53 @@ Format      : 	Markdown/HTML
 
 
 
-On Reddit, [Josh (from SpaceCat)](https://spacecat.design/) did a valentines
-day action, 10% off your entire order. I'm eyeing a LaunchPad for a while now,
-both to have a small macro pad and to experiment with QMK (firmware). So I
-ordered the LaunchPad full kit, an assortment of Gateron switches and a VIM
-keycap. This article goes over the quality,  the build process and my current
-setup of the Launchpad.
+On Reddit, [Josh (from SpaceCat)][1] did a valentines day action, 10% off your
+entire order. I'm eyeing a LaunchPad for a while now, both to have a small macro
+pad and to experiment with QMK (firmware). So I ordered the LaunchPad full kit,
+an assortment of Gateron switches and a VIM keycap. This article goes over the
+quality, the build process and my current setup of the Launchpad.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-<img src="https://raymii.org/s/inc/img/launchpad_2.jpg">
+![][3]
 
 The contents of the package laid out on my soldering desk. The switches and
-keycaps are not included in the kit, I ordered those seperately. 
+keycaps are not included in the kit, I ordered those seperately.
 
 The kit comes with:
 
-- 1x Launch Pad v2 PCB
-- 1x Arduino Pro Micro 5v
-- 2x 12-Pin Headers
-- 8x Diodes
-- 1x Alps SMD Switch (reset switch for the Arduino)
-- 1x High Quality "Launch Pad" Vinyl Sticker
+  * 1x Launch Pad v2 PCB
+  * 1x Arduino Pro Micro 5v
+  * 2x 12-Pin Headers
+  * 8x Diodes
+  * 1x Alps SMD Switch (reset switch for the Arduino)
+  * 1x High Quality "Launch Pad" Vinyl Sticker
 
 In my case I ordered the following switches:
 
-- 2x Gateron Blue (clicky & tactile)
-- 2x Gateron Green (stiffer than blue, clicky & tactile)
-- 2x Gateron Red (linear)
-- 2x Gateron Yellow (stiffer than red, linear)
-- 2x Gateron Brown (tactile)
+  * 2x Gateron Blue (clicky & tactile)
+  * 2x Gateron Green (stiffer than blue, clicky & tactile)
+  * 2x Gateron Red (linear)
+  * 2x Gateron Yellow (stiffer than red, linear)
+  * 2x Gateron Brown (tactile)
 
-The keycaps are Gateron because they are cheaper than Cherry MX. This build is
-a nice way for me to try out linear switches (red & yellow), the green was
-unknown to me and the blue and brown are my favorites. A usefull switchtester
-you might say. I ordered two extra switches because I know I might break one
-or two in the build process. (And I did break one switch so good foresight) 
+The keycaps are Gateron because they are cheaper than Cherry MX. This build is a
+nice way for me to try out linear switches (red & yellow), the green was unknown
+to me and the blue and brown are my favorites. A usefull switchtester you might
+say. I ordered two extra switches because I know I might break one or two in the
+build process. (And I did break one switch so good foresight)
 
-I also ordered this [super cool VIMkeycap](https://spacecat.design/collections/keysets/products/vim-keycap). 
-That one was for my white ergodox at work, not for this Marcopad.
+I also ordered this [super cool VIMkeycap][4]. That one was for my white ergodox
+at work, not for this Marcopad.
 
-They threw in an extra sticker and an [extra Catstrounaut keycap](https://spacecat.design/products/old-school-catstronaut-keycap). 
-The quality of these keycaps is amazing. They're thicker than the normal 
-Ergodox DSA blank keycaps and snap on to the switch better. It takes more effort 
-to get them off the switch tho. Very sturdy, the print is high quality and it 
-looks cool.
+They threw in an extra sticker and an [extra Catstrounaut keycap][5]. The
+quality of these keycaps is amazing. They're thicker than the normal Ergodox DSA
+blank keycaps and snap on to the switch better. It takes more effort to get them
+off the switch tho. Very sturdy, the print is high quality and it looks cool.
 
 The kit contained 20 diodes, 3x12 header pins and three reset switches instead
-of the stated quantity. 
+of the stated quantity.
 
 The PCB is very thick. I doubted to get a case since just the bare PCB might
 feel flimsy, but that is not the case. For a PCB it's very thick. The feet have
@@ -71,21 +67,21 @@ Do note that to build the kit, you need to have a soldering iron, solder and
 preferably some other tools used in soldering (desolder, flux, sponge cleaner,
 desolder sucker, etc.).
 
-The [Launchpad kit can be bought here](https://spacecat.design/collections/pcbs-cases-kits/products/launch-pad). 
-I'm not affiliated with spacecat, I bought this kit myself, no sponsorship or anything involved.
+The [Launchpad kit can be bought here][6]. I'm not affiliated with spacecat, I
+bought this kit myself, no sponsorship or anything involved.
 
 ### Marco Pad?
 
-<img src="https://raymii.org/s/inc/img/launchpad_5.jpg">
+![][7]
 
-> The finished Lauchpad on my desk at work, next to an [Ergodox EZ](https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html) 
-and a Evonluent left handed vertical mouse.
+> The finished Lauchpad on my desk at work, next to an [Ergodox EZ][8] and a
+Evonluent left handed vertical mouse.
 
 So what is a macro pad? As you can see in the picture above, it's a small
 keyboard. The advantage is that you can fully program the keyboard to do
 anything you want. Macro pads can be small like this one, but with specific
-tools [you can convert a normal keyboard to a macro keyboard](https://www.youtube.com/watch?v=GZEoss4XIgc), 
-that's a Linus Tech Tips video. In my case I have two usecases for this macropad.
+tools [you can convert a normal keyboard to a macro keyboard][9], that's a Linus
+Tech Tips video. In my case I have two usecases for this macropad.
 
 I use Jetbrains Clion a lot these days to develop C++ software. The debugger
 uses specific keys as shortcuts for `Step Into`, `Step Over` and other debugging
@@ -112,67 +108,65 @@ keyboard things are.
 
 The build process for this kit is straightforward:
 
-- Snap the board in half. One half is the PCB; the other half is the switch plate plus standoff feet
-- Solder the header pins for the Arduino (on the bottom of the PCB where it says Pro Mirco)
-- Solder the eight diodes (on the bottom of the PCB)
-- Solder the switches (on top of the PCB. **DO NOT FORGET TO PUT THE PLATE IN FIRST**)
-- Flash firmware to your Arduino and test it first 
-- Place the Arduino on the pins (this is tricky)
-- Solder the Arduino to the pins
-- Snap on the feet and solder them to the plate
+  * Snap the board in half. One half is the PCB; the other half is the switch plate plus standoff feet
+  * Solder the header pins for the Arduino (on the bottom of the PCB where it says Pro Mirco)
+  * Solder the eight diodes (on the bottom of the PCB)
+  * Solder the switches (on top of the PCB. **DO NOT FORGET TO PUT THE PLATE IN FIRST** )
+  * Flash firmware to your Arduino and test it first 
+  * Place the Arduino on the pins (this is tricky)
+  * Solder the Arduino to the pins
+  * Snap on the feet and solder them to the plate
 
-The [manual](https://raymii.org/s/inc/downloads/lpadv1_fin.pdf) is has pictures
-and detailed steps to build the kit.
+The [manual][10] is has pictures and detailed steps to build the kit.
 
 It took me about an hour to build the enitre kit. I did make a mistake during
 building, I forgot to put the plate between the switches and the PCB. That makes
 it a PCB mounted pad, which looks quite okay:
 
-<img src="https://raymii.org/s/inc/img/launchpad_3.png">
+![][11]
 
 I finished the build, tested the firmware and then decided I wanted the plate in
 between. So, I desoldered the switches (two under the arduino are harder to
-desolder), broke one switch in the process and put the plate in between. 
+desolder), broke one switch in the process and put the plate in between.
 
 With plate it looks like this:
 
-<img src="https://raymii.org/s/inc/img/launchpad_4.png">
+![][12]
 
 Some notes on the build process:
 
-- Putting the Arduino on the header pins is a time-consuming process. It involves bending the header pins just a tiny bit and retrying. Be carefull because they can break. 
-- The manual did not state to put the plate between the switches first, so I forgot to do that.
-- The manual does not explicitly says which side is which and on which side components go. I had to deduce it from the pictures.
-- The reset switch is hard to solder correctly (mine is angled)
-- Both PCB mount and plate mount switches work, but if you use the middle plate, you don't need PCB mounted switches.
+  * Putting the Arduino on the header pins is a time-consuming process. It involves bending the header pins just a tiny bit and retrying. Be carefull because they can break. 
+  * The manual did not state to put the plate between the switches first, so I forgot to do that.
+  * The manual does not explicitly says which side is which and on which side components go. I had to deduce it from the pictures.
+  * The reset switch is hard to solder correctly (mine is angled)
+  * Both PCB mount and plate mount switches work, but if you use the middle plate, you don't need PCB mounted switches.
 
-The difference between PCB and plate mount switches are two small pins on the switch:
+The difference between PCB and plate mount switches are two small pins on the
+switch:
 
-<img src="https://raymii.org/s/inc/img/plate_pcb.png">
+![][13]
 
-
-- The Arduino's Micro USB port sticks out. If the Arduino is moved a little bit deeper into the PCB, it wouldn't stick out. My USB port wobbles a bit so I suspect it might break off in the future. Placing it sandwiched between the Arduino and the PCB would prevent that. 
+  * The Arduino's Micro USB port sticks out. If the Arduino is moved a little bit deeper into the PCB, it wouldn't stick out. My USB port wobbles a bit so I suspect it might break off in the future. Placing it sandwiched between the Arduino and the PCB would prevent that. 
 
 This picture shows what I mean:
 
-<img src="https://raymii.org/s/inc/img/launchpad_usb.png">
+![][14]
 
-Not a huge issue for me, since I can easily desolder the Arduino and replace the USB port.
-
+Not a huge issue for me, since I can easily desolder the Arduino and replace the
+USB port.
 
 Here are three other Launchpads, not mine, but I find them to be cool. One with
 a case, one with matching keycaps and one with a huge ass enter key.
 
-
-<img src="https://raymii.org/s/inc/img/launchpad_6.jpg">
+![][15]
 
 > Launchpad with matching keycaps
 
-<img src="https://raymii.org/s/inc/img/launchpad_7.jpg">
+![][16]
 
 > Launchpad with a clear case
 
-<img src="https://raymii.org/s/inc/img/launchpad_8.png">
+![][17]
 
 > Launchpad with a huge enter key
 
@@ -183,33 +177,39 @@ is from Spacecat.
 ### Firmware (QMK)
 
 The Ardiuno runs QMK, which is firmware for keyboards. It allows you to do many
-amazing things, supports RGB leds, layers and such. I just used the 
-[web configurator](https://config.qmk.fm/#/launchpad/rev1/LAYOUT) to create a basic
-first layout and [QMK Toolbox](https://github.com/qmk/qmk_toolbox/) to flash it.
+amazing things, supports RGB leds, layers and such. I just used the [web
+configurator][18] to create a basic first layout and [QMK Toolbox][19] to flash
+it.
 
-<img src="https://raymii.org/s/inc/img/launchpad_1.png">
+![][20]
 
 > My first layout
 
-<img src="https://raymii.org/s/inc/img/launchpad_5_qmk.png">
+![][21]
 
 > QMK toolbox flashing the layout to the Arduino
 
-On Ubuntu I installed the Arduino IDE and used `avrdude` to flash the compiled `.hex` file:
+On Ubuntu I installed the Arduino IDE and used `avrdude` to flash the compiled
+`.hex` file:
 
-	# install the Arduino IDE
-	snap install arduino-mhall119 
-
-	# flash the firmware. Replace ttyACM0 with your USB port. Also replace the filename for the hex file.
-	/snap/arduino-mhall119/5/hardware/tools/avr/bin/avrdude -C/snap/arduino-mhall119/5/hardware/tools/avr/etc/avrdude.conf -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -Uflash:w:/home/remy/launchpad_rev1_layout_mine.hex
+    
+    
+    # install the Arduino IDE
+    snap install arduino-mhall119 
+    
+    # flash the firmware. Replace ttyACM0 with your USB port. Also replace the filename for the hex file.
+    /snap/arduino-mhall119/5/hardware/tools/avr/bin/avrdude -C/snap/arduino-mhall119/5/hardware/tools/avr/etc/avrdude.conf -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -Uflash:w:/home/remy/launchpad_rev1_layout_mine.hex
+    
 
 I do need to look into QMK more to program macro's and explore all other cool
 features for this Macro pad.
 
 #### Update 2019-03-21
 
-I've made my own keymap with QMK, [see the code here](https://github.com/RaymiiOrg/qmk_firmware/blob/master/keyboards/launchpad/keymaps/raymii/keymap.c).
+I've made my own keymap with QMK, [see the code here][22].
 
+    
+    
      ,-------------------------.
      | RUN DEBUG  | RUN TARGET |
      |------------+------------|
@@ -219,12 +219,35 @@ I've made my own keymap with QMK, [see the code here](https://github.com/RaymiiO
      |------------+------------|
      | PLAY/PAUSE | LOCK       |
      `-------------------------'
+    
 
 After flashing the first keymap, flashing the second and latter firmwares is
 harder. You need to press the reset switch twice quickly. The Arduino goes into
 firmware programming mode for 8 seconds. If you just press reset once, it will
 go into programming mode for 750 ms.
 
+   [1]: https://spacecat.design/
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: https://raymii.org/s/inc/img/launchpad_2.jpg
+   [4]: https://spacecat.design/collections/keysets/products/vim-keycap
+   [5]: https://spacecat.design/products/old-school-catstronaut-keycap
+   [6]: https://spacecat.design/collections/pcbs-cases-kits/products/launch-pad
+   [7]: https://raymii.org/s/inc/img/launchpad_5.jpg
+   [8]: https://raymii.org/s/articles/Split_keyboards_a_five_year_review_including_the_ErgoDox_EZ_Matias_Ergo_Pro_and_Kinesis_Freestyle_2.html
+   [9]: https://www.youtube.com/watch?v=GZEoss4XIgc
+   [10]: https://raymii.org/s/inc/downloads/lpadv1_fin.pdf
+   [11]: https://raymii.org/s/inc/img/launchpad_3.png
+   [12]: https://raymii.org/s/inc/img/launchpad_4.png
+   [13]: https://raymii.org/s/inc/img/plate_pcb.png
+   [14]: https://raymii.org/s/inc/img/launchpad_usb.png
+   [15]: https://raymii.org/s/inc/img/launchpad_6.jpg
+   [16]: https://raymii.org/s/inc/img/launchpad_7.jpg
+   [17]: https://raymii.org/s/inc/img/launchpad_8.png
+   [18]: https://config.qmk.fm/#/launchpad/rev1/LAYOUT
+   [19]: https://github.com/qmk/qmk_toolbox/
+   [20]: https://raymii.org/s/inc/img/launchpad_1.png
+   [21]: https://raymii.org/s/inc/img/launchpad_5_qmk.png
+   [22]: https://github.com/RaymiiOrg/qmk_firmware/blob/master/keyboards/launchpad/keymaps/raymii/keymap.c
 
 ---
 

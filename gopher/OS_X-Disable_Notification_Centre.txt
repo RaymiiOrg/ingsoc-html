@@ -9,31 +9,42 @@ Format      : 	Markdown/HTML
 
 
 
-This snippet shows you how to disable the OS X Notification Center completely, the menu item and the sidebar. It also gives you the command to enable it again.
+This snippet shows you how to disable the OS X Notification Center completely,
+the menu item and the sidebar. It also gives you the command to enable it again.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+To disable the Notification Center completely, enter the following command in a
+terminal:
 
-To disable the Notification Center completely, enter the following command in a terminal:
-
+    
+    
     launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+    
 
 Then kill the remains with fire:
 
+    
+    
     killall -9 NotificationCenter
+    
 
 To enable it again:
 
+    
+    
     launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+    
 
 If that doesn't work, you can also move the Application and reboot:
 
+    
+    
     sudo mv /System/Library/CoreServices/Notification\ Center.app /System/Library/CoreServices/Notification\ Center\ Disabled.app
+    
 
-
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

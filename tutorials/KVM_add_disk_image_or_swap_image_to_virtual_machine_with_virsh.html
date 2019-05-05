@@ -69,12 +69,18 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to create and add a disk image to a KVM vm using virsh. This is useful when you for example want to expand the disk space of your virtual machine when it is using LVM, or if you want to add a swap disk to a virtual machine. Note that you can also create a swap file instead of a disk, however, this is an example for adding the disk.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to create and add a disk image to a KVM vm using
+virsh. This is useful when you for example want to expand the disk space of your
+virtual machine when it is using LVM, or if you want to add a swap disk to a
+virtual machine. Note that you can also create a swap file instead of a disk,
+however, this is an example for adding the disk.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Read this tutorial to <a href="https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html">learn how to set up a proper KVM hypervisor host: https://raymii.org/s/tutorials/KVM<em>with</em>bonding<em>and</em>VLAN<em>tagging</em>setup<em>on</em>Ubuntu_12.04.html</a></p>
+<p>Read this tutorial to <a href="https://raymii.org/s/tutorials/KVM_with_bonding_and_VLAN_tagging_setup_on_Ubuntu_12.04.html">learn how to set up a proper KVM hypervisor host:
+https://raymii.org/s/tutorials/KVM <em>with</em> bonding <em>and</em> VLAN <em>tagging</em> setup
+<em>on</em> Ubuntu_12.04.html</a></p>
 
 <h3>Requirements</h3>
 
@@ -83,7 +89,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><p>Virtual Machine to add disk to</p></li>
 </ul>
 
-<p>This was tested on a KVM hypervisor host running Ubuntu 12.04 LTS and a Ubuntu 13.10 virtual machine. The KVM hypervisor uses virsh for management.</p>
+<p>This was tested on a KVM hypervisor host running Ubuntu 12.04 LTS and a Ubuntu
+13.10 virtual machine. The KVM hypervisor uses virsh for management.</p>
 
 <p>The example vm is named <code>example-vm</code> in virsh (domain).</p>
 
@@ -108,9 +115,13 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>virsh attach-disk example-vm --source /var/lib/libvirt/images/example-vm-swap.img --target vdb --persistent
 </code></pre>
 
-<p>We use <code>virsh</code> to attach the disk image <code>/var/lib/libvirt/images/example-vm-swap</code> as a <code>virtio</code> (<code>/dev/vdb</code>) disk to the domain (vm) <code>example-vm</code>. The <code>--persistent</code> option updates the domain xml file with an element for the newly attached disk.</p>
+<p>We use <code>virsh</code> to attach the disk image <code>/var/lib/libvirt/images/example-vm-
+swap</code> as a <code>virtio</code> (<code>/dev/vdb</code>) disk to the domain (vm) <code>example-vm</code>. The
+<code>--persistent</code> option updates the domain xml file with an element for the newly
+attached disk.</p>
 
-<p>Note that if you already have a <code>/dev/vdb</code> disk you need to change <code>vdb</code> to a free device like <code>vdc</code> or <code>vdd</code>.</p>
+<p>Note that if you already have a <code>/dev/vdb</code> disk you need to change <code>vdb</code> to a
+free device like <code>vdc</code> or <code>vdd</code>.</p>
 
 <h3>Formatting the disk</h3>
 
@@ -121,7 +132,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>reboot
 </code></pre>
 
-<p>Partition the drive with <code>cfdisk</code>. For our example we use filesystem type 82 (linux/linux swap):</p>
+<p>Partition the drive with <code>cfdisk</code>. For our example we use filesystem type 82
+(linux/linux swap):</p>
 
 <pre><code>cfdisk /dev/vdb
 </code></pre>
@@ -157,7 +169,8 @@ mount /dev/vdb1 /mnt/new-disk
 <pre><code>/dev/vdb1   /mnt/new-disk   ext4    defaults    0 0
 </code></pre>
 
-<p>That&#39;s it. You&#39;ve now created, attached, formatted and mounted a new disk in your VM.</p>
+<p>That&#39;s it. You&#39;ve now created, attached, formatted and mounted a new disk in
+your VM.</p>
 
 <h3>Sources</h3>
 

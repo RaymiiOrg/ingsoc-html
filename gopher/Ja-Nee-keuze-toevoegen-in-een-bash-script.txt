@@ -9,8 +9,11 @@ Format      : 	Markdown/HTML
 
 
 
-Als je een shell script schrijft, en je wilt een ja/nee keuze toevoegen, dan kan je de onderstaande code gebruiken:  
+Als je een shell script schrijft, en je wilt een ja/nee keuze toevoegen, dan kan
+je de onderstaande code gebruiken:
 
+    
+    
     while true
     do
     echo -n "Bevestig uw keuze a.u.b. met ja of nee. (j voor ja en n voor nee): "
@@ -26,9 +29,6 @@ Als je een shell script schrijft, en je wilt een ja/nee keuze toevoegen, dan kan
     esac
     done
     echo Je voerde $CONFIRM in, we gaan door.
-    
-    
-
 
 ---
 

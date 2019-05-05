@@ -69,20 +69,19 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt=openvms></a></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><a href="https://raymii.org/s/tags/openvms.html"><img src="https://raymii.org/s/inc/img/ovmsdec.png" alt="openvms"></a></p>
 
 <p>(You can read all my OpenVMS articles by <a href="https://raymii.org/s/tags/openvms.html">clicking the picture above</a>)</p>
 
-<p>Using <a href="https://web.archive.org/web/20180324181059/https://vanalboom.org/node/18">this
-guide</a>
-I was able to install OpenVMS 7.3 for VAX on simh on Ubuntu 16.04. </p>
+<p>Using <a href="https://web.archive.org/web/20180324181059/https://vanalboom.org/node/18">this guide</a> I was able to install OpenVMS 7.3 for VAX on simh on
+Ubuntu 16.04.</p>
 
 <p>This is a copy-paste of my terminal for future reference. This is not one of my
 usual articles, a guide with comprehensive information an background. Just a log
 of my terminal.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Prepare config files and place ISO</h3>
 
@@ -592,7 +591,8 @@ The following product has been registered:
     will not be accepted.
 </code></pre>
 
-<p>Enter a password, but make sure it has no <code>!</code> in them and is at least 8 characters long:</p>
+<p>Enter a password, but make sure it has no <code>!</code> in them and is at least 8
+characters long:</p>
 
 <pre><code>* Enter password for SYSTEM:
 * Re-enter for verification:
@@ -640,13 +640,31 @@ The following product has been registered:
 
 <p>Explanation taken from the article linked above:</p>
 
-<p>For the SCSNODE name - the hostname, if you will - you&#39;ll have to remember to use only 6 characters or less. The SCSSYSTEMID is a bit more complex. It&#39;s calculated through the formula X * 1024 + Y, where X is the DECnet area number, and Y the DECnet node number in that area.</p>
+<p>For the SCSNODE name - the hostname, if you will - you&#39;ll have to remember to
+use only 6 characters or less. The SCSSYSTEMID is a bit more complex. It&#39;s
+calculated through the formula X * 1024 + Y, where X is the DECnet area number,
+and Y the DECnet node number in that area.</p>
 
-<p>Since we&#39;re starting from scratch, we can use X=1; for the node numbers, it makes sense to think this through properly. Useful tip: use the last octet of the IP address you want to assign to this machine! Since I want to give IPs 10.20.1.131 and 10.20.1.132 to the nodes, I&#39;ll give WHISKY Y=131, COGNAC Y=132. This leaves us with a SCSSYSTEMID of 1155 for WHISKY, and DECnet code 1.131. COGNAC will get 1156 as SCSSYSTEMID and DECnet code 1.132.</p>
+<p>Since we&#39;re starting from scratch, we can use X=1; for the node numbers, it
+makes sense to think this through properly. Useful tip: use the last octet of
+the IP address you want to assign to this machine! Since I want to give IPs
+10.20.1.131 and 10.20.1.132 to the nodes, I&#39;ll give WHISKY Y=131, COGNAC Y=132.
+This leaves us with a SCSSYSTEMID of 1155 for WHISKY, and DECnet code 1.131.
+COGNAC will get 1156 as SCSSYSTEMID and DECnet code 1.132.</p>
 
-<p>If you want machines to communicate with others over DECnet, you really, really should communicate with those people on how to decide on DECnet addresses. If you would want to join my cluster, you&#39;ll HAVE to use DECnet area 1, and you&#39;ll HAVE to use a DECnet node number that&#39;s not 131 or 132.</p>
+<p>If you want machines to communicate with others over DECnet, you really, really
+should communicate with those people on how to decide on DECnet addresses. If
+you would want to join my cluster, you&#39;ll HAVE to use DECnet area 1, and you&#39;ll
+HAVE to use a DECnet node number that&#39;s not 131 or 132.</p>
 
-<p>Why? Because DECnet overwrites your MAC address, based on the DECnet address. The 16-bit decimal address is converted to a hexadecimal number and appended to the address AA:00:04:00 in byte-swapped order, with the least significant byte first. For example, DECnet address 12.75 becomes 12363 (base 10), which equals 304B (base 16). After this byte-swapped address is appended to the standard DECnet MAC address prefix, the resulting address is AA:00:04:00:4B:30 (thanks to Cisco for that brief explanation). And, in the end, we really don&#39;t want to have two identical MAC addresses on the same network, do we?</p>
+<p>Why? Because DECnet overwrites your MAC address, based on the DECnet address.
+The 16-bit decimal address is converted to a hexadecimal number and appended to
+the address AA:00:04:00 in byte-swapped order, with the least significant byte
+first. For example, DECnet address 12.75 becomes 12363 (base 10), which equals
+304B (base 16). After this byte-swapped address is appended to the standard
+DECnet MAC address prefix, the resulting address is AA:00:04:00:4B:30 (thanks to
+Cisco for that brief explanation). And, in the end, we really don&#39;t want to have
+two identical MAC addresses on the same network, do we?</p>
 
 <pre><code>* Please enter the SCSSYSTEMID:  1155
 
@@ -692,7 +710,8 @@ The following product has been registered:
     register them now.
 </code></pre>
 
-<p>No, later on we can copy paste the entire text file from HP in the terminal instead of manually typing over everything:</p>
+<p>No, later on we can copy paste the entire text file from HP in the terminal
+instead of manually typing over everything:</p>
 
 <pre><code>* Do you want to register any Product Authorization Keys? (Y/N): n
 
@@ -1105,7 +1124,9 @@ Password:
 
 <h3>Add licenses</h3>
 
-<p>Now open up your PAK license key from the hobbyist program (the text file) and paste it right in the shell. It will take a while. It will end with the following:</p>
+<p>Now open up your PAK license key from the hobbyist program (the text file) and
+paste it right in the shell. It will take a while. It will end with the
+following:</p>
 
 <pre><code> $ $!
  $ $! [End of File]

@@ -9,26 +9,35 @@ Format      : 	Markdown/HTML
 
 
 
-This little snippet for your .bashrc or your .inputrc changes the Up/Down arrow behavior to autocomplete what is already typed instead of just go back in history.
+This little snippet for your .bashrc or your .inputrc changes the Up/Down arrow
+behavior to autocomplete what is already typed instead of just go back in
+history.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-Normally when you press Up in Bash you get the previous command. With these lines that is changed. If you typed `vim filename`, then `top` and then again `vim` and pres up, it will autocomplete to `vim filename` instead of go back to `top`.
+Normally when you press Up in Bash you get the previous command. With these
+lines that is changed. If you typed `vim filename`, then `top` and then again
+`vim` and pres up, it will autocomplete to `vim filename` instead of go back to
+`top`.
 
 Either in your `.bashrc`:
 
+    
+    
     bind '"\e[A": history-search-backward'
     bind '"\e[B": history-search-forward'
+    
 
 Or in your `.inputrc`:
 
+    
+    
     "\e[A": history-search-backward
     "\e[B": history-search-forward
+    
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

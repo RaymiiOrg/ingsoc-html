@@ -9,46 +9,62 @@ Format      : 	Markdown/HTML
 
 
 
-This is a small snippet using curl to check the status code of a given URL on all DNS records for a given domain. This site has a few A records in round robin mode, and sometimes the automatic deployment fails. Using this query I can check which server is the culprit and fix it manually.
+This is a small snippet using curl to check the status code of a given URL on
+all DNS records for a given domain. This site has a few A records in round robin
+mode, and sometimes the automatic deployment fails. Using this query I can check
+which server is the culprit and fix it manually.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+The normal HEAD request output also shows all the headers the server sends and
+that is a pain to scroll through. This just shows me the HTTP status code, which
+is all I want.
 
-The normal HEAD request output also shows all the headers the server sends and that is a pain to scroll through. This just shows me the HTTP status code, which is all I want.
-
+    
+    
     dig +short A raymii.org | awk '{print "echo "$1"; curl -s -k -o /dev/null -I -w \"%{http_code}\" https://"$1"/s/blog/Burn_in_testing_for_Hypervisor_and_Storage_servers.html; echo; echo"}' | bash
+    
 
 Example output:
 
+    
+    
     163.172.129.56
     200
-
+    
     185.54.115.97
     404
-
+    
     213.187.244.250
     000
-
+    
     81.4.120.226
     200
+    
 
-The first and last server are correct. The middle one with status code `000` is offline and the `404` code is also not up to date. 
+The first and last server are correct. The middle one with status code `000` is
+offline and the `404` code is also not up to date.
 
 For IPv6 and AAAA records, we add brackets:
 
+    
+    
     dig +short AAAA raymii.org | awk '{print "echo "$1"; curl -6 -s -k -o /dev/null -I -w \"%{http_code}\" https://["$1"]/s/blog/Burn_in_testing_for_Hypervisor_and_Storage_servers.html; echo; echo"}' | bash
+    
 
 Example output:
 
+    
+    
     2a00:d880:5:783::2
     200
-
+    
     2a04:92c7:e:4d1::5436
     200
+    
 
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

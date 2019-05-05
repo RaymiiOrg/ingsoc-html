@@ -30,9 +30,10 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
   * Run it providing one or more logfiles to analyze:
     
         ./pygopherstats.sh /var/log/syslog
-    ./pygopherstats.sh /var/log/syslog /var/log/syslog.1
-    ./pygopherstats.sh /var/log/syslog.*
     
+
+./pygopherstats.sh /var/log/syslog /var/log/syslog.1 ./pygopherstats.sh
+/var/log/syslog.*
 
 If you don't have a central syslog server, use poor man's ssh to get all the log
 files from all the servers:

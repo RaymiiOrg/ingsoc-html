@@ -69,7 +69,7 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/ipv6-ready.png" alt="ipv6-ready" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/ipv6-ready.png" alt="ipv6-ready"></p>
 
 <p>For a long time most of my VPS are IPv6 enabled. Raymii.org is reachable over
 IPv6. I&#39;ve not had IPv6 at home yet, over my residential DSL line. And as you
@@ -79,8 +79,8 @@ past, only then you needed to have a static IP for the tunnel. These days you
 don&#39;t need that anymore. Read on to find out how my IPv6 setup works, including
 privacy extensions and a few annoyances with Arch Linux and Ubuntu.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>The Tunnel</h3>
 
@@ -99,7 +99,7 @@ even at Starbucks I can set up my IPv6 tunnel without any hassle.</p>
 some information, which will be validated, so make sure it is correct. Then you
 also need to provide a reason for your tunnel. Mine was just a simple one, I
 want to experiment at home with IPv6. They find that a valid reason, so in two
-days I had my tunnel data. </p>
+days I had my tunnel data.</p>
 
 <h3>Tunnel setup</h3>
 
@@ -109,11 +109,11 @@ on KVM. OpenVZ wo&#39;nt work because of the advanced networking involved. It al
 will work on a Raspberry Pi with Raspbian, for those who do not want or have a
 (VM) server running all the time.</p>
 
-<p>You will need all your SixXS data, as in, your account, tunnel and subnet. </p>
+<p>You will need all your SixXS data, as in, your account, tunnel and subnet.</p>
 
 <p>First install <a href="https://www.sixxs.net/tools/aiccu/">AICCU</a>. It stands for: Automatic IPv6 Connectivity Client
 Utility. It is a tool to automatically configure IPv6 connectivity on a variety
-of platforms and it provides AYIYA and heartbeat protocol support. </p>
+of platforms and it provides AYIYA and heartbeat protocol support.</p>
 
 <pre><code>apt-get install aiccu
 </code></pre>
@@ -217,7 +217,7 @@ compatibility and DNS addresses.</p>
 
 <p>Replace <code>$YOURSUBNET$</code> with one of the subnets you gave from SixXS. The <code>RDNSS</code>
 option uses the europian DNS from SixXS. You can find other DNS cache servers
-<a href="https://www.sixxs.net/tools/dnscache/">here</a>. </p>
+<a href="https://www.sixxs.net/tools/dnscache/">here</a>.</p>
 
 <p>Now configure DHCPv6:</p>
 
@@ -242,12 +242,12 @@ option uses the europian DNS from SixXS. You can find other DNS cache servers
 <p>The global address is used in IPv6 to communicate with the outside world. This
 is thus the one that is used as source for any communication and thus in a way
 identify you on Internet. The global address is built by using the prefix and
-adding an identifier build with the hardware address. </p>
+adding an identifier build with the hardware address.</p>
 
 <p>For example, the hardware address is 00:22:15:64:42:bd and the global IPv6
 address is ending with 22:15ff:fe64:42bd. It is thus easy to go from the IPv6
 global address to the hardware address. To fix this issue and increase the
-privacy of network user, privacy extensions have been developed. </p>
+privacy of network user, privacy extensions have been developed.</p>
 
 <p>You can read the RFC <a href="https://tools.ietf.org/html/rfc4941">here</a>, it describes how to build and use temporary
 addresses that will be used as source address for connection to the outside
@@ -331,7 +331,7 @@ net.ipv6.conf.default.use_tempaddr = 2
 <h3>Testing it</h3>
 
 <p>You should get an IPv6 address now. You can use sites like
-<a href="http://ipv6-test.com/">http://ipv6-test.com/</a> or by connecting to <a href="httpL//ipv6.google.com">http://ipv6.google.com</a>. </p>
+<a href="http://ipv6-test.com/">http://ipv6-test.com/</a> or by connecting to <a href="httpL//ipv6.google.com">http://ipv6.google.com</a>.</p>
 </div><hr>Tags: <a href="../tags/arch.html" class="link">arch &nbsp;</a><a href="../tags/blog.html" class="link">blog &nbsp;</a><a href="../tags/ip6.html" class="link">ip6 &nbsp;</a><a href="../tags/ip6tables.html" class="link">ip6tables &nbsp;</a><a href="../tags/ipv6.html" class="link">ipv6 &nbsp;</a><a href="../tags/radvd.html" class="link">radvd &nbsp;</a><a href="../tags/saac.html" class="link">saac &nbsp;</a><a href="../tags/sixxs.html" class="link">sixxs &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

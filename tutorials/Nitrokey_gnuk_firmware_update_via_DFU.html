@@ -69,12 +69,17 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The Nitrokey (start) can be upgraded to a newer GNUK firmware. However, this can only be done via ST Link or DFU, if you use the Gnuk USB firmware upgrade you will brick the device. This guide shows you how to attach a DFU adapter and how to flash firmware to a Nitrokey, both for upgrading or unbricking an USB upgraded one. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The Nitrokey (start) can be upgraded to a newer GNUK firmware. However, this can
+only be done via ST Link or DFU, if you use the Gnuk USB firmware upgrade you
+will brick the device. This guide shows you how to attach a DFU adapter and how
+to flash firmware to a Nitrokey, both for upgrading or unbricking an USB
+upgraded one.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>You need to build the <code>gnuk</code> firmware. The Device ID needs to be changed to <code>20a0:4211</code> in the file <code>gnuk/USB_DEBVICE_ID</code>:</p>
+<p>You need to build the <code>gnuk</code> firmware. The Device ID needs to be changed to
+<code>20a0:4211</code> in the file <code>gnuk/USB_DEBVICE_ID</code>:</p>
 
 <pre><code>$ cat GNUK_USB_DEVICE_ID 
 # VID:PID bcdDev  Product_STRING  Vendor_STRING
@@ -83,7 +88,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 ##########&lt;TAB&gt; ##&lt;TAB&gt; ##########&lt;TAB&gt; #################
 </code></pre>
 
-<p>For the <code>gnuk</code> firmware compilation, please see <a href="https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html">this article</a>. I will not cover that here any further.</p>
+<p>For the <code>gnuk</code> firmware compilation, please see <a href="https://raymii.org/s/tutorials/FST-01_firmware_upgrade_via_usb.html">this article</a>. I will not
+cover that here any further.</p>
 
 <h3>Requirements and connection</h3>
 
@@ -99,14 +105,17 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h2>- <a href="https://sourceforge.net/p/stm32flash/wiki/Home/">stm32flash</a></h2>
 
-<p>DFU is a simple protocol via serial port which allows programming but no debugging. On the Nitrokey hardware the appropriate pins are exposed over the USB connector. </p>
+<p>DFU is a simple protocol via serial port which allows programming but no
+debugging. On the Nitrokey hardware the appropriate pins are exposed over the
+USB connector.</p>
 
-<p>Connect the wires from the USB serial adapter to the USB header (Nitrokey USB Plug &lt;-&gt; Serial/TTL adapter):</p>
+<p>Connect the wires from the USB serial adapter to the USB header (Nitrokey USB
+Plug &lt;-&gt; Serial/TTL adapter):</p>
 
 <ul>
 <li>Pin 1, VCC &lt;-&gt; VCC (5v)</li>
-<li>Pin 2, D-  &lt;-&gt; TX</li>
-<li>Pin 3, D+  &lt;-&gt; RX</li>
+<li>Pin 2, D- &lt;-&gt; TX</li>
+<li>Pin 3, D+ &lt;-&gt; RX</li>
 <li>Pin 4, GND &lt;-&gt; GND</li>
 </ul>
 
@@ -126,19 +135,22 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <p>(This nice ascii art comes from the <a href="https://github.com/Nitrokey/nitrokey-pro-hardware/blob/master/README">Nitrokey Pro Hardware</a> repo.)</p>
 
-<p>You also need a small wire to bridge the two holes before you attach the Nitrokey so that it boots into DFU mode. </p>
+<p>You also need a small wire to bridge the two holes before you attach the
+Nitrokey so that it boots into DFU mode.</p>
 
 <p>Here is a picture of my setup:</p>
 
-<p><img src="https://raymii.org/s/inc/img/nitrokey-dfu-2.png"> </p>
+<p><img src="https://raymii.org/s/inc/img/nitrokey-dfu-2.png" alt=""></p>
 
 <p>This was my complete workspace:</p>
 
-<p><img src="https://raymii.org/s/inc/img/nitrokey-dfu-1.png"> </p>
+<p><img src="https://raymii.org/s/inc/img/nitrokey-dfu-1.png" alt=""></p>
 
 <h3>Unblocking the flash</h3>
 
-<p>The STM32 controller has a flash-protection bit which prohibits writing to the flash. The <code>stm32flash</code> tool says it&#39;s able to unblock that, but for the Nitrokey this fails:</p>
+<p>The STM32 controller has a flash-protection bit which prohibits writing to the
+flash. The <code>stm32flash</code> tool says it&#39;s able to unblock that, but for the
+Nitrokey this fails:</p>
 
 <pre><code>sudo stm32flash -u /dev/ttyUSB0 
 </code></pre>
@@ -163,49 +175,58 @@ Got NACK from device on command 0x73
 Done.
 </code></pre>
 
-<p>So sadly I have to use Windows software, the <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/flasher-stm32.html">ST Demo Loader</a>. Download and install it and connect the DFU-Nitrokey to the Windows machine.</p>
+<p>So sadly I have to use Windows software, the <a href="http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/flasher-stm32.html">ST Demo Loader</a>. Download and
+install it and connect the DFU-Nitrokey to the Windows machine.</p>
 
 <p><strong>Update</strong></p>
 
-<p><a href="https://lists.alioth.debian.org/pipermail/gnuk-users/2016q4/000403.html">This post</a> on the mailinglist states that you could use the <code>-k</code> flag with <code>stm32flash</code> to remove the <code>read</code> protection as well. It also states to not forget to use the <code>-j</code> to read-protect the Nitrokey again after you&#39;re done flashing if you intend to put real keys on there.</p>
+<p><a href="https://lists.alioth.debian.org/pipermail/gnuk-users/2016q4/000403.html">This post</a> on the mailinglist states that you could use the <code>-k</code> flag with
+<code>stm32flash</code> to remove the <code>read</code> protection as well. It also states to not
+forget to use the <code>-j</code> to read-protect the Nitrokey again after you&#39;re done
+flashing if you intend to put real keys on there.</p>
 
-<p>I tested this and it works, so you don&#39;t need the Windows tool in the end. Scroll down for the Linux/<code>stm32flash</code> way.</p>
+<p>I tested this and it works, so you don&#39;t need the Windows tool in the end.
+Scroll down for the Linux/<code>stm32flash</code> way.</p>
 
 <p><strong>End update</strong></p>
 
-<p>Also copy the compiled GNUK binary (<code>gnuk/src/build/gnuk.bin</code>) to the Windows machine.</p>
+<p>Also copy the compiled GNUK binary (<code>gnuk/src/build/gnuk.bin</code>) to the Windows
+machine.</p>
 
 <h3>Flashing via Windows</h3>
 
 <p>Start the utility up and select the correct COM port (COM4 for me):</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-1.png"></p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-1.png" alt=""></p>
 
-<p>If the protection is set the tool will show a red traffic light and a <code>Remove Protection</code> button. Click and complete that, then click next:</p>
+<p>If the protection is set the tool will show a red traffic light and a <code>Remove
+Protection</code> button. Click and complete that, then click next:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-2.png"></p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-2.png" alt=""></p>
 
 <p>Click Next:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-3.png"></p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-3.png" alt=""></p>
 
-<p>Select <code>Download to device</code>, <code>Erase the necessary pages</code> and choose the <code>gnuk.bin</code> file:</p>
+<p>Select <code>Download to device</code>, <code>Erase the necessary pages</code> and choose the
+<code>gnuk.bin</code> file:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-4.png"></p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-4.png" alt=""></p>
 
 <p>It will erase the flash:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-5.png"></p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-5.png" alt=""></p>
 
 <p>Then upload the firmware:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-6.png"> </p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-6.png" alt=""></p>
 
 <p>It will complete with a nice green bar:</p>
 
-<p><img src="https://raymii.org/s/inc/img/stdemo/flash-7.png"> </p>
+<p><img src="https://raymii.org/s/inc/img/stdemo/flash-7.png" alt=""></p>
 
-<p>Now the binary is flashed and your Nitrokey should work. In my case, it sucessfully worked with gnuk 1.2:</p>
+<p>Now the binary is flashed and your Nitrokey should work. In my case, it
+sucessfully worked with gnuk 1.2:</p>
 
 <pre><code>$ gpg --card-status
 
@@ -269,7 +290,8 @@ sec&gt;  ed25519/0x101D491F08E7FD60  created: 2016-10-11  expires: 2016-10-18
 
 <h3>Flashing via Linux</h3>
 
-<p>First remote the read protection bit from the device (Device should be in bootloader mode with the wire bridge for all these actions):</p>
+<p>First remote the read protection bit from the device (Device should be in
+bootloader mode with the wire bridge for all these actions):</p>
 
 <pre><code>sudo stm32flash -k /dev/ttyUSB0 
 </code></pre>
@@ -321,7 +343,8 @@ Wrote address 0x0801b000 (100.00%) Done.
 Starting execution at address 0x08000000... done.
 </code></pre>
 
-<p>Do set the <code>read protection</code>  back on after flashing, otherwise your keys might be exposed:</p>
+<p>Do set the <code>read protection</code> back on after flashing, otherwise your keys might
+be exposed:</p>
 
 <pre><code>sudo stm32flash -j /dev/ttyUSB0 
 </code></pre>
@@ -347,7 +370,8 @@ Done.
 
 <h3>NeuG on the Nitrokey Start</h3>
 
-<p>I did try to flash NeuG to the device, but that resulted in a blinking green LED and nothing else. Here&#39;s the command for reference.</p>
+<p>I did try to flash NeuG to the device, but that resulted in a blinking green LED
+and nothing else. Here&#39;s the command for reference.</p>
 
 <pre><code>sudo stm32flash -w ../../neug/src/build/neug.bin -g 0x0 /dev/ttyUSB0 
 </code></pre>

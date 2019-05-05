@@ -69,12 +69,17 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/timemachine1.png" alt="timemachine1" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/timemachine1.png" alt="timemachine1"></p>
 
-<p>This is a simple guide on building a $35 Time Capsule with a Raspberry Pi. A Time Capsule is a network attached storage device from Apple for use with their Time Machine. Time Machine gives users a very easy and userfriendly way to automatically create and restore (encrypted) backups. A Time Capsule is basically an expensive NAS that only talks the AFP/netatalk protocol. The 2 TB version <a href="http://store.apple.com/us/product/ME177/airport-time-capsule-2tb">costs $299 at this time</a>, a <a href="http://www.raspberrypi.org/buy/">Raspberry Pi only $35</a>. </p>
+<p>This is a simple guide on building a $35 Time Capsule with a Raspberry Pi. A
+Time Capsule is a network attached storage device from Apple for use with their
+Time Machine. Time Machine gives users a very easy and userfriendly way to
+automatically create and restore (encrypted) backups. A Time Capsule is
+basically an expensive NAS that only talks the AFP/netatalk protocol. The 2 TB
+version <a href="http://store.apple.com/us/product/ME177/airport-time-capsule-2tb">costs $299 at this time</a>, a <a href="http://www.raspberrypi.org/buy/">Raspberry Pi only $35</a>.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>You will need the following:</p>
 
@@ -83,17 +88,23 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>USB Hard Disk / Big USB Dick</li>
 </ul>
 
-<p>The Raspberry Pi can run either Raspbian or Arch, this guide works on both. The USB storage works best if it is externally powered.</p>
+<p>The Raspberry Pi can run either Raspbian or Arch, this guide works on both. The
+USB storage works best if it is externally powered.</p>
 
-<p>I&#39;ve tested with 2 different Raspberry Pi&#39;s, one model B+, raspbian, with a 128GB USB disk (from Sandisk) and on Raspberry Pi Model B with Arch and a 1 TB USB hard drive. I&#39;ve got some spare disk lying around, if you don&#39;t you should buy one. The total cost might be higher than $35 if you need to buy storage or want a nice case and other accessories.</p>
+<p>I&#39;ve tested with 2 different Raspberry Pi&#39;s, one model B+, raspbian, with a
+128GB USB disk (from Sandisk) and on Raspberry Pi Model B with Arch and a 1 TB
+USB hard drive. I&#39;ve got some spare disk lying around, if you don&#39;t you should
+buy one. The total cost might be higher than $35 if you need to buy storage or
+want a nice case and other accessories.</p>
 
 <h3>Preparing the disk</h3>
 
-<p>Make sure the Pi is installed with your OS of choice (Raspbian or Arch). Plug the USB drive in. We will first format it to a big EXT4 partition. </p>
+<p>Make sure the Pi is installed with your OS of choice (Raspbian or Arch). Plug
+the USB drive in. We will first format it to a big EXT4 partition.</p>
 
 <p>Install <code>cfdisk</code> first, or just use parted/fdisk if you know the drill.</p>
 
-<p>Debian: </p>
+<p>Debian:</p>
 
 <pre><code>apt-get install cfdisk
 </code></pre>
@@ -103,7 +114,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <pre><code>pacman -Sy cfdisk
 </code></pre>
 
-<p>Issue the <code>dmesg</code> command and look at the last few lines. Remove the USB storage and re-attach it. Execute the <code>dmesg</code> command again and look for lines like this:</p>
+<p>Issue the <code>dmesg</code> command and look at the last few lines. Remove the USB storage
+and re-attach it. Execute the <code>dmesg</code> command again and look for lines like
+this:</p>
 
 <pre><code>[ 7793.698383] usb 1-2.4: USB disconnect, device number 11
 [ 7798.233788] usb 1-2.4: new high-speed USB device number 12 using xhci_hcd
@@ -111,14 +124,18 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 [ 7799.331790] sd 3:0:0:0: [sdb] Attached SCSI removable disk
 </code></pre>
 
-<p>Here you can see that <code>/dev/sdb</code> is our newly attached disk. Change it to your setup. Be carefull with this, any typo&#39;s might erase all your OS data. Format it with cfdisk:</p>
+<p>Here you can see that <code>/dev/sdb</code> is our newly attached disk. Change it to your
+setup. Be carefull with this, any typo&#39;s might erase all your OS data. Format it
+with cfdisk:</p>
 
 <pre><code>cfdisk /dev/sdb
 </code></pre>
 
-<p>Delete all partitions on there and create on big Linux (83) one. <em>Do note that this will remove all data on the disk.</em></p>
+<p>Delete all partitions on there and create on big Linux (83) one. <em>Do note that
+this will remove all data on the disk.</em></p>
 
-<p>If you have a big disk (&gt; 2 TB) you might need to create a GPT table on it. Use <code>parted</code> for that:</p>
+<p>If you have a big disk (&gt; 2 TB) you might need to create a GPT table on it. Use
+<code>parted</code> for that:</p>
 
 <pre><code>parted /dev/sdb
 mklabel gpt
@@ -137,7 +154,8 @@ quit
 
 <h3>Mounting the disk</h3>
 
-<p>We add the disk to <code>/etc/fstab</code> to make sure it will still be mounted after a reboot. Otherwise you might end up with a full Pi and we don&#39;t want that.</p>
+<p>We add the disk to <code>/etc/fstab</code> to make sure it will still be mounted after a
+reboot. Otherwise you might end up with a full Pi and we don&#39;t want that.</p>
 
 <p>Edit <code>/etc/fstab</code>:</p>
 
@@ -163,7 +181,8 @@ quit
 
 <h3>Installing netatalk</h3>
 
-<p><code>netatalk</code> is the program that talks the AFP protocol, which is wat Apple uses for Time Machine. Install the daemon,</p>
+<p><code>netatalk</code> is the program that talks the AFP protocol, which is wat Apple uses
+for Time Machine. Install the daemon,</p>
 
 <p>For Debian:</p>
 
@@ -175,7 +194,9 @@ quit
 <pre><code>pacman -Sy netatalk
 </code></pre>
 
-<p>Note that on Arch Linux Arm the AUR is included as a repo by default. If you run it on regular arch you need to use <code>yaourt</code> to install netatalk or build netatalk from the AUR yourself.</p>
+<p>Note that on Arch Linux Arm the AUR is included as a repo by default. If you run
+it on regular arch you need to use <code>yaourt</code> to install netatalk or build
+netatalk from the AUR yourself.</p>
 
 <p>Make sure the service starts at boot:</p>
 
@@ -216,9 +237,12 @@ quit
  valid users = wife remy
 </code></pre>
 
-<p>Do not use a symlink as the source of this file. netatalk will not work correctly.</p>
+<p>Do not use a symlink as the source of this file. netatalk will not work
+correctly.</p>
 
-<p>I also share a folder with my Transmission Torrents in there, that contains about 400 GB of Linux iso&#39;s. The OS X machine is the only machine with a DVD burner in the house, therefore I use that to burn them to disk. </p>
+<p>I also share a folder with my Transmission Torrents in there, that contains
+about 400 GB of Linux iso&#39;s. The OS X machine is the only machine with a DVD
+burner in the house, therefore I use that to burn them to disk.</p>
 
 <p>The config file itself it pretty self explainatory.</p>
 
@@ -239,9 +263,12 @@ quit
 <pre><code>systemctl restart netatalk
 </code></pre>
 
-<p>On Arch you might need to configure the Avahi service, on Arch Linux Arm it is enabled by default. This provides Bonjour capabilities.</p>
+<p>On Arch you might need to configure the Avahi service, on Arch Linux Arm it is
+enabled by default. This provides Bonjour capabilities.</p>
 
-<p>You might need to create a user or set the correct permissions on the folder. I&#39;ll add the user <code>wife</code> to the Pi, put her in the <code>users</code> group and give the <code>users</code> group write permissions on the folders we share via AFP.</p>
+<p>You might need to create a user or set the correct permissions on the folder.
+I&#39;ll add the user <code>wife</code> to the Pi, put her in the <code>users</code> group and give the
+<code>users</code> group write permissions on the folders we share via AFP.</p>
 
 <p>Add the user <code>wife</code>:</p>
 
@@ -269,11 +296,15 @@ quit
 chmod 775 /mnt/data/timecapsule
 </code></pre>
 
-<p>That&#39;s it. You can now configure Time Machine on OS X. Search for the folder, it should pop up:</p>
+<p>That&#39;s it. You can now configure Time Machine on OS X. Search for the folder, it
+should pop up:</p>
 
-<p><img src="https://raymii.org/s/inc/img/timemachine2.png" alt="timemachine2" /></p>
+<p><img src="https://raymii.org/s/inc/img/timemachine2.png" alt="timemachine2"></p>
 
-<p>Enjoy your $ 35 Time Capsule. Consider making a donation with (a part of) the money you saved. Or if you like this article and want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a>   </p>
+<p>Enjoy your $ 35 Time Capsule. Consider making a donation with (a part of) the
+money you saved. Or if you like this article and want to support me AND get $10
+Digital Ocean credit (2 months free), use this link to order:
+<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">https://www.digitalocean.com/?refcode=7435ae6b8212</a></p>
 </div><hr>Tags: <a href="../tags/apple.html" class="link">apple &nbsp;</a><a href="../tags/arch.html" class="link">arch &nbsp;</a><a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/backup.html" class="link">backup &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/os-x.html" class="link">os-x &nbsp;</a><a href="../tags/raspberry-pi.html" class="link">raspberry-pi &nbsp;</a><a href="../tags/time-capsule.html" class="link">time-capsule &nbsp;</a><a href="../tags/time-machine.html" class="link">time-machine &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

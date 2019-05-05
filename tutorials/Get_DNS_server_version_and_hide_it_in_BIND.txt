@@ -9,12 +9,13 @@ Format      : 	Markdown/HTML
 
 
 
-The BIND nameserver (and many others) return their version number when queried a special DNS query. This gives exposure and that is most of the time a bad thing. This tutorial shows you how to query DNS servers for their version and how to stop/change your own BIND server version exposure.
+The BIND nameserver (and many others) return their version number when queried a
+special DNS query. This gives exposure and that is most of the time a bad thing.
+This tutorial shows you how to query DNS servers for their version and how to
+stop/change your own BIND server version exposure.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Chaos Query
 
@@ -22,48 +23,71 @@ The following `DIG` and `NSLOOKUP` queries will show the version of BIND:
 
 A home router queried with `DIG`:
 
+    
+    
     dig @192.168.1.1 version.bind txt chaos
     ;; ANSWER SECTION:
     version.bind.       0   CH  TXT "dnsmasq-2.47"
+    
 
 A Microsoft DNS server queried with `nslookup`:
 
+    
+    
     nslookup -type=txt -class=chaos version.bind ns1.metaregistrar.nl
     Server:         ns1.metaregistrar.nl
     Address:        81.4.97.217#53
-
+    
     version.bind    text = "Served by PowerDNS - http://www.powerdns.com"
+    
 
-What is `chaos` or CH class you ask? [It is/was a network technology, see the wikipedia page for more info.](https://en.wikipedia.org/wiki/Chaosnet). There is also the [HS class, that stands for Hesiod.](https://en.wikipedia.org/wiki/Hesiod_(name_service))
+What is `chaos` or CH class you ask? [It is/was a network technology, see the
+wikipedia page for more info.][2]. There is also the [HS class, that stands for
+Hesiod.][3]
 
 ### Hide it in BIND
 
-When running a BIND nameserver, edit your `/etc/bind/named.conf.options` file (or the config file where you have your options) and add the following option:
+When running a BIND nameserver, edit your `/etc/bind/named.conf.options` file
+(or the config file where you have your options) and add the following option:
 
+    
+    
     options {
         [...]
         version "Not supported";
     }
+    
 
-You can of course put whatever you like in there, for example you can spoof a Microsoft DNS server:
+You can of course put whatever you like in there, for example you can spoof a
+Microsoft DNS server:
 
+    
+    
     version "Microsoft DNS 6.0.6100 (2AEF76E)";
+    
 
 Or like TransIP does, make it look like your own DNS software:
 
+    
+    
     dig @ns1.transip.nl version.bind txt chaos
-
+    
     ;; ANSWER SECTION:
     version.bind.       86400   CH  TXT "TransDNS 2.1.1"
+    
 
-Make sure to reload/restart your BIND servers after the change. Do note that you need BIND 8.2 or later for this option to work.
+Make sure to reload/restart your BIND servers after the change. Do note that you
+need BIND 8.2 or later for this option to work.
 
 ### db.bind zone
 
-You can also add a .bind zone, this way your queries will also be logged and you can block possible attempts.
+You can also add a .bind zone, this way your queries will also be logged and you
+can block possible attempts.
 
 `/etc/bind/named.conf.local`:
 
+    
+    
     view "chaos" CH {
       match-clients { any; };
       zone "bind" CH {
@@ -72,9 +96,12 @@ You can also add a .bind zone, this way your queries will also be logged and you
           allow-update { none; };
       };
     };
+    
 
 `/etc/bind/db.bind`:
 
+    
+    
     $TTL    3600
     @       86400       CH   SOA     localhost. root.localhost. ( 
                         2013050801      ; serial 
@@ -84,19 +111,27 @@ You can also add a .bind zone, this way your queries will also be logged and you
                         86400 )         ; minimum 
     ;  
     @                   CH  NS  localhost.
-
+    
     version             CH  TXT "Microsoft DNS 6.0.6100 (2AEF76E)" 
     authors             CH  TXT "Raymii.org" 
+    
 
-However this gets complicated very fast, you need to wrap all your other zones in views as well:
+However this gets complicated very fast, you need to wrap all your other zones
+in views as well:
 
+    
+    
     view "default" IN {
       match-clients { any; };
       [...]
     };
+    
 
 So it's better to use the above options file.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://en.wikipedia.org/wiki/Chaosnet
+   [3]: https://en.wikipedia.org/wiki/Hesiod_(name_service)
 
 ---
 

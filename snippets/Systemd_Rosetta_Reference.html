@@ -69,91 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The below table has systemd versus init examples. the service used as example is <em>nginx</em>:</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>The below table has systemd versus init examples. the service used as example is
+<em>nginx</em> :</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<table class="table-striped">
-    <thead>
-        <tr>
-            <th>Action</th>
-            <th>Debian Init</th>
-            <th>Ubuntu Upstart</th>
-            <th>Red Hat/CentOS Init</th>
-            <th><b>Systemd</b></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Start service</td>
-            <td><code>/etc/init.d/nginx start</code></td>
-            <td><code>initctl start nginx</code><br />
-            <code>/etc/init.d/nginx start</code></td>
-            <td><code>/etc/init.d/nginx start</code></td>
-            <td><code>systemctl start nginx.service</code></td>
-        </tr>
-        <tr>
-            <td>Stop service</td>
-            <td><code>/etc/init.d/nginx stop</code></td>
-            <td><code>initctl stop nginx</code><br />
-            <code>/etc/init.d/nginx stop</code></td>
-            <td><code>/etc/init.d/nginx stop</code></td>
-            <td><code>systemctl stop nginx.service</code></td>
-        </tr>
-        <tr>
-            <td>Restart service</td>
-            <td><code>/etc/init.d/nginx restart</code></td>
-            <td><code>initctl restart nginx</code><br />
-                <code>/etc/init.d/nginx restart</code></td>
-            <td><code>/etc/init.d/nginx restart</code></td>
-            <td><code>systemctl restart nginx.service</code></td>
-        </tr>
-        <tr>
-            <td>Enable service at boot / startup</td>
-            <td><code>update-rc.d nginx defaults</code></td>
-            <td>edit <code>/etc/init/nginx.conf</code>, add <code>start on local-filesystems</code> line<br />
-                <code>update-rc.d nginx defaults</code> 
-            </td>
-            <td><code>chkconfig nginx on</code><br />
-                <code>ntsysv</code></td>
-            <td><code>systemctl enable nginx.service</code></td>
-        </tr>
-        <tr>
-            <td>Disable service at startup / boot</td>
-            <td><code>update-rc.d nginx remove</code></td>
-            <td><code>echo 'manual' > /etc/init/nginx.override</code><br />
-            <code>update-rc.d nginx remove</code></td>
-            <td><code>chkconfig nginx off</code><br />
-                <code>ntsysv</code></td>
-            <td><code>systemctl disable nginx.service</code></td>
-        </tr>
-        <tr>
-            <td>List all available services</td>
-            <td><code>ls /etc/init.d/</code></td>
-            <td><code>initctl list</code></td>
-            <td><code>chkconfig --list</code><br />
-                <code>ntsysv</code></td>
-            <td><code>systemctl list-units -t service --all</code></td>
-        </tr>
-        <tr>
-            <td>Get a service status</td>
-            <td><code>/etc/init.d/nginx status</code></td>
-            <td><code>initctl status nginx</code></td>
-            <td><code>/etc/init.d/nginx status</code></td>
-            <td><code>systemctl status nginx.service</code></td>
-        </tr>
-        <!--
-        <tr>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td><code></code></td>
-        </tr>
-        -->
-    </tbody>
-</table>
+<p>Action | Debian Init | Ubuntu Upstart | Red Hat/CentOS Init | <strong>Systemd</strong><br>
+---|---|---|---|---<br>
+Start service | <code>/etc/init.d/nginx start</code> | <code>initctl start nginx</code><br>
+<code>/etc/init.d/nginx start</code> | <code>/etc/init.d/nginx start</code> | <code>systemctl start
+nginx.service</code><br>
+Stop service | <code>/etc/init.d/nginx stop</code> | <code>initctl stop nginx</code><br>
+<code>/etc/init.d/nginx stop</code> | <code>/etc/init.d/nginx stop</code> | <code>systemctl stop
+nginx.service</code><br>
+Restart service | <code>/etc/init.d/nginx restart</code> | <code>initctl restart nginx</code><br>
+<code>/etc/init.d/nginx restart</code> | <code>/etc/init.d/nginx restart</code> | <code>systemctl restart
+nginx.service</code><br>
+Enable service at boot / startup | <code>update-rc.d nginx defaults</code> | edit
+<code>/etc/init/nginx.conf</code>, add <code>start on local-filesystems</code> line<br>
+<code>update-rc.d nginx defaults</code> | <code>chkconfig nginx on</code><br>
+<code>ntsysv</code> | <code>systemctl enable nginx.service</code><br>
+Disable service at startup / boot | <code>update-rc.d nginx remove</code> | `echo &#39;manual&#39;</p>
+
+<blockquote>
+<p>/etc/init/nginx.override<code></code>update-rc.d nginx remove<code>|</code>chkconfig nginx off<code>
+</code>ntsysv<code>|</code>systemctl disable nginx.service<code>List all available services |</code>ls
+/etc/init.d/<code>|</code>initctl list<code>|</code>chkconfig --list<code></code>ntsysv<code>|</code>systemctl list-units
+-t service --all<code>Get a service status |</code>/etc/init.d/nginx status<code>|</code>initctl
+status nginx<code>|</code>/etc/init.d/nginx status<code>|</code>systemctl status nginx.service`</p>
+</blockquote>
 </div><hr>Tags: <a href="../tags/arch-linux.html" class="link">arch-linux &nbsp;</a><a href="../tags/boot.html" class="link">boot &nbsp;</a><a href="../tags/centos.html" class="link">centos &nbsp;</a><a href="../tags/chkconfig.html" class="link">chkconfig &nbsp;</a><a href="../tags/debian.html" class="link">debian &nbsp;</a><a href="../tags/init.html" class="link">init &nbsp;</a><a href="../tags/redhat.html" class="link">redhat &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><a href="../tags/systemd.html" class="link">systemd &nbsp;</a><a href="../tags/sysvinit.html" class="link">sysvinit &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><a href="../tags/upstart.html" class="link">upstart &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -9,17 +9,15 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/transmission.png" alt="transmission" />
+![transmission][1]
 
 One of my Raspberry Pi's was running a test setup of the Citadel groupware
 service. The test was sucessfull, so I set up a real world setup. The Raspberry
 Pi would serve another purpose, namely, a Linux Torrent seedbox. As in, to seed
-Linux torrents from [linuxtracker.org][1].
+Linux torrents from [linuxtracker.org][2].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
 
 I choose Transmission for this, because it is simple, fast and stable.
 Transmission has a good webinterface, plus it allows access from remote clients
@@ -28,22 +26,34 @@ with the transmission-remote gui packages.
 My Pi's run Arch Linux, so setup of Transmission is fairly easy. First install
 it with pacman:
 
+    
+    
     sudo pacman -Syu transmission-cli
+    
 
 Enable the service at startup:
 
+    
+    
     sudo systemctl enable transmission
+    
 
 Start the service:
 
+    
+    
     sudo systemctl start transmission
+    
 
 Create a folder where your user and the transmission group (where the
 transmission user belongs to) can read and write:
 
+    
+    
     sudo mkdir -p /mnt/data/torrents/{incomplete,complete,torrentfiles}
     sudo chown -R remy:transmission /mnt/data/torrents
     sudo chmod -R 775 /mnt/data/torrents
+    
 
 In my example the folder `/mnt/data/torrents` is an external USB harddrive which
 is mounted via `/etc/fstab` at boot. Remember to change `remy` to your Pi
@@ -51,34 +61,43 @@ username.
 
 Stop the daemon to make sure the config file edits stick:
 
+    
+    
     sudo systemctl stop transmission
+    
 
 Edit the default config file to allow remote access to the daemon (or do not do
 that and use an ssh tunnel every time) and update the downloads path:
 
+    
+    
     sudo vim /var/lib/transmission/.config/transmission-daemon/settings.json
+    
 
 Change the following parameters:
 
+    
+    
         # From
         "download-dir": "/var/lib/transmission/Downloads",
         # To
         "download-dir": "/mnt/data/torrents/complete",
-
+    
         # From:
         "incomplete-dir": "/var/lib/transmission/Downloads",
         # To
         "incomplete-dir": "/mnt/data/torrents/incomplete",
-
+    
         # From
         "incomplete-dir-enabled": false,
         # To
         "incomplete-dir-enabled": true,
-
+    
         # From
         "rpc-whitelist": "127.0.0.1",
         # To
         "rpc-whitelist": "*.*.*.*",
+    
 
 This sets the correct download folders and allows access from everywhere to the
 transmission webinterface. You can also list a range there (192.168.1.0/24) or
@@ -86,6 +105,8 @@ just one IP address.
 
 If you do not udate the ACL you get a nice error message when connecting:
 
+    
+    
     403: Forbidden
     
     Unauthorized IP Address.
@@ -95,19 +116,22 @@ If you do not udate the ACL you get a nice error message when connecting:
     If you're editing settings.json, see the 'rpc-whitelist' and 'rpc-whitelist-enabled' entries.
     
     If you're still using ACLs, use a whitelist instead. See the transmission-daemon manpage for details.
+    
 
 If all went well you should be able to connect to `http://YOUR-PI-IP:9091` and
 see the nice transmission webinterface.
 
 If you are going to download copyrighted material you might want to enable a
-blocklist, see [iblocklist.com][2] for more info on that.
+blocklist, see [iblocklist.com][4] for more info on that.
 
-If you want more info on Transmission on Arch Linux, read up on [the arch wiki][3].
+If you want more info on Transmission on Arch Linux, read up on [the arch
+wiki][5].
 
-[1]: http://linuxtracker.org
-[2]: https://www.iblocklist.com/lists.php
-[3]: https://wiki.archlinux.org/index.php/Transmission
-
+   [1]: https://raymii.org/s/inc/img/transmission.png
+   [2]: http://linuxtracker.org
+   [3]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [4]: https://www.iblocklist.com/lists.php
+   [5]: https://wiki.archlinux.org/index.php/Transmission
 
 ---
 

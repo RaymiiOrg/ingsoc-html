@@ -69,21 +69,30 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to install extra software in the VMWare vCenter appliance. VMWare provides a vCenter appliance, which is a SUSE Linux Enterprise Server appliance with the VMWare vCenter server software installed. Because this is SUSE, we can add repositories and install software from there. By default it comes without repositories enabled. I needed to do this because I want to use NRPE on the vCenter appliance.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to install extra software in the VMWare vCenter
+appliance. VMWare provides a vCenter appliance, which is a SUSE Linux Enterprise
+Server appliance with the VMWare vCenter server software installed. Because this
+is SUSE, we can add repositories and install software from there. By default it
+comes without repositories enabled. I needed to do this because I want to use
+NRPE on the vCenter appliance.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Make sure you can SSH to your vCenter Appliance. I use my own account with sudo, however, if you&#39;re feeling lucky you might be able to use the root account. Remember, to disable root login.</p>
+<p>Make sure you can SSH to your vCenter Appliance. I use my own account with sudo,
+however, if you&#39;re feeling lucky you might be able to use the root account.
+Remember, to disable root login.</p>
 
-<p>First we need to make sure we have the correct version. Check the file <code>/etc/SuSE-release</code>:</p>
+<p>First we need to make sure we have the correct version. Check the file <code>/etc
+/SuSE-release</code>:</p>
 
 <pre><code>SUSE Linux Enterprise Server 11 (x86_64)
 VERSION = 11
 PATCHLEVEL = 2
 </code></pre>
 
-<p>I use the vCenter 5.5 appliance. If you have another version, change the repository URL to match this version.</p>
+<p>I use the vCenter 5.5 appliance. If you have another version, change the
+repository URL to match this version.</p>
 
 <p>Add the openSUSE repository:</p>
 
@@ -112,7 +121,7 @@ URI: http://download.opensuse.org/distribution/11.2/repo/oss/
 1 | opensuse | opensuse | Yes     | Yes     |   99     | NONE | http://download.opensuse.org/distribution/11.2/repo/oss/ |
 </code></pre>
 
-<p>Update the local repository cache (comparable to  <code>apt-get update</code>):</p>
+<p>Update the local repository cache (comparable to <code>apt-get update</code>):</p>
 
 <pre><code>zypper refresh
 </code></pre>
@@ -139,7 +148,8 @@ Building repository &#39;opensuse&#39; cache [done]
 All repositories have been refreshed.
 </code></pre>
 
-<p>That&#39;s it. If you now for example want to install NRPE, you can use the following commands. First search for the correct package name:</p>
+<p>That&#39;s it. If you now for example want to install NRPE, you can use the
+following commands. First search for the correct package name:</p>
 
 <pre><code>zypper search nrpe
 </code></pre>

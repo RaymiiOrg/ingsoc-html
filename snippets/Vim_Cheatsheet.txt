@@ -9,49 +9,49 @@ Format      : 	Markdown/HTML
 
 
 
-    Note: Not finished yet!
+Note: Not finished yet!
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ## Splits
+
 :sp - split horizontal  
-:vsp - split vertical    
-^W + l - move left    
-^W + k - move split up    
-^W + j - move split down    
-^W + h - move split left    
-      
+:vsp - split vertical  
+^W + l - move left  
+^W + k - move split up  
+^W + j - move split down  
+^W + h - move split left
 
 ## Navigation
-gg - go to beginning of a file    
-G - go to the end of the file    
-3G - go to the 3rd line    
-w - go to beginning of next word    
-e - go to end of word    
-b - go to beginning of word.    
-3w - go to the 3rd word.    
-% - go to matching parentheses    
-^/0 - go to beginning of line    
-$ - go to end of line    
-    
-## Typing
-o - insert new line below current one    
-O - insert new line above current one    
-A - start typing at the end of this line.    
-    
-    
-## Finding    
-* - find next occurence of word under the cursor     
-# - find previous occurence of word under the cursor.    
-:s/foo/bar/g - replace foo with bar on this line.    
-:%s/foo/bar/g - replace all foo's with bar's    
-/foo - find 'foo'.    
-n/N - go to next match/go to previous match.    
-              
 
+gg - go to beginning of a file  
+G - go to the end of the file  
+3G - go to the 3rd line  
+w - go to beginning of next word  
+e - go to end of word  
+b - go to beginning of word.  
+3w - go to the 3rd word.  
+% - go to matching parentheses  
+^/0 - go to beginning of line  
+$ - go to end of line
+
+## Typing
+
+o - insert new line below current one  
+O - insert new line above current one  
+A - start typing at the end of this line.
+
+## Finding
+
+  * \- find next occurence of word under the cursor  
+# - find previous occurence of word under the cursor.  
+:s/foo/bar/g - replace foo with bar on this line.  
+:%s/foo/bar/g - replace all foo's with bar's  
+/foo - find 'foo'.  
+n/N - go to next match/go to previous match.  
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

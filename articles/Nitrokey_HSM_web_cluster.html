@@ -69,22 +69,33 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/hsmcluster.jpg" ></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/hsmcluster.jpg" alt=""></p>
 
 <blockquote>
 <p>The 3-Pi HSM cluster to be used for the cluster articles</p>
 </blockquote>
 
-<p>This article sets up a Nitrokey HSM/SmartCard-HSM web cluster and has a lot of benchmarks. This specific HSM is not a fast HSM since it&#39;s very inexpensive and targeted at secure key storage, not performance. But, what if you do want more performance? Then you scale horizontally, just add some more HSM&#39;s and a loadbalancer in front. </p>
+<p>This article sets up a Nitrokey HSM/SmartCard-HSM web cluster and has a lot of
+benchmarks. This specific HSM is not a fast HSM since it&#39;s very inexpensive and
+targeted at secure key storage, not performance. But, what if you do want more
+performance? Then you scale horizontally, just add some more HSM&#39;s and a
+loadbalancer in front.</p>
 
-<p>You want to put your private key material inside an HSM because it cannot be stolen that way. A HSM does not allow key material to be exported, so nobody can secretly copy the keys and use them without your knowledge. If the HSM is tampered with, it will also wipe itself, so brute forcing it will not work.</p>
+<p>You want to put your private key material inside an HSM because it cannot be
+stolen that way. A HSM does not allow key material to be exported, so nobody can
+secretly copy the keys and use them without your knowledge. If the HSM is
+tampered with, it will also wipe itself, so brute forcing it will not work.</p>
 
-<p>The cluster consists of Raspberry Pi&#39;s and Nitrokey HSM&#39;s and SmartCard-HSM&#39;s, softwarewise we use Apache, <code>mod_nss</code> and haproxy. </p>
+<p>The cluster consists of Raspberry Pi&#39;s and Nitrokey HSM&#39;s and SmartCard-HSM&#39;s,
+softwarewise we use Apache, <code>mod_nss</code> and haproxy.</p>
 
-<p>This is the first time I had an actual use case for Raspberry Pi&#39;s in a cluster, and I really enjoyed doing it. I might even, in the future, add some more Pi&#39;s on top and do some more benchmarks. But I already spent about two weeks working on this single article so three was just fine for now.</p>
+<p>This is the first time I had an actual use case for Raspberry Pi&#39;s in a cluster,
+and I really enjoyed doing it. I might even, in the future, add some more Pi&#39;s
+on top and do some more benchmarks. But I already spent about two weeks working
+on this single article so three was just fine for now.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Do note that two devices were sponsored for this article.</p>
 
@@ -101,61 +112,101 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><p>a prime256v1 EC certificate in the HSM. </p></li>
 </ul>
 
-<p>We do these benchmarks with the <code>OpenSC</code> module and with the <code>sc-hsm-embedded</code> module to see if that makes any difference. </p>
+<p>We do these benchmarks with the <code>OpenSC</code> module and with the <code>sc-hsm-embedded</code>
+module to see if that makes any difference.</p>
 
-<p>The full raw results are provided at the end of the article. I first talk a bit more about the HSM&#39;s, the cluster setup and the issues I had with the Raspberry Pi&#39;s. Then we set up the three HSM devices and the load balancer. Finally, before the raw results, we have nice charts and interpretation of the charts, plus an unexpected conclusion.</p>
+<p>The full raw results are provided at the end of the article. I first talk a bit
+more about the HSM&#39;s, the cluster setup and the issues I had with the Raspberry
+Pi&#39;s. Then we set up the three HSM devices and the load balancer. Finally,
+before the raw results, we have nice charts and interpretation of the charts,
+plus an unexpected conclusion.</p>
 
 <h3>Introduction</h3>
 
-<p><img src="https://raymii.org/s/inc/img/sc-hsm-nitrokey.jpg" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/sc-hsm-nitrokey.jpg" alt=""></p>
 
 <blockquote>
 <p>The Nitrokey HSM and the SmartCard-HSM</p>
 </blockquote>
 
-<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a> project.</p>
+<p>The <a href="http://nitrokey.com">Nitrokey HSM</a> is an open hardware and open software device. It is a USB
+version of the <a href="http://www.smartcard-hsm.com/">SmartCard-HSM</a>. Both the <a href="http://www.smartcard-hsm.com/opensource.html">SmartCard-HSM</a> as the <a href="https://github.com/nitrokey">Nitrokey
+HSM</a> have sources available and are fully supported by the <a href="https://github.com/OpenSC/OpenSC/wiki/SmartCardHSM">OpenSC</a>
+project.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
-<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/sc-hsm.jpg" alt=""></p>
 
 <blockquote>
 <p>The SmartCard-HSM</p>
 </blockquote>
 
-<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting started</a> article. It explains what the HSM is, how to set it up and how to use it with OpenSSH for example.</p>
+<p>If you are new to the NitroKey HSM/SmartCard HSM, please also <a href="https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html">read my getting
+started</a> article. It explains what the HSM is, how to set it up and how to
+use it with OpenSSH for example.</p>
 
-<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the others as well.</p>
+<p>I have <a href="https://raymii.org/s/tags/nitrokey.html">multiple articles</a> on this nice device, so make sure to read the
+others as well.</p>
 
 <h3>How many HSM&#39;s?</h3>
 
-<p><img src="https://raymii.org/s/inc/img/3hsm.jpg" width="500" height="300"></p>
+<p><img src="https://raymii.org/s/inc/img/3hsm.jpg" alt=""></p>
 
 <blockquote>
 <p>Three Nitrokey&#39;s in their bags</p>
 </blockquote>
 
-<p>This guide uses three Nitrokey HSM devices. I&#39;ve generated three keypairs on one of the HSM&#39;s, one RSA 1024, one RSA 2048 and one EC key, just as we did in <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">the <code>mod_nss</code> tutorial</a>. Please consult that article first, since the key generation and certificate loading part is not included in this guide.</p>
+<p>This guide uses three Nitrokey HSM devices. I&#39;ve generated three keypairs on one
+of the HSM&#39;s, one RSA 1024, one RSA 2048 and one EC key, just as we did in <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">the
+<code>mod_nss</code> tutorial</a>. Please consult that article first, since the key
+generation and certificate loading part is not included in this guide.</p>
 
-<p>I&#39;ll refer to the HSM where the DKEK was initialized and the keys were generated as HSM 1. The other two HSM&#39;s are referred two as HSM 2 and HSM 3.  </p>
+<p>I&#39;ll refer to the HSM where the DKEK was initialized and the keys were generated
+as HSM 1. The other two HSM&#39;s are referred two as HSM 2 and HSM 3.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
-<p>This guide uses three Raspberry Pi 3 comuters, wired network with Raspbian testing (2016-07-29) and with the three HSM devices plugged in. </p>
+<p>This guide uses three Raspberry Pi 3 comuters, wired network with Raspbian
+testing (2016-07-29) and with the three HSM devices plugged in.</p>
 
-<p>At first I tried to use the HSM&#39;s on the host computer, with different virtual hosts. That works when using the OpenSC module, but not with the sc-hsm-embedded module. <a href="https://github.com/CardContact/sc-hsm-embedded/issues/12">That module doesn&#39;t support token labels</a>, yet, so there was no way to distinguish between them. I did try to setup three different NSS databases where the HSM&#39;s were only enabled by ID but that still resulted in the three of them being used. To make all tests equal, I went for a second option.</p>
+<p>At first I tried to use the HSM&#39;s on the host computer, with different virtual
+hosts. That works when using the OpenSC module, but not with the sc-hsm-embedded
+module. <a href="https://github.com/CardContact/sc-hsm-embedded/issues/12">That module doesn&#39;t support token labels</a>, yet, so there was no way
+to distinguish between them. I did try to setup three different NSS databases
+where the HSM&#39;s were only enabled by ID but that still resulted in the three of
+them being used. To make all tests equal, I went for a second option.</p>
 
-<p>That second option was using three different virtual machines on the same PC with VirtualBox and USB passthrough in VirtualBox:</p>
+<p>That second option was using three different virtual machines on the same PC
+with VirtualBox and USB passthrough in VirtualBox:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsmshare.png"></p>
+<p><img src="https://raymii.org/s/inc/img/hsmshare.png" alt=""></p>
 
-<p>That however gave all kinds of errors with the HSM&#39;s in use. At first it worked just fine with <code>mod_nss</code> but whenever I tried to do more than 5 concurrent actions on the HSM the connection was lost and it became unresponsive, to the part that even <code>sc-hsm-tool</code> did not recognize the HSM and a VM reboot was required. So that wasn&#39;t a viable solution either. On to the third option it was.</p>
+<p>That however gave all kinds of errors with the HSM&#39;s in use. At first it worked
+just fine with <code>mod_nss</code> but whenever I tried to do more than 5 concurrent
+actions on the HSM the connection was lost and it became unresponsive, to the
+part that even <code>sc-hsm-tool</code> did not recognize the HSM and a VM reboot was
+required. So that wasn&#39;t a viable solution either. On to the third option it
+was.</p>
 
 <h3>Cluster setup</h3>
 
-<p>THe final solution was using three different computers. Since I wanted to keep it simple, fair and not too expensive I decided to buy three Raspberry Pi 3&#39;s. I bought them from the dutch store <a href="https://www.kiwi-electronics.nl/">Kiwi-Electronics</a> including two <a href="https://www.kiwi-electronics.nl/raspberry-pi-stackable-case-kit-black?search=stack">stackable cases</a>. (These links are not affiliate links, just had a great experience there. Their order confirmation lists the ordering IP, and in my case it was my IPv6 address. Yay +1 for them!). The case comes from <a href="https://www.modmypi.com/blog/multi-pi-assembly-guide">ModMyPi</a> and I might even just recreate it in Inkscape and use my lasercutter in the future for expansion.</p>
+<p>THe final solution was using three different computers. Since I wanted to keep
+it simple, fair and not too expensive I decided to buy three Raspberry Pi 3&#39;s. I
+bought them from the dutch store <a href="https://www.kiwi-electronics.nl/">Kiwi-Electronics</a> including two <a href="https://www.kiwi-electronics.nl/raspberry-pi-stackable-case-kit-black?search=stack">stackable
+cases</a>. (These links are not affiliate links, just had a great experience
+there. Their order confirmation lists the ordering IP, and in my case it was my
+IPv6 address. Yay +1 for them!). The case comes from <a href="https://www.modmypi.com/blog/multi-pi-assembly-guide">ModMyPi</a> and I might
+even just recreate it in Inkscape and use my lasercutter in the future for
+expansion.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
 <p>The Raspberry Pi 3 Model B&#39;s have the following specs:</p>
 
@@ -166,11 +217,19 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>4x USB 2.0</li>
 </ul>
 
-<p>They also have Wifi and bluetooth but I did not use that. All the benchmarks were done over the wired network. The OS is <a href="https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html">Raspbian Testing</a>. Since the current normal Raspbian ships <code>OpenSC</code> 0.14 which doesn&#39;t support the SmartCard-HSM/Nitrokey HSM an upgrade was required. The current testing ships with OpenSC 0.16, which does work with the SmartCard-HSM/Nitrokey HSM.</p>
+<p>They also have Wifi and bluetooth but I did not use that. All the benchmarks
+were done over the wired network. The OS is <a href="https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html">Raspbian Testing</a>. Since the
+current normal Raspbian ships <code>OpenSC</code> 0.14 which doesn&#39;t support the SmartCard-
+HSM/Nitrokey HSM an upgrade was required. The current testing ships with OpenSC
+0.16, which does work with the SmartCard-HSM/Nitrokey HSM.</p>
 
-<p>To combine the three machines into one single service I used <code>haproxy</code> in TCP mode. <code>haproxy</code> is a very fast and scalable HTTP(s)/TCP load balancer. I&#39;ve used it in production for many years now and have been happy with it ever since.</p>
+<p>To combine the three machines into one single service I used <code>haproxy</code> in TCP
+mode. <code>haproxy</code> is a very fast and scalable HTTP(s)/TCP load balancer. I&#39;ve used
+it in production for many years now and have been happy with it ever since.</p>
 
-<p>I did also try <code>nginx</code> since that also <a href="https://www.nginx.com/resources/admin-guide/tcp-load-balancing/">supports TCP and UDP load balancing</a>. The results were very comparable, so I think the load balancer is not the limiting factor here.</p>
+<p>I did also try <code>nginx</code> since that also <a href="https://www.nginx.com/resources/admin-guide/tcp-load-balancing/">supports TCP and UDP load
+balancing</a>. The results were very comparable, so I think the load balancer
+is not the limiting factor here.</p>
 
 <p>The software stack used on Raspbian Testing is the following:</p>
 
@@ -184,18 +243,29 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><code>mod_nss</code> 1.0.12-2</li>
 </ul>
 
-<p>I&#39;m using <code>mpm_event</code> and <code>php-fpm</code> instead of <code>mpm_prefork</code> and <code>mod-php</code> because of issues with the initialization of the HSM by all the workers. See <a href="https://www.redhat.com/archives/mod_nss-list/2016-July/msg00000.html">the mailinglist thread here</a> for more information. Otherwise all kinds of errors like <code>SSL Library Error: -8152 The key does not support the requested operation</code> and <code>SSL Library Error: -8023 Unknown</code> and <code>SSL Library Error: -12216 Attempt to write encrypted data to underlying socket failed</code> and <code>SSL input filter
-read failed.</code> occur.</p>
+<p>I&#39;m using <code>mpm_event</code> and <code>php-fpm</code> instead of <code>mpm_prefork</code> and <code>mod-php</code>
+because of issues with the initialization of the HSM by all the workers. See
+<a href="https://www.redhat.com/archives/mod_nss-list/2016-July/msg00000.html">the mailinglist thread here</a> for more information. Otherwise all kinds of
+errors like <code>SSL Library Error: -8152 The key does not support the requested
+operation</code> and <code>SSL Library Error: -8023 Unknown</code> and <code>SSL Library Error: -12216
+Attempt to write encrypted data to underlying socket failed</code> and <code>SSL input
+filter read failed.</code> occur.</p>
 
-<p>To install all the software and configure everything except for the HSM key generation I&#39;ve created a set of Ansible playbooks. Because nobody wants to handcraft three special snowflakes. I&#39;ve burned through 7 MicroSD cards before getting to a working setup. I also tried to use Arch and Ubuntu 16.04 but those images all had their own instabillites, so I just settled on Raspbian testing.</p>
+<p>To install all the software and configure everything except for the HSM key
+generation I&#39;ve created a set of Ansible playbooks. Because nobody wants to
+handcraft three special snowflakes. I&#39;ve burned through 7 MicroSD cards before
+getting to a working setup. I also tried to use Arch and Ubuntu 16.04 but those
+images all had their own instabillites, so I just settled on Raspbian testing.</p>
 
-<p><img src="https://raymii.org/s/inc/img/ansible_nss.png"></p>
+<p><img src="https://raymii.org/s/inc/img/ansible_nss.png" alt=""></p>
 
-<p>I might put the playbooks on here someday, but now they are intertwined to much with my personal playbooks to make sense without it.</p>
+<p>I might put the playbooks on here someday, but now they are intertwined to much
+with my personal playbooks to make sense without it.</p>
 
-<p>How do you keep the HSM&#39;s apart? Well, I&#39;ve used a very high-tech solution for that, namely using three different coloured key-cords:</p>
+<p>How do you keep the HSM&#39;s apart? Well, I&#39;ve used a very high-tech solution for
+that, namely using three different coloured key-cords:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsmkeycord.jpg" height="300"></p>
+<p><img src="https://raymii.org/s/inc/img/hsmkeycord.jpg" alt=""></p>
 
 <p>Stickers might also be an option.</p>
 
@@ -203,7 +273,8 @@ read failed.</code> occur.</p>
 
 <p>Plug in HSM 2.</p>
 
-<p>If you execute <code>sc-hsm-tool</code> it will notify you that the new HSM has never been initialized:</p>
+<p>If you execute <code>sc-hsm-tool</code> it will notify you that the new HSM has never been
+initialized:</p>
 
 <pre><code>$ sc-hsm-tool 
 </code></pre>
@@ -215,7 +286,9 @@ Version              : 2.0
 SmartCard-HSM has never been initialized. Please use --initialize to set SO-PIN and user PIN.
 </code></pre>
 
-<p>HSM 1 was initialized with one DKEK share. We initialize the new HSMs and import the DKEK share, to make sure the key backups work. We also give it a different label.</p>
+<p>HSM 1 was initialized with one DKEK share. We initialize the new HSMs and import
+the DKEK share, to make sure the key backups work. We also give it a different
+label.</p>
 
 <pre><code>sc-hsm-tool --initialize --so-pin 3537363231383830 --pin 648219 --dkek-shares 1 --label &#39;hsm2&#39;
 </code></pre>
@@ -241,9 +314,13 @@ DKEK shares          : 1
 DKEK key check value : 0FB85F69F6EBF256
 </code></pre>
 
-<p>Repeat the above process for HSM 3 and any more HSM&#39;s you have. Make sure to give them descriptive labels. Unplug the other HSM&#39;s when initializing one, to make sure you don&#39;t overwrite the wrong one.</p>
+<p>Repeat the above process for HSM 3 and any more HSM&#39;s you have. Make sure to
+give them descriptive labels. Unplug the other HSM&#39;s when initializing one, to
+make sure you don&#39;t overwrite the wrong one.</p>
 
-<p>The new HSM&#39;s are now initialized with the same DKEK as the old HSM. The next step is to securely backup the existing keys from the old HSM and import them into the new HSMs. This works because we&#39;re using the same DKEK.</p>
+<p>The new HSM&#39;s are now initialized with the same DKEK as the old HSM. The next
+step is to securely backup the existing keys from the old HSM and import them
+into the new HSMs. This works because we&#39;re using the same DKEK.</p>
 
 <h3>Backup and restore the keys</h3>
 
@@ -282,7 +359,8 @@ Key successfully imported
 
 <p>Repeat this for HSM 3.</p>
 
-<p>With all the keys imported and three HSM&#39;s plugged in, <code>pkcs11-tool</code> gives some nice output:</p>
+<p>With all the keys imported and three HSM&#39;s plugged in, <code>pkcs11-tool</code> gives some
+nice output:</p>
 
 <pre><code>pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --list-slots
 Available slots:
@@ -314,14 +392,17 @@ Slot 3 (0xc): Nitrokey Nitrokey HSM (010000000000000000000000) 03 00
   serial num         : DENK0100436
 </code></pre>
 
-<p>If you want to do operations on a specific device you can add the <code>--slot</code> parameter to the <code>pkcs11-tool</code> command. For example, to generate a key just on HSM 2 (slot 3/c):</p>
+<p>If you want to do operations on a specific device you can add the <code>--slot</code>
+parameter to the <code>pkcs11-tool</code> command. For example, to generate a key just on
+HSM 2 (slot 3/c):</p>
 
 <pre><code>$ pkcs11-tool --module opensc-pkcs11.so --login --pin 648219 --keypairgen --key-type EC:prime256v1 --slot c --id 10 --label &quot;ect&quot;
 </code></pre>
 
 <h3>Raspberry Pi setup</h3>
 
-<p>The Raspberry Pi&#39;s are on the network via a wired connection. They run <a href="https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html">Raspbian Testing</a> because of the OpenSC version. </p>
+<p>The Raspberry Pi&#39;s are on the network via a wired connection. They run <a href="https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html">Raspbian
+Testing</a> because of the OpenSC version.</p>
 
 <p>The following steps should be done on the three Pi&#39;s:</p>
 
@@ -332,13 +413,18 @@ Slot 3 (0xc): Nitrokey Nitrokey HSM (010000000000000000000000) 03 00
 <li>Apache and <code>mod_nss</code> configuration</li>
 </ul>
 
-<p>Please consult the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">mod_nss opensc</a> guide or the <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">mod_nss with sc-hsm-embedded</a> guide for the specific setup and repeat that on all the Raspberry Pi&#39;s. I&#39;m not going to cover the setup here any further.</p>
+<p>Please consult the <a href="https://raymii.org/s/articles/Nitrokey_HSM_in_Apache_with_mod_nss.html">mod_nss opensc</a> guide or the <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">mod_nss with sc-hsm-
+embedded</a> guide for the specific setup and repeat that on all the Raspberry
+Pi&#39;s. I&#39;m not going to cover the setup here any further.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
 <h3>Apache setup</h3>
 
-<p>Remember to not use <code>mod_php</code> and <code>mpm_prefork</code>. I used <code>mpm_event</code> and <code>php-fpm</code> (PHP 7). </p>
+<p>Remember to not use <code>mod_php</code> and <code>mpm_prefork</code>. I used <code>mpm_event</code> and <code>php-
+fpm</code> (PHP 7).</p>
 
 <p>Here is the <code>mpm_event</code> configuration:</p>
 
@@ -351,7 +437,8 @@ Slot 3 (0xc): Nitrokey Nitrokey HSM (010000000000000000000000) 03 00
     MaxConnectionsPerChild   150
 </code></pre>
 
-<p>I couldn&#39;t get <code>fastcgi</code> to run, but it seems Apache uses its own module now (<code>proxy_fcgi</code>). </p>
+<p>I couldn&#39;t get <code>fastcgi</code> to run, but it seems Apache uses its own module now
+(<code>proxy_fcgi</code>).</p>
 
 <p>Make sure to restart Apache after configuring.</p>
 
@@ -364,9 +451,17 @@ Slot 3 (0xc): Nitrokey Nitrokey HSM (010000000000000000000000) 03 00
 <pre><code>apt-get install haproxy
 </code></pre>
 
-<p>I&#39;m using version 1.6.6. I&#39;ve got a few <a href="https://raymii.org/s/tags/haproxy.html">other articles</a> on HAproxy if you&#39;re interested. HAproxy does not run on the Raspberry Pi&#39;s, but on my local host (A Lenovo Thinkpad x240, i5, 8GB RAM, Arch linux), so don&#39;t install this in the VM&#39;s.</p>
+<p>I&#39;m using version 1.6.6. I&#39;ve got a few <a href="https://raymii.org/s/tags/haproxy.html">other articles</a> on HAproxy if
+you&#39;re interested. HAproxy does not run on the Raspberry Pi&#39;s, but on my local
+host (A Lenovo Thinkpad x240, i5, 8GB RAM, Arch linux), so don&#39;t install this in
+the VM&#39;s.</p>
 
-<p>HAproxy can do many things in http mode, but we&#39;re not using that. We will be using <code>tcp</code> mode with a <code>roundrobin</code> configuration. This means that when requests come in, haproxy proxy&#39;s the TCP connection to the backends. Request one goes to hsm1, request two to hsm 2, request 3 to hsm 3 and request 4 goes to hsm 1. This way the server can handle more concurrent requests. This is my basic haproxy configuration file, <code>/etc/haproxy/haproxy.cfg</code>:</p>
+<p>HAproxy can do many things in http mode, but we&#39;re not using that. We will be
+using <code>tcp</code> mode with a <code>roundrobin</code> configuration. This means that when
+requests come in, haproxy proxy&#39;s the TCP connection to the backends. Request
+one goes to hsm1, request two to hsm 2, request 3 to hsm 3 and request 4 goes to
+hsm 1. This way the server can handle more concurrent requests. This is my basic
+haproxy configuration file, <code>/etc/haproxy/haproxy.cfg</code>:</p>
 
 <pre><code>global
     maxconn     20000
@@ -393,13 +488,15 @@ backend hsm
     server hsm03 10.0.0.108:8443
 </code></pre>
 
-<p>My VM&#39;s have the <code>10.0.0.106</code>, <code>107</code> and <code>108</code> addresses. </p>
+<p>My VM&#39;s have the <code>10.0.0.106</code>, <code>107</code> and <code>108</code> addresses.</p>
 
 <p>Restart <code>haproxy</code> after changing the config.</p>
 
 <p>In my <code>hosts</code> file I&#39;ve setup the domain <a href="https://hsmcluster.nl">hsmcluster.nl</a> on localhost.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
 <h3>NGINX in TCP mode</h3>
 
@@ -426,13 +523,21 @@ stream {
 
 <h3>Charts and result interpretation</h3>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
-<p>Here below I&#39;ll look into the various aspects and results of the benchmark. The last section of the article gives you the raw numbers/benchmark siege results to play around yourself. This is the more readable part if you&#39;re not into number crunching.</p>
+<p>Here below I&#39;ll look into the various aspects and results of the benchmark. The
+last section of the article gives you the raw numbers/benchmark siege results to
+play around yourself. This is the more readable part if you&#39;re not into number
+crunching.</p>
 
 <h4>Siege result parsing</h4>
 
-<p>Siege gives you different types of metrics. We do the same benchmark over and over so we&#39;re interesed in some, not all. The time for example is 30 seconds everywhere. Here is, <a href="https://www.joedog.org/siege-manual/#a08">from the manual</a>, the explanation of the metrics we use.</p>
+<p>Siege gives you different types of metrics. We do the same benchmark over and
+over so we&#39;re interesed in some, not all. The time for example is 30 seconds
+everywhere. Here is, <a href="https://www.joedog.org/siege-manual/#a08">from the manual</a>, the explanation of the metrics we
+use.</p>
 
 <ul>
 <li>Transactions is the number of server hits.</li>
@@ -443,83 +548,129 @@ stream {
 
 <h4><code>mod_ssl</code>. no HSM</h4>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/no-hsm-mod_ssl.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/no-hsm-mod_ssl.png" alt=""></p>
 
-<p>As we can see here the 1024 bit RSA key is the fastest. 2048 bit RSA is just a tidbit slower, but still acceptable. 4096 bit RSA keys take a huge dump down in transactions and the response time and concurrency go up. </p>
+<p>As we can see here the 1024 bit RSA key is the fastest. 2048 bit RSA is just a
+tidbit slower, but still acceptable. 4096 bit RSA keys take a huge dump down in
+transactions and the response time and concurrency go up.</p>
 
-<p>8192 bit RSA keys slow down to a grinding halt, huge response time, low transaction rate. It might be super secure, but super slow as well.</p>
+<p>8192 bit RSA keys slow down to a grinding halt, huge response time, low
+transaction rate. It might be super secure, but super slow as well.</p>
 
-<p>Same goes for the EC prime256v1 keys. Most of the time EC keys are faster, but it seems the Pi&#39;s have trouble with it, just as much as with the 8192 bit RSA keys. </p>
+<p>Same goes for the EC prime256v1 keys. Most of the time EC keys are faster, but
+it seems the Pi&#39;s have trouble with it, just as much as with the 8192 bit RSA
+keys.</p>
 
 <h4>1024 bit RSA key</h4>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa.png" alt=""></p>
 
-<p>We can see that the HSM is around 8 times slower than using regular <code>mod_ssl</code>. But, we knew that already. Adding a HSM to the loadbalancer doubles the performance, and adding two HSM&#39;s to the loadbalancer triples it, as we would expect. So, going down that route, if we have 8 HSM&#39;s, it would be just as fast as regular <code>mod_ssl</code>.</p>
+<p>We can see that the HSM is around 8 times slower than using regular <code>mod_ssl</code>.
+But, we knew that already. Adding a HSM to the loadbalancer doubles the
+performance, and adding two HSM&#39;s to the loadbalancer triples it, as we would
+expect. So, going down that route, if we have 8 HSM&#39;s, it would be just as fast
+as regular <code>mod_ssl</code>.</p>
 
-<p>Something that caught my eye was that with one HSM the <code>OpenSC</code> module was faster. (Remember, best of three for the tests, every test is done three times, best result is kept.). When using multiple HSM&#39;s we see a small gain in transactions when using <code>sc-hsm-embedded</code>. I&#39;m not quite sure why that is, but it&#39;s something that steps out.</p>
+<p>Something that caught my eye was that with one HSM the <code>OpenSC</code> module was
+faster. (Remember, best of three for the tests, every test is done three times,
+best result is kept.). When using multiple HSM&#39;s we see a small gain in
+transactions when using <code>sc-hsm-embedded</code>. I&#39;m not quite sure why that is, but
+it&#39;s something that steps out.</p>
 
-<p>But, as we all know, using an 1024 bit RSA key is considered insecure. So don&#39;t do that in production.</p>
+<p>But, as we all know, using an 1024 bit RSA key is considered insecure. So don&#39;t
+do that in production.</p>
 
-<p>Here is the same data with only the HSM&#39;s so that you can see the differences better between OpenSC and sc-embedded-hsm:</p>
+<p>Here is the same data with only the HSM&#39;s so that you can see the differences
+better between OpenSC and sc-embedded-hsm:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa-hsm.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/1024-bit-rsa-hsm.png" alt=""></p>
 
 <h4>2048 bit RSA key</h4>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa.png" alt=""></p>
 
-<p>2048 bit keys are way harder for the HSM, but not at all for regular <code>mod_ssl</code>. In this case it is about 26 times slower when using a HSM, comparing to no HSM. Here we see again that the transaction rate is doubled and trippled when adding HSM&#39;s to the cluster. The same thing here with sc-hsm-embedded, when used with 1 HSM it&#39;s slower, but when scaling up it becomes a little bit faster.</p>
+<p>2048 bit keys are way harder for the HSM, but not at all for regular <code>mod_ssl</code>.
+In this case it is about 26 times slower when using a HSM, comparing to no HSM.
+Here we see again that the transaction rate is doubled and trippled when adding
+HSM&#39;s to the cluster. The same thing here with sc-hsm-embedded, when used with 1
+HSM it&#39;s slower, but when scaling up it becomes a little bit faster.</p>
 
-<p>Here is the same data with only the HSM&#39;s so that you can see the differences better between OpenSC and sc-embedded-hsm:</p>
+<p>Here is the same data with only the HSM&#39;s so that you can see the differences
+better between OpenSC and sc-embedded-hsm:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa-hsm.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/2048-bit-rsa-hsm.png" alt=""></p>
 
 <h4>prime256v1 EC key</h4>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/prime256v1-ec.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/prime256v1-ec.png" alt=""></p>
 
-<p>I think the Pi&#39;s have trouble with the prime256v1 EC key. When using just one HSM, the performance almost doubles. When we use three HSM&#39;s the performance is almost as good as with the 1024 bit RSA key. In all cases OpenSC was slower than the sc-hsm-embedded module. </p>
+<p>I think the Pi&#39;s have trouble with the prime256v1 EC key. When using just one
+HSM, the performance almost doubles. When we use three HSM&#39;s the performance is
+almost as good as with the 1024 bit RSA key. In all cases OpenSC was slower than
+the sc-hsm-embedded module.</p>
 
-<p>What suprises me the most is that EC algorithms are supposed to be faster then RSA. It might be that non-Pi hardware has the AES-NI extension or something.</p>
+<p>What suprises me the most is that EC algorithms are supposed to be faster then
+RSA. It might be that non-Pi hardware has the AES-NI extension or something.</p>
 
 <h4>Different keysizes, 1 HSM</h4>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/different-keys-hsms.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/different-keys-hsms.png" alt=""></p>
 
-<p>This is an interesting one. We see that the EC prime256v1 key is almost as fast as the RSA 1024 bit key. Also, OpenSC is slower here with the EC keypair. <a href="https://security.stackexchange.com/a/78624">Most browsers</a> support prime256v1, also named NIST curve P-256. There however are some concerns <a href="https://www.nsa.gov/ia/programs/suiteb_cryptography/">since the NSA is involved</a>. Keep that in mind. Still, the fastest modern algorithm in this HSM. </p>
+<p>This is an interesting one. We see that the EC prime256v1 key is almost as fast
+as the RSA 1024 bit key. Also, OpenSC is slower here with the EC keypair. <a href="https://security.stackexchange.com/a/78624">Most
+browsers</a> support prime256v1, also named NIST curve P-256. There however are
+some concerns <a href="https://www.nsa.gov/ia/programs/suiteb_cryptography/">since the NSA is involved</a>. Keep that in mind. Still, the
+fastest modern algorithm in this HSM.</p>
 
 <h4>Burst mode</h4>
 
-<p>The burst mode benchmark is different than the above ones. The above tests take a random amount of seconds between 1 and 5 and delay each connection that amount. This gives you a more realistic test than when your just hammering every second. Hammering every second is a performance measure, because you can then measure how many connections your server could handle at peak times.</p>
+<p>The burst mode benchmark is different than the above ones. The above tests take
+a random amount of seconds between 1 and 5 and delay each connection that
+amount. This gives you a more realistic test than when your just hammering every
+second. Hammering every second is a performance measure, because you can then
+measure how many connections your server could handle at peak times.</p>
 
-<p>This test fires of 60 connections for half a minute and doesnt take any time between them. Just bang bang bang. The results differ from the 20 connection test because the HSM then has some time to recover, so to say, between connections. The more HSM&#39;s you add to the cluster, the more time each one will have to recover, the better your tests will be.</p>
+<p>This test fires of 60 connections for half a minute and doesnt take any time
+between them. Just bang bang bang. The results differ from the 20 connection
+test because the HSM then has some time to recover, so to say, between
+connections. The more HSM&#39;s you add to the cluster, the more time each one will
+have to recover, the better your tests will be.</p>
 
 <p>The burst benchmark doesn&#39;t hit the wordpress site but the small text file.</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/60-1024.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/60-1024.png" alt=""></p>
 
-<p>The chart above is for an 1024 bit RSA key. We see that without the HSM it is the fastest, topping a whopping 7000+ transactions. Here is the picture without that, so make it more clear what the differences with HSM are.</p>
+<p>The chart above is for an 1024 bit RSA key. We see that without the HSM it is
+the fastest, topping a whopping 7000+ transactions. Here is the picture without
+that, so make it more clear what the differences with HSM are.</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/60-1024-hsm.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/60-1024-hsm.png" alt=""></p>
 
-<p>Same results as above, adding more HSM&#39;s gives better performance. Note that sc-hsm-embedded is only faster in the 3 HSM test.</p>
+<p>Same results as above, adding more HSM&#39;s gives better performance. Note that sc-
+hsm-embedded is only faster in the 3 HSM test.</p>
 
 <p>This is the score for 2048 bit keys, including the test without the HSM:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/60-2048.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/60-2048.png" alt=""></p>
 
-<p>Same as above, more HSM makes stuff faster, without the HSM we see an enourmus speed bump. Here&#39;s the graph without the last part:</p>
+<p>Same as above, more HSM makes stuff faster, without the HSM we see an enourmus
+speed bump. Here&#39;s the graph without the last part:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/60-2048-hsm.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/60-2048-hsm.png" alt=""></p>
 
-<p>Strange, sc-embedded-hsm is only faster here with 2 HSM&#39;s and OpenSC was significantly lower with 2 HSM&#39;s. I did rone this specific test again a few times but all gave comparable results. </p>
+<p>Strange, sc-embedded-hsm is only faster here with 2 HSM&#39;s and OpenSC was
+significantly lower with 2 HSM&#39;s. I did rone this specific test again a few
+times but all gave comparable results.</p>
 
-<p>Last but not least, the prime256v1 EC key. This is the only time where the HSM is faster, I suspect because it provides offloading (the Pi lacks crypto hardware?). </p>
+<p>Last but not least, the prime256v1 EC key. This is the only time where the HSM
+is faster, I suspect because it provides offloading (the Pi lacks crypto
+hardware?).</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/60-prime256v1.png" height=300></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/60-prime256v1.png" alt=""></p>
 
-<p>Using the HSM here almost doubles the performance, using three HSM&#39;s you get almost 6 times the performance of no HSM. I did not expect this at all, but I do find it awesome.</p>
+<p>Using the HSM here almost doubles the performance, using three HSM&#39;s you get
+almost 6 times the performance of no HSM. I did not expect this at all, but I do
+find it awesome.</p>
 
 <h3>Conclusion</h3>
 
@@ -533,17 +684,27 @@ stream {
 <li>You need about two Pi&#39;s without a HSM to have the same performance as with one HSM with prime256v1 EC.</li>
 </ul>
 
-<p>In general this was what I expected, except for the EC part. As said at the start of the article, the Nitrokey/SmartCard-HSM is not built for this use case, although it works absolutely fine, just a bit slower. </p>
+<p>In general this was what I expected, except for the EC part. As said at the
+start of the article, the Nitrokey/SmartCard-HSM is not built for this use case,
+although it works absolutely fine, just a bit slower.</p>
 
-<p>I&#39;ve browsed the wordpress site, did some searching, installed some plugins (slider, contact form etc) and created a few blog posts, which all works just fine. I have 500/500 mbit fiber at home so I do notice the delay, but the performance is comparable to a location with regular DSL and a 8/2 mbit speed. Which means I&#39;m spoiled and most people will not notice the difference.</p>
+<p>I&#39;ve browsed the wordpress site, did some searching, installed some plugins
+(slider, contact form etc) and created a few blog posts, which all works just
+fine. I have 500/500 mbit fiber at home so I do notice the delay, but the
+performance is comparable to a location with regular DSL and a 8/2 mbit speed.
+Which means I&#39;m spoiled and most people will not notice the difference.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
+credit). (referral link)</a></p>
 
-<p>Below I&#39;ll talk more about something I tried first for the graphs and then give you more information on the benchmarks and the raw results.</p>
+<p>Below I&#39;ll talk more about something I tried first for the graphs and then give
+you more information on the benchmarks and the raw results.</p>
 
 <h3>Chart creation</h3>
 
-<p>I first tried to use GNUPlot to create charts based on the <code>siege</code> log file with the following gnuplot file:</p>
+<p>I first tried to use GNUPlot to create charts based on the <code>siege</code> log file with
+the following gnuplot file:</p>
 
 <pre><code>set term png truecolor size 600,600
 set output &quot;data.png&quot;
@@ -583,25 +744,45 @@ plot for [COL=2:4] &#39;siegedata&#39; using COL:xticlabels(1) title columnheade
 
 <p>This would give me a graph like below:</p>
 
-<p><img src="https://raymii.org/s/inc/img/hsm/example.png"></p>
+<p><img src="https://raymii.org/s/inc/img/hsm/example.png" alt=""></p>
 
-<p>But that doesn&#39;t scale very well for larger and smaller numbers and I didn&#39;t like the overall look. So I looked around for simple online charting services and via Opensource.com found <a href="https://datawrapper.de">Datawrapper</a>. It&#39;s a nice service, lots of options while keeping it simple. I shoved them $12 to export the images because I&#39;m to lazy to <a href="https://github.com/datawrapper/datawrapper">host it myself</a> or take screenshots. People put effort into hosting and development, so let&#39;s reward them for it.</p>
+<p>But that doesn&#39;t scale very well for larger and smaller numbers and I didn&#39;t
+like the overall look. So I looked around for simple online charting services
+and via Opensource.com found <a href="https://datawrapper.de">Datawrapper</a>. It&#39;s a nice service, lots of
+options while keeping it simple. I shoved them $12 to export the images because
+I&#39;m to lazy to <a href="https://github.com/datawrapper/datawrapper">host it myself</a> or take screenshots. People put effort into
+hosting and development, so let&#39;s reward them for it.</p>
 
 <h3>Benchmark process</h3>
 
-<p>All the benchmarks were done three times and the best result is used. The machine that runs haproxy wasn&#39;t doing anything else at the time, measured with nethogs. No spotify or skype skewing the benchmarks. All was done via a wired gigabit network, cat6 cabling.</p>
+<p>All the benchmarks were done three times and the best result is used. The
+machine that runs haproxy wasn&#39;t doing anything else at the time, measured with
+nethogs. No spotify or skype skewing the benchmarks. All was done via a wired
+gigabit network, cat6 cabling.</p>
 
-<p>I&#39;ve also done benchmarks without the HSM, just regular apache with <code>mod_ssl</code>. Why not <code>mod_nss</code> you might ask? Well, because nobody will setup <code>mod_nss</code> when they can use <code>mod_ssl</code>. All the guides use <code>mod_ssl</code>.and the most sites online are using it. Only if you have special software or need PKCS#11 you need to use mod_nss.</p>
+<p>I&#39;ve also done benchmarks without the HSM, just regular apache with <code>mod_ssl</code>.
+Why not <code>mod_nss</code> you might ask? Well, because nobody will setup <code>mod_nss</code> when
+they can use <code>mod_ssl</code>. All the guides use <code>mod_ssl</code>.and the most sites online
+are using it. Only if you have special software or need PKCS#11 you need to use
+mod_nss.</p>
 
 <h3>Benchmarks without the HSM</h3>
 
-<p>The below benchmarks does not use the HSM, just regular <code>mod_ssl</code> and a certificate file. We&#39;re benchmarking one small page with only the contents &#39;Jeej it works!&#39;. We&#39;re also benchmarking a Wordpress 4.5.3 install with the default content after install and the Hemmingway theme.</p>
+<p>The below benchmarks does not use the HSM, just regular <code>mod_ssl</code> and a
+certificate file. We&#39;re benchmarking one small page with only the contents &#39;Jeej
+it works!&#39;. We&#39;re also benchmarking a Wordpress 4.5.3 install with the default
+content after install and the Hemmingway theme.</p>
 
-<p>I&#39;m not benchmarking multiple Pi&#39;s since the result of one Pi and the result of three Pi&#39;s was so comparable, I suspect they are fast enough and that <code>mod_ssl</code> doesn&#39;t have any bottlenecks there. Except for some tests, those just blew up the Pi&#39;s. (8192 bit keys).</p>
+<p>I&#39;m not benchmarking multiple Pi&#39;s since the result of one Pi and the result of
+three Pi&#39;s was so comparable, I suspect they are fast enough and that <code>mod_ssl</code>
+doesn&#39;t have any bottlenecks there. Except for some tests, those just blew up
+the Pi&#39;s. (8192 bit keys).</p>
 
-<p>The HSM does not support 4096 or 8192 bit RSA keys, which is why I didnot test those with the HSM&#39;s. </p>
+<p>The HSM does not support 4096 or 8192 bit RSA keys, which is why I didnot test
+those with the HSM&#39;s.</p>
 
-<p>Here below are all the benchmarking results. Every benchmark was done three times, best result was kept.</p>
+<p>Here below are all the benchmarking results. Every benchmark was done three
+times, best result was kept.</p>
 
 <h4>Benchmarking 1024 bit RSA key without HSM</h4>
 
@@ -1098,7 +1279,8 @@ Shortest transaction:           1.36
 <pre><code>siege -c60 -b -t30S https://hsmcluster.nl
 </code></pre>
 
-<p>This benchmark was done against THREE Pi&#39;s, one or two would fail and give the Pi a load of +100.</p>
+<p>This benchmark was done against THREE Pi&#39;s, one or two would fail and give the
+Pi a load of +100.</p>
 
 <p>Result:</p>
 
@@ -1236,7 +1418,8 @@ Shortest transaction:           1.33
 <pre><code>siege -c60 -b -t30S https://hsmcluster.nl
 </code></pre>
 
-<p>This benchmark was done against THREE Pi&#39;s, one or two would fail and give the Pi a load of +100.</p>
+<p>This benchmark was done against THREE Pi&#39;s, one or two would fail and give the
+Pi a load of +100.</p>
 
 <p>Result:</p>
 
@@ -1298,9 +1481,13 @@ Shortest transaction:           6.10
 
 <h3>OpenSC benchmarks</h3>
 
-<p>The below benchmarks utilize the <code>opensc-pkcs11</code> module with <code>mod_nss</code>. We&#39;re benchmarking one small page with only the contents &#39;Jeej it works!&#39;. We&#39;re also benchmarking a Wordpress 4.5.3 install with the default content after install and the Hemmingway theme.</p>
+<p>The below benchmarks utilize the <code>opensc-pkcs11</code> module with <code>mod_nss</code>. We&#39;re
+benchmarking one small page with only the contents &#39;Jeej it works!&#39;. We&#39;re also
+benchmarking a Wordpress 4.5.3 install with the default content after install
+and the Hemmingway theme.</p>
 
-<p>Note to self, the below command formats the <code>siege</code> output directly to space-seperated (instead of tab) markdown code output:</p>
+<p>Note to self, the below command formats the <code>siege</code> output directly to space-
+seperated (instead of tab) markdown code output:</p>
 
 <pre><code>siege  -c10 -d5 -t30S &#39;https://hsmcluster.nl/&#39; 2&gt;&amp;1 | grep -v &#39;==&gt; GET &#39; | expand | sed &#39;s/^/    /&#39;
 </code></pre>
@@ -2077,7 +2264,7 @@ Longest transaction:            7.64
 Shortest transaction:           0.04
 </code></pre>
 
-<h4>3 HSM&#39;s  (OpenSC)</h4>
+<h4>3 HSM&#39;s (OpenSC)</h4>
 
 <h5>Benchmarking 1024 bit RSA key with 3 HSM&#39;s (OpenSC)</h5>
 
@@ -2465,9 +2652,13 @@ Shortest transaction:           0.04
 
 <h3>sc-hsm-embedded benchmarks</h3>
 
-<p>The below benchmarks utilize the read only <code>libsc-hsm-embedded</code> module with <code>mod_nss</code>. Read more on the <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">sc-hsm-embedded</a> module here.</p>
+<p>The below benchmarks utilize the read only <code>libsc-hsm-embedded</code> module with
+<code>mod_nss</code>. Read more on the <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">sc-hsm-embedded</a> module here.</p>
 
-<p>This module is targeted at embedded use in devices, but can also be used regularly. I recommend it over the OpenSC module, since in production you don&#39;t want to be able to write to the HSM. You should have a seperate, non-networked workstation for that.</p>
+<p>This module is targeted at embedded use in devices, but can also be used
+regularly. I recommend it over the OpenSC module, since in production you don&#39;t
+want to be able to write to the HSM. You should have a seperate, non-networked
+workstation for that.</p>
 
 <h4>1 HSM (sc-hsm-embedded)</h4>
 

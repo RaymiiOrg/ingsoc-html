@@ -58,12 +58,15 @@ Also, the code is quite messy.
 
 #### Install
 
-  * Download zip file: https://github.com/RaymiiOrg/Codename_Geld/zipball/master and unzip to webroot (/var/www).  
+  * Download zip file: https://github.com/RaymiiOrg/Codename_Geld/zipball/master and unzip to webroot (/var/www). 
 
   * Make sure json file is writable by webserver: _chown www-data:www-date geld.json_
+
     * (Or, _chmod 777 geld.json_ if you are lazy)
   * Fill in the application
+
   * ???
+
   * PROFIT!!!
 
 #### Links

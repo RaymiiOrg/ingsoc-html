@@ -126,9 +126,7 @@ You can also go very advanced with error handling and defining when something
 changes or fails. The [ansible documentation covers that fairly well][3].
 
    [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
    [2]: https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
-
    [3]: http://www.ansibleworks.com/docs/playbooks_error_handling.html
 
 ---
