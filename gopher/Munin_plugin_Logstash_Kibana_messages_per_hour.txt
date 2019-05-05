@@ -9,38 +9,49 @@ Format      : 	Markdown/HTML
 
 
 
-This is a simple munin plugin which shows you the amount of log messages your logstash/kibana server receives per hour. It should run on the Logstash host, it gets the data from out the Elasticsearch database.
+This is a simple munin plugin which shows you the amount of log messages your
+logstash/kibana server receives per hour. It should run on the Logstash host, it
+gets the data from out the Elasticsearch database.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-![Munin plugin example](/s/inc/img/munin-logstash.png)
+![Munin plugin example][2]
 
 ## Setup instructions
 
-You need CURL, so you might need to install that via your package manager.  
+You need CURL, so you might need to install that via your package manager.
 
 Clone the git repository:
 
+    
+    
     git clone git://github.com/RaymiiOrg/munin-plugins.git
+    
 
-Place the plugin file in `/usr/share/munin/plugins/`, make it executable and create a symlink in `/etc/munin/plugins/`
+Place the plugin file in `/usr/share/munin/plugins/`, make it executable and
+create a symlink in `/etc/munin/plugins/`
 
+    
+    
     cd munin-plugins
     cp logstash-messages-per-hour.sh /usr/share/munin/plugins
     chmod +x /usr/share/munin/plugins/logstash-messages-per-hour.sh
     ln -s /usr/share/munin/plugins/logstash-messages-per-hour.sh /etc/munin/plugins/logstash
+    
 
 Edit the plugin if your elasticsearch database URL is on another host:
 
+    
+    
     # Edit the following line, and change localhost to what it should be
     TOTAL_EVENTS=$(curl -s -k -XGET http://localhost:9200/logstash
+    
 
 Then wait until your munin server has updated, and enjoy.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: /s/inc/img/munin-logstash.png
 
 ---
 

@@ -11,9 +11,12 @@ Format      : 	Markdown/HTML
 
 # Important
 
-As of 2018 I no longer have ownership of hosted-piwik.org. There were no active signups for it and I stopped using Piwik myself, thus I cancelled the domain and site. 
+As of 2018 I no longer have ownership of hosted-piwik.org. There were no active
+signups for it and I stopped using Piwik myself, thus I cancelled the domain and
+site.
 
-**It now hosts malicious javascript** so if you've included the tracking code in your sites, make sure to remove it. There is nothing I can do about it.
+**It now hosts malicious javascript** so if you've included the tracking code in
+your sites, make sure to remove it. There is nothing I can do about it.
 
 ---
 

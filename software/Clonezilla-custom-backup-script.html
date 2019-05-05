@@ -69,31 +69,30 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Clonezilla is wonderful software. At work we use it daily to image laptops.
-We have a windows PC with a big hard drive, which is shared via samba.
-Because we image an average of 10 laptops every morning, I decided to
-customize the script. So together with a colleague we made a script which
-automatically grabs our latest image from the share and restores it.   </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Clonezilla is wonderful software. At work we use it daily to image laptops. We
+have a windows PC with a big hard drive, which is shared via samba. Because we
+image an average of 10 laptops every morning, I decided to customize the script.
+So together with a colleague we made a script which automatically grabs our
+latest image from the share and restores it.</p>
 
-<p>Our images are named <code>schoon#</code>. It restores the image to <code>/dev/sda</code>, you
-can change the clonezilla command. Make sure your share is writable. It
-gets network from dhcp on eth0. The steps to get the script in
-clonezilla:</p>
+<p>Our images are named <code>schoon#</code>. It restores the image to <code>/dev/sda</code>, you can
+change the clonezilla command. Make sure your share is writable. It gets network
+from dhcp on eth0. The steps to get the script in clonezilla:</p>
 
 <ul>
-<li>Install the squashfs-tools for your distro, this is important.<br></li>
-<li>Unetbootin the ISO to a USB. </li>
-<li>Copy the files to a dir on your pc and open a terminal in the dir. </li>
+<li><p>Install the squashfs-tools for your distro, this is important.  </p></li>
+<li><p>Unetbootin the ISO to a USB. </p></li>
+<li><p>Copy the files to a dir on your pc and open a terminal in the dir. </p></li>
 </ul>
 
-<p>Execute this command: </p>
+<p>Execute this command:</p>
 
 <pre><code> cd live
  sudo unsquashfs -f ./filesystem.squashfs 
 </code></pre>
 
-<p>Now make a dir in the <code>squashfs-root</code>. Put the scripts in there, change them
-or not, and chmod them so that they are executable.</p>
+<p>Now make a dir in the <code>squashfs-root</code>. Put the scripts in there, change them or
+not, and chmod them so that they are executable.</p>
 
 <p>Don&#39;t forget to change the path in the launcher script, else it won&#39;t work.<br>
 Now make it back to a life system:</p>
@@ -109,7 +108,7 @@ kernel /live/vmlinuz1
 append initrd=/live/initrd1.img boot=live union=aufs  hostname=jaunty edd=on nolocales ocs_live_run=&quot;/laptop03/startr.sh&quot; ocs_live_extra_param=&quot;&quot; ocs_live_keymap=&quot;NONE&quot; ocs_live_batch=&quot;no&quot; ocs_lang=&quot;&quot; noprompt mode_option=1024x768 toram=filesystem.squashfs ip=frommedia
 </code></pre>
 
-<p>Now, here are the scripts: backup-schoon.sh (this makes a backup image) </p>
+<p>Now, here are the scripts: backup-schoon.sh (this makes a backup image)</p>
 
 <pre><code>#!/bin/bash
 dhclient
@@ -171,7 +170,7 @@ echo &quot;No backups found, making a new one: schoon01&quot;
 fi
 </code></pre>
 
-<p>restore-schoon.sh (this restores the image) </p>
+<p>restore-schoon.sh (this restores the image)</p>
 
 <pre><code> #!/bin/bash
 dhclient

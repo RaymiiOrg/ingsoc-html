@@ -69,12 +69,16 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="http://i.imgur.com/AccDKyZ.png" alt="screenshot" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="http://i.imgur.com/AccDKyZ.png" alt="screenshot"></p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Ray-Mon is a linux server monitoring script written in PHP and Bash, utilizing JSON as data storage. It requires only bash and a webserver on the client side, and only php on the server side. The client currently supports monitoring processes, uptime, updates, amount of users logged in, disk usage, RAM usage and network traffic.</p>
+<p>Ray-Mon is a linux server monitoring script written in PHP and Bash, utilizing
+JSON as data storage. It requires only bash and a webserver on the client side,
+and only php on the server side. The client currently supports monitoring
+processes, uptime, updates, amount of users logged in, disk usage, RAM usage and
+network traffic.</p>
 
 <h4>Features</h4>
 
@@ -82,7 +86,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Ping monitor</li>
 <li>History per host</li>
 <li>Threshold per monitored item.</li>
-<li>Monitors:
+<li>Monitors: 
 
 <ul>
 <li>Processes (lighttpd, apache, nginx, sshd, munin etc.) </li>
@@ -134,7 +138,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h5>Client</h5>
 
-<p>The client.sh script is a bash script which outputs JSON. It requires root access and should be run as root. It also requires a webserver, so that the server can get the json file. </p>
+<p>The client.sh script is a bash script which outputs JSON. It requires root
+access and should be run as root. It also requires a webserver, so that the
+server can get the json file.</p>
 
 <p>Software needed for the script:</p>
 
@@ -146,11 +152,16 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>package managers supported: apt-get, yum and pacman (debian/ubuntu, centos/RHEL/SL, Arch)</li>
 </ul>
 
-<p>Setup a webserver (lighttpd, apache, boa, thttpd, nginx) for the script output. If there is already a webserver running on the server you dont need to install another one.</p>
+<p>Setup a webserver (lighttpd, apache, boa, thttpd, nginx) for the script output.
+If there is already a webserver running on the server you dont need to install
+another one.</p>
 
 <p>Edit the script:</p>
 
-<p>Network interfaces. First one is used for the IP, the second one is used for bandwidth calculations. This is done because openVZ has the &quot;venet0&quot; interface for the bandwidth, and the venet0:0 interface with an IP. If you run bare-metal or KVM or vserver etc. you can set these two to the same value (eth0 eth1 etc).</p>
+<p>Network interfaces. First one is used for the IP, the second one is used for
+bandwidth calculations. This is done because openVZ has the &quot;venet0&quot; interface
+for the bandwidth, and the venet0:0 interface with an IP. If you run bare-metal
+or KVM or vserver etc. you can set these two to the same value (eth0 eth1 etc).</p>
 
 <pre><code># Network interface for the IP address
 iface=&quot;venet0:0&quot;
@@ -158,9 +169,12 @@ iface=&quot;venet0:0&quot;
 iface2=&quot;venet0&quot;
 </code></pre>
 
-<p>The IP address of the server, this is used by me when deploying this script via chef or ansible. You can set it, but it is not required.</p>
+<p>The IP address of the server, this is used by me when deploying this script via
+chef or ansible. You can set it, but it is not required.</p>
 
-<p>Services are checked by doing a <em>ps</em> to see if the process is running. The last service should be defined without a comma, for valid JSON. The code below monitors &quot;sshd&quot;, &quot;lighttpd&quot;, &quot;munin-node&quot; and &quot;syslog&quot;. </p>
+<p>Services are checked by doing a <em>ps</em> to see if the process is running. The last
+service should be defined without a comma, for valid JSON. The code below
+monitors &quot;sshd&quot;, &quot;lighttpd&quot;, &quot;munin-node&quot; and &quot;syslog&quot;.</p>
 
 <pre><code>SERVICE=lighttpd
 if ps ax | grep -v grep | grep $SERVICE &gt; /dev/null; then echo -n &quot;&quot;$SERVICE&quot; : &quot;running&quot;,&quot;; else echo -n &quot;&quot;$SERVICE&quot; : &quot;not running&quot;,&quot;; fi
@@ -173,15 +187,18 @@ SERVICE=munin-node
 if ps ax | grep -v grep | grep $SERVICE &gt; /dev/null; then echo -n &quot;&quot;$SERVICE&quot; : &quot;running&quot;&quot;; else echo -n &quot;&quot;$SERVICE&quot; : &quot;not running&quot;&quot;; fi
 </code></pre>
 
-<p>To add a service, copy the 2 lines and replace the SERVICE=processname with the actual process name:</p>
+<p>To add a service, copy the 2 lines and replace the SERVICE=processname with the
+actual process name:</p>
 
 <pre><code>SERVICE=processname
 if ps ax | grep -v grep | grep $SERVICE &gt; /dev/null; then echo -n &quot;&quot;$SERVICE&quot; : &quot;running&quot;,&quot;; else echo -n &quot;&quot;$SERVICE&quot; : &quot;not running&quot;,&quot;; fi
 </code></pre>
 
-<p>And, make sure the last service montiored does not echo a comma at the end, else the JSON is not valid and the php script fails.</p>
+<p>And, make sure the last service montiored does not echo a comma at the end, else
+the JSON is not valid and the php script fails.</p>
 
-<p>Now setup a cronjob to execute the script on a set interval and save the JSON to the webserver directory.</p>
+<p>Now setup a cronjob to execute the script on a set interval and save the JSON to
+the webserver directory.</p>
 
 <p>As root, create the file /etc/cron.d/raymon-client with the following contents:</p>
 
@@ -190,13 +207,21 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 */5 * * * * root /root/scripts/client.sh | sed &#39;:a;N;$!ba;s/n//g&#39; &gt; /var/www/stat.json
 </code></pre>
 
-<p>In my case, the client script is in <em>/root/scripts</em>, and my webserver directory is <em>/var/www</em>. Change this to your own setup. Also, you might want to change the time interval. */5 executes every 5 minutes. The sed line is in there to remove the newlines, this creates a shorter JSOn file, saves some KB&#39;s. The <em>root</em> after the cron time is special for a file in <em>/etc/cron.d/</em>, it tells cron as which user it has to execute the crontab file.</p>
+<p>In my case, the client script is in <em>/root/scripts</em> , and my webserver directory
+is <em>/var/www</em>. Change this to your own setup. Also, you might want to change the
+time interval. */5 executes every 5 minutes. The sed line is in there to remove
+the newlines, this creates a shorter JSOn file, saves some KB&#39;s. The <em>root</em>
+after the cron time is special for a file in <em>/etc/cron.d/</em> , it tells cron as
+which user it has to execute the crontab file.</p>
 
-<p>When this is setup you should get a stat.json file in the /var/www/ folder containing the status json. If so, the client is setup correctly.</p>
+<p>When this is setup you should get a stat.json file in the /var/www/ folder
+containing the status json. If so, the client is setup correctly.</p>
 
 <h5>Server</h5>
 
-<p>The status server is a php script which fetches the json files from the clients every 5 minutes, saves them and shows them. It also saves the history, but that is defined <a href="#History">below</a>. </p>
+<p>The status server is a php script which fetches the json files from the clients
+every 5 minutes, saves them and shows them. It also saves the history, but that
+is defined below.</p>
 
 <p>Requirements:</p>
 
@@ -206,13 +231,15 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 <p>Steps:</p>
 
-<p>Create a new folder on the webserver and make sure the webserver user (www-data) can write to it.  </p>
+<p>Create a new folder on the webserver and make sure the webserver user (www-data)
+can write to it.</p>
 
-<p>Place the php file &quot;stat.php&quot; in that folder.  </p>
+<p>Place the php file &quot;stat.php&quot; in that folder.</p>
 
-<p>Edit the host list in the php file to include your clients:  </p>
+<p>Edit the host list in the php file to include your clients:</p>
 
-<p>The first parameter is the filename the json file is saved to, and the second is the URL where the json file is located.  </p>
+<p>The first parameter is the filename the json file is saved to, and the second is
+the URL where the json file is located.</p>
 
 <pre><code>$hostlist=array(
                 &#39;example1.org.json&#39; =&gt; &#39;http://example1.org/stat.json&#39;,
@@ -222,7 +249,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
                 );
 </code></pre>
 
-<p>Edit the values for the ping monitor:  </p>
+<p>Edit the values for the ping monitor:</p>
 
 <pre><code>$pinglist = array(
                   &#39;github.com&#39;,
@@ -234,7 +261,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
                   );
 </code></pre>
 
-<p>Edit the threshold values:  </p>
+<p>Edit the threshold values:</p>
 
 <pre><code>## Set this to &quot;secure&quot; the history saving. This key has to be given as a parameter to save the history.
 $historykey = &quot;8A29691737D&quot;;
@@ -253,7 +280,8 @@ $maxram = &quot;75&quot;;
 
 <h6>History</h6>
 
-<p>To save the history you have to setup a cronjob to get the status page with a special &quot;history key&quot;. You define this in the stat.php file:</p>
+<p>To save the history you have to setup a cronjob to get the status page with a
+special &quot;history key&quot;. You define this in the stat.php file:</p>
 
 <pre><code>## Set this to &quot;secure&quot; the history saving. This key has to be given as a parameter to save the history.
 $historykey = &quot;8A29691737D&quot;;    
@@ -265,7 +293,8 @@ $historykey = &quot;8A29691737D&quot;;
 30 */8 * * * wget -qO /dev/null http://url-to-status.site/status/stat.php?action=save&amp;&amp;key=8A29691737D
 </code></pre>
 
-<p>The cronjob can be on any server which can access the status page, but preferably on the host where the status page is located.</p>
+<p>The cronjob can be on any server which can access the status page, but
+preferably on the host where the status page is located.</p>
 </div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/featured-two.html" class="link">featured-two &nbsp;</a><a href="../tags/git.html" class="link">git &nbsp;</a><a href="../tags/monitoring.html" class="link">monitoring &nbsp;</a><a href="../tags/php.html" class="link">php &nbsp;</a><a href="../tags/software.html" class="link">software &nbsp;</a><a href="../tags/status-monitoring.html" class="link">status-monitoring &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

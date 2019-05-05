@@ -9,37 +9,47 @@ Format      : 	Markdown/HTML
 
 
 
-This small script shows you all packages [installed] that are a dependency from a package, and the dependencies of those packages. I installed the build-essential package, but apt-get remove-ing that package doens't remove the development tools. So I was wondering what packages were installed, including those dependencies, to remove the ones I didn't want. This small script shows you all packages that are dependencies of a package, and repeats that for those packages.
+This small script shows you all packages [installed] that are a dependency from
+a package, and the dependencies of those packages. I installed the build-
+essential package, but apt-get remove-ing that package doens't remove the
+development tools. So I was wondering what packages were installed, including
+those dependencies, to remove the ones I didn't want. This small script shows
+you all packages that are dependencies of a package, and repeats that for those
+packages.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### The code
 
 Too small to create a github repo, so that's why you need to copy paste it.
 
+    
+    
     #!/bin/bash
     # Small script to recursively show dependencies of packages
     # Author: Remy van Elst <raymii.org>
-
+    
     pkgdep() {
       apt-cache depends --installed $1 | awk -F\: '{print $2}' | grep -v -e '<' -e '>' | awk 'NF'
     }
-
+    
     for i in $(pkgdep $1); do
       pkgdep $i
     done | sort -u
+    
 
 Save and `chmod +x`. Execute with one package as parameter.
 
-If you also want non-installed packages shown, remove the `--installed` parameter.
+If you also want non-installed packages shown, remove the `--installed`
+parameter.
 
 ### Examples
 
 For the package `bash`:
 
+    
+    
     # bash dep.sh bash
      bash
      debconf
@@ -55,8 +65,11 @@ For the package `bash`:
      sensible-utils
      tzdata
     
+
 For the package `build-essential`:
 
+    
+    
     # bash dep.sh build-essential
      base-files
      binutils
@@ -79,8 +92,12 @@ For the package `build-essential`:
      manpages-dev
      patch
      xz-utils
+    
 
-You can remove the ones you don't want with an `apt-get purge`, but be carefull to not break your system. Removing `libc6` will break stuff.
+You can remove the ones you don't want with an `apt-get purge`, but be carefull
+to not break your system. Removing `libc6` will break stuff.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -9,13 +9,11 @@ Format      : 	Markdown/HTML
 
 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
+    
+    
     CIDR        Total number    Network             Description:
     Notation:   of addresses:   Mask:
     --------------------------------------------------------------
@@ -64,9 +62,11 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
         172.16.0.0/12
         192.168.0.0/16
         169.254.0.0/16
+    
 
-Via: [http://www.techstaty.com/cidr-cheat-sheet/](http://www.techstaty.com/cidr-cheat-sheet/)
+Via: <http://www.techstaty.com/cidr-cheat-sheet/>
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

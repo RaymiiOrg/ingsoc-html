@@ -69,22 +69,25 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><pre><code>Proxmox VE is a complete virtualization management solution for servers. You can virtualize even the most demanding application workloads running on Linux and Windows Servers. 
-It is based on the leading Kernel-based Virtual Machine (KVM) hypervisor and OpenVZ, the number one solution for container based virtualization.
-</code></pre>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Proxmox VE is a complete virtualization management solution for servers. You can virtualize even the most demanding application workloads running on Linux and Windows Servers. 
+    It is based on the leading Kernel-based Virtual Machine (KVM) hypervisor and OpenVZ, the number one solution for container based virtualization.</p>
 
 <p><a href="http://www.proxmox.com/products/proxmox-ve/">Proxmox Website</a></p>
 
-<p>ProxMox VE is a very nice piece of software to setup a VM host very fast, which also is easy manageable via a webinterface. It supports both OpenVZ and KVM. I use it to manage a few VM&#39;s to test stuff on and it works really great.</p>
+<p>ProxMox VE is a very nice piece of software to setup a VM host very fast, which
+also is easy manageable via a webinterface. It supports both OpenVZ and KVM. I
+use it to manage a few VM&#39;s to test stuff on and it works really great.</p>
 
-<p>However, I&#39;m a command line lover, and I thought it would be nice to be able to &quot;Manage&quot; Proxmox VE from a bash shell. And I&#39;ve written a script to do just that. </p>
+<p>However, I&#39;m a command line lover, and I thought it would be nice to be able to
+&quot;Manage&quot; Proxmox VE from a bash shell. And I&#39;ve written a script to do just
+that.</p>
 
 <p>proxbash.sh is a bash script to manage your Proxmox VE server.</p>
 
 <p>Check out my other <a href="https://raymii.org/s/tags/openvz.html">Proxmox/OpenVZ related articles</a>.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h5>Features</h5>
 
@@ -97,7 +100,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>Command execution in openvz containers</li>
 </ul>
 
-<p>As you can see there is a lot of OpenVZ and not a lot of KVM. Most of the VM&#39;s I use are OpenVZ, so for the KVM things you need to use the webinterface.</p>
+<p>As you can see there is a lot of OpenVZ and not a lot of KVM. Most of the VM&#39;s I
+use are OpenVZ, so for the KVM things you need to use the webinterface.</p>
 
 <h5>Download</h5>
 
@@ -118,9 +122,11 @@ VAR_PROXMOXUSER=&quot;root&quot;          #proxmox ssh user
 VAR_PROXMOX_NODE=&quot;proxmox&quot;      #proxmox cluster node name
 </code></pre>
 
-<p>and set up passwordless key auth to the proxmox node. If you don&#39;t do that, you have to enter the proxmox root password every time. </p>
+<p>and set up passwordless key auth to the proxmox node. If you don&#39;t do that, you
+have to enter the proxmox root password every time.</p>
 
-<p><strong>Also edit the case statement for the templates. Default it has ubuntu 10.04 and 12.04 and centos 5 and 6.</strong> </p>
+<p><strong>Also edit the case statement for the templates. Default it has ubuntu 10.04
+and 12.04 and centos 5 and 6.</strong></p>
 
 <p>Replace $CTID with an openvz ct id. (like 103, 104)</p>
 
@@ -130,7 +136,8 @@ VAR_PROXMOX_NODE=&quot;proxmox&quot;      #proxmox cluster node name
 proxbash.sh createct prod001 supersecret1 ubuntu12 1024 15 172.20.5.48
 </code></pre>
 
-<p>proxbash.sh createct node-hostname node-password node-template node-ram node-disk node-ip $CTID</p>
+<p>proxbash.sh createct node-hostname node-password node-template node-ram node-
+disk node-ip $CTID</p>
 
 <h6>Start/Stop a CT</h6>
 

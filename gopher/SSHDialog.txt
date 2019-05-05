@@ -9,18 +9,18 @@ Format      : 	Markdown/HTML
 
 
 
-<img src="https://raymii.org/s/inc/img/sshdialog.png">
+![][1]
 
-I wrote a script which combines dialog, awk and bash to make a nifty ssh
-script. First of, copy this script to your pc:
+I wrote a script which combines dialog, awk and bash to make a nifty ssh script.
+First of, copy this script to your pc:
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+#### SSHdialog
 
-#### SSHdialog 
-
+    
+    
     #!/bin/bash
     ### Copyright (c) 2010 Remy van Elst
     #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -119,24 +119,30 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
     rm -f $TEMPF
     exit 0
     
+
 Now comes the hard part, creating your hosts file.
 
 The script wants it to be in the same directory as the script with the name
 `hosts`. This is the syntax:
 
-
+    
+    
     ID,Friendly name,username,host or ip,port
     1,VPS 1,-,vps.example.org,22
     2,VPS 2,www,vps.someserver.com,2222
     3,Home Router,root,192.168.1.1,22
     4,Homeserver,-,192.168.1.10,22
     5,Work,ceo,my.work.com,22 
+    
 
-If you want the current user to be used as the username then use a `-` (dash) as username.
+If you want the current user to be used as the username then use a `-` (dash) as
+username.
 
-Please double check your comma's and your numbers, if something is wrong the script can give strange errors.  
+Please double check your comma's and your numbers, if something is wrong the
+script can give strange errors.
 
-
+   [1]: https://raymii.org/s/inc/img/sshdialog.png
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

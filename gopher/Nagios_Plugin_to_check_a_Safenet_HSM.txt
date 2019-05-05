@@ -9,25 +9,27 @@ Format      : 	Markdown/HTML
 
 
 
-This is a Nagios plugin to monitor a Safenet Protectserver HSM using the Safenet tools. It can also gather information about the device, like firmware and functional module information.
+This is a Nagios plugin to monitor a Safenet Protectserver HSM using the Safenet
+tools. It can also gather information about the device, like firmware and
+functional module information.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Usage
 
+    
+    
     usage: ./hsm.sh options
-
+    
     This script checks various safenet HSM things and outputs nagios style results.
-
+    
     OPTIONS:
        -h      Show this message
        -t      Check type: "battery", "RAM", "datetime", "eventlog", "initialized", "hsminfo", "fminfo"
        -n      HSM name for $ET_HSM_NETCLIENT_SERVERLIST.
        -b      ctcheck binary (default: /opt/PTK/bin/ctcheck)
-
+    
     CHECKS:
        battery          Show HSM Battery status, GOOD (ok) or LOW (crit)
        ram              HSM RAM, (ok) if <75% used, (warn) >75% <85% used, (crit) if >85% used.
@@ -36,12 +38,12 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
        initialized      (ok) if initialized, (crit) if not. Documentation states that a FALSE could mean a tampered device.
        hsminfo          always (ok), returns general HSM info, model, version, firmware and such.
        fminfo           always (ok), returns Functional Module information.
-
-
-
+    
 
 ### Examples
 
+    
+    
     user@host ~$ ./hsm.sh -n hsm-038 -t ram
     OK: RAM Usage OK: 41% used, ( 10192256 total). HSM: hsm-038.
     user@host ~$ ./hsm.sh -n hsm-038 -t datetime
@@ -58,8 +60,11 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
 ### Download
 
-[Either via Github](https://github.com/RaymiiOrg/nagios) or [from this website](https://raymii.org/s/inc/software/check_hsm.sh)
+[Either via Github][2] or [from this website][3]
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://github.com/RaymiiOrg/nagios
+   [3]: https://raymii.org/s/inc/software/check_hsm.sh
 
 ---
 

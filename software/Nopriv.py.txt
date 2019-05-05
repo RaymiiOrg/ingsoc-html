@@ -9,8 +9,9 @@ Format      : 	Markdown/HTML
 
 
 
-[The page for NoPriv has moved. Click here for the page.](https://raymii.org/s/software/Nopriv-IMAP-backup.html)
+[The page for NoPriv has moved. Click here for the page.][1]
 
+   [1]: https://raymii.org/s/software/Nopriv-IMAP-backup.html
 
 ---
 

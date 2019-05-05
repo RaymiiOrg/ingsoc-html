@@ -10,15 +10,13 @@ Format      : 	Markdown/HTML
 
 
 This script will help you with nursing-related oxygen calculations.  
-**Also available as an online tool, scroll down for the link**.   
+**Also available as an online tool, scroll down for the link**.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
+    
+    
     Usage: ./o2.sh $si $pr $to $do 
     Three variables are needed, the other will be calculated. Unknown variable should be entered as 0
     $si = Size of the o2 tank in liters (eg 2, 5, 10)
@@ -30,14 +28,19 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
 
-##### Online version 
-Thanks to the [Illumination Software Creator application builder][1] I've made an online version. Same license, has bugs, not ready for production, regular blabla.. Use on your own risk.  
-[NurseCalc o2 Online][2] 
+##### Online version
+
+Thanks to the [Illumination Software Creator application builder][2] I've made
+an online version. Same license, has bugs, not ready for production, regular
+blabla.. Use on your own risk.  
+[NurseCalc o2 Online][3]
 
 ##### Bash Script
 
 ##### o2.sh
 
+    
+    
     #!/bin/bash
     # o2.sh by raymii.org
     # script displays errors with float numbers, but calc is correct.
@@ -83,13 +86,13 @@ Thanks to the [Illumination Software Creator application builder][1] I've made a
         echo 'ERROR: One or more of the required input variables was/were empty.';
         expl;
         exit 1
-        
+    
     elif ! [[ "$SI" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$PR" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$SP" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$DO" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
        exec >&&2; 
        echo 'ERROR: One or more of the variables are not numerical (integer or float)'; 
        expl;
        exit 1
-        
+    
     elif [ $SI -eq 0 ]; then 
         # size wanted
         exec >&&2;
@@ -99,7 +102,7 @@ Thanks to the [Illumination Software Creator application builder][1] I've made a
         echo "Size of the tank in liters:";
         echo "scale=2; $SP / $PR * $DO" | bc
         exit 0
-        
+    
     elif [ $PR -eq 0 ]; then 
         # pressure wanted
         exec >&&2;
@@ -133,10 +136,11 @@ Thanks to the [Illumination Software Creator application builder][1] I've made a
         exit 0
     fi
     
-    
 
 ##### Example output
 
+    
+    
     remy@solaris2 ~/projects/scripts/bash/vpcalc $ bash ./o2.sh 0 90 720 5
     NurseCalc o2 by Raymii.org. READ LICENSE
     Pressure 90 atm, 
@@ -145,10 +149,11 @@ Thanks to the [Illumination Software Creator application builder][1] I've made a
     ########## ANSWER ##########
     Size of the tank in liters:
     40.00
+    
 
-[1]: http://radicalbreeze.com
-[2]: /s/inc/software/o2/index.html
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://radicalbreeze.com
+   [3]: /s/inc/software/o2/index.html
 
 ---
 

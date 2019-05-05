@@ -69,25 +69,36 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This callback plugin creates a VCS branch every time you run Ansible. If you ever need to go back to a certain state or environment, check out that branch and be sure nothing has changed.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This callback plugin creates a VCS branch every time you run Ansible. If you
+ever need to go back to a certain state or environment, check out that branch
+and be sure nothing has changed.</p>
 
-<p>This is useful when you have multiple environments or multiple people deploying and continually develop your Ansible. When you often deploy to test / acceptance and less often to production, you can checkout the last branch that deployed to production if a hotfix or other maintenance is required, without having to search back in your commits and logs. I would recommend to develop infrastructure features in feature branches and have the master branch always deployable to production. However, reality learns that that is not always the case and this is a nice automatic way to have a fallback.</p>
+<p>This is useful when you have multiple environments or multiple people deploying
+and continually develop your Ansible. When you often deploy to test / acceptance
+and less often to production, you can checkout the last branch that deployed to
+production if a hotfix or other maintenance is required, without having to
+search back in your commits and logs. I would recommend to develop
+infrastructure features in feature branches and have the master branch always
+deployable to production. However, reality learns that that is not always the
+case and this is a nice automatic way to have a fallback.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h2>Requirements and installation</h2>
 
-<p>The plugin requires &#39;GitPython&#39;. On Ubuntu this can be installed with the package manager:</p>
+<p>The plugin requires &#39;GitPython&#39;. On Ubuntu this can be installed with the
+package manager:</p>
 
 <pre><code>apt-get install python-git python3-git
 </code></pre>
 
-<p>The plugin requires the Ansible folder to be a git repository. If you have a seperate &#39;roles&#39; directory, that is not included in this plugin. </p>
+<p>The plugin requires the Ansible folder to be a git repository. If you have a
+seperate &#39;roles&#39; directory, that is not included in this plugin.</p>
 
 <p>The plugin is hosted on <a href="https://github.com/RaymiiOrg/log_vcs">Github: https://github.com/RaymiiOrg/log_vcs</a></p>
 
-<p>To install the plugin, create a folder in your Ansible folder: </p>
+<p>To install the plugin, create a folder in your Ansible folder:</p>
 
 <pre><code>mkdir -p plugins/callbacks
 </code></pre>
@@ -101,7 +112,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h2>Environments</h2>
 
-<p>If you have multiple environments (multiple inventories) then every inventory needs a <code>group_var</code> (in <code>group_vars/all.yml</code>) named <code>environment</code>. The plugin uses this in the branch name. In my case it can be <code>dev</code>, <code>tst</code>, <code>acc</code>, <code>prd</code> or <code>mgmt</code>. It is not required, if it is not found the plugin will substitute it with <code>env</code>.</p>
+<p>If you have multiple environments (multiple inventories) then every inventory
+needs a <code>group_var</code> (in <code>group_vars/all.yml</code>) named <code>environment</code>. The plugin
+uses this in the branch name. In my case it can be <code>dev</code>, <code>tst</code>, <code>acc</code>, <code>prd</code> or
+<code>mgmt</code>. It is not required, if it is not found the plugin will substitute it
+with <code>env</code>.</p>
 
 <h2>Branch name format</h2>
 
@@ -123,7 +138,9 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h2>Auto-commit or cleanup?</h2>
 
-<p>There is no auto-commit or auto-push to a git server. In my use-case deployment is always done from a management machine, otherwise you have to extend the plugin to do auto-commit and push. I decided in my case it would not be useful.</p>
+<p>There is no auto-commit or auto-push to a git server. In my use-case deployment
+is always done from a management machine, otherwise you have to extend the
+plugin to do auto-commit and push. I decided in my case it would not be useful.</p>
 
 <p>Auto-cleanup is also not implemented. We have bash for that:</p>
 

@@ -9,47 +9,53 @@ Format      : 	Markdown/HTML
 
 
 
+![Terrible Start][1]
 
-![Terrible Start][1]  
+The image you see above here is Terrible Start, a new piece of software I'm
+creating for Terrible Linux, my debian respin. It will feature all the things in
+the above screenshot and it is meant as a handy one click start for stuff you
+want to do. Of course you will be able to turn it off at login, I do not want to
+bother you with stuff you do not want to have.
 
-The image you see above here is Terrible Start, a new piece of software I'm creating for Terrible Linux, my debian respin. It will feature all the things in the above screenshot and it is meant as a handy one click start for stuff you want to do. Of course you will be able to turn it off at login, I do not want to bother you with stuff you do not want to have. 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
 ##### Features
 
-*   Notepad with save function
-*   Shows your internal IPv4's
-*   Shows your external IPv4 address on request
-*   1 click buttons for specific software
-*   1 click buttons for Google, LXer, Debian and Raymii.org
-*   Custom URL launcher
-*   A penguin themed picture
-*   Written in Python with Illumination Software Creator, source available under MIT/X11 license
+  * Notepad with save function
+  * Shows your internal IPv4's
+  * Shows your external IPv4 address on request
+  * 1 click buttons for specific software
+  * 1 click buttons for Google, LXer, Debian and Raymii.org
+  * Custom URL launcher
+  * A penguin themed picture
+  * Written in Python with Illumination Software Creator, source available under MIT/X11 license
 
 ##### Bugs
 
-*   External IP button needs CURL installed, otherwise does not works
+  * External IP button needs CURL installed, otherwise does not works
 
 ##### Download
 
 `Download links are removed because of data loss during server failure`.
- 
-   
-*IT IS A BETA VERSION, NOT READY FOR PRODUCTION. IT MAY WORK, IT MAY NOT WORK, IT ALSO CAN SPAWN A FEW MILLION CREAPERS AND PIG-RIDING SKELETONS WHO BLOW UP AND KILL YOU MINECRAFT STYLE. IF THAT HAPPENS, PLEASE NUKE IT FROM ORBIT, IT IS THE ONLY WAY TO BE SURE.*  
-  
-**I have a request for you all, I want to know what you want or do not want in a start screen, features I can add or remove, thing you like or dislike et cetera. I do not want to hear if you think a start screen is necessary, it will be implemented and also be turned off easily. Please leave a comment below.**   
 
-##### Credits 
+_IT IS A BETA VERSION, NOT READY FOR PRODUCTION. IT MAY WORK, IT MAY NOT WORK,
+IT ALSO CAN SPAWN A FEW MILLION CREAPERS AND PIG-RIDING SKELETONS WHO BLOW UP
+AND KILL YOU MINECRAFT STYLE. IF THAT HAPPENS, PLEASE NUKE IT FROM ORBIT, IT IS
+THE ONLY WAY TO BE SURE._
 
-Terrible Start is made with [Illumination Software Creator][5].  
+**I have a request for you all, I want to know what you want or do not want in a
+start screen, features I can add or remove, thing you like or dislike et cetera.
+I do not want to hear if you think a start screen is necessary, it will be
+implemented and also be turned off easily. Please leave a comment below.**
 
-[1]: https://raymii.org/s/inc/img/terrible_start.png "Terrible Start"
-[5]: http://radicalbreeze.com/ 
+##### Credits
 
+Terrible Start is made with [Illumination Software Creator][3].
+
+   [1]: https://raymii.org/s/inc/img/terrible_start.png (Terrible Start)
+   [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [3]: http://radicalbreeze.com/
 
 ---
 

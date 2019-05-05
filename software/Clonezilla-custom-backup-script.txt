@@ -9,46 +9,53 @@ Format      : 	Markdown/HTML
 
 
 
-Clonezilla is wonderful software. At work we use it daily to image laptops.
-We have a windows PC with a big hard drive, which is shared via samba.
-Because we image an average of 10 laptops every morning, I decided to
-customize the script. So together with a colleague we made a script which
-automatically grabs our latest image from the share and restores it.   
+Clonezilla is wonderful software. At work we use it daily to image laptops. We
+have a windows PC with a big hard drive, which is shared via samba. Because we
+image an average of 10 laptops every morning, I decided to customize the script.
+So together with a colleague we made a script which automatically grabs our
+latest image from the share and restores it.
 
-Our images are named `schoon#`. It restores the image to `/dev/sda`, you
-can change the clonezilla command. Make sure your share is writable. It
-gets network from dhcp on eth0. The steps to get the script in
-clonezilla:
+Our images are named `schoon#`. It restores the image to `/dev/sda`, you can
+change the clonezilla command. Make sure your share is writable. It gets network
+from dhcp on eth0. The steps to get the script in clonezilla:
 
-* Install the squashfs-tools for your distro, this is important.  
-* Unetbootin the ISO to a USB. 
-* Copy the files to a dir on your pc and open a terminal in the dir. 
+  * Install the squashfs-tools for your distro, this is important.  
 
-Execute this command: 
+  * Unetbootin the ISO to a USB. 
+  * Copy the files to a dir on your pc and open a terminal in the dir. 
 
+Execute this command:
+
+    
+    
      cd live
      sudo unsquashfs -f ./filesystem.squashfs 
+    
 
+Now make a dir in the `squashfs-root`. Put the scripts in there, change them or
+not, and chmod them so that they are executable.
 
-Now make a dir in the `squashfs-root`. Put the scripts in there, change them
-or not, and chmod them so that they are executable.
-
-  
 Don't forget to change the path in the launcher script, else it won't work.  
 Now make it back to a life system:
+
+    
     
     sudo mksquashfs ./squashfs-root ./filesystem.squashfs.new
+    
 
 And change the syslinux.cfg so that the paths are correct if you changed them:
 
+    
     
     label ubnentry0
     menu label RESTORE
     kernel /live/vmlinuz1
     append initrd=/live/initrd1.img boot=live union=aufs  hostname=jaunty edd=on nolocales ocs_live_run="/laptop03/startr.sh" ocs_live_extra_param="" ocs_live_keymap="NONE" ocs_live_batch="no" ocs_lang="" noprompt mode_option=1024x768 toram=filesystem.squashfs ip=frommedia
+    
 
-Now, here are the scripts: backup-schoon.sh (this makes a backup image) 
+Now, here are the scripts: backup-schoon.sh (this makes a backup image)
 
+    
     
     #!/bin/bash
     dhclient
@@ -94,7 +101,7 @@ Now, here are the scripts: backup-schoon.sh (this makes a backup image)
     #    echo "I: $I  J: $GEZOCHTE_GETAL"
     fi
     done
-     
+    
     # Als GROOTSTE_GETAL groter is dan nul is er een schone backup aanwezig en 
     # hogen we GROOTSTE_GETAL met een op maken we een nieuwe schone backup: schoon(GROOTSTE_GETAL+1)
     # Zo niet dan nieuwe schone backup: schoon01
@@ -108,9 +115,11 @@ Now, here are the scripts: backup-schoon.sh (this makes a backup image)
     echo "No backups found, making a new one: schoon01"
     /opt/drbl/sbin/ocs-sr -q -j2 -z1p -i 3900 -p true savedisk "schoon11" "sda"
     fi
+    
 
-restore-schoon.sh (this restores the image) 
+restore-schoon.sh (this restores the image)
 
+    
     
      #!/bin/bash
     dhclient
@@ -155,7 +164,7 @@ restore-schoon.sh (this restores the image)
     fi
     fi
     done
-     
+    
     # Als GROOTSTE_GETAL groter is dan nul is er een schone backup aanwezig en 
     # kunnen we met de restore beginnen. Zo niet dan geven we de error terug
     if (( $GROOTSTE_GETAL > 0 ))
@@ -168,18 +177,22 @@ restore-schoon.sh (this restores the image)
     echo "Controleer of de server aanstaat en of de share aanwezig is. Maak anders een nieuw image."
     echo "Selecteer dadelijk de optie Start Over."
     fi
+    
 
 `start.sh` (bootstrapper for backup script):
+
+    
     
      #!/bin/sh
      sudo su -c /laptop03/backup-schoon.sh
+    
 
 `startr.sh` (bootstrapper for restore script):
+
+    
     
      #!/bin/sh
      sudo su -c /laptop03/restore-schoon.sh
-
-
 
 ---
 

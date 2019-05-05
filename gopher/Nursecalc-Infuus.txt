@@ -9,17 +9,15 @@ Format      : 	Markdown/HTML
 
 
 
+This script will help you with nursing-related infusion and drip speed
+calculations.  
+**Also available as an online tool, scroll down for the link**.
 
-This script will help you with nursing-related infusion and drip speed calculations.  
-**Also available as an online tool, scroll down for the link**.  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
+    
+    
     NurseCalc infuus by Raymii.org. READ LICENSE
     Usage: ./infuus.sh $HOEVEELHEID $DRUPPELSNELHEID $TIJDSDUUR $DRUPPELSML
     Two variables are needed, the other will be calculated. Unknown variable should be entered as 0
@@ -37,13 +35,17 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
 ### Online version
 
- Thanks to the [Illumination Software Creator application builder][7] I've made an online version. Same license, has bugs, not ready for production, regular blabla.. Use on your own risk.  
-[NurseCalc Infuus Online][8]
+Thanks to the [Illumination Software Creator application builder][2] I've made
+an online version. Same license, has bugs, not ready for production, regular
+blabla.. Use on your own risk.  
+[NurseCalc Infuus Online][3]
 
 ### Bash Script
 
-**infuus.sh** 
+**infuus.sh**
 
+    
+    
     #!/bin/bash
     # infuus.sh by raymii.org
     # script displays errors with float numbers, but calc is correct.
@@ -93,13 +95,13 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
         expl;
         exit 1
     
-        
+    
     elif ! [[ "$HOEVEELHEID" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$DRUPPELSNELHEID" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$TIJDSDUUR" =~ ^[0-9]+([.][0-9]+)?$ ]] || ! [[ "$DRUPPELSML" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
        exec >&&2; 
        echo 'ERROR: One or more of the variables are not numerical (integer or float)'; 
        expl;
        exit 1
-        
+    
     elif [ $HOEVEELHEID -eq 0 ] &&&& ! [ $DRUPPELSML -eq 0 ]; then 
         # hoeveelheid druppels  wanted
         exec >&&2;
@@ -111,7 +113,7 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
         echo "Drips to ML:"; 
         echo "scale=2; ( $DRUPPELSNELHEID * $TIJDSDUUR ) / $DRUPPELSML" | bc
         exit 0
-        
+    
     elif [ $DRUPPELSNELHEID -eq 0 ] &&&& ! [ $DRUPPELSML -eq 0 ]; then 
         # druppelsnelheid wanted
         exec >&&2;
@@ -142,11 +144,11 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
         exit 1;
     fi
     
-    
-    
 
 ### Example output
- 
+
+    
+    
     remy@solaris2 ~/projects/scripts/bash/vpcalc $ bash ./infuus.sh 34320 22 0 20
     NurseCalc infuus by Raymii.org. READ LICENSE
     Druppelsnelheid 22 dr/min, 
@@ -157,11 +159,11 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
     1560.00
     in hours
     26
+    
 
-
- [7]: http://radicalbreeze.com
- [8]: /s/inc/software/infuus/index.html
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: http://radicalbreeze.com
+   [3]: /s/inc/software/infuus/index.html
 
 ---
 

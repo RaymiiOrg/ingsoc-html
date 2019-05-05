@@ -9,15 +9,20 @@ Format      : 	Markdown/HTML
 
 
 
-This script creates a OS X hardware report (an SPX file) and saves it to a AFP share. This is usefull when you are rolling out new machines. Run this script via Apple Remote Desktop and you have all your administration in your AFP share, which you can later put in your CMDB. The report has all the hardware data, from firmware, serial number, model, MAC addresses, disk and memory information, in short everything you need for your CMDB and support contracts.
+This script creates a OS X hardware report (an SPX file) and saves it to a AFP
+share. This is usefull when you are rolling out new machines. Run this script
+via Apple Remote Desktop and you have all your administration in your AFP share,
+which you can later put in your CMDB. The report has all the hardware data, from
+firmware, serial number, model, MAC addresses, disk and memory information, in
+short everything you need for your CMDB and support contracts.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 This is the script:
 
+    
+    
     #!/bin/bash
     mkdir /Volumes/hardware-report/;
     mount -t afp afp://AFPUSER:AFPPASSWORD@10.2.38.1/Hardware /Volumes/hardware-report;
@@ -25,11 +30,18 @@ This is the script:
     system_profiler -detailLevel full -xml > "/Volumes/hardware-report/`hostname -s`/Report-for-`hostname -s`.spx";
     umount /Volumes/hardware-report;
     unlink $0
+    
 
-Change the username, password, share IP/Hostname and share path. Then copy it to all the machines via Apple Remote Desktop, in the `/tmp` folder. Now via ARD execute it as root. You should see new folder appear in the AFP share based on the machine hostname. In there you find the .SPX files which you can use for your administration. 
+Change the username, password, share IP/Hostname and share path. Then copy it to
+all the machines via Apple Remote Desktop, in the `/tmp` folder. Now via ARD
+execute it as root. You should see new folder appear in the AFP share based on
+the machine hostname. In there you find the .SPX files which you can use for
+your administration.
 
-Note that the last line, `unlink $0` removes the script after it ran. So the username and password don't stay on the machine.
+Note that the last line, `unlink $0` removes the script after it ran. So the
+username and password don't stay on the machine.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

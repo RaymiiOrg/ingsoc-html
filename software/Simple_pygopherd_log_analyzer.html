@@ -69,15 +69,13 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want statistics.
-If you ever used <a href="https://wiki.archlinux.org/index.php/Logwatch">Logwatch</a> you&#39;ll
-feel at home. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Simple log analyzer for pygopherd. Fun if you have a gopherhole and want
+statistics. If you ever used <a href="https://wiki.archlinux.org/index.php/Logwatch">Logwatch</a> you&#39;ll feel at home.</p>
 
-<p><a href="https://github.com/RaymiiOrg/pygopherdstats">Github repository here</a> or just
-<a href="https://raymii.org/s/inc/software/pygopherstats.sh">the script here</a>.</p>
+<p><a href="https://github.com/RaymiiOrg/pygopherdstats">Github repository here</a> or just <a href="https://raymii.org/s/inc/software/pygopherstats.sh">the script here</a>.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Requirements</h3>
 
@@ -95,13 +93,14 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><p>Run it providing one or more logfiles to analyze:</p>
 
 <pre><code>./pygopherstats.sh /var/log/syslog
-./pygopherstats.sh /var/log/syslog /var/log/syslog.1
-./pygopherstats.sh /var/log/syslog.*
-</code></pre></li>
+</code></pre>
+
+<p>./pygopherstats.sh /var/log/syslog /var/log/syslog.1
+./pygopherstats.sh /var/log/syslog.*</p></li>
 </ul>
 
-<p>If you don&#39;t have a central syslog server, use poor man&#39;s ssh to get all the 
-log files from all the servers:</p>
+<p>If you don&#39;t have a central syslog server, use poor man&#39;s ssh to get all the log
+files from all the servers:</p>
 
 <pre><code>for host in $(dig +short a example.org); do 
     ssh -l root $host &quot;zgrep pygopherd /var/log/syslog.*&quot;; 

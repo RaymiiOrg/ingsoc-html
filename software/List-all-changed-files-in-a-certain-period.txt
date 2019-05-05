@@ -9,16 +9,20 @@ Format      : 	Markdown/HTML
 
 
 
-This is a little script I wrote and use to get a daily report of all the files that have changed on my servers. What it does is list all the files that are modified within a certain time period from a given directory. It can also be run from a desktop machine, or any machine which runs bash, find and ls. Usage is simple, save the script, chmod +x it, then run (./report.sh). If you want a specific directory to be scanned run it like ./report.sh /var/www/my/dir
+This is a little script I wrote and use to get a daily report of all the files
+that have changed on my servers. What it does is list all the files that are
+modified within a certain time period from a given directory. It can also be run
+from a desktop machine, or any machine which runs bash, find and ls. Usage is
+simple, save the script, chmod +x it, then run (./report.sh). If you want a
+specific directory to be scanned run it like ./report.sh /var/www/my/dir
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-  
 This is the script:
 
+    
+    
     #!/bin/bash
     ### Copyright (c) 2012 Remy van Elst
     #Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -65,7 +69,7 @@ This is the script:
         echo "END OF FILE REPORT"
         echo "Report script version $SVERSION by raymii.org"
         ;;
-        
+    
         1) echo "Reporting all files modified in last "$MTIME" period in directory "$FILEDIR" for system "$HOSTPC", running as user "$HOSTUSER"."
         echo "Date: `date`"
         echo "START OF FILE REPORT"
@@ -73,12 +77,15 @@ This is the script:
         echo "END OF FILE REPORT"
         echo "Report script version $SVERSION by raymii.org"
         ;;
-        
+    
     esac
     #END OF SCRIPT
+    
 
 Sample output looks like this:
 
+    
+    
     remy@USN4 ~/test $ ./report.sh ~
     Reporting all files modified in last "-1" period in directory "/home/remy" for system "USN4" excluding hidden files.
     Date: Fri Mar 30 13:20:59 CEST 2012
@@ -90,16 +97,26 @@ Sample output looks like this:
     -rwxrwxr-x 1 remy remy 1.2K 2012-03-30 13:20 /home/remy/test/report.sh
     END OF FILE REPORT
     Report script version 0.2 by raymii.org
+    
 
-If you want to filter out certain directories you can add grep to the find line in the script to filter out directories:
+If you want to filter out certain directories you can add grep to the find line
+in the script to filter out directories:
 
+    
+    
     find $FILEDIR -type f -mtime $MTIME ! -path "*/.*" | grep -v "/sys/" | grep -v "/proc/" | grep -v "/run/" | grep -v "/dev/" | xargs -r ls -lh 2>/dev/null
+    
 
-The above command wil filter out the /sys/ /proc/ /run/ and /dev/ directories. Edit it to your needs. I've got a crontab like this, it saves it to the /var/log/freport/ directory so you can check it later or email it:
+The above command wil filter out the /sys/ /proc/ /run/ and /dev/ directories.
+Edit it to your needs. I've got a crontab like this, it saves it to the
+/var/log/freport/ directory so you can check it later or email it:
 
+    
+    
     00 */8 * * * /root/report.sh / > /var/log/freport/filereport`date +%F`.txt
     
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

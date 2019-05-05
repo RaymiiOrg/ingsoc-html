@@ -14,36 +14,39 @@ Format      : 	Markdown/HTML
 This is a Zentiy dialog script wrapper around ffmpeg. It was written for my
 father who wanted to convert FLAC and OGG files to MP3 for his media player.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+![img][2]
 
-![img][7]
+![img][3]
 
-![img][8]
+![img][4]
 
-![img][9]
-
-![img][10]
+![img][5]
 
 Features in v4:
 
-*   Extension select before folder.
-*   Filter on extension
-*   Check if files exist in folder.
-*   Added .flv to input format (Youtube ripped videos)
-*   Added .aac to input/output format
-*   Quality selector for ffmpeg
-*   Removed folder check.
-*   Added nautilus open when converting finished. 
+  * Extension select before folder.
+  * Filter on extension
+  * Check if files exist in folder.
+  * Added .flv to input format (Youtube ripped videos)
+  * Added .aac to input/output format
+  * Quality selector for ffmpeg
+  * Removed folder check.
+  * Added nautilus open when converting finished. 
 
-Note that you'll need zenity and ffmpeg: 
+Note that you'll need zenity and ffmpeg:
+
+    
     
     sudo apt-get install zenity ffmpeg 
+    
 
 ### Script
 
+    
+    
     #!/bin/bash
     
     ####################################
@@ -132,17 +135,14 @@ Note that you'll need zenity and ffmpeg:
     echo Done
     
 
-  
-[Thanks to Andrew from webupd8 for posting it on http://webupd8.org][11]
+[Thanks to Andrew from webupd8 for posting it on http://webupd8.org][6]
 
-
- [7]: https://raymii.org/s/inc/img/easyconverter/easyconv1.png
- [8]: https://raymii.org/s/inc/img/easyconverter/easyconv2.png
- [9]: https://raymii.org/s/inc/img/easyconverter/easyconv3.png
- [10]: https://raymii.org/s/inc/img/easyconverter/easyconv4.png
- [11]: http://www.webupd8.org/2010/03/zenity-ffmpeg-bash-script-to-convert.html
-
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [2]: https://raymii.org/s/inc/img/easyconverter/easyconv1.png
+   [3]: https://raymii.org/s/inc/img/easyconverter/easyconv2.png
+   [4]: https://raymii.org/s/inc/img/easyconverter/easyconv3.png
+   [5]: https://raymii.org/s/inc/img/easyconverter/easyconv4.png
+   [6]: http://www.webupd8.org/2010/03/zenity-ffmpeg-bash-script-to-convert.html
 
 ---
 

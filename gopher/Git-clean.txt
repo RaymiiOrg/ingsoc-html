@@ -9,17 +9,19 @@ Format      : 	Markdown/HTML
 
 
 
-The script below is a script to clean a git repository. Either to see big files, or to remove them, and remove them from history.
+The script below is a script to clean a git repository. Either to see big files,
+or to remove them, and remove them from history.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 #### Examples
 
-View the list of big files in the git repo and the git repo history (from the sourcecode repo of this website):
+View the list of big files in the git repo and the git repo history (from the
+sourcecode repo of this website):
 
+    
+    
     remy at sparcstation-20 in ~/repo/raymiiorg (master)
     $ ~/bin/git-clean.sh df
     All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file.
@@ -34,9 +36,13 @@ View the list of big files in the git repo and the git repo history (from the so
     635854   636023  6e5c39dff693b861f25ec96ba16c5fe9700ec9c9  images/smalldistro3.png
     443121   439081  4461b7489dcb46911e14376e37e7abbe335668a7  images/smalldistro2.png
     395247   393304  47a6ab134240e2433310cc40d8909bd11cf80935  images/smalldistro7.png
+    
 
-Remove the file images/smalldistro12.png from the repo and rewrite the history (note the backslash in the filename):
+Remove the file images/smalldistro12.png from the repo and rewrite the history
+(note the backslash in the filename):
 
+    
+    
     remy at sparcstation-20 in ~/repo/raymiiorg (master)
     $ ~/bin/git-clean.sh rm imagessmalldistro12.png
     Removing Biggest file imagessmalldistro12.png from git repo
@@ -55,12 +61,14 @@ Remove the file images/smalldistro12.png from the repo and rewrite the history (
     Compressing objects: 100% (2148/2148), done.
     Writing objects: 100% (2159/2159), done.
     Total 2159 (delta 1368), reused 791 (delta 0)
+    
 
 #### Info
 
 ##### Installation
 
-Copy the script into a text file, `chmod +x ./git-clean.sh` and run it. If you do not run it from inside a git repository you will get an error.
+Copy the script into a text file, `chmod +x ./git-clean.sh` and run it. If you
+do not run it from inside a git repository you will get an error.
 
 ##### License
 
@@ -68,6 +76,8 @@ GPLv3.
 
 #### The script
 
+    
+    
     #!/bin/bash
     # Script to remove files from the git history.
     # Execute this script in the git root directory
@@ -76,22 +86,22 @@ GPLv3.
     # use like: ./gitsize.sh rm $bigfilename
     # Example: ./gitsize.sh rm includes/ubuntu-12.04.iso
     # It will then search your git repo and remove all of it.
-
+    
     # Copyright (C) 2012 Remy van Elst
-
+    
     #     This program is free software: you can redistribute it and/or modify
     #     it under the terms of the GNU General Public License as published by
     #     the Free Software Foundation, either version 3 of the License, or
     #     (at your option) any later version.
-
+    
     #     This program is distributed in the hope that it will be useful,
     #     but WITHOUT ANY WARRANTY; without even the implied warranty of
     #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     #     GNU General Public License for more details.
-
+    
     #     You should have received a copy of the GNU General Public License
     #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+    
     if [ ! -e $1 ]; then
         if [ -d .git ]; then
             if [ $1 == "rm" ]; then
@@ -126,7 +136,7 @@ GPLv3.
                     #lineBreak=`echo -e "n"`
                     output="${output}n${size},${compressedSize},${other}"
                 done
-
+    
                 echo -e $output | column -t -s ', '
             fi
         else
@@ -143,9 +153,11 @@ GPLv3.
         echo "    Example, to remove the file "includes\ubuntu-12.04.iso":"
         echo "    $0 rm includes\ubuntu-12.04.iso"
         echo "    Made by Raymii.org. GPLv3 License"
-
+    
     fi
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

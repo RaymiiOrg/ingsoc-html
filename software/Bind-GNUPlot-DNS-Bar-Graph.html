@@ -69,12 +69,13 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/dns-report.png" alt="bind" /></p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p><img src="https://raymii.org/s/inc/img/dns-report.png" alt="bind"></p>
 
-<p>This is a very simple script which uses GNUplot to create graphs of Bind Query logs.</p>
+<p>This is a very simple script which uses GNUplot to create graphs of Bind Query
+logs.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h3>Bind logging</h3>
 
@@ -109,7 +110,8 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 chown bind:bind /var/log/named
 </code></pre>
 
-<p>Why <code>/var/log/named</code>? Because AppArmor on Ubuntu allows bind to write to this path, and I don&#39;t like messing with either AppArmor or SELinux.</p>
+<p>Why <code>/var/log/named</code>? Because AppArmor on Ubuntu allows bind to write to this
+path, and I don&#39;t like messing with either AppArmor or SELinux.</p>
 
 <h3>Bind log parsing</h3>
 
@@ -131,7 +133,8 @@ chown bind:bind /var/log/named
 <pre><code>gnuplot &lt; plot.gplt
 </code></pre>
 
-<p>And there you go. This is the GNUPlot script if you don&#39;t want to check out the repo.</p>
+<p>And there you go. This is the GNUPlot script if you don&#39;t want to check out the
+repo.</p>
 
 <pre><code>set term png truecolor size 800,600
 set output &quot;data.png&quot;
@@ -145,7 +148,8 @@ set style fill transparent solid 0.5 border rgb&quot;black&quot;
 plot &quot;dns-data&quot; u 1:xtic(2) w boxes lc rgb&quot;blue&quot;
 </code></pre>
 
-<p>Because GNUplot has no easy support for horizotal bar graphs, if you want it horizontal, rotate it with Imagemagick:</p>
+<p>Because GNUplot has no easy support for horizotal bar graphs, if you want it
+horizontal, rotate it with Imagemagick:</p>
 
 <pre><code>convert data.png -rotate 90 data-90.png
 </code></pre>

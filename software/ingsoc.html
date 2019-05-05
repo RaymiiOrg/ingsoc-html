@@ -69,13 +69,20 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>ingsoc is a static site generator written in Python with the purpose of generating raymii.org. It differs from other static site generators because it does not create a blog-like site, but it is focused on pages and structure. It also does not use a template engine. It generates categories, pages, tags, an XML sitemap and a RSS feed. It takes markdown files with a yaml config header as input, and outputs html. </p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>ingsoc is a static site generator written in Python with the purpose of
+generating raymii.org. It differs from other static site generators because it
+does not create a blog-like site, but it is focused on pages and structure. It
+also does not use a template engine. It generates categories, pages, tags, an
+XML sitemap and a RSS feed. It takes markdown files with a yaml config header as
+input, and outputs html.</p>
 
-<p>I sometimes write updates on new changes in ingsoc, those articles can be found <a href="https://raymii.org/s/tags/ingsoc.html">on this page</a>.</p>
+<p>I sometimes write updates on new changes in ingsoc, those articles can be found
+<a href="https://raymii.org/s/tags/ingsoc.html">on this page</a>.</p>
 
 <h3>Usage</h3>
 
-<p>ingsoc requires three directories and content to work. The directory structure can be as below:</p>
+<p>ingsoc requires three directories and content to work. The directory structure
+can be as below:</p>
 
 <pre><code>$ tree
 .
@@ -127,11 +134,15 @@
     `-- words-to-ignore.txt
 </code></pre>
 
-<p>I have a <code>src</code> directory with my content, which is written in markdown. The <code>inc</code> directory gets copied over to the output folder, it has the css, js, images and other static content. The <code>out</code> folder is the folder where ingsoc puts its generated html.</p>
+<p>I have a <code>src</code> directory with my content, which is written in markdown. The
+<code>inc</code> directory gets copied over to the output folder, it has the css, js,
+images and other static content. The <code>out</code> folder is the folder where ingsoc
+puts its generated html.</p>
 
 <h3>Content</h3>
 
-<p>A content item is a markdown file, with a yaml header. The header looks like this:</p>
+<p>A content item is a markdown file, with a yaml header. The header looks like
+this:</p>
 
 <pre><code>title: &quot;Example Title&quot;
 author: &quot;John Doe&quot;
@@ -147,9 +158,13 @@ tags:
 ---
 </code></pre>
 
-<p>Then below the three dashes (<code>---</code>) the actual markdown content is placed. The <code>category</code> item is what also end up in the menu. The date and summary are used in the RSS. The summary is the only field which is not required. </p>
+<p>Then below the three dashes (<code>---</code>) the actual markdown content is placed. The
+<code>category</code> item is what also end up in the menu. The date and summary are used
+in the RSS. The summary is the only field which is not required.</p>
 
-<p>There is a post generation step in which the css and generated html are minified. The <code>minify: False</code> optional option (default is True) allows a page to be excluded from the minification.</p>
+<p>There is a post generation step in which the css and generated html are
+minified. The <code>minify: False</code> optional option (default is True) allows a page to
+be excluded from the minification.</p>
 
 <h3>Configuration</h3>
 
@@ -171,7 +186,9 @@ homepagetext: &gt;
     This is the &lt;strong&gt;most awesome site&lt;/strong&gt; on the entire internet.
 </code></pre>
 
-<p>The <code>homepagetext</code> item is the raw html code which is put on the index.html code. the <code>tags</code> and <code>breadcrumbs</code> are used to define if tags and breadcrumbs should be generated and placed or not.</p>
+<p>The <code>homepagetext</code> item is the raw html code which is put on the index.html
+code. the <code>tags</code> and <code>breadcrumbs</code> are used to define if tags and breadcrumbs
+should be generated and placed or not.</p>
 
 <h3>Requirements</h3>
 
@@ -182,7 +199,8 @@ homepagetext: &gt;
 <li><a href="http://pyyaml.org/">pyyaml</a></li>
 </ul>
 
-<p>The minification also requires the <code>cssmin</code> and <code>htmlmin.minify</code> modules. It is fully threaded, minifying at least 4 pages at once.</p>
+<p>The minification also requires the <code>cssmin</code> and <code>htmlmin.minify</code> modules. It is
+fully threaded, minifying at least 4 pages at once.</p>
 
 <p>To install them in a standard ubuntu/debian:</p>
 

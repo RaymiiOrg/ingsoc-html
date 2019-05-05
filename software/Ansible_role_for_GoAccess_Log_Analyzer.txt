@@ -9,20 +9,26 @@ Format      : 	Markdown/HTML
 
 
 
-This is a small Ansible playbook to deploy the GoAccess log analyzer on Debian based systems. Next to Piwik, I use goaccess myself to get better insights in who and what visits my servers. This role is ment to be included in your webserver playbooks.
+This is a small Ansible playbook to deploy the GoAccess log analyzer on Debian
+based systems. Next to Piwik, I use goaccess myself to get better insights in
+who and what visits my servers. This role is ment to be included in your
+webserver playbooks.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Playbook
 
-The role can be found here in my github account: [https://github.com/RaymiiOrg/ansible/tree/master/goaccess](https://github.com/RaymiiOrg/ansible/tree/master/goaccess).
+The role can be found here in my github account:
+<https://github.com/RaymiiOrg/ansible/tree/master/goaccess>.
 
-It requires little change. It adds the goaccess apt-key. (Not with the apt-key module because that failed for unknown reasons). It installs goaccess and `xz-utils` (for `zcat`), deploys a config file and adds a hourly cronjob to parse the latest log file. You might need to change the logfile path. There is also a nightly cronjob which uses `zcat` to parse all (rotated) logs into a big report. 
+It requires little change. It adds the goaccess apt-key. (Not with the apt-key
+module because that failed for unknown reasons). It installs goaccess and `xz-
+utils` (for `zcat`), deploys a config file and adds a hourly cronjob to parse
+the latest log file. You might need to change the logfile path. There is also a
+nightly cronjob which uses `zcat` to parse all (rotated) logs into a big report.
+
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 
