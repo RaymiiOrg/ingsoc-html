@@ -23,8 +23,10 @@ This article is a getting started guide where I talk about the initial setup of 
 
 This article is largely compatible with other gnuk tokens and other OpenPGP Smartcards like the Nitrokey Pro or the Yubikey.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Nitrokey has multiple models like the Start, Storage, Pro and HSM. I'm especially fond of the Nitrokey HSM. I've written a [getting started](https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html) article for that as well. It explains what the HSM is, how to set it up and how to use it with OpenSSH for example.
 

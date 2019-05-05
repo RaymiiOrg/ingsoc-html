@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 *This is a Dutch article on a Diffie Hellman Key Exchange, including an example. I wrote this to better understand the Diffie Hellman Key Exchange.*
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 <hr />
 Notities Diffie Hellman Key Exchange  
 

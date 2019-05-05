@@ -14,7 +14,10 @@ Format      : 	Markdown/HTML
 
 Recently a team I consult for started using a shared password manager, pass. It uses GPG keys and presents itself as the standard unix password manager, but in essence it's nothing more than a wrapper around GPG encrypted files. We all had to generate new keys since the team is new and we were not allowed to use existing keys. Using a new, empty keyring, I generated my key and imported their keys. I wanted to trust, sign and publish all keys to a keyserver, this article shows how to do that noninteractively in batch form. Saves me doing the same thing four times.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 If you ever want to send me something encrypted, you can find [my GPG and S/MIME keys here](https://raymii.org/s/static/About.html)
 

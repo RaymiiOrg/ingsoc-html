@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 At work and at home my ISP's have native IPv6. I recently was at a clients location where they had no IPv6 at all and had to set up and demonstrate an application in a Docker container with IPv6 functionality. They said the had IPv6 but on location it appeared that IPv6 wasn't working. Since IPv6 was required for the demo the container needed a workaround. This article describes the workaround I used to add IPv6 to a Docker container on a non IPv6 network. It was tested on an `Ubuntu 14.04` container, but should work for other Linux distro's as well.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). Plus, they have a ready to go Docker Ubuntu installation. (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 The workaround involes installing `miredo` in the container to get a tunnel and an IPv6 connection that way. Extremely simple, but it required some extra parameters in the Docker workflow. 
 

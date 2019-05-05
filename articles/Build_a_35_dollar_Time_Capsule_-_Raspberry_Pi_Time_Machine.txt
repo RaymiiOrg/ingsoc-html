@@ -13,7 +13,10 @@ Format      : 	Markdown/HTML
 
 This is a simple guide on building a $35 Time Capsule with a Raspberry Pi. A Time Capsule is a network attached storage device from Apple for use with their Time Machine. Time Machine gives users a very easy and userfriendly way to automatically create and restore (encrypted) backups. A Time Capsule is basically an expensive NAS that only talks the AFP/netatalk protocol. The 2 TB version [costs $299 at this time](http://store.apple.com/us/product/ME177/airport-time-capsule-2tb), a [Raspberry Pi only $35](http://www.raspberrypi.org/buy/). 
 
-If you like this article and want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 You will need the following:
 

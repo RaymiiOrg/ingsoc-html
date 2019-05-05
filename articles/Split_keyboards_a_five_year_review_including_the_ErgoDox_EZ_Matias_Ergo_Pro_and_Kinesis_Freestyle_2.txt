@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 A split keyboard is weird at first, but once you get used to it, you will never want anything else. The keyboard is made up from two halves allowing your arms and wrists to be in a natural (neutral, straight) position, instead of having an angle/twist in your wrist.
 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 <img src="https://raymii.org/s/inc/img/dejongduke-kb.jpg" width=800 height=450>
 
 > My current desk, with an ErgoDox EZ white, Evonluent Vertical Mouse (left handed) and a Vortex Core keyboard.
@@ -132,8 +137,6 @@ Microsoft has the Natural Ergonomic Keyboard 4000. It's a split keyboard in the 
 Microsoft also has the Sculpt. It's wireless (with a non-replacable dongle) and has butterfly switches. (Like laptop keys). I would probably go nuts if I had to use it. I wouldn't like the key feel and the angle seems the same as the other Microsoft board, which hurts my wrists. Non-adjustable as well. Price is a bit higher at EUR 90.
 
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
 
 ---

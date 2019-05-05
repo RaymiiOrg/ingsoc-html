@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 A friend of me recently pointed me to the [Olimex Olinuxino A10 LIME](https://www.olimex.com/wiki/A10-OLinuXino-LIME), an open source hardware ARM (Allwinner A10) based dev board with 160 GPIO's, 1,2 GHz/512 MB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port, USB-OTG, 100 Mbit lan (not via the usb bus) and more of those nice features. The price is even more awesome, the device is 30 euro's, add 5 euro's and you have yourself a nice black case. It consumes very little power, combined with all the features a perfect dev / tinkerboard.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Sadly, the default Debian 7 image suplied by Olimex is bloated and huge. Perfect for the general tinkerer, has a Desktop Environment and a lot of dev tools and support for everything. Not perfect for me, I want a small minimal base to start and add up on that only what I need.
 
 I took this image and stripped everything out of it, leaving only the bare minimum. Basically it only runs SSH and allows you to install the tools you need to build your project, without any other cruft. 

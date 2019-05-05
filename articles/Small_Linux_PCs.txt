@@ -16,7 +16,10 @@ Prices are in US dollar unless otherwise stated. It is the starting price for th
 USB is always 2.0 unless otherwise stated.  
 If specs are known, I add them, (HMDI 1.4, 10/100/1000 base T ethernet), if not then it is like (HDMI, RJ-45 ethernet).  
 
-[Need a VPS server?](http://clients.inceptionhosting.com/aff.php?aff=083)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 #### Table of Contents
 * [Raspberry Pi](#raspberry)

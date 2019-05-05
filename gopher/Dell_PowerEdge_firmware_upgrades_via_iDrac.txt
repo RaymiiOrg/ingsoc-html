@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 The recent spectre and meltdown vulnerabilities require BIOS and firmware updates. Dell provides binaries for Windows and Linux, but just for Red Hat and SUSE. Some firmware updates can be run on Ubuntu or Debian, but some fail with the error that RPM could not be found. Which is correct since it's not Red Hat. In this small article I'll show you how to upgrade the firmware via the iDrac, which I recently discovered.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Upgrade via the shell
 
 Usually I do upgrades automated with Ansible, via the shell. Manually this can be done as well, in this example a firmware for the power supply unit of a Dell R620:

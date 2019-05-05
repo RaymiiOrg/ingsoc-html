@@ -17,7 +17,10 @@ This guide shows you how to build an RK05 bootable system disk with OS/8 on it f
 
 [Oscar Vermeulen created an amazing replica of the PDP-8/I](http://obsolescence.wix.com/obsolescence#!pidp-8/cbie). It's a front panel with working switches and LED's, plus a simple Raspberry Pi running the SIMH emulator. [I've written](https://raymii.org/s/articles/Running_ADVENT-on-the-PDP-8-with-SIMH.html) multiple [articles on the](https://raymii.org/s/articles/Toggling_in_a_simple_program_on_the_DEC_PDP-8_and_PiDP-8_using_the_switch_register.html) [PDP and PiDP-8](https://raymii.org/s/articles/Running_TSS_8_on_the_DEC_PiDP-8_i_and_SIMH.html) and I like the device a lot in general.
 
-[If you like this article, consider sponsoring this site by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Setup
 

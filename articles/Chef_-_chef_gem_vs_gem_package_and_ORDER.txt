@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 One of my clients use [Chef][1] and have a cookbook which builds a postgresql database node. It should install the [pg][2] ruby gem. However, it uses the chef_gem resource to do that, and it keeps failing.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 They use a [wrapper-cookbook][3] around the regular [postgresql][4] cookbook. The wrapper cookbook installs some extra packages required by their HA setup, plus it places a few other templates than the regular templates.
 
 First they pin on a specific postgresql version and remove any other version:

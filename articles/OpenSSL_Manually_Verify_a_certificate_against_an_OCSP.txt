@@ -19,8 +19,10 @@ Compared to CRL's:
 
 You can read more about the OCSP on [wikipedia][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 If you want to verify a certificate against a CRL manually [you can read my article on that here](https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html).
 

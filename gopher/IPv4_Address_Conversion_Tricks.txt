@@ -18,6 +18,11 @@ Normally we represent IP addresses as 10.0.0.1, 4 blocks of numbers.
 Those numbers are actually binary octets represented in decimal, therefore they can never be more than 255. 
 If we take the whole binary number of all blocks, and convert that to base 10, we get a result like above, which in turn is a working network address. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This "feature" is documented in the [inet_aton(3)](http://linux.die.net/man/3/inet_aton) manpage.
 
 I've written a little javascript based converter so you can try it out yourself.

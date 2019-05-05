@@ -18,6 +18,11 @@ This article is a quick introduction to virt-install. It also has a copy pastabl
 
 I myself use virt-install together with kickstart, debootstrap and a PXE server to create images for Openstack. I've used in the past with a Django web frontend were developers could request and destroy vm's themself. Every requested VM was a new fresh installed one, backed by KVM and virt-install.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Please do note that you need to have kvm and libvirt running on your machine. This article does not cover the installation of those, but your package manager probably does.
 
 ### Disk images

@@ -17,7 +17,10 @@ These checks can be setup in many different monitoring systems and with many dif
 
 If you have no monitoring at all, I recommend looking into Icinga2 or Nagios, but that's just personal preference. Read an [install guide](https://raymii.org/s/tutorials/Nagios_Core_4_Installation_on_Ubuntu_12.04.html) and check out [all my monitoring articles here](https://raymii.org/s/tags/monitoring.html).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This is quite a lengthy article, but using the table of contents you can skip directly to the sections relevant to you.
 

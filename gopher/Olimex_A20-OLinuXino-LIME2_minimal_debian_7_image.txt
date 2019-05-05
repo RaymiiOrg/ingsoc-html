@@ -15,6 +15,11 @@ I have an Olimex A10 LIME board for which I've made a minimal image, see [this p
 
 The Olimex A20-LIME2 is the big brother of the A10. The [Olimex Olinuxino A20 LIME2](https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXIno-LIME2/open-source-hardware), an open source hardware ARM (Allwinner A20) dual core based dev board with 160 GPIO's, 1,2 GHz/1 GB RAM, 2 USB 2.0 ports, 1 esata port, 1 hdmi port, USB-OTG, 1 gbit lan (not via the usb bus) and more of those nice features. The price is even more awesome, the device costs 45 euro's, add 5 euro's and you have yourself a nice black case. It consumes very little power, combined with all the features a perfect dev / tinkerboard.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [Olimex](http://olimex.com/) sponsored a board for me to create the image, I would like to thank them very much for them.
 
 The difference with the A10-LIME is the dual core ARM processor, 1 GB of ram instead of 512 and gigabit networking.

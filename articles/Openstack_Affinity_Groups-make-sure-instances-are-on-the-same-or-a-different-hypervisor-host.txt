@@ -13,11 +13,12 @@ This guide shows you how to use Openstack Affinity groups. Affinity or Anti-Affi
 
 Affinity is supported since Openstack IceHouse. You can only add an instance to an affinity group when you create the instance with `nova boot`. You can not add existing instances. You can however create an image of an instance and boot a new server from that image, in the new affinity group.
 
-
 You can see all my [Openstack related articles here](https://raymii.org/s/tags/openstack.html). For example, how to build a [High Available cluster with Ansible and Openstack](https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 
 ### Create an Affinity Group

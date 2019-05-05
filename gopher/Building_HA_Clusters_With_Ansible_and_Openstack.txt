@@ -26,7 +26,10 @@ This tutorial sets up Wordpress as the application, but it can be easily adapted
 
 I'm using the Openstack Cloud from [CloudVPS](https://cloudvps.com), but any Openstack cloud will do. CloudVPS is the best one though, in my opinion. The screenshots you'll see are not of the default Openstack dashboard but of the CloudVPS Skyline Openstack Interface.
 
-This playbook and tutorial are easily adaptable for another cloud provider like [Digital Ocean (aff. link)](https://www.digitalocean.com/?refcode=7435ae6b8212), Rackspace (Openstack) or Vultr. I however prever the openness of Openstack, if one Openstack provider throws the towel, my "cloud" applications will be redeployed in another Openstack Cloud without issues. [Digital Ocean](https://www.digitalocean.com/?refcode=7435ae6b8212) does not provide that benefit.
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 The playbook can be found [in this git repository](https://github.com/RaymiiOrg/ansible/tree/master/openstack-example).
 

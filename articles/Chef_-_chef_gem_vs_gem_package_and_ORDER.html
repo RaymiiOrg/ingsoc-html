@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>One of my clients use <a href="http://www.getchef.com/">Chef</a> and have a cookbook which builds a postgresql database node. It should install the <a href="https://rubygems.org/gems/pg">pg</a> ruby gem. However, it uses the chef_gem resource to do that, and it keeps failing.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>They use a <a href="http://support.rightscale.com/12-Guides/Chef_Cookbooks_Developer_Guide/04-Developer/06-Development_Resources/Chef_Cookbook_Design_Patterns/Wrapper_Cookbook_Pattern">wrapper-cookbook</a> around the regular <a href="http://community.opscode.com/cookbooks/postgresql">postgresql</a> cookbook. The wrapper cookbook installs some extra packages required by their HA setup, plus it places a few other templates than the regular templates.</p>
 
 <p>First they pin on a specific postgresql version and remove any other version:</p>

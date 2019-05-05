@@ -25,7 +25,10 @@ This article describes the most common migration scenario's including live and m
 
 You can see all my [Openstack related articles here](https://raymii.org/s/tags/openstack.html). For example, how to build a [High Available cluster with Ansible and Openstack](https://raymii.org/s/articles/Building_HA_Clusters_With_Ansible_and_Openstack.html).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 It is tested on an Openstack cloud running Icehouse with KVM as the only hypervisor. If you run Xen or something else, the manual process is mostly the same, however might require specific adaptions.
 

@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless (for Android).
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 In this article I'll describe the applications I use and afterwards describe the sync setup I have with unison and Foldersync lite. Most of the applications are open source, except for Foldersync on Android.
 
 ### Why Plain Text

@@ -15,6 +15,11 @@ The Olimex OlinuXino A10 LIME is an amazing, powerfull and cheap open source ARM
 
 Buy the board here: [https://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME/open-source-hardware](https://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME/open-source-hardware) and see my other tutorials and a small image here: [https://raymii.org/s/tags/olimex.html](https://raymii.org/s/tags/olimex.html)
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 The original guide can be found here: [http://olimex.wordpress.com/2013/12/13/building-debian-linux-image-for-a10-olinuxino-lime-with-kernel-3-4-67/](http://olimex.wordpress.com/2013/12/13/building-debian-linux-image-for-a10-olinuxino-lime-with-kernel-3-4-67/)
 
 This guide has been adapted to work on Ubuntu 14.04, some package names, instructions and commands were incorrect. Also, all the files are not on Google drive anymore, but on my servers. The original bad english has been cleaned up to be less bad. The guide however is of less quality than you normally get from me.

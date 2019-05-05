@@ -16,6 +16,11 @@ ordered the LaunchPad full kit, an assortment of Gateron switches and a VIM
 keycap. This article goes over the quality,  the build process and my current
 setup of the Launchpad.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 <img src="https://raymii.org/s/inc/img/launchpad_2.jpg">
 
 The contents of the package laid out on my soldering desk. The switches and
@@ -219,9 +224,6 @@ After flashing the first keymap, flashing the second and latter firmwares is
 harder. You need to press the reset switch twice quickly. The Arduino goes into
 firmware programming mode for 8 seconds. If you just press reset once, it will
 go into programming mode for 750 ms.
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
-
 
 
 ---

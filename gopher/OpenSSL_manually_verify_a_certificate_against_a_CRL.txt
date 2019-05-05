@@ -15,6 +15,11 @@ You can read more about CRL's on [Wikipedia](https://en.wikipedia.org/wiki/Revoc
 
 If you want to validate a certificate against an OCSP, see [my article on that here](https://raymii.org/s/articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html).
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 We will be using OpenSSL in this article. I'm using the following version:
 
     $ openssl version

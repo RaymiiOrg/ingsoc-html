@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 Twitter recently started monitoring everything logged in users do on the web so that they can get "more relevant" followers. Facebook does this for a long time nowdays via their like buttons (even non-logged in users) and I think google also has a big share in this. I don't like that, so I try to block it mostly. The purpose of this article is to inform you about chrome extensions that help you block these things. (I'm not going in to the fact that chrome is a google product, who knows how they monitor me that way. I btw use chromium, the open-source version, but this all should also work on the normal chrome) So lets kick off! I want to note that there are some extensions that are doing the same thing. I do not think it is bad for chrome, I've not noticed any stupid side-effects of it. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Adblock for Chrome
 
 ![][19]

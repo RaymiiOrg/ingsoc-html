@@ -19,7 +19,10 @@ The solution for this problem is to create a statically (cross) compiled version
 
 These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit machine. 
 
-If you like this article and want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Install required packages
 

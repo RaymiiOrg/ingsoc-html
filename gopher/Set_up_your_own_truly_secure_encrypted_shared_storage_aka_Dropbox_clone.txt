@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 ### TL;DR
 This article describes my truly secure, encrypted file synchronization service. It used EncFS and dvcs-autosync which lets me share only the encrypted data and mount that locally to get the plaintext. It works on OS X, Linux and ARM linux. This article has setup instructions for all those platforms.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Diagram
 
 <img src="http://i.imgur.com/0L5GxCR.png?2" alt="Diagram" />

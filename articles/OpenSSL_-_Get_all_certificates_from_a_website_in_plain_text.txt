@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This snippet shows you how to get all certificates of a website in plain text. With a few OpenSSL commands one can get the website certificate plus intermediate certificates, however, if you feed that output to OpenSSL it only works on the first certificate. Using a bit of sed and bash magic we can feed all certificates one by one to OpenSSL.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Website certificate
 
 You can request a website's certificate using `openssl s_client`. To view the public key from google.com we can use the following command:

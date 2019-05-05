@@ -15,7 +15,10 @@ This is a guide that shows you how to create OpenStack instance snapshots automa
 
 OpenStack Compute (Nova) has a feature that allows you to create a snapshot of a (running) instance, namely `nova image-create`. This uses the underlying hypervisor to create an instant snapshot of the virtual machine. In the case of KVM/qemu this is a qemu-snapshot. This image is then stored in the Glance image store, allowing you to create a new VM based on the image, thus restoring the backup or creating a clone. If you use floating IP's, it's a matter of assigning the floating IP to the new VM and you're all set.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 <img src="https://raymii.org/s/inc/img/glance_apt.png">
 

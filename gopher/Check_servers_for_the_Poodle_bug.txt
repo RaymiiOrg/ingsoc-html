@@ -17,6 +17,11 @@ This command can easily be automated with other shell scripts. It also allows yo
 
 See the google security blog for more info on the bug: [http://googleonlinesecurity.blogspot.nl/2014/10/this-poodle-bites-exploiting-ssl-30.html](http://googleonlinesecurity.blogspot.nl/2014/10/this-poodle-bites-exploiting-ssl-30.html). 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 You can use a website like [http://poodlebleed.com/](http://poodlebleed.com/) for a web based check.
 
 ### Fix POODLE

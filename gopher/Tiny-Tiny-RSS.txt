@@ -17,6 +17,11 @@ This is an article about [Tiny Tiny RSS](http://tt-rss.org/).
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 I will go over the features of TIny Tiny RSS, compare it to Google Reader and write some things I like about it, and things I miss about it.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ##### Features of Tiny Tiny RSS
 
 * Server-side application, user only needs a web browser 

@@ -19,8 +19,10 @@ When we build such a cluster (fully automated with Ansible) we do a basic load t
 
 Tsung is a high-performance but simple to configure and use piece of software written in Erlang. Configuration is done in a simple readable XML file. Tsung can be run distributed as well for large setups. It has good reporting and a live web interface for status and reports during a test.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[If you like this article, consider sponsoring this site by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 I'm by no means a load-testing expert. User flow, parsing the results and such are not my cup of tea. I do however understand server performance and optimization. These load tests are ment to help me and my team to have a general idea of that the clients setup is able to handle. For example, high-load clusters benefit from several extra IP addresses just for monitoring. Sockets in linux are per IP, and when the IP's and conntrack are exhausted, the monitoring IP will still work. We found that during one of these load tests where the load was relatively low, but all the monitoring failed (because of conntrack). 
 

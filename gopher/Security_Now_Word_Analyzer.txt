@@ -13,6 +13,11 @@ Security Now is a podcast by Leo Laporte and Steve Gibson released on the Twit.t
 
 Steve pays to get the podcast transcribed, and the files are up over are [grc.com](http://grc.com). 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 I decided to run my [analyzer](https://raymii.org/s/articles/Word_occurrence_counter_and_analyzer.html) over the complete podcast text archive. This is from episode 001 to 371.
 
 #### Get the files:
