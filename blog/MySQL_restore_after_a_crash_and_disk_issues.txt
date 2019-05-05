@@ -17,7 +17,10 @@ fix. This post describes the proces I used to get MySQL working again with a
 recent backup. In this case it was a replicated setup so the client had no
 actual downtime. 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 The proces requires a backup, preferably a recent one. What I did was remove
 everything and start fresh, restoring the backups.

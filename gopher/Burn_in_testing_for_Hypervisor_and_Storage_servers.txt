@@ -22,8 +22,10 @@ that they either fail then, or not. This saves us from having to migrate
 customers off of new production servers just a few days after they've gone live.
 The testing is of course all automated.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[If you like this article, consider sponsoring this site by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 <img src="https://raymii.org/s/inc/img/busy-compute.jpg">
 

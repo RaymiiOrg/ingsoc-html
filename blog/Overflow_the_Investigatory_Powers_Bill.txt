@@ -26,6 +26,11 @@ script which browser the web for you, all the time. Running that on one or two
 Raspberry Pi's or other small low power computers 24/7 will generate a lot of
 noise in the logging and filtering.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 ### Background
 
 The article on The Register is very well written and has a lot of information on

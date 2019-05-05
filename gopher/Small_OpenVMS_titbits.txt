@@ -14,7 +14,10 @@ Format      : 	Markdown/HTML
 (You can read all my OpenVMS articles by [clicking the picture
 (above](https://raymii.org/s/tags/openvms.html))
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Here are some small titbits I found out this week on the DECUServe OpenVMS
 system. Not enough to write a blogpost on their own, but collected together.

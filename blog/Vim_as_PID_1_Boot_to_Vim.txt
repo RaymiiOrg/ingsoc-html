@@ -31,7 +31,10 @@ boot and you're done.
 We are going to use small (9MB) distro named [Tiny Core, Core edition](http://distro.ibiblio.org/tinycorelinux/) 
 and customize that to boot right into our static build of Vim.
 
-If you like this article and want to support me AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 
 ### Building Vim

@@ -19,9 +19,10 @@ main improvements are a text-only version of every content page
 [Three months ago I also did some site
 [updates](https://raymii.org/s/blog/Site_updates_new_layout_for_overview_pages.html)
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-[VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
-[credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Skip to main content
 

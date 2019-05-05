@@ -22,9 +22,10 @@ the network. In this article you'll learn some OpenVMS filesystem history, how
 OpenVMS handles line endings and in the end I get my license installed by
 creating an ISO with the script on it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-[VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10
-[credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### -SYSTEM-W-DATAOVERUN, data overrun
 

@@ -13,9 +13,10 @@ This article was originaly published in [Linux Voice, issue 2, May 2014](http://
 
 This remix is converted manually to Markdown and HTML for ease of archiving and copy-pasting. 
 
-If you like this, please subscribe to Linux Voice. It is an awesome magazine with an awesome team of people. [Click here to subscribe](http://shop.linuxvoice.com/) from just GBP 38 and get future issues straight to your door or inbox! (DRM Free PDF's and more available).
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-If you like this website and want to support it AND get $10 Digital Ocean credit (2 months free), use this link to order: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212) (referral link).
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Other converted Linux Voice articles [can be found here](https://raymii.org/s/tags/linux-voice.html). 
 
