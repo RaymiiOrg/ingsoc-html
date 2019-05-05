@@ -78,14 +78,13 @@ file exists. If the file exists, it will not execute the action. The same goes
 for checking if a file does exist and only executing the action if it exists.
 (The action you want to do will remove that file).</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>The below example command will generate <a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html">Diffi Hellman parameters for NGINX
-ssl</a>. This
-command creates the file <code>/etc/ssl/certs/dhparam.pem</code>. It should run only if
-that file does not exist (because only newly deployed servers will not have the
-file), if the file exist there is no need to run again.</p>
+ssl</a>. This command creates the file <code>/etc/ssl/certs/dhparam.pem</code>. It should
+run only if that file does not exist (because only newly deployed servers will
+not have the file), if the file exist there is no need to run again.</p>
 
 <pre><code>- name: generate dh params
 command: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 
@@ -111,7 +110,7 @@ It is sadly proprietary software and the manufacturer has stated they are not
 changing the behavior to a more sane default. The below example will only run
 the upgrade script when the file <code>/etc/software/software.conf.upgrade</code> exists.
 Since the script removes it, the next time Ansible runs it does not try to
-upgrade the software. </p>
+upgrade the software.</p>
 
 <pre><code>- name: upgrade software
 command: /opt/software/bin/upgrade 

@@ -16,38 +16,44 @@ and when using Ansible to execute actions on nodes you don't need to run Yum on
 Debian, or Apt on CentOS. Some package names are different and such, so this
 helps you with an only if statement to select a specific distribution. As a
 bonus, you also get an `only_if` for specific distribution versions, like Ubuntu
- precise (12.04 LTS) or Ubuntu Trusty (14.04 LTS).
+precise (12.04 LTS) or Ubuntu Trusty (14.04 LTS).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-- 2018-12-16: update ansible syntax to version 2.5, use become
-- 2015-09-24: Added `package` module, changed only_if to when
-- 2014-09-11: Initial release
+  * 2018-12-16: update ansible syntax to version 2.5, use become
+  * 2015-09-24: Added `package` module, changed only_if to when
+  * 2014-09-11: Initial release
 
 #### Specific Distribution
 
 On a specific action, add the following `when` statement:
 
+    
+    
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat
     Enterprise Linux'
+    
 
 This is for RHEL and Centos, the following is for Debian/Ubuntu:
 
+    
+    
     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    
 
 This example playbook installs `Apache2` on both Debian/Ubuntu and CentOS. This
 example used apache because the name package name is different on the two
 distributions.
 
+    
+    
     ---
     - hosts: example
       become: true
       user: remy
       connection: ssh 
-
+    
       tasks:
       - name: Install apache
         apt: 
@@ -56,7 +62,7 @@ distributions.
         with_items:
          - apache2
         when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
+    
       - name: Install httpd
         yum: 
           name: {{ item }} 
@@ -64,21 +70,21 @@ distributions.
         with_items:
          - httpd
         when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
+    
       - name: restart apache
         service: 
           name: apache2 
           state: started 
           enabled: yes
         when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
+    
       - name: restart httpd
         service: 
           name: httpd 
           state: started 
           enabled: yes
         when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
+    
 
 #### Specific Distribution Version
 
@@ -90,38 +96,42 @@ For those situations, you can use either the `{{ ansible_distribution_version }`
 or `{{ ansible_distribution_release }}` variable. See some example output from
 `ansible all -m setup -a "filter=ansible_distribution*"`:
 
+    
+    
         "ansible_distribution": "CentOS",
         "ansible_distribution_release": "Final",
         "ansible_distribution_version": "5.9"
-
+    
         "ansible_distribution": "CentOS",
         "ansible_distribution_release": "Final",
         "ansible_distribution_version": "6.4"
-
+    
         "ansible_distribution": "Ubuntu",
         "ansible_distribution_release": "lucid",
         "ansible_distribution_version": "10.04"
-
+    
         "ansible_distribution": "Ubuntu",
         "ansible_distribution_release": "precise",
         "ansible_distribution_version": "12.04"
-
+    
         "ansible_distribution": "Debian",
         "ansible_distribution_release": "wheezy",
         "ansible_distribution_version": "7"
+    
 
 Using these, you can filter the output by changing the `when` statement in your
 ansible playbook:
 
+    
+    
     when: ansible_distribution == 'CentOS' and ansible_distribution_version == '6.4'
-
+    
     when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
-
+    
     when: ansible_distribution == 'Debian' and ansible_distribution_version == '7'
-
+    
     when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 5
-
-
+    
 
 #### Package module (2015 short update)
 
@@ -133,18 +143,22 @@ actually calls the pertinent package modules for each system (apt, yum, etc).
 This means that if you use this article because you want a package install on
 Debian and CentOS, you can now just do the following:
 
-
+    
+    
     - name: install (or upgrade to) the latest version of htop
       package: 
         name: htop 
         state: latest
+    
 
 If a package has different names on different distributions, like Apache
 (apache2 on ubuntu, httpd on CentOS) you still need to use a when statement.
 
-Read more about the package module on [the ansible Docs website][1].
+Read more about the package module on [the ansible Docs website][2].
 
-[1]: https://docs.ansible.com/ansible/package_module.html
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+   [2]: https://docs.ansible.com/ansible/package_module.html
 
 ---
 

@@ -74,8 +74,8 @@ using Ansible. It includes both the old way, when the apt modules only worked on
 Ubuntu, and the new way, now that the apt-modules also support Debian, plus some
 other tricks.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <ul>
 <li>14-12-2018: updated ansible syntax to 2.5</li>
@@ -88,7 +88,7 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 easily using the two modules <code>apt_repository</code> and <code>apt_key</code>. You can use this
 when you need to install packages from an external location, for example,
 <code>nginx</code> or <code>goaccess</code>. Both of these packages are in the repositories, but not
-the latest version. </p>
+the latest version.</p>
 
 <p>Using Ansible you can add the repository and the signing key, and then install
 the package from the new repo. This guide will show you a few ways to do that in
@@ -189,13 +189,13 @@ the nginx case, it does.</p>
 
 <p>First a directory is created for the keyfile. The apt-key is downloaded manually
 to there, the result is registered. If the key already exists or is the same, we
-don&#39;t do anything. If the key isn&#39;t there or has changed, we execute the
-<code>apt-key add</code> command manually to add the repository signing key. If that&#39;s all
-done, we update the apt-cache and install nginx.</p>
+don&#39;t do anything. If the key isn&#39;t there or has changed, we execute the <code>apt-
+key add</code> command manually to add the repository signing key. If that&#39;s all done,
+we update the apt-cache and install nginx.</p>
 
 <p>That&#39;s quite a bit more steps and ways to break stuff, plus, less idempotent due
 to the manual command. My playbook was so old, it still used the <code>action: apt</code>
-instead of just <code>apt:</code>. </p>
+instead of just <code>apt:</code>.</p>
 
 <p>This is not the recommended way, but it still works just fine. If you add
 repositories this way, no problem, but you might want to consider rewriting the
@@ -203,7 +203,8 @@ playbooks to the newer way.</p>
 
 <h3>More documentation</h3>
 
-<p>The official documentation for the two modules can be found on the Ansible docs site: <a href="https://docs.ansible.com/ansible/apt_repository_module.html">apt_repository</a> and <a href="https://docs.ansible.com/ansible/apt_key_module.html">apt_key</a>. </p>
+<p>The official documentation for the two modules can be found on the Ansible docs
+site: <a href="https://docs.ansible.com/ansible/apt_repository_module.html">apt_repository</a> and <a href="https://docs.ansible.com/ansible/apt_key_module.html">apt_key</a>.</p>
 
 <p>You can also check out my other <a href="https://raymii.org/s/tags/ansible.html">Ansible articles</a>.</p>
 </div><hr>Tags: <a href="../tags/ansible.html" class="link">ansible &nbsp;</a><a href="../tags/apt.html" class="link">apt &nbsp;</a><a href="../tags/deb.html" class="link">deb &nbsp;</a><a href="../tags/nginx.html" class="link">nginx &nbsp;</a><a href="../tags/packages.html" class="link">packages &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/repo.html" class="link">repo &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">

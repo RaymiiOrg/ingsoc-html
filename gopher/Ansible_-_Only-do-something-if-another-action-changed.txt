@@ -16,14 +16,11 @@ signing but only executes the apt-add command if the key has changed. Or a
 playbook which clones a git repository and only restarts a service if the git
 repository has changed.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-- 15-12-2018: Updated ansible syntax to 2.5
-- 22-12-2013: initial article
+  * 15-12-2018: Updated ansible syntax to 2.5
+  * 22-12-2013: initial article
 
 Using the `register` option we can, suprisingly, registers the result of a
 playbook action. In another action we can access this variable and use `when` to
@@ -31,38 +28,40 @@ only execute an action if the previous action changed the machines state. The
 below example downloads the NGINX debian package signing key, but only adds it
 if the key changed or did not exist yet:
 
+    
+    
+    - name: Create folder for apt keys
+      file: 
+        path: /var/keys 
+        state: directory 
+        owner: root
+    
+    - name: Download nginx apt key
+      get_url: 
+        url: http://nginx.org/keys/nginx_signing.key 
+        dest: /var/keys/nginx_signing.key
+      register: aptkey
+    
+    - name: Add nginx apt key
+      command: "apt-key add /var/keys/nginx_signing.key"
+      when: aptkey.changed
+    
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+      when: aptkey.changed
+    
 
-	- name: Create folder for apt keys
-	  file: 
-	    path: /var/keys 
-	    state: directory 
-	    owner: root
-
-	- name: Download nginx apt key
-	  get_url: 
-	    url: http://nginx.org/keys/nginx_signing.key 
-	    dest: /var/keys/nginx_signing.key
-	  register: aptkey
-
-	- name: Add nginx apt key
-	  command: "apt-key add /var/keys/nginx_signing.key"
-	  when: aptkey.changed
-
-	- name: Update apt cache
-	  apt: 
-	    update_cache: yes
-	  when: aptkey.changed
-
-[This is an older article, there is an ansible module to add apt-keys now][1].
+[This is an older article, there is an ansible module to add apt-keys now][2].
 
 It is part of one of my playbooks which installs and configures NGINX. I want to
 use the latest stable version provided by the NGINX project. They sign their
 debian packages, so I need their key otherwise I cannot install their packages
-from their repo.   They provide their key online, the `get_url` module downloads
+from their repo. They provide their key online, the `get_url` module downloads
 this key. If the key is not on the system or if the key has changed, the action
 reports itself as changed. If the key already exists on the system and is the
-same as the downloaded file, it does not report itself changed.   We only want
-to execute `apt-key add` if the key is new or changed. By using the `register:
+same as the downloaded file, it does not report itself changed. We only want to
+execute `apt-key add` if the key is new or changed. By using the `register:
 aptkey` option and the `when: aptkey.changed` options, we make sure apt only
 adds the key and updates the cache if the key was not there before. This helps
 with idempotency and saves system resources.
@@ -72,23 +71,25 @@ the code in that repo has changed, restarting a service. I cannot go in much
 detail because this setup runs at a client, therefore the values are stubs.
 However, I can tell that this example runs via `ansible-pull` mode and makes
 sure one of their products is always the latest version. See it as a form of
-continuous deployment. 
+continuous deployment.
 
-	- name: Clone git repository
-	  git: 
-	    repo: https://gitlab.example.org/example-user/example-repo.git 
-	    dest: /opt/example 
-	    version: production 
-	    force: yes
-	  register: examplesoftware
-
-	- name: restart service if new version is deployed
-	  service: 
-	    name: example 
-	    state: restarted 
-	    enabled: yes
-	  when: examplesoftware.changed
-
+    
+    
+    - name: Clone git repository
+      git: 
+        repo: https://gitlab.example.org/example-user/example-repo.git 
+        dest: /opt/example 
+        version: production 
+        force: yes
+      register: examplesoftware
+    
+    - name: restart service if new version is deployed
+      service: 
+        name: example 
+        state: restarted 
+        enabled: yes
+      when: examplesoftware.changed
+    
 
 The last example comes from my vnstat playbook. vnstat is a console based
 network traffic analyzer and logger, it gives me nice overviews of the traffic
@@ -97,35 +98,39 @@ command when the configuration file changes. This file never changes except at
 installation, so therefore I can be fairly sure the vnstat database is only
 initialized once.
 
-
-	- name: install vnstat
-	  apt: 
-	    name: vnstat 
-	    state: latest 
-	    update_cache: yes
-
-	- name: Place vnstat config template
-	  template: 
-	    src: vnstat.conf 
-	    dest: /etc/vnstat.conf 
-	    mode: 0644 
-	    owner: root 
-	    group: root
-	  notify: restart vnstat
-	  register: result
-
-	- name: initialize vnstat database
-	  command: sudo vnstat -u -i {{ interface }}
-	  when: result.changed
-	  notify: restart vnstat
-
+    
+    
+    - name: install vnstat
+      apt: 
+        name: vnstat 
+        state: latest 
+        update_cache: yes
+    
+    - name: Place vnstat config template
+      template: 
+        src: vnstat.conf 
+        dest: /etc/vnstat.conf 
+        mode: 0644 
+        owner: root 
+        group: root
+      notify: restart vnstat
+      register: result
+    
+    - name: initialize vnstat database
+      command: sudo vnstat -u -i {{ interface }}
+      when: result.changed
+      notify: restart vnstat
+    
 
 You can also go very advanced with error handling and defining when something
-changes or fails. The [ansible documentation covers that fairly well][2].
+changes or fails. The [ansible documentation covers that fairly well][3].
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-[1]: https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
-[2]: http://www.ansibleworks.com/docs/playbooks_error_handling.html
+   [2]: https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-
+repository_on_Debian_and_Ubuntu.html
+
+   [3]: http://www.ansibleworks.com/docs/playbooks_error_handling.html
 
 ---
 

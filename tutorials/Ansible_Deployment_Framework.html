@@ -69,25 +69,37 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Ansible is a radically simple model-driven configuration management, deployment,
+and command execution framework. Other tools in this space have been too
+complicated for too long, require too much bootstrapping, and have too much
+learning curve. By comparison, Ansible is dead simple and painless to extend.
+Puppet and Chef have about 60k lines of code. Ansibles core is a little over
+2000 lines.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <h4>How do I use Ansible</h4>
 
-<p>I used chef to deploy and manage all my vps servers which host the cluster on which raymii.org is hosted. 
-I&#39;ve written a chef-bootstrap script to make sure all the packages to build and compile rvm, ruby and chef are installed, and I&#39;ve got my entire cluster in chef cookbooks. 
-It works well, but it is bloated. It requires ruby on the server nodes, and that sometimes gives problems on the vps servers I have, since none of them have more than 128MB ram.</p>
+<p>I used chef to deploy and manage all my vps servers which host the cluster on
+which raymii.org is hosted. I&#39;ve written a chef-bootstrap script to make sure
+all the packages to build and compile rvm, ruby and chef are installed, and I&#39;ve
+got my entire cluster in chef cookbooks. It works well, but it is bloated. It
+requires ruby on the server nodes, and that sometimes gives problems on the vps
+servers I have, since none of them have more than 128MB ram.</p>
 
-<p>I discovered Ansible via reddit, and I&#39;m sold. I&#39;ve converted the scripts I used with chef to ansible format, and not only are they shorter, the biggest advantage is that Ansible does not require ruby on the host. I can start with a newly installed vps with ssh installed. Nothing more.</p>
+<p>I discovered Ansible via reddit, and I&#39;m sold. I&#39;ve converted the scripts I used
+with chef to ansible format, and not only are they shorter, the biggest
+advantage is that Ansible does not require ruby on the host. I can start with a
+newly installed vps with ssh installed. Nothing more.</p>
 
-<p><em>Update 2013-03-09</em>
-I&#39;ve also contributed a few pieces of code to Ansible, namely for the apt and yum modules. It is such a great project!</p>
+<p><em>Update 2013-03-09</em> I&#39;ve also contributed a few pieces of code to Ansible,
+namely for the apt and yum modules. It is such a great project!</p>
 
 <p><a href="http://ansible.github.com/">You can find more about Ansible on their website</a>.</p>
 
-<p>Below I&#39;ll explain how to install and setup ansible (on debian 6), and I&#39;ll give some examples on how to use it.</p>
+<p>Below I&#39;ll explain how to install and setup ansible (on debian 6), and I&#39;ll give
+some examples on how to use it.</p>
 
 <h3>Install ansible</h3>
 
@@ -207,7 +219,9 @@ vps1.sparklingclouds.nl | success &gt;&gt; {
 
 <h6>Fix the above error</h6>
 
-<p>Install package python-apt manually using the &quot;apt-get -y install python-apt&quot; command. Run it via sudo (-s) as user remy (-u remy) and ask me for the sudo password (-K)</p>
+<p>Install package python-apt manually using the &quot;apt-get -y install python-apt&quot;
+command. Run it via sudo (-s) as user remy (-u remy) and ask me for the sudo
+password (-K)</p>
 
 <pre><code>ansible -v vps11.sparklingclouds.nl -a &quot;apt-get -y install python-apt&quot; -f 10 -u remy -s -K
 
@@ -226,7 +240,8 @@ Setting up iso-codes (3.23-1) ...
 
 <h3>My Playbooks</h3>
 
-<p><a href="https://github.com/RaymiiOrg/ansible">I&#39;ve got my playbooks on my github account. You can see them and use them as reference, and if you want, improve them.</a>.</p>
+<p><a href="https://github.com/RaymiiOrg/ansible">I&#39;ve got my playbooks on my github account. You can see them and use them as
+reference, and if you want, improve them.</a>.</p>
 
 <h4>Playbook tips</h4>
 
@@ -249,7 +264,8 @@ Setting up iso-codes (3.23-1) ...
   hard_command: $PIPE(&quot;this_is_a_long_command | which gets piped | and grepped&quot;)
 </code></pre>
 
-<p>Running on CentOS and Debian and have a yum and an apt statement with an if? Use the pkg_mgr variable:</p>
+<p>Running on CentOS and Debian and have a yum and an apt statement with an if? Use
+the pkg_mgr variable:</p>
 
 <pre><code>vars:
   pkg_mgr: ${ansible_pkg_mgr}
@@ -280,7 +296,7 @@ vps13.sparklingclouds.nl:444
 {% endif %}
 </code></pre>
 
-<p>This makes sure nginx runs on non-ipv6 nodes. </p>
+<p>This makes sure nginx runs on non-ipv6 nodes.</p>
 </div><hr>Tags: <a href="../tags/ansible.html" class="link">ansible &nbsp;</a><a href="../tags/chef.html" class="link">chef &nbsp;</a><a href="../tags/configuration-management.html" class="link">configuration-management &nbsp;</a><a href="../tags/deployment.html" class="link">deployment &nbsp;</a><a href="../tags/devops.html" class="link">devops &nbsp;</a><a href="../tags/featured-one.html" class="link">featured-one &nbsp;</a><a href="../tags/puppet.html" class="link">puppet &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

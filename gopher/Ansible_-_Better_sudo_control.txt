@@ -12,36 +12,36 @@ Format      : 	Markdown/HTML
 This Ansible tutorial shows you how run some actions via sudo and some not. It
 also shows you how to run an entire role via sudo or not.
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Ansible has the option to run playbooks via sudo. You can setup passwordless
 sudo, but also execute a playbook with the extra `--ask-sudo-pass` / `-K` option
 so that Ansible asks you for the sudo password. However, you can also have very
-specific control over how and when sudo is used in a playbook. 
+specific control over how and when sudo is used in a playbook.
 
 I have a playbook with a few roles which I use to bootstrap a new debian server.
 It installs software, sets up ssh, sets up sudo and places a few config files.
 It is organized in roles, the main playbook looks like this:
 
-	---
-	- hosts: new-servers
-	  user: username
-	  connection: ssh # or paramiko
-
-	  roles:
-	    - { role: basic-debian-setup, sudo: yes }
-	    - { role: git-setup }
-	    - { role: vim }
-	    - { role: bash }
-	    - { role: screen }
-	    - { role: openssh, sudo: yes }
-	    - { role: sudo, sudo: yes }
-	    - { role: postfix, sudo: yes }
-	    - { role: vnstat, sudo: yes }
+    
+    
+    ---
+    - hosts: new-servers
+      user: username
+      connection: ssh # or paramiko
+    
+      roles:
+        - { role: basic-debian-setup, sudo: yes }
+        - { role: git-setup }
+        - { role: vim }
+        - { role: bash }
+        - { role: screen }
+        - { role: openssh, sudo: yes }
+        - { role: sudo, sudo: yes }
+        - { role: postfix, sudo: yes }
+        - { role: vnstat, sudo: yes }
+    
 
 As you can see, I have a few playbooks run with sudo on, and a few with sudo
 off. The `git-setup`, `vim`, `screen` and `bash` playbooks all do basically the
@@ -56,30 +56,33 @@ like recursive `chmod`'s.
 
 Here is the `vim` playbook:
 
-	- name: install packages vim and git
-	  apt: 
-	    pkg: {{ item }} 
-	    state: present 
-	    update_cache:"yes
-	  with_items:
-	    - vim-tiny
-	    - git
-	  sudo: yes
-
-	- name: clone git repository
-	  git: 
-	    repo: https://github.com/RaymiiOrg/df.git 
-	    dest: /home/{{user}}/conf 
-	    version: master
-	  sudo: no
-
-	- name: create symmlink for vim config
-	  file: 
-	    path: /home/{{ user }}/.vimrc 
-	    src: /home/{{ user }}/conf/vimrc 
-	    state: link 
-	    owner: {{ user }}
-	  sudo: no
+    
+    
+    - name: install packages vim and git
+      apt: 
+        pkg: {{ item }} 
+        state: present 
+        update_cache:"yes
+      with_items:
+        - vim-tiny
+        - git
+      sudo: yes
+    
+    - name: clone git repository
+      git: 
+        repo: https://github.com/RaymiiOrg/df.git 
+        dest: /home/{{user}}/conf 
+        version: master
+      sudo: no
+    
+    - name: create symmlink for vim config
+      file: 
+        path: /home/{{ user }}/.vimrc 
+        src: /home/{{ user }}/conf/vimrc 
+        state: link 
+        owner: {{ user }}
+      sudo: no
+    
 
 This playbook makes sure both `vim` and `git` are installed. It uses sudo for
 that action. It then clones the git repository with my personal dotfiles,
@@ -91,15 +94,13 @@ root access.
 
 If you define a role with sudo, like in the above example the `postfix` role,
 then you can use the `sudo: no` option in that playbook to make sure one or more
-actions are not executed with sudo. 
+actions are not executed with sudo.
 
+[Ansible documentation regarding sudo][2]
 
-[Ansible documentation regarding sudo][1]
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-[1]: http://www.ansibleworks.com/docs/playbooks.html
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
+   [2]: http://www.ansibleworks.com/docs/playbooks.html
 
 ---
 

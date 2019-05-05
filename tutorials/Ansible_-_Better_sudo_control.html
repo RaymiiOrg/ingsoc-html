@@ -72,13 +72,13 @@
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This Ansible tutorial shows you how run some actions via sudo and some not. It
 also shows you how to run an entire role via sudo or not.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>Ansible has the option to run playbooks via sudo. You can setup passwordless
 sudo, but also execute a playbook with the extra <code>--ask-sudo-pass</code> / <code>-K</code> option
 so that Ansible asks you for the sudo password. However, you can also have very
-specific control over how and when sudo is used in a playbook. </p>
+specific control over how and when sudo is used in a playbook.</p>
 
 <p>I have a playbook with a few roles which I use to bootstrap a new debian server.
 It installs software, sets up ssh, sets up sudo and places a few config files.
@@ -150,7 +150,7 @@ root access.</p>
 
 <p>If you define a role with sudo, like in the above example the <code>postfix</code> role,
 then you can use the <code>sudo: no</code> option in that playbook to make sure one or more
-actions are not executed with sudo. </p>
+actions are not executed with sudo.</p>
 
 <p><a href="http://www.ansibleworks.com/docs/playbooks.html">Ansible documentation regarding sudo</a></p>
 </div><hr>Tags: <a href="../tags/ansible.html" class="link">ansible &nbsp;</a><a href="../tags/apt.html" class="link">apt &nbsp;</a><a href="../tags/configuration-management.html" class="link">configuration-management &nbsp;</a><a href="../tags/deployment.html" class="link">deployment &nbsp;</a><a href="../tags/devops.html" class="link">devops &nbsp;</a><a href="../tags/packages.html" class="link">packages &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/su.html" class="link">su &nbsp;</a><a href="../tags/sudo.html" class="link">sudo &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/yum.html" class="link">yum &nbsp;</a><div class="footer">

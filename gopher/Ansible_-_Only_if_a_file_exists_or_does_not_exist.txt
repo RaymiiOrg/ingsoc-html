@@ -18,22 +18,21 @@ file exists. If the file exists, it will not execute the action. The same goes
 for checking if a file does exist and only executing the action if it exists.
 (The action you want to do will remove that file).
 
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 The below example command will generate [Diffi Hellman parameters for NGINX
-ssl][1]. This
-command creates the file `/etc/ssl/certs/dhparam.pem`. It should run only if
-that file does not exist (because only newly deployed servers will not have the
-file), if the file exist there is no need to run again.
+ssl][2]. This command creates the file `/etc/ssl/certs/dhparam.pem`. It should
+run only if that file does not exist (because only newly deployed servers will
+not have the file), if the file exist there is no need to run again.
 
-	- name: generate dh params
+    
+    
+    - name: generate dh params
     command: sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 
     args: 
       creates: /etc/ssl/certs/dhparam.pem
+    
 
 Ansible has the `creates` option in the `command` module. Give it a filename
 (directories will not work) and if it already exists Ansible will skip the
@@ -53,29 +52,36 @@ It is sadly proprietary software and the manufacturer has stated they are not
 changing the behavior to a more sane default. The below example will only run
 the upgrade script when the file `/etc/software/software.conf.upgrade` exists.
 Since the script removes it, the next time Ansible runs it does not try to
-upgrade the software. 
+upgrade the software.
 
-	- name: upgrade software
+    
+    
+    - name: upgrade software
     command: /opt/software/bin/upgrade 
     args:
       removes: etc/software/software.conf.upgrade
+    
 
-[Documentation for the Command Module][2]
+[Documentation for the Command Module][3]
 
 If you have other commands which do not support the `creates` option, you need
 to first use the `stat` module and register the result of that. This example is
 for the Shorewall firewall. We first check if the rules file exists:
 
+    
+    
     - name: check if rules file exists
       stat: 
         path: /etc/shorewall/rules
       register: shorewall_rules
+    
 
 We fill the `shorewall_rules` variable with the result of this action. The next
 two actions add a rule to the rules file and restart the firewall, but only if
 the rules file exists:
 
-
+    
+    
     - name: add firewall rule for ssh
       lineinfile: 
         dest: /etc/shorewall/rules 
@@ -83,20 +89,26 @@ the rules file exists:
         regexp: "^ACCEPT net0:192\.0\.2\.22 \$FW tcp 5666" 
         line: "ACCEPT net0:192.0.2.22 $FW tcp 5666"
       when: shorewall_rules.stat.exists == true
-
+    
     - name: restart shorewall
       command: "shorewall restart"
       when: shorewall_rules.stat.exists == True
+    
 
 If you want to do stuff when a file is not present, you can check if the result
 is `False`, like so:
+
+    
     
     - action: example
       when: stat_result.stat.exists == False
+    
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-[1]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-[2]: http://docs.ansible.com/command_module.html
+   [2]: https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+
+   [3]: http://docs.ansible.com/command_module.html
 
 ---
 

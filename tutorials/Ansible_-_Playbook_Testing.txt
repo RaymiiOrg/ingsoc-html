@@ -16,25 +16,29 @@ errors in them. It sometimes can take a while before those errors show up
 because they are lower in a playbook. By running the syntax check you make sure
 this won't happen.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 ### Dummy inventory file
 
 Lets say your playbooks are located in `/home/username/ansible/playbooks`. You
 have a few roles and a few playbooks. To test them, we need a dummy
-`ansible_hosts` file. Create it:   
+`ansible_hosts` file. Create it:
 
-	cd ~/ansible/
-	mkdir tests/
-	vim tests/ansible_hosts
+    
+    
+    cd ~/ansible/
+    mkdir tests/
+    vim tests/ansible_hosts
+    
 
 Put this in the file:
 
-	[local]
-	127.0.0.1
+    
+    
+    [local]
+    127.0.0.1
+    
 
 Note that when executing the tasks it will not actually execute them on your
 local machine. It only does a syntax check.
@@ -44,110 +48,127 @@ local machine. It only does a syntax check.
 Use the `--syntax-check` and `-list-tasks` options, plus the dummy inventory
 file to do a full syntax check, including all includes roles and task files:
 
-	ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts
-	./example-playbook.yml
+    
+    
+    ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts
+    ./example-playbook.yml
+    
 
 If there are no errors, you will get a list of tasks which the playbook wil
 execute:
 
-	playbook: ./playbooks/default-vps-setup.yml
-
-	  play #1 (local):
-	    apt name={{item}} state=latest update_cache=yes
-	    apt pkg={{item}} state=absent
-	    template src=localegen.j2 dest=/etc/locale.gen
-	    template src=localepurge.j2 dest=/etc/locale.nopurge
-	    template src=timezone.j2 dest=/etc/timezone
-	    template src=issue.net.j2 dest=/etc/issue.net
-	    template src=issue.net.j2 dest=/etc/issue
-	    template src=hostname.j2 dest=/etc/hostname
+    
+    
+    playbook: ./playbooks/default-vps-setup.yml
+    
+      play #1 (local):
+        apt name={{item}} state=latest update_cache=yes
+        apt pkg={{item}} state=absent
+        template src=localegen.j2 dest=/etc/locale.gen
+        template src=localepurge.j2 dest=/etc/locale.nopurge
+        template src=timezone.j2 dest=/etc/timezone
+        template src=issue.net.j2 dest=/etc/issue.net
+        template src=issue.net.j2 dest=/etc/issue
+        template src=hostname.j2 dest=/etc/hostname
+    
 
 If you have an error it will show up in red:
 
-	ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts
-	./playbooks/default-vps-setup.yml
-
-	playbook: ./playbooks/default-vps-setup.yml
-
-	ERROR: Syntax Error while loading YAML script,
-	/home/remy/ansible/playbooks/roles/vim/tasks/main.yml Note: The error may
-	actually appear before this position: line 3, column 7
-
-	-dfi://dsf;apt: pkg=vim-tiny state=latest update_cache=yes
-	  sudo: yes
-
+    
+    
+    ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts
+    ./playbooks/default-vps-setup.yml
+    
+    playbook: ./playbooks/default-vps-setup.yml
+    
+    ERROR: Syntax Error while loading YAML script,
+    /home/remy/ansible/playbooks/roles/vim/tasks/main.yml Note: The error may
+    actually appear before this position: line 3, column 7
+    
+    -dfi://dsf;apt: pkg=vim-tiny state=latest update_cache=yes
+      sudo: yes
+    
 
 ### Testing all the playbooks
 
 My ansible git repository is set up like so:
 
-	 $ tree -L 3
-	
-	|-- ansible_hosts
-	|-- ci.sh
-	|-- playbooks
-	|   |-- debug.yml
-	|   |-- default-vps-setup.yml
-	|   |-- group_vars
-	|   |   |-- all.yml
-	|   |   |-- apache-php.yml
-	|   |   |-- lighttpd-php.yml
-	|   |   |-- desktop-awesome.yml
-	|   |   `-- nginx-php.yml
-	|   |-- nginx-vps.yml
-	|   `-- roles
-	       |-- bash
-	|       |   `-- tasks
-	|       |-- basic-debian-setup
-	|       |   |-- files
-	|       |   |-- tasks
-	|       |   `-- templates
-	[...]
-	|       |-- vim
-	|       `-- vnstat
-	`-- tests
-	    `-- ansible_hosts
-
+    
+    
+     $ tree -L 3
+    
+    |-- ansible_hosts
+    |-- ci.sh
+    |-- playbooks
+    |   |-- debug.yml
+    |   |-- default-vps-setup.yml
+    |   |-- group_vars
+    |   |   |-- all.yml
+    |   |   |-- apache-php.yml
+    |   |   |-- lighttpd-php.yml
+    |   |   |-- desktop-awesome.yml
+    |   |   `-- nginx-php.yml
+    |   |-- nginx-vps.yml
+    |   `-- roles
+           |-- bash
+    |       |   `-- tasks
+    |       |-- basic-debian-setup
+    |       |   |-- files
+    |       |   |-- tasks
+    |       |   `-- templates
+    [...]
+    |       |-- vim
+    |       `-- vnstat
+    `-- tests
+        `-- ansible_hosts
+    
 
 As you can see my playbooks are in the `playbooks` folder. To test all the
 playbooks I use the following find command piped trough to ansible:
 
-	find ./playbooks -name '*.yml' -depth 1 | xargs -n1  ansible-playbook
-	--syntax-check --list-tasks -i tests/ansible_hosts
+    
+    
+    find ./playbooks -name '*.yml' -depth 1 | xargs -n1  ansible-playbook
+    --syntax-check --list-tasks -i tests/ansible_hosts
+    
 
 The `-depth 1` makes sure only playbooks are tested, testing task or variable
-files will fail. 
+files will fail.
 
 You can very easily add this setup to Jenkins or any other CI. I have my
 playbooks in Jenkins, a simple bash script named `ci.sh` is used as the only
 test step:
 
-	#!/usr/bin/env bash
-	set -o errexit
-	set -o nounset
-	# set -o xtrace
-	set -o pipefail
+    
+    
+    #!/usr/bin/env bash
+    set -o errexit
+    set -o nounset
+    # set -o xtrace
+    set -o pipefail
+    
+    __DIR__="$(cd "$(dirname "${0}")"; echo $(pwd))"
+    __BASE__="$(basename "${0}")"
+    __FILE__="${__DIR__}/${__BASE__}"
+    
+    echo "################################"
+    echo "Build Information"
+    echo "Directory: ${__DIR__}"
+    echo "Filename: ${__FILE__}"
+    echo "Version Information:"
+    echo "Ansible Version: $(ansible --version)"
+    echo "Ansible Playbook Version: $(ansible-playbook --version)"
+    echo "Operating System: $(lsb_release -d | awk -F: '{ print $2 }' | tr -d '\t')"
+    echo "Kernel: $(uname -a)"
+    echo "################################"
+    
+    echo "### Starting tests"
+    
+    find ./playbooks -maxdepth 1 -name '*.yml'| xargs -n1  ansible-playbook
+    --syntax-check --list-tasks -i tests/ansible_hosts
+    
 
-	__DIR__="$(cd "$(dirname "${0}")"; echo $(pwd))"
-	__BASE__="$(basename "${0}")"
-	__FILE__="${__DIR__}/${__BASE__}"
-
-	echo "################################"
-	echo "Build Information"
-	echo "Directory: ${__DIR__}"
-	echo "Filename: ${__FILE__}"
-	echo "Version Information:"
-	echo "Ansible Version: $(ansible --version)"
-	echo "Ansible Playbook Version: $(ansible-playbook --version)"
-	echo "Operating System: $(lsb_release -d | awk -F: '{ print $2 }' | tr -d '\t')"
-	echo "Kernel: $(uname -a)"
-	echo "################################"
-
-	echo "### Starting tests"
-
-	find ./playbooks -maxdepth 1 -name '*.yml'| xargs -n1  ansible-playbook
-	--syntax-check --list-tasks -i tests/ansible_hosts
-
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

@@ -71,10 +71,10 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Using Ansible to manage the /etc/sudoers file is fine, except when you have a
 syntax error in your template. This method helps you to only deploy a correct
-sudoers file. </p>
+sudoers file.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>I manage the <code>sudo</code> config (<code>/etc/sudoers/</code>) via Ansible. My sudo playbook
 creates an admin group, adds me to that admin group, and sets some variables in
@@ -119,15 +119,11 @@ different hosts. However, if you start of clean, then a template file for
 </code></pre>
 
 <ul>
-<li>We create the <code>admins</code> group, to which all users that need sudo are added by 
-other playbooks.<br></li>
-<li>We copy the remote sudoers file to a temp one and perform all actions on the 
-temp sudoers file. We also back up the sudoers file.</li>
-<li>We enable the <code>admins</code> group to sudo</li>
-<li>We make sure <code>ssh-agent</code> works via sudo. This was used for a git repository on 
-the root user account, to show our own names in the commits.</li>
-<li>Finally we use <code>visudo</code> to check if the file is correct, and if so we copy the 
-file over the &quot;original&quot; sudos file.</li>
+<li><p>We create the <code>admins</code> group, to which all users that need sudo are added by other playbooks.  </p></li>
+<li><p>We copy the remote sudoers file to a temp one and perform all actions on the temp sudoers file. We also back up the sudoers file.</p></li>
+<li><p>We enable the <code>admins</code> group to sudo</p></li>
+<li><p>We make sure <code>ssh-agent</code> works via sudo. This was used for a git repository on the root user account, to show our own names in the commits.</p></li>
+<li><p>Finally we use <code>visudo</code> to check if the file is correct, and if so we copy the file over the &quot;original&quot; sudos file.</p></li>
 </ul>
 
 <p>By using the temp file we make sure we don&#39;t have any syntax errors and lock

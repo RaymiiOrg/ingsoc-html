@@ -21,14 +21,13 @@ groups, `webservers` and `databaseservers`. I only want my `http-status` plugin
 on the webservers, and the `postgres-status` plugin only on the datase servers.
 This is how you do that.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
-
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
 Sample from the playbook:
 
-
+    
+    
           - name: Deploy munin http status code plugin
             copy: 
               src: files/http-status 
@@ -36,7 +35,7 @@ Sample from the playbook:
               owner: root 
               group: root 
               mode: 0755
-
+    
           - name: Deploy postgres status plugin
             copy: 
               src: files/postgres-status 
@@ -44,15 +43,15 @@ Sample from the playbook:
               owner: root 
               group: root 
               mode: 0755
-
+    
           - name: Link munin apache plugin
             command: ln -sf /usr/share/munin/plugins/http-status /etc/munin/plugins/http-status
             when: "'webservers' in {{ group_names }}" 
-
+    
           - name: Link munin postgres plugin
             command: ln -sf /usr/share/munin/plugins/postgres-status.py /etc/munin/plugins/postgres-status
             when: "'databaseservers' in {{ group_names }}"    
-
+    
 
 In newer versions of Ansible you would replace the symlink command with the
 `file` module, that creates a symlink as well.
@@ -60,6 +59,7 @@ In newer versions of Ansible you would replace the symlink command with the
 By using the `when: "'GROUP_NAME' in {{ group_names }}"` statement in an action
 you get more control over the nodes specific actions are run on.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 
