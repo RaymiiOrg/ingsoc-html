@@ -9,34 +9,51 @@ Format      : 	Markdown/HTML
 
 
 
-Chef supports including other recipes in cookbooks, for example, I can include the MySQL recipe from a PHP recipe. However, this is not a normal resource but a normal method. Therefore it ignores anything passed to it, including only_if or not_if. This tutorial shows you how to include or not include a recipe based on a variable, comparable with not_if or only_if.
+Chef supports including other recipes in cookbooks, for example, I can include
+the MySQL recipe from a PHP recipe. However, this is not a normal resource but a
+normal method. Therefore it ignores anything passed to it, including only _if or
+not_ if. This tutorial shows you how to include or not include a recipe based on
+a variable, comparable with not _if or only_ if.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+Lets say you have a default recipe for all your nodes. It is a simple cookbook
+which includes other recipes via `include_recipe`. It sets standard
+configuration like users, ssh settings, mail settings and other stuff you want a
+server to have.
 
-Lets say you have a default recipe for all your nodes. It is a simple cookbook which includes other recipes via `include_recipe`. It sets standard configuration like users, ssh settings, mail settings and other stuff you want a server to have. 
+But what if you want to deploy a mailserver, which has other config than is
+included in your default recipe, but do want all the other stuff from the
+recipe? Probably you would change your recipe to something like:
 
-But what if you want to deploy a mailserver, which has other config than is included in your default recipe, but do want all the other stuff from the recipe? Probably you would change your recipe to something like:
-
+    
+    
     include_recipe "postfix::server" do
       only_if node["defaults"]["postfix_server"] = true
     end
+    
 
-This won't work. As said above, `include_recipe` is not a normal resource (like `template` or `user`) but a method. Therefore it ignores anything passed to it, including only_if or not_if.
+This won't work. As said above, `include_recipe` is not a normal resource (like
+`template` or `user`) but a method. Therefore it ignores anything passed to it,
+including only _if or not_ if.
 
 The solution is quite simple, it fall back to using normal Ruby.
 
-Note, there probably are more elegant solutions for this, but I find this to work quite well.
+Note, there probably are more elegant solutions for this, but I find this to
+work quite well.
 
 Instead of the above, try adding this to your cookbook:
 
+    
+    
     this_node_is_postfix_server = node["defaults"]["postfix_server"] unless node["defaults"]["postfix_server"].nil?
     include_recipe "postfix::server" if this_node_is_postfix_server
+    
 
 As you can see, regular Ruby fixes this problem.
 
+   [1]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ---
 

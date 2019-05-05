@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag find on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/find.xml</link> 
+            <description>RSS feed for tag find on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/find.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>Bash Bits: Find all files containing specific text (and remove them)</title> 
+                <link>https://raymii.org/s/snippets/Bash_Bits_Find_all_files_containing_specific_text.html</link> 
+                <guid>https://raymii.org/s/snippets/Bash_Bits_Find_all_files_containing_specific_text.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to find all files containing specific text, and how to remove them.</description> 
+                <pubDate>Tue, 07 May 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 07 May 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    

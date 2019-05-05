@@ -2,7 +2,7 @@
     <!DOCTYPE html>
     <html lang="en">
         <head>
-        <title>shell - Raymii.org</title>
+        <title>Bash Bits: Find all files containing specific text (and remove them) - Raymii.org</title>
         <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
         <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
         # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
-        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/tags/shell.xml" />
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
     </head>
     <body>
         <a class="skip-main" href="#main">Skip to main content</a>
@@ -23,7 +23,7 @@
                         <div class="well well-none"> 
                             <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
                             <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
-                            <h6><a href="https://raymii.org/s/tags/shell.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
+                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
                         </div>
           
 
@@ -59,28 +59,61 @@
                 <div class="inner">
                 <div id="main"></div>
 
-           <h2>Tag shell</h2><p>Tag pages have a different RSS feed with just the items per tag.</p>
-<ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/" class="link">Tags</a></li><li><a href="shell.html" class="link">shell</a></li></ul><table class='table table-hover'><thead><tr><th>Date</th><th>Item</th></tr></thead>
-<tbody><tr><td>07-05-2019</td><td><a href="../snippets/Bash_Bits_Find_all_files_containing_specific_text.html" class="link">Bash Bits: Find all files containing specific text (and remove them)</a></td></tr>
-<tbody><tr><td>06-05-2019</td><td><a href="../snippets/Bash_Bits_Randomize_cronjob_time.html" class="link">Bash Bits: Randomize a cronjob to run between 00:00 and 06:00 hours</a></td></tr>
-<tbody><tr><td>05-05-2019</td><td><a href="../snippets/Bash_Bits_Check_if_command_is_available.html" class="link">Bash Bits: Check if a program is installed</a></td></tr>
-<tbody><tr><td>26-02-2019</td><td><a href="../snippets/Get_json_value_with_sed.html" class="link">Get a JSON value with bash and sed</a></td></tr>
-<tbody><tr><td>17-10-2018</td><td><a href="../snippets/Find_files_in_tar_archives_and_extract_them.html" class="link">Find files in tar archives and extract specific files from tar archives</a></td></tr>
-<tbody><tr><td>03-09-2018</td><td><a href="../snippets/tping_ping_with_a_timestamp.html" class="link">tping - ping with a timestamp</a></td></tr>
-<tbody><tr><td>23-07-2018</td><td><a href="../snippets/Send_email_with_multiple_inline_images_via_bash.html" class="link">Send email with multiple inline images via bash with a loop</a></td></tr>
-<tbody><tr><td>22-03-2015</td><td><a href="../articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html" class="link">OpenSSL: Manually verify a certificate against a CRL</a></td></tr>
-<tbody><tr><td>07-04-2014</td><td><a href="../articles/OpenSSL_Manually_Verify_a_certificate_against_an_OCSP.html" class="link">OpenSSL: Manually verify a certificate against an OCSP</a></td></tr>
-<tbody><tr><td>04-02-2014</td><td><a href="../articles/OpenSSL_-_Get_all_certificates_from_a_website_in_plain_text.html" class="link">OpenSSL: Get all certificates from a website in plain text</a></td></tr>
-<tbody><tr><td>30-12-2013</td><td><a href="../snippets/Bash_Bits_Simple_Command_Line_Arguments.html" class="link">Bash Bits: Simple command line arguments</a></td></tr>
-<tbody><tr><td>21-09-2013</td><td><a href="../snippets/Bash_Bits_Check_If_Item_Is_In_Array.html" class="link">Bash Bits: Check if item is in array</a></td></tr>
-<tbody><tr><td>18-09-2013</td><td><a href="../snippets/Bash_Bits_Add_Color_Output_To_Your_Scripts.html" class="link">Bash Bits: Add colour output to your script</a></td></tr>
-<tbody><tr><td>15-09-2013</td><td><a href="../snippets/Bash_Bits_Debug_Logging.html" class="link">Bash Bits: Debug Logging</a></td></tr>
-<tbody><tr><td>14-09-2013</td><td><a href="../snippets/Bash_Bits_Trap_Control_C_SIGTERM.html" class="link">Bash Bits: Trap Control C (SIGTERM)</a></td></tr>
-<tbody><tr><td>29-06-2013</td><td><a href="../software/bdsh.html" class="link">bdsh - Whitelist Restricted Shell</a></td></tr>
-<tbody><tr><td>26-06-2013</td><td><a href="../snippets/Bash_-_Incremental_History_Search_Autocomplete.html" class="link">Bash Incremental History Search / Autocomplete </a></td></tr>
-<tbody><tr><td>09-03-2013</td><td><a href="../tutorials/Screenfetch_installation_tutorial.html" class="link">Screenfetch installation tutorial</a></td></tr>
-<tbody><tr><td>08-03-2013</td><td><a href="../tutorials/Better_cron_env_and_shell_control_with_the_SHELL_variale.html" class="link">Better Cron env and shell control with the SHELL variable</a></td></tr>
-</tbody></table><div class="footer">
+           <h2 class='headheader' id='main'>Bash Bits: Find all files containing specific text (and remove them)</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/snippets.html" class="link">Snippets</a></li><li><a href="Bash_Bits_Find_all_files_containing_specific_text.html" class="link">Bash Bits: Find all files containing specific text (and remove them)</a></li></ul><p><small>Published: 07-05-2019</small> | <small>Author: Remy van Elst | </small><a href="Bash_Bits_Find_all_files_containing_specific_text.txt" class="link"><small>Text only version of this article</small></a></p><div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- voorartikel -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Bash Bits are small examples and tips for Bash Scripts. 
+This bash bit shows you how to find all files containing specific text, and 
+how to remove them.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
+<p><a href="https://raymii.org/s/tags/bash-bits.html">All Bash Bits can be found using this link</a></p>
+
+<h3>Finding all files with specific text in them</h3>
+
+<p>For <a href="https://txtn.ws">text news</a> I convert news articles to plain text with readability.
+Recently one of the sites I convert changed their HTML, causing the parsing
+to fail. I fixed that in the parser, but had over 200 failed parsed articles.
+I wanted to remove them all. They all contain the following string:</p>
+
+<pre><code>Wij willen graag weten in welke omgeving u woont
+</code></pre>
+
+<p>Navigate to the folder where you want to search (recursivly):</p>
+
+<pre><code>cd /var/gopher
+</code></pre>
+
+<p>Search for all <code>.txt</code> files which have the string in them. <code>grep -l</code> will only
+write the filename of the file that contains the string.</p>
+
+<pre><code>find -iname &quot;*.txt&quot; | xargs grep -l &quot;Wij willen graag weten in welke omgeving&quot;
+</code></pre>
+
+<p>This will give you a list of files:</p>
+
+<pre><code>./Dutch/www.rtvdrenthe.nl/20190428T0924_Inbraak_bij_super_Barger_Oosterveld.txt
+./Dutch/www.rtvdrenthe.nl/20190428T1036_Hoofdprijs_Staatsloterij_valt_in_Borger_Odoorn.txt
+./Dutch/www.rtvdrenthe.nl/20190501T1304_50Plus_en_Sterk_Lokaal_samen_verder_in_de_Staten.txt
+./Dutch/www.rtvdrenthe.nl/20190504T1657_Live__Dodenherdenking_Westerbork__afgesloten_.txt
+./Dutch/www.rtvdrenthe.nl/20190503T0557_Drankrijder_A28_is_rijbewijs_kwijt.txt
+</code></pre>
+
+<p>Check them by hand, and if you&#39;re sure you want to remove them, use the following
+command:</p>
+
+<pre><code>find -iname &quot;*.txt&quot; | xargs grep -l &quot;Wij willen graag weten in welke omgeving&quot; | awk &#39;{print &quot;rm &quot;$1}&#39; | bash
+</code></pre>
+</div><hr>Tags: <a href="../tags/bash.html" class="link">bash &nbsp;</a><a href="../tags/bash-bits.html" class="link">bash-bits &nbsp;</a><a href="../tags/find.html" class="link">find &nbsp;</a><a href="../tags/grep.html" class="link">grep &nbsp;</a><a href="../tags/remove.html" class="link">remove &nbsp;</a><a href="../tags/shell.html" class="link">shell &nbsp;</a><a href="../tags/snippets.html" class="link">snippets &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
                 <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 

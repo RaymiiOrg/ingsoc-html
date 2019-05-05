@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/snippets/Bash_Bits_Find_all_files_containing_specific_text.html</loc>
+            <lastmod>2019-05-07</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/snippets/Bash_Bits_Randomize_cronjob_time.html</loc>
             <lastmod>2019-05-06</lastmod>
             <changefreq>weekly</changefreq>
@@ -2604,6 +2610,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/teaming.html</loc>
+            <lastmod>2019-04-28</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/pkcs11.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
@@ -5088,7 +5100,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/teaming.html</loc>
+            <loc>https://raymii.org/s/tags/find.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
         </url>
