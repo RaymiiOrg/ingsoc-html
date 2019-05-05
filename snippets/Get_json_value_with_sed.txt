@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 
 Recently I was asked to get one value from a json object using only shell tools. The json in question is from a [dutch radio station](https://www.grootnieuwsradio.nl/) and it lists the current song that is played. Using this together with a few shell commands and `notify-send` we can show the current song when it changes as a desktop notification. I'd rather use Python or `jq` if it has to be shell. In this case the co-worker asked to just use simple shell tools and no external dependencies.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 
 This is the `json` file, formatted:
 
@@ -73,8 +78,6 @@ Put it in `cron` for regular execution. Add this to your crontab as well if you 
 	XAUTHORITY=/home/remy/.Xauthority
 
 Replace `remy` with your username.
-
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link, you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
 
 
 ---

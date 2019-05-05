@@ -12,9 +12,10 @@ Format      : 	Markdown/HTML
 
 Using the apt_key module one can add an APT key with ansible. You can get the key from a remote server or from a file, or just a key ID. I got the request to do some stuff on a machine which was quite rescricted (so no HKP protocol) and I was asked not to place to many files on the machine. The apt_key was needed but it could not be a file, so using a YAML Literal Block Scalar I was able to add the key inline in the playbook. Not the best way to do it, but one of the many ways Ansible allows it.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
-
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### Literal Block Scalar
 

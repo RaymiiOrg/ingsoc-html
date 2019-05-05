@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 The AUR is a nice feature from Arch Linux, it allows anyone to create and upload a simple package build script, PKGBUILD, for a piece of software which is not in the repositories. Sometimes however, the PKGBUILD is outdated. You then need to manually fix it, by changing the download link or version. With a new version you get new checksums, and the `makepkg` command has a neat feature which generates the checksums for you. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 After you have updated your `PKGBUILD` you can get new checksums with the following command:
 
     makepkg -g -f -p PKGBUILD

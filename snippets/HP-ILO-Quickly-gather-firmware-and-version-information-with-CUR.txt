@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Have a lot of HP servers with ILO cards, and want to gather information from them quicly? By default you can get some information in XML format, for ILO, ILO2, ILO3 and ILO4, with curl. You don't have to log in via SSH, and can script it/loop it.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 On the command line, make sure you're in the right VLAN/management network (replace the IP with your ILO IP) :
 
     curl http://10.2.76.22/xmldata?item=All

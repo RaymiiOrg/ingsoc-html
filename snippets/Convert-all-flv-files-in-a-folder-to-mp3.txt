@@ -11,6 +11,14 @@ Format      : 	Markdown/HTML
 
 If you've got a large folder of .flv files (lets say you've ripped them from
 youtube) and you want to put them on a music player, you can use this script.
+
+
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+
 First make a file called `convert.sh`.
 
     vim convert.sh

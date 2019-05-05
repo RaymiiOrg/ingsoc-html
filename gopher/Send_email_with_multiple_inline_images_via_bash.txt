@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 Recently I had a request from a user that whished to receive a scheduled email with two screenshots. The screenshots were automated via AutoIt on a network share, the user manually logged in every evening to check the pictures. With bash and postfix/sendmail we can automate this process, the user now doesn't have to login but can just check their email. There are a lot of snippets and guides to attach emails via the shell, but displaying multiple images inline as an HTML mail was something I had to figure out. You cannot embed the image in base64 HTML because Outlook doesn't show that, you must use the Content-ID style embed. Like UUENCODE, but more complicated. (The next step in this process with the user is to automate the reason why they have to check those screenshots every night, that is something for another article)
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 <img src="https://raymii.org/s/inc/img/automate-all-the-things.png" width="600" height="400">
 

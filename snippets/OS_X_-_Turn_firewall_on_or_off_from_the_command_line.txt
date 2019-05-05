@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This command lets you turn the build in OS X firewall on and off, on both for specific services or essential services. It works with OS X 10.5, 10.6, 10.7 and 10.8. It also works via Apple Remote Desktop.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 To turn the firewall *off*:
 
     sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 0

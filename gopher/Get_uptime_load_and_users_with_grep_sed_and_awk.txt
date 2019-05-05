@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 
 While doing my monitoring script [ray-mon](https://raymii.org/s/software/Bash_PHP_Server_Status_Monitor.html) I found out it can be quite hard to get the correct values for uptime, load average and users on different systems. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 For example, the *uptime* command displays this on a mac:
 
      8:27  up 1 day, 17:06, 1 user, load averages: 1,01 0,87 0,79

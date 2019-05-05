@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This little snippet joins an Mac OS X computer to a Windows Active Directory or OpenLDAP Directory domain from the Command Line or via Apple Remote Desktop. It is tested on OS X 10.6, 10.7 and 10.8 combined with a Windows Server 2003/2008/2012 mixed Active Directory domain and a Fedora 389 DS domain and an OpenLDAP domain.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <pre><code>dsconfigad -add DOMAIN.EXT -computer &quot;`hostname -s`&quot; -mobile enable -mobileconfirm disable -username &quot;DOMAIN_ADMIN_USERNAME&quot; -password &quot;DOMAIN_ADMIN_PASSWORD&quot; -ou &quot;CN=Computers,DC=DOMAIN,DC=EXT&quot;
 </code></pre>
 

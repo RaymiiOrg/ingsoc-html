@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 This little one-liner converts the output of traceroute to Smokeping Target output. This way you can build your smokeping config faster.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 There is an [IPv6 version of this article](https://raymii.org/s/snippets/IPv6_Traceroute_to_Smokeping_Target_Config.html).
 

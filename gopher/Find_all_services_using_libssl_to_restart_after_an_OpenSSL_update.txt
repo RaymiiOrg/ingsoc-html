@@ -13,6 +13,11 @@ Format      : 	Markdown/HTML
 
 When you update OpenSSL, the software that currently has the ssl libraries loaded in memory do not automatically load the updated libraries. A full system reboot resolves that problem, but sometimes that is not possible. This command shows you all the software that has loaded the libraries, allowing you to restart only those services. If you don't restart or reload after an update, the software might still be vulnerable to issues that the update fixed.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Make sure you have the `lsof` command installed. Your package manager probably has this package.
 
 Using the following command you get a list of services currently using libssl:

@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This simple snippet shows you how to update the root ca certificate bundle on CentOS 5. Some websites have certificates signed by authorities not in the default bundle and those websites will not work with tools like git, curl, wget or anything else that uses https.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>When trying to clone a repository from Github on an older CentOS 5 machine I ran into an SSL certificate verification issue. As it turns out, the Github certificate was no longer singed by one of the trusted root certificate authorities in CentOS 5. Therefore I could not clone the repo over https.</p>
 
 <p>The error looks a bit like this:</p>

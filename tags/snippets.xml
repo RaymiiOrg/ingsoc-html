@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/snippets.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash Bits: Check if a program is installed</title> 
+                <link>https://raymii.org/s/snippets/Bash_Bits_Check_if_command_is_available.html</link> 
+                <guid>https://raymii.org/s/snippets/Bash_Bits_Check_if_command_is_available.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to check if a piece of software is installed on a machine. It's a function you can use in your shell scripts.</description> 
+                <pubDate>Sun, 05 May 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 05 May 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Where is dropbearconvert on Ubuntu?</title> 
                 <link>https://raymii.org/s/snippets/Where_is_dropbearconvert_on_ubuntu.html</link> 
                 <guid>https://raymii.org/s/snippets/Where_is_dropbearconvert_on_ubuntu.html</guid>
@@ -439,19 +448,19 @@
             </item>
     
             <item>
-                <title>NGINX: Catch all error codes</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
-                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
+                <title>NGINX: Hide / Block .git and .svn folders</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
+                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>NGINX: Hide / Block .git and .svn folders</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
-                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
+                <title>NGINX: Catch all error codes</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
+                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>

@@ -12,6 +12,11 @@ Format      : 	Markdown/HTML
 
 Recently I ran into an issue with FreeIPA when trying to add an existing DNS zone. The zone already exists on the internet so, logically, FreeIPA wouldn't allow me to hijack this domain locally. My usecase is special, so I wanted to forcefully add this zone as a forward zone.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 
 In the web UI of FreeIPA when trying to add this existing zone, the following error appears:
 

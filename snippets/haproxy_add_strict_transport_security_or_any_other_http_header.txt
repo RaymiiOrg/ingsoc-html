@@ -13,7 +13,10 @@ This snippet shows you how to add a header to a haproxy response, for example, t
 
 This snippet was tested on haproxy 1.5.
 
-This snippet is tested on a Digital Ocean VPS. If you like this snippet and want to support me, plus get free credit @ DO, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This for example can be used when haproxy is used for ssl offloading and you want to offer hsts, while the backends not support it.
 

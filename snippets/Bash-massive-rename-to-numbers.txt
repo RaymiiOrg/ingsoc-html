@@ -14,6 +14,11 @@ window manager, and in my rc.lua file i've setup some nice tweaks so that my
 wallpaper changes every 5 minutes to a new one randomly chosen from
 `/usr/share/wallpapers/`.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 (done by: `awsetbg -r '/usr/share/wallpapers'` in a crontab.)
 
 I have a lot of wallpapers, over 1500. `awsetbg/feh` has some problems with

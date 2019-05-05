@@ -16,6 +16,11 @@ firefox add-on screengrab. It also works with pictures, but then you'll have
 to change the png to jpg in the script. The script also makes a HTML page with
 a 2 collumn table witth the thumbs in it.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Make sure you have imagemagick installed:
 
     sudo apt-get install imagemagick

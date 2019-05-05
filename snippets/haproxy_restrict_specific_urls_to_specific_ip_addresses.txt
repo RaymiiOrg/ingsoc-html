@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 This snippet shows you how to use haproxy to restrict certain URLs to certain IP addresses. For example, to make sure your admin interface can only be accessed from your company IP address.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 This example restricts access to the `/admin/` and `/helpdesk` URL's. It only allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other IP addresses will get the standard haproxy 403 forbidden error.
 

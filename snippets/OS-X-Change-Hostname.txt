@@ -17,6 +17,11 @@ This little snippets helps you change all the computer names of a computer runni
 
 Where you change "ChangeMe" to the computer name you want to set.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 **ComputerName** is the so-called "user-friendly" name for the Mac, it's what will show up on the Mac itself and what will be visible to others when connecting to it over a local network. This is also whats visible under the Sharing preference panel.
 
 **HostName** is the name assigned to the computer as visible from the command line, and it's also used by local and remote networks when connecting through SSH and Remote Login.

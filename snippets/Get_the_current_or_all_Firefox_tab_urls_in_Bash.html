@@ -73,6 +73,9 @@
 
 <p>I use this to track my time on different websites over the day together with some other shell scripts.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>Get all the open tabs:</p>
 
 <pre><code>python2 &lt;&lt;&lt; $&#39;import json\nf = open(&quot;/home/username/.mozilla/firefox/RANDOM.profile/sessionstore.js&quot;, &quot;r&quot;)\njdata = json.loads(f.read())\nf.close()\nfor win in jdata.get(&quot;windows&quot;):\n\tfor tab in win.get(&quot;tabs&quot;):\n\t\ti = tab.get(&quot;index&quot;) - 1\n\t\tprint tab.get(&quot;entries&quot;)[i].get(&quot;url&quot;)&#39;

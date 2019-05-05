@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 This snippets shows you how to add an ssl backend to HAPROXY. You need haproxy 1.5 or higher, 1.4 does not support ssl backends. 
 
-This snippet is tested on a Digital Ocean VPS. If you like this snippet and want to support me, use this link to order a Digital Ocean VPS: [https://www.digitalocean.com/?refcode=7435ae6b8212](https://www.digitalocean.com/?refcode=7435ae6b8212)   
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Note: this is not about adding ssl to a frontend. this allows you to use an ssl enabled website as backend for haproxy.
 

@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add debug logging to a bash script. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
 
 Debug logging can be very usefull when scripts or programs don't do what you want. I use it in most of my scripts. 

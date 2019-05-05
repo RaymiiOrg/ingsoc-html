@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 This little snippet turns off Sleep on an OS X machine, either iMac or Macbook. Normally when a Mac is not used it goes in sleep mode, this turns that off.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 To turn off sleep mode:
 
     systemsetup -setsleep Off

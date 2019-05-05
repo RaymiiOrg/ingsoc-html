@@ -71,6 +71,9 @@
                             </script>
                         </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>Today I had to set up something but I kept getting ssl errors. Turns out, the certificate did not match the private key, because the private key file was damaged. After I copied the certificate all was good, so it might got damaged while <code>scping</code> it.</p>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>The following <code>openssl</code> commands give you the hash of the modulus of certificate and the private key. If those two don&#39;t match then they either do not below to each other, or the file is damaged.</p>
 
 <p>My private key is named <code>private.key</code> and my certificate file is named <code>certificate.crt</code>. Both are in PEM format.</p>

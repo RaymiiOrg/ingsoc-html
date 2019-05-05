@@ -11,7 +11,10 @@ Format      : 	Markdown/HTML
 
 This is a small snippet using curl to check the status code of a given URL on all DNS records for a given domain. This site has a few A records in round robin mode, and sometimes the automatic deployment fails. Using this query I can check which server is the culprit and fix it manually.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212)  
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 The normal HEAD request output also shows all the headers the server sends and that is a pain to scroll through. This just shows me the HTTP status code, which is all I want.
 

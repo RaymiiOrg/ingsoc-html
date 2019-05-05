@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/shell.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash Bits: Check if a program is installed</title> 
+                <link>https://raymii.org/s/snippets/Bash_Bits_Check_if_command_is_available.html</link> 
+                <guid>https://raymii.org/s/snippets/Bash_Bits_Check_if_command_is_available.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to check if a piece of software is installed on a machine. It's a function you can use in your shell scripts.</description> 
+                <pubDate>Sun, 05 May 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 05 May 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Get a JSON value with bash and sed</title> 
                 <link>https://raymii.org/s/snippets/Get_json_value_with_sed.html</link> 
                 <guid>https://raymii.org/s/snippets/Get_json_value_with_sed.html</guid>

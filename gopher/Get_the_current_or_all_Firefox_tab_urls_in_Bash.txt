@@ -13,6 +13,11 @@ This snippets gets the current firefox tab url or all the firefox tab url's. It 
 
 I use this to track my time on different websites over the day together with some other shell scripts.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 Get all the open tabs:
 
     python2 <<< $'import json\nf = open("/home/username/.mozilla/firefox/RANDOM.profile/sessionstore.js", "r")\njdata = json.loads(f.read())\nf.close()\nfor win in jdata.get("windows"):\n\tfor tab in win.get("tabs"):\n\t\ti = tab.get("index") - 1\n\t\tprint tab.get("entries")[i].get("url")'

@@ -13,6 +13,11 @@ This small article will show you how to remove unused kernels in Red Hat or Cent
 
 [Are you running Ubuntu and want to clean up kernels? See this article: https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html](https://raymii.org/s/snippets/Remove_Old_Ubuntu_Kernels.html)
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 You can check which kernels you have installed using the `rpm -q kernel` command:
 
     $ rpm -q kernel

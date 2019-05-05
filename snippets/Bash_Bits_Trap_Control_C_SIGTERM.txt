@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to capture a Control C signal in a bash script, for example, to clean up any temp or pid files when your script is killed or closed.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
 
 Exit signals are sent when for example you use `pkill` or `killall`. If you do not specify a number, a `SIGTERM` is sent. If you for example do a `pkill -9 firefox`, it sents a `SIGKILL`. If you have a bash script which places a temp file, or a pid file, you might want to clean that up before you exit. 

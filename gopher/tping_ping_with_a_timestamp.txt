@@ -37,8 +37,10 @@ tping is a bash alias I once got from an old co-worker. It's ping, but with a ti
 
 The host went down on 09:32 and was back up on 09:36. This was a scheduled reboot.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean VPS. With this link you'll get a $5 VPS for 2 months free (as in, you get $10 credit). (referral link)](https://www.digitalocean.com/?refcode=7435ae6b8212) 
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 ### .bashrc function
 

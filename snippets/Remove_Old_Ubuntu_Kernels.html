@@ -74,6 +74,9 @@
 <pre><code>export KERNEL=&quot;$(uname -r | grep -Po &#39;([0-9\.\-]*[0-9])?&#39;)&quot;; dpkg --get-selections | grep -E &quot;linux-(header|image).*&quot; | grep -iw install | sort | grep -v &quot;$KERNEL&quot; | grep -v &quot;lts&quot; | sed &#39;s/install//g&#39; | xargs dpkg -P
 </code></pre>
 
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+
 <p>Here&#39;s the command by command explanation:</p>
 
 <pre><code>export KERNEL=&quot;$(uname -r | grep -Po &#39;([0-9\.\-]*[0-9])?&#39;)&quot;

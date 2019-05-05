@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add command line arguments to your script. It is very simple, non-positional and does not use getopts.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
 
 Sometimes a script need to have a variable which you don't know on forehand or can change later. Or you have a script which works on a file, therefore you need a filename. For example, when you have a script that adds a watermark to an image. It is nice if you can give both the filename and the watermark as parameters to the script.

@@ -9,6 +9,11 @@ Format      : 	Markdown/HTML
 
 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This snippet strips all non-ascii characters from a file. It backs up the original file. This is handy if you have input for programs that bork on non-ascii input like older mainframes and such.
 
     perl -i.bk -pe 's/[^[:ascii:]]//g;' filename

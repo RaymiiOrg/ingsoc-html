@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how find out if an array has an item.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
 
 This is a simple function which helps you find out if an (non associative) array has an item. It allows you to call the function with just the array name, not ${arrayname[@]}. It returns 1 if the item is in the array, and 0 if it is not.

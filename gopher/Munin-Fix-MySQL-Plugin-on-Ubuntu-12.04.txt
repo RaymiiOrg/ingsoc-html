@@ -13,6 +13,11 @@ On Ubuntu and Debian (12.04/6) the munin plugins which graphs mysql by default g
 
     Missing dependency Cache::Cache at /usr/share/munin/plugins/mysql_ line 716.
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 This is because a Perl cache package is needed. In the repositories there are two of those packages. Install them both:
 
     ## Execute as root

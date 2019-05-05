@@ -11,6 +11,11 @@ Format      : 	Markdown/HTML
 
 Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you how to add coloured output to your scripts. 
 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean 
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+
+[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 [All Bash Bits can be found using this link](https://raymii.org/s/tags/bash-bits.html)
 
 A little background first on how this all works. Coloured output has to be supported by your terminal emulator, but most modern ones support it. It works by sending specific control codes to your terminal.  
