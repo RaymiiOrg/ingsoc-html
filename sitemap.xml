@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/snippets/Bash_Bits_Randomize_cronjob_time.html</loc>
+            <lastmod>2019-05-06</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/snippets/Bash_Bits_Check_if_command_is_available.html</loc>
             <lastmod>2019-05-05</lastmod>
             <changefreq>weekly</changefreq>
@@ -2844,6 +2850,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/wine.html</loc>
+            <lastmod>2019-04-28</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/graph.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
@@ -3978,6 +3990,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/crontab.html</loc>
+            <lastmod>2019-04-28</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/aide.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
@@ -5011,6 +5029,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/dvcs-autosync.html</loc>
+            <lastmod>2019-04-28</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/random.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7890,7 +7914,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wine.html</loc>
+            <loc>https://raymii.org/s/tags/time.html</loc>
             <lastmod>2019-04-28</lastmod>
             <changefreq>weekly</changefreq>
         </url>
