@@ -69,55 +69,93 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-2/">Linux Voice, issue 2, May 2014</a>. This issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA license</a>. In a nutshell: you can modify and share all content from the magazine (apart from adverts), even for commercial purposes, providing you credit Linux Voice as the original source, and retain the same license.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-2/">Linux Voice, issue 2, May 2014</a>.
+This issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA license</a>. In a
+nutshell: you can modify and share all content from the magazine (apart from
+adverts), even for commercial purposes, providing you credit Linux Voice as the
+original source, and retain the same license.</p>
 
-<p>This remix is converted manually to Markdown and HTML for ease of archiving and copy-pasting. </p>
+<p>This remix is converted manually to Markdown and HTML for ease of archiving and
+copy-pasting.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found here</a>. </p>
+<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found here</a>.</p>
 
 <hr>
 
 <p>Enterprise-grade virtualisation on a real kernel.</p>
 
-<p>While Linux containers have been around for a while, they&#39;ve recently been gaining more recognition as a lightweight alternative to traditional virtualisation products like KVM or VMWare. With the arrival of LXC, Docker, and the next generation of distributions, we&#39;re all likely to see a lot more of them over the coming decade. </p>
+<p>While Linux containers have been around for a while, they&#39;ve recently been
+gaining more recognition as a lightweight alternative to traditional
+virtualisation products like KVM or VMWare. With the arrival of LXC, Docker, and
+the next generation of distributions, we&#39;re all likely to see a lot more of them
+over the coming decade.</p>
 
-<p>As with all virtualisation, the idea of containers is to make it easy to run multiple applications on a single host, all the while ensuring each remains separate. This enables the administrator to carefully manage the resources assigned to each application and to ensure that they can&#39;t interfere with each other. </p>
+<p>As with all virtualisation, the idea of containers is to make it easy to run
+multiple applications on a single host, all the while ensuring each remains
+separate. This enables the administrator to carefully manage the resources
+assigned to each application and to ensure that they can&#39;t interfere with each
+other.</p>
 
-<p>What makes containers different to traditional products is that they don&#39;t do any hardware emulation. Instead, the applications in question all run directly on top of the host kernel, just like any other process. Separation between the running containers is achieved through the careful use of a number of Linux kernel features. </p>
+<p>What makes containers different to traditional products is that they don&#39;t do
+any hardware emulation. Instead, the applications in question all run directly
+on top of the host kernel, just like any other process. Separation between the
+running containers is achieved through the careful use of a number of Linux
+kernel features.</p>
 
-<p>Control Groups (<code>cgroups</code>) are the first of these features, and are probably the best known. They provide a mean for administrators to group processes, and all their future children, into hierarchical groups. Various subsystems can then be used to strictly manage the processes and the resources they interact with.</p>
+<p>Control Groups (<code>cgroups</code>) are the first of these features, and are probably the
+best known. They provide a mean for administrators to group processes, and all
+their future children, into hierarchical groups. Various subsystems can then be
+used to strictly manage the processes and the resources they interact with.</p>
 
 <h3>Control groups</h3>
 
-<p>If you have systemd installed, you can quickly inspect what cgroup your processes are running in with the <code>ps</code> command: </p>
+<p>If you have systemd installed, you can quickly inspect what cgroup your
+processes are running in with the <code>ps</code> command:</p>
 
 <pre><code>ps -aeo pid,cgroup,command 
 </code></pre>
 
-<p>Running this, you should see that all processes are running in cgroups that exist in a hierarchy below the systemd cgroup. You could use systemd unit files to manage the resources assigned to a service (indeed, if you&#39;re using systemd, this is probably the best way to use cgroups), but you can also interact with cgroups directly, too. </p>
+<p>Running this, you should see that all processes are running in cgroups that
+exist in a hierarchy below the systemd cgroup. You could use systemd unit files
+to manage the resources assigned to a service (indeed, if you&#39;re using systemd,
+this is probably the best way to use cgroups), but you can also interact with
+cgroups directly, too.</p>
 
-<p>There are a collection of tools available in the <code>libcgroup-tools</code> package, including <code>cgcreate</code>, for example. You can use this tool to create a new cgroup as follows: </p>
+<p>There are a collection of tools available in the <code>libcgroup-tools</code> package,
+including <code>cgcreate</code>, for example. You can use this tool to create a new cgroup
+as follows:</p>
 
 <pre><code>cgcreate -g memory,cpu:mysql 
 </code></pre>
 
-<p>This will create a new cgroup called <code>mysql</code> which has been tied to the memory and cpu subsystems. You can then take advantage of a command such as <code>cgset</code>, or interact directly with the virtual filesystem exposed by cgroups, to manipulate the resource limits of this newly created group: </p>
+<p>This will create a new cgroup called <code>mysql</code> which has been tied to the memory
+and cpu subsystems. You can then take advantage of a command such as <code>cgset</code>, or
+interact directly with the virtual filesystem exposed by cgroups, to manipulate
+the resource limits of this newly created group:</p>
 
 <pre><code>cgset -r swappiness=xxx /sys/fs/cgroups/memory/ mysql 
 </code></pre>
 
-<p>This command will set the <code>swappiness</code> parameter of all processes running in the <code>mysql</code>  cgroup to <code>xxx</code>. To add a process to the cgroup, all you need to do is echo its PID to the  tasks file in the cgroup&#39;s filesystem or use the <code>cgclassify</code> command.</p>
+<p>This command will set the <code>swappiness</code> parameter of all processes running in the
+<code>mysql</code> cgroup to <code>xxx</code>. To add a process to the cgroup, all you need to do is
+echo its PID to the tasks file in the cgroup&#39;s filesystem or use the
+<code>cgclassify</code> command.</p>
 
 <p><img src="https://raymii.org/s/inc/img/linuxvoice/2/cgrous1.png" alt="cgroups"></p>
 
-<p>Image 1: The highlighted area shows the cgroup in which the different processes are running. As you can see, all are either in the systemd defaults of <code>systemd:/user.slice</code> and <code>systemd:/system.slice</code></p>
+<p>Image 1: The highlighted area shows the cgroup in which the different processes
+are running. As you can see, all are either in the systemd defaults of
+<code>systemd:/user.slice</code> and <code>systemd:/system.slice</code></p>
 
 <h3>Namespace isolation</h3>
 
-<p>Namespace isolation is the other key technology that makes containers possible on Linux. Each namespace wraps a particular system resource, and makes processes running inside that namespace believe they have their own instance of that resource. There are six namespaces in Linux: </p>
+<p>Namespace isolation is the other key technology that makes containers possible
+on Linux. Each namespace wraps a particular system resource, and makes processes
+running inside that namespace believe they have their own instance of that
+resource. There are six namespaces in Linux:</p>
 
 <ul>
 <li>mount: Isolates the filesystems visible to a group of processes, similar to the chroot command. </li>
@@ -128,22 +166,38 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>user: Allows a process to have a different UID and GID inside a namespace to what it has outside. </li>
 </ul>
 
-<p>A quick way to experiment with namespaces yourself is to use the <code>unshare</code> command. This will run a particular program, removing its connection to a particular namespace of its parent: </p>
+<p>A quick way to experiment with namespaces yourself is to use the <code>unshare</code>
+command. This will run a particular program, removing its connection to a
+particular namespace of its parent:</p>
 
 <pre><code>sudo unshare -u /bin/bash 
 </code></pre>
 
-<p>This will create a new bash process that doesn&#39;t share its parent UTS namespace. If you now set the hostname to <code>foo</code>, you&#39;ll then be able to look, in another shell on the same system, and see that the hostname in the root (original) namespace hasn&#39;t changed.</p>
+<p>This will create a new bash process that doesn&#39;t share its parent UTS namespace.
+If you now set the hostname to <code>foo</code>, you&#39;ll then be able to look, in another
+shell on the same system, and see that the hostname in the root (original)
+namespace hasn&#39;t changed.</p>
 
 <p><img src="https://raymii.org/s/inc/img/linuxvoice/2/cgrous2.png" alt="cgroups"></p>
 
-<p>Image 2: The output of this long listing in the <code>/sys/fs/cgroup</code> directory shows all the different subsystems that are available for managing processes with cgroups on a default Fedora 20 install.</p>
+<p>Image 2: The output of this long listing in the <code>/sys/fs/cgroup</code> directory shows
+all the different subsystems that are available for managing processes with
+cgroups on a default Fedora 20 install.</p>
 
 <h3>Linux containers</h3>
 
-<p>Now that you have an idea of what the underlying technologies do, let&#39;s take a look at Linux Containers (<code>LXC</code>), a userspace interface that brings them together. To install the LXC userspace tools, you need to install the <code>lxc</code> package on Ubuntu and Fedora, but in the case of the latter, you should also install <code>lxc-templates</code> and <code>lxc-extras</code> for a better experience. </p>
+<p>Now that you have an idea of what the underlying technologies do, let&#39;s take a
+look at Linux Containers (<code>LXC</code>), a userspace interface that brings them
+together. To install the LXC userspace tools, you need to install the <code>lxc</code>
+package on Ubuntu and Fedora, but in the case of the latter, you should also
+install <code>lxc-templates</code> and <code>lxc-extras</code> for a better experience.</p>
 
-<p>Once that&#39;s done, creating a new container, depending on your requirements, can be simple. In the <code>/usr/share/lxc/templates</code> directory, you&#39;ll find a collection of scripts that will create some default containers, including <code>Debian</code>, <code>Fedora</code> and <code>Ubuntu</code> system containers, and <code>sshd</code>, <code>BusyBox</code> and <code>Alpine</code> application containers. To put one of these to use, all you need to do is run the following command:</p>
+<p>Once that&#39;s done, creating a new container, depending on your requirements, can
+be simple. In the <code>/usr/share/lxc/templates</code> directory, you&#39;ll find a collection
+of scripts that will create some default containers, including <code>Debian</code>,
+<code>Fedora</code> and <code>Ubuntu</code> system containers, and <code>sshd</code>, <code>BusyBox</code> and <code>Alpine</code>
+application containers. To put one of these to use, all you need to do is run
+the following command:</p>
 
 <pre><code>lxc-create -n linux-voice -t /usr/share/lxc/templates/busybox --dir /home/jon/containers/linux-voice
 </code></pre>
@@ -154,11 +208,18 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><code>--dir</code>: says where you want the rootfs for the new container to be created.</li>
 </ul>
 
-<p>This command creates a directory in <code>/var/lib/lxc</code> with the name set by the <code>-n</code>  flag. The contents of this directory are populated by the script specified with the <code>-t</code>  flag. </p>
+<p>This command creates a directory in <code>/var/lib/lxc</code> with the name set by the <code>-n</code>
+flag. The contents of this directory are populated by the script specified with
+the <code>-t</code> flag.</p>
 
-<p>If you look at, say, the <code>BusyBox</code> template, you&#39;ll see that this script sets up a filesystem hierarchy, copies appropriate binaries and installs important pieces of configuration with <code>heredoc</code> statements. Inside the created directory, you&#39;ll also find that a config file has been created. This defines which system resources are to be isolated and controlled by the container. </p>
+<p>If you look at, say, the <code>BusyBox</code> template, you&#39;ll see that this script sets up
+a filesystem hierarchy, copies appropriate binaries and installs important
+pieces of configuration with <code>heredoc</code> statements. Inside the created directory,
+you&#39;ll also find that a config file has been created. This defines which system
+resources are to be isolated and controlled by the container.</p>
 
-<p>The <code>man lxc.conf</code> command goes in to detail on what options can be put in this file, but a few key examples will be helpful:</p>
+<p>The <code>man lxc.conf</code> command goes in to detail on what options can be put in this
+file, but a few key examples will be helpful:</p>
 
 <ul>
 <li><code>lxc.cgroup.cpu.shares = 1234</code>: Sets the share of CPU that the container has. </li>
@@ -166,15 +227,27 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li><code>lxc.mount.entry = /lib/home/jon/containers/busybox/lib</code>: Specifies directories on the host filesystem that should be mounted in the container. </li>
 </ul>
 
-<p>This configuration file means you can apply the existing templates in quite flexible ways, but if you really want to create a custom container, you&#39;re going to have to set to work creating your own template script.</p>
+<p>This configuration file means you can apply the existing templates in quite
+flexible ways, but if you really want to create a custom container, you&#39;re going
+to have to set to work creating your own template script.</p>
 
-<p>As the LXC man page says, creating a system container is paradoxically easier than creating an application container. </p>
+<p>As the LXC man page says, creating a system container is paradoxically easier
+than creating an application container.</p>
 
-<p>In the latter case, you have to start by figuring out which resources you want to isolate from the rest of the system, and then figure out how to populate the appropriate parts of the file system etc. In the former case, you simply isolate everything, much simpler. </p>
+<p>In the latter case, you have to start by figuring out which resources you want
+to isolate from the rest of the system, and then figure out how to populate the
+appropriate parts of the file system etc. In the former case, you simply isolate
+everything, much simpler.</p>
 
-<p>Once you&#39;ve created your container with <code>lxc-create</code> and modified the config file as you see fit, you can start it with the <code>lxc-start</code> command, use <code>lxc-console</code> to get a console in it, and shut it down with <code>lxc-shutdown</code>. </p>
+<p>Once you&#39;ve created your container with <code>lxc-create</code> and modified the config
+file as you see fit, you can start it with the <code>lxc-start</code> command, use <code>lxc-
+console</code> to get a console in it, and shut it down with <code>lxc-shutdown</code>.</p>
 
-<p>While cgroups and namespaces have reached a degree of maturity in Linux, the user experience still has some room for improvement. If you found the <code>lxc-commands</code> tricky to use, you might want to install <code>libvirt-sandbox</code>, which will provide a set of scripts and extensions for using LXC through the familiar <code>libvirt</code> tools.</p>
+<p>While cgroups and namespaces have reached a degree of maturity in Linux, the
+user experience still has some room for improvement. If you found the <code>lxc-
+commands</code> tricky to use, you might want to install <code>libvirt-sandbox</code>, which will
+provide a set of scripts and extensions for using LXC through the familiar
+<code>libvirt</code> tools.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/cgroups.html" class="link">cgroups &nbsp;</a><a href="../tags/container.html" class="link">container &nbsp;</a><a href="../tags/docker.html" class="link">docker &nbsp;</a><a href="../tags/linux-voice.html" class="link">linux-voice &nbsp;</a><a href="../tags/linux-voice-issue-2-2014.html" class="link">linux-voice-issue-2-2014 &nbsp;</a><a href="../tags/lxc.html" class="link">lxc &nbsp;</a><a href="../tags/namespace.html" class="link">namespace &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

@@ -69,14 +69,19 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/">Linux Voice, issue 1, April 2014</a>. This issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA license</a>. In a nutshell: you can modify and share all content from the magazine (apart from adverts), even for commercial purposes, providing you credit Linux Voice as the original source, and retain the same license.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/">Linux Voice, issue 1, April 2014</a>.
+This issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA license</a>. In a
+nutshell: you can modify and share all content from the magazine (apart from
+adverts), even for commercial purposes, providing you credit Linux Voice as the
+original source, and retain the same license.</p>
 
-<p>This remix is converted manually to Markdown and HTML for ease of archiving and copy-pasting. </p>
+<p>This remix is converted manually to Markdown and HTML for ease of archiving and
+copy-pasting.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found here</a>. </p>
+<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found here</a>.</p>
 
 <hr>
 
@@ -84,9 +89,12 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3>systemd: Don&#39;t fear change</h3>
 
-<p>The arrival of a new Linux init system has been a long time coming. It was back in 2006 that Upstart was introduced to Ubuntu, and around the same time that Fedora and others also started experimenting with new init systems. </p>
+<p>The arrival of a new Linux init system has been a long time coming. It was back
+in 2006 that Upstart was introduced to Ubuntu, and around the same time that
+Fedora and others also started experimenting with new init systems.</p>
 
-<p>The reasons then are much the same as the reasons now - sysvinit is old and doesn&#39;t do everything a modern distribution needs it to. More specifically: </p>
+<p>The reasons then are much the same as the reasons now - sysvinit is old and
+doesn&#39;t do everything a modern distribution needs it to. More specifically:</p>
 
 <ul>
 <li>sysvinit can&#39;t take account of hot-pluggable hardware devices and filesystems, such as network mounts or USB sticks. </li>
@@ -95,13 +103,26 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 <li>sysvinit startup scripts are difficult to write, difficult to debug and can&#39;t easily be shared between distributions - the Sendmail init script is over 1,000 lines long! </li>
 </ul>
 
-<p>Systemd fixes these problems and introduces a number of new features that make the case for it even more compelling. Rather than explaining in great detail how systemd works or how it fixes these problems (there&#39;s plenty of information on that in <a href="http://0pointer.de/blog/projects/systemd.html">http://0pointer.de/blog/projects/systemd.html</a>, we&#39;re going to take a look at a few key features of systemd that might make sysadmins look forward to systemd, rather than dread having to learn a new tool.</p>
+<p>Systemd fixes these problems and introduces a number of new features that make
+the case for it even more compelling. Rather than explaining in great detail how
+systemd works or how it fixes these problems (there&#39;s plenty of information on
+that in <a href="http://0pointer.de/blog/projects/systemd.html">http://0pointer.de/blog/projects/systemd.html</a>, we&#39;re going to take a
+look at a few key features of systemd that might make sysadmins look forward to
+systemd, rather than dread having to learn a new tool.</p>
 
 <h3>Configuration file format</h3>
 
-<p>As mentioned above, in sysvinit systems, configuration of services was complex and error-prone. They were usually configured through a combination of arcane Bash scripts in <code>/etc/init.d</code> and some environmental settings in <code>/etc/sysconfig</code> or <code>/etc/defaults</code>. These init scripts often did awful amounts of work, such as echoing service status to the console and managing lock files, which were repeated in almost every init script. </p>
+<p>As mentioned above, in sysvinit systems, configuration of services was complex
+and error-prone. They were usually configured through a combination of arcane
+Bash scripts in <code>/etc/init.d</code> and some environmental settings in
+<code>/etc/sysconfig</code> or <code>/etc/defaults</code>. These init scripts often did awful amounts
+of work, such as echoing service status to the console and managing lock files,
+which were repeated in almost every init script.</p>
 
-<p>Systemd removes the need for much of the complexity in these init scripts by handling service status echoes and suchlike itself. This means it can switch complex procedural Bash code for a clear, declarative configuration file. For example, here&#39;s the configuration for the syslog service on my Fedora system:</p>
+<p>Systemd removes the need for much of the complexity in these init scripts by
+handling service status echoes and suchlike itself. This means it can switch
+complex procedural Bash code for a clear, declarative configuration file. For
+example, here&#39;s the configuration for the syslog service on my Fedora system:</p>
 
 <pre><code>[Unit]
 Description=System Logging Service
@@ -115,11 +136,18 @@ WantedBy=multi-user.target
 Alias=syslog.service
 </code></pre>
 
-<p>All of the configuration options available in these files are extremely well documented (systemd as a whole has some of the best docs around) - see <code>man systemd.unit</code> or <code>man systemd.service</code> for details. </p>
+<p>All of the configuration options available in these files are extremely well
+documented (systemd as a whole has some of the best docs around) - see <code>man
+systemd.unit</code> or <code>man systemd.service</code> for details.</p>
 
-<p>What&#39;s more, if you had to modify a sysvinit file, you&#39;d have to be careful when it came to package upgrades etc that your changes wouldn&#39;t get overwritten. With systemd, unit files get packaged into <code>/usr/lib/systemd/system</code>, but if you want to replace the default with your own, you can put them in <code>/etc/systemd/system</code> and whatever is there will take precedence over the defaults. </p>
+<p>What&#39;s more, if you had to modify a sysvinit file, you&#39;d have to be careful when
+it came to package upgrades etc that your changes wouldn&#39;t get overwritten. With
+systemd, unit files get packaged into <code>/usr/lib/systemd/system</code>, but if you want
+to replace the default with your own, you can put them in <code>/etc/systemd/system</code>
+and whatever is there will take precedence over the defaults.</p>
 
-<p>You can even include other unit configuration files in yours, so you can easily extend the default configuration:</p>
+<p>You can even include other unit configuration files in yours, so you can easily
+extend the default configuration:</p>
 
 <pre><code>include /usr/lib/systemd/system/nfs-secure.service
 #extra conf goes here
@@ -127,23 +155,46 @@ Alias=syslog.service
 
 <h3>Resource controls</h3>
 
-<p>Why would you want to extend a service configuration like that? Well, systemd launches all processes inside their own cgroup (and all processes spawned from this end up in the same cgroup - this is also useful as it stops double forking processes from orphaning themselves), so you can take advantage of this to use cgroups to limit the resources that each process (and its child processes) can consume. </p>
+<p>Why would you want to extend a service configuration like that? Well, systemd
+launches all processes inside their own cgroup (and all processes spawned from
+this end up in the same cgroup - this is also useful as it stops double forking
+processes from orphaning themselves), so you can take advantage of this to use
+cgroups to limit the resources that each process (and its child processes) can
+consume.</p>
 
-<p>Systemd not only makes this possible by the way it spawns processes, but it also makes it easy by exposing many of the most common bits of functionality in configuration directives. For instance, you could limit the amount of CPU a process gets by dropping in a new unit configuration file to <code>/etc/systemd/system</code> and adding:</p>
+<p>Systemd not only makes this possible by the way it spawns processes, but it also
+makes it easy by exposing many of the most common bits of functionality in
+configuration directives. For instance, you could limit the amount of CPU a
+process gets by dropping in a new unit configuration file to
+<code>/etc/systemd/system</code> and adding:</p>
 
 <pre><code>[Service]
 CpuShares=200
 </code></pre>
 
-<p>By default, systemd gives all processes (well, cgroups), an equal share of the processor (1024). By setting <code>CpuShares</code> to 200, you&#39;re restricting this process to about 20% of CPU time. What&#39;s more, this isn&#39;t applied just to the parent process but to all child processes. So if you have Apache running with many hundreds of spawned CGI processes, this would restrict all of those processes to about 20% of CPU time. </p>
+<p>By default, systemd gives all processes (well, cgroups), an equal share of the
+processor (1024). By setting <code>CpuShares</code> to 200, you&#39;re restricting this process
+to about 20% of CPU time. What&#39;s more, this isn&#39;t applied just to the parent
+process but to all child processes. So if you have Apache running with many
+hundreds of spawned CGI processes, this would restrict all of those processes to
+about 20% of CPU time.</p>
 
-<p>With the configuration file in place, you&#39;d just need to tell systemd to reload it, with <code>systemctl daemon-reload</code>, and then restart the service, with <code>systemctl restart httpd.service</code>, for example. </p>
+<p>With the configuration file in place, you&#39;d just need to tell systemd to reload
+it, with <code>systemctl daemon-reload</code>, and then restart the service, with
+<code>systemctl restart httpd.service</code>, for example.</p>
 
-<p>You can also set memory limits (<code>MemoryLimit</code>) and IO limits (<code>BlockIOWeight</code>). See <code>man systemd.resource-control</code> for further details. There are also any number of security settings that can be put in the configuration files like this. </p>
+<p>You can also set memory limits (<code>MemoryLimit</code>) and IO limits (<code>BlockIOWeight</code>).
+See <code>man systemd.resource-control</code> for further details. There are also any
+number of security settings that can be put in the configuration files like
+this.</p>
 
-<p>For example, you can restrict a service from accessing a particular device, make individual directory trees inaccessible or read-only, create a private <code>/tmp</code> directory for a service or even stop a service, and all its child processes, from accessing the network. </p>
+<p>For example, you can restrict a service from accessing a particular device, make
+individual directory trees inaccessible or read-only, create a private <code>/tmp</code>
+directory for a service or even stop a service, and all its child processes,
+from accessing the network.</p>
 
-<p>In the example below, we&#39;ve configured a service to have a private /tmp directory. See how simple it is:</p>
+<p>In the example below, we&#39;ve configured a service to have a private /tmp
+directory. See how simple it is:</p>
 
 <pre><code>[Service]
 PrivateTmp=yes
@@ -151,29 +202,48 @@ PrivateTmp=yes
 
 <h3>Journal</h3>
 
-<p>Another aspect of systemd is that it collects all output from processes it starts - whether that&#39;s through <code>syslog()</code> calls, messages emitted to <code>STDOUT</code> or <code>STDERR</code>, initial RAM disk or kernel messages. It does this through one of its components, journald. </p>
+<p>Another aspect of systemd is that it collects all output from processes it
+starts - whether that&#39;s through <code>syslog()</code> calls, messages emitted to <code>STDOUT</code>
+or <code>STDERR</code>, initial RAM disk or kernel messages. It does this through one of
+its components, journald.</p>
 
-<p>To see the contents of the logs, you can just type <code>journalctl</code> as root and you&#39;ll get the results displayed, just as if you were looking at the contents of <code>/var/log/messages</code> or similar. This default view gives you some simple improvements over the traditional techniques, however. Error and higher priority messages are in red, notice and warning are bold, timestamps are in your local timezone. </p>
+<p>To see the contents of the logs, you can just type <code>journalctl</code> as root and
+you&#39;ll get the results displayed, just as if you were looking at the contents of
+<code>/var/log/messages</code> or similar. This default view gives you some simple
+improvements over the traditional techniques, however. Error and higher priority
+messages are in red, notice and warning are bold, timestamps are in your local
+timezone.</p>
 
-<p>These are fairly cosmetic improvements. What sets journald apart is that the logs are kept on disk in a binary format, which means that the journal entries can be indexed on all fields, making them quick to search and easy to filter. For example:</p>
+<p>These are fairly cosmetic improvements. What sets journald apart is that the
+logs are kept on disk in a binary format, which means that the journal entries
+can be indexed on all fields, making them quick to search and easy to filter.
+For example:</p>
 
 <pre><code>journalctl PRIORITY=7 -since=yesterday
 </code></pre>
 
-<p>Will show all messages of debug priority received by the journal since yesterday. If you tried to do this with standard syslog messages or the like, you&#39;d have to concoct your own <code>grep</code> or <code>awk</code> command, or hook it in to a system like <code>Logstash</code> or <code>Splunk</code>. </p>
+<p>Will show all messages of debug priority received by the journal since
+yesterday. If you tried to do this with standard syslog messages or the like,
+you&#39;d have to concoct your own <code>grep</code> or <code>awk</code> command, or hook it in to a
+system like <code>Logstash</code> or <code>Splunk</code>.</p>
 
-<p>There are loads of fields on which you can filter that come direct from the messages themselves, as well as a lot of metadata that the journal inputs in to each log message itself, including SELinux context, hostname, transport etc. </p>
+<p>There are loads of fields on which you can filter that come direct from the
+messages themselves, as well as a lot of metadata that the journal inputs in to
+each log message itself, including SELinux context, hostname, transport etc.</p>
 
-<p>To see the full details, you can read <code>man systemd.journal-fields</code>. </p>
+<p>To see the full details, you can read <code>man systemd.journal-fields</code>.</p>
 
-<p>Journalctl even features tab completion of possible field names, so you can get a quick look too by typing</p>
+<p>Journalctl even features tab completion of possible field names, so you can get
+a quick look too by typing</p>
 
 <pre><code>journalctl &lt;tab&gt;&lt;tab&gt;.
 </code></pre>
 
-<p>There are many other great features in systemd that, if you take the time to look around, will make your life as a sysadmin better. </p>
+<p>There are many other great features in systemd that, if you take the time to
+look around, will make your life as a sysadmin better.</p>
 
-<p>We hope this article has at least given you the motivation to take a closer look.</p>
+<p>We hope this article has at least given you the motivation to take a closer
+look.</p>
 </div><hr>Tags: <a href="../tags/articles.html" class="link">articles &nbsp;</a><a href="../tags/centos.html" class="link">centos &nbsp;</a><a href="../tags/init.html" class="link">init &nbsp;</a><a href="../tags/linux-voice.html" class="link">linux-voice &nbsp;</a><a href="../tags/linux-voice-issue-1-2014.html" class="link">linux-voice-issue-1-2014 &nbsp;</a><a href="../tags/systemd.html" class="link">systemd &nbsp;</a><a href="../tags/upstart.html" class="link">upstart &nbsp;</a><div class="footer">
                 <hr>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 

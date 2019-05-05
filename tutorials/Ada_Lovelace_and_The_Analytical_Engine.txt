@@ -9,27 +9,21 @@ Format      : 	Markdown/HTML
 
 
 
+This article was originaly published in [Linux Voice, issue 1, April 2014][1].
+This issue is now available under a [Creative Commons BY-SA license][2]. In a
+nutshell: you can modify and share all content from the magazine (apart from
+adverts), even for commercial purposes, providing you credit Linux Voice as the
+original source, and retain the same license.
 
-This article was originaly published in [Linux Voice, issue 1, April
-2014](http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/). This
-issue is now available under a [Creative Commons BY-SA
-license](https://creativecommons.org/licenses/by-sa/3.0/). In a nutshell: you
-can modify and share all content from the magazine (apart from adverts), even
-for commercial purposes, providing you credit Linux Voice as the original
-source, and retain the same license.
+This remix is converted manually to Markdown and HTML for ease of archiving and
+copy-pasting.
 
-This remix is converted manually to Markdown and HTML for ease of archiving and copy-pasting. 
+[If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99] 
+Other converted Linux Voice articles [can be found here][4].
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-Other converted Linux Voice articles [can be found
-here](https://raymii.org/s/tags/linux-voice.html).
-
-<hr>
-
+* * *
 
 Use the Linux Voice time machine to take a trip to Victorian England, and visit
 one of the pioneers of the computer age.
@@ -38,8 +32,8 @@ one of the pioneers of the computer age.
 
 Back in the 19th century, if you wanted to do complicated mathematical
 calculations you had to do them by hand. To speed things up, you could buy
-printed tables of specific calculations such as logarithms  but as these too
-were calculated by hand, they were full of errors.
+printed tables of specific calculations such as logarithms but as these too were
+calculated by hand, they were full of errors.
 
 Enter Charles Babbage, mathematician, philosopher, engineer and inventor, who in
 the early 1820s designed a Difference Engine to do these calculations
@@ -63,7 +57,7 @@ with Babbage.
 
 ### Augusta Ada King, Countess of Lovelace
 
-![Ada1](https://raymii.org/s/inc/img/linuxvoice/1/ada1.png)
+![Ada1][5]
 
 > Ada Lovelace was the daughter of Lady Annabella Byron, who was deeply
 interested in mathematics, and Lord Byron. What would she have thought of the
@@ -83,9 +77,9 @@ the Engine's notation and operations. This jump from a mathematical engine to
 one that could act on symbols of any sort was visionary and well ahead of her
 time.
 
-The Notes, importantly, contained the first computer algorithm  a series of
-steps of operations to solve a particular (in this case mathematical) problem.
-This is what any computer program does, and is what makes Ada the first computer
+The Notes, importantly, contained the first computer algorithm a series of steps
+of operations to solve a particular (in this case mathematical) problem. This is
+what any computer program does, and is what makes Ada the first computer
 programmer, even if she was never able to run her program on a real machine.
 
 ### Installing the Analytical Engine
@@ -93,8 +87,8 @@ programmer, even if she was never able to run her program on a real machine.
 Although no physical Analytical Engine exists (the Science Museum in London has
 a working replica of the Difference engine), Fourmilab Switzerland have an
 emulator available. It runs on Java, so all you need to run it is a JDK.
-Download the emulator object code from [www.fourmilab.ch/babbage/contents.html](
-http://www.fourmilab.ch/babbage/contents.html), unzip it, and type `java aes
+Download the emulator object code from
+[www.fourmilab.ch/babbage/contents.html][6], unzip it, and type `java aes
 card.ae` from that directory to run the card file `card.ae`.
 
 The emulator is the best guess, based on Babbage's drawings and papers over the
@@ -119,9 +113,9 @@ at a time. For ease, you can put any number of cards into a single text file.
 
 There are three types of punch cards:
 
-- Operation Cards Tell the Mill to add/subtract/multiply/divide, and can also move the chain of cards forwards or backwards (like a jump or loop instruction).
-- Number Cards Supply numbers to the Store as necessary.
-- Variable Cards Transfer values between the Mill and the Store.
+  * Operation Cards Tell the Mill to add/subtract/multiply/divide, and can also move the chain of cards forwards or backwards (like a jump or loop instruction).
+  * Number Cards Supply numbers to the Store as necessary.
+  * Variable Cards Transfer values between the Mill and the Store.
 
 For engineering reasons Babbage intended these to have three separate hoppers,
 but in the emulator they go in a single stream. (This is also how Menabrea and
@@ -133,7 +127,10 @@ real punch card.
 
 A number card looks like this:
 
+    
+    
     N001 3
+    
 
 This sets column 1 in the Store (which has 0-999 columns) to the value 3.
 
@@ -143,18 +140,18 @@ Mill will keep doing that until another is selected.
 
 The Operations cards are:
 
-- + 
-- - 
-- x or * 
-- / or the divison sign
+  * \+ 
+  * \- 
+  * x or * 
+  * / or the divison sign
 
 which all do what you'd expect.
 
 Finally, the Variable Cards transfer things in and out of the Mill:
 
-- `L`: Transfer from Store to Mill Ingress Axis, leaving Store column intact.
-- `Z`: Transfer from Store to Mill Ingress Axis, zeroing Store column.
-- `S`: Transfer from Mill Egress Axis to Store column.
+  * `L`: Transfer from Store to Mill Ingress Axis, leaving Store column intact.
+  * `Z`: Transfer from Store to Mill Ingress Axis, zeroing Store column.
+  * `S`: Transfer from Mill Egress Axis to Store column.
 
 The letter is followed by a number specifying the Store column.
 
@@ -169,6 +166,8 @@ World`, we'll add 2 and 2.
 
 Save this as `card1.ae`:
 
+    
+    
     N000 2
     N001 2
     +
@@ -176,19 +175,27 @@ Save this as `card1.ae`:
     L001
     S002
     P
+    
 
-This code puts 2 in column 0 of the Store, 2 in column 1 of the Store, sets the operation to add, transfers column 1 and then column 2 to the Ingress Axes (whereupon the operation will be applied), then the result back to the Store in column 2. 
+This code puts 2 in column 0 of the Store, 2 in column 1 of the Store, sets the
+operation to add, transfers column 1 and then column 2 to the Ingress Axes
+(whereupon the operation will be applied), then the result back to the Store in
+column 2.
 
-P prints the result of the last operation to standard output. Run it with `java aes card1.ae` to see what happens.
+P prints the result of the last operation to standard output. Run it with `java
+aes card1.ae` to see what happens.
 
-<img src="https://raymii.org/s/inc/img/linuxvoice/1/ada2.png" alt="ada2" width="640" height="480">
+![ada2][7]
 
-> The Analytical Engine emulator running a test card (in the Vim window), which subtracts 38888 from 0.
+> The Analytical Engine emulator running a test card (in the Vim window), which
+subtracts 38888 from 0.
 
 In fact, you could miss out the second line, and transfer the value from Store
 column 0 twice, and it will automatically be transferred into both Ingress Axes.
 So this will work fine:
 
+    
+    
     N000 2
     +
     . About to put values into Mill
@@ -196,15 +203,17 @@ So this will work fine:
     L000
     S001
     P
+    
 
-Replacing the first `L000` with `Z000` won't work, as this zeros the Store column after transfer. 
+Replacing the first `L000` with `Z000` won't work, as this zeros the Store
+column after transfer.
 
-This card also includes a comment line. Comments begin with a space or a dot in column 1 of the card.
+This card also includes a comment line. Comments begin with a space or a dot in
+column 1 of the card.
 
 To do more operations, you need to replace both values on the Ingress Axes -
 they are discarded after their use in a computation. Each time two arguments go
 in, the current calcuation is applied.
-
 
 ### Menabrae and simultaneous equations
 
@@ -220,9 +229,12 @@ whole thing; I'll look at the structure and a couple of operations here.
 
 Here are our sample equations:
 
+    
+    
     2x + y = 7
-
+    
     3x - y = 8
+    
 
 First, we put all the numbers (2, 1, 7; 3, -1, 8) into the Store. Then,
 following Menabrae's calculations, cards 1-6 do all the multiplying and store
@@ -234,18 +246,24 @@ each line is a card.)
 
 Card 10 - gives x value
 
+    
+    
     /
     L013
     L012
     S015'
     P
+    
 
 Card 11 - gives y value
 
+    
+    
     L014
     L012
     S016'
     P
+    
 
 If you're debugging, it's useful to print at every step.
 
@@ -273,18 +291,24 @@ We just need to change the last two cards:
 
 Card 10 - gives x value
 
+    
+    
     /
     L013
     L012
     S015'
     P
+    
 
 Card 11 - gives y value
 
+    
+    
     L014
     L012
     S016'
     P
+    
 
 We must put the decimal point back in to the output ourselves, by manually
 dividing by 100,000 (105).
@@ -296,14 +320,13 @@ describes how to calculate the Bernoulli numbers (a set of numbers of deep
 interest to theoretical mathematicians) using the Engine.
 
 Her diagram of the process is too complicated to reproduce here, but can be seen
-(with the rest of the Notes) at [www.fourmilab.ch/babbage/sketch.html](http://ww
-w.fourmilab.ch/babbage/sketch.html).
+(with the rest of the Notes) at [www.fourmilab.ch/babbage/sketch.html][8].
 
 It can, however, be translated into code for the Analytical Engine
 emulator.Download the full code from the LV website; here we'll look at the
 structure and ideas.
 
-<img src="https://raymii.org/s/inc/img/linuxvoice/1/ada3.png" alt="ada3" width="640" height="480">
+![ada3][9]
 
 > Ada Lovelace's equation for deriving the Bernoulli numbers.
 
@@ -315,7 +338,7 @@ with the Notes directly).
 There are many ways to derive them, but the equation that Lovelace uses is
 shown, left. Note that the very last Bernoulli number has no accompanying
 A-equation. What we're trying to calculate.
-    
+
 The important point is that from A2 onwards, each following A-value takes the
 preceding one and multiplies by another two terms. This makes it possible to
 construct an iterative process to calculate each succeeding term.
@@ -338,24 +361,33 @@ interesting:
 
 Card 4: (2n - 1) / (2n + 1)
 
+    
+    
     /
     L004
     <5
     L005
     S011'
+    
 
 Card 5: 1/2 * (2n - 1) / (2n + 1) Y
 
+    
+    
     L011
     L002
     S011'
+    
 
 Card 6: -1/2 * (2n - 1) / (2n + 1) Y
 
+    
+    
     -
     L013
     L011
     S013
+    
 
 In Card 4, we step the first value up 5 places before dividing, to avoid a
 rounding error.
@@ -388,11 +420,17 @@ The intriguing part is the next stage, cards 13-23. This is the section that
 could be repeated almost exactly for any stage of the process, however many
 numbers you wanted to calculate. What you need to calculate each time is:
 
+    
+    
     2n . (2n - 1) . (2n - 2) ... / 2 . 3 . 4 ...
+    
 
 This is equivalent to
 
+    
+    
     2n / 2 . (2n - 1)/3 . (2n - 2)/4 ...
+    
 
 The first time we go through the loop, when calculating A3, we can forget about
 2n / 2 as we already calculated that on card 9, and saved it in location 011.
@@ -419,78 +457,107 @@ than B4.
 Then we add it all together again. In the code, these second-time-around cards
 are labelled 13B-23B.
 
-
 Card 13: 2n - 1 Y
 
+    
+    
     L006
     L001
     S006
+    
 
 Card 14: 2 + 1 Y
 
+    
+    
     +
     L002
     L001
     S007
+    
 
 Card 15: (2n - 1) / (2 + 1)
 
+    
+    
     /
     L006
     <5
     L007
     S008'
+    
 
 Card 16: (2n / 2) * ((2n - 1) / 3) Y
 
+    
+    
     *
     L011
     L008
     S011
+    
 
 Card 17: 2n - 2 Y
 
+    
+    
     -
     L006
     L001
     S006
+    
 
 Card 18: 3 + 1 Y
 
+    
+    
     +
     L001
     L007
     S007
+    
 
 Card 19: (2n - 2) / 4 Y
 
+    
+    
     /
     L006
     <5
     L007
     S009'
+    
 
 Card 20: (2n / 2) * (2n - 1)/3 * (2n - 2)/4 Y
 
+    
+    
     *
     L009
     L011
     >5
     S011
+    
 
 Card 21: B(4) * [Card 20]
 
+    
+    
     L022
     L011
     >5
     S012
+    
 
 Card 22: A0 + B2A2 + B4A4 Y
 
+    
+    
     +
     L012
     L013
     S013
+    
 
 There's only one new thing to notice, which is that in cards 20 and 21 we have
 to step our result from the multiplication back down by five decimal places, as
@@ -521,7 +588,18 @@ complete you can also, as Lovelace suggested, produce anything you can translate
 into Engine-operations; or, as we now think of it, assembly language. In theory
 you could even write a compiler in Engine code
 
-> Juliet Kemp is a scary polymath, and is the author of O'Reilly's Linux System Administration Recipes
+> Juliet Kemp is a scary polymath, and is the author of O'Reilly's Linux System
+Administration Recipes
+
+   [1]: http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/
+   [2]: https://creativecommons.org/licenses/by-sa/3.0/
+   [3]: https://www.digitalocean.com/?refcode=7435ae6b8212
+   [4]: https://raymii.org/s/tags/linux-voice.html
+   [5]: https://raymii.org/s/inc/img/linuxvoice/1/ada1.png
+   [6]: http://www.fourmilab.ch/babbage/contents.html
+   [7]: https://raymii.org/s/inc/img/linuxvoice/1/ada2.png
+   [8]: http://ww%0Aw.fourmilab.ch/babbage/sketch.html
+   [9]: https://raymii.org/s/inc/img/linuxvoice/1/ada3.png
 
 ---
 

@@ -69,21 +69,19 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/">Linux Voice, issue 1, April
-2014</a>. This
-issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA
-license</a>. In a nutshell: you
-can modify and share all content from the magazine (apart from adverts), even
-for commercial purposes, providing you credit Linux Voice as the original
-source, and retain the same license.</p>
+                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This article was originaly published in <a href="http://www.linuxvoice.com/download-linux-voice-issue-1-with-audio/">Linux Voice, issue 1, April 2014</a>.
+This issue is now available under a <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA license</a>. In a
+nutshell: you can modify and share all content from the magazine (apart from
+adverts), even for commercial purposes, providing you credit Linux Voice as the
+original source, and retain the same license.</p>
 
-<p>This remix is converted manually to Markdown and HTML for ease of archiving and copy-pasting. </p>
+<p>This remix is converted manually to Markdown and HTML for ease of archiving and
+copy-pasting.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean 
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a> </p>
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
-<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found
-here</a>.</p>
+<p>Other converted Linux Voice articles <a href="https://raymii.org/s/tags/linux-voice.html">can be found here</a>.</p>
 
 <hr>
 
@@ -94,8 +92,8 @@ one of the pioneers of the computer age.</p>
 
 <p>Back in the 19th century, if you wanted to do complicated mathematical
 calculations you had to do them by hand. To speed things up, you could buy
-printed tables of specific calculations such as logarithms  but as these too
-were calculated by hand, they were full of errors.</p>
+printed tables of specific calculations such as logarithms but as these too were
+calculated by hand, they were full of errors.</p>
 
 <p>Enter Charles Babbage, mathematician, philosopher, engineer and inventor, who in
 the early 1820s designed a Difference Engine to do these calculations
@@ -141,9 +139,9 @@ the Engine&#39;s notation and operations. This jump from a mathematical engine t
 one that could act on symbols of any sort was visionary and well ahead of her
 time.</p>
 
-<p>The Notes, importantly, contained the first computer algorithm  a series of
-steps of operations to solve a particular (in this case mathematical) problem.
-This is what any computer program does, and is what makes Ada the first computer
+<p>The Notes, importantly, contained the first computer algorithm a series of steps
+of operations to solve a particular (in this case mathematical) problem. This is
+what any computer program does, and is what makes Ada the first computer
 programmer, even if she was never able to run her program on a real machine.</p>
 
 <h3>Installing the Analytical Engine</h3>
@@ -151,7 +149,8 @@ programmer, even if she was never able to run her program on a real machine.</p>
 <p>Although no physical Analytical Engine exists (the Science Museum in London has
 a working replica of the Difference engine), Fourmilab Switzerland have an
 emulator available. It runs on Java, so all you need to run it is a JDK.
-Download the emulator object code from <a href="http://www.fourmilab.ch/babbage/contents.html">www.fourmilab.ch/babbage/contents.html</a>, unzip it, and type <code>java aes
+Download the emulator object code from
+<a href="http://www.fourmilab.ch/babbage/contents.html">www.fourmilab.ch/babbage/contents.html</a>, unzip it, and type <code>java aes
 card.ae</code> from that directory to run the card file <code>card.ae</code>.</p>
 
 <p>The emulator is the best guess, based on Babbage&#39;s drawings and papers over the
@@ -242,14 +241,19 @@ S002
 P
 </code></pre>
 
-<p>This code puts 2 in column 0 of the Store, 2 in column 1 of the Store, sets the operation to add, transfers column 1 and then column 2 to the Ingress Axes (whereupon the operation will be applied), then the result back to the Store in column 2. </p>
+<p>This code puts 2 in column 0 of the Store, 2 in column 1 of the Store, sets the
+operation to add, transfers column 1 and then column 2 to the Ingress Axes
+(whereupon the operation will be applied), then the result back to the Store in
+column 2.</p>
 
-<p>P prints the result of the last operation to standard output. Run it with <code>java aes card1.ae</code> to see what happens.</p>
+<p>P prints the result of the last operation to standard output. Run it with <code>java
+aes card1.ae</code> to see what happens.</p>
 
-<p><img src="https://raymii.org/s/inc/img/linuxvoice/1/ada2.png" alt="ada2" width="640" height="480"></p>
+<p><img src="https://raymii.org/s/inc/img/linuxvoice/1/ada2.png" alt="ada2"></p>
 
 <blockquote>
-<p>The Analytical Engine emulator running a test card (in the Vim window), which subtracts 38888 from 0.</p>
+<p>The Analytical Engine emulator running a test card (in the Vim window), which
+subtracts 38888 from 0.</p>
 </blockquote>
 
 <p>In fact, you could miss out the second line, and transfer the value from Store
@@ -265,9 +269,11 @@ S001
 P
 </code></pre>
 
-<p>Replacing the first <code>L000</code> with <code>Z000</code> won&#39;t work, as this zeros the Store column after transfer. </p>
+<p>Replacing the first <code>L000</code> with <code>Z000</code> won&#39;t work, as this zeros the Store
+column after transfer.</p>
 
-<p>This card also includes a comment line. Comments begin with a space or a dot in column 1 of the card.</p>
+<p>This card also includes a comment line. Comments begin with a space or a dot in
+column 1 of the card.</p>
 
 <p>To do more operations, you need to replace both values on the Ingress Axes -
 they are discarded after their use in a computation. Each time two arguments go
@@ -374,7 +380,7 @@ interest to theoretical mathematicians) using the Engine.</p>
 emulator.Download the full code from the LV website; here we&#39;ll look at the
 structure and ideas.</p>
 
-<p><img src="https://raymii.org/s/inc/img/linuxvoice/1/ada3.png" alt="ada3" width="640" height="480"></p>
+<p><img src="https://raymii.org/s/inc/img/linuxvoice/1/ada3.png" alt="ada3"></p>
 
 <blockquote>
 <p>Ada Lovelace&#39;s equation for deriving the Bernoulli numbers.</p>
@@ -609,7 +615,8 @@ into Engine-operations; or, as we now think of it, assembly language. In theory
 you could even write a compiler in Engine code</p>
 
 <blockquote>
-<p>Juliet Kemp is a scary polymath, and is the author of O&#39;Reilly&#39;s Linux System Administration Recipes</p>
+<p>Juliet Kemp is a scary polymath, and is the author of O&#39;Reilly&#39;s Linux System
+Administration Recipes</p>
 </blockquote>
 </div><hr>Tags: <a href="../tags/ada.html" class="link">ada &nbsp;</a><a href="../tags/ada-lovelace.html" class="link">ada-lovelace &nbsp;</a><a href="../tags/analytical-engine.html" class="link">analytical-engine &nbsp;</a><a href="../tags/bernoulli.html" class="link">bernoulli &nbsp;</a><a href="../tags/difference-engine.html" class="link">difference-engine &nbsp;</a><a href="../tags/linux-voice.html" class="link">linux-voice &nbsp;</a><a href="../tags/linux-voice-issue-1-2014.html" class="link">linux-voice-issue-1-2014 &nbsp;</a><a href="../tags/math.html" class="link">math &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><div class="footer">
                 <hr>
