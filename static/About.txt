@@ -9,19 +9,34 @@ Format      : 	Markdown/HTML
 
 
 
-Hi there! I'm Remy, a Linux/UNIX sysadmin; my primary focus is on **building
-high-available cloud environments in OpenStack, Azure or on premise with Ansible
-and Terraform** (or any other configuration management tool). My keywords are
+Hi there! I'm Remy, a developer with a focus on C, C++, linux and embedded systems.
+
+I currently work for [De Jong DUKE][11] were I develop software for an embedded 
+platform that powers coffee machines. This is a C++, C and Qt stack running
+on Yocto linux and [Nucleus RTOS][12]. It controls hardware, runs the UI and has 
+a few utilities for IoT connectivity and configuration. Technology is mostly
+C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.
+
+I've been a Linux/UNIX sysadmin for over 10 years; I've built high-available 
+cloud environments in OpenStack, Azure or on premise with Ansible and Terraform
+(or any other configuration management tool). My sysadmin keywords are
 OpenStack, cloud, virtualization, high-availability, scaling and clustering,
-security, (Open)SSL, Python, Powershell, Bash and general linux/UNIX system
-administration. Besides that I also develop [software][1].
+security, (Open)SSL, Python, Powershell, bash and general linux/UNIX system
+administration. 
 
-I currently work for [VolkerWessels][2], the largest Dutch civil engineering
-construction company as an (Azure) cloud specialist.
+I've worked in a devops role for [the Erasmus University Medical Center][3] (a
+large hospital and medical university in Rotterdam), [Digidentity][4] (a Dutch
+[certificate authority][5], the company that develops [DigiD][6] and other Ruby
+on Rails applications), [CloudVPS][7] (an OpenStack cloud provider), 
+[VolkerWessels][2] (as an Azure cloud specialist) and a few other smaller
+companies. 
 
-I've worked as a sysadmin (in a devops role) for [the Erasmus University Medical Center][3] (a large hospital and medical university in Rotterdam), [Digidentity][4] (a Dutch [certificate authority][5], the company that develops [DigiD][6] and other Ruby on Rails applications), [CloudVPS][7] (an OpenStack cloud provider) and a few other smaller companies. I like to design, build, document and manage large, complex and high-available systems. I'm a team player that loves to work with configuration management tools and version control systems. If I do something more than three times, I automate it. **Planning, documentation, monitoring and backups are things I do first, not when the time allows it later.** Last but not least I have an interest in legacy systems like the PDP-11, PDP-8 and operating systems like OpenVMS, HP-UX and old UNIX systems.
-
-To get in touch, [click here][8].
+I design, build, document and manage large, complex and high-available systems.
+I'm a team player that loves to work with configuration management tools and
+version control systems. If I do something more than three times, I automate it.
+**Planning, documentation, monitoring and backups are things I do first, not
+when the time allows it later.** Last but not least I have an interest in legacy
+systems like the PDP-11, PDP-8, OpenVMS, HP-UX and old UNIX systems.
 
 This is my personal website, please do note that these articles do not reflect
 or are based on work, opinions or policies of any of my (previous) employers.
@@ -138,8 +153,6 @@ adblocker like ublock-origin if you don't want it.
 All the code on this website is licensed under the GNU GPL v3 license unless
 already licensed under a license which does not allows this form of licensing or
 if another license is stated on that page / in that software:
-
-    
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -170,6 +183,8 @@ you have any questions then do not hesitate to contact me.
    [8]: https://raymii.org/s/static/About.html
    [9]: https://raymii.org/s/inc/img/hits-2018.png
    [10]: http://pool.sks-keyservers.net/pks/lookup?op=vindex&search=0x1B7F88DC&fingerprint=on
+   [11]: http://www.dejongduke.nl/
+   [12]: https://en.wikipedia.org/wiki/Nucleus_RTOS
 
 ---
 
