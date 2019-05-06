@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)
 Author      : 	Remy van Elst
 Date        : 	07-12-2016
+Last update : 	07-05-2018
 URL         : 	https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html
 Format      : 	Markdown/HTML
 ---
@@ -97,7 +98,19 @@ was 1.2 MB large as far as I can [find][9].
 
 ![rx02][10]
 
-> On the left an RX02 diskette and on the right an RX50 diskette. ([source][11])
+> On the left an RX01 or RX02 diskette and on the right an RX50 diskette. ([source][11])
+
+* Update 2019-05-07, thanks to Doug. Doug wrote in, quoting verbatim:
+
+    The RX01 and RX02 are both 8 inch diameter floppy disks.  They are single
+    sided media.  The RX50 is a 5.25 inch single sided diskette with 10 sectors
+    per track and 80 tracks.  There were 512 bytes per sector making this about
+    a 400kb diskette.  The diskette on the left is the RX50 and the diskette on
+    the right is either an RX01 or RX02.  The RX01 was formatted in an industry
+    standard with 26 sectors and 77 tracks.  Each sector was 128 bytes.  The
+    RX02 has 256 bytes per sector.  The RX01 could hold 256kb and the RX02 could
+    hold 512kb.  I never saw an RX50 on a PDP-8.  There was no support for it in
+    OS/8 V3.
 
 We will not create a simh ini file just yet. Fire off the emulator in this
 folder:

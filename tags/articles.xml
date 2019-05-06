@@ -52,6 +52,15 @@
             </item>
     
             <item>
+                <title>Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)</title> 
+                <link>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</link> 
+                <guid>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</guid>
+                <description>This guide shows you how to build an RK05 bootable system disk with OS/8 on it for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build source, copy over all the files and set up the LPT printer and the PTR/PIP paper tape punch/readers. As an added bonus the article also shows you how to get text files in and out of the PDP-8 sytem using the printer and papertape reader / puncher.</description> 
+                <pubDate>Wed, 07 Dec 2016 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 07 May 2018 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Essential Monitoring checks</title> 
                 <link>https://raymii.org/s/articles/Essential_Monitoring_checks.html</link> 
                 <guid>https://raymii.org/s/articles/Essential_Monitoring_checks.html</guid>
@@ -130,15 +139,6 @@
                 <description>This article covers running WPS-8 on a modern day emulator. WPS-8 is a word processor by DEC for the PDP-8. The PDP-8 was a very populair 12-bit minicomputer from 1965. WPS-8 was released around 1970, it came bundled with DEC's VT78 terminal. This terminal bundle was also known as the DECmate. This article covers the setup of the emulator, simh with the correct disk images and terminal settings. It covers basic usage and the features of WPS-8 and it has a section on key remapping. The early keyboards used with WPS-8 have small but incompatible differences with recent keyboards, but nothing that xterm remapping can't fix. </description> 
                 <pubDate>Thu, 09 Mar 2017 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 09 Mar 2017 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)</title> 
-                <link>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</link> 
-                <guid>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</guid>
-                <description>This guide shows you how to build an RK05 bootable system disk with OS/8 on it for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build source, copy over all the files and set up the LPT printer and the PTR/PIP paper tape punch/readers. As an added bonus the article also shows you how to get text files in and out of the PDP-8 sytem using the printer and papertape reader / puncher.</description> 
-                <pubDate>Wed, 07 Dec 2016 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 07 Dec 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -232,20 +232,20 @@
             </item>
     
             <item>
-                <title>Let's Encrypt with DirectAdmin, now built in!</title> 
-                <link>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</link> 
-                <guid>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</guid>
-                <description>Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. This article shows you how to setup Let's Encrypt with the DirectAdmin web control panel. DirectAdmin now supports Lets Encrypt natively since 1.50, so no more ssh fiddling, just via the control panel, for all the users on the server.</description> 
-                <pubDate>Wed, 24 Feb 2016 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 24 Feb 2016 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>Let's Encrypt with DirectAdmin or other Web Control Panels</title> 
                 <link>https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html</link> 
                 <guid>https://raymii.org/s/articles/Lets_Encrypt_Directadmin.html</guid>
                 <description>Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. This article shows you how to setup Let's Encrypt with the DirectAdmin web control panel. The guide is generic, so it works for other controlpanels as well. For now it works with the beta, and required some linux knowledge and root access to the hosting server.</description> 
                 <pubDate>Sun, 11 Jan 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 24 Feb 2016 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Let's Encrypt with DirectAdmin, now built in!</title> 
+                <link>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</link> 
+                <guid>https://raymii.org/s/articles/Lets_Encrypt_Directadmin_Now_Built_In.html</guid>
+                <description>Let's Encrypt is a new certificate authority, recognized by all major browsers. They make it a breeze to set up TLS certificates for your web server. And for free! Let's Encrypt is supported by major players like Mozilla, Akamai, Cisco, the EFF, the Internet Security Research Group and others. Let's Encrypt provides free, automatic and secure certificates so that every website can be secured with an SSL certificate. This article shows you how to setup Let's Encrypt with the DirectAdmin web control panel. DirectAdmin now supports Lets Encrypt natively since 1.50, so no more ssh fiddling, just via the control panel, for all the users on the server.</description> 
+                <pubDate>Wed, 24 Feb 2016 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 24 Feb 2016 00:00:00 GMT</lastBuildDate>
             </item>
     
@@ -331,19 +331,19 @@
             </item>
     
             <item>
-                <title>OpenSSL: Manually verify a certificate against a CRL</title> 
-                <link>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</link> 
-                <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
-                <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
+                <title>Keep messages secure with GPG</title> 
+                <link>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</link> 
+                <guid>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</guid>
+                <description>This article shows you how to get started with GPG and Mailvelope. It discusses public/private key crypto and shows you how to use the Mailvelope software to encrypt and decrypt GPG messages on any webmail provider.</description> 
                 <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sun, 22 Mar 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Keep messages secure with GPG</title> 
-                <link>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</link> 
-                <guid>https://raymii.org/s/articles/Keeping_messages_secure_with_GPG.html</guid>
-                <description>This article shows you how to get started with GPG and Mailvelope. It discusses public/private key crypto and shows you how to use the Mailvelope software to encrypt and decrypt GPG messages on any webmail provider.</description> 
+                <title>OpenSSL: Manually verify a certificate against a CRL</title> 
+                <link>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</link> 
+                <guid>https://raymii.org/s/articles/OpenSSL_manually_verify_a_certificate_against_a_CRL.html</guid>
+                <description>This article shows you how to manually verfify a certificate against a CRL. CRL stands for Certificate Revocation List and is one way to validate a certificate status. It is an alternative to the OCSP, Online Certificate Status Protocol.</description> 
                 <pubDate>Sun, 22 Mar 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sun, 22 Mar 2015 00:00:00 GMT</lastBuildDate>
             </item>
