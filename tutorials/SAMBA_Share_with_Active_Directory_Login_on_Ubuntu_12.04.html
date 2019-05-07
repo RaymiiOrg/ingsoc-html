@@ -3,11 +3,9 @@
     <html lang="en">
         <head>
         <title>Samba Shares with Active Directory Login on Ubuntu 12.04 - Raymii.org</title>
-        <!-- <link href="/s/inc/css/custom-first.css" rel="stylesheet" />-->
         <link href="/s/inc/css/marx.css" rel="stylesheet"  />
-        <!-- <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
-        <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
-        <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
+        <script src="/s//inc/js/instant.js"></script> 
+        <script src="/s//inc/js/toc.js"></script> 
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="application/opensearchdescription+xml" rel="search" href="/s/inc/opensearch.xml"/>
@@ -20,7 +18,9 @@
         <a class="skip-main" href="#main">Skip to main content</a>
             <header>
                 <h1 class="headheader">
-                    <a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a>
+                    <a href="https://raymii.org/s/">Raymii.org 
+                        <img src="/s/inc/img/resistor-50.png" alt="Logo (IEC resistor symbol)">
+                    </a>
                 </h1>
                 <small>
                   Quis custodiet ipsos custodes?<br>
@@ -32,8 +32,10 @@
                 </small>
             </header>
           
-
-    <h2 class='headheader' id='main'>Samba Shares with Active Directory Login on Ubuntu 12.04</h2><p><small>Published: 27-06-2013 | Author: Remy van Elst | <a href="SAMBA_Share_with_Active_Directory_Login_on_Ubuntu_12.04.txt" class="link">Text only version of this article</small></a></p><div class='ad'>
+    <h2 class='headheader' id='main'>Samba Shares with Active Directory Login on Ubuntu 12.04</h2>
+<p><small>Published: 27-06-2013 | Author: Remy van Elst | <a href="SAMBA_Share_with_Active_Directory_Login_on_Ubuntu_12.04.txt" class="link">Text only version of this article</small></a>
+</p>
+<div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -43,7 +45,12 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div id="toc"><h3>Table of Contents</h3></div><hr><div id="contents"><p>This tutorial shows you how to set up a SAMBA server which authenticates all
+                        </div><br><div id="toc">
+<h3>Table of Contents</h3>
+</div>
+<hr>
+<div id="contents">
+<p>This tutorial shows you how to set up a SAMBA server which authenticates all
 users to an Active Directory, including group based permissions. It uses Samba,
 Winbind, Kerberos and nsswitch. This allows you to have a Linux machine serving
 files via SMB, where your authentication and autorization for the files and
@@ -445,7 +452,20 @@ the capitalization and spelling is correct in the <code>valid users</code> part 
 samba config file, and also check the permissions on the folders themselves with
 <code>ls -la</code>. You can set <code>valid users = any</code> to make check if there are errors or
 not. The <code>testparm</code> command is also very helpful for the samba config file part.</p>
-Tags: <a href="../tags/active-directory.html" class="link">active-directory</a>, <a href="../tags/kerberos.html" class="link">kerberos</a>, <a href="../tags/ldap.html" class="link">ldap</a>, <a href="../tags/microsoft.html" class="link">microsoft</a>, <a href="../tags/nsswitch.html" class="link">nsswitch</a>, <a href="../tags/samba.html" class="link">samba</a>, <a href="../tags/smb.html" class="link">smb</a>, <a href="../tags/tutorials.html" class="link">tutorials</a>, <a href="../tags/ubuntu.html" class="link">ubuntu</a>, <a href="../tags/winbind.html" class="link">winbind</a></div><br/><footer><br/>
+Tags: <a href="../tags/active-directory.html" class="link">active-directory</a>
+, <a href="../tags/kerberos.html" class="link">kerberos</a>
+, <a href="../tags/ldap.html" class="link">ldap</a>
+, <a href="../tags/microsoft.html" class="link">microsoft</a>
+, <a href="../tags/nsswitch.html" class="link">nsswitch</a>
+, <a href="../tags/samba.html" class="link">samba</a>
+, <a href="../tags/smb.html" class="link">smb</a>
+, <a href="../tags/tutorials.html" class="link">tutorials</a>
+, <a href="../tags/ubuntu.html" class="link">ubuntu</a>
+, <a href="../tags/winbind.html" class="link">winbind</a>
+</div>
+<br/>
+<footer>
+<br/>
                 <form role="search" action="https://encrypted.google.com/search"
                 style="min-width:250px;max-width:300px;">
                     <div class="form-group">
@@ -461,18 +481,17 @@ Tags: <a href="../tags/active-directory.html" class="link">active-directory</a>,
                 <a href="/s/tags/all.html">All pages</a> | 
                 <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
                 Generated by <a href="/s/software/ingsoc.html">ingsoc</a>.</small></p>
-            
+    
     </footer>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-3704876-6');
     </script>
      
+    </main>
     </body>
     </html>
     
