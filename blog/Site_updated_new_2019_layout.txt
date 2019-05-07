@@ -24,6 +24,9 @@ links to the about page and other [Gopherholes][10]. I wanted to replicate that
 layout on the web site, but with a little bit of styling to make it look nicer 
 than just plain text.
 
+If you read these site update articles, please [let me know][14]. I'd like to
+hear your opinion on the new layout.
+
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
@@ -83,6 +86,7 @@ The tags for an item are now comma seperated and the search bar has moved down:
 [11]: https://raymii.org/s/inc/img/2019-no.png
 [12]: https://raymii.org/s/inc/img/2019-lastupdate.png
 [13]: https://raymii.org/s/inc/img/2019-comma.png
+[14]: https://raymii.org/s/static/About.html
 
 ---
 
