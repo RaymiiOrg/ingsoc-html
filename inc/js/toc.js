@@ -16,16 +16,16 @@ window.onload = function () {
         }
 
         if (openLevel > level) {
-          toc += (new Array(openLevel - level + 1)).join("<ol>");
+          toc += (new Array(openLevel - level + 1)).join(""); //<ul>
         } else if (openLevel < level) {
-          toc += (new Array(level - openLevel + 1)).join("</ol>");
+          toc += (new Array(level - openLevel + 1)).join(""); //</ul>
         }
 
         level = parseInt(openLevel);
 
         var anchor = titleText.replace(/ /g, "_");
-        toc += "<li><a href=\"#" + anchor + "\">" + titleText
-          + "</a></li>";
+        toc += "<a href=\"#" + anchor + "\">" + titleText
+          + "</a><br/>";
         
         return "<h" + openLevel + "><a name=\"" + anchor + "\">"
           + titleText + "</a></h" + closeLevel + ">";
@@ -33,7 +33,7 @@ window.onload = function () {
     );
 
   if (level) {
-    toc += (new Array(level + 1)).join("</ol>");
+    toc += (new Array(level + 1)).join(""); //</ul>
   }
 
   document.getElementById("toc").innerHTML += toc;

@@ -3,9 +3,9 @@
     <html lang="en">
         <head>
         <title>Openstack Horizon installation with SSL on Ubuntu - Raymii.org</title>
-        <link href="/s/inc/css/custom-first.css" rel="stylesheet" />
-        <!-- <link href="/s/inc/css/light.css" rel="stylesheet"  />
-        # <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
+        <!-- <link href="/s/inc/css/custom-first.css" rel="stylesheet" />-->
+        <link href="/s/inc/css/marx.css" rel="stylesheet"  />
+        <!-- <link href="/s/inc/css/custom.css" rel="stylesheet" title="custom" />-->
         <script src="/s//inc/js/instant.js" type="text/javascript"></script> 
         <script src="/s//inc/js/toc.js" type="text/javascript"></script> 
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -14,51 +14,25 @@
         <link rel="alternate" type="application/rss+xml" title="RSS Feed for Raymii.org" href="https://raymii.org/s/feed.xml" />
     </head>
     <body>
-        <a class="skip-main" href="#main">Skip to main content</a>
+        
         <a id="top-of-page"></a>
-        <div class="container-fluid ">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-3 col-sm-3 max-200">
-                        <div class="well well-none"> 
-                            <h3 class="headheader"><a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a></h3>
-                            <h6 class="headheader">Quis custodiet ipsos custodes?</h6>
-                            <h6><a href="https://raymii.org/s/feed.xml">RSS Feed</a> | <a href="gopher://raymii.org:70">Gopher</a></h6>
-                        </div>
+        <main>
+        <a class="skip-main" href="#main">Skip to main content</a>
+            <header>
+                <h1 class="headheader">
+                    <a href="https://raymii.org/s/">Raymii.org <img src="/s/inc/img/resistor-50.png"></a>
+                </h1>
+                <small>
+                  Quis custodiet ipsos custodes?<br>
+                  <a href="/s/">Home</a> | 
+                  <a href="/s/tags/all.html">All pages</a> | 
+                  <a href="https://raymii.org/s/feed.xml">RSS Feed</a> | 
+                  <a href="gopher://raymii.org:70">Gopher</a>
+                </small>
+            </header>
           
 
-    
-    <form role="search" action="https://encrypted.google.com/search">
-        <div class="form-group">
-          <input type="hidden" name="as_sitesearch" value="raymii.org">
-          <input type="hidden" name="as_qdr" value="all">
-          <input type="text" name="as_q" class="form-control" placeholder="Search">
-        </div>
-      </form>
-      <div class="menu"><ul class="nav nav-pills nav-stacked"><li><a href="/s/index.html" class="special-menu">Home</a></li><li class='bottom-spacing'><a href="/s/tags/all.html" class="special-menu">All Pages</a></li><li class='hideifsmall'><a href="/s/tags/articles.html" class="link">Articles</a></li>
-<li class='hideifsmall'><a href="/s/tags/blog.html" class="link">Blog</a></li>
-<li class='hideifsmall'><a href="/s/tags/tutorials.html" class="link">Tutorials</a></li>
-<li class='hideifsmall'><a href="/s/tags/ansible.html" class="link">Ansible</a></li><li class='hideifsmall'><a href="/s/tags/openstack.html" class="link">Openstack</a></li><li class='hideifsmall'><a href="/s/tags/bash.html" class="link">Bash</a></li><li class='hideifsmall'><a href="/s/tags/ssl.html" class="link">SSL</a></li><li class='hideifsmall'><a href="/s/tags/monitoring.html" class="link">Monitoring</a></li><li class='hideifsmall'><a href="/s/tags/ubuntu.html" class="link">Ubuntu</a></li><li class='hideifsmall'><a href="/s/tags/openvms.html" class="link">OpenVMS</a></li></ul>            
-               <!-- advertisement start -->
-                <a href="https://www.digitalocean.com/?refcode=7435ae6b8212"><img src="https://raymii.org/s/inc/img/banner_trans.png"></a><br>
-                <a href="http://clients.inceptionhosting.com/aff.php?aff=083">Inception Hosting referral</a><br />
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Raymii-2 -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:200px;height:200px"
-                     data-ad-client="ca-pub-7993642564731324"
-                     data-ad-slot="9322003332"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <!-- advertisement end -->
-                </div>
-           </div>  
-           <div class="col-md-8 col-sm-8"> 
-                <div class="inner">
-                <div id="main"></div>
-
-           <h2 class='headheader' id='main'>Openstack Horizon installation with SSL on Ubuntu</h2><ul class="breadcrumb"><li><a href="../index.html" class="link">Home</a></li><li><a href="../tags/tutorials.html" class="link">Tutorials</a></li><li><a href="Openstack-Set-Up-Horizon-Dashboard-on-Ubuntu.html" class="link">Openstack Horizon installation with SSL on Ubuntu</a></li></ul><p><small>Published: 29-05-2014</small> | <small>Author: Remy van Elst | </small><a href="Openstack-Set-Up-Horizon-Dashboard-on-Ubuntu.txt" class="link"><small>Text only version of this article</small></a></p><div class='ad'>
+    <h2 class='headheader' id='main'>Openstack Horizon installation with SSL on Ubuntu</h2><p><small>Published: 29-05-2014 | Author: Remy van Elst | <a href="Openstack-Set-Up-Horizon-Dashboard-on-Ubuntu.txt" class="link">Text only version of this article</small></a></p><div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- voorartikel -->
                             <ins class="adsbygoogle"
@@ -241,17 +215,21 @@ this:</p>
 
 <p>I&#39;ve also written an simple Ansible playbook to install a Horizon instance. You
 can find it in this <a href="https://github.com/RaymiiOrg/ansible-openstack-horizon-dashboard">Github repository.</a></p>
-</div><hr>Tags: <a href="../tags/cloud.html" class="link">cloud &nbsp;</a><a href="../tags/compute.html" class="link">compute &nbsp;</a><a href="../tags/dashboard.html" class="link">dashboard &nbsp;</a><a href="../tags/gpg.html" class="link">gpg &nbsp;</a><a href="../tags/horizon.html" class="link">horizon &nbsp;</a><a href="../tags/keystone.html" class="link">keystone &nbsp;</a><a href="../tags/openstack.html" class="link">openstack &nbsp;</a><a href="../tags/python.html" class="link">python &nbsp;</a><a href="../tags/tutorials.html" class="link">tutorials &nbsp;</a><a href="../tags/ubuntu.html" class="link">ubuntu &nbsp;</a><div class="footer">
-                <hr>
+Tags: <a href="../tags/cloud.html" class="link">cloud</a>, <a href="../tags/compute.html" class="link">compute</a>, <a href="../tags/dashboard.html" class="link">dashboard</a>, <a href="../tags/gpg.html" class="link">gpg</a>, <a href="../tags/horizon.html" class="link">horizon</a>, <a href="../tags/keystone.html" class="link">keystone</a>, <a href="../tags/openstack.html" class="link">openstack</a>, <a href="../tags/python.html" class="link">python</a>, <a href="../tags/tutorials.html" class="link">tutorials</a>, <a href="../tags/ubuntu.html" class="link">ubuntu</a></div><br/><footer><br/>
+                <form role="search" action="https://encrypted.google.com/search"
+                style="min-width:250px;max-width:300px;">
+                    <div class="form-group">
+                      <input type="hidden" name="as_sitesearch" value="raymii.org">
+                      <input type="hidden" name="as_qdr" value="all">
+                      <input type="text" name="as_q" class="form-control" placeholder="Search">
+                    </div>
+                  </form>
+                <br>
                 <p>Generated by <a href="/s/software/ingsoc.html">ingsoc</a> | 
                 <a href="/s/software/Sparkling_Network.html">Cluster Status</a> | 
                 <a href="/s/static/About.html">About</a><br />
-                </div>
-            </div>
-        </div>
-    </div>  
-    </div>
-    </div>
+            
+    </footer>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3704876-6"></script>
     <script>

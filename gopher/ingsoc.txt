@@ -92,7 +92,7 @@ this:
     author: "John Doe"
     category: "software"
     date: "29-06-2015"
-    minify: false
+    lastupdate: "05-10-2019"
     summary: "This is a great article about some stuff related to Lorum Ipsum. The summary of this article is even more awesome."
     tags: 
       - example

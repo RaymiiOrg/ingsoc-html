@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/site.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Site updates, new layout</title> 
+                <link>https://raymii.org/s/blog/Site_updated_new_2019_layout.html</link> 
+                <guid>https://raymii.org/s/blog/Site_updated_new_2019_layout.html</guid>
+                <description>This site is generated with my self-written open source static site generator named ingsoc (named after 1984). I've updated the layout of the website to be less cluttered, allowing you to get to the content much faster. Inspired by my recent gopher adventures I decided to do away with the 2 column layout (drop the sidebar with menu) and have a smaller header with essential links. On mobile this makes a huge difference in scrolling, on the desktop it looks less cluttered. This article details all the changes with side by side images showing differences.</description> 
+                <pubDate>Wed, 08 May 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 08 May 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Convert markdown inline links to reference style links with Pandoc</title> 
                 <link>https://raymii.org/s/articles/Convert_markdown_inline_links_to_reference_style_links_with_Pandoc.html</link> 
                 <guid>https://raymii.org/s/articles/Convert_markdown_inline_links_to_reference_style_links_with_Pandoc.html</guid>
