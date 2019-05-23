@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-05-13T10:55:56	/	localhost	70
+i            2019-05-23T09:13:39	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Match dig 127.0.0.53 server with systemd-resolvd server (23-05-2019)	Match_dig_127.0.0.53_server_with systemd-resolved_server.txt	raymii.org	70
 0Site updates, new layout (08-05-2019)	Site_updated_new_2019_layout.txt	raymii.org	70
 0Bash Bits: Find all files containing specific text (and remove them) (07-05-2019)	Bash_Bits_Find_all_files_containing_specific_text.txt	raymii.org	70
 0Bash Bits: Randomize a cronjob to run between 00:00 and 06:00 hours (06-05-2019)	Bash_Bits_Randomize_cronjob_time.txt	raymii.org	70
