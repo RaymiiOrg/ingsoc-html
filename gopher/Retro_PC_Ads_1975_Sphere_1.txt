@@ -132,7 +132,7 @@ The Sphere 1 had the following specs:
 - 23 key keyboard
 - 1 I/O port
 
-
+[A technical brochure of the Sphere 1 can be found here.][14]
 
 [1]: https://archive.org/details/byte-magazine-1975-09/page/n95
 [2]: https://raymii.org/s/inc/img/retroads/sphere1.png
@@ -146,6 +146,7 @@ The Sphere 1 had the following specs:
 [11]: http://sphere1.yolasite.com/
 [12]: http://www.in2013dollars.com/us/inflation/1975?amount=1345
 [13]: https://history-computer.com/ModernComputer/Personal/Sphere1.html
+[14]: https://raymii.org/s/inc/img/retroads/Sphere1_Brochure.pdf
 
 ---
 
