@@ -34,6 +34,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="articles/Retro_PC_Ads_1975_Sphere_1.html">Retro PC Ads - 1975 Sphere 1</a></h4>
+<small>29-05-2019 | Remy van Elst</small><br />
+<p>In this series of articles I'll cover old computer advertisements. We're starting off with the Sphere 1 from 1975, a computer built around the Motorola 6800.</p>
+<a href="articles/Retro_PC_Ads_1975_Sphere_1.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Match_dig_127.0.0.53_server_with systemd-resolved_server.html">Match dig 127.0.0.53 server with systemd-resolvd server</a></h4>
 <small>23-05-2019 | Remy van Elst</small><br />
 <p>On systems that use systemd-resolved for DNS you will see the 127.0.0.53 IP address in dig output. dig is a tool to do DNS lookups, and for troubleshooting it's usefull to see which server is being queried. With systemd-resolved, you need to issue another command to view the actual server that is being queried, since systemd-resolvd also acts as a local caching server.</p>
@@ -44,15 +49,15 @@
 <p>This site is generated with my self-written open source static site generator named ingsoc (named after 1984). I've updated the layout of the website to be less cluttered, allowing you to get to the content much faster. Inspired by my recent gopher adventures I decided to do away with the 2 column layout (drop the sidebar with menu) and have a smaller header with essential links. On mobile this makes a huge difference in scrolling, on the desktop it looks less cluttered. This article details all the changes with side by side images showing differences.</p>
 <a href="blog/Site_updated_new_2019_layout.html">Read more...</a><br />
 <p></p>
-<h4><a href="snippets/Bash_Bits_Find_all_files_containing_specific_text.html">Bash Bits: Find all files containing specific text (and remove them)</a></h4>
-<small>07-05-2019 | Remy van Elst</small><br />
-<p>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to find all files containing specific text, and how to remove them.</p>
-<a href="snippets/Bash_Bits_Find_all_files_containing_specific_text.html">Read more...</a><br />
-<p></p>
 <h4><a href="articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html">Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)</a></h4>
 <small>Published: 07-12-2016 | Last update: 07-05-2019 | Author: Remy van Elst</small><br />
 <p>This guide shows you how to build an RK05 bootable system disk with OS/8 on it for the PDP-8, in the SIMH emulator. We will use two RX01 floppies as the build source, copy over all the files and set up the LPT printer and the PTR/PIP paper tape punch/readers. As an added bonus the article also shows you how to get text files in and out of the PDP-8 sytem using the printer and papertape reader / puncher.</p>
 <a href="articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html">Read more...</a><br />
+<p></p>
+<h4><a href="snippets/Bash_Bits_Find_all_files_containing_specific_text.html">Bash Bits: Find all files containing specific text (and remove them)</a></h4>
+<small>07-05-2019 | Remy van Elst</small><br />
+<p>Bash Bits are small examples, tips and tutorials for Bash (Scripts). This bash bit shows you how to find all files containing specific text, and how to remove them.</p>
+<a href="snippets/Bash_Bits_Find_all_files_containing_specific_text.html">Read more...</a><br />
 <p></p>
 <h4><a href="snippets/Bash_Bits_Randomize_cronjob_time.html">Bash Bits: Randomize a cronjob to run between 00:00 and 06:00 hours</a></h4>
 <small>06-05-2019 | Remy van Elst</small><br />
@@ -83,11 +88,6 @@
 <small>Published: 14-06-2015 | Last update: 27-04-2019 | Author: Remy van Elst</small><br />
 <p>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</p>
 <a href="tutorials/Strong_SSL_Security_On_lighttpd.html">Read more...</a><br />
-<p></p>
-<h4><a href="software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html">totext.py - Convert URL or RSS feed to text with readability</a></h4>
-<small>18-04-2019 | Remy van Elst</small><br />
-<p> Love plaintext? This script downloads an URL, parses it with readability and returns the plaintext (as markdown). It supports RSS feeds (will convert every article in the feed) and saves every article. My usecase is twofold. One is to convert RSS feeds to a gopher site, the second is to get full text in my RSS reader. The script contains a few workarounds for so-called cookiewalls. It also pauses between RSS feed articles to not do excessive requests. The readability part is handled by Python, no external services are used.</p>
-<a href="software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
