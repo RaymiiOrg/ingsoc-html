@@ -110,7 +110,7 @@ The example `logfile.csv` looks like this after two runs:
 * Use a `struct` with the column data (making the amount of columns expandable)
 * Check if the folder exists
 * Check if the file exists but is empty (then write the header)
-
+* Checking and escaping special characters (like `"` or newlines)
 
 ---
 
