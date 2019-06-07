@@ -127,7 +127,8 @@ The Sphere 1 had the following specs:
 - 4 Kb of RAM, expandable to 16 Kb
 - 1 Kb of ROM for the OS
 - 16x32 character video terminal
-- Optional Modem
+- Optional 600 Baud Modem
+- Optional floppy drive (256,256 bytes, comparable to IBM 3540) 
 - Optional audio cassete tape drive (for storage)
 - 23 key keyboard
 - 1 I/O port

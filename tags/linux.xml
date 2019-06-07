@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/linux.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ create and write to a csv file</title> 
+                <link>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html</guid>
+                <description>In this quick snippet I'll show you how to create and write to a csv file. It includes checking if the file is writable, and if it's not there, creates it with a different first row as header. It's a quick example, I've used it to log some test data. It can probably be improved.</description> 
+                <pubDate>Fri, 07 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 07 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Microsoft Office 2013 and 2010 on Linux</title> 
                 <link>https://raymii.org/s/tutorials/Office_2013_and_2010_on_Linux.html</link> 
                 <guid>https://raymii.org/s/tutorials/Office_2013_and_2010_on_Linux.html</guid>
