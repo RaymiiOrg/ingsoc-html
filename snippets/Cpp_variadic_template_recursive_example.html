@@ -174,14 +174,19 @@ One Two 3.33333
 1 2 3.33333 4 5.7 3 lalala 
 </code></pre>
 
-<h3><strong>PRETTY_FUNCTION</strong></h3>
+<h3>PRETTY_FUNCTION</h3>
 
-<p><code>__PRETTY_FUNCTION__</code> contains the name of the current function as a string, and
+<p><code><strong>PRETTY_FUNCTION</strong></code> contains the name of the current function as a string, and
 for C++ functions (classes, namespaces, templates and overload) it contains the
 <code>pretty</code> name of the function including the signature of the function. It is a
-<code>gcc</code> <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html">extension</a> that is mostly the same as <code>__FUNCTION__</code> or <code>__func__</code>. </p>
+<code>gcc</code> <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html">extension</a> that is mostly the same as <code><strong>FUNCTION</strong></code> or <code><strong>func</strong></code>. </p>
 
-<p>By placing <code>std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; &quot;\n&quot;</code> at the top of the
+<p>By placing </p>
+
+<pre><code>std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; &quot;\n&quot;
+</code></pre>
+
+<p>at the top of the
 function, you can get an overview of what is called and when. Consider the
 following example:</p>
 

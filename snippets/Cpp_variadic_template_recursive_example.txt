@@ -131,15 +131,19 @@ Example output:
     1 2 3.33333 4 5.7 3 lalala 
 
 
-### __PRETTY_FUNCTION__
+### PRETTY_FUNCTION
 
-`__PRETTY_FUNCTION__` contains the name of the current function as a string, and
+<code>__PRETTY_FUNCTION__</code> contains the name of the current function as a string, and
 for C++ functions (classes, namespaces, templates and overload) it contains the
 `pretty` name of the function including the signature of the function. It is a
-`gcc` [extension][4] that is mostly the same as `__FUNCTION__` or `__func__`. 
+`gcc` [extension][4] that is mostly the same as <code>__FUNCTION__</code> or <code>__func__</code>. 
 
 
-By placing `std::cout << __PRETTY_FUNCTION__ << "\n"` at the top of the
+By placing 
+
+    std::cout << __PRETTY_FUNCTION__ << "\n"
+
+at the top of the
 function, you can get an overview of what is called and when. Consider the
 following example:
 
