@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag templates on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/templates.xml</link> 
+            <description>RSS feed for tag templates on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/templates.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>C++ variadic template recursive example</title> 
+                <link>https://raymii.org/s/snippets/Cpp_variadic_template_recursive_example.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_variadic_template_recursive_example.html</guid>
+                <description>In this article I'll show you how to use a variadic template in C++. Variadic templates allow you to have a template with a variable number of arguments, also called a parameter pack. Unpacking that pack is more difficult than it should be, so we use a recursive template to iterate over all the parameters one by one.</description> 
+                <pubDate>Sat, 08 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 08 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    

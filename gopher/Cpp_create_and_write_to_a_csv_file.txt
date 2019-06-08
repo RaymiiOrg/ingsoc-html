@@ -1,6 +1,6 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title       : 	C++ create and write to a csv file
+Title       : 	C++ create and write to a CSV file
 Author      : 	Remy van Elst
 Date        : 	07-06-2019
 URL         : 	https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html
