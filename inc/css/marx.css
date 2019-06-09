@@ -557,7 +557,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #75cc00;;
+  color: inherit;
   font-family: inherit;
   line-height: 1.2;
   font-weight: 500; }
@@ -571,18 +571,22 @@ h2 {
   margin: 20px 0 16px; }
 
 h3 {
+  color: #75cc00;
   font-size: 28px;
   margin: 16px 0 4px; }
 
 h4 {
+  color: #75cc00;
   font-size: 24px;
   margin: 16px 0 4px; }
 
 h5 {
+  color: #75cc00;
   font-size: 20px;
   margin: 16px 0 4px; }
 
 h6 {
+  color: #75cc00;
   font-size: 16px;
   margin: 16px 0 4px; }
 
@@ -982,4 +986,8 @@ a.skip-main:focus, a.skip-main:active {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+#toc h3 {
+  color:black;
 }
