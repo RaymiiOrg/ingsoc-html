@@ -557,7 +557,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: inherit;
+  color: #75cc00;;
   font-family: inherit;
   line-height: 1.2;
   font-weight: 500; }
@@ -602,12 +602,13 @@ pre {
   overflow-wrap: break-word; }
 
 code {
+  background: #f7f7f9;
   color: rgba(0, 0, 0, 0.8);
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 16px;
   line-height: inherit;
   margin: 0;
-  padding: 0;
+  padding: 4px;
   vertical-align: baseline;
   word-break: break-all;
   word-wrap: break-word; }
@@ -975,4 +976,10 @@ a.skip-main:focus, a.skip-main:active {
 .headheader a:hover {
     color:#000;
     text-decoration:none!important
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
