@@ -13,7 +13,7 @@ In this article I'll show you how to use a variadic template in C++. Variadic
 templates allow you to have a template with a variable number of  arguments,
 also called a parameter pack. Unpacking that pack is more difficult than it
 should be, so we use a recursive template to iterate over all the  parameters
-one by one.
+one by one. I've also included an example in Python to compare to.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
@@ -44,10 +44,14 @@ Quoting Kevin from the last linked article:
 `base` case, and a `recursive` case that reduces, eventually, into a `base`
 case. This implies a separate function for each case.
 
-It took me a while to find out how to use the argument pack. Unpacking it to  a
-`std::tuple` is possible, but tricky to use afterwards. By using the ellipsis
-`(...)` operator in the correct place (left or right of a parameter name) we can
-control what happens. 
+It took me a while to find out how to use the argument pack. At the end of this
+article is a comparison to Python, which is what I was used to before going into
+C++. There, you can use `Foo(*args)` or  `Foo(**kwargs)` and a `for` loop. In
+C++ that for loop isn't easily possible. 
+
+Unpacking the pack to a `std::tuple` is possible, but tricky to use afterwards.
+By using the ellipsis `(...)` operator in the correct place (left or right of a
+parameter name) we can control what happens. 
 
 Placing the ellipsis to the left of the parameter name declares an parameter
 pack. You use this in the template declaration, like so:
@@ -70,7 +74,8 @@ need that. The functions could be named different (`Base(Arg)` and
 `Other(First, Args...)` e.g.). 
 
 The `First` argument is required to get the 'One or more' behaviour. If you
-would omit it, `Foo(Args...)` would accept zero or more parameters, but the 
+would omit it, `Foo(Args...)` would accept zero or more parameters. 
+
 
 ### void Foo() example
 
@@ -133,10 +138,18 @@ Example output:
 
 ### PRETTY_FUNCTION
 
-<code>__PRETTY_FUNCTION__</code> contains the name of the current function as a string, and
+    __PRETTY_FUNCTION__
+
+contains the name of the current function as a string, and
 for C++ functions (classes, namespaces, templates and overload) it contains the
 `pretty` name of the function including the signature of the function. It is a
-`gcc` [extension][4] that is mostly the same as <code>__FUNCTION__</code> or <code>__func__</code>. 
+`gcc` [extension][4] that is mostly the same as    
+
+    __FUNCTION__
+
+or 
+
+    __func__
 
 
 By placing 
@@ -178,6 +191,63 @@ Will output:
 
 The first line is the base template. After the newline, the variadic template 
 is called and that calls the base template twice.
+
+### Python
+
+In Python preceding a method parameter with an asterisk (`*args`) defines it as
+a variable non-keyword list of arguments. Preceding with two asterisks
+(`**kwargs`) defines the parameter as a keyworded list of arguments. The
+parameters can be named anything as long as the asterisks are there, but
+convention says to use `*args` and `**kwargs`.
+
+
+
+A small example of the above `Foo()` method in Python. Newline printing is
+omited by appending the comma (`,`) to the `print()` function.
+
+    #!/usr/bin/python
+
+    def Foo(first, *argv):
+        print(first),
+        print(" "),
+        for arg in argv:
+            print(arg),
+            print(" "),
+        print("")
+            
+
+    bla = "Hello"
+    Foo('one')
+    Foo('one', 'two')
+    Foo('Remy', 2, 2.4, bla)
+
+Output:
+
+    $ python test.py
+    one
+    one   two
+    Remy   2   2.4   Hello
+
+An example using keyworded args (`**kwargs`):
+
+    #!/usr/bin/python
+    def Foo2(**kwargs):
+        if kwargs:
+            for key, value in kwargs.iteritems():
+                print("%s: %s, ") % (key,value),
+        print("")
+
+    bla = "Hello"
+    Foo2(first='one')
+    Foo2(first='one', second='two')
+    Foo2(first='one', second='two', three=3, var=bla)
+
+Output:
+
+    first: one,
+    second: two,  first: one,
+    var: Hello,  second: two,  three: 3,  first: one,
+
 
 [1]: http://web.archive.org/web/20190608070158/https://eli.thegreenplace.net/2014/variadic-templates-in-c/
 [2]: https://en.wikipedia.org/wiki/Variadic_template

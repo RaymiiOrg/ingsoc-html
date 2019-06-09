@@ -53,7 +53,7 @@
 templates allow you to have a template with a variable number of  arguments,
 also called a parameter pack. Unpacking that pack is more difficult than it
 should be, so we use a recursive template to iterate over all the  parameters
-one by one.</p>
+one by one. I&#39;ve also included an example in Python to compare to.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
@@ -84,10 +84,14 @@ introduction.</p>
 case. This implies a separate function for each case.</p>
 </blockquote>
 
-<p>It took me a while to find out how to use the argument pack. Unpacking it to  a
-<code>std::tuple</code> is possible, but tricky to use afterwards. By using the ellipsis
-<code>(...)</code> operator in the correct place (left or right of a parameter name) we can
-control what happens. </p>
+<p>It took me a while to find out how to use the argument pack. At the end of this
+article is a comparison to Python, which is what I was used to before going into
+C++. There, you can use <code>Foo(*args)</code> or  <code>Foo(**kwargs)</code> and a <code>for</code> loop. In
+C++ that for loop isn&#39;t easily possible. </p>
+
+<p>Unpacking the pack to a <code>std::tuple</code> is possible, but tricky to use afterwards.
+By using the ellipsis <code>(...)</code> operator in the correct place (left or right of a
+parameter name) we can control what happens. </p>
 
 <p>Placing the ellipsis to the left of the parameter name declares an parameter
 pack. You use this in the template declaration, like so:</p>
@@ -112,7 +116,7 @@ need that. The functions could be named different (<code>Base(Arg)</code> and
 <code>Other(First, Args...)</code> e.g.). </p>
 
 <p>The <code>First</code> argument is required to get the &#39;One or more&#39; behaviour. If you
-would omit it, <code>Foo(Args...)</code> would accept zero or more parameters, but the </p>
+would omit it, <code>Foo(Args...)</code> would accept zero or more parameters. </p>
 
 <h3>void Foo() example</h3>
 
@@ -176,10 +180,21 @@ One Two 3.33333
 
 <h3>PRETTY_FUNCTION</h3>
 
-<p><code><strong>PRETTY_FUNCTION</strong></code> contains the name of the current function as a string, and
+<pre><code>__PRETTY_FUNCTION__
+</code></pre>
+
+<p>contains the name of the current function as a string, and
 for C++ functions (classes, namespaces, templates and overload) it contains the
 <code>pretty</code> name of the function including the signature of the function. It is a
-<code>gcc</code> <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html">extension</a> that is mostly the same as <code><strong>FUNCTION</strong></code> or <code><strong>func</strong></code>. </p>
+<code>gcc</code> <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html">extension</a> that is mostly the same as    </p>
+
+<pre><code>__FUNCTION__
+</code></pre>
+
+<p>or </p>
+
+<pre><code>__func__
+</code></pre>
 
 <p>By placing </p>
 
@@ -223,10 +238,69 @@ void Foo(Arg) [with Arg = const char*]
 
 <p>The first line is the base template. After the newline, the variadic template 
 is called and that calls the base template twice.</p>
+
+<h3>Python</h3>
+
+<p>In Python preceding a method parameter with an asterisk (<code>*args</code>) defines it as
+a variable non-keyword list of arguments. Preceding with two asterisks
+(<code>**kwargs</code>) defines the parameter as a keyworded list of arguments. The
+parameters can be named anything as long as the asterisks are there, but
+convention says to use <code>*args</code> and <code>**kwargs</code>.</p>
+
+<p>A small example of the above <code>Foo()</code> method in Python. Newline printing is
+omited by appending the comma (<code>,</code>) to the <code>print()</code> function.</p>
+
+<pre><code>#!/usr/bin/python
+
+def Foo(first, *argv):
+    print(first),
+    print(&quot; &quot;),
+    for arg in argv:
+        print(arg),
+        print(&quot; &quot;),
+    print(&quot;&quot;)
+
+
+bla = &quot;Hello&quot;
+Foo(&#39;one&#39;)
+Foo(&#39;one&#39;, &#39;two&#39;)
+Foo(&#39;Remy&#39;, 2, 2.4, bla)
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>$ python test.py
+one
+one   two
+Remy   2   2.4   Hello
+</code></pre>
+
+<p>An example using keyworded args (<code>**kwargs</code>):</p>
+
+<pre><code>#!/usr/bin/python
+def Foo2(**kwargs):
+    if kwargs:
+        for key, value in kwargs.iteritems():
+            print(&quot;%s: %s, &quot;) % (key,value),
+    print(&quot;&quot;)
+
+bla = &quot;Hello&quot;
+Foo2(first=&#39;one&#39;)
+Foo2(first=&#39;one&#39;, second=&#39;two&#39;)
+Foo2(first=&#39;one&#39;, second=&#39;two&#39;, three=3, var=bla)
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>first: one,
+second: two,  first: one,
+var: Hello,  second: two,  three: 3,  first: one,
+</code></pre>
 Tags: <a href="../tags/c++.html">c++</a>
 , <a href="../tags/cpp.html">cpp</a>
 , <a href="../tags/development.html">development</a>
 , <a href="../tags/linux.html">linux</a>
+, <a href="../tags/python.html">python</a>
 , <a href="../tags/snippets.html">snippets</a>
 , <a href="../tags/software.html">software</a>
 , <a href="../tags/templates.html">templates</a>

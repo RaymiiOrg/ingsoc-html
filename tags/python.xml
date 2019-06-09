@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/python.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ variadic template recursive example</title> 
+                <link>https://raymii.org/s/snippets/Cpp_variadic_template_recursive_example.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_variadic_template_recursive_example.html</guid>
+                <description>In this article I'll show you how to use a variadic template in C++. Variadic templates allow you to have a template with a variable number of arguments, also called a parameter pack. Unpacking that pack is more difficult than it should be, so we use a recursive template to iterate over all the parameters one by one. I've also included an example in Python to compare to.</description> 
+                <pubDate>Sat, 08 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 08 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Site updates, new layout</title> 
                 <link>https://raymii.org/s/blog/Site_updated_new_2019_layout.html</link> 
                 <guid>https://raymii.org/s/blog/Site_updated_new_2019_layout.html</guid>
