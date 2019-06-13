@@ -57,10 +57,10 @@
 <a href="#toc_2">No matching constructor for initialization of Class&lt;T1, T2&gt;</a>
 </li>
 <li>
-<a href="#toc_3">The code</a>
+<a href="#toc_3">Static methods?</a>
 </li>
 <li>
-<a href="#toc_4">Static methods?</a>
+<a href="#toc_4">The code</a>
 </li>
 </ul>
 
@@ -141,7 +141,13 @@ public:
 handle. It doesn&#39;t matter if I provide my <code>Grams</code> as a <code>double</code>, <code>int</code> or even
 <code>long long</code>, all will work. You probably do need to make some partial template
 specialization to get the correct behaviour, but that outside of the scope of 
-this example. If you&#39;re worried about overhead, the compiler will probably
+this example. </p>
+
+<p>You could also still pass <code>Grams</code> to something that wants <code>Milliliters</code> if that
+class accepts any <code>Amount</code> as its parameter. If you limit it to <code>Grams</code> it will
+still accept <code>Milliliters</code> due to the inheretance.</p>
+
+<p>If you&#39;re worried about overhead, the compiler will probably
 optimize it all away to a basic type. And, if you&#39;re worried about overhead, 
 why are you even looking at templates?</p>
 
@@ -184,7 +190,7 @@ Oven&lt;Ingredient&lt;Milliliters&lt;double&gt;&gt;, Ingredient&lt;Grams&lt;int&
 <p>You might already see the problem, I did not however. I kept getting hit with:</p>
 
 <pre><code>No matching constructor for initialization of
-&#39;Bowl&lt;Ingredient&lt;Milliliters&lt;double&gt; &gt;, Ingredient&lt;Grams&lt;int&gt; &gt; &gt;&#39;
+&#39;Oven&lt;Ingredient&lt;Milliliters&lt;double&gt; &gt;, Ingredient&lt;Grams&lt;int&gt; &gt; &gt;&#39;
 </code></pre>
 
 <p>After trying different versions of the <code>Oven</code> class, different iterations of 
@@ -205,7 +211,28 @@ to get a better understanding of the thing I&#39;m learning as to when I just fo
 a book. I do need the book, but by actually working on the covered topics I 
 internalize the knowledge much better.</p>
 
-<h3 id="toc_3">The code</h3>
+<h3 id="toc_3">Static methods?</h3>
+
+<p>If you would make the method <code>static</code> (thus being able to allocate it without
+declaring a variable), normally you would place the <code>static</code> keyword before 
+the method. If you try that with a template class you&#39;ll get an error:</p>
+
+<pre><code>error: a storage class can only be specified for objects and functions
+</code></pre>
+
+<p>For a template the static keyword is not required. The following:</p>
+
+<pre><code>Ingredient&lt;Milliliters&lt;int&gt;&gt; Beer(Milliliters&lt;int&gt;(30), &quot;Beer&quot;);
+Ingredient&lt;Milliliters&lt;int&gt;&gt; Whiskey(Milliliters&lt;int&gt;(15), &quot;Whiskey&quot;);
+</code></pre>
+
+<p>works without issues. With the above code it prints:</p>
+
+<pre><code>Ingredient name: Beer, amount: 30
+Ingredient name: Whiskey, amount: 15
+</code></pre>
+
+<h3 id="toc_4">The code</h3>
 
 <p>This was my example template experiment code, after I fixed the error:</p>
 
@@ -291,27 +318,6 @@ int main() {
 
     return 0;
 } 
-</code></pre>
-
-<h3 id="toc_4">Static methods?</h3>
-
-<p>If you would make the method <code>static</code> (thus being able to allocate it without
-declaring a variable), normally you would place the <code>static</code> keyword before 
-the method. If you try that with a template class you&#39;ll get an error:</p>
-
-<pre><code>error: a storage class can only be specified for objects and functions
-</code></pre>
-
-<p>For a template the static keyword is not required. The following:</p>
-
-<pre><code>Ingredient&lt;Milliliters&lt;int&gt;&gt; Beer(Milliliters&lt;int&gt;(30), &quot;Beer&quot;);
-Ingredient&lt;Milliliters&lt;int&gt;&gt; Whiskey(Milliliters&lt;int&gt;(15), &quot;Whiskey&quot;);
-</code></pre>
-
-<p>works without issues. With the above code it prints:</p>
-
-<pre><code>Ingredient name: Beer, amount: 30
-Ingredient name: Whiskey, amount: 15
 </code></pre>
 Tags: <a href="../tags/blog.html">blog</a>
 , <a href="../tags/c++.html">c++</a>
