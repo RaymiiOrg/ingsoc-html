@@ -49,6 +49,19 @@ article is a comparison to Python, which is what I was used to before going into
 C++. There, you can use `Foo(*args)` or  `Foo(**kwargs)` and a `for` loop. In
 C++ that for loop isn't easily possible. 
 
+Quoting [davmac][5] from lobste.rs who has an explanation on why this is not as 
+easy as I would hope:
+
+> C++ for loops were traditionally a run-time loop and so they don't apply to
+parameter packs which are a compile-time construct only. While a for loop can
+now be evaluated at compile time (in a constexpr function) their syntax and
+semantics are unchanged in that case, i.e. they still apply to constructs that
+are (or at least which can also be) run-time. Allow for loops to iterate through
+parameter packs would require new syntax and semantics in a language that many
+feel is already getting too complex. That said I suspect you could do this with
+something more like a regular loop with C++2x features (or possibly even C++17,
+I havent been keeping up to well) e.g. with template lambdas.
+
 Unpacking the pack to a `std::tuple` is possible, but tricky to use afterwards.
 By using the ellipsis `(...)` operator in the correct place (left or right of a
 parameter name) we can control what happens. 
@@ -253,6 +266,7 @@ Output:
 [2]: https://en.wikipedia.org/wiki/Variadic_template
 [3]: http://web.archive.org/web/20190608183836/https://kevinushey.github.io/blog/2016/01/27/introduction-to-c++-variadic-templates/
 [4]: https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html
+[5]: http://web.archive.org/web/20190613053209/https://lobste.rs/s/qswclv/variadic_templates_vs_kwargs_c_makes_it
 
 ---
 
