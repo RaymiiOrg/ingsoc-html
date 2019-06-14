@@ -196,8 +196,12 @@ This is an overview of all the servers in the Sparkling Network, including speci
    </tbody>
 </table>
 
-[Broken link on purpose](http://jidlfxgjksfdhgd.nl/asds)
 
+Here be dragons!
+
+LEFT SINGLE QUOTATION MARK:   ' 
+RIGHT SINGLE QUOTATION MARK:  ' 
+EM DASH:                      -- 
 
 
 ---

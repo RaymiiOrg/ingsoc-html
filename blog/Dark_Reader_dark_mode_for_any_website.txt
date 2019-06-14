@@ -46,6 +46,8 @@ comprehensive so that's always a great thing for a project.
 [3]: https://github.com/darkreader/darkreader
 [4]: https://opencollective.com/darkreader
 
+
+
 ---
 
 License:

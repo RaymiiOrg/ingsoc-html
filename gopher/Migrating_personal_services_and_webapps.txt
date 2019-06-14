@@ -199,6 +199,9 @@ I'd like to thank [Digital Ocean][2] again for the generous credit. It was the
 thing that pushed me over the edge to plan and do this consolidation and
 migration.
 
+
+
+
    [1]: https://raymii.org/s/inc/img/ubuntu-16.04.png
    [2]: https://www.digitalocean.com/?refcode=7435ae6b8212
    [3]: https://ssldecoder.org
