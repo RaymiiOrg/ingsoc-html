@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	C++ create and write to a CSV file
 Author      : 	Remy van Elst
 Date        : 	07-06-2019
+Last update : 	16-06-2019
 URL         : 	https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html
 Format      : 	Markdown/HTML
 ---
@@ -14,6 +15,9 @@ includes checking if the file is writable, and if it's not there, creates it
 with a different first row as header. It's a quick example, I've  used it to log
 some test data. It can probably be improved. It does use a mutex and `guard_lock`
 so it should be thread safe.
+
+I've updated this snippet to use a variadic template. [Click here to view the
+new snippet][1].
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
@@ -111,6 +115,8 @@ The example `logfile.csv` looks like this after two runs:
 * Check if the folder exists
 * Check if the file exists but is empty (then write the header)
 * Checking and escaping special characters (like `"` or newlines)
+
+[1]: https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html
 
 ---
 
