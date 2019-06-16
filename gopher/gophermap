@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-06-16T14:22:11	/	localhost	70
+i            2019-06-16T14:55:23	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0C++ create and write to a CSV file with a variadic template (16-06-2019)	Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.txt	raymii.org	70
 0Dark Reader, dark mode for any website (15-06-2019)	Dark_Reader_dark_mode_for_any_website.txt	raymii.org	70
 0Cooking with C++ templates and stronger types (13-06-2019)	Cooking_with_Cpp_templates_and_stronger_types.txt	raymii.org	70
 0C++ variadic template recursive example (08-06-2019)	Cpp_variadic_template_recursive_example.txt	raymii.org	70

@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</loc>
+            <lastmod>2019-06-16</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/blog/Dark_Reader_dark_mode_for_any_website.html</loc>
             <lastmod>2019-06-15</lastmod>
             <changefreq>weekly</changefreq>

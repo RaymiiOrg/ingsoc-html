@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/software.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ create and write to a CSV file with a variadic template</title> 
+                <link>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</guid>
+                <description>In this snippet I'll show you a variadic template to write to a file. In line with my other experiments to get a better grasp at templates, this example improves on my earlier attempt by using a variadic template, thus allowing you to provide an infinite number of columns to the csv file of any type that has the overloaded &lt;&lt; operator.</description> 
+                <pubDate>Sun, 16 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 16 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Dark Reader, dark mode for any website</title> 
                 <link>https://raymii.org/s/blog/Dark_Reader_dark_mode_for_any_website.html</link> 
                 <guid>https://raymii.org/s/blog/Dark_Reader_dark_mode_for_any_website.html</guid>
