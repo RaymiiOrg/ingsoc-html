@@ -7,12 +7,12 @@
             <atom:link href="https://raymii.org/s/tags/snippets.xml" rel="self" type="application/rss+xml" />
     
             <item>
-                <title>C++ create and write to a CSV file with a variadic template</title> 
-                <link>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</link> 
-                <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</guid>
-                <description>In this snippet I'll show you a variadic template to write to a file. In line with my other experiments to get a better grasp at templates, this example improves on my earlier attempt by using a variadic template, thus allowing you to provide an infinite number of columns to the csv file of any type that has the overloaded &lt;&lt; operator.</description> 
-                <pubDate>Sun, 16 Jun 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 16 Jun 2019 00:00:00 GMT</lastBuildDate>
+                <title>C++ template definitions in a .cpp file (instead of a header file)</title> 
+                <link>https://raymii.org/s/snippets/Cpp_template_definitions_in_a_cpp_file_instead_of_header.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_template_definitions_in_a_cpp_file_instead_of_header.html</guid>
+                <description>In this snippet I'll show you how to place your C++ template definitions in a seperate .cpp file. I'd recommend you to just put template definitions in your header file, or a .hpp file, but if you really want to there is a trick to get them in a seperate .cpp file. The trick is to explicitly instanciate every template you're going to use at the end of the .cpp file. With many different templates and types this becomes cumbersome, but for certain usecases it could be useful. </description> 
+                <pubDate>Sat, 22 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 22 Jun 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -21,6 +21,15 @@
                 <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html</guid>
                 <description>In this quick snippet I'll show you how to create and write to a csv file. It includes checking if the file is writable, and if it's not there, creates it with a different first row as header. It's a quick example, I've used it to log some test data. It can probably be improved.</description> 
                 <pubDate>Fri, 07 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 16 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>C++ create and write to a CSV file with a variadic template</title> 
+                <link>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html</guid>
+                <description>In this snippet I'll show you a variadic template to write to a file. In line with my other experiments to get a better grasp at templates, this example improves on my earlier attempt by using a variadic template, thus allowing you to provide an infinite number of columns to the csv file of any type that has the overloaded &lt;&lt; operator.</description> 
+                <pubDate>Sun, 16 Jun 2019 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sun, 16 Jun 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
@@ -502,19 +511,19 @@
             </item>
     
             <item>
-                <title>NGINX: Hide / Block .git and .svn folders</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
-                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
+                <title>NGINX: Catch all error codes</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
+                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>NGINX: Catch all error codes</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
-                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
+                <title>NGINX: Hide / Block .git and .svn folders</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
+                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>

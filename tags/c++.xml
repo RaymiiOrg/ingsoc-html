@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/c++.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ template definitions in a .cpp file (instead of a header file)</title> 
+                <link>https://raymii.org/s/snippets/Cpp_template_definitions_in_a_cpp_file_instead_of_header.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_template_definitions_in_a_cpp_file_instead_of_header.html</guid>
+                <description>In this snippet I'll show you how to place your C++ template definitions in a seperate .cpp file. I'd recommend you to just put template definitions in your header file, or a .hpp file, but if you really want to there is a trick to get them in a seperate .cpp file. The trick is to explicitly instanciate every template you're going to use at the end of the .cpp file. With many different templates and types this becomes cumbersome, but for certain usecases it could be useful. </description> 
+                <pubDate>Sat, 22 Jun 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 22 Jun 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>C++ create and write to a CSV file</title> 
                 <link>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html</link> 
                 <guid>https://raymii.org/s/snippets/Cpp_create_and_write_to_a_csv_file.html</guid>
