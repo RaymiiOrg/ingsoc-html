@@ -169,7 +169,7 @@ That's all there is to it. My build took half an hour all together. Quite fun!
 [9]: https://raymii.org/s/inc/img/gherkin4.jpg
 [10]: https://raymii.org/s/inc/img/gherkin5.jpg
 [11]: https://github.com/qmk/qmk_toolbox
-[12]: https://raymii.org/s/inc/img/gherkin6.jpg
+[12]: https://raymii.org/s/inc/img/gherkin6.png
 
 ---
 
