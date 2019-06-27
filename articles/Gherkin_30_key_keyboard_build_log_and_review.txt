@@ -129,6 +129,7 @@ your switches.
 Once they fit snuggly, solder them in. Then do all the other switches. The below
 picture shows my keyswitches before soldering them all in:
 
+
 ![build3][10]
 
 If you have it, use some flux cleaner to wipe off excess flux.
@@ -168,7 +169,7 @@ That's all there is to it. My build took half an hour all together. Quite fun!
 [9]: https://raymii.org/s/inc/img/gherkin4.jpg
 [10]: https://raymii.org/s/inc/img/gherkin5.jpg
 [11]: https://github.com/qmk/qmk_toolbox
-[10]: https://raymii.org/s/inc/img/gherkin6.jpg
+[12]: https://raymii.org/s/inc/img/gherkin6.jpg
 
 ---
 
