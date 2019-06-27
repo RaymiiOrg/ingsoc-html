@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-06-24T09:24:19	/	localhost	70
+i            2019-06-27T16:11:17	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Gherkin 30% keyboard build log and review (29-06-2019)	Gherkin_30_key_keyboard_build_log_and_review.txt	raymii.org	70
 0connman operstate list (25-06-2019)	connman_operstate_list.txt	raymii.org	70
 0C++ template definitions in a .cpp file (instead of a header file) (22-06-2019)	Cpp_template_definitions_in_a_cpp_file_instead_of_header.txt	raymii.org	70
 0C++ create and write to a CSV file with a variadic template (17-06-2019)	Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.txt	raymii.org	70
