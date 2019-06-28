@@ -147,9 +147,13 @@ computer and flash the firmware [with QMK toolbox][11]. You do need to compile
 QMK but that's a different  topic, not for this short guide. If the arduino
 boots and the flashing is successful, it probably works good enough. 
 
-Solder it in to the header pins. I then screwed on the brass standoffs into the 
-top plate and tested all the keys. If there are any problems, try to redo the 
-solder or replace the keyswitch.
+Solder it in to the header pins. The bottom of the arduino (the part without the
+chips and leds) must face the same way as the bottom of the gherkin. The USB
+plug should be sandwiched between the Gherkin PCB and the Arduino. On the
+Gherkin PCB the holes for the Arduino are not labeled, which is why I state it
+here. I then screwed on the brass standoffs into the  top plate and tested all
+the keys. If there are any problems, try to redo the  solder or replace the
+keyswitch.
 
 When they all work, finish off the build by screwing in the bottom plate,
 placing the keycaps on the switches and if you have them, snapping on some
