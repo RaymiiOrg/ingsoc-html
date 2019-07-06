@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/monitoring.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>GNUplot tips for nice looking charts from a CSV file</title> 
+                <link>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</link> 
+                <guid>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</guid>
+                <description>Recently I had to do some testing which resulted in a lot of log data. Looking at a bunch of text is not the same as seeing things graphically, this particular logdata was perfect to put in a graph. My goto favorite tool for graphs and charts is gnuplot. Not only is it very extensible, it is also reproducable. Give me a configfile and command over 'do this, then this and then such and such' in Excel to get a consistent result. In this article I'll give tips for using gnuplot, which include parsing a CSV file, a second axis, environment variables, A4 PDF's and a ton of styling options for a nice looking chart.</description> 
+                <pubDate>Sat, 06 Jul 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 06 Jul 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>totext.py - Convert URL or RSS feed to text with readability</title> 
                 <link>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</link> 
                 <guid>https://raymii.org/s/software/totext.py-Convert_URL_or_RSS_feed_to_plaintext_with_readability.html</guid>
