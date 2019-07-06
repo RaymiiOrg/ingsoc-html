@@ -75,7 +75,7 @@ Result:
 
 ![gnuplot][4]
 
-[3]: https://raymii.org/s/inc/img/gnuplot-2.png
+[4]: https://raymii.org/s/inc/img/gnuplot-2.png
 
 Okay, not much of what we want here. But, if you do see something like this
 picture, you know your setup is correct. Let's continue on.
@@ -357,9 +357,9 @@ Example output:
 Here is output with the `set key outside right bottom` option, so you can see
 what I mean with the screen realestate:
 
-![gnuplot][11]
+![gnuplot][13]
 
-[11]: https://raymii.org/s/inc/img/gnuplot-11.png
+[13]: https://raymii.org/s/inc/img/gnuplot-11.png
 
 This is the graph we want. If you want to have this output to a PNG file
 automatically, add the following options:
