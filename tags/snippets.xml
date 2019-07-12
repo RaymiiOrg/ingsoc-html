@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/snippets.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Only zero is false, everything else is true in C++</title> 
+                <link>https://raymii.org/s/snippets/Cpp_Only_zero_is_false.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_Only_zero_is_false.html</guid>
+                <description>When using numbers in a boolean (implicit conversion), remember that only zero evaluates to false. Anything else, including negative numbers, will evaluate to true. This snippet talks about the rules for implicit conversion in C++ when using booleans. For seasoned programmers it's nothing new, but I found it interesting.</description> 
+                <pubDate>Fri, 12 Jul 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 12 Jul 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>connman operstate list</title> 
                 <link>https://raymii.org/s/snippets/connman_operstate_list.html</link> 
                 <guid>https://raymii.org/s/snippets/connman_operstate_list.html</guid>
@@ -520,19 +529,19 @@
             </item>
     
             <item>
-                <title>NGINX: Hide / Block .git and .svn folders</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
-                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
+                <title>NGINX: Catch all error codes</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
+                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>NGINX: Catch all error codes</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
-                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
+                <title>NGINX: Hide / Block .git and .svn folders</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
+                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
