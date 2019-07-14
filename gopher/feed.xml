@@ -7,7 +7,7 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
-                <title>Bash bits: find has a -delete option</title> 
+                <title>Bash bits: find has a -delete flag</title> 
                 <link>gopher://raymii.org/0/Bash_bits_find_has_a_delete_option.txt</link> 
                 <guid>gopher://raymii.org/0/Bash_bits_find_has_a_delete_option.txt</guid>
                 <description>Bash Bits are small examples, tips and tutorials for the bash shell. This bash bit shows you that find has a -delete option. I recently found this out, before I would always use -exec rm {} ;. The delete flag is shorter, performs better and is  easier to remember.</description> 

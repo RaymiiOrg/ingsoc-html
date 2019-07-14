@@ -1,6 +1,6 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title       : 	Bash bits: find has a -delete option
+Title       : 	Bash bits: find has a -delete flag
 Author      : 	Remy van Elst
 Date        : 	14-07-2019
 URL         : 	https://raymii.org/s/snippets/Bash_bits_find_has_a_delete_option.html
@@ -50,7 +50,10 @@ Or in my case, to remove empty directories:
 (if you omit the `-type d` find will also remove empty files).
 
 The `-delete` flag will perform better since it doesn't have to spawn an external
-`rm` process for every file.
+`rm` process for every file. However, the [POSIX 1003.1 man page][2] for find 
+specifies `-exec` but not `-delete`, thus being the former a requirement for POSIX
+compatibility. Some embedded linux systems or UNIX systems therefore might also not
+have the `delete` flag.
 
 The [manpage][1] has more information including a warning:
 
@@ -64,6 +67,7 @@ use with -delete, you should explicitly specify -depth  in  order  to  avoid  la
 surprises.   
 
 [1]: http://manpages.ubuntu.com/manpages/bionic/en/man1/find.1.html
+[2]: https://www.unix.com/man-page/posix/1p/find/
 
 ---
 
