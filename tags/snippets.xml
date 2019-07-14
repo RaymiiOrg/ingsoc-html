@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/snippets.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash bits: find has a -delete option</title> 
+                <link>https://raymii.org/s/snippets/Bash_bits_find_has_a_delete_option.html</link> 
+                <guid>https://raymii.org/s/snippets/Bash_bits_find_has_a_delete_option.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for the bash shell. This bash bit shows you that find has a -delete option. I recently found this out, before I would always use -exec rm {} ;. The delete flag is shorter, performs better and is  easier to remember.</description> 
+                <pubDate>Sun, 14 Jul 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 14 Jul 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Only zero is false, everything else is true in C++</title> 
                 <link>https://raymii.org/s/snippets/Cpp_Only_zero_is_false.html</link> 
                 <guid>https://raymii.org/s/snippets/Cpp_Only_zero_is_false.html</guid>
@@ -529,19 +538,19 @@
             </item>
     
             <item>
-                <title>NGINX: Catch all error codes</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
-                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
+                <title>NGINX: Hide / Block .git and .svn folders</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
+                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>NGINX: Hide / Block .git and .svn folders</title> 
-                <link>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</link> 
-                <guid>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</guid>
-                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
+                <title>NGINX: Catch all error codes</title> 
+                <link>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</link> 
+                <guid>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</guid>
+                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>

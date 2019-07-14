@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/bash.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash bits: find has a -delete option</title> 
+                <link>https://raymii.org/s/snippets/Bash_bits_find_has_a_delete_option.html</link> 
+                <guid>https://raymii.org/s/snippets/Bash_bits_find_has_a_delete_option.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for the bash shell. This bash bit shows you that find has a -delete option. I recently found this out, before I would always use -exec rm {} ;. The delete flag is shorter, performs better and is  easier to remember.</description> 
+                <pubDate>Sun, 14 Jul 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 14 Jul 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>GNUplot tips for nice looking charts from a CSV file</title> 
                 <link>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</link> 
                 <guid>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</guid>
