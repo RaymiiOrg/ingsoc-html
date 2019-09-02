@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/tutorials.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash bits: split a file in blocks and do something with each block</title> 
+                <link>https://raymii.org/s/tutorials/Bash_bits_split_a_file_in_blocks_and_do_something_with_each_block.html</link> 
+                <guid>https://raymii.org/s/tutorials/Bash_bits_split_a_file_in_blocks_and_do_something_with_each_block.html</guid>
+                <description>Bash Bits are small examples, tips and tutorials for the bash shell. This bash bit shows you how to split a file into blocks (multiline) and do something with each block. This can be used for certificate chains or other files which have multiline blocks.</description> 
+                <pubDate>Mon, 02 Sep 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 02 Sep 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>GNUplot tips for nice looking charts from a CSV file</title> 
                 <link>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</link> 
                 <guid>https://raymii.org/s/tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html</guid>
@@ -970,19 +979,19 @@
             </item>
     
             <item>
-                <title>Ansible - pure ssh based configuration management and deployment</title> 
-                <link>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</link> 
-                <guid>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</guid>
-                <description>This tutorial will get you started with Ansible. Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</description> 
+                <title>Screenfetch installation tutorial</title> 
+                <link>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</link> 
+                <guid>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</guid>
+                <description>This tutorial will show you how to install screenfetch, a bash information tool. It displays handy system information at login, including distro name, kernel, uptime, cpu, ram and nice distro-based artwork. The tutorial includes support for bash and zsh, for every supported linux OS (ubuntu, centos, arch, redhat, solusOS, linux mint and more.)</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sat, 09 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Screenfetch installation tutorial</title> 
-                <link>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</link> 
-                <guid>https://raymii.org/s/tutorials/Screenfetch_installation_tutorial.html</guid>
-                <description>This tutorial will show you how to install screenfetch, a bash information tool. It displays handy system information at login, including distro name, kernel, uptime, cpu, ram and nice distro-based artwork. The tutorial includes support for bash and zsh, for every supported linux OS (ubuntu, centos, arch, redhat, solusOS, linux mint and more.)</description> 
+                <title>Ansible - pure ssh based configuration management and deployment</title> 
+                <link>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</link> 
+                <guid>https://raymii.org/s/tutorials/Ansible_Deployment_Framework.html</guid>
+                <description>This tutorial will get you started with Ansible. Ansible is a radically simple model-driven configuration management, deployment, and command execution framework. Other tools in this space have been too complicated for too long, require too much bootstrapping, and have too much learning curve. By comparison, Ansible is dead simple and painless to extend. Puppet and Chef have about 60k lines of code. Ansibles core is a little over 2000 lines.</description> 
                 <pubDate>Sat, 09 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sat, 09 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>

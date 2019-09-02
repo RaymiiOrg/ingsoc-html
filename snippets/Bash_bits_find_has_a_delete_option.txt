@@ -51,7 +51,7 @@ Or in my case, to remove empty directories:
 
 The `-delete` flag will perform better since it doesn't have to spawn an external
 `rm` process for every file. However, the [POSIX 1003.1 man page][2] for find 
-specifies `-exec` but not `-delete`, thus being the former a requirement for POSIX
+specifies `-exec` but not `-delete`, thus the former being a requirement for POSIX
 compatibility. Some embedded linux systems or UNIX systems therefore might also not
 have the `delete` flag.
 
