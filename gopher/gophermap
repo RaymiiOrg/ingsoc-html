@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-09-25T12:40:51	/	localhost	70
+i            2019-09-28T11:27:58	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Get serial port data on the web with live updating (28-09-2019)	Get_serial_port_data_on_the_web_with_live_updating.txt	raymii.org	70
 0Bash bits: split a file in blocks and do something with each block (02-09-2019)	Bash_bits_split_a_file_in_blocks_and_do_something_with_each_block.txt	raymii.org	70
 0Bash bits: find has a -delete flag (14-07-2019)	Bash_bits_find_has_a_delete_option.txt	raymii.org	70
 0Only zero is false, everything else is true in C++ (12-07-2019)	Cpp_Only_zero_is_false.txt	raymii.org	70
