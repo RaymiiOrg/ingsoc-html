@@ -79,12 +79,12 @@ connection to a file which the webpage displays and updates. In this article
 I&#39;ll talk about how I put various bits of software together to get the output of
 the serial connection onto a nice webpage with live updating.</p>
 
-<p><img src="https://raymii.org/s/inc/img/logging_setup.jpg" alt="the hardware setup"></p>
+<p><img src="/s/inc/img/logging_setup.jpg" alt="the hardware setup"></p>
 
 <p>The picture above shows the hardware setup. The blurred part is the actual
 hardware part with the load cells in it. You can see one cell on the left. The
 red boards are the Sparkfun Openscale boards, connected via a USB hub to a
-<a href="https://raymii.org/s/inc/img/var-som-mx6.png">Variscite VAR-SOM-MX6</a> board running Yocto Linux (openembedded). I built a
+<a href="/s/inc/img/var-som-mx6.png">Variscite VAR-SOM-MX6</a> board running Yocto Linux (openembedded). I built a
 webserver package for the board (nginx) since normally it runs nothing except
 the main application. </p>
 
@@ -95,7 +95,7 @@ webserver. </p>
 <p>The tests themselves will be done by someone else, who can navigate to a webpage
 to check the current readings. Below is a screenshot of the webpage:</p>
 
-<p><img src="https://raymii.org/s/inc/img/logging_webpage.png" alt="the webpage"></p>
+<p><img src="/s/inc/img/logging_webpage.png" alt="the webpage"></p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
@@ -137,26 +137,46 @@ happens when you do X, how does the setup respons when Y happens, etc. That
 person is not interested in the software side of things, they just require the
 measurements.</p>
 
-<p>The time I got allocated to build this was not much, that&#39;s why this setup is so simple. With more time, I might have added graphs, log archiving or a piece of custom software to read the sensors without the sparkfun board. But, it had to be done quickly, which required me to think about what tools were at hand for this job.</p>
+<p>The time I got allocated to build this was not much, that&#39;s why this setup is so
+simple. With more time, I might have added graphs, log archiving or a piece of
+custom software to read the sensors without the sparkfun board. But, it had to
+be done quickly, which required me to think about what tools were at hand for
+this job.</p>
 
-<p>The essential thing the setup needed to do was to provide log data in an easily accessible format. During testing you don&#39;t want to click five times or type commands, you just want to test. The setup should provide that.</p>
+<p>The essential thing the setup needed to do was to provide log data in an easily
+accessible format. During testing you don&#39;t want to click five times or type
+commands, you just want to test. The setup should provide that.</p>
 
-<p>The sparkfun openscale boards barf their output right on the (emulated) serial port. What if we could present that data on a webpage so that the tester just needed a laptop or tablet during their testing. What if we could make that data live update using modern fancy web techniques? (Remember I&#39;m doing embedded C, not javascript).</p>
+<p>The sparkfun openscale boards barf their output right on the (emulated) serial
+port. What if we could present that data on a webpage so that the tester just
+needed a laptop or tablet during their testing. What if we could make that data
+live update using modern fancy web techniques? (Remember I&#39;m doing embedded C,
+not javascript).</p>
 
 <h4 id="toc_2">screen</h4>
 
-<p>Screen is a linux terminal multiplexer. You can have one terminal and use screen to get more. Handy when you&#39;re doing work via SSH, you can reconnect to the screen session and continue on if for whatever reason the connection dropped. Or you can run your IRC client, it won&#39;t disconnect when you log off.</p>
+<p>Screen is a linux terminal multiplexer. You can have one terminal and use screen
+to get more. Handy when you&#39;re doing work via SSH, you can reconnect to the
+screen session and continue on if for whatever reason the connection dropped. Or
+you can run your IRC client, it won&#39;t disconnect when you log off.</p>
 
-<p>As a byproduct of earlier times you can also connect to a serial port. Handy for sending <code>AT</code> commands to your modem or connecting to your actual physical terminal. We&#39;re going to use that to connect to the USB serial device in the sparkfun board.</p>
+<p>As a byproduct of earlier times you can also connect to a serial port. Handy for
+sending <code>AT</code> commands to your modem or connecting to your actual physical
+terminal. We&#39;re going to use that to connect to the USB serial device in the
+sparkfun board.</p>
 
-<p>Screen supports logging of the session to a text file and allows you to insert timestamps in that log. Perfect for what we want. That log can then be read out via the webpage we&#39;re creating later on.</p>
+<p>Screen supports logging of the session to a text file and allows you to insert
+timestamps in that log. Perfect for what we want. That log can then be read out
+via the webpage we&#39;re creating later on.</p>
 
 <p>Start screen with the following commandline options:</p>
 
-<pre><code>screen -dmS sensor1 -L -Logfile sensor1.txt /dev/serial/by-id/usb-FTDI_FT231X_USB_UART_XXXX
+<pre><code>screen -dmS sensor1 -L -Logfile sensor1.txt
+/dev/serial/by-id/usb-FTDI_FT231X_USB_UART_XXXX
 </code></pre>
 
-<p>Replace the actual serial device by the path to your device. The sparkfun board all have a unique serial number, so I can match them to the actual sensors.</p>
+<p>Replace the actual serial device by the path to your device. The sparkfun board
+all have a unique serial number, so I can match them to the actual sensors.</p>
 
 <ul>
 <li><code>-dmS</code>: start screen in detached mode and name this session <code>sensor1</code></li>
@@ -164,30 +184,55 @@ measurements.</p>
 <li><code>-Logfile</code>: change the filename of the log from the default to <code>sensor1.txt</code> </li>
 </ul>
 
-<p>The output of the sensor will now be in text file <code>sensor1.txt</code>. If you use <code>tail -f sensor1.txt</code> you&#39;ll notice that it only updates every 10 seconds, whereas the openscale board outputs every 2 seconds. Luck has it that screen allows you to set the flush rate of the log. You can either use a <code>.screenrc</code> file, or send it to the running session as a screen command. My compiled version of screen has some quirks due to it being an older version, so I cannot use the <code>.screenrc</code> route. Using the <code>-X</code> option I can send a command to a running screen session.</p>
+<p>The output of the sensor will now be in text file <code>sensor1.txt</code>. If you use
+<code>tail -f sensor1.txt</code> you&#39;ll notice that it only updates every 10 seconds,
+whereas the openscale board outputs every 2 seconds. Luck has it that screen
+allows you to set the flush rate of the log. You can either use a <code>.screenrc</code>
+file, or send it to the running session as a screen command. My compiled version
+of screen has some quirks due to it being an older version, so I cannot use the
+<code>.screenrc</code> route. Using the <code>-X</code> option I can send a command to a running
+screen session.</p>
 
-<p>Note that this is not a shell command that will be executed, it is a screen command. One you could also give inside the running screen session by pressing <code>CTRL+A :</code> (colon).</p>
+<p>Note that this is not a shell command that will be executed, it is a screen
+command. One you could also give inside the running screen session by pressing
+<code>CTRL+A :</code> (colon).</p>
 
-<p>The <a href="https://www.gnu.org/software/screen/manual/html_node/Log.html">command to set the flush rate</a> is: <code>logfile flush seconds</code>, replacing seconds by the number of seconds.</p>
+<p>The <a href="https://www.gnu.org/software/screen/manual/html_node/Log.html">command to set the flush rate</a> is: <code>logfile flush seconds</code>, replacing
+seconds by the number of seconds.</p>
 
-<p>To send it to a running screen session, in my case, <code>sensor1</code>, use the following command:</p>
+<p>To send it to a running screen session, in my case, <code>sensor1</code>, use the following
+command:</p>
 
 <pre><code>screen -S sensor1 -X logfile flush 2
 </code></pre>
 
-<p>No quotes around the options. If you <code>tail</code> again, you&#39;ll see the file being updated every 2 seconds.</p>
+<p>No quotes around the options. If you <code>tail</code> again, you&#39;ll see the file being
+updated every 2 seconds.</p>
 
-<p>I put a construction like this in a shell script for all 5 sensors, the script is autostarting at boot of the linux machine via <code>systemd</code>. That means that all sensors will be logged to a file named <code>sensorX.txt</code> where X is the sensor number.</p>
+<p>I put a construction like this in a shell script for all 5 sensors, the script
+is autostarting at boot of the linux machine via <code>systemd</code>. That means that all
+sensors will be logged to a file named <code>sensorX.txt</code> where X is the sensor
+number.</p>
 
-<p>With the logging of the serial port data set up we can continue on to create the webpage.</p>
+<p>With the logging of the serial port data set up we can continue on to create the
+webpage.</p>
 
 <h4 id="toc_3">Fancy pancy javascript webpage</h4>
 
-<p>As you might have guessed from the section heading, I don&#39;t code javascript often. My piece of cake is C++ and C for small embedded platforms. If the code looks simple to you then that&#39;s the reason. No frameworks, no <code>nodejs</code>, heck, if I could get away with a <code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;2&quot;&gt;</code> I&#39;d use that. But, modern day users expect more than that, so why not.</p>
+<p>As you might have guessed from the section heading, I don&#39;t code javascript
+often. My piece of cake is C++ and C for small embedded platforms. If the code
+looks simple to you then that&#39;s the reason. No frameworks, no <code>nodejs</code>, heck, if
+I could get away with a <code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;2&quot;&gt;</code> I&#39;d use that.
+But, modern day users expect more than that, so why not.</p>
 
-<p>The code you&#39;ll see below uses bootstrap css for styling. Hosted bootstrap that is, just because I&#39;m lazy. </p>
+<p>The code you&#39;ll see below uses bootstrap css for styling. Hosted bootstrap that
+is, just because I&#39;m lazy. </p>
 
-<p>The javascript part is split up into two parts. One is to actually do the XHR (ajax) request on a file and update the DOM (replace the current contents of an html element with the new content) and one is to reload the five files using that first function. The automagic reloading is set with a timer via a <code>setInterval</code>.</p>
+<p>The javascript part is split up into two parts. One is to actually do the XHR
+(ajax) request on a file and update the DOM (replace the current contents of an
+html element with the new content) and one is to reload the five files using
+that first function. The automagic reloading is set with a timer via a
+<code>setInterval</code>.</p>
 
 <p>The first function to reload the data:</p>
 
@@ -212,18 +257,26 @@ measurements.</p>
 }
 </code></pre>
 
-<p>The function accepts an URL and a HTML element ID to replace. A timestamp is appended to every request so that it is not cached by the browser. If the request fails, nothing happens. The <code>.onreadystatechange</code> contains the function we want to execute every time the readyState attribute changes of the request. </p>
+<p>The function accepts an URL and a HTML element ID to replace. A timestamp is
+appended to every request so that it is not cached by the browser. If the
+request fails, nothing happens. The <code>.onreadystatechange</code> contains the function
+we want to execute every time the readyState attribute changes of the request. </p>
 
-<p>There is no filtering or escaping of contents, the html attribute is blatantly replaced. </p>
+<p>There is no filtering or escaping of contents, the html attribute is blatantly
+replaced. </p>
 
-<p>In the status files the data is set with the newest lines on the bottom. For the webpage, I want those on top, since you&#39;re not scrolling when doing the testing. You just want to look. Therefore, the file line order is reversed with this bit:</p>
+<p>In the status files the data is set with the newest lines on the bottom. For the
+webpage, I want those on top, since you&#39;re not scrolling when doing the testing.
+You just want to look. Therefore, the file line order is reversed with this bit:</p>
 
 <pre><code>.split(&quot;\n&quot;).reverse().slice(0, 1000).join(&quot;\n&quot;);
 </code></pre>
 
-<p>It also limits the log to at max 1000 entries. Not a great seperation of concerns, but for this stage, workable.</p>
+<p>It also limits the log to at max 1000 entries. Not a great seperation of
+concerns, but for this stage, workable.</p>
 
-<p>The second part is a wrapper function to call the <code>reloadData</code> on the five files we want:</p>
+<p>The second part is a wrapper function to call the <code>reloadData</code> on the five files
+we want:</p>
 
 <pre><code>function reloadFiles() 
 {
@@ -242,7 +295,8 @@ measurements.</p>
 
 <p>Which will execute the wrapper function every second. </p>
 
-<p>The HTML part of the page contains some styling and columns for a header, the actual data is put in four of these blocks:</p>
+<p>The HTML part of the page contains some styling and columns for a header, the
+actual data is put in four of these blocks:</p>
 
 <pre><code>&lt;div class=&quot;col-md-auto&quot;&gt;
   &lt;h2&gt;Sensor 1&lt;/h2&gt;
@@ -256,7 +310,9 @@ measurements.</p>
 
 <p>The text <code>Loading Sensor 1 Data...</code> will disappear the first time the function succeeds. </p>
 
-<p>Bare-bones javascript that gets the job done. Maybe not the best, but this whole setup was put together in two hours and that includes wiring up all the hardware, which took most of the time.</p>
+<p>Bare-bones javascript that gets the job done. Maybe not the best, but this whole
+setup was put together in two hours and that includes wiring up all the
+hardware, which took most of the time.</p>
 Tags: <a href="../tags/arduino.html">arduino</a>
 , <a href="../tags/arm.html">arm</a>
 , <a href="../tags/blog.html">blog</a>
