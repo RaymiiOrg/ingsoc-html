@@ -34,6 +34,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html">C++ project setup with CMake & unit tests (google test)</a></h4>
+<small>01-10-2019 | Remy van Elst</small><br />
+<p>This guide will show you how to setup a new C++ project with CMake and unit tests via Google's test framework. With this setup you can get started right away with test-driven-development in C++. It is also simple enough to look and figure out how to add gtest to your existing project and start doing TDD on your legacy (existing) codebase.</p>
+<a href="tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Get_serial_port_data_on_the_web_with_live_updating.html">Get serial port data on the web with live updating</a></h4>
 <small>28-09-2019 | Remy van Elst</small><br />
 <p>Recently I was asked to build a test setup to measure the accuracy of a few loadcells (weight sensors) in a frame. Someone other than me would execute the test and required access to the measured data, preferably live and without needing knowledge of ssh or linux. The weight sensors can be read with an openscale board from sparkfun via a serial connection which the board emulates over USB (via an FTDI chip), via that same serial connection you can also calibrate them or change settings like amount of decimals. As a quick solution I created a webpage that uses a small amount of javascript to live update the readings from the board. screen is used to capture the output of the serial connection to a file which the webpage displays and updates. In this article I'll talk about how I put various bits of software together to get the output of the serial connection onto a nice webpage with live updating.</p>
@@ -83,11 +88,6 @@
 <small>Published: 07-06-2019 | Last update: 16-06-2019 | Author: Remy van Elst</small><br />
 <p>In this quick snippet I'll show you how to create and write to a csv file. It includes checking if the file is writable, and if it's not there, creates it with a different first row as header. It's a quick example, I've used it to log some test data. It can probably be improved.</p>
 <a href="snippets/Cpp_create_and_write_to_a_csv_file.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Dark_Reader_dark_mode_for_any_website.html">Dark Reader, dark mode for any website</a></h4>
-<small>15-06-2019 | Remy van Elst</small><br />
-<p>Recently I discovered a firefox extension that converts any website into a dark version. Works both on firefox for mobile and on the desktop (and all other major browsers), is open source, causes less strain on the eyes and improves battery life. Just as the earlier post on Blokada, I find this such a cool piece of software I wanted to share it with all my readers.</p>
-<a href="blog/Dark_Reader_dark_mode_for_any_website.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

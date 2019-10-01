@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+    <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>RSS feed for tag ttd on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/ttd.xml</link> 
+            <description>RSS feed for tag ttd on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/ttd.xml" rel="self" type="application/rss+xml" />
+    
+            <item>
+                <title>C++ project setup with CMake &amp; unit tests (google test)</title> 
+                <link>https://raymii.org/s/tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html</link> 
+                <guid>https://raymii.org/s/tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html</guid>
+                <description>This guide will show you how to setup a new C++ project with CMake and unit tests via Google's test framework. With this setup you can get started right away with test-driven-development in C++. It is also simple enough to look and figure out how to add gtest to your existing project and start doing TDD on your legacy (existing) codebase.</description> 
+                <pubDate>Tue, 01 Oct 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 01 Oct 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+        </channel>
+    </rss>
+    
+    
