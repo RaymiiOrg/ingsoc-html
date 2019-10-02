@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/shell.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Send commands or input to a detached screen session</title> 
+                <link>https://raymii.org/s/snippets/Sending_commands_or_input_to_a_screen_session.html</link> 
+                <guid>https://raymii.org/s/snippets/Sending_commands_or_input_to_a_screen_session.html</guid>
+                <description>This snippet will show you how to send commands to a running screen session. This includes actual shell commands or keyboard input, as well as screen commands, for example to set a logfile.</description> 
+                <pubDate>Wed, 02 Oct 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 02 Oct 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Bash bits: split a file in blocks and do something with each block</title> 
                 <link>https://raymii.org/s/tutorials/Bash_bits_split_a_file_in_blocks_and_do_something_with_each_block.html</link> 
                 <guid>https://raymii.org/s/tutorials/Bash_bits_split_a_file_in_blocks_and_do_something_with_each_block.html</guid>
