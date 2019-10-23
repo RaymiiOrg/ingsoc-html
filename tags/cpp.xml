@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/cpp.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>std::accumulate in C++</title> 
+                <link>https://raymii.org/s/snippets/Cpp_std_accumulate.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_std_accumulate.html</guid>
+                <description>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</description> 
+                <pubDate>Wed, 23 Oct 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 23 Oct 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>C++ project setup with CMake &amp; unit tests (google test)</title> 
                 <link>https://raymii.org/s/tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html</link> 
                 <guid>https://raymii.org/s/tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html</guid>

@@ -34,6 +34,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Cpp_std_accumulate.html">std::accumulate in C++</a></h4>
+<small>23-10-2019 | Remy van Elst</small><br />
+<p>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</p>
+<a href="snippets/Cpp_std_accumulate.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Sending_commands_or_input_to_a_screen_session.html">Send commands or input to a detached screen session</a></h4>
 <small>02-10-2019 | Remy van Elst</small><br />
 <p>This snippet will show you how to send commands to a running screen session. This includes actual shell commands or keyboard input, as well as screen commands, for example to set a logfile.</p>
@@ -83,11 +88,6 @@
 <small>22-06-2019 | Remy van Elst</small><br />
 <p>In this snippet I'll show you how to place your C++ template definitions in a seperate .cpp file. I'd recommend you to just put template definitions in your header file, or a .hpp file, but if you really want to there is a trick to get them in a seperate .cpp file. The trick is to explicitly instanciate every template you're going to use at the end of the .cpp file. With many different templates and types this becomes cumbersome, but for certain usecases it could be useful. </p>
 <a href="snippets/Cpp_template_definitions_in_a_cpp_file_instead_of_header.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html">C++ create and write to a CSV file with a variadic template</a></h4>
-<small>17-06-2019 | Remy van Elst</small><br />
-<p>In this snippet I'll show you a variadic template to write to a file. In line with my other experiments to get a better grasp at templates, this example improves on my earlier attempt by using a variadic template, thus allowing you to provide an infinite number of columns to the csv file of any type that has the overloaded << operator.</p>
-<a href="snippets/Cpp_create_and_write_to_a_CSV_file_with_a_variadic_template.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

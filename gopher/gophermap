@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-10-02T09:32:27	/	localhost	70
+i            2019-10-23T14:36:28	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0std::accumulate in C++ (23-10-2019)	Cpp_std_accumulate.txt	raymii.org	70
 0Send commands or input to a detached screen session (02-10-2019)	Sending_commands_or_input_to_a_screen_session.txt	raymii.org	70
 0C++ project setup with CMake & unit tests (google test) (01-10-2019)	Cpp_project_setup_with_cmake_and_unit_tests.txt	raymii.org	70
 0Get serial port data on the web with live updating (28-09-2019)	Get_serial_port_data_on_the_web_with_live_updating.txt	raymii.org	70
