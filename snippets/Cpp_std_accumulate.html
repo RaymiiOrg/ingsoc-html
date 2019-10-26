@@ -46,6 +46,14 @@
                             </script>
                         </div><br><div id="toc">
 <h3>Table of Contents</h3>
+<ul>
+<li>
+<a href="#toc_0">Plain old loop</a>
+</li>
+<li>
+<a href="#toc_1">Lambdas</a>
+</li>
+</ul>
 
 </div>
 <hr>
@@ -59,6 +67,8 @@ the for loop you would use otherwise.</p>
 
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
+
+<h3 id="toc_0">Plain old loop</h3>
 
 <p>It performs a <a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">fold</a> on a given range. Or, in my case, it gives the 
 sum of all int&#39;s in a vector without a loop. <a href="https://en.cppreference.com/w/cpp/algorithm/accumulate">Complete documentation here</a>.</p>
@@ -86,8 +96,7 @@ sum: 92
 <pre><code>int sum = std:accumulate(numbers.begin(), numbers.end(), 0);
 </code></pre>
 
-<p>zz
-It accepts an init, so to add 10 to the result of the above sum without an 
+<p><code>std::accumulate</code> accepts an initial value, so to add 10 to the result of the above sum without an 
 intermidiate variable:</p>
 
 <pre><code>std::vector &lt;int&gt; numbers  { 20, 10, -8, 10, 10, 15, 35 }; 
@@ -96,7 +105,9 @@ int sum = std:accumulate(numbers.begin(), numbers.end(), 10);
 
 <p>The result will be <code>102</code>.</p>
 
-<p>It also accepts a function to perform as the fold operator. For example, if you
+<h3 id="toc_1">Lambdas</h3>
+
+<p><code>std::accumulate</code> also accepts a function to perform as the fold operator. For example, if you
 need to get a sum of the result and also multiply every number by 8, in the 
 odd case you need to go from bytes to bits:</p>
 
@@ -118,7 +129,7 @@ std::cout &lt;&lt; &quot;sum: &quot; &lt;&lt; sum;
 and the value of the current element b. </p>
 
 <p>This is a simple example of course, but by using a lambda you can do all kinds 
-of crazy stuff.</p>
+of crazy stuff. </p>
 
 <p>From <a href="https://en.cppreference.com/w/cpp/algorithm/accumulate">the documentation</a>, on reversing the order:</p>
 
