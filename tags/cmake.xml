@@ -12,7 +12,7 @@
                 <guid>https://raymii.org/s/tutorials/Cpp_project_setup_with_cmake_and_unit_tests.html</guid>
                 <description>This guide will show you how to setup a new C++ project with CMake and unit tests via Google's test framework. With this setup you can get started right away with test-driven-development in C++. It is also simple enough to look and figure out how to add gtest to your existing project and start doing TDD on your legacy (existing) codebase.</description> 
                 <pubDate>Tue, 01 Oct 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Tue, 01 Oct 2019 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Wed, 06 Nov 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>
