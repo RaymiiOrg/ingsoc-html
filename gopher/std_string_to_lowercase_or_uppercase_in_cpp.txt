@@ -91,7 +91,7 @@ On Ubuntu 18.04 it's as simple as:
 
     apt-get install libboost-dev-all
 
-TL;DR: use [this mingw build][6] or __be warned. Here be dragons.__ 
+TL;DR: On Windows 10 use [this mingw build][6] or __be warned. Here be dragons.__ 
 
 It cost me multiple hours of  troubleshooting and debugging. Appearantly `mingw`
 and Boost on Windows are  not the best of friends. Especially not if you also
