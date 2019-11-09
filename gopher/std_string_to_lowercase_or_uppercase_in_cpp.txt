@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-I'm using [codewars][1] to practice my development skills. Today I learned
+I'm using [codewars][9] to practice my development skills. Today I learned
 a method to transform a std::string's casing, either to uppercase or lowercase.
 It uses a lambda and does loop over all characters in the string. Researching it
 further, I also found out how to do unicode strings with Boost. This
@@ -24,7 +24,11 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
 ### Case transformation for ascii
 
-This is the code I used for the codewars practice:
+The codewars assignment was to count unique lowercase characters in a string, 
+then return the character which was found the most. For the string "hello" this 
+would be `l` since it's found twice. To do this I first needed to convert the 
+string to lowercase. This is the code I used to lowercase the string for the 
+codewars practice:
 
     int main() {
         std::string inStr = "UPPERCASE";
@@ -235,6 +239,8 @@ The result works as you would expect:
 [6]: https://nuwen.net/mingw.html
 [7]: https://en.wiktionary.org/wiki/gr%C3%BC%C3%9Fen
 [8]: https://www.boost.org/doc/libs/1_71_0/libs/locale/doc/html/conversions_8cpp-example.html
+[9]: https://www.codewars.com/r/KjbvJA
+
 
 ---
 

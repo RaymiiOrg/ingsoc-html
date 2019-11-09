@@ -72,7 +72,7 @@
 </div>
 <hr>
 <div id="contents">
-<p>I&#39;m using <a href="https://xn--ls8h.la/">codewars</a> to practice my development skills. Today I learned
+<p>I&#39;m using <a href="https://www.codewars.com/r/KjbvJA">codewars</a> to practice my development skills. Today I learned
 a method to transform a std::string&#39;s casing, either to uppercase or lowercase.
 It uses a lambda and does loop over all characters in the string. Researching it
 further, I also found out how to do unicode strings with Boost. This
@@ -84,7 +84,11 @@ VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a>
 
 <h3 id="toc_0">Case transformation for ascii</h3>
 
-<p>This is the code I used for the codewars practice:</p>
+<p>The codewars assignment was to count unique lowercase characters in a string, 
+then return the character which was found the most. For the string &quot;hello&quot; this 
+would be <code>l</code> since it&#39;s found twice. To do this I first needed to convert the 
+string to lowercase. This is the code I used to lowercase the string for the 
+codewars practice:</p>
 
 <pre><code>int main() {
     std::string inStr = &quot;UPPERCASE&quot;;
