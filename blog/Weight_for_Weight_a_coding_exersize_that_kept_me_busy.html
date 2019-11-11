@@ -210,7 +210,7 @@ constructor options and number 4 works:</p>
 thougt of my <a href="/s/snippets/Cpp_std_accumulate.html">recent article</a> on <code>std::accumulate</code>, which would eliminate this
 loop. The end result on calculating the word weight score is now this:</p>
 
-<pre><code>for (auto const&amp; number : numberss)
+<pre><code>for (auto const&amp; number : numbers)
 {
     int numberScore = std::accumulate(number.begin(), number.end(), 0,
     [&amp;](int a, const char b) 

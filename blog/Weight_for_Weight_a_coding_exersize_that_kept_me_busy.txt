@@ -145,7 +145,7 @@ After a day I had some spare time to work on this kata again, during the day I
 thougt of my [recent article][7] on `std::accumulate`, which would eliminate this
 loop. The end result on calculating the word weight score is now this:
 
-    for (auto const& number : numberss)
+    for (auto const& number : numbers)
     {
         int numberScore = std::accumulate(number.begin(), number.end(), 0,
         [&](int a, const char b) 
