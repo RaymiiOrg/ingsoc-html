@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/blog.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Weight for Weight, a coding exercise that kept me busy</title> 
+                <link>https://raymii.org/s/blog/Weight_for_Weight_a_coding_exersize_that_kept_me_busy.html</link> 
+                <guid>https://raymii.org/s/blog/Weight_for_Weight_a_coding_exersize_that_kept_me_busy.html</guid>
+                <description>I'm using codewars to practice my development skills. The exercise I was working on the past couple of days was a level higher than the 'rank' codewars gives me, so a more difficult exercise. Using the sparse free time I have, this kata took a bit longer to complete, and had me thinking about the problem when I was not doing the exercise. If a problem fascinates me that way, I can't stop thinking about it until I've solved it. In this article I'll walk you through my work on this kata.</description> 
+                <pubDate>Tue, 12 Nov 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 12 Nov 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Get serial port data on the web with live updating</title> 
                 <link>https://raymii.org/s/blog/Get_serial_port_data_on_the_web_with_live_updating.html</link> 
                 <guid>https://raymii.org/s/blog/Get_serial_port_data_on_the_web_with_live_updating.html</guid>

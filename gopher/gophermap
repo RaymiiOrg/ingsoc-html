@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-11-09T21:16:52	/	localhost	70
+i            2019-11-11T19:47:28	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Weight for Weight, a coding exercise that kept me busy (12-11-2019)	Weight_for_Weight_a_coding_exersize_that_kept_me_busy.txt	raymii.org	70
 0std::string to lowercase or uppercase in C++ (07-11-2019)	std_string_to_lowercase_or_uppercase_in_cpp.txt	raymii.org	70
 0std::accumulate in C++ (23-10-2019)	Cpp_std_accumulate.txt	raymii.org	70
 0Send commands or input to a detached screen session (02-10-2019)	Sending_commands_or_input_to_a_screen_session.txt	raymii.org	70
