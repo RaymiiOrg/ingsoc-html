@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/raspberry-pi.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Broken Corrupted Raspberry Pi SD Card</title> 
+                <link>https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html</link> 
+                <guid>https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html</guid>
+                <description>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</description> 
+                <pubDate>Fri, 09 Jan 2015 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 13 Nov 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Raspberry Pi unattended upgrade Raspbian to Debian Testing</title> 
                 <link>https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html</link> 
                 <guid>https://raymii.org/s/blog/Raspberry_Pi_Raspbian_Unattended_Upgrade_Jessie_to_Testing.html</guid>
@@ -58,15 +67,6 @@
                 <description>The Olimex OlinuXino A20 LIME2 is an amazing, powerfull and cheap open source ARM development board. It costs EUR 45, and has 160 GPIO pins. The default Debian image from OlimeX is quite huge and bloated, over 2,5 GB, with X and all. I do not want a huge image, so I stripped it down to a 200 MB image with only dhcp and ssh and a few basic tools. It uses about 15 MB of RAM. This image allows you to start with almost nothing and build up only what you need.</description> 
                 <pubDate>Wed, 28 Jan 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 28 Jan 2015 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Broken Corrupted Raspberry Pi SD Card</title> 
-                <link>https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html</link> 
-                <guid>https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html</guid>
-                <description>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</description> 
-                <pubDate>Fri, 09 Jan 2015 00:00:00 GMT</pubDate>
-                <lastBuildDate>Fri, 09 Jan 2015 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

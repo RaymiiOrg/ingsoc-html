@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Broken Corrupted Raspberry Pi SD Card
 Author      : 	Remy van Elst
 Date        : 	09-01-2015
+Last update : 	13-11-2019
 URL         : 	https://raymii.org/s/blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html
 Format      : 	Markdown/HTML
 ---
@@ -28,6 +29,9 @@ on, started playing them.
 However, after the last reboot it would not start up again. I rigged up the UART
 to my machine and found out why, there were files that the system could not
 read, therefore init would not boot up.
+
+__2019-11-13:__ update the fstab entries to use tmpfs instead of none, and add
+correct permissions.
 
 ### fsck
 
@@ -286,19 +290,17 @@ have syslog available, but most of the time that is not a problem.
 Edit `/etc/fstab` and add the following:
 
     
-    
-    none        /var/run        tmpfs   size=1M,noatime         00
-    none        /var/log        tmpfs   size=1M,noatime         00
-    none        /var/tmp        tmpfs   size=1M,noatime         00
-    none        /tmp            tmpfs   size=1M,noatime         00
-    
+    tmpfs    /tmp               tmpfs    defaults,noatime,nosuid,size=100m                  0 0
+    tmpfs    /var/tmp           tmpfs    defaults,noatime,nosuid,size=30m                   0 0
+    tmpfs    /var/log           tmpfs    defaults,noatime,nosuid,mode=0755,size=100m        0 0
+    tmpfs    /var/run           tmpfs    defaults,noatime,nosuid,mode=0755,size=2m          0 0
 
-This will mount the above folders in RAM, with a max size of 1 megabyte. The
-`noatime` option means that the access time of a file is not updated, saving a
-lot of writes as well. You should also add the `noatime` option to your other
-partitions, for example on a standard Raspbian:
 
-    
+This will mount the above folders in RAM, with a respectable max size (otherwise
+your ram fills up). The `noatime` option means that the access time of a file is
+not updated, saving a lot of writes as well. You should also add the `noatime`
+option to your other partitions, for example on a standard Raspbian:
+
     
     proc            /proc           proc    defaults          0       0
     /dev/mmcblk0p1  /boot           vfat    ro,noatime        0       2
