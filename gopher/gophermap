@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-11-13T12:10:14	/	localhost	70
+i            2019-12-16T13:24:53	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0and & or are valid in C++ (alternative tokens) (16-12-2019)	and_or_are_valid_Cpp.txt	raymii.org	70
 0Weight for Weight, a coding exercise that kept me busy (12-11-2019)	Weight_for_Weight_a_coding_exersize_that_kept_me_busy.txt	raymii.org	70
 0std::string to lowercase or uppercase in C++ (07-11-2019)	std_string_to_lowercase_or_uppercase_in_cpp.txt	raymii.org	70
 0std::accumulate in C++ (23-10-2019)	Cpp_std_accumulate.txt	raymii.org	70
@@ -232,8 +233,8 @@ i 	/	localhost	70
 0CentOS 5 CA Certificate Bundle Update (06-07-2014)	CentOS_5_CA_Certificate_Bundle_Update.txt	raymii.org	70
 0Traceroute to Smokeping Target config (28-06-2014)	Traceroute_to_Smokeping_Target_Config.txt	raymii.org	70
 0Simple keepalived failover setup on Ubuntu 14.04 (13-06-2014)	Keepalived-Simple-IP-failover-on-Ubuntu.txt	raymii.org	70
-0Build a FreeBSD 10.0-release Openstack Image with bsd-cloudinit (11-06-2014)	FreeBSD_10.0-release_Openstack_Image.txt	raymii.org	70
 0OSSEC 2.8 Server, Client, Web UI and Analogi Dashboard Installation tutorial (11-06-2014)	OSSEC_2.8.0_Server_Client_and_Analogi_Dashboard_on_Ubuntu.txt	raymii.org	70
+0Build a FreeBSD 10.0-release Openstack Image with bsd-cloudinit (11-06-2014)	FreeBSD_10.0-release_Openstack_Image.txt	raymii.org	70
 0Openstack Horizon installation with SSL on Ubuntu (29-05-2014)	Openstack-Set-Up-Horizon-Dashboard-on-Ubuntu.txt	raymii.org	70
 0Openstack Swift Objectstore Access via FTP (25-05-2014)	Openstack-Swift-Objectstore-FTP-Access.txt	raymii.org	70
 0Encrypted Duplicity Backups to Openstack Swift Objectstore (19-05-2014)	Encrypted_Duplicity_Backups_to_Openstack_Swift_Objectstore.txt	raymii.org	70
@@ -331,8 +332,8 @@ i 	/	localhost	70
 0NGINX: Proxy folders to different root (04-04-2013)	NGINX_proxy_folder_to_different_root.txt	raymii.org	70
 0Silent unatended apt-get upgrade (30-03-2013)	Silent-automatic-apt-get-upgrade.txt	raymii.org	70
 0Ansible - sudoers safety and sanity checking in playbook (23-03-2013)	Ansible_-_Sudo_Safety_and_Sanity_Checks.txt	raymii.org	70
-0NGINX: Catch all error codes (13-03-2013)	NGINX_Catch_all_error_codes.txt	raymii.org	70
 0NGINX: Hide / Block .git and .svn folders (13-03-2013)	NGINX_Block_access_to_.git_or_.svn_project_folders.txt	raymii.org	70
+0NGINX: Catch all error codes (13-03-2013)	NGINX_Catch_all_error_codes.txt	raymii.org	70
 0Ansible - pure ssh based configuration management and deployment (09-03-2013)	Ansible_Deployment_Framework.txt	raymii.org	70
 0Hosted Piwik (09-03-2013)	Hosted_Piwik.txt	raymii.org	70
 0Screenfetch installation tutorial (09-03-2013)	Screenfetch_installation_tutorial.txt	raymii.org	70
@@ -346,8 +347,8 @@ i 	/	localhost	70
 0Munin - Fix MySQL plugin on Ubuntu 12.04 and Debian 6 (02-02-2013)	Munin-Fix-MySQL-Plugin-on-Ubuntu-12.04.txt	raymii.org	70
 0Munin - Set up the NGINX status plugin on Ubuntu 12.04 (31-01-2013)	Munin-NGINX-Status-Plugin-Ubuntu-12.04.txt	raymii.org	70
 0Exploring /proc/ - tips and tricks for the procfs (28-01-2013)	Procfs_tips_and_tricks.txt	raymii.org	70
-0OpenSSL one liner to get expiry date from SSL Certificate of any website (23-01-2013)	OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.txt	raymii.org	70
 0Fix CentOS IPTables rule saving (iptables: Saving firewall rules to /etc/sysconfig/iptables: /etc/init.d/iptables: line 274: restorecon: command not found) (23-01-2013)	CentOS_Save_iptables_restorecon_error.txt	raymii.org	70
+0OpenSSL one liner to get expiry date from SSL Certificate of any website (23-01-2013)	OpenSSL_Get_Certificate_Expiry_Date_and_Other_Info.txt	raymii.org	70
 0Restrict SSH (20-01-2013)	Restrict_SSH.txt	raymii.org	70
 0RT (Request Tracker) - find and delete big attachments (17-01-2013)	RT_find__and_delete_big_attachments.txt	raymii.org	70
 0Install python 2.7 or 3 under Debian 6 (15-01-2013)	Install_Python_2.7_or_3_on_debian_6.txt	raymii.org	70
@@ -355,8 +356,8 @@ i 	/	localhost	70
 0Python script to monitor a file for changes and then mail the report with the file attached. (21-12-2012)	Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.txt	raymii.org	70
 0Exchange 2010 - OWA - Lock user after x amount of failed logins (19-12-2012)	Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.txt	raymii.org	70
 0Restore iptables rules after a reboot on debian (12-12-2012)	Restore-iptables-rules-after-a-reboot-on-debian.txt	raymii.org	70
-0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
+0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
 0Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice) (08-12-2012)	Munin_optimalization_on_Debian.txt	raymii.org	70
 0Set OS X hostname from the commandline (05-12-2012)	OS-X-Change-Hostname.txt	raymii.org	70
 0ClamAV installation and daily scan + report on Ubuntu (01-12-2012)	ClamAV.txt	raymii.org	70

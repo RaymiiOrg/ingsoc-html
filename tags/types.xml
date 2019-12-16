@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/types.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>and &amp; or are valid in C++ (alternative tokens)</title> 
+                <link>https://raymii.org/s/blog/and_or_are_valid_Cpp.html</link> 
+                <guid>https://raymii.org/s/blog/and_or_are_valid_Cpp.html</guid>
+                <description>A post on lobste.rs on the C feature trigraphs triggered me to write this piece on the C++ feature, alternative tokens. I've recently suprised a co- worker by using an if statement with 'or' instead of '||', which works fine, but he never saw it before. It's in C++ since C++ 11, but MSVC requires a specific compiler flag ('/Za') or the 'iso646.h' header. This post has a few samples on the usage inclusing other alternative tokens like bitor, xor and or_eq.</description> 
+                <pubDate>Mon, 16 Dec 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 16 Dec 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Cooking with C++ templates and stronger types</title> 
                 <link>https://raymii.org/s/blog/Cooking_with_Cpp_templates_and_stronger_types.html</link> 
                 <guid>https://raymii.org/s/blog/Cooking_with_Cpp_templates_and_stronger_types.html</guid>

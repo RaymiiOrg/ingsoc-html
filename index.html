@@ -34,6 +34,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/and_or_are_valid_Cpp.html">and & or are valid in C++ (alternative tokens)</a></h4>
+<small>16-12-2019 | Remy van Elst</small><br />
+<p>A post on lobste.rs on the C feature trigraphs triggered me to write this piece on the C++ feature, alternative tokens. I've recently suprised a co- worker by using an if statement with 'or' instead of '||', which works fine, but he never saw it before. It's in C++ since C++ 11, but MSVC requires a specific compiler flag ('/Za') or the 'iso646.h' header. This post has a few samples on the usage inclusing other alternative tokens like bitor, xor and or_eq.</p>
+<a href="blog/and_or_are_valid_Cpp.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html">Broken Corrupted Raspberry Pi SD Card</a></h4>
 <small>Published: 09-01-2015 | Last update: 13-11-2019 | Author: Remy van Elst</small><br />
 <p>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</p>
@@ -83,11 +88,6 @@
 <small>12-07-2019 | Remy van Elst</small><br />
 <p>When using numbers in a boolean (implicit conversion), remember that only zero evaluates to false. Anything else, including negative numbers, will evaluate to true. This snippet talks about the rules for implicit conversion in C++ when using booleans. For seasoned programmers it's nothing new, but I found it interesting.</p>
 <a href="snippets/Cpp_Only_zero_is_false.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html">GNUplot tips for nice looking charts from a CSV file</a></h4>
-<small>06-07-2019 | Remy van Elst</small><br />
-<p>Recently I had to do some testing which resulted in a lot of log data. Looking at a bunch of text is not the same as seeing things graphically, this particular logdata was perfect to put in a graph. My goto favorite tool for graphs and charts is gnuplot. Not only is it very extensible, it is also reproducable. Give me a configfile and command over 'do this, then this and then such and such' in Excel to get a consistent result. In this article I'll give tips for using gnuplot, which include parsing a CSV file, a second axis, environment variables, A4 PDF's and a ton of styling options for a nice looking chart.</p>
-<a href="tutorials/GNUplot_tips_for_nice_looking_charts_from_a_CSV_file.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
