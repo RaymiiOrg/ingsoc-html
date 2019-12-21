@@ -28,7 +28,15 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 There is no window, no output, no settings, just a keystroke every 40 seconds. 
 If you need to stop the application, use the task manager.
 
+[Test the keyboard input here][6]:
+
+![screenshot 2][5]
+
+Resource usage:
+
 ![screenshot][2]
+
+### Download
 
 It's written in C++, compiled with GCC 8.1 via MinGW. Filesize is around 14 KB, 
 memory usage after a day of running around 600KB. License is GNU GPLv3.
@@ -82,7 +90,8 @@ memory usage after a day of running around 600KB. License is GNU GPLv3.
     message(CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS})
     add_executable(ScreenSaverStopper main.cpp)
 
-
+[6]: https://w3c.github.io/uievents/tools/key-event-viewer.html
+[5]: /s/inc/img/screensaverstopper-2.png
 [4]: https://github.com/RaymiiOrg/ScreenSaverStopper
 [3]: /s/inc/downloads/ScreenSaverStopper.cpp
 [2]: /s/inc/img/screensaverstopper.png
