@@ -57,20 +57,18 @@ memory usage after a day of running around 600KB. License is GNU GPLv3.
     #include <windows.h>
     int main()
     {
-        // Hide this console window
-        ShowWindow(GetConsoleWindow(), SW_HIDE);
-        // 40 seconds
+         // 40 seconds
         DWORD sleeptime = 40000;
         INPUT ip;
+        ip.type = INPUT_KEYBOARD;
+        ip.ki.wScan = 0; // hardware scan code for key
+        ip.ki.time = 0;
+        ip.ki.dwExtraInfo = 0;
+        // list of keycodes:
+        // http://web.archive.org/web/20191221104344/https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+        ip.ki.wVk = 0x87; // virtual-key code for the "F24" key
         while (true)
         {
-            ip.type = INPUT_KEYBOARD;
-            ip.ki.wScan = 0; // hardware scan code for key
-            ip.ki.time = 0;
-            ip.ki.dwExtraInfo = 0;
-            // list of keycodes:
-            // http://web.archive.org/web/20191221104344/https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-            ip.ki.wVk = 0x87; // virtual-key code for the "F24" key
             ip.ki.dwFlags = 0; // 0 for key press
             SendInput(1, &ip, sizeof(INPUT));
             ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
@@ -88,7 +86,7 @@ memory usage after a day of running around 600KB. License is GNU GPLv3.
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -s")
     set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
     message(CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS})
-    add_executable(ScreenSaverStopper main.cpp)
+    add_executable(ScreenSaverStopper WIN32 main.cpp)
 
 [6]: https://w3c.github.io/uievents/tools/key-event-viewer.html
 [5]: /s/inc/img/screensaverstopper-2.png
