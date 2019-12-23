@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-12-22T12:36:20	/	localhost	70
+i            2019-12-23T23:13:18	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Run CLion native on Android, ditch your desktop! (27-12-2019)	Run_CLion_on_Android.txt	raymii.org	70
 0Tiny Tiny RSS + Readability == The best way to read RSS feeds (22-12-2019)	Tiny-Tiny-RSS-Readability-plaintext.txt	raymii.org	70
 0ScreensaverStopper, stop activating the screensaver by sending F24 often (21-12-2019)	ScreenSaverStopper.txt	raymii.org	70
 0and & or are valid in C++ (alternative tokens) (16-12-2019)	and_or_are_valid_Cpp.txt	raymii.org	70
@@ -303,8 +304,8 @@ i 	/	localhost	70
 0Nagios - Hide all hosts in hostgroup (30-07-2013)	Nagios_-_Hide-entire-hostgroup.txt	raymii.org	70
 0Diffie Hellman Key Exchange Dutch Notes and Example (28-07-2013)	Diffie-Hellman-Key-Exchange-Dutch-Notes.txt	raymii.org	70
 0OpenSSL - Generate Psuedo Random Passwords (26-07-2013)	OpenSSL_Password_Generator.txt	raymii.org	70
-0My Todo.txt Workflow, including Unison, Todour and Android (24-07-2013)	My_Todo.txt_Workflow.txt	raymii.org	70
 0Stong SSL Security on Lighttpd (24-07-2013)	Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
+0My Todo.txt Workflow, including Unison, Todour and Android (24-07-2013)	My_Todo.txt_Workflow.txt	raymii.org	70
 0Pass the SSL Labs Test on NGINX (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (23-07-2013)	Pass_the_SSL_Labs_Test_on_NGINX_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0Pass the SSL Labs Test on Apache2 (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (20-07-2013)	Pass_the_SSL_Labs_Test_on_Apache2_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0OS X: Disable Notification Center (10-07-2013)	OS_X-Disable_Notification_Centre.txt	raymii.org	70

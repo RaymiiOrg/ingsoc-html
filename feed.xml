@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Run CLion native on Android, ditch your desktop!</title> 
+                <link>https://raymii.org/s/blog/Run_CLion_on_Android.html</link> 
+                <guid>https://raymii.org/s/blog/Run_CLion_on_Android.html</guid>
+                <description>How often do you read articles that state that people have replaced their main computer with an iPad and are fully content? Now, how many of those articles just use a linux server (vps) somewhere with some native apps, but mostly SSH to that server? Well, what if I told you that you can run a full blown IDE, the best IDE for C++ there is, CLion by JetBrains, on Android? Including compiling, just native GCC, CMake, GDB and all the stuff you are used to? Just for fun I've installed CLion on an old Samsung Tab S2 I had lying around, using Ubuntu in a chroot. It works way better than I'd expected, with a Bluetooth keyboard and mouse it's almost as if your on a desktop. I wonder if you could run Android Studio and use the tablet to compile app's for itself. This article shows some photo's, including a mechanical keyboard, different window managers and had instructions to replicate this setup.</description> 
+                <pubDate>Fri, 27 Dec 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 27 Dec 2019 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Tiny Tiny RSS + Readability == The best way to read RSS feeds</title> 
                 <link>https://raymii.org/s/articles/Tiny-Tiny-RSS-Readability-plaintext.html</link> 
                 <guid>https://raymii.org/s/articles/Tiny-Tiny-RSS-Readability-plaintext.html</guid>
@@ -2563,19 +2572,19 @@
             </item>
     
             <item>
-                <title>My Todo.txt Workflow, including Unison, Todour and Android</title> 
-                <link>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</link> 
-                <guid>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</guid>
-                <description>Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless for Android.</description> 
+                <title>Stong SSL Security on Lighttpd</title> 
+                <link>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</link> 
+                <guid>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by disabling SSL Compression to mitigate the CRIME attack, disable SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. This way we have a strong and future proof ssl configuration and we get an A on the Qually Labs SSL Test.</description> 
                 <pubDate>Wed, 24 Jul 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 24 Jul 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Stong SSL Security on Lighttpd</title> 
-                <link>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</link> 
-                <guid>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by disabling SSL Compression to mitigate the CRIME attack, disable SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. This way we have a strong and future proof ssl configuration and we get an A on the Qually Labs SSL Test.</description> 
+                <title>My Todo.txt Workflow, including Unison, Todour and Android</title> 
+                <link>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</link> 
+                <guid>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</guid>
+                <description>Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless for Android.</description> 
                 <pubDate>Wed, 24 Jul 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 24 Jul 2013 00:00:00 GMT</lastBuildDate>
             </item>
