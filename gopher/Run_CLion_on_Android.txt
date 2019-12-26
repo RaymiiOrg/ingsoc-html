@@ -64,7 +64,7 @@ and you're in your Linux distro of choice.
 #### Easy
 
 The easy way is to use an app like [AnLinux][7] or [Andronix][8]. The latter one,
-Andronix, has a website that looks fishy and spammy and will ask for money to use
+Andronix, will ask for money to use
 some of the app's features. You don't need to pay for a basic Ubuntu installation.
 
 The first, [AnLinux][7] is open source and a bit more spartan, but works just fine.
