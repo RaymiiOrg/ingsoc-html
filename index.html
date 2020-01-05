@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.html">Windows 10 updates with PowerShell</a></h4>
+<small>06-01-2020 | Remy van Elst</small><br />
+<p>Recently I had issues updating one of my machines that runs Windows 10. Turns out the firewall was to restrictive. However, the information provided by the update dialog was just, 'Oh, updating failed, maybe try again'. Nothing useful, so I tried to figure out if it's possible to use Powershell for updating. Since Windows 10 build 1709 Microsoft provides a built in module, but that is not that user friendly. In this article I'll talk about using PSWindowsUpdate and the built in Microsoft WindowsUpdateProvider to update a Windows 10 machine via the commandline</p>
+<a href="blog/Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Run_CLion_on_Android.html">Run CLion native on Android, ditch your desktop!</a></h4>
 <small>27-12-2019 | Remy van Elst</small><br />
 <p>How often do you read articles that state that people have replaced their main computer with an iPad and are fully content? Now, how many of those articles just use a linux server (vps) somewhere with some native apps, but mostly SSH to that server? Well, what if I told you that you can run a full blown IDE, the best IDE for C++ there is, CLion by JetBrains, on Android? Including compiling, just native GCC, CMake, GDB and all the stuff you are used to? Just for fun I've installed CLion on an old Samsung Tab S2 I had lying around, using Ubuntu in a chroot. It works way better than I'd expected, with a Bluetooth keyboard and mouse it's almost as if your on a desktop. I wonder if you could run Android Studio and use the tablet to compile app's for itself. This article shows some photo's, including a mechanical keyboard, different window managers and had instructions to replicate this setup.</p>
@@ -89,11 +94,6 @@
 <small>02-10-2019 | Remy van Elst</small><br />
 <p>This snippet will show you how to send commands to a running screen session. This includes actual shell commands or keyboard input, as well as screen commands, for example to set a logfile.</p>
 <a href="snippets/Sending_commands_or_input_to_a_screen_session.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Get_serial_port_data_on_the_web_with_live_updating.html">Get serial port data on the web with live updating</a></h4>
-<small>28-09-2019 | Remy van Elst</small><br />
-<p>Recently I was asked to build a test setup to measure the accuracy of a few loadcells (weight sensors) in a frame. Someone other than me would execute the test and required access to the measured data, preferably live and without needing knowledge of ssh or linux. The weight sensors can be read with an openscale board from sparkfun via a serial connection which the board emulates over USB (via an FTDI chip), via that same serial connection you can also calibrate them or change settings like amount of decimals. As a quick solution I created a webpage that uses a small amount of javascript to live update the readings from the board. screen is used to capture the output of the serial connection to a file which the webpage displays and updates. In this article I'll talk about how I put various bits of software together to get the output of the serial connection onto a nice webpage with live updating.</p>
-<a href="blog/Get_serial_port_data_on_the_web_with_live_updating.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

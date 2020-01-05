@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2019-12-26T11:03:35	/	localhost	70
+i            2020-01-05T13:48:46	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Windows 10 updates with PowerShell (06-01-2020)	Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.txt	raymii.org	70
 0Run CLion native on Android, ditch your desktop! (27-12-2019)	Run_CLion_on_Android.txt	raymii.org	70
 0Tiny Tiny RSS + Readability == The best way to read RSS feeds (22-12-2019)	Tiny-Tiny-RSS-Readability-plaintext.txt	raymii.org	70
 0ScreensaverStopper, stop activating the screensaver by sending F24 often (21-12-2019)	ScreenSaverStopper.txt	raymii.org	70

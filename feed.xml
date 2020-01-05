@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Windows 10 updates with PowerShell</title> 
+                <link>https://raymii.org/s/blog/Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.html</link> 
+                <guid>https://raymii.org/s/blog/Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.html</guid>
+                <description>Recently I had issues updating one of my machines that runs Windows 10. Turns out the firewall was to restrictive. However, the information provided by the update dialog was just, 'Oh, updating failed, maybe try again'. Nothing useful, so I tried to figure out if it's possible to use Powershell for updating. Since Windows 10 build 1709 Microsoft provides a built in module, but that is not that user friendly. In this article I'll talk about using PSWindowsUpdate and the built in Microsoft WindowsUpdateProvider to update a Windows 10 machine via the commandline</description> 
+                <pubDate>Mon, 06 Jan 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 06 Jan 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Run CLion native on Android, ditch your desktop!</title> 
                 <link>https://raymii.org/s/blog/Run_CLion_on_Android.html</link> 
                 <guid>https://raymii.org/s/blog/Run_CLion_on_Android.html</guid>
