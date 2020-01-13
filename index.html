@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html">nginx 1.15.2, ssl_preread_protocol, multiplex HTTPS and SSH on the same port</a></h4>
+<small>Published: 06-08-2018 | Last update: 12-01-2020 | Author: Remy van Elst</small><br />
+<p>The NGINX blog recently had a nice article on a new feature of NGINX 1.15.2, $ssl_preread_protocol. This allows you to multiplex HTTPS and other SSL protocols on the same port, or as their blog states, 'to distinguish between SSL/TLS and other protocols when forwarding traffic using a TCP (stream) proxy'. This can be used to run SSH and HTTPS on the same port (or any other SSL protocol next to HTTPS). By running SSH and HTTPS on the same port, one can circumvent certain firewall restrictions. If the session looks like HTTPS, nginx will handle it, if it looks like something else, it will forward it to the configured other program. I used to use SSHL to get this functionality, but now it's built into the nginx webserver. This small guide will cover the installation of the latest version of nginx on Ubuntu (16.04) and configuring this multiplex feature.</p>
+<a href="tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Windows_10_Updates_with_PowerShell_PSWindowsUpdpate.html">Windows 10 updates with PowerShell</a></h4>
 <small>06-01-2020 | Remy van Elst</small><br />
 <p>Recently I had issues updating one of my machines that runs Windows 10. Turns out the firewall was to restrictive. However, the information provided by the update dialog was just, 'Oh, updating failed, maybe try again'. Nothing useful, so I tried to figure out if it's possible to use Powershell for updating. Since Windows 10 build 1709 Microsoft provides a built in module, but that is not that user friendly. In this article I'll talk about using PSWindowsUpdate and the built in Microsoft WindowsUpdateProvider to update a Windows 10 machine via the commandline</p>
@@ -89,11 +94,6 @@
 <small>23-10-2019 | Remy van Elst</small><br />
 <p>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</p>
 <a href="snippets/Cpp_std_accumulate.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Sending_commands_or_input_to_a_screen_session.html">Send commands or input to a detached screen session</a></h4>
-<small>02-10-2019 | Remy van Elst</small><br />
-<p>This snippet will show you how to send commands to a running screen session. This includes actual shell commands or keyboard input, as well as screen commands, for example to set a logfile.</p>
-<a href="snippets/Sending_commands_or_input_to_a_screen_session.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

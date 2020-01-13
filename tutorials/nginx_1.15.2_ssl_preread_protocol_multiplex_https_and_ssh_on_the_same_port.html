@@ -39,7 +39,7 @@
             </header>
           
     <h2 class='headheader' id='main'>nginx 1.15.2, ssl_preread_protocol, multiplex HTTPS and SSH on the same port</h2>
-<p><small>Published: 06-08-2018 | Author: Remy van Elst | <a href="nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.txt">Text only version of this article</a>
+<p><small>Published: 06-08-2018 | Last update: 12-01-2020 | Author: Remy van Elst | <a href="nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -58,9 +58,14 @@
 </li>
 <li>
 <a href="#toc_1">Configure nginx for ssl <em>preread</em> protocol</a>
+<ul>
+<li>
+<a href="#toc_2">SSH and HTTPS on the same server</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#toc_2">More fun with ssl_preread</a>
+<a href="#toc_3">More fun with ssl_preread</a>
 </li>
 </ul>
 
@@ -82,10 +87,15 @@ now it&#39;s built into the nginx webserver.</p>
 VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
 <p>This small guide will cover the installation of the latest version of nginx on
-Ubuntu (16.04) and configuring this multiplex feature.</p>
+Ubuntu and configuring this multiplex feature.</p>
 
 <p>You must use NGINX in proxy mode. This means that nginx will act as a load
 balancer or proxy in front of your application (like Django, Rails, etc).</p>
+
+<ul>
+<li>Update 12-01-2020: added apt-key add. Added example of ssh and https on the 
+same server.</li>
+</ul>
 
 <h3 id="toc_0">Install the latest version of NGINX</h3>
 
@@ -97,15 +107,20 @@ this example we will use Ubuntu.</p>
 <pre><code>wget http://nginx.org/keys/nginx_signing.key
 </code></pre>
 
-<p>Add the repository:</p>
+<p>Trust the signing key:</p>
 
-<pre><code>echo &quot;deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx&quot; &gt; /etc/apt/sources.list.d/nginx.list
-echo &quot;deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx&quot; &gt;&gt; /etc/apt/sources.list.d/nginx.list
+<pre><code>apt-key add nginx_signing.key
 </code></pre>
 
-<p>Replace <code>xenial</code> with your version of Ubuntu (use <code>lsb_release -a</code> to find out).</p>
+<p>Add the repository:</p>
 
-<p>Install nginx:</p>
+<pre><code>echo &quot;deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx&quot; &gt; /etc/apt/sources.list.d/nginx.list
+echo &quot;deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx&quot; &gt;&gt; /etc/apt/sources.list.d/nginx.list
+</code></pre>
+
+<p>Replace <code>bionic</code> with your version of Ubuntu (use <code>lsb_release -a</code> to find out).</p>
+
+<p>Install nginx from the newly added repository:</p>
 
 <pre><code>apt-get update; 
 apt-get install nginx
@@ -122,6 +137,9 @@ directive then forwards the request to the selected upstream group. Note that
 the <code>ssl_preread</code> on directive must be included in the server block for the
 <code>$ssl_preread_protocol</code> variable to work.</p>
 
+<p>This piece of configuration must go in the root of your nginx config, not inside
+a <code>server</code> block.    </p>
+
 <pre><code>stream {
     upstream ssh {
         server 192.0.2.10:22;
@@ -133,7 +151,10 @@ the <code>ssl_preread</code> on directive must be included in the server block f
 
     map $ssl_preread_protocol $upstream {
         default ssh;
-        &quot;TLSv1.2&quot; web;
+        &quot;TLSv1.2&quot; https;
+        &quot;TLSv1.3&quot; https;
+        &quot;TLSv1.1&quot; https;
+        &quot;TLSv1.0&quot; https;
     }
 
     # SSH and SSL on the same port
@@ -147,10 +168,52 @@ the <code>ssl_preread</code> on directive must be included in the server block f
 </code></pre>
 
 <p>In this case, if the protocol detected is <code>TLSv1.2</code>, HTTPS is assumed and the
-traffix is forwarded to the HTTPS server (192.0.2.20). Otherwise the traffic is
-forwarded to the SSH host (192.0.2.10).</p>
+traffix is forwarded to the HTTPS server (<code>192.0.2.20</code>). Otherwise the traffic is
+forwarded to the SSH host (<code>192.0.2.10</code>).</p>
 
-<h3 id="toc_2">More fun with ssl_preread</h3>
+<h4 id="toc_2">SSH and HTTPS on the same server</h4>
+
+<p>If you want to split <code>ssh</code> and <code>https</code> on the same server, the configuration is 
+a little bit different. You first must make sure that there is no other website
+listening on port <code>:443</code>, because that is what nginx will use for its proxy. </p>
+
+<p>Not even another site withing nginx is allowed to use port 443. Change your <code>listen</code>
+blocks to use port <code>8443</code>, for example:</p>
+
+<pre><code>listen [::]:8443 http2;
+listen 8443 http2;
+</code></pre>
+
+<p>The configuration for ssh/ssl must not go in a <code>server</code> directive, but in the 
+root of your nginx config:</p>
+
+<pre><code>stream {
+    upstream ssh {
+        server 127.0.0.1:22;
+    }
+
+    upstream https {
+        server 127.0.0.1:8443;
+    }
+
+    map $ssl_preread_protocol $upstream {
+        default ssh;
+        &quot;TLSv1.2&quot; https;
+        &quot;TLSv1.3&quot; https;
+        &quot;TLSv1.1&quot; https;
+        &quot;TLSv1.0&quot; https;
+    }
+    #
+    # SSH and SSL on the same port
+    server {
+        listen 443;
+        proxy_pass $upstream;
+        ssl_preread on;
+    }
+}
+</code></pre>
+
+<h3 id="toc_3">More fun with ssl_preread</h3>
 
 <p>The <code>ssl_preread</code> module can detect more than the protocol. The SNI server name is also supported, which allows for proxy forwarding to different backend servers based on the requested SSL hostname. <a href="http://web.archive.org/web/20180806133249/https://nginx.org/en/docs/stream/ngx_stream_ssl_preread_module.html">Quoting the documentation</a>:</p>
 
@@ -177,7 +240,7 @@ server {
 </code></pre>
 
 <p>Do note that this also requires a newer version of nginx than by default in the
-Ubuntu 16.04 release.</p>
+Ubuntu 16.04 or 18.04 release.</p>
 Tags: <a href="../tags/firewall.html">firewall</a>
 , <a href="../tags/folder.html">folder</a>
 , <a href="../tags/multiplex.html">multiplex</a>
