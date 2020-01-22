@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Cancellation notice: cipherli.st, ssldecoder.org and certificatemonitor.org</title> 
+                <link>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</link> 
+                <guid>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</guid>
+                <description>This is a short notice that the public services I was providing, cipherli.st, ssldecoder.org and certificatemonitor.org are suspended and cancelled as of now. The source code is still available via my github, but the domains and hosting are stopped. If you want to use these services, you now must host them yourself.</description> 
+                <pubDate>Wed, 22 Jan 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 22 Jan 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>nginx 1.15.2, ssl_preread_protocol, multiplex HTTPS and SSH on the same port</title> 
                 <link>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</link> 
                 <guid>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</guid>
