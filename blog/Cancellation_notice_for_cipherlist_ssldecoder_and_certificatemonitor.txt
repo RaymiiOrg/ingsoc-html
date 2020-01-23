@@ -1,6 +1,6 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title       : 	Cancellation notice: cipherli.st, txtn.ws ssldecoder.org and certificatemonitor.org
+Title       : 	Cancellation notice: cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org
 Author      : 	Remy van Elst
 Date        : 	22-01-2020
 URL         : 	https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html
