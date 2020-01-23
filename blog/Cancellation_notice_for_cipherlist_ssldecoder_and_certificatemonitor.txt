@@ -1,6 +1,6 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title       : 	Cancellation notice: cipherli.st, ssldecoder.org and certificatemonitor.org
+Title       : 	Cancellation notice: cipherli.st, txtn.ws ssldecoder.org and certificatemonitor.org
 Author      : 	Remy van Elst
 Date        : 	22-01-2020
 URL         : 	https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html
@@ -12,10 +12,10 @@ Format      : 	Markdown/HTML
 ### Cancellation
 
 This is a short notice that the public services I was providing, 
-[cipherli.st][1], [ssldecoder.org][2] and [certificatemonitor.org][3] are
-suspended and cancelled as of now. The source code is still available via [my
-github][4], but the domains and hosting are stopped. If you want to use these
-services, you now must host them yourself.
+[cipherli.st][1], [txtn.ws][5], [ssldecoder.org][2] and
+[certificatemonitor.org][3] are suspended and cancelled as of now. The source
+code is still available via [my github][4], but the domains and hosting are
+stopped. If you want to use these services, you now must host them yourself.
 
 
 Any information on these websites, tests or services provides by those websites
@@ -27,6 +27,7 @@ down period expires.
 [2]: https://github.com/RaymiiOrg/ssl-decoder
 [3]: https://github.com/RaymiiOrg/certificate-expiry-monitor
 [4]: https://github.com/RaymiiOrg
+[5]: https://github.com/RaymiiOrg/to-text.py
 
 ---
 
