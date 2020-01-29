@@ -188,8 +188,8 @@ reinstall will fail.
 **Do note that you will loose all data and applications configured with
 Freedombox**.
 
-Even local backups that you make via the backup module are lost. Create a remote 
-(ssh) backup if you want an easy way to restore, or download a backup to your 
+Even local backups that you make via the backup module are lost. Create a remote
+ (ssh) backup if you want an easy way to restore, or download a backup to your 
 machine first.
 
 Here are the commands to remove everything and reboot afterwards:
