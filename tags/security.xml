@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/security.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Installing Freedombox on Armbian on the Olimex Pioneer</title> 
+                <link>https://raymii.org/s/tutorials/Installing_Freedombox_On_Armbian_On_The_Olimex_A20_Pioneer.html</link> 
+                <guid>https://raymii.org/s/tutorials/Installing_Freedombox_On_Armbian_On_The_Olimex_A20_Pioneer.html</guid>
+                <description>FreedomBox is a private server for non-experts: it lets you install and configure server applications with only a few clicks. It runs on cheap hardware of your choice, uses your internet connection and power, and is under your control. Last year the Pioneer became available, officially supported and sanctioned by the Freedombox Foundation. This is a home server you can buy from Olimex, comes in a nice metal case with a proper power supply, network cable, battery and SD card preloaded with Freedombox. Plug in and go. Perfect for users that don't want to tinker but do want their freedom and control. With the Pioneer, both the hardware and software are fully open source. In the default provided distribution for the Pioneer there are a few things I dislike. This guide covers the installation of Freedombox and Debian for the Olimex A20 Lime2 Pioneer with Armbian including reinstalling, Apache SSL certificate and LDAP issues.</description> 
+                <pubDate>Wed, 29 Jan 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 29 Jan 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>nginx 1.15.2, ssl_preread_protocol, multiplex HTTPS and SSH on the same port</title> 
                 <link>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</link> 
                 <guid>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</guid>
@@ -25,19 +34,19 @@
             </item>
     
             <item>
-                <title>Strong SSL Security on nginx</title> 
-                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</link> 
-                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the nginx webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
+                <title>Strong SSL Security on Apache2</title> 
+                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</link> 
+                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the Apache2 webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
                 <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sat, 27 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Strong SSL Security on Apache2</title> 
-                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</link> 
-                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the Apache2 webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
+                <title>Strong SSL Security on nginx</title> 
+                <link>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</link> 
+                <guid>https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the nginx webserver. We do this by updating OpenSSL to the latest version to mitigate attacks like Heartbleed, disabling SSL Compression and EXPORT ciphers to mitigate attacks like FREAK, CRIME and LogJAM, disabling SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. We also enable HSTS and HPKP. This way we have a strong and future proof ssl configuration and we get an A+ on the Qually Labs SSL Test.</description> 
                 <pubDate>Sun, 14 Jun 2015 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sat, 27 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
