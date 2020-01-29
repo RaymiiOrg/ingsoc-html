@@ -92,7 +92,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
   </tbody>
 </table>
 
-
+<!--
 
 ### Other Servers
 
@@ -130,6 +130,8 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
    </tbody>
 </table>
+
+-->
 
 
 Here be dragons!
