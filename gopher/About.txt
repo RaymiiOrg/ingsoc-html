@@ -1,0 +1,224 @@
+This is a text-only version of the following page on https://raymii.org:
+---
+Title       : 	About
+Author      : 	Remy van Elst
+Date        : 	01-01-2006
+URL         : 	https://raymii.org/s/static/About.html
+Format      : 	Markdown/HTML
+---
+
+
+
+Hi there! I'm Remy, a developer with a focus on C, C++, linux and embedded systems.
+
+I currently work for [De Jong DUKE][11] were I develop software for an embedded 
+platform that powers coffee machines. This is a C++, C and Qt stack running
+on Yocto linux and [Nucleus RTOS][12]. It controls hardware, runs the UI and has 
+a few utilities for IoT connectivity and configuration. Technology is mostly
+C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.
+
+I've been a Linux/UNIX sysadmin for over 10 years; I've built high-available 
+cloud environments in OpenStack, Azure or on premise with Ansible and Terraform
+(or any other configuration management tool). My sysadmin keywords are
+OpenStack, cloud, virtualization, high-availability, scaling and clustering,
+security, (Open)SSL, Python, Powershell, bash and general linux/UNIX system
+administration. 
+
+I've worked in a devops role for [the Erasmus University Medical Center][3] (a
+large hospital and medical university in Rotterdam), [Digidentity][4] (a Dutch
+[certificate authority][5], the company that develops [DigiD][6] and other Ruby
+on Rails applications), [CloudVPS][7] (an OpenStack cloud provider), 
+[VolkerWessels][2] (as an Azure cloud specialist) and a few other smaller
+companies. 
+
+I design, build, document and manage large, complex and high-available systems.
+I'm a team player that loves to work with configuration management tools and
+version control systems. If I do something more than three times, I automate it.
+**Planning, documentation, monitoring and backups are things I do first, not
+when the time allows it later.** Last but not least I have an interest in legacy
+systems like the PDP-11, PDP-8, OpenVMS, HP-UX and old UNIX systems.
+
+This is my personal website, please do note that these articles do not reflect
+or are based on work, opinions or policies of any of my (previous) employers.
+Any resemblance to reality is pure coincidence.
+
+This site started in 2006 as my form of (public) documentation. It has grown to
+include software, tutorials, snippets and articles on linux/UNIX, system
+administration and everything related with over 10.000 unique visitors a day as
+of [2018-06][9]. The URL is the phonetic way you say my name (Ray-Mii), since
+non-Dutch speakers always have trouble with the correct pronunciation.
+
+If you want to send me feedback, emails or comments, see below for the contact
+details.
+
+### Resume
+
+If you want my full resume including all (previous) jobs, experience and
+education, please send me an email.
+
+### Contact
+
+You can reach me by email, try mailing "contact" "at" "relst" "dot" "nl". I'm
+not on any social networks, not on facebook, not on linkedin, not on twitter,
+not on identica, not on diaspora, mastodont, nowhere. Every profile on a social
+network claiming to be me is false.
+
+This is my public S/MIME certificate for email:
+
+    
+    
+    -----BEGIN CERTIFICATE-----
+    MIIFHDCCBASgAwIBAgIRAJ9myZLsjNnbcWG5w5GoFkgwDQYJKoZIhvcNAQELBQAw
+    gZcxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAO
+    BgNVBAcTB1NhbGZvcmQxGjAYBgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYD
+    VQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+    IEVtYWlsIENBMB4XDTE4MDUwMjAwMDAwMFoXDTE5MDUwMjIzNTk1OVowRDELMAkG
+    A1UEBhMCTkwxFjAUBgNVBAMTDVJlbXkgdmFuIEVsc3QxHTAbBgkqhkiG9w0BCQEW
+    DnJlbHN0QHJlbHN0Lm5sMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+    /S5yilAVzhll6t3h1lB0MIbvKSWChEzujNaDBVPmOuyBVwsglTV/3VeGtG80MErf
+    p1gk56RrK1O5pDrXU+aH5AquF4DlB2TQZQBYwT+Z6WFj+kz8FA5jq023Fl9v2/Z3
+    5dgTCCT+4N+5TtzlgDa14UZiRGLNZDgn63hFUgEQZi1oTWR/BS8bzS7p2iuTol2J
+    lq9WQ3Zk3sccauDt5bbxsP4FgW0vogaNBxUPV6ZGB6XaTE95pNRUJSHfAnhIkdiW
+    /jJc6M5Lnh2H/TXWCDOEldzTy9HhNmozxHY+jwN2WR5FK2qQNUqKLO6g6kYWywHs
+    sTuYQEFjHI6gTd9swqj+gwIDAQABo4IBszCCAa8wHwYDVR0jBBgwFoAUgq9sjPjF
+    /pZhfOgfPStxSF7Ei8AwHQYDVR0OBBYEFD6JJADFNFh6jijL0yvpBenYrdjqMA4G
+    A1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwME
+    BggrBgEFBQcDAjBGBgNVHSAEPzA9MDsGDCsGAQQBsjEBAgEDBTArMCkGCCsGAQUF
+    BwIBFh1odHRwczovL3NlY3VyZS5jb21vZG8ubmV0L0NQUzBaBgNVHR8EUzBRME+g
+    TaBLhklodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDbGllbnRBdXRo
+    ZW50aWNhdGlvbmFuZFNlY3VyZUVtYWlsQ0EuY3JsMIGLBggrBgEFBQcBAQR/MH0w
+    VQYIKwYBBQUHMAKGSWh0dHA6Ly9jcnQuY29tb2RvY2EuY29tL0NPTU9ET1JTQUNs
+    aWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcnQwJAYIKwYBBQUH
+    MAGGGGh0dHA6Ly9vY3NwLmNvbW9kb2NhLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEA
+    aCMMlfG7yG6NgMNciPOSlBHK7zCj35s6KuEG959hUqk6vU5i7eWN3ZCprxDgk1rc
+    a42l2E1UNI5VlodkSuOFXesmZc5eOZFEmc7469p3hDElhwDyYLd90DlrnyGNyz19
+    xGdS9OcvS+fRAxaTmUHXIDYO8VnWLhZz8Cw4i/6/mZ4sxoDMpqRNO0DHa+fMJFTy
+    zYA6Ysdi/g5I8hHi+BlToxsPMyjD7wsaQU08WKFukBjkowQwnuTep1Q5zMCxN41H
+    JmPhs1OBcKD8CUGCQxtJGVeHORDDNy4CMfAEFqOWMwbO6Yv2G+Ab1LaOH2Rz4/BZ
+    Mt1k8zfC+I2nahysAP6Etg==
+    -----END CERTIFICATE-----
+    
+
+This is my GPG public key ([1B7F88DC][10]), created on June 1st, 2014:
+
+    
+    
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+    Version: GnuPG v2.0.22 (GNU/Linux)
+    
+    mQENBFOLI2cBCADzgSty3SMVKjyisKr+GQhQCW6aAxBoodUuYqK31IF6CG1/Uplf
+    od57hoD6aDcLGsLuS7EIhIInYqCGHTpqghAraEZ6wWRoo8ARvQHa01el7VEvJgbG
+    B9itKY/QaZMsuUWBdoxO2XXj13IsSTiQtOkZ5/mgSQ+O4QoQU3/np46DnV3mBNCO
+    QuT6lIzrK4yY8BfN9rNpbdDxq+Az3nkbQM6UVXKUUIER4wZT5XLQRJIw2J8KwYmQ
+    Rub7otBJJJdW/F0EH1ZVvYkDLga68ZV80mgvG2eLgH8m9HPjvGjV6gTmRH+A9oq1
+    +D5QKwER+k7QT3ipR/lCLPYQE1kEzNRxrj2hABEBAAG0HlJlbXkgdmFuIEVsc3Qg
+    PHJlbHN0QHJlbHN0Lm5sPokBPwQTAQIAKQUCU4sjZwIbIwUJCWYBgAcLCQgHAwIB
+    BhUIAgkKCwQWAgMBAh4BAheAAAoJECtnVb0bf4jcEh8IAKWO+8w4rvyPmBZs348d
+    3HYa394dJrF1Ve27vzE5r4luPruSGwNySVqUB91ij2yBku8i30QMRQmTqVa2pGNS
+    pTTRinzv5kQkmJV0lpMchfcRuSK+boO4qej/Y1OvR/f/QaoLmqlZ6/8fSwNnZ9eF
+    bQiSfROESIc8wv18aGID3clQqgOXAMJyPySalDmbCcpoY8wlwDUTKH6E2GB+ppPT
+    XpiFoWanV+P9GNaVs1knX4KJv/kJz3M6+Kk6RDFdrhzY4p7asb9jrJpspKsWuALm
+    BEVeb+rBL7lUqaPnpEu0nMS87UsnR3xcKkPkuinQsbtkCNhmKUcJtzRXUe4zsUkF
+    +ku5AQ0EU4sjZwEIAK0cDATVhgrU4IzdS5ghQBOMbe33yNAAZ2biL2cvobOKaX1c
+    xya3twBmdC4i+58selyPEb4hDYQMC522BGxyl8ry/vGcdOWb26cpTb3bmi37cBCs
+    ujQC2RWiklYDw3xCsHV2ahI4+cYFP9Rruq0u7tk0S1/jGMZolsDwhBM7gTJmCTZu
+    nmxQqCM/EuN7bhKE6NPHQfVoLqXhxBdi2NxrkAIGLm0bLwNvkoJciXvXcJuKNxZw
+    wV/jc8dacuiZKpQBkOLMKf2yvZe3s7wxfWuEAlz2YuruCPpOcP3YL25I5HaTfxIi
+    GbB49S3flhde5DDgLPFiDIfemqQkYAg6+n2b3GEAEQEAAYkBJQQYAQIADwUCU4sj
+    ZwIbDAUJCWYBgAAKCRArZ1W9G3+I3B3NB/wMyabCSoBYwFu2TzHfBEwTmEY33zTi
+    6hgG9XW36g37XZJ0Nqafki55dJtJDKZP8GjxS/xq1iPzkepopSEUnvqA9AFGwRk0
+    3tSXop6SgSh2A3hNJh6GpqY22j7/zBdukLdFkgKOHSq4MwWcn0cP6cyVfcno3fLm
+    6VT8aBtrEz+7FJCI4H3kYr+qARcD0a3YlrIFyuf+/yooS4TrwKDWoE7z+H8ra1uV
+    NPxJf0eL8hOTUWrbYBwpdEnRjLrvVynp9X6JmmxDwFayX4goos6lBZgbFc/rF38W
+    m9IhjhK4IOWpjKWXBnPj+WqUH63CBJOrziorp0tJXGfIgf+IRCmRWyOd
+    =oFJR
+    -----END PGP PUBLIC KEY BLOCK-----
+    
+
+Other GPG keys floating around older than this date or with another ID, are
+false, fake, or used for experimentation. Do not use those.
+
+### Disclaimer
+
+All the text on this website is free as in freedom unless stated otherwise. This
+means you can use it in any way you want, you can copy it, change it the way you
+like and republish it, _as long as you release the (modified) content under the
+same license_ to give others the same freedoms you've got and place my name and
+a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for
+advertisements. You are tracked and Google knows everything about you. Use an
+adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license unless
+already licensed under a license which does not allows this form of licensing or
+if another license is stated on that page / in that software:
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+
+Just to be clear, the information on this website is for ment for educational
+purposes and you use it at your own risk. I do not take responsibility if you
+screw something up. Use common sense, do not `rm -rf /` as root for example. If
+you have any questions then do not hesitate to contact me.
+
+   [1]: https://github.com/raymiiorg/
+   [2]: https://en.wikipedia.org/wiki/VolkerWessels
+   [3]: https://en.wikipedia.org/wiki/Erasmus_MC
+   [4]: https://www.digidentity.eu/
+   [5]: https://en.wikipedia.org/wiki/PKIoverheid
+   [6]: https://en.wikipedia.org/wiki/DigiD
+   [7]: https://www.cloudvps.com/about-cloudvps
+   [8]: https://raymii.org/s/static/About.html
+   [9]: https://raymii.org/s/inc/img/hits-2018.png
+   [10]: http://pool.sks-keyservers.net/pks/lookup?op=vindex&search=0x1B7F88DC&fingerprint=on
+   [11]: http://www.dejongduke.nl/
+   [12]: https://en.wikipedia.org/wiki/Nucleus_RTOS
+
+---
+
+License:
+All the text on this website is free as in freedom unless stated otherwise. 
+This means you can use it in any way you want, you can copy it, change it 
+the way you like and republish it, as long as you release the (modified) 
+content under the same license to give others the same freedoms you've got 
+and place my name and a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for 
+advertisements. You are tracked and Google knows everything about you. 
+Use an adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license 
+unless already licensed under a license which does not allows this form 
+of licensing or if another license is stated on that page / in that software:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Just to be clear, the information on this website is for ment for educational 
+purposes and you use it at your own risk. I do not take responsibility if you 
+screw something up. Use common sense, do not rm -rf / as root for example. 
+If you have any questions then do not hesitate to contact me.
+
+See https://raymii.org/s/static/About.html for details.
