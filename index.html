@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="articles/Cpp_async_threads_and_user_input.html">C++ async, threads and user input</a></h4>
+<small>24-04-2020 | Remy van Elst</small><br />
+<p>For an unrelated piece of code, I recently spent a few days trying to figure out if there was a portable, modern C++ way to handle user input with a timeout. If there is no input after a few seconds, the program can continue doing other things. TL;DR, there is none, since stdin is blocking I/O. At the end of the article I'll also provide the code I ended up using, which uses two actual big-boy threads, one for input and one for 'other work'.</p>
+<a href="articles/Cpp_async_threads_and_user_input.html">Read more...</a><br />
+<p></p>
 <h4><a href="tutorials/Wireguard_VPN_on_Freedombox.html">Personal Wireguard VPN on a Freedombox with Debian</a></h4>
 <small>03-02-2020 | Remy van Elst</small><br />
 <p>This guide will show you how to set up a personal Wireguard VPN server on Debian or Ubuntu with Freedombox. Freedombox will be used to manage the VPN software, firewall and users. Wireguard is a relatively new VPN built in to the linux kernel. Freedombox is a long running project under the Debian umbrella providing a private server for non experts with focus on user freedom, ease of use and privacy. Combined, those two make a great pair. In the past I've written many articles on how to setup your own personal VPN server, but those all required manual setup and maintenance. With freedombox, the updates are automatic and the management is hidden away behind a convenient web interface. </p>
@@ -89,11 +94,6 @@
 <small>Published: 09-01-2015 | Last update: 13-11-2019 | Author: Remy van Elst</small><br />
 <p>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</p>
 <a href="blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Weight_for_Weight_a_coding_exersize_that_kept_me_busy.html">Weight for Weight, a coding exercise that kept me busy</a></h4>
-<small>12-11-2019 | Remy van Elst</small><br />
-<p>I'm using codewars to practice my development skills. The exercise I was working on the past couple of days was a level higher than the 'rank' codewars gives me, so a more difficult exercise. Using the sparse free time I have, this kata took a bit longer to complete, and had me thinking about the problem when I was not doing the exercise. If a problem fascinates me that way, I can't stop thinking about it until I've solved it. In this article I'll walk you through my work on this kata.</p>
-<a href="blog/Weight_for_Weight_a_coding_exersize_that_kept_me_busy.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
