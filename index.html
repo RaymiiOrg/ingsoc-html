@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/Here_be_dragons_or_invalidated_iterators.html">Here be dragons, or, invalidated iterators</a></h4>
+<small>03-05-2020 | Remy van Elst</small><br />
+<p>Recently I had a new 'first-time' moment. You know the ones, the, 'oh right', moments, after you put in a bit of research. Mine was, as you might expect from all the other recent content, related to C++. I learned, the hard way, that 'iterator-based for loops' don't like to be resized during the loop. Well, they don't really care, but some precautions are to be taken since the 'iterator' used in the loop might be invalidated. Or as the very helpfull error during the crash prints to the console, 'munmap_chunk(): invalid pointer' and your debugger points you to somewhere deep in 'new_allocator.h'. In this article I'll give a few examples, both using index based for loops and iterator based for loops, plus some more details on what's going on with iterator invalidation.</p>
+<a href="blog/Here_be_dragons_or_invalidated_iterators.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/Cpp_async_threads_and_user_input.html">C++ async, threads and user input</a></h4>
 <small>24-04-2020 | Remy van Elst</small><br />
 <p>For an unrelated piece of code, I recently spent a few days trying to figure out if there was a portable, modern C++ way to handle user input with a timeout. If there is no input after a few seconds, the program can continue doing other things. TL;DR, there is none, since stdin is blocking I/O. At the end of the article I'll also provide the code I ended up using, which uses two actual big-boy threads, one for input and one for 'other work'.</p>
@@ -89,11 +94,6 @@
 <small>16-12-2019 | Remy van Elst</small><br />
 <p>A post on lobste.rs on the C feature trigraphs triggered me to write this piece on the C++ feature, alternative tokens. I've recently suprised a co- worker by using an if statement with 'or' instead of '||', which works fine, but he never saw it before. It's in C++ since C++ 11, but MSVC requires a specific compiler flag ('/Za') or the 'iso646.h' header. This post has a few samples on the usage inclusing other alternative tokens like bitor, xor and or_eq.</p>
 <a href="blog/and_or_are_valid_Cpp.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html">Broken Corrupted Raspberry Pi SD Card</a></h4>
-<small>Published: 09-01-2015 | Last update: 13-11-2019 | Author: Remy van Elst</small><br />
-<p>One of my Raspberry Pi's would not boot up after a reboot. The SD card was corrupted, sadly beyond repair. This article walks you through the steps I took to try to fix the SD card, including fsck, badblocks and other filesystem utilities. It also has tips to reduce the writing on the Raspberry Pi, this to save SD cards from some amount of wear and thus possible corruption.</p>
-<a href="blog/Broken_Corrupted_Raspberry_Pi_SD_Card.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
