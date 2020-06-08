@@ -1770,13 +1770,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</loc>
+            <loc>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</loc>
             <lastmod>2013-07-24</lastmod>
             <changefreq>monthly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tutorials/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).html</loc>
+            <loc>https://raymii.org/s/articles/My_Todo.txt_Workflow.html</loc>
             <lastmod>2013-07-24</lastmod>
             <changefreq>monthly</changefreq>
         </url>
@@ -1902,13 +1902,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/software/Nagios_plugin_to_check_CRL_expiry.html</loc>
+            <loc>https://raymii.org/s/snippets/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.html</loc>
             <lastmod>2013-05-02</lastmod>
             <changefreq>monthly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/snippets/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.html</loc>
+            <loc>https://raymii.org/s/software/Nagios_plugin_to_check_CRL_expiry.html</loc>
             <lastmod>2013-05-02</lastmod>
             <changefreq>monthly</changefreq>
         </url>
@@ -1956,13 +1956,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</loc>
+            <loc>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</loc>
             <lastmod>2013-03-13</lastmod>
             <changefreq>monthly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/snippets/NGINX_Catch_all_error_codes.html</loc>
+            <loc>https://raymii.org/s/snippets/NGINX_Block_access_to_.git_or_.svn_project_folders.html</loc>
             <lastmod>2013-03-13</lastmod>
             <changefreq>monthly</changefreq>
         </url>
@@ -2100,13 +2100,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tutorials/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.html</loc>
+            <loc>https://raymii.org/s/software/CIDR-Cheatsheet.html</loc>
             <lastmod>2012-12-11</lastmod>
             <changefreq>monthly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/software/CIDR-Cheatsheet.html</loc>
+            <loc>https://raymii.org/s/tutorials/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.html</loc>
             <lastmod>2012-12-11</lastmod>
             <changefreq>monthly</changefreq>
         </url>
@@ -2454,6 +2454,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/cotton-candy.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/all.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -2478,12 +2484,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/logstalgia.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/selinux.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -2491,6 +2491,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/investigatory-powers-bill.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/kibana.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2580,6 +2586,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/gherkin.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/dropbear.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -2592,7 +2604,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mate.html</loc>
+            <loc>https://raymii.org/s/tags/aur.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2604,7 +2616,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/text.html</loc>
+            <loc>https://raymii.org/s/tags/stable.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2676,19 +2688,25 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/plug-computers.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/choice.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/anti-affinity.html</loc>
+            <loc>https://raymii.org/s/tags/exit-signals.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wireguard.html</loc>
+            <loc>https://raymii.org/s/tags/updates.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2730,13 +2748,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ecomstation.html</loc>
+            <loc>https://raymii.org/s/tags/safenet.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mediawiki.html</loc>
+            <loc>https://raymii.org/s/tags/sysvinit.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2754,7 +2772,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/notes.html</loc>
+            <loc>https://raymii.org/s/tags/synergy.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2767,12 +2785,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/list.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/make.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2802,13 +2814,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ping.html</loc>
+            <loc>https://raymii.org/s/tags/octal.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/foaas.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/servers.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2904,7 +2922,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/backdoor.html</loc>
+            <loc>https://raymii.org/s/tags/news.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2958,12 +2976,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/find.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/access.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -2971,12 +2983,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/version.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/templates.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -2995,12 +3001,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/boost.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/tty.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3036,12 +3036,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/base64.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/threads.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -3066,7 +3060,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sc-hsm.html</loc>
+            <loc>https://raymii.org/s/tags/sieve.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3084,7 +3078,19 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/hosted-piwik.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/metro.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/sudosh2.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3126,7 +3132,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/imaging.html</loc>
+            <loc>https://raymii.org/s/tags/proxy.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3144,7 +3150,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/tasks.html</loc>
+            <loc>https://raymii.org/s/tags/base64.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3156,7 +3162,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/apple.html</loc>
+            <loc>https://raymii.org/s/tags/secure.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3210,7 +3216,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/suse.html</loc>
+            <loc>https://raymii.org/s/tags/motd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3240,7 +3246,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/blokada.html</loc>
+            <loc>https://raymii.org/s/tags/nayuki.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3252,19 +3258,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wps-8.html</loc>
+            <loc>https://raymii.org/s/tags/certificate.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/screen-reader.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/torrents.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3294,19 +3294,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/aur.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/rhel.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/https.html</loc>
+            <loc>https://raymii.org/s/tags/dns.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3330,25 +3324,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/openlinux.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/steve-gibson.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ports.html</loc>
+            <loc>https://raymii.org/s/tags/pandoc.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sudo.html</loc>
+            <loc>https://raymii.org/s/tags/gnuk.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3372,19 +3360,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/stable.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/benchmark.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/site.html</loc>
+            <loc>https://raymii.org/s/tags/ublock.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3420,7 +3402,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/gherkin.html</loc>
+            <loc>https://raymii.org/s/tags/notification-center.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/vlan.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3457,12 +3445,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/security-now.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/console.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3522,7 +3504,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cad.html</loc>
+            <loc>https://raymii.org/s/tags/history.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3582,13 +3564,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/rascal-micro.html</loc>
+            <loc>https://raymii.org/s/tags/mkfs.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/virtio.html</loc>
+            <loc>https://raymii.org/s/tags/owncloud.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3630,7 +3612,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sudosh2.html</loc>
+            <loc>https://raymii.org/s/tags/chroot.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3654,7 +3636,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pidp8.html</loc>
+            <loc>https://raymii.org/s/tags/ntop-ng.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3666,7 +3648,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/namespace.html</loc>
+            <loc>https://raymii.org/s/tags/ping.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3744,19 +3726,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/rm.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/red-hat.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/vlan.html</loc>
+            <loc>https://raymii.org/s/tags/wallpaper.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3780,6 +3756,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/rascal-micro.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/mac.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -3787,6 +3769,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/ergodox.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/syllable.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3846,19 +3834,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/opensuse.html</loc>
+            <loc>https://raymii.org/s/tags/repo.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/github.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/codewars.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3882,7 +3864,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/stdin.html</loc>
+            <loc>https://raymii.org/s/tags/caldav.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3906,7 +3888,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cve-2014-6271.html</loc>
+            <loc>https://raymii.org/s/tags/alias.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3936,19 +3918,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/software.html</loc>
+            <loc>https://raymii.org/s/tags/cheatsheet.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ntop-ng.html</loc>
+            <loc>https://raymii.org/s/tags/pidp8.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wine.html</loc>
+            <loc>https://raymii.org/s/tags/uninstall.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3960,7 +3942,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/feeds.html</loc>
+            <loc>https://raymii.org/s/tags/tty.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -3991,6 +3973,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/installed.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/sudosh.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4086,12 +4074,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/notification-center.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/makepkg.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -4104,7 +4086,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/static.html</loc>
+            <loc>https://raymii.org/s/tags/clean.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/screensaver.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4134,19 +4122,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wallpaper.html</loc>
+            <loc>https://raymii.org/s/tags/motorola-6800.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/arguments.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/browser.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4164,7 +4146,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pptp.html</loc>
+            <loc>https://raymii.org/s/tags/python.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4176,7 +4158,19 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/cpanel.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/assistive.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/ecomstation.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4206,7 +4200,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wcag.html</loc>
+            <loc>https://raymii.org/s/tags/android.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4242,7 +4236,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/oxygen.html</loc>
+            <loc>https://raymii.org/s/tags/smokeping.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4314,7 +4308,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/google-analytics.html</loc>
+            <loc>https://raymii.org/s/tags/feeds.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4326,13 +4320,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/hostname.html</loc>
+            <loc>https://raymii.org/s/tags/ports.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/goaccess.html</loc>
+            <loc>https://raymii.org/s/tags/templates.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4344,7 +4338,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/logs.html</loc>
+            <loc>https://raymii.org/s/tags/attachments.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4380,13 +4374,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/hardware-report.html</loc>
+            <loc>https://raymii.org/s/tags/static.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/c++.html</loc>
+            <loc>https://raymii.org/s/tags/remove.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4428,7 +4422,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/rt.html</loc>
+            <loc>https://raymii.org/s/tags/openswan.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4476,12 +4470,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ha.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/objectstore.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -4506,7 +4494,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/hosted-oswa.html</loc>
+            <loc>https://raymii.org/s/tags/mate.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4530,7 +4518,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/coreboot.html</loc>
+            <loc>https://raymii.org/s/tags/rm.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4608,7 +4596,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/proxy.html</loc>
+            <loc>https://raymii.org/s/tags/imaging.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4626,13 +4614,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/nayuki.html</loc>
+            <loc>https://raymii.org/s/tags/blokada.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/bash.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/log.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4656,19 +4650,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/exit-signals.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/openssh.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pandoc.html</loc>
+            <loc>https://raymii.org/s/tags/hotp.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4698,12 +4686,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sieve.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/cloud-init.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -4711,6 +4693,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/heartbeat.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/namespace.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4860,7 +4848,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/hotp.html</loc>
+            <loc>https://raymii.org/s/tags/backdoor.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4878,7 +4866,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/emacs.html</loc>
+            <loc>https://raymii.org/s/tags/wordpress.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4890,7 +4878,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ingsoc.html</loc>
+            <loc>https://raymii.org/s/tags/editor.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4908,13 +4896,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/waagent.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/changed-files.html</loc>
+            <loc>https://raymii.org/s/tags/needle.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4932,13 +4914,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/tracking.html</loc>
+            <loc>https://raymii.org/s/tags/task.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/kibana.html</loc>
+            <loc>https://raymii.org/s/tags/hosted-oswa.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/wav.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4951,12 +4939,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/ogg.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/imapfilter.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -4992,19 +4974,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ffmpeg.html</loc>
+            <loc>https://raymii.org/s/tags/thumbnails.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/roles.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/hpp.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5028,7 +5004,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sc-hsm-embedded.html</loc>
+            <loc>https://raymii.org/s/tags/legacy.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5070,31 +5046,43 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/ingsoc.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/zsh.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/1975.html</loc>
+            <loc>https://raymii.org/s/tags/colour.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/synergy.html</loc>
+            <loc>https://raymii.org/s/tags/browser.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/caldav.html</loc>
+            <loc>https://raymii.org/s/tags/lunduke.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/false.html</loc>
+            <loc>https://raymii.org/s/tags/stdin.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cve-2014-3566.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5118,7 +5106,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/macropad.html</loc>
+            <loc>https://raymii.org/s/tags/pifm.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5148,7 +5136,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/spectacle.html</loc>
+            <loc>https://raymii.org/s/tags/acces-log.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5160,7 +5148,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/meltdown.html</loc>
+            <loc>https://raymii.org/s/tags/virtio.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5184,13 +5172,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pf.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/split-keyboard.html</loc>
+            <loc>https://raymii.org/s/tags/conversion.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5208,19 +5190,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/alias.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/source.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/firmware.html</loc>
+            <loc>https://raymii.org/s/tags/virt-install.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5232,13 +5202,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/menuetos.html</loc>
+            <loc>https://raymii.org/s/tags/tsung.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cheatsheet.html</loc>
+            <loc>https://raymii.org/s/tags/strongswan.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5274,7 +5244,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/await.html</loc>
+            <loc>https://raymii.org/s/tags/atop.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5292,13 +5262,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/needle.html</loc>
+            <loc>https://raymii.org/s/tags/changed-files.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pandora.html</loc>
+            <loc>https://raymii.org/s/tags/digitalocean.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5310,7 +5280,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/plug-computers.html</loc>
+            <loc>https://raymii.org/s/tags/exec.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5328,7 +5298,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sparkling-network.html</loc>
+            <loc>https://raymii.org/s/tags/filesystem.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cidr.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5358,12 +5334,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/icewm.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/bsd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -5376,7 +5346,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cabinet.html</loc>
+            <loc>https://raymii.org/s/tags/macropad.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/split-keyboard.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5388,7 +5364,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/teredo.html</loc>
+            <loc>https://raymii.org/s/tags/kinesis-freestyle.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5418,13 +5394,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mountain-lion.html</loc>
+            <loc>https://raymii.org/s/tags/outlook-anywhere.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/clean.html</loc>
+            <loc>https://raymii.org/s/tags/tracker.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/sixxs.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5436,19 +5418,25 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/screensaver.html</loc>
+            <loc>https://raymii.org/s/tags/caching.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/uninstall.html</loc>
+            <loc>https://raymii.org/s/tags/wine.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/microsoft.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/validator.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5490,7 +5478,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cubox.html</loc>
+            <loc>https://raymii.org/s/tags/lsd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5502,7 +5490,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sysvinit.html</loc>
+            <loc>https://raymii.org/s/tags/mediawiki.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/sc-hsm-embedded.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5532,7 +5526,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cidr.html</loc>
+            <loc>https://raymii.org/s/tags/sudo.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/find.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5592,12 +5592,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/grub.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/rrdcached.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -5616,7 +5610,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cmdb.html</loc>
+            <loc>https://raymii.org/s/tags/notes.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5640,12 +5634,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/variadic.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/kolibrios.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -5664,6 +5652,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/coreboot.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/dd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -5676,7 +5670,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/repo.html</loc>
+            <loc>https://raymii.org/s/tags/opensuse.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5730,7 +5724,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/thumbnails.html</loc>
+            <loc>https://raymii.org/s/tags/ffmpeg.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5748,7 +5742,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/remove.html</loc>
+            <loc>https://raymii.org/s/tags/c++.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/anti-affinity.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5850,13 +5850,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/owncloud.html</loc>
+            <loc>https://raymii.org/s/tags/collectd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/collectd.html</loc>
+            <loc>https://raymii.org/s/tags/infuus.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cmdb.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5874,7 +5880,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/migration.html</loc>
+            <loc>https://raymii.org/s/tags/torrents.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5922,12 +5928,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/private-key.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/dogtag.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -5940,7 +5940,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/virsh.html</loc>
+            <loc>https://raymii.org/s/tags/openlinux.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5953,6 +5953,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/chrome-os.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cve-2014-6271.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -5983,6 +5989,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/email.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/noscript.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6054,7 +6066,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/news.html</loc>
+            <loc>https://raymii.org/s/tags/console.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6085,12 +6097,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/c.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/chroot.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6151,12 +6157,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/nameserver.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/delete.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6228,12 +6228,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/fido.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/nagios-core.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -6258,6 +6252,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/batch.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/exploit.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -6276,7 +6276,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cve-2014-3566.html</loc>
+            <loc>https://raymii.org/s/tags/false.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6294,7 +6294,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/rpm.html</loc>
+            <loc>https://raymii.org/s/tags/qemu.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6324,7 +6324,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/restartd.html</loc>
+            <loc>https://raymii.org/s/tags/source-control.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6342,7 +6342,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/migrate.html</loc>
+            <loc>https://raymii.org/s/tags/firmware.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/retro-ads.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6372,7 +6378,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/containers.html</loc>
+            <loc>https://raymii.org/s/tags/radvd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6414,19 +6420,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pifm.html</loc>
+            <loc>https://raymii.org/s/tags/logstash.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/pacemaker.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/dovecot.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6462,19 +6462,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/block.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/key-exchange.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/nitrokey-pro.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6486,7 +6474,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/batch.html</loc>
+            <loc>https://raymii.org/s/tags/raymiiorg.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6505,6 +6493,18 @@
     
         <url>
             <loc>https://raymii.org/s/tags/gitlabshell.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/elasticsearch.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/goaccess.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6540,12 +6540,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/editor.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/loop.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -6558,7 +6552,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/motd.html</loc>
+            <loc>https://raymii.org/s/tags/suse.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6588,13 +6582,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/acces-log.html</loc>
+            <loc>https://raymii.org/s/tags/spectacle.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/raymii.org.html</loc>
+            <loc>https://raymii.org/s/tags/site.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6654,6 +6648,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/meltdown.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/binary.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -6672,13 +6672,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/iscsi.html</loc>
+            <loc>https://raymii.org/s/tags/subnet.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/ncdu.html</loc>
+            <loc>https://raymii.org/s/tags/make.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/hostname.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6690,13 +6696,19 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/sparkling-network.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/tr.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/python.html</loc>
+            <loc>https://raymii.org/s/tags/pptp.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6708,7 +6720,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sudosh.html</loc>
+            <loc>https://raymii.org/s/tags/fido.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6720,13 +6732,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/octal.html</loc>
+            <loc>https://raymii.org/s/tags/codewars.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/android.html</loc>
+            <loc>https://raymii.org/s/tags/wcag.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6768,18 +6780,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/conversion.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/ublock.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/automation.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -6816,7 +6816,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cmake.html</loc>
+            <loc>https://raymii.org/s/tags/encrypt.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6852,7 +6852,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/task.html</loc>
+            <loc>https://raymii.org/s/tags/tracking.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6900,13 +6900,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/digitalocean.html</loc>
+            <loc>https://raymii.org/s/tags/pandora.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/filesystem.html</loc>
+            <loc>https://raymii.org/s/tags/variadic.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6942,7 +6942,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/virt-install.html</loc>
+            <loc>https://raymii.org/s/tags/hpp.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6966,7 +6966,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/money.html</loc>
+            <loc>https://raymii.org/s/tags/php-weathermap.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/boot.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6996,6 +7002,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/tasks.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/multiplex.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7008,7 +7020,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/infuus.html</loc>
+            <loc>https://raymii.org/s/tags/logstalgia.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7026,25 +7038,25 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/hosted-piwik.html</loc>
+            <loc>https://raymii.org/s/tags/imapfilter.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/secure.html</loc>
+            <loc>https://raymii.org/s/tags/apple.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/noscript.html</loc>
+            <loc>https://raymii.org/s/tags/migration.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/tsung.html</loc>
+            <loc>https://raymii.org/s/tags/menuetos.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7086,12 +7098,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/boot.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/ip6tables.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7104,7 +7110,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/source-control.html</loc>
+            <loc>https://raymii.org/s/tags/source.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cad.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7134,7 +7146,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/strongswan.html</loc>
+            <loc>https://raymii.org/s/tags/dovecot.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7266,7 +7278,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/kinesis-freestyle.html</loc>
+            <loc>https://raymii.org/s/tags/aide.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7284,19 +7296,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/colour.html</loc>
+            <loc>https://raymii.org/s/tags/cubox.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cstm.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/smokeping.html</loc>
+            <loc>https://raymii.org/s/tags/oxygen.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7308,7 +7314,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/php-weathermap.html</loc>
+            <loc>https://raymii.org/s/tags/nrpe.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7332,12 +7338,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/history.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/dnsmasq.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7350,7 +7350,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/nrpe.html</loc>
+            <loc>https://raymii.org/s/tags/freedombox.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7386,7 +7386,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/centos.html</loc>
+            <loc>https://raymii.org/s/tags/grub.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7410,19 +7410,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/lsd.html</loc>
+            <loc>https://raymii.org/s/tags/vt220.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/motorola-6800.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/clonezilla.html</loc>
+            <loc>https://raymii.org/s/tags/mirror.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7452,6 +7446,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/1975.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/rsync.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7464,19 +7464,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/qemu.html</loc>
+            <loc>https://raymii.org/s/tags/await.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/rpm.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/skyos.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/exec.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7494,13 +7494,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/syllable.html</loc>
+            <loc>https://raymii.org/s/tags/private-key.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/tracker.html</loc>
+            <loc>https://raymii.org/s/tags/ncdu.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7542,6 +7542,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/fido2.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/systemd-resolved.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7572,12 +7578,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/freedombox.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/daytasks.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -7597,6 +7597,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/ansii.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/raymii.org.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7632,7 +7638,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/logstash.html</loc>
+            <loc>https://raymii.org/s/tags/google-analytics.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7662,7 +7668,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/certificate.html</loc>
+            <loc>https://raymii.org/s/tags/wps-8.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7680,7 +7686,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/fido2.html</loc>
+            <loc>https://raymii.org/s/tags/restartd.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7705,12 +7711,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/acl.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/ipv6.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7746,13 +7746,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cotton-candy.html</loc>
+            <loc>https://raymii.org/s/tags/block.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/openswan.html</loc>
+            <loc>https://raymii.org/s/tags/software.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7794,7 +7794,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/servers.html</loc>
+            <loc>https://raymii.org/s/tags/poodle.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7812,7 +7812,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/caldera.html</loc>
+            <loc>https://raymii.org/s/tags/dropbox.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7842,7 +7842,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/attachments.html</loc>
+            <loc>https://raymii.org/s/tags/logs.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7860,13 +7860,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/legacy.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/log.html</loc>
+            <loc>https://raymii.org/s/tags/centos.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7920,13 +7914,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/radvd.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/wordpress.html</loc>
+            <loc>https://raymii.org/s/tags/emacs.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7938,7 +7926,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/safenet.html</loc>
+            <loc>https://raymii.org/s/tags/ipv6.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7950,7 +7938,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/wav.html</loc>
+            <loc>https://raymii.org/s/tags/pf.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7968,7 +7956,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/dns.html</loc>
+            <loc>https://raymii.org/s/tags/https.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7980,13 +7968,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/lunduke.html</loc>
+            <loc>https://raymii.org/s/tags/cabinet.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/volume.html</loc>
+            <loc>https://raymii.org/s/tags/waagent.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/teredo.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -7998,13 +7992,25 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/aide.html</loc>
+            <loc>https://raymii.org/s/tags/ha.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
             <loc>https://raymii.org/s/tags/bug.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/iscsi.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/volume.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8052,19 +8058,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/atop.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/zfs.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/vt220.html</loc>
+            <loc>https://raymii.org/s/tags/virsh.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8076,7 +8076,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/elasticsearch.html</loc>
+            <loc>https://raymii.org/s/tags/containers.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8094,7 +8094,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/sixxs.html</loc>
+            <loc>https://raymii.org/s/tags/hardware-report.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8112,7 +8112,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/cpanel.html</loc>
+            <loc>https://raymii.org/s/tags/delete.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8136,13 +8136,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/retro-ads.html</loc>
+            <loc>https://raymii.org/s/tags/money.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mirror.html</loc>
+            <loc>https://raymii.org/s/tags/migrate.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/clonezilla.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8166,25 +8172,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/mkfs.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/difference-engine.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/raymiiorg.html</loc>
+            <loc>https://raymii.org/s/tags/as.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/gnuk.html</loc>
+            <loc>https://raymii.org/s/tags/nitrokey-pro.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8220,12 +8220,6 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/as.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/idrac.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -8238,7 +8232,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/encrypt.html</loc>
+            <loc>https://raymii.org/s/tags/cmake.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8256,7 +8250,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/outlook-anywhere.html</loc>
+            <loc>https://raymii.org/s/tags/mountain-lion.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8346,6 +8340,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/rt.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/server-2008.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
@@ -8358,7 +8358,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/subnet.html</loc>
+            <loc>https://raymii.org/s/tags/cstm.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8394,7 +8394,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/caching.html</loc>
+            <loc>https://raymii.org/s/tags/icewm.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8412,19 +8412,19 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/poodle.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
             <loc>https://raymii.org/s/tags/splunk.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/dropbox.html</loc>
+            <loc>https://raymii.org/s/tags/sc-hsm.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/caldera.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8508,7 +8508,13 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/validator.html</loc>
+            <loc>https://raymii.org/s/tags/wireguard.html</loc>
+            <lastmod>2020-06-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/text.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8539,12 +8545,6 @@
     
         <url>
             <loc>https://raymii.org/s/tags/wa-linux-agent.html</loc>
-            <lastmod>2020-06-01</lastmod>
-            <changefreq>weekly</changefreq>
-        </url>
-    
-        <url>
-            <loc>https://raymii.org/s/tags/updates.html</loc>
             <lastmod>2020-06-01</lastmod>
             <changefreq>weekly</changefreq>
         </url>

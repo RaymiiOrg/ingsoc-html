@@ -135,12 +135,17 @@ dot being 3 pixels tall/wide).</p>
 the pixels to be, lets say, at least 2 pixels wide for better scanability, you can ask
 the class. If it is able to scale up, it will write the file, otherwise it will return false.</p>
 
+<p>The QR code is written row by row, to avoid first constructing a large <code>vector</code>. This causes 
+more <code>I/O</code>. If you want to change it, it&#39;s quite easy. When constructing a <code>20148x20148</code> qr code,
+RAM usage was around 2 GB when constructing the whole image first and then writing it, but it&#39;s 
+at max 5MB when writing row by row. </p>
+
 <h2 id="toc_1">Build instructions</h2>
 
 <p>Clone this git repository. You get both projects included.</p>
 
-<pre><code>git clone bla
-cd bla
+<pre><code>git clone https://github.com/RaymiiOrg/cpp-qr-to-png
+cd https://github.com/RaymiiOrg/cpp-qr-to-png
 </code></pre>
 
 <p>Create a build folder:</p>
