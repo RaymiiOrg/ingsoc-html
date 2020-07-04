@@ -13,7 +13,11 @@ Ubuntu 20.04 dropped the Pygopherd package. There is no way to install it from
 the official repositories. In this guide I'll show you two ways to install the 
 version from Ubuntu 18.04, which still works perfectly on 20.04. Either via 
 just downloading the 2 deb packages, or via `apt pinning` from the previous 
-repository.
+repository. Ubuntu removed the package [as seen here][8] because it's not 
+in the current debian development release, due to debian removing all python 2
+packages and their dependencies. IMHO that's stupid, but that is a discussion
+for another time. The author of Pygopherd in the [bug report says he is 
+working on a python 3 port][9], but as of now it's not in 20.04.
 
 Here is a screenshot of the [Castor][4] browser showing my Ubuntu 20.04 server
 serving gopher pages via pygopherd:
@@ -146,6 +150,8 @@ manager for everything and also receive updates if they ever arrive.
 [5]: https://packages.ubuntu.com/bionic/pygopherd
 [6]: https://packages.ubuntu.com/bionic/python-simpletal
 [7]: /s/inc/img/castor.png
+[8]: https://launchpad.net/ubuntu/+source/pygopherd/+publishinghistory
+[9]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=937449
 
 ---
 

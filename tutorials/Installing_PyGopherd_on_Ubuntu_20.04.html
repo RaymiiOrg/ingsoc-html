@@ -68,7 +68,11 @@
 the official repositories. In this guide I&#39;ll show you two ways to install the 
 version from Ubuntu 18.04, which still works perfectly on 20.04. Either via 
 just downloading the 2 deb packages, or via <code>apt pinning</code> from the previous 
-repository.</p>
+repository. Ubuntu removed the package <a href="https://launchpad.net/ubuntu/+source/pygopherd/+publishinghistory">as seen here</a> because it&#39;s not 
+in the current debian development release, due to debian removing all python 2
+packages and their dependencies. IMHO that&#39;s stupid, but that is a discussion
+for another time. The author of Pygopherd in the <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=937449">bug report says he is 
+working on a python 3 port</a>, but as of now it&#39;s not in 20.04.</p>
 
 <p>Here is a screenshot of the <a href="https://git.sr.ht/%7Ejulienxx/castor">Castor</a> browser showing my Ubuntu 20.04 server
 serving gopher pages via pygopherd:</p>
