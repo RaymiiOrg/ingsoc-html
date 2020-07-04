@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/debian.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Installing PyGopherd on Ubuntu 20.04</title> 
+                <link>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</guid>
+                <description>Ubuntu 20.04 dropped the Pygopherd package. There is no way to install it from the official repositories. In this guide I'll show you two ways to install the version from Ubuntu 18.04, which still works perfectly on 20.04. Either via just downloading the 2 deb packages, or via `apt pinning` from the previous (18.04) repository.</description> 
+                <pubDate>Sat, 04 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 04 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Personal Wireguard VPN on a Freedombox with Debian</title> 
                 <link>https://raymii.org/s/tutorials/Wireguard_VPN_on_Freedombox.html</link> 
                 <guid>https://raymii.org/s/tutorials/Wireguard_VPN_on_Freedombox.html</guid>
@@ -160,19 +169,19 @@
             </item>
     
             <item>
-                <title>IPSEC L2TP VPN on Ubuntu 12.10 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</guid>
-                <description>Not available.</description> 
+                <title>IPSEC L2TP VPN on Ubuntu 13.10 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</guid>
+                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 13.10 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>IPSEC L2TP VPN on Ubuntu 13.10 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</guid>
-                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 13.10 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step.</description> 
+                <title>IPSEC L2TP VPN on Ubuntu 12.10 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</guid>
+                <description>Not available.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>

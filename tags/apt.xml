@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/apt.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Installing PyGopherd on Ubuntu 20.04</title> 
+                <link>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</guid>
+                <description>Ubuntu 20.04 dropped the Pygopherd package. There is no way to install it from the official repositories. In this guide I'll show you two ways to install the version from Ubuntu 18.04, which still works perfectly on 20.04. Either via just downloading the 2 deb packages, or via `apt pinning` from the previous (18.04) repository.</description> 
+                <pubDate>Sat, 04 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 04 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Github Actions, C++ with Boost and cmake, almost a 50% speedup with caching</title> 
                 <link>https://raymii.org/s/articles/Github_Actions_cpp_boost_cmake_speedup.html</link> 
                 <guid>https://raymii.org/s/articles/Github_Actions_cpp_boost_cmake_speedup.html</guid>
