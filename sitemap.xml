@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/tutorials/Running_gnash_on_Ubuntu_20.04.html</loc>
+            <lastmod>2020-07-05</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</loc>
             <lastmod>2020-07-04</lastmod>
             <changefreq>weekly</changefreq>
@@ -4326,6 +4332,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/x11.html</loc>
+            <lastmod>2020-06-27</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/google-analytics.html</loc>
             <lastmod>2020-06-27</lastmod>
             <changefreq>weekly</changefreq>
@@ -4915,6 +4927,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/shell.html</loc>
+            <lastmod>2020-06-27</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/gnash.html</loc>
             <lastmod>2020-06-27</lastmod>
             <changefreq>weekly</changefreq>
         </url>

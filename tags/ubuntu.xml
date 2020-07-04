@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/ubuntu.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Running gnash on Ubuntu 20.04 (in Docker with X11 forwarding)</title> 
+                <link>https://raymii.org/s/tutorials/Running_gnash_on_Ubuntu_20.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/Running_gnash_on_Ubuntu_20.04.html</guid>
+                <description>As you might have noticed, I'm slowly updating servers and workstations to Ubuntu 20.04, and as always with major upgrades, things break or are removed. Earlier this week I fixed up pygopherd and today I'll get gnash running again. Gnash is not updated since 2011 and therefore, finally, removed from the Ubuntu 20.04 repositories. Compiling it from source proved to be a lot of effort due to gstreamer dependencies and after a few hours I thought, why not just spin up a Ubuntu 18.04 Docker container, install gnash and forward X11. That took just about 10 minutes and now I'm happily running gnash again. In this tutorial I'll show you how to setup gnash in a docker container with x11 forwarding and host networking.</description> 
+                <pubDate>Sun, 05 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 05 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Installing PyGopherd on Ubuntu 20.04</title> 
                 <link>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</link> 
                 <guid>https://raymii.org/s/tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html</guid>
@@ -295,15 +304,6 @@
             </item>
     
             <item>
-                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
-                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
-                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>IPSEC L2TP VPN on Ubuntu 13.10 with OpenSwan, xl2tpd and ppp</title> 
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</guid>
@@ -317,6 +317,15 @@
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</guid>
                 <description>Not available.</description> 
+                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
+                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
