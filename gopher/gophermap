@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2020-07-04T14:21:46	/	localhost	70
+i            2020-07-17T14:32:58	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0C++ Remove leading or trailing characters from std::string (18-07-2020)	Cpp_Remove_leading_or_trailing_characters_from_string.txt	raymii.org	70
 0Running gnash on Ubuntu 20.04 (in Docker with X11 forwarding) (05-07-2020)	Running_gnash_on_Ubuntu_20.04.txt	raymii.org	70
 0Installing PyGopherd on Ubuntu 20.04 (04-07-2020)	Installing_PyGopherd_on_Ubuntu_20.04.txt	raymii.org	70
 0Generate QR code and write it to a PNG, scaled, in C++ (07-06-2020)	Cpp_generate_qr_code_and_write_it_to_png_scaled.txt	raymii.org	70
@@ -315,8 +316,8 @@ i 	/	localhost	70
 0Nagios - Hide all hosts in hostgroup (30-07-2013)	Nagios_-_Hide-entire-hostgroup.txt	raymii.org	70
 0Diffie Hellman Key Exchange Dutch Notes and Example (28-07-2013)	Diffie-Hellman-Key-Exchange-Dutch-Notes.txt	raymii.org	70
 0OpenSSL - Generate Psuedo Random Passwords (26-07-2013)	OpenSSL_Password_Generator.txt	raymii.org	70
-0My Todo.txt Workflow, including Unison, Todour and Android (24-07-2013)	My_Todo.txt_Workflow.txt	raymii.org	70
 0Stong SSL Security on Lighttpd (24-07-2013)	Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
+0My Todo.txt Workflow, including Unison, Todour and Android (24-07-2013)	My_Todo.txt_Workflow.txt	raymii.org	70
 0Pass the SSL Labs Test on NGINX (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (23-07-2013)	Pass_the_SSL_Labs_Test_on_NGINX_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0Pass the SSL Labs Test on Apache2 (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (20-07-2013)	Pass_the_SSL_Labs_Test_on_Apache2_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0OS X: Disable Notification Center (10-07-2013)	OS_X-Disable_Notification_Centre.txt	raymii.org	70
@@ -337,8 +338,8 @@ i 	/	localhost	70
 0Hide or determine BIND version number (08-05-2013)	Get_DNS_server_version_and_hide_it_in_BIND.txt	raymii.org	70
 0Nagios plugin to check an OCSP server (06-05-2013)	Nagios_plugin_to_check_OCSP.txt	raymii.org	70
 0Nagios plugin to check Safenet HSM (03-05-2013)	Nagios_Plugin_to_check_a_Safenet_HSM.txt	raymii.org	70
-0Nagios plugin to check CRL expiry in minutes (02-05-2013)	Nagios_plugin_to_check_CRL_expiry.txt	raymii.org	70
 0Join Mac OS X to an Active Directory / OpenDLAP directory from the commandline (02-05-2013)	OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt	raymii.org	70
+0Nagios plugin to check CRL expiry in minutes (02-05-2013)	Nagios_plugin_to_check_CRL_expiry.txt	raymii.org	70
 0HP ILO - Quickly gather ILO version and firmware information via CURL (13-04-2013)	HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.txt	raymii.org	70
 0Munin plugin to show Logstash/Kibana messages per hour (12-04-2013)	Munin_plugin_Logstash_Kibana_messages_per_hour.txt	raymii.org	70
 0Set up a Collectd client (09-04-2013)	Collectd_client_setup_tutorial.txt	raymii.org	70
@@ -346,8 +347,8 @@ i 	/	localhost	70
 0NGINX: Proxy folders to different root (04-04-2013)	NGINX_proxy_folder_to_different_root.txt	raymii.org	70
 0Silent unatended apt-get upgrade (30-03-2013)	Silent-automatic-apt-get-upgrade.txt	raymii.org	70
 0Ansible - sudoers safety and sanity checking in playbook (23-03-2013)	Ansible_-_Sudo_Safety_and_Sanity_Checks.txt	raymii.org	70
-0NGINX: Hide / Block .git and .svn folders (13-03-2013)	NGINX_Block_access_to_.git_or_.svn_project_folders.txt	raymii.org	70
 0NGINX: Catch all error codes (13-03-2013)	NGINX_Catch_all_error_codes.txt	raymii.org	70
+0NGINX: Hide / Block .git and .svn folders (13-03-2013)	NGINX_Block_access_to_.git_or_.svn_project_folders.txt	raymii.org	70
 0Ansible - pure ssh based configuration management and deployment (09-03-2013)	Ansible_Deployment_Framework.txt	raymii.org	70
 0Hosted Piwik (09-03-2013)	Hosted_Piwik.txt	raymii.org	70
 0Screenfetch installation tutorial (09-03-2013)	Screenfetch_installation_tutorial.txt	raymii.org	70
@@ -370,8 +371,8 @@ i 	/	localhost	70
 0Python script to monitor a file for changes and then mail the report with the file attached. (21-12-2012)	Python-script-to-monitor-a-file-for-changes-and-then-mail-the-report-with-the-file-attached.txt	raymii.org	70
 0Exchange 2010 - OWA - Lock user after x amount of failed logins (19-12-2012)	Exchange_2010_OWA_lock_users_after_x_amount_of_failed_logins.txt	raymii.org	70
 0Restore iptables rules after a reboot on debian (12-12-2012)	Restore-iptables-rules-after-a-reboot-on-debian.txt	raymii.org	70
-0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
 0CIDR Cheatsheet (11-12-2012)	CIDR-Cheatsheet.txt	raymii.org	70
+0Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD (11-12-2012)	OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt	raymii.org	70
 0Munin optimization guide for Debian (rrdcached, tmpfs, ionice and nice) (08-12-2012)	Munin_optimalization_on_Debian.txt	raymii.org	70
 0Set OS X hostname from the commandline (05-12-2012)	OS-X-Change-Hostname.txt	raymii.org	70
 0ClamAV installation and daily scan + report on Ubuntu (01-12-2012)	ClamAV.txt	raymii.org	70

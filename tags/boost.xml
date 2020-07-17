@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/boost.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ Remove leading or trailing characters from std::string</title> 
+                <link>https://raymii.org/s/snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html</guid>
+                <description>Here's a small snippet to remove leading or trailing characters from a std::string in C++. I use it to strip leading and trailing zeroes in a game score display function.</description> 
+                <pubDate>Sat, 18 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 18 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>std::string to lowercase or uppercase in C++</title> 
                 <link>https://raymii.org/s/snippets/std_string_to_lowercase_or_uppercase_in_cpp.html</link> 
                 <guid>https://raymii.org/s/snippets/std_string_to_lowercase_or_uppercase_in_cpp.html</guid>

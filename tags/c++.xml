@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/c++.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ Remove leading or trailing characters from std::string</title> 
+                <link>https://raymii.org/s/snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html</guid>
+                <description>Here's a small snippet to remove leading or trailing characters from a std::string in C++. I use it to strip leading and trailing zeroes in a game score display function.</description> 
+                <pubDate>Sat, 18 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 18 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Generate QR code and write it to a PNG, scaled, in C++</title> 
                 <link>https://raymii.org/s/software/Cpp_generate_qr_code_and_write_it_to_png_scaled.html</link> 
                 <guid>https://raymii.org/s/software/Cpp_generate_qr_code_and_write_it_to_png_scaled.html</guid>
