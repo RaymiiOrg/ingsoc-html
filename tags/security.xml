@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/security.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>The Twitter Bitcoin hack can happen anywhere humans are involved</title> 
+                <link>https://raymii.org/s/blog/The_twitter_bitcoin_hack_can_happen_anywhere_humans_are_involved.html</link> 
+                <guid>https://raymii.org/s/blog/The_twitter_bitcoin_hack_can_happen_anywhere_humans_are_involved.html</guid>
+                <description>The recent twitter hack involved social engineering and access to the twitter backend. This opinion piece will show you that this sort of incident can happen everywhere as long as humans are involved. Everywhere there are manual actions or admin / backend panels, this can happen. Pay a support-slave enough and they'll delete an account 'by accident'. Or a rougue sysadmin that disables logging, does something horrible and enables logging again. I'll show you that there is no one size fits all solution. Or at least, not a single fix for all. Treating your employees well, educatingthem on risks and automating as much as possible will get you a long way.</description> 
+                <pubDate>Fri, 31 Jul 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Fri, 31 Jul 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>I had to jailbreak my iPhone to change the default browser...</title> 
                 <link>https://raymii.org/s/blog/I_had_to_jailbreak_my_iPhone_to_change_the_default_browser.html</link> 
                 <guid>https://raymii.org/s/blog/I_had_to_jailbreak_my_iPhone_to_change_the_default_browser.html</guid>
