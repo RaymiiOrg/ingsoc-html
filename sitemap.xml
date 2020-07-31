@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html</loc>
+            <lastmod>2020-08-01</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/blog/The_twitter_bitcoin_hack_can_happen_anywhere_humans_are_involved.html</loc>
             <lastmod>2020-07-31</lastmod>
             <changefreq>weekly</changefreq>
@@ -2923,6 +2929,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/virtualization.html</loc>
+            <lastmod>2020-07-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/retro-ads.html</loc>
             <lastmod>2020-07-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6396,7 +6408,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/retro-ads.html</loc>
+            <loc>https://raymii.org/s/tags/clion.html</loc>
             <lastmod>2020-07-24</lastmod>
             <changefreq>weekly</changefreq>
         </url>
