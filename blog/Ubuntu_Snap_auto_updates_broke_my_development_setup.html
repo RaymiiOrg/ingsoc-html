@@ -39,7 +39,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Ubuntu Snap auto updates broke my development setup and there is no way to turn them off</h2>
-<p><small>Published: 01-08-2020 | Author: Remy van Elst | <a href="Ubuntu_Snap_auto_updates_broke_my_development_setup.txt">Text only version of this article</a>
+<p><small>Published: 01-08-2020 | Last update: 02-08-2020 | Author: Remy van Elst | <a href="Ubuntu_Snap_auto_updates_broke_my_development_setup.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -54,13 +54,16 @@
 <h3>Table of Contents</h3>
 <ul>
 <li>
-<a href="#toc_0">Disable snap updates</a>
+<a href="#toc_0">A response to online comments on snap revert</a>
 </li>
 <li>
-<a href="#toc_1">Workarounds</a>
+<a href="#toc_1">Disable snap updates</a>
 </li>
 <li>
-<a href="#toc_2">Conclusion</a>
+<a href="#toc_2">Workarounds</a>
+</li>
+<li>
+<a href="#toc_3">Conclusion</a>
 </li>
 </ul>
 
@@ -97,7 +100,18 @@ the update,  checking changelogs and holding off CLion updates until they&#39;ve
 been out for  two weeks. With <code>apt</code> I can <code>hold</code> packages and if I want,
 disable <code>unattended-upgrades</code>,  with <code>snap</code>, this is impossible.</p>
 
-<h3 id="toc_0">Disable snap updates</h3>
+<h3 id="toc_0">A response to online comments on snap revert</h3>
+
+<p>In the <a href="https://old.reddit.com/r/linux/comments/i19zrr/ubuntu_snap_auto_updates_broke_my_development/">reddit post</a>, on Hacker news and Lobste.rs, most of the online
+comments mention that I could have just rolled back to the previous 
+version of CLion by using <code>snap revert clion</code>. I was aware of that when
+writing the article, but that entirely misses the point. I don&#39;t want to
+rollback when something broke. I want to be in control when things are updated.
+You don&#39;t service the engine onm your car while driving on the highway,
+even when you can fix things after you&#39;ve crashed. You plan that maintenance.
+Just as I want to do with my software.</p>
+
+<h3 id="toc_1">Disable snap updates</h3>
 
 <p>There is no way to disable snap updates. Yes you read that right. Ubuntu is 
 worse than windows in this regard, because even Microsoft lets you, in company
@@ -120,7 +134,7 @@ which a refresh will be performed regardless of the refresh.hold value.</p>
 
 <p><a href="https://snapcraft.io/docs/keeping-snaps-up-to-date">source</a></p>
 
-<h3 id="toc_1">Workarounds</h3>
+<h3 id="toc_2">Workarounds</h3>
 
 <p>One workaround I found is to remove snap entirely:</p>
 
@@ -139,7 +153,7 @@ guess). </p>
 option to disable  auto updates. Even if you enable them by default, let me be
 in control of what and when things happen. </p>
 
-<h3 id="toc_2">Conclusion</h3>
+<h3 id="toc_3">Conclusion</h3>
 
 <p>After uninstalling snap and reinstalling the previous version of CLion via the
 regular java installation method, my plugins worked again. But it did take
