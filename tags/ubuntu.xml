@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/ubuntu.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Get webcam resolution and info on Ubuntu and fix HD</title> 
+                <link>https://raymii.org/s/tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html</link> 
+                <guid>https://raymii.org/s/tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html</guid>
+                <description>With all the video calling nowdays due to working from home I decided to get a webcam. Since I mostly work at a workstation, I have no microphone or camera built in. A friend gave me a spare webcam, a generic non-brand. It says 'HD Camera' on the box, but by default it records in 640x480. Using a few tools on Ubuntu you can figure out what resolutions are supported for your device. It turned out to be Cheese, the webcam capture program I used, not supporting the 'mjpeg' format, just the 'yuyv' RAW format. Using another webcam program named Webcamoid solved it, that program was able to use mjpeg.</description> 
+                <pubDate>Sun, 23 Aug 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 23 Aug 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Ubuntu Snap auto updates broke my development setup and there is no way to turn them off</title> 
                 <link>https://raymii.org/s/blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html</link> 
                 <guid>https://raymii.org/s/blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html</guid>
@@ -313,15 +322,6 @@
             </item>
     
             <item>
-                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
-                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
-                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>IPSEC L2TP VPN on Ubuntu 13.10 with OpenSwan, xl2tpd and ppp</title> 
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</guid>
@@ -335,6 +335,15 @@
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</guid>
                 <description>Not available.</description> 
+                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
+                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
