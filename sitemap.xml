@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html</loc>
+            <lastmod>2020-08-24</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html</loc>
             <lastmod>2020-08-23</lastmod>
             <changefreq>weekly</changefreq>
@@ -3474,6 +3480,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/pkg.html</loc>
+            <lastmod>2020-08-16</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/word.html</loc>
             <lastmod>2020-08-16</lastmod>
             <changefreq>weekly</changefreq>
@@ -5580,13 +5592,19 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/google-photos.html</loc>
+            <lastmod>2020-08-16</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/sysvinit.html</loc>
             <lastmod>2020-08-16</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/pkg.html</loc>
+            <loc>https://raymii.org/s/tags/zfs.html</loc>
             <lastmod>2020-08-16</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -6493,6 +6511,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/outlook-rpc.html</loc>
+            <lastmod>2020-08-16</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/photos.html</loc>
             <lastmod>2020-08-16</lastmod>
             <changefreq>weekly</changefreq>
         </url>
@@ -8184,7 +8208,7 @@
         </url>
     
         <url>
-            <loc>https://raymii.org/s/tags/zfs.html</loc>
+            <loc>https://raymii.org/s/tags/gphotos-sync.html</loc>
             <lastmod>2020-08-16</lastmod>
             <changefreq>weekly</changefreq>
         </url>
