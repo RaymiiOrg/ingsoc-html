@@ -17,6 +17,9 @@ specific ports and established connections, but nowdays `netstat` is replaced by
 state, ports, protocol, making the command I use more readable and use less
 pipes.
 
+Here's an example of the graph my code makes:
+
+![munin ports][2]
 
 [If you like this snippet, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
@@ -62,6 +65,7 @@ On a system that still has `netstat`, I use the following command:
 
 
 [1]: http://manpages.ubuntu.com/manpages/xenial/man8/ss.8.html
+[2]: /s/inc/img/munin-port.png
 
 ---
 
