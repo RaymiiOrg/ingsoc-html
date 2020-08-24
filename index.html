@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Get number of incoming connections on specific port with ss</a></h4>
+<small>25-08-2020 | Remy van Elst</small><br />
+<p>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</p>
+<a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Read more...</a><br />
+<p></p>
 <h4><a href="tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html">Local incremental backups of Google Photos on Ubuntu with gphotos-sync</a></h4>
 <small>24-08-2020 | Remy van Elst</small><br />
 <p>'Google Photos' no longer syncs with 'Google Drive' or with their 'Backup and Sync' desktop software. There used to be a checkbox to get your 'Google Photos' pictures in 'Google Drive' but that has been disabled. I used that feature together with their 'Backup and Sync' tool to sync all the photos in 'Google Photos' to my local Windows computer. From there I use 'DigiKam'  to manage the photos and backup them offline and offsite. Due to Google removing that feature, I had to go find another way to get the pictures out of 'Google Photos', which, after a few months of (automated) use, 'gphotos-sync' on Ubuntu seems to be the best, stable choice. In this guide I'll show you how to setup incremental backups from 'Google Photos' on Ubuntu. My 'DigiKam' database moved over without problems, and now I'm glad I don't have to use Windows for picture managemant anymore.</p>
@@ -89,11 +94,6 @@
 <small>24-05-2020 | Remy van Elst</small><br />
 <p>The title of this article says enough. To change the default browser on an iOS device you need to jailbreak your device (root it). It's 2020 and Apple does not allow you to switch Safari with Firefox. Recently a new jailbreak for iOS was released which support the lastest firmware, 13.5. I currently have an iPhone SE 2020 running 13.5, the jailbreak was a welcome addition to fix some small and some big annoyances with iOS. Like switching to Firefox as default browser. This post contains both a small rant on the state of iOS as wel as links to the jailbreak and applications used to switch the default browser.</p>
 <a href="blog/I_had_to_jailbreak_my_iPhone_to_change_the_default_browser.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Here_be_dragons_or_invalidated_iterators.html">Here be dragons, or, invalidated iterators</a></h4>
-<small>03-05-2020 | Remy van Elst</small><br />
-<p>Recently I had a new 'first-time' moment. You know the ones, the, 'oh right', moments, after you put in a bit of research. Mine was, as you might expect from all the other recent content, related to C++. I learned, the hard way, that 'iterator-based for loops' don't like to be resized during the loop. Well, they don't really care, but some precautions are to be taken since the 'iterator' used in the loop might be invalidated. Or as the very helpfull error during the crash prints to the console, 'munmap_chunk(): invalid pointer' and your debugger points you to somewhere deep in 'new_allocator.h'. In this article I'll give a few examples, both using index based for loops and iterator based for loops, plus some more details on what's going on with iterator invalidation.</p>
-<a href="blog/Here_be_dragons_or_invalidated_iterators.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
