@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/ssh.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Get all SSH public keys from gitlab</title> 
+                <link>https://raymii.org/s/snippets/Get_all_SSH_public_keys_from_gitlab.html</link> 
+                <guid>https://raymii.org/s/snippets/Get_all_SSH_public_keys_from_gitlab.html</guid>
+                <description>This small snippet gets all the SSH keys from a gitlab instance. You need to be an administrator, then you can query all keys at once using the API. On the web frontend you can only see the keys per user, not all at once in an overview.</description> 
+                <pubDate>Wed, 26 Aug 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 26 Aug 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>nginx 1.15.2, ssl_preread_protocol, multiplex HTTPS and SSH on the same port</title> 
                 <link>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</link> 
                 <guid>https://raymii.org/s/tutorials/nginx_1.15.2_ssl_preread_protocol_multiplex_https_and_ssh_on_the_same_port.html</guid>

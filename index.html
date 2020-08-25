@@ -40,6 +40,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Get_all_SSH_public_keys_from_gitlab.html">Get all SSH public keys from gitlab</a></h4>
+<small>26-08-2020 | Remy van Elst</small><br />
+<p>This small snippet gets all the SSH keys from a gitlab instance. You need to be an administrator, then you can query all keys at once using the API. On the web frontend you can only see the keys per user, not all at once in an overview.</p>
+<a href="snippets/Get_all_SSH_public_keys_from_gitlab.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Get number of incoming connections on specific port with ss</a></h4>
 <small>25-08-2020 | Remy van Elst</small><br />
 <p>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</p>
@@ -89,11 +94,6 @@
 <small>27-05-2020 | Remy van Elst</small><br />
 <p>For a personal project I use Github for source code hosting and Github Actions as an automated build and test tool. Github Actions compiles my cmake project and runs all the unit tests on every commit. It also saves a build artifact, the actual compiled program. By utilizing some dependency caching and make flags I sped up the build process by 43% by caching the apt install libboost1.65-dev and giving cmake a -j2 makeflag. This article shows my simple setup to compile a C++ project with cmake and Boost on Github Actions. After compilation, it runs all the tests and uploads the compiled binary for download. For my one man project it's overkill, but when collaborating or when builds take a long time on your own machine, it's great to have an automated build / test system.</p>
 <a href="articles/Github_Actions_cpp_boost_cmake_speedup.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/I_had_to_jailbreak_my_iPhone_to_change_the_default_browser.html">I had to jailbreak my iPhone to change the default browser...</a></h4>
-<small>24-05-2020 | Remy van Elst</small><br />
-<p>The title of this article says enough. To change the default browser on an iOS device you need to jailbreak your device (root it). It's 2020 and Apple does not allow you to switch Safari with Firefox. Recently a new jailbreak for iOS was released which support the lastest firmware, 13.5. I currently have an iPhone SE 2020 running 13.5, the jailbreak was a welcome addition to fix some small and some big annoyances with iOS. Like switching to Firefox as default browser. This post contains both a small rant on the state of iOS as wel as links to the jailbreak and applications used to switch the default browser.</p>
-<a href="blog/I_had_to_jailbreak_my_iPhone_to_change_the_default_browser.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

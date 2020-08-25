@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/snippets/Get_all_SSH_public_keys_from_gitlab.html</loc>
+            <lastmod>2020-08-26</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</loc>
             <lastmod>2020-08-25</lastmod>
             <changefreq>weekly</changefreq>
@@ -6139,6 +6145,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/clamav.html</loc>
+            <lastmod>2020-08-18</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/jq.html</loc>
             <lastmod>2020-08-18</lastmod>
             <changefreq>weekly</changefreq>
         </url>
