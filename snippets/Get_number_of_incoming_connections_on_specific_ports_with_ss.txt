@@ -65,7 +65,8 @@ On a system that still has `netstat`, I use the following command:
 
 
 [1]: http://manpages.ubuntu.com/manpages/xenial/man8/ss.8.html
-[2]: /s/inc/img/munin-port.png
+[2]: /s/inc/img/munin_port.png
+
 
 ---
 
