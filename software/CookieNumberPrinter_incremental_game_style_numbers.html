@@ -2,7 +2,7 @@
     <!DOCTYPE html>
     <html lang="en">
         <head>
-        <title>Homepage - Raymii.org</title>
+        <title>CookieNumberPrinter, incremental / idle game style numbers in C++ - Raymii.org</title>
         <style>*,::before,::after{background-color:white;background-repeat:no-repeat;-webkit-box-sizing:border-box;box-sizing:border-box}::before,::after{text-decoration:inherit;vertical-align:inherit}html{cursor:default;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.15;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word}body{margin:0}h1{font-size:2em;margin:.67em 0}hr{height:0;overflow:visible}main{display:block}nav ol,nav ul{list-style:none}pre{font-family:Menlo,Consolas,Roboto Mono,Ubuntu Monospace,Noto Mono,Oxygen Mono,Liberation Mono,monospace;font-size:1em}a{background-color:transparent}abbr[title]{text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:Menlo,Consolas,Roboto Mono,Ubuntu Monospace,Noto Mono,Oxygen Mono,Liberation Mono,monospace;font-size:1em}small{font-size:80%}::-moz-selection{background-color:#b3d4fc;color:#000;text-shadow:none}::selection{background-color:#b3d4fc;color:#000;text-shadow:none}audio,canvas,iframe,img,svg,video{vertical-align:middle}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not([fill]){fill:currentColor}svg:not(:root){overflow:hidden}table{border-collapse:collapse}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}button,input,select{margin:0}button{overflow:visible;text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}fieldset{padding:.35em .75em .625em}input{overflow:visible}legend{color:inherit;display:table;max-width:100%;white-space:normal}progress{display:inline-block;vertical-align:baseline}select{text-transform:none}textarea{margin:0;overflow:auto;resize:vertical}[type="checkbox"],[type="radio"]{padding:0}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}::-moz-focus-inner{border-style:none;padding:0}:-moz-focusring{outline:1px dotted ButtonText}details{display:block}dialog{background-color:white;border:solid;color:black;display:block;height:-moz-fit-content;height:-webkit-fit-content;height:fit-content;left:0;margin:auto;padding:1em;position:absolute;right:0;width:-moz-fit-content;width:-webkit-fit-content;width:fit-content}dialog:not([open]){display:none}summary{display:list-item}canvas{display:inline-block}template{display:none}a,area,button,input,label,select,summary,textarea,[tabindex]{-ms-touch-action:manipulation;touch-action:manipulation}[hidden]{display:none}[aria-busy="true"]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled="true"],[disabled]{cursor:not-allowed}[aria-hidden="false"][hidden]:not(:focus){clip:rect(0,0,0,0);display:inherit;position:absolute}main,header,footer,article,section,aside,details,summary{margin:0 auto;margin-bottom:16px;width:100%}main{display:block;margin:0 auto;max-width:1000px;padding:0 16px 16px}footer{border-top:1px solid rgba(0,0,0,.12);padding:16px 0;text-align:left}footer p{margin-bottom:0}hr{border:0;border-top:1px solid rgba(0,0,0,.12);display:block;margin-top:16px;margin-bottom:16px;width:100%;-webkit-box-sizing:content-box;box-sizing:content-box;height:0;overflow:visible}img{height:auto;max-width:100%;vertical-align:baseline}@media screen and (max-width:400px){article,section,aside{clear:both;display:block;max-width:100%}img{margin-right:16px}}embed,iframe,video{border:0}body{color:rgba(0,0,0,.8);font-family:"Raleway",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5}p{margin:0;margin-bottom:16px}h1,h2,h3,h4,h5,h6{color: inherit;font-family:inherit;line-height:1.2;font-weight:500}h1{font-size:40px;margin:20px 0 16px}h2{font-size:32px;margin:20px 0 16px}h3{color: #75cc00;font-size:28px;margin:16px 0 4px}h4{color: #75cc00;font-size:24px;margin:16px 0 4px}h5{color: #75cc00;font-size:20px;margin:16px 0 4px}h6{color: #75cc00;font-size:16px;margin:16px 0 4px}small{color:rgba(0,0,0,.54);vertical-align:bottom}pre{background:#f7f7f9;color:rgba(0,0,0,.8);display:block;font-family:Menlo,Monaco,Consolas,"Courier New",monospace;font-size:16px;margin:16px 0;padding:16px;white-space:pre-wrap;overflow-wrap:break-word}code{background: #f7f7f9;color:rgba(0,0,0,.8);font-family:Menlo,Monaco,Consolas,"Courier New",monospace;font-size:16px;line-height:inherit;margin:0;padding:4px;vertical-align:baseline;word-break:break-all;word-wrap:break-word}a{color:#75cc00;text-decoration:none;background-color:transparent}a:hover,a:focus{color:#0062cc;text-decoration:underline}dl{margin-bottom:16px}dd{margin-left:40px}ul,ol{margin-bottom:8px;padding-left:40px;vertical-align:baseline}blockquote{border-left:2px solid rgba(0,0,0,.8);font-family:Georgia,Times,"Times New Roman",serif;font-style:italic;margin:16px 0;padding-left:16px}figcaption{font-family:Georgia,Times,"Times New Roman",serif}u{text-decoration:underline}s{text-decoration:line-through}sup{font-size:14px;vertical-align:super}sub{font-size:14px;vertical-align:sub}mark{background:#ffeb3b}input[type="text"],input[type="password"],input[type="email"],input[type="url"],input[type="date"],input[type="month"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="week"],input[type="number"],input[type="search"],input[type="tel"],select,textarea{background:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.12);border-radius:4px;color:rgba(0,0,0,.8);display:block;width:100%;padding:8px 16px;line-height:1.5;-webkit-transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}input[type="color"]{background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:4px;display:inline-block;vertical-align:middle}input:not([type]){-webkit-appearance:none;background:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.12);border-radius:4px;color:rgba(0,0,0,.8);display:block;width:100%;padding:8px 16px;line-height:1.5;-webkit-transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;text-align:left}input[type="text"]:focus,input[type="password"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,input[type="week"]:focus,input[type="number"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="color"]:focus,select:focus,textarea:focus{background-color:#fff;border-color:#80bdff;outline:0;-webkit-box-shadow:0 0 0 .2rem rgba(0,123,255,.25);box-shadow:0 0 0 .2rem rgba(0,123,255,.25)}input:not([type]):focus{background-color:#fff;border-color:#80bdff;outline:0;-webkit-box-shadow:0 0 0 .2rem rgba(0,123,255,.25);box-shadow:0 0 0 .2rem rgba(0,123,255,.25)}input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus{outline:1px thin rgba(0,0,0,.12)}input[type="text"][disabled],input[type="password"][disabled],input[type="email"][disabled],input[type="url"][disabled],input[type="date"][disabled],input[type="month"][disabled],input[type="time"][disabled],input[type="datetime"][disabled],input[type="datetime-local"][disabled],input[type="week"][disabled],input[type="number"][disabled],input[type="search"][disabled],input[type="tel"][disabled],input[type="color"][disabled],select[disabled],textarea[disabled]{background-color:rgba(0,0,0,.12);color:rgba(0,0,0,.54);cursor:not-allowed;opacity:1}input:not([type])[disabled]{background-color:rgba(0,0,0,.12);color:rgba(0,0,0,.54);cursor:not-allowed;opacity:1}input[readonly],select[readonly],textarea[readonly]{border-color:rgba(0,0,0,.12);color:rgba(0,0,0,.54)}input:focus:invalid,textarea:focus:invalid,select:focus:invalid{border-color:#ea1c0d;color:#f44336}input[type="file"]:focus:invalid:focus,input[type="radio"]:focus:invalid:focus,input[type="checkbox"]:focus:invalid:focus{outline-color:#f44336}select{border:1px solid rgba(0,0,0,.12);vertical-align:sub}select:not([size]):not([multiple]){height:-webkit-calc(2.25rem + 2px);height:calc(2.25rem + 2px)}select[multiple]{height:auto}label{display:inline-block;line-height:2}fieldset{border:0;margin:0;padding:8px 0}legend{border-bottom:1px solid rgba(0,0,0,.12);color:rgba(0,0,0,.8);display:block;margin-bottom:8px;padding:8px 0;width:100%}textarea{overflow:auto;resize:vertical}input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;display:inline}input[type=submit],input[type=reset],input[type=button],button{background-color:#75cc00;border:#75cc00;border-radius:4px;color:#fff;padding:8px 16px;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;font-size:1rem;line-height:1.5;-webkit-transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out}input[type=submit]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0}input[type=submit]:hover,input[type=reset]:hover,input[type=button]:hover,button:hover{background-color:#0069d9;border-color:#0062cc;color:#fff}input[type=submit]:not(:disabled):active,input[type=reset]:not(:disabled):active,input[type=button]:not(:disabled):active,button:not(:disabled):active{background-color:#0062cc;border-color:#005cbf;color:#fff}input[type=submit]:focus,input[type=reset]:focus,input[type=button]:focus,button:focus{outline:0;-webkit-box-shadow:0 0 0 .2rem rgba(0,123,255,.5);box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}input[type=submit]:disabled,input[type=reset]:disabled,input[type=button]:disabled,button:disabled{opacity:.65;cursor:not-allowed;background-color:#75cc00;border-color:#75cc00;color:#fff}table{border-top:1px solid rgba(0,0,0,.12);margin-bottom:16px}caption{padding:8px 0}thead th{border:0;border-bottom:2px solid rgba(0,0,0,.12);text-align:left}tr{margin-bottom:8px}th,td{border-bottom:1px solid rgba(0,0,0,.12);padding:16px;white-space:nowrap;vertical-align:inherit}tfoot tr{text-align:left}tfoot td{color:rgba(0,0,0,.54);font-size:8px;font-style:italic;padding:16px 4px}a.skip-main{left:-999px;position:absolute;top:auto;width:1px;height:1px;overflow:hidden;z-index:-999}a.skip-main:focus,a.skip-main:active{color:#fff;background-color:#000;left:auto;top:auto;width:30%;height:auto;overflow:auto;margin:10px 35%;padding:5px;border-radius:15px;border:4px solid yellow;text-align:center;font-size:1.2em;z-index:999}@font-face{font-family:'Raleway';font-display: swap;font-style:normal;font-weight:400;src:url(/s/inc/css/raleway.eot);src:local('Raleway'),local('Raleway'),url(/s/inc/css/raleway.ttf)}.headheader{font-family:"Raleway"!important}.headheader a{color:#000;text-decoration:none}.headheader a:hover{color:#000;text-decoration:none!important}#toc ul {list-style: none; margin: 0; padding: 0;} #toc h3{ color: black;} </style>
         <script> </script>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -31,65 +31,149 @@
                 </small>
             </header>
           
-    <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
-<h2>Latest Items</h2>
-<h4><a href="software/CookieNumberPrinter_incremental_game_style_numbers.html">CookieNumberPrinter, incremental / idle game style numbers in C++</a></h4>
-<small>12-09-2020 | Remy van Elst</small><br />
-<p>To level up my software development skills, I'm programming a command line game in my spare  time.  It is a clone of the famous cookieclicker game by ortiel. A clone of a game is simple enough to get up and running  fairly quickly, but also extensible enough when needed. How do you store huge score numbers  when they don't fit in a long long? How do you write a game loop, how to use threads to handle  user input? Saving a game (how to design a proper save format)? Also a great way to learn about project organization, software architecture and to try out design patterns. As the game is a clone of CookieCliker, which itself is an incremental game, I had to figure out how to work with large numbers. Since this is not a university math project, I allowed myself the luxury of using Boosts Multiprecision.  The library handles the large numbers, including caluclation and operations with such a number. I did want to print the numbers in Idle Style, where large numbers are displayed with a suffix, like '1 million' instead of '1000000' and so on. This 'C++' class can be used to print Boost's 'cpp_dec_float' numbers in incremental style. It's just one header.</p>
-<a href="software/CookieNumberPrinter_incremental_game_style_numbers.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Get_all_SSH_public_keys_from_gitlab.html">Get all SSH public keys from gitlab</a></h4>
-<small>26-08-2020 | Remy van Elst</small><br />
-<p>This small snippet gets all the SSH keys from a gitlab instance. You need to be an administrator, then you can query all keys at once using the API. On the web frontend you can only see the keys per user, not all at once in an overview.</p>
-<a href="snippets/Get_all_SSH_public_keys_from_gitlab.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Get number of incoming connections on specific port with ss</a></h4>
-<small>25-08-2020 | Remy van Elst</small><br />
-<p>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</p>
-<a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html">Local incremental backups of Google Photos on Ubuntu with gphotos-sync</a></h4>
-<small>24-08-2020 | Remy van Elst</small><br />
-<p>'Google Photos' no longer syncs with 'Google Drive' or with their 'Backup and Sync' desktop software. There used to be a checkbox to get your 'Google Photos' pictures in 'Google Drive' but that has been disabled. I used that feature together with their 'Backup and Sync' tool to sync all the photos in 'Google Photos' to my local Windows computer. From there I use 'DigiKam'  to manage the photos and backup them offline and offsite. Due to Google removing that feature, I had to go find another way to get the pictures out of 'Google Photos', which, after a few months of (automated) use, 'gphotos-sync' on Ubuntu seems to be the best, stable choice. In this guide I'll show you how to setup incremental backups from 'Google Photos' on Ubuntu. My 'DigiKam' database moved over without problems, and now I'm glad I don't have to use Windows for picture managemant anymore.</p>
-<a href="tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html">Get webcam resolution and info on Ubuntu and fix HD</a></h4>
-<small>23-08-2020 | Remy van Elst</small><br />
-<p>With all the video calling nowdays due to working from home I decided to get a webcam. Since I mostly work at a workstation, I have no microphone or camera built in. A friend gave me a spare webcam, a generic non-brand. It says 'HD Camera' on the box, but by default it records in 640x480. Using a few tools on Ubuntu you can figure out what resolutions are supported for your device. It turned out to be Cheese, the webcam capture program I used, not supporting the 'mjpeg' format, just the 'yuyv' RAW format. Using another webcam program named Webcamoid solved it, that program was able to use mjpeg.</p>
-<a href="tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html">Ubuntu Snap auto updates broke my development setup and there is no way to turn them off</a></h4>
-<small>Published: 01-08-2020 | Last update: 02-08-2020 | Author: Remy van Elst</small><br />
-<p>After updating-by-reinstall to Ubuntu 20.04, I installed CLion via snap since that  seemed more convinient than manually downloading a java installation. CLion is the best thing since sliced bread, or I mean a C/C++ IDE by JetBrains. Ubuntu snap is  a packaging system made by Canonical and pushed hard in Ubuntu. Today I found out the hard way that snap auto-updates and that there is no way to turn that off permanently. CLion was updated, which I noticed because the process was killed. The update broke several key plugins for my workflow  and the theme was weird. In this article I'll discuss my disgust, I as the owner of the computer want to be in full control, not some developer that decides I need auto updates. I ended up removing snap completely, and my next install will not be Ubuntu due to this.</p>
-<a href="blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/The_twitter_bitcoin_hack_can_happen_anywhere_humans_are_involved.html">The Twitter Bitcoin hack can happen anywhere humans are involved</a></h4>
-<small>31-07-2020 | Remy van Elst</small><br />
-<p>The recent twitter hack involved social engineering and access to the twitter backend. This opinion piece will show you that this sort of incident can happen everywhere as long as humans are involved. Everywhere there are manual actions or admin / backend panels, this can happen. Pay a support-slave enough and they'll delete an account 'by accident'. Or a rougue sysadmin that disables logging, does something horrible and enables logging again. I'll show you that there is no one size fits all solution. Or at least, not a single fix for all. Treating your employees well, educatingthem on risks and automating as much as possible will get you a long way.</p>
-<a href="blog/The_twitter_bitcoin_hack_can_happen_anywhere_humans_are_involved.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html">C++ Remove leading or trailing characters from std::string</a></h4>
-<small>18-07-2020 | Remy van Elst</small><br />
-<p>Here's a small snippet to remove leading or trailing characters from a std::string in C++. I use it to strip leading and trailing zeroes in a game score display function.</p>
-<a href="snippets/Cpp_Remove_leading_or_trailing_characters_from_string.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Running_gnash_on_Ubuntu_20.04.html">Running gnash on Ubuntu 20.04 (in Docker with X11 forwarding)</a></h4>
-<small>05-07-2020 | Remy van Elst</small><br />
-<p>As you might have noticed, I'm slowly updating servers and workstations to Ubuntu 20.04, and as always with major upgrades, things break or are removed. Earlier this week I fixed up pygopherd and today I'll get gnash running again. Gnash is not updated since 2011 and therefore, finally, removed from the Ubuntu 20.04 repositories. Compiling it from source proved to be a lot of effort due to gstreamer dependencies and after a few hours I thought, why not just spin up a Ubuntu 18.04 Docker container, install gnash and forward X11. That took just about 10 minutes and now I'm happily running gnash again. In this tutorial I'll show you how to setup gnash in a docker container with x11 forwarding and host networking.</p>
-<a href="tutorials/Running_gnash_on_Ubuntu_20.04.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html">Installing PyGopherd on Ubuntu 20.04</a></h4>
-<small>04-07-2020 | Remy van Elst</small><br />
-<p>Ubuntu 20.04 dropped the Pygopherd package. There is no way to install it from the official repositories. In this guide I'll show you two ways to install the version from Ubuntu 18.04, which still works perfectly on 20.04. Either via just downloading the 2 deb packages, or via `apt pinning` from the previous (18.04) repository.</p>
-<a href="tutorials/Installing_PyGopherd_on_Ubuntu_20.04.html">Read more...</a><br />
-<p></p>
-<h4><a href="software/Cpp_generate_qr_code_and_write_it_to_png_scaled.html">Generate QR code and write it to a PNG, scaled, in C++</a></h4>
-<small>07-06-2020 | Remy van Elst</small><br />
-<p>The QR-Code-Generator library by Project Nayuki for C++ gives you an easy, fast and correct way to generate QR codes. However, you get just a data structure, showing that data is up to you. An example is provided to print the code to a terminal, but not to create and actual image file. For Java, there is an example provided which writes a PNG file, but not for C++. The author of the library also has another C++ library, Tiny-PNG-Out. It is correct up until 700 megapixel PNG files, which I hope your QR code never hits. I've written a class which bridges the two together, allowing you to both generate the QR code and write it to a PNG file, scaled up to be as readable as possible.</p>
-<a href="software/Cpp_generate_qr_code_and_write_it_to_png_scaled.html">Read more...</a><br />
-<p></p>
-<h4><a href="tags/all.html">View all Items</a>
-</h4>
+    <h2 class='headheader' id='main'>CookieNumberPrinter, incremental / idle game style numbers in C++</h2>
+<p><small>Published: 12-09-2020 | Author: Remy van Elst | <a href="CookieNumberPrinter_incremental_game_style_numbers.txt">Text only version of this article</a>
+</small></p>
+<div class='ad'>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:728px;height:90px"
+                                 data-ad-client="ca-pub-7993642564731324"
+                                 data-ad-slot="6172324376"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div><br><div id="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li>
+<a href="#toc_0">Idle Style numbers?</a>
+</li>
+<li>
+<a href="#toc_1">Download and building and an example</a>
+</li>
+</ul>
+
+</div>
+<hr>
+<div id="contents">
+<p>To level up my software development skills, I&#39;m programming a command line game
+in my spare  time.  It is a clone of the famous cookieclicker game <a href="https://orteil.dashnet.org/cookieclicker/">by
+ortiel</a>. A clone of a game is simple enough to get up and running  fairly
+quickly, but also extensible enough when needed. How do you store huge score
+numbers  when they don&#39;t fit in a <code>long long</code>? How do you write a game loop, how
+to use threads to handle  user input? Saving a game (how to design a proper save
+format)? Also a great way to learn about  project organization, software
+architecture and to try out design patterns.</p>
+
+<p>As the game is a clone of CookieCliker, which itself is an <a href="https://en.wikipedia.org/wiki/Incremental_game">incremental
+game</a>, I had to figure out how to work with large numbers. Since this is not
+a university math project, I allowed myself the luxury of using <a href="https://www.boost.org/doc/libs/1_74_0/libs/multiprecision/doc/html/boost_multiprecision/intro.html">Boosts
+Multiprecision</a>.  The library handles the large numbers, including
+caluclation and operations with such a number. I did want to print the numbers
+in Idle Style, where large numbers are displayed with a suffix, like <code>1 million</code>
+instead of <code>1000000</code> and so on. </p>
+
+<p>This <code>C++</code> class can be used to print Boost&#39;s <code>cpp_dec_float</code> numbers in
+incremental style. It&#39;s just one header. You can <a href="https://github.com/RaymiiOrg/cookienumberprinter">get the code here</a>.</p>
+
+<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this class, consider sponsoring me by trying out a Digital Ocean
+VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
+
+<p>Please do keep in mind that this is a hobby project, the code might not be up to
+your professional standards. As of now the class in my game has diverged a bit 
+to also support a few other boost numbers and can directly be used as an output
+stream (<code>std::cout &lt;&lt; cookienumber</code> instead of <code>std::cout &lt;&lt; cookienumber.print()</code>).</p>
+
+<h3 id="toc_0">Idle Style numbers?</h3>
+
+<p>If you&#39;re wondering what Idle / Incremental game style is, let me show you. A
+lot of mobile games show numbers in idle style, here is a picture of one:</p>
+
+<p><img src="/s/inc/img/idleminer.png" alt="idle miner"></p>
+
+<p>Here is a screenshot of my game, where you can see I have <code>5p</code> cookies as well
+as prices for certain items with suffixes:</p>
+
+<p><img src="/s/inc/img/105_main.png" alt="c_ookieclicker"></p>
+
+<p>Even though one is a flashy Android game and one is a humble command line
+application, you see the idle style printing. </p>
+
+<p>In the future I might show more of the game, or even make the git repository 
+public. For now it&#39;s just me and a few friends.</p>
+
+<h3 id="toc_1">Download and building and an example</h3>
+
+<p>I assume you have a working C++ compiler setup and have compiled before.</p>
+
+<p>Install boost:</p>
+
+<pre><code>apt install libboost-all-dev
+</code></pre>
+
+<p>Clone the git repository</p>
+
+<pre><code>git clone https://github.com/RaymiiOrg/cookienumberprinter
+</code></pre>
+
+<p>Go in the folder and cmake / make</p>
+
+<pre><code>cd cookienumberprinter
+mkdir build
+cd build
+cmake .. 
+make
+</code></pre>
+
+<p>Run the example:</p>
+
+<pre><code>./cookienumberprinter
+</code></pre>
+
+<p>Output should be:</p>
+
+<pre><code>CookieNumberPrinter by https://raymii.org, examples.
+Should print:
+0
+1
+1.1
+100.3
+1234
+123 thousand
+1 million
+8 million
+12 billion
+3 quintillion
+897a
+11yyy
+Here we go!
+
+0
+1
+1.1
+100.3
+1234
+123 thousand
+1 million
+8 million
+12 billion
+3 quintillion
+897a
+11yyy
+
+Process finished with exit code 0
+</code></pre>
+Tags: <a href="../tags/boost.html">boost</a>
+, <a href="../tags/c++.html">c++</a>
+, <a href="../tags/cmake.html">cmake</a>
+, <a href="../tags/cookies.html">cookies</a>
+, <a href="../tags/cpp.html">cpp</a>
+, <a href="../tags/development.html">development</a>
+, <a href="../tags/games.html">games</a>
+, <a href="../tags/idle.html">idle</a>
+, <a href="../tags/software.html">software</a>
+</div>
 <br/>
 <footer>
 <br/>
