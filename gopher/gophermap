@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2020-09-13T14:05:35	/	localhost	70
+i            2020-09-24T16:24:50	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Store multiple types in a single std::map in C++ with std::any, just like a python dict (23-09-2020)	Store_multiple_types_in_a_single_stdmap_in_cpp_just_like_a_python_dict.txt	raymii.org	70
 0CookieNumberPrinter, incremental / idle game style numbers in C++ (12-09-2020)	CookieNumberPrinter_incremental_game_style_numbers.txt	raymii.org	70
 0Get all SSH public keys from gitlab (26-08-2020)	Get_all_SSH_public_keys_from_gitlab.txt	raymii.org	70
 0Get number of incoming connections on specific port with ss (25-08-2020)	Get_number_of_incoming_connections_on_specific_ports_with_ss.txt	raymii.org	70
