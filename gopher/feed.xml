@@ -7,6 +7,15 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Tiny Tiny RSS vs Miniflux</title> 
+                <link>gopher://raymii.org/0/Tiny_Tiny_RSS_vs_Miniflux.txt</link> 
+                <guid>gopher://raymii.org/0/Tiny_Tiny_RSS_vs_Miniflux.txt</guid>
+                <description>I'm an heavy user of RSS feeds, having over 1500 feeds I follow. Without a decent feed reader that setup wouldn't work. For over eight years now I've been an happy user of Tiny Tiny RSS, a web based feed reader. But, recently I found out about 'miniflux', also a web based RSS reader. In this article I'll compare the two for my use cases, mostly mobile usage. TD;DR, I've switched to Miniflux, due to it being more suited for mobile usage, less ajax heavy, easier to subscribe to feeds and a more pleasant reading layout.</description> 
+                <pubDate>Sat, 26 Sep 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 26 Sep 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Store multiple types in a single std::map in C++ with std::any, just like a python dict</title> 
                 <link>gopher://raymii.org/0/Store_multiple_types_in_a_single_stdmap_in_cpp_just_like_a_python_dict.txt</link> 
                 <guid>gopher://raymii.org/0/Store_multiple_types_in_a_single_stdmap_in_cpp_just_like_a_python_dict.txt</guid>
