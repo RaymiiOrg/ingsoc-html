@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/blog/Costs_to_run_raymii.org.html</loc>
+            <lastmod>2020-09-27</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/articles/Tiny_Tiny_RSS_vs_Miniflux.html</loc>
             <lastmod>2020-09-26</lastmod>
             <changefreq>weekly</changefreq>
@@ -2953,6 +2959,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/bug-reporting.html</loc>
+            <lastmod>2020-09-19</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/cost.html</loc>
             <lastmod>2020-09-19</lastmod>
             <changefreq>weekly</changefreq>
         </url>

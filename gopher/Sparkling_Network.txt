@@ -11,7 +11,7 @@ Format      : 	Markdown/HTML
 
 
 
-This is an overview of all the servers in the Sparkling Network, including specifications and location, mostly as an overview for myself, but it might be interesting for others. It also has an HTTP status overview of the nodes.
+This is an overview of all the servers in the Sparkling Network, including specifications and location, mostly as an overview for myself, but it might be interesting for others. It also has an HTTP status overview of the nodes. Prices are monthly, excluding VAT.
 
 ### Active Servers for Raymii.org
 
@@ -26,6 +26,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <th>HDD</th>
       <th>OS</th>
       <th>Type</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>50 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/poweredge.png" alt="Dedicated" width="16" height="16" /></td>
+      <td>EUR 2.99</td>
     </tr>
     <tr>
       <td><img src="http://s1.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
@@ -48,6 +50,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>25 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>USD 5.00</td>
     </tr>
     <tr>
       <td><img src="http://s11.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
@@ -58,6 +61,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>20 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>EUR 2.79</td>
     </tr>
     <tr>
       <td><img src="http://s12.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
@@ -68,6 +72,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>20 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>EUR 2.49</td>
     </tr>
     <tr>
       <td><img src="http://s13.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
@@ -78,6 +83,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>20 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>USD 3.50</td>
     </tr>
     <tr>
       <td><img src="http://s14.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
@@ -88,6 +94,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>10 GB</td>
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>USD 0.80</td>
     </tr>
   </tbody>
 </table>
