@@ -32,7 +32,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
   <tbody>
     <tr>
       <td><img src="http://d1.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://d1.spnw.nl/report.html">d1</a></td>
+      <td><a href="http://d1.spnw.nl/munin/">d1</a></td>
       <td>ScaleWay</td>
       <td><img src="https://raymii.org/s/inc/img/flags/fr.png" alt="FR" width="16" height="16"></td>
       <td>2 GB</td>
@@ -43,7 +43,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
     <tr>
       <td><img src="http://s1.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://s1.spnw.nl/report.html">s1</a></td>
+      <td><a href="http://s1.spnw.nl/munin/">s1</a></td>
       <td>Digital Ocean</td>
       <td><img src="https://raymii.org/s/inc/img/flags/nl.png" alt="NL" width="16" height="16"></td>
       <td>1 GB</td>
@@ -54,7 +54,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
     <tr>
       <td><img src="http://s11.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://s11.spnw.nl/report.html">s11</a></td>
+      <td><a href="http://s11.spnw.nl/munin/">s11</a></td>
       <td>Aruba Cloud</td>
       <td><img src="https://raymii.org/s/inc/img/flags/it.png" alt="IT" width="16" height="16"></td>
       <td>1 GB</td>
@@ -65,7 +65,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
     <tr>
       <td><img src="http://s12.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://s12.spnw.nl/report.html">s12</a></td>
+      <td><a href="http://s12.spnw.nl/munin/">s12</a></td>
       <td>Hetzner Cloud</td>
       <td><img src="https://raymii.org/s/inc/img/flags/de.png" alt="DE" width="16" height="16"></td>
       <td>2 GB</td>
@@ -76,7 +76,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
     <tr>
       <td><img src="http://s13.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://s13.spnw.nl/report.html">s13</a></td>
+      <td><a href="http://s13.spnw.nl/munin/">s13</a></td>
       <td>Vultr</td>
       <td><img src="https://raymii.org/s/inc/img/flags/us.png" alt="US" width="16" height="16"></td>
       <td>512 MB</td>
@@ -87,7 +87,7 @@ This is an overview of all the servers in the Sparkling Network, including speci
     </tr>
     <tr>
       <td><img src="http://s14.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
-      <td><a href="http://s14.spnw.nl/report.html">s14</a></td>
+      <td><a href="http://s14.spnw.nl/munin/">s14</a></td>
       <td>BuyVM</td>
       <td><img src="https://raymii.org/s/inc/img/flags/us.png" alt="US" width="16" height="16"></td>
       <td>512 MB</td>
