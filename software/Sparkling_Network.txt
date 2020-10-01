@@ -53,6 +53,17 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td>USD 5.00</td>
     </tr>
     <tr>
+      <td><img src="http://s2.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
+      <td><a href="http://s2.spnw.nl/munin/">s2</a></td>
+      <td>Oracle Cloud</td>
+      <td><img src="https://raymii.org/s/inc/img/flags/uk.png" alt="UK" width="16" height="16"></td>
+      <td>1 GB</td>
+      <td>50 GB</td>
+      <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
+      <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>Free Tier</td>
+    </tr>
+    <tr>
       <td><img src="http://s11.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
       <td><a href="http://s11.spnw.nl/munin/">s11</a></td>
       <td>Aruba Cloud</td>
