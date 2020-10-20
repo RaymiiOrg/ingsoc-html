@@ -27,9 +27,8 @@ you can see the screenshots, but I don't want to give them any extra exposure.
 
 In this article I'll talk about what I did to enforce the license and how it went.
 TL;DR, not as expected. The company responded timely and friendly, but did a half assed
-attempt (added a link to my site with 'Inspired By Remy' as the text), then after my 
+attempt (added a link to my site with `Inspired By Remy` as the text), then after my 
 complaints, took down the entire site. 
-
 
 I was a member of the [Free Software Foundation Europe][18] back in [2010][19] 
 and have [donated many times][20] to the Software Freedom Law Center / Software
@@ -141,6 +140,10 @@ me to use a webpage.
 So I decided to go for the Jobs email, not a large organisation so probably no dedicated HR,
 big change that jobs go right to the founders. 
 
+Our email conversation was polite and they responded in a timely fashion, within days,
+other GPL requests I did never got any response or took at least two weeks for an 
+initial reply, they did score some points there.
+
 I'll summarize the emails for those who do not speak dutch.
 
 [My first email][14] stated that their tool looks a lot like one I wrote a few
@@ -186,7 +189,7 @@ checked. When I cancelled the service, each and every one of those domains got a
 notifying them that their service would be cancelled after 30 days with a few alternative
 services they could use. 
 
-And you know what the strange thing is? They have also hosted the [SSL decoder][4]
+And you know what the strange thing is? They have also hosted the [SSL decoder][4],
 another piece of software I wrote in the same vein, with a link to the source code.
 Here's an image where you can see the URL and at the bottom, the license and source
 code link:
