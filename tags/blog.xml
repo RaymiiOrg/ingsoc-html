@@ -7,6 +7,26 @@
             <atom:link href="https://raymii.org/s/tags/blog.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>I enforced the AGPL on my code, here's how it went</title> 
+                <link>https://raymii.org/s/blog/I_enforced_the_AGPL_on_my_code_heres_how_it_went.html</link> 
+                <guid>https://raymii.org/s/blog/I_enforced_the_AGPL_on_my_code_heres_how_it_went.html</guid>
+                <description>Five years ago I made a website that allowed you to put in a few domains and get an email when the SSL certificate was about to expire. No ads, no fuss, just an easy way for people to keep tabs on their sites without setting up their own monitoring like Nagios. As with all of my software, I released it under the AGPL due to it being web based software.
+Recently I found a company that hosted certificatemonitor, with some modifications (branding and a dutch tanslation), without any reference to its origin, no source code provided and no mention of the license.
+In this article I'll talk about what I did to enforce the license and how it went. TL;DR, not as expected. The company responded timely and friendly, but did a half assed attempt (added a link to my site with 'Inspired By Remy' as the text), then after my complaints, took down the entire site.</description> 
+                <pubDate>Tue, 20 Oct 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 20 Oct 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>Cancellation notice: cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org</title> 
+                <link>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</link> 
+                <guid>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</guid>
+                <description>This is a short notice that the public services I was providing, cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org are suspended and cancelled as of now. The source code is still available via my github, but the domains and hosting are stopped. If you want to use these services, you now must host them yourself.</description> 
+                <pubDate>Wed, 22 Jan 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 19 Oct 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>What does raymii.org cost to run?</title> 
                 <link>https://raymii.org/s/blog/Costs_to_run_raymii.org.html</link> 
                 <guid>https://raymii.org/s/blog/Costs_to_run_raymii.org.html</guid>
@@ -49,15 +69,6 @@
                 <description>Recently I had a new 'first-time' moment. You know the ones, the, 'oh right', moments, after you put in a bit of research. Mine was, as you might expect from all the other recent content, related to C++. I learned, the hard way, that 'iterator-based for loops' don't like to be resized during the loop. Well, they don't really care, but some precautions are to be taken since the 'iterator' used in the loop might be invalidated. Or as the very helpfull error during the crash prints to the console, 'munmap_chunk(): invalid pointer' and your debugger points you to somewhere deep in 'new_allocator.h'. In this article I'll give a few examples, both using index based for loops and iterator based for loops, plus some more details on what's going on with iterator invalidation.</description> 
                 <pubDate>Sun, 03 May 2020 00:00:00 GMT</pubDate>
                 <lastBuildDate>Sun, 03 May 2020 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Cancellation notice: cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org</title> 
-                <link>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</link> 
-                <guid>https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html</guid>
-                <description>This is a short notice that the public services I was providing, cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org are suspended and cancelled as of now. The source code is still available via my github, but the domains and hosting are stopped. If you want to use these services, you now must host them yourself.</description> 
-                <pubDate>Wed, 22 Jan 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 22 Jan 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

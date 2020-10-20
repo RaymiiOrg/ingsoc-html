@@ -7,6 +7,17 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>I enforced the AGPL on my code, here's how it went</title> 
+                <link>gopher://raymii.org/0/I_enforced_the_AGPL_on_my_code_heres_how_it_went.txt</link> 
+                <guid>gopher://raymii.org/0/I_enforced_the_AGPL_on_my_code_heres_how_it_went.txt</guid>
+                <description>Five years ago I made a website that allowed you to put in a few domains and get an email when the SSL certificate was about to expire. No ads, no fuss, just an easy way for people to keep tabs on their sites without setting up their own monitoring like Nagios. As with all of my software, I released it under the AGPL due to it being web based software.
+Recently I found a company that hosted certificatemonitor, with some modifications (branding and a dutch tanslation), without any reference to its origin, no source code provided and no mention of the license.
+In this article I'll talk about what I did to enforce the license and how it went. TL;DR, not as expected. The company responded timely and friendly, but did a half assed attempt (added a link to my site with 'Inspired By Remy' as the text), then after my complaints, took down the entire site.</description> 
+                <pubDate>Tue, 20 Oct 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 20 Oct 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>What does raymii.org cost to run?</title> 
                 <link>gopher://raymii.org/0/Costs_to_run_raymii.org.txt</link> 
                 <guid>gopher://raymii.org/0/Costs_to_run_raymii.org.txt</guid>
@@ -192,7 +203,7 @@
                 <guid>gopher://raymii.org/0/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.txt</guid>
                 <description>This is a short notice that the public services I was providing, cipherli.st, txtn.ws, ssldecoder.org and certificatemonitor.org are suspended and cancelled as of now. The source code is still available via my github, but the domains and hosting are stopped. If you want to use these services, you now must host them yourself.</description> 
                 <pubDate>Wed, 22 Jan 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 22 Jan 2020 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Mon, 19 Oct 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -2770,19 +2781,19 @@
             </item>
     
             <item>
-                <title>My Todo.txt Workflow, including Unison, Todour and Android</title> 
-                <link>gopher://raymii.org/0/My_Todo.txt_Workflow.txt</link> 
-                <guid>gopher://raymii.org/0/My_Todo.txt_Workflow.txt</guid>
-                <description>Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless for Android.</description> 
+                <title>Stong SSL Security on Lighttpd</title> 
+                <link>gopher://raymii.org/0/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt</link> 
+                <guid>gopher://raymii.org/0/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt</guid>
+                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by disabling SSL Compression to mitigate the CRIME attack, disable SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. This way we have a strong and future proof ssl configuration and we get an A on the Qually Labs SSL Test.</description> 
                 <pubDate>Wed, 24 Jul 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 24 Jul 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Stong SSL Security on Lighttpd</title> 
-                <link>gopher://raymii.org/0/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt</link> 
-                <guid>gopher://raymii.org/0/Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt</guid>
-                <description>This tutorial shows you how to set up strong SSL security on the lighttpd webserver. We do this by disabling SSL Compression to mitigate the CRIME attack, disable SSLv3 and below because of vulnerabilities in the protocol and we will set up a strong ciphersuite that enables Forward Secrecy when possible. This way we have a strong and future proof ssl configuration and we get an A on the Qually Labs SSL Test.</description> 
+                <title>My Todo.txt Workflow, including Unison, Todour and Android</title> 
+                <link>gopher://raymii.org/0/My_Todo.txt_Workflow.txt</link> 
+                <guid>gopher://raymii.org/0/My_Todo.txt_Workflow.txt</guid>
+                <description>Todo.txt is a way to manage your tasks/todo items in a plaintext format. It has a few simple rules, there are a lot of applications to work with it, but in its core it is a plaintext file, so a text editor is sufficient to use it. Recently I started using todo.txt, including syncing on all my devices via my own servers. This article shows you my workflow, and how to set up a similar environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and Simpletasks Cloudless for Android.</description> 
                 <pubDate>Wed, 24 Jul 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 24 Jul 2013 00:00:00 GMT</lastBuildDate>
             </item>
@@ -2968,19 +2979,19 @@
             </item>
     
             <item>
-                <title>Nagios plugin to check CRL expiry in minutes</title> 
-                <link>gopher://raymii.org/0/Nagios_plugin_to_check_CRL_expiry.txt</link> 
-                <guid>gopher://raymii.org/0/Nagios_plugin_to_check_CRL_expiry.txt</guid>
-                <description>This is a nagios plugin which you can use to check if a CRL (Certificate Revocation List, public list with revoked certificates) is still valid.</description> 
+                <title>Join Mac OS X to an Active Directory / OpenDLAP directory from the commandline</title> 
+                <link>gopher://raymii.org/0/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt</link> 
+                <guid>gopher://raymii.org/0/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt</guid>
+                <description>This little snippet joins an Mac OS X computer to a Windows Active Directory or OpenLDAP Directory domain from the Command Line or via Apple Remote Desktop.</description> 
                 <pubDate>Thu, 02 May 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 02 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>Join Mac OS X to an Active Directory / OpenDLAP directory from the commandline</title> 
-                <link>gopher://raymii.org/0/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt</link> 
-                <guid>gopher://raymii.org/0/OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt</guid>
-                <description>This little snippet joins an Mac OS X computer to a Windows Active Directory or OpenLDAP Directory domain from the Command Line or via Apple Remote Desktop.</description> 
+                <title>Nagios plugin to check CRL expiry in minutes</title> 
+                <link>gopher://raymii.org/0/Nagios_plugin_to_check_CRL_expiry.txt</link> 
+                <guid>gopher://raymii.org/0/Nagios_plugin_to_check_CRL_expiry.txt</guid>
+                <description>This is a nagios plugin which you can use to check if a CRL (Certificate Revocation List, public list with revoked certificates) is still valid.</description> 
                 <pubDate>Thu, 02 May 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 02 May 2013 00:00:00 GMT</lastBuildDate>
             </item>
@@ -3049,19 +3060,19 @@
             </item>
     
             <item>
-                <title>NGINX: Hide / Block .git and .svn folders</title> 
-                <link>gopher://raymii.org/0/NGINX_Block_access_to_.git_or_.svn_project_folders.txt</link> 
-                <guid>gopher://raymii.org/0/NGINX_Block_access_to_.git_or_.svn_project_folders.txt</guid>
-                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
+                <title>NGINX: Catch all error codes</title> 
+                <link>gopher://raymii.org/0/NGINX_Catch_all_error_codes.txt</link> 
+                <guid>gopher://raymii.org/0/NGINX_Catch_all_error_codes.txt</guid>
+                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>NGINX: Catch all error codes</title> 
-                <link>gopher://raymii.org/0/NGINX_Catch_all_error_codes.txt</link> 
-                <guid>gopher://raymii.org/0/NGINX_Catch_all_error_codes.txt</guid>
-                <description>This little nginx config snippet shows you how to catch all error codes and show a single unified error page.</description> 
+                <title>NGINX: Hide / Block .git and .svn folders</title> 
+                <link>gopher://raymii.org/0/NGINX_Block_access_to_.git_or_.svn_project_folders.txt</link> 
+                <guid>gopher://raymii.org/0/NGINX_Block_access_to_.git_or_.svn_project_folders.txt</guid>
+                <description>This little nginx config snippets helps you prohibit access to .git or .svn folders in nginx</description> 
                 <pubDate>Wed, 13 Mar 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 13 Mar 2013 00:00:00 GMT</lastBuildDate>
             </item>
@@ -3265,19 +3276,19 @@
             </item>
     
             <item>
-                <title>Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD</title> 
-                <link>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</link> 
-                <guid>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</guid>
-                <description>This script will help you resize the OS X Mountain Lion InstallESD.dmg file to fit on a single layer DVD. The normal .dmg file will give an error that it is to big for a single layer DVD. The install works fine afterwards, the .dmg file just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not work because it is a read only dmg image.</description> 
+                <title>CIDR Cheatsheet</title> 
+                <link>gopher://raymii.org/0/CIDR-Cheatsheet.txt</link> 
+                <guid>gopher://raymii.org/0/CIDR-Cheatsheet.txt</guid>
+                <description>This is a handy CIDR cheatsheet.</description> 
                 <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
                 <lastBuildDate>Tue, 11 Dec 2012 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
-                <title>CIDR Cheatsheet</title> 
-                <link>gopher://raymii.org/0/CIDR-Cheatsheet.txt</link> 
-                <guid>gopher://raymii.org/0/CIDR-Cheatsheet.txt</guid>
-                <description>This is a handy CIDR cheatsheet.</description> 
+                <title>Resize OS X Mountain Lion installer to fit on a single layer 4.7 GB DVD</title> 
+                <link>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</link> 
+                <guid>gopher://raymii.org/0/OS-X-Mountain_Lion_iso_resize_to_fit_on_a_single_layer_dvd.txt</guid>
+                <description>This script will help you resize the OS X Mountain Lion InstallESD.dmg file to fit on a single layer DVD. The normal .dmg file will give an error that it is to big for a single layer DVD. The install works fine afterwards, the .dmg file just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not work because it is a read only dmg image.</description> 
                 <pubDate>Tue, 11 Dec 2012 00:00:00 GMT</pubDate>
                 <lastBuildDate>Tue, 11 Dec 2012 00:00:00 GMT</lastBuildDate>
             </item>
