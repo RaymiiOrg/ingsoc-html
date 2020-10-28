@@ -59,6 +59,8 @@ The [Expired OpenVMS License PAK][14] is not an issue, since we can just set
 the system date to back when it was still valid. For our hobbyist use I think
 that's fine, especially due to the uncertainty regarding the hobbyist program.
 
+To set the system time, use this command: `SET TIME=17-OCT-2018:13:00:00`.
+
 If you are going to install OpenVMS 8.4, do note that it can take quite a long
 time. In my case, over 2 hours, but my test hardware is a few years old and
 the emulator got one core and 256MB RAM.
