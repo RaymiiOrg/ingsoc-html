@@ -7,6 +7,17 @@
             <atom:link href="https://raymii.org/s/tags/simh.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Exciting OpenVMS Alpha Emulation news, es40 has been forked to Axpbox (and works!)</title> 
+                <link>https://raymii.org/s/blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html</link> 
+                <guid>https://raymii.org/s/blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html</guid>
+                <description>Back in 2018 I was playing around with OpenVMS a lot, as it continues on the legacy of the PDP-8 and PDP-11. OpenVMS 7.3 on the VAX emulated via SIMH runs perfectly, OpenVMS 8.4 for Alpha was kind of a disaster, or, the es40 emulator was. Real hardware is available via IslandCo, but shipping to the Netherlands is horribly expensive.
+The only options back then for emulation of Alpha were FreeAXP or AlphaVM, both paid, closed sourced products with watered down free versions. Nothing wrong with that, it enables us to play around, and now that OpenVMS is in the hands of VMS Software with an x86 port coming along we may hope for a bright future ahead for OpenVMS. VSI currently provides a hobbyist version, but it's a FreeAXP bundle for Windows only.
+Recently I got an email from Tomas regarding his fork of the es40 emulator, axpbox. This short post is intended to give this emulator more visibility and exposure, since I find this to be amazingly cool and exciting. It lists the bugs fixed and new features, which allow OpenVMS 8.3 and 8.4 to install perfectly.</description> 
+                <pubDate>Wed, 28 Oct 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 28 Oct 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Create a PDP-8 OS8 RK05 system disk from RX01 floppies with SIMH (and get text files in and out of the PDP-8)</title> 
                 <link>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</link> 
                 <guid>https://raymii.org/s/articles/Creating_an_OS8_RK05_system_disk_from_RX01_floppies_for_the_PDP-8_with_SIMH.html</guid>
