@@ -9,6 +9,8 @@ Format      : 	Markdown/HTML
 
 
 
+![openvms logo][15]
+
 Back in 2018 I was playing around with OpenVMS a lot, as it continues on the 
 legacy of the PDP-8 and PDP-11. [OpenVMS 7.3 on the VAX emulated via SIMH][1]
 runs perfectly, [OpenVMS 8.4 for Alpha was kind of a disaster][2], or, the [es40 
@@ -54,7 +56,8 @@ and here is me trying to [Mount an ISO with my (expired) hobbyist license][13]:
 ![axpbox license][12]
 
 The [Expired OpenVMS License PAK][14] is not an issue, since we can just set 
-the system date to back when it was still valid.
+the system date to back when it was still valid. For our hobbyist use I think
+that's fine, especially due to the uncertainty regarding the hobbyist program.
 
 If you are going to install OpenVMS 8.4, do note that it can take quite a long
 time. In my case, over 2 hours, but my test hardware is a few years old and
@@ -119,6 +122,7 @@ improvements are limited.)
 [12]: /s/inc/img/axpbox2.png
 [13]: /s/blog/OpenVMS_Mount_ISO_and_execute_scripts.html
 [14]: /s/inc/downloads/openvms-HP-hobbyist-pak.txt
+[15]: /s/inc/img/Vms-arrow-logo.jpg
 
 ---
 
