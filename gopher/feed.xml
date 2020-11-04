@@ -11,8 +11,8 @@
                 <link>gopher://raymii.org/0/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.txt</link> 
                 <guid>gopher://raymii.org/0/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.txt</guid>
                 <description>In my previous article I announced the fork of the `es40` emulator to `AXPbox` by Tom&amp;aacute;&amp;scaron; including bug fixes and rework allowing it to install OpenVMS 8.4 without problems. Since then I've contributed a few patches and doc updates, now NetBSD boots as well (the patches for netbsd were from other es40 forks). I've also looked into getting networking setup, since that is a bit of a tedious process due to pcap and linux, pcap being used for network emulation. SIMH (among others, a great VAX emulator) suffers from the same problems with networking. This guide will show you how to install AXPbox and get OpenVMS 8.4 ready and running with networking inside AXPbox. It's a rather long guide with a lot of information and output.</description> 
-                <pubDate>Sun, 01 Nov 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 01 Nov 2020 00:00:00 GMT</lastBuildDate>
+                <pubDate>Wed, 04 Nov 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 04 Nov 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

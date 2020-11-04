@@ -2,7 +2,7 @@ This is a text-only version of the following page on https://raymii.org:
 ---
 Title       : 	Installing OpenVMS 8.4 Alpha inside AXPbox on Debian 10 / Ubuntu 20.04 with networking
 Author      : 	Remy van Elst
-Date        : 	01-11-2020
+Date        : 	04-11-2020
 URL         : 	https://raymii.org/s/tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html
 Format      : 	Markdown/HTML
 ---
@@ -2916,7 +2916,7 @@ $!-----------------------------------
 [19]: /s/inc/img/openvms84-1.png
 [20]: /s/blog/SSH_public_key_authentication_on_OpenVMS.html
 [21]: https://www.digiater.nl/openvms/freeware/v80/
-[22]: /inc/downloads/unzip.alpha_exeinc/downloads/unzip.alpha_exe
+[22]: /s/inc/downloads/unzip.alpha_exeinc/downloads/unzip.alpha_exe
 [23]: /s/inc/img/openvms-crs.png
 [24]: http://web.archive.org/web/20201104051007/https://wiki.vmssoftware.com/Freeware_CD
 [25]: /s/inc/img/Vms-arrow-logo.jpg
