@@ -24,8 +24,7 @@ is in the hands of [VMS Software][3] with an x86 port coming along we may
 hope for a bright future ahead for OpenVMS. VSI currently provides a 
 [hobbyist version][4], but it's a FreeAXP bundle for Windows only. 
 
-Recently I got an email from [Tomas][5] (sorry for the bad spelling,
-my static site generator cannot handle special characters well) 
+Recently I got an email from [Tom&aacute;&scaron;][5] 
 regarding his fork of the es40 emulator, [axpbox][6]. This short post
 is intended to give this emulator more visibility and exposure, since
 I find this to be amazingly cool and exciting. It lists the bugs fixed
@@ -65,7 +64,7 @@ If you are going to install OpenVMS 8.4, do note that it can take quite a long
 time. In my case, over 2 hours, but my test hardware is a few years old and
 the emulator got one core and 256MB RAM.
 
-Tomas gave permission to quote the email verbatim below.
+Tom&aacute;&scaron; gave permission to quote the email verbatim below.
 
 ### Verbatim email quoted
 
@@ -106,7 +105,7 @@ its state will probably improve in the future. (I'm only a computer
 science student without much knowledge about Alpha, so my potential
 improvements are limited.)
 
-[Tomas][5] 
+[Tom&aacute;&scaron;][5] 
 
 
 

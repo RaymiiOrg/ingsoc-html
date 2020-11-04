@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/tutorials.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Installing OpenVMS 8.4 Alpha inside AXPbox on Debian 10 / Ubuntu 20.04 with networking</title> 
+                <link>https://raymii.org/s/tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html</link> 
+                <guid>https://raymii.org/s/tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html</guid>
+                <description>In my previous article I announced the fork of the `es40` emulator to `AXPbox` by Tom&amp;aacute;&amp;scaron; including bug fixes and rework allowing it to install OpenVMS 8.4 without problems. Since then I've contributed a few patches and doc updates, now NetBSD boots as well (the patches for netbsd were from other es40 forks). I've also looked into getting networking setup, since that is a bit of a tedious process due to pcap and linux, pcap being used for network emulation. SIMH (among others, a great VAX emulator) suffers from the same problems with networking. This guide will show you how to install AXPbox and get OpenVMS 8.4 ready and running with networking inside AXPbox. It's a rather long guide with a lot of information and output.</description> 
+                <pubDate>Sun, 01 Nov 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 01 Nov 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Local incremental backups of Google Photos on Ubuntu with gphotos-sync</title> 
                 <link>https://raymii.org/s/tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html</link> 
                 <guid>https://raymii.org/s/tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html</guid>
