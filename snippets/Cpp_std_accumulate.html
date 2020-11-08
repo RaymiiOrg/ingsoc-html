@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>std::accumulate in C++</h2>
-<p><small>Published: 23-10-2019 | Author: Remy van Elst | <a href="Cpp_std_accumulate.txt">Text only version of this article</a>
+<p><small>Published: 23-10-2019 | Last update: 07-11-2020 | Author: Remy van Elst | <a href="Cpp_std_accumulate.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -67,6 +67,8 @@ the for loop you would use otherwise.</p>
 <p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
 
+<p>Update 2020-11-08: Thank you Martin Blasko for reporting a few errors in this article!</p>
+
 <h3 id="toc_0">Plain old loop</h3>
 
 <p>It performs a <a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">fold</a> on a given range. Or, in my case, it gives the 
@@ -92,14 +94,14 @@ sum: 92
 
 <p>This can be written shorter using the <code>accumulate</code> function:</p>
 
-<pre><code>int sum = std:accumulate(numbers.begin(), numbers.end(), 0);
+<pre><code>int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
 </code></pre>
 
 <p><code>std::accumulate</code> accepts an initial value, so to add 10 to the result of the above sum without an 
 intermidiate variable:</p>
 
 <pre><code>std::vector &lt;int&gt; numbers  { 20, 10, -8, 10, 10, 15, 35 }; 
-int sum = std:accumulate(numbers.begin(), numbers.end(), 10);
+int sum = std::accumulate(numbers.begin(), numbers.end(), 10);
 </code></pre>
 
 <p>The result will be <code>102</code>.</p>

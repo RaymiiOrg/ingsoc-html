@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	std::accumulate in C++
 Author      : 	Remy van Elst
 Date        : 	23-10-2019
+Last update : 	07-11-2020
 URL         : 	https://raymii.org/s/snippets/Cpp_std_accumulate.html
 Format      : 	Markdown/HTML
 ---
@@ -19,6 +20,8 @@ the for loop you would use otherwise.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+
+Update 2020-11-08: Thank you Martin Blasko for reporting a few errors in this article!
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
@@ -46,13 +49,13 @@ The output after compiling is:
 
 This can be written shorter using the `accumulate` function:
 
-    int sum = std:accumulate(numbers.begin(), numbers.end(), 0);
+    int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
 
 `std::accumulate` accepts an initial value, so to add 10 to the result of the above sum without an 
 intermidiate variable:
 
     std::vector <int> numbers  { 20, 10, -8, 10, 10, 15, 35 }; 
-    int sum = std:accumulate(numbers.begin(), numbers.end(), 10);
+    int sum = std::accumulate(numbers.begin(), numbers.end(), 10);
 
 The result will be `102`.
 

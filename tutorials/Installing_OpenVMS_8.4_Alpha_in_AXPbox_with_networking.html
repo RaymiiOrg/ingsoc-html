@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Installing OpenVMS 8.4 Alpha inside AXPbox on Debian 10 / Ubuntu 20.04 with networking</h2>
-<p><small>Published: 04-11-2020 | Author: Remy van Elst | <a href="Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.txt">Text only version of this article</a>
+<p><small>Published: 04-11-2020 | Last update: 08-11-2020 | Author: Remy van Elst | <a href="Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -450,6 +450,7 @@ use the below configuration.</p>
   {
     speed = 800M;
     icache = true;
+    skip_memtest_hack = true;
   }
 
   serial0 = serial
@@ -522,8 +523,11 @@ booting), add the following  underneath the <code>icache</code> line in the <cod
 <pre><code>skip_memtest_hack = true;
 </code></pre>
 
-<p>Do note that this will make the installation of OpenVMS fail, so add the line
-after you&#39;re done installing.</p>
+<del>Do note that this will make the installation of OpenVMS fail, so add the line
+after you're done installing.</del>
+
+<p>Update 08-11-2020: Tom&aacute;&scaron; did <a href="https://github.com/lenticularis39/axpbox/commit/837750f2cb43a9cd32365b428a3dc470c45d0e86">a bugfix</a>, <code>skip_memtest_hack</code> now works during 
+installation.</p>
 
 <p>The disk will be automatically created at first start of the emulator:</p>
 

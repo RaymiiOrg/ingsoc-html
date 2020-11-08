@@ -12,7 +12,7 @@
                 <guid>gopher://raymii.org/0/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.txt</guid>
                 <description>In my previous article I announced the fork of the `es40` emulator to `AXPbox` by Tom&amp;aacute;&amp;scaron; including bug fixes and rework allowing it to install OpenVMS 8.4 without problems. Since then I've contributed a few patches and doc updates, now NetBSD boots as well (the patches for netbsd were from other es40 forks). I've also looked into getting networking setup, since that is a bit of a tedious process due to pcap and linux, pcap being used for network emulation. SIMH (among others, a great VAX emulator) suffers from the same problems with networking. This guide will show you how to install AXPbox and get OpenVMS 8.4 ready and running with networking inside AXPbox. It's a rather long guide with a lot of information and output.</description> 
                 <pubDate>Wed, 04 Nov 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 04 Nov 2020 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Sun, 08 Nov 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
@@ -295,7 +295,7 @@ In this article I'll talk about what I did to enforce the license and how it wen
                 <guid>gopher://raymii.org/0/Cpp_std_accumulate.txt</guid>
                 <description>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</description> 
                 <pubDate>Wed, 23 Oct 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 23 Oct 2019 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Sat, 07 Nov 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

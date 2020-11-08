@@ -34,9 +34,14 @@
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
 <h4><a href="tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html">Installing OpenVMS 8.4 Alpha inside AXPbox on Debian 10 / Ubuntu 20.04 with networking</a></h4>
-<small>04-11-2020 | Remy van Elst</small><br />
+<small>Published: 04-11-2020 | Last update: 08-11-2020 | Author: Remy van Elst</small><br />
 <p>In my previous article I announced the fork of the `es40` emulator to `AXPbox` by Tom&aacute;&scaron; including bug fixes and rework allowing it to install OpenVMS 8.4 without problems. Since then I've contributed a few patches and doc updates, now NetBSD boots as well (the patches for netbsd were from other es40 forks). I've also looked into getting networking setup, since that is a bit of a tedious process due to pcap and linux, pcap being used for network emulation. SIMH (among others, a great VAX emulator) suffers from the same problems with networking. This guide will show you how to install AXPbox and get OpenVMS 8.4 ready and running with networking inside AXPbox. It's a rather long guide with a lot of information and output.</p>
 <a href="tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html">Read more...</a><br />
+<p></p>
+<h4><a href="snippets/Cpp_std_accumulate.html">std::accumulate in C++</a></h4>
+<small>Published: 23-10-2019 | Last update: 07-11-2020 | Author: Remy van Elst</small><br />
+<p>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</p>
+<a href="snippets/Cpp_std_accumulate.html">Read more...</a><br />
 <p></p>
 <h4><a href="blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html">Exciting OpenVMS Alpha Emulation news, es40 has been forked to Axpbox (and works!)</a></h4>
 <small>28-10-2020 | Remy van Elst</small><br />
@@ -86,11 +91,6 @@ In this article I'll talk about what I did to enforce the license and how it wen
 <small>24-08-2020 | Remy van Elst</small><br />
 <p>'Google Photos' no longer syncs with 'Google Drive' or with their 'Backup and Sync' desktop software. There used to be a checkbox to get your 'Google Photos' pictures in 'Google Drive' but that has been disabled. I used that feature together with their 'Backup and Sync' tool to sync all the photos in 'Google Photos' to my local Windows computer. From there I use 'DigiKam'  to manage the photos and backup them offline and offsite. Due to Google removing that feature, I had to go find another way to get the pictures out of 'Google Photos', which, after a few months of (automated) use, 'gphotos-sync' on Ubuntu seems to be the best, stable choice. In this guide I'll show you how to setup incremental backups from 'Google Photos' on Ubuntu. My 'DigiKam' database moved over without problems, and now I'm glad I don't have to use Windows for picture managemant anymore.</p>
 <a href="tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html">Get webcam resolution and info on Ubuntu and fix HD</a></h4>
-<small>23-08-2020 | Remy van Elst</small><br />
-<p>With all the video calling nowdays due to working from home I decided to get a webcam. Since I mostly work at a workstation, I have no microphone or camera built in. A friend gave me a spare webcam, a generic non-brand. It says 'HD Camera' on the box, but by default it records in 640x480. Using a few tools on Ubuntu you can figure out what resolutions are supported for your device. It turned out to be Cheese, the webcam capture program I used, not supporting the 'mjpeg' format, just the 'yuyv' RAW format. Using another webcam program named Webcamoid solved it, that program was able to use mjpeg.</p>
-<a href="tutorials/Get_webcam_resolution_and_info_on_Ubuntu_and_fix_HD.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
