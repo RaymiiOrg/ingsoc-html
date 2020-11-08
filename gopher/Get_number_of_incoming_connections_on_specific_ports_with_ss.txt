@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Get number of incoming connections on specific port with ss
 Author      : 	Remy van Elst
 Date        : 	25-08-2020
+Last update : 	07-11-2020
 URL         : 	https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html
 Format      : 	Markdown/HTML
 ---
@@ -63,6 +64,32 @@ On a system that still has `netstat`, I use the following command:
 
 	netstat -anp | grep :443 | grep ESTABLISHED | wc -l
 
+## Long running connections
+
+Update: 2020-11-08
+
+If you want to measure long running connections, a somewhat working example is
+the following:
+
+    comm -1 -2 <(ss --all --numeric --no-header state established  '( sport = :443 )' | awk '{print $5}' | awk -F:  'NF{--NF};1' | sort -u) <(sleep 5; ss --all --numeric --no-header state established  '( sport = :443 )' | awk '{print $5}' | awk -F:  'NF{--NF};1' | sort -u) | wc -l
+
+The `comm` command is a reverse `diff` (show all things in common), `-1` and
+`-2`. The command executed is the same, only the last command has a `sleep 5`
+in front of it:
+
+    ss --all --numeric --no-header state established  '( sport = :443 )' | awk '{print $5}' | awk -F:  'NF{--NF};1' | sort -u
+
+It prints all established connections to port 443, strips out the part after
+the last colon (the two awk commands) so that it works with IPv6 as well and
+then sort the list, removing duplicates. NATted connections will be counted 
+once.
+
+This way, you get all IP addresses that have an established connection for at
+least 5 seconds in your graph. 
+
+I'm using this as a brute force way to measure video live stream viewers.
+Regular web requests almost never get into `established`, but these long
+running connections do.
 
 [1]: http://manpages.ubuntu.com/manpages/xenial/man8/ss.8.html
 [2]: /s/inc/img/munin_port.png

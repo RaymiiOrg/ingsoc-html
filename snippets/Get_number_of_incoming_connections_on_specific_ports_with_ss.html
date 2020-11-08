@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Get number of incoming connections on specific port with ss</h2>
-<p><small>Published: 25-08-2020 | Author: Remy van Elst | <a href="Get_number_of_incoming_connections_on_specific_ports_with_ss.txt">Text only version of this article</a>
+<p><small>Published: 25-08-2020 | Last update: 07-11-2020 | Author: Remy van Elst | <a href="Get_number_of_incoming_connections_on_specific_ports_with_ss.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -53,6 +53,11 @@
 </li>
 <li>
 <a href="#toc_1">netstat version</a>
+<ul>
+<li>
+<a href="#toc_2">Long running connections</a>
+</li>
+</ul>
 
 </div>
 <hr>
@@ -114,6 +119,35 @@ the trailing space after the port number), you should be able to figure it out.<
 
 <pre><code>netstat -anp | grep :443 | grep ESTABLISHED | wc -l
 </code></pre>
+
+<h2 id="toc_2">Long running connections</h2>
+
+<p>Update: 2020-11-08</p>
+
+<p>If you want to measure long running connections, a somewhat working example is
+the following:</p>
+
+<pre><code>comm -1 -2 &lt;(ss --all --numeric --no-header state established  &#39;( sport = :443 )&#39; | awk &#39;{print $5}&#39; | awk -F:  &#39;NF{--NF};1&#39; | sort -u) &lt;(sleep 5; ss --all --numeric --no-header state established  &#39;( sport = :443 )&#39; | awk &#39;{print $5}&#39; | awk -F:  &#39;NF{--NF};1&#39; | sort -u) | wc -l
+</code></pre>
+
+<p>The <code>comm</code> command is a reverse <code>diff</code> (show all things in common), <code>-1</code> and
+<code>-2</code>. The command executed is the same, only the last command has a <code>sleep 5</code>
+in front of it:</p>
+
+<pre><code>ss --all --numeric --no-header state established  &#39;( sport = :443 )&#39; | awk &#39;{print $5}&#39; | awk -F:  &#39;NF{--NF};1&#39; | sort -u
+</code></pre>
+
+<p>It prints all established connections to port 443, strips out the part after
+the last colon (the two awk commands) so that it works with IPv6 as well and
+then sort the list, removing duplicates. NATted connections will be counted 
+once.</p>
+
+<p>This way, you get all IP addresses that have an established connection for at
+least 5 seconds in your graph. </p>
+
+<p>I&#39;m using this as a brute force way to measure video live stream viewers.
+Regular web requests almost never get into <code>established</code>, but these long
+running connections do.</p>
 Tags: <a href="../tags/bash.html">bash</a>
 , <a href="../tags/monitoring.html">monitoring</a>
 , <a href="../tags/munin.html">munin</a>

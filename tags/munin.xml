@@ -12,7 +12,7 @@
                 <guid>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</guid>
                 <description>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</description> 
                 <pubDate>Tue, 25 Aug 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Tue, 25 Aug 2020 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Sat, 07 Nov 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

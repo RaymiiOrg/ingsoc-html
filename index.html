@@ -43,6 +43,11 @@
 <p>I'm using codewars to practice my development skills. Today I found out about the std::accumulate method in C++ while doing an exercise there. I'm sharing it here because I never heard of it before. It is the numeric header, and it also accepts a custom binary function to apply instead of operator+. This snippet shows some examples including a lambda operator and the for loop you would use otherwise.</p>
 <a href="snippets/Cpp_std_accumulate.html">Read more...</a><br />
 <p></p>
+<h4><a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Get number of incoming connections on specific port with ss</a></h4>
+<small>Published: 25-08-2020 | Last update: 07-11-2020 | Author: Remy van Elst</small><br />
+<p>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</p>
+<a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html">Exciting OpenVMS Alpha Emulation news, es40 has been forked to Axpbox (and works!)</a></h4>
 <small>28-10-2020 | Remy van Elst</small><br />
 <p>Back in 2018 I was playing around with OpenVMS a lot, as it continues on the legacy of the PDP-8 and PDP-11. OpenVMS 7.3 on the VAX emulated via SIMH runs perfectly, OpenVMS 8.4 for Alpha was kind of a disaster, or, the es40 emulator was. Real hardware is available via IslandCo, but shipping to the Netherlands is horribly expensive.
@@ -81,11 +86,6 @@ In this article I'll talk about what I did to enforce the license and how it wen
 <small>26-08-2020 | Remy van Elst</small><br />
 <p>This small snippet gets all the SSH keys from a gitlab instance. You need to be an administrator, then you can query all keys at once using the API. On the web frontend you can only see the keys per user, not all at once in an overview.</p>
 <a href="snippets/Get_all_SSH_public_keys_from_gitlab.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Get number of incoming connections on specific port with ss</a></h4>
-<small>25-08-2020 | Remy van Elst</small><br />
-<p>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</p>
-<a href="snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html">Read more...</a><br />
 <p></p>
 <h4><a href="tutorials/Local_incremental_Google_Photos_backup_on_Ubuntu.html">Local incremental backups of Google Photos on Ubuntu with gphotos-sync</a></h4>
 <small>24-08-2020 | Remy van Elst</small><br />

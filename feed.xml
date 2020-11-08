@@ -25,6 +25,15 @@
             </item>
     
             <item>
+                <title>Get number of incoming connections on specific port with ss</title> 
+                <link>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</link> 
+                <guid>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</guid>
+                <description>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</description> 
+                <pubDate>Tue, 25 Aug 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 07 Nov 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Exciting OpenVMS Alpha Emulation news, es40 has been forked to Axpbox (and works!)</title> 
                 <link>https://raymii.org/s/blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html</link> 
                 <guid>https://raymii.org/s/blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html</guid>
@@ -89,15 +98,6 @@ In this article I'll talk about what I did to enforce the license and how it wen
                 <description>This small snippet gets all the SSH keys from a gitlab instance. You need to be an administrator, then you can query all keys at once using the API. On the web frontend you can only see the keys per user, not all at once in an overview.</description> 
                 <pubDate>Wed, 26 Aug 2020 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 26 Aug 2020 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Get number of incoming connections on specific port with ss</title> 
-                <link>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</link> 
-                <guid>https://raymii.org/s/snippets/Get_number_of_incoming_connections_on_specific_ports_with_ss.html</guid>
-                <description>Recently I had to write a few monitoring plugins, one of which was a count of incoming connections to a specific network port. In the past I would have used netstat and a combination of grep and wc filter out only specific ports and established connections, but nowdays netstat is replaced by ss on ubuntu. ss has options to filter directly on all sorts of stuff, like state, ports, protocol, making the command I use more readable and use less pipes.</description> 
-                <pubDate>Tue, 25 Aug 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Tue, 25 Aug 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
