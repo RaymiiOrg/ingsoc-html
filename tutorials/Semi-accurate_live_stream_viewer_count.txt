@@ -34,7 +34,6 @@ Do note that this article is about the open source [Restreamer][5] software,
 not the paid for restreamer.io website. I did [contribute][6] to restreamer
 since it's such a great piece of software.
 
-
 ### A rant on YouTube and Google
 
 First a new version of YouTube live was released, [resetting our stream key,
