@@ -7,6 +7,15 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>I've packaged up Gnash as a snap, for modern linux</title> 
+                <link>gopher://raymii.org/0/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.txt</link> 
+                <guid>gopher://raymii.org/0/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.txt</guid>
+                <description>I hate snaps just as much as the next guy but last week I did something unexpected. I packaged up Gnash as a snap.  Gnash is a GNU flash media player, not updated since 2011, and  thus removed from the Ubuntu 20.04 repositories. The snap packaging is based on work by phil roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no '--classic' needed), the source code for the snap is on my github and on any snap-enabled distro you can now 'snap install gnash-raymii' to enjoy Gnash again.</description> 
+                <pubDate>Mon, 07 Dec 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 07 Dec 2020 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Semi-accurate live stream viewer count (hls/rtmp/restreamer) on the command line</title> 
                 <link>gopher://raymii.org/0/Semi-accurate_live_stream_viewer_count.txt</link> 
                 <guid>gopher://raymii.org/0/Semi-accurate_live_stream_viewer_count.txt</guid>
