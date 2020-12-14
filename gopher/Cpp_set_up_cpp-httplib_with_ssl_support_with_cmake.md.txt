@@ -57,7 +57,7 @@ code and CmakeLists.txt, since just changing the URL will not work.
 The [README][2] has one paragraph on SSL support, if you strip out the example,
 it's more like one line:
 
-> SSL support is available with CPPHTTPLIB_OPENSSL_SUPPORT. libssl and libcrypto should be linked.
+> SSL support is available with CPPHTTPLIB OPENSSL SUPPORT. libssl and libcrypto should be linked.
 
 On Ubuntu you should install the OpenSSL development libraries:
 
