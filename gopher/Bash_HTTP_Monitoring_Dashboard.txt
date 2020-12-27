@@ -9,10 +9,11 @@ Format      : 	Markdown/HTML
 
 
 
-HTTP(s) monitoring webpage via shell script. Parallel checking, thus very
-fast, only dependencies are curl and bash (version 4 or above). For all of you
-who want a simple script with a nice webpage to check a few websites. Perfect
-for a wall mounted monitoring display and a Raspberry Pi.
+This is a shell script that creates a webpage with the status of HTTP(s)
+sites.  Parallel checking, thus very fast, only dependencies are curl and bash
+(version 4 or above). For all of you who want a simple script with a nice
+webpage to check a few websites. Perfect for a wall mounted monitoring display
+and a Raspberry Pi.
 
 Installation and configuration is easy to do inside the script. It scales
 well, both on the checking side as the information display page (dense on
