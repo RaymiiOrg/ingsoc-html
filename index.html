@@ -33,6 +33,13 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="software/Bash_HTTP_Monitoring_Dashboard.html">Bash HTTP monitoring dashboard</a></h4>
+<small>27-12-2020 | Remy van Elst</small><br />
+<p>HTTP(s) monitoring webpage via shell script. Parallel checking, thus very fast, only dependencies are curl and bash (version 4 or above). For all of you who want a simple script with a nice webpage to check a few websites. Perfect for a wall mounted monitoring display and a Raspberry Pi.
+Installation and configuration is easy to do inside the script. It scales well, both on the checking side as the information display page (dense on purpose). Failed checks appear right on top for you to act on.
+I had this script running at home for at least a year in that form, when I showed it to a friend he liked it,  asked me to make it public, but before I did that I polished it up a bit. </p>
+<a href="software/Bash_HTTP_Monitoring_Dashboard.html">Read more...</a><br />
+<p></p>
 <h4><a href="tutorials/Cpp_set_up_cpp-httplib_with_ssl_support_with_cmake.md.html">C++ set up cpp-httplib with SSL support with cMake</a></h4>
 <small>14-12-2020 | Remy van Elst</small><br />
 <p>For a small personal project that talks to a few JSON API's and does some data parsing I needed a header only C++ HTTP library. Header only because that is the simplest way to include it in my project, just copy and paste the file. I came across the project cpp-httplib, which fits my needs, does all the http methods, small, a few examples and it looks modern and has recent development commits. Setup and getting it working was easy, but as soon as I tried an https url, I got an exception ('https scheme is not supported.'). This guide shows you how to setup cpp-httplib for SSL support with cmake. It took me a bit longer than I wanted to set it up correctly, so why not save you the effort.</p>
@@ -86,11 +93,6 @@ In this article I'll talk about what I did to enforce the license and how it wen
 <small>26-09-2020 | Remy van Elst</small><br />
 <p>I'm an heavy user of RSS feeds, having over 1500 feeds I follow. Without a decent feed reader that setup wouldn't work. For over eight years now I've been an happy user of Tiny Tiny RSS, a web based feed reader. But, recently I found out about 'miniflux', also a web based RSS reader. In this article I'll compare the two for my use cases, mostly mobile usage. TD;DR, I've switched to Miniflux, due to it being more suited for mobile usage, less ajax heavy, easier to subscribe to feeds and a more pleasant reading layout.</p>
 <a href="articles/Tiny_Tiny_RSS_vs_Miniflux.html">Read more...</a><br />
-<p></p>
-<h4><a href="articles/Store_multiple_types_in_a_single_stdmap_in_cpp_just_like_a_python_dict.html">Store multiple types in a single std::map in C++ with std::any, just like a python dict</a></h4>
-<small>23-09-2020 | Remy van Elst</small><br />
-<p>In C++, everything has a type. When declaring a function you specify the return type and for each parameter you specify what type it is, just as for regular variables. Templates aside (those still have a type), you almost always know what type of data you're working with. There is the 'auto' keyword, which can save you a lot of typing and duplicate code, but fundamentally you're still working with types. Since C++ 17 you can use 'std::any' to store anything, without knowing the type. This is awesome for some tasks, and horrific for most use cases. In this article I'll show an example of a 'std::map' with 'std::any', that behaves like a python 'dict', it's able to store multiple different types in the same container.</p>
-<a href="articles/Store_multiple_types_in_a_single_stdmap_in_cpp_just_like_a_python_dict.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
