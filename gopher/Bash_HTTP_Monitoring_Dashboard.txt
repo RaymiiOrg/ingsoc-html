@@ -34,7 +34,7 @@ consider your site up when it returns a 302 (redirect) or 401 (unauthorized)
 the script consider that okay. If the status code is not what is configured or
 there is a timeout or another error, the script considers the check failed.
 
-[Source code here][8]
+[Source code here][8] on github.
 
 ### Installation & Configuration
 
