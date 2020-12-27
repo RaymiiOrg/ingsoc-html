@@ -24,7 +24,7 @@ friend he liked it,  asked me to make it public, but before I did that I
 polished it up a bit. There is a screenshot of that early version on this
 page.
 
-> Screenshot when all is well
+> Screenshot when all checks are green:
 
 ![all is well image][1]
 
