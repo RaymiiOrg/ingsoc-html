@@ -71,7 +71,7 @@ things, except when json, networking or associative arrays are involved.)</p>
 C++. It&#39;s what I do at work, so why not a simple personal project. It would
 involve dependency management (json &amp; http library), parsing both API
 endpoints and, most importantly, doing stuff with time. Time, timezones and
-dates are <a href="https://github.com/RaymiiOrg/lobsters-hn-post-compare/blob/master/main.cpp#L198">hard</a>.</p>
+dates are <a href="http://web.archive.org/web/20201230220529/https://www.zainrizvi.io/blog/falsehoods-programmers-believe-about-time-zones/">hard</a>.</p>
 
 <p>This article contains a bit of my learning process, compilation and usage
 instructions and an example run. Go look at <a href="https://github.com/RaymiiOrg/lobsters-hn-post-compare">the code</a> and run the 
@@ -96,7 +96,7 @@ local timezone is GMT+1 and the date/time calculations are the most important
 part of this script. Modern C++ has little going for itself on parsing
 time/date,  some parts are in <code>std::chrono</code> but most of it is in <code>&lt;ctime&gt;</code>. Or
 boost if you fancy that. When do you use <code>gmtime</code> over <code>localtime</code>, a <code>time_t</code>
-vs a <code>struct tm</code>, all that fun stuff. I knew the theory, but doing it in practice
+vs a <code>struct tm</code>, all that fun stuff. I knew the theory, but <a href="https://github.com/RaymiiOrg/lobsters-hn-post-compare/blob/master/main.cpp#L179">doing it in practice</a>
 helps a tremendous way.</p>
 
 <p>What did I learn with this endeavor:</p>

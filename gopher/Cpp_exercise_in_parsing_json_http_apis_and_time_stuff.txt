@@ -39,7 +39,7 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
 Using std::async makes firing off multiple http requests a breeze. There is
-even [a sort of queue][5]. The code is simple enough to serve as an example for
+even [a sort of queue][6]. The code is simple enough to serve as an example for
 studying.
 
 Lobsters has the post timestamp in CST and Hackernews has just the epoch. My
@@ -47,7 +47,7 @@ local timezone is GMT+1 and the date/time calculations are the most important
 part of this script. Modern C++ has little going for itself on parsing
 time/date,  some parts are in `std::chrono` but most of it is in `<ctime>`. Or
 boost if you fancy that. When do you use `gmtime` over `localtime`, a `time_t`
-vs a `struct tm`, all that fun stuff. I knew the theory, but doing it in practice
+vs a `struct tm`, all that fun stuff. I knew the theory, but [doing it in practice][7]
 helps a tremendous way.
 
 What did I learn with this endeavor:
@@ -304,7 +304,8 @@ The `new` option isn't very useful (very volatile though), but still fun to look
 [3]: https://news.ycombinator.com/from?site=raymii.org
 [4]: https://github.com/RaymiiOrg/lobsters-hn-post-compare/actions
 [5]: http://web.archive.org/web/20201230220529/https://www.zainrizvi.io/blog/falsehoods-programmers-believe-about-time-zones/
-[5]: https://github.com/RaymiiOrg/lobsters-hn-post-compare/blob/master/main.cpp#L198
+[6]: https://github.com/RaymiiOrg/lobsters-hn-post-compare/blob/master/main.cpp#L198
+[7]: https://github.com/RaymiiOrg/lobsters-hn-post-compare/blob/master/main.cpp#L179
 
 ---
 
