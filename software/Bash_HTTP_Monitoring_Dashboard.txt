@@ -41,7 +41,7 @@ there is a timeout or another error, the script considers the check failed.
 If a check fails, the script will check that specific one again after 5 seconds
 to prevent flapping. 
 
-[Source code here][8] on github. 
+**[Source code here][8] on github.**
 
 What this does not have:
 

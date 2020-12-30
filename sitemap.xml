@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html</loc>
+            <lastmod>2020-12-31</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</loc>
             <lastmod>2020-12-27</lastmod>
             <changefreq>weekly</changefreq>
@@ -4068,6 +4074,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/lobsters.html</loc>
+            <lastmod>2020-12-23</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/sh.html</loc>
             <lastmod>2020-12-23</lastmod>
             <changefreq>weekly</changefreq>
@@ -7099,6 +7111,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/automation.html</loc>
+            <lastmod>2020-12-23</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/hackernews.html</loc>
             <lastmod>2020-12-23</lastmod>
             <changefreq>weekly</changefreq>
         </url>
