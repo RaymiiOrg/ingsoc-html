@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Bash HTTP monitoring dashboard</h2>
-<p><small>Published: 27-12-2020 | Author: Remy van Elst | <a href="Bash_HTTP_Monitoring_Dashboard.txt">Text only version of this article</a>
+<p><small>Published: 27-12-2020 | Last update: 30-12-2020 | Author: Remy van Elst | <a href="Bash_HTTP_Monitoring_Dashboard.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -50,12 +50,15 @@
 <a href="#toc_0">Installation &amp; Configuration</a>
 <ul>
 <li>
-<a href="#toc_1">Cronjob setup</a>
+<a href="#toc_1">CGI header (Docker)</a>
+</li>
+<li>
+<a href="#toc_2">Cronjob setup</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_2">Screenshots</a>
+<a href="#toc_3">Screenshots</a>
 </li>
 </ul>
 
@@ -118,7 +121,7 @@ place it on a webserver. The cronjob setup is for a webserver.</p>
 cd bash-http-monitoring
 </code></pre>
 
-<p>Edit the <code>srvmon.sh</code> script and add your sites. A few examples are provided. This is the syntax:</p>
+<p>Edit the <code>srvmon</code> script and add your sites. A few examples are provided. This is the syntax:</p>
 
 <pre><code>urls[gists]=&quot;https://gist.github.com&quot;
 urls[lobsters]=&quot;https://lobste.rs&quot;
@@ -131,7 +134,7 @@ to monitor. It can be just a domain, an IP or an actual URL, including port and 
 
 <p>If you want to override the default status code for a check, this is the syntax:</p>
 
-<pre><code>statuscode[gist.github.com]=302
+<pre><code>statuscode[gists]=302
 </code></pre>
 
 <p>The first part between the square brackets must match the <code>urls[]</code> part.</p>
@@ -142,29 +145,49 @@ to monitor. It can be just a domain, an IP or an actual URL, including port and 
 defaultTimeOut=10 # Max timeout of a check in seconds
 flapRetry=5 # After how many seconds should we re-check any failed checks? (To prevent flapping)
 title=&quot;Status Dashboard&quot; # Title of the webpage
+cgi=false # Enable or disable CGI header
 </code></pre>
 
 <p>Execute the script and send the output to a file in your webservers documentroot:</p>
 
-<pre><code>bash srvmon.sh &gt; /var/www/index.html
+<pre><code>bash srvmon &gt; /var/www/index.html
 </code></pre>
 
 <p>View that file in a web browser.</p>
 
-<h4 id="toc_1">Cronjob setup</h4>
+<h4 id="toc_1">CGI header (Docker)</h4>
+
+<ul>
+<li>Update 30-12-2020: This was contributed by <a href="https://github.com/RaymiiOrg/bash-http-monitoring/pull/2">rabbit-of-caerbannog</a></li>
+</ul>
+
+<p>Some HTTP servers, like Apache, support CGI scripts. To make it brief, these are scripts which 
+are handed a HTTP request to reply to.</p>
+
+<p>The main advantage of using the script as a CGI script, is that the page is generated on demand 
+and as such, provides a live-view on each page load.<br>
+If the page is public, this method should be avoided, as it can be easily abused.</p>
+
+<p>If you want to set up CGI mode, you need to copy the script to your server CGI directory. 
+You can use <code>docker</code> to try this out. Like so:</p>
+
+<pre><code>docker run -d -p 9090:80 -v $PWD/srvmon:/usr/local/apache2/cgi-bin/srvmon hypoport/httpd-cgi
+</code></pre>
+
+<h4 id="toc_2">Cronjob setup</h4>
 
 <p>If you want to set up a cronjob, send the output to a temp file and when finished, move that temp
 file over the &quot;actual&quot; file. Otherwise you might end up with an incomplete page when the checks are 
 running. Like so:</p>
 
-<pre><code>* * * * * /bin/bash /opt/srvmon/srvmon.sh &gt; /var/www/index.html.tmp &amp;&amp; /bin/mv /var/www/index.html.tmp /var/www/index.html
+<pre><code>* * * * * /bin/bash /opt/srvmon/srvmon &gt; /var/www/index.html.tmp &amp;&amp; /bin/mv /var/www/index.html.tmp /var/www/index.html
 </code></pre>
 
 <p>Change the folders/paths to your setup.</p>
 
 <p>If the check fails for whatever reason, the &quot;old&quot; page will not be overridden.</p>
 
-<h3 id="toc_2">Screenshots</h3>
+<h3 id="toc_3">Screenshots</h3>
 
 <p>All checks are okay:</p>
 

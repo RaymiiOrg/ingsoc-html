@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Bash HTTP monitoring dashboard
 Author      : 	Remy van Elst
 Date        : 	27-12-2020
+Last update : 	30-12-2020
 URL         : 	https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html
 Format      : 	Markdown/HTML
 ---
@@ -61,7 +62,7 @@ Clone the git repository:
 	git clone https://github.com/RaymiiOrg/bash-http-monitoring.git
 	cd bash-http-monitoring
 
-Edit the `srvmon.sh` script and add your sites. A few examples are provided. This is the syntax:
+Edit the `srvmon` script and add your sites. A few examples are provided. This is the syntax:
 
 	urls[gists]="https://gist.github.com"
 	urls[lobsters]="https://lobste.rs"
@@ -73,7 +74,7 @@ to monitor. It can be just a domain, an IP or an actual URL, including port and 
 
 If you want to override the default status code for a check, this is the syntax:
 
-	statuscode[gist.github.com]=302
+	statuscode[gists]=302
 
 The first part between the square brackets must match the `urls[]` part.
 
@@ -83,12 +84,32 @@ Further global configuration options include:
 	defaultTimeOut=10 # Max timeout of a check in seconds
 	flapRetry=5 # After how many seconds should we re-check any failed checks? (To prevent flapping)
 	title="Status Dashboard" # Title of the webpage
+	cgi=false # Enable or disable CGI header
 
 Execute the script and send the output to a file in your webservers documentroot:
 
-	bash srvmon.sh > /var/www/index.html
+	bash srvmon > /var/www/index.html
 
 View that file in a web browser.
+
+
+#### CGI header (Docker)
+
+* Update 30-12-2020: This was contributed by [rabbit-of-caerbannog][9]
+
+Some HTTP servers, like Apache, support CGI scripts. To make it brief, these are scripts which 
+are handed a HTTP request to reply to.
+
+The main advantage of using the script as a CGI script, is that the page is generated on demand 
+and as such, provides a live-view on each page load.  
+If the page is public, this method should be avoided, as it can be easily abused.
+
+If you want to set up CGI mode, you need to copy the script to your server CGI directory. 
+You can use `docker` to try this out. Like so:
+
+	docker run -d -p 9090:80 -v $PWD/srvmon:/usr/local/apache2/cgi-bin/srvmon hypoport/httpd-cgi
+
+
 
 #### Cronjob setup
 
@@ -96,7 +117,7 @@ If you want to set up a cronjob, send the output to a temp file and when finishe
 file over the "actual" file. Otherwise you might end up with an incomplete page when the checks are 
 running. Like so:
 
-	* * * * * /bin/bash /opt/srvmon/srvmon.sh > /var/www/index.html.tmp && /bin/mv /var/www/index.html.tmp /var/www/index.html
+	* * * * * /bin/bash /opt/srvmon/srvmon > /var/www/index.html.tmp && /bin/mv /var/www/index.html.tmp /var/www/index.html
 
 Change the folders/paths to your setup.
 
@@ -127,6 +148,7 @@ This is what the early version looked like:
 [4]: /s/inc/img/many.png
 [5]: https://acme.com/software/micro_httpd/
 [8]: https://github.com/RaymiiOrg/bash-http-monitoring
+[9]: https://github.com/RaymiiOrg/bash-http-monitoring/pull/2
 
 ---
 
