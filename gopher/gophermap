@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2020-12-30T23:25:48	/	localhost	70
+i            2021-01-02T06:21:57	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Lets talk about changelogs, or, how I loathe 'bugfixes and performance improvements' (02-02-2021)	Rant_Lets_talk_about_changelogs.txt	raymii.org	70
 0Hacker News vs Lobste.rs in C++, an exercise in parsing json http api's and date/time/timezones (31-12-2020)	Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.txt	raymii.org	70
 0Bash HTTP monitoring dashboard (27-12-2020)	Bash_HTTP_Monitoring_Dashboard.txt	raymii.org	70
 0C++ set up cpp-httplib with SSL support with cMake (14-12-2020)	Cpp_set_up_cpp-httplib_with_ssl_support_with_cmake.md.txt	raymii.org	70
