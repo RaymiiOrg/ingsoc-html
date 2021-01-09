@@ -102,15 +102,20 @@ way you can never forget to manually release the semaphore.
 For this guide I assume you're running on a Linux system with `gcc` and `cmake`.
 This is my `CMakeLists.txt` file:
 
-	cmake_minimum_required(VERSION 3.17)
+	cmake_minimum_required(VERSION 3.10)
 	project(async-with-max-concurrency)
-
 	set(CMAKE_CXX_STANDARD 11)
 
 	find_package(Threads REQUIRED)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread" )
+	add_executable(${PROJECT_NAME} main.cpp)
+	target_link_libraries(${PROJECT_NAME} Threads::Threads)
 
-	add_executable(async-with-max-concurrency main.cpp)
+Thank you to [Matthew Smith][13] for [showing me][14] this over `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread" )`. 
+
+Quoting the advantages:
+
+> It's more portable (supports Win32 threads) and it will only set it for your
+target, instead of for every target in your project.
 
 As always with cMake projects, create a build folder and configure cmake:
 
@@ -411,6 +416,8 @@ actions, you name it).
 [10]: http://web.archive.org/web/20210109072438/https://stackoverflow.com/questions/16350473/why-do-i-need-stdcondition-variable/16350623
 [11]: http://web.archive.org/web/20210109072627/https://stackoverflow.com/questions/13099660/c11-why-does-stdcondition-variable-use-stdunique-lock/13102893
 [12]: https://en.cppreference.com/w/cpp/thread/condition_variable
+[13]: https://www.offtopica.uk/
+[14]: https://lobste.rs/s/do6zii/c_std_async_with_concurrency_limit_via#c_wlx10s
 
 ---
 

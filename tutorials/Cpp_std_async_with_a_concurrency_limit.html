@@ -158,16 +158,23 @@ way you can never forget to manually release the semaphore.</p>
 <p>For this guide I assume you&#39;re running on a Linux system with <code>gcc</code> and <code>cmake</code>.
 This is my <code>CMakeLists.txt</code> file:</p>
 
-<pre><code>cmake_minimum_required(VERSION 3.17)
+<pre><code>cmake_minimum_required(VERSION 3.10)
 project(async-with-max-concurrency)
-
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(Threads REQUIRED)
-set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -pthread&quot; )
-
-add_executable(async-with-max-concurrency main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${PROJECT_NAME} Threads::Threads)
 </code></pre>
+
+<p>Thank you to <a href="https://www.offtopica.uk/">Matthew Smith</a> for <a href="https://lobste.rs/s/do6zii/c_std_async_with_concurrency_limit_via#c_wlx10s">showing me</a> this over <code>set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -pthread&quot; )</code>. </p>
+
+<p>Quoting the advantages:</p>
+
+<blockquote>
+<p>It&#39;s more portable (supports Win32 threads) and it will only set it for your
+target, instead of for every target in your project.</p>
+</blockquote>
 
 <p>As always with cMake projects, create a build folder and configure cmake:</p>
 
