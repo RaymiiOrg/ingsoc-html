@@ -398,7 +398,7 @@ actions, you name it).
 
 
 
-[0]: /s/inc/img/semafoor.jpg
+[0]: /s/inc/img/semafoor.jpeg
 [1]: /s/inc/img/cpp-async-4.png
 [2]: /s/inc/img/cpp-async-3.png
 [3]: /s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html
