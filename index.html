@@ -33,6 +33,15 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer with a focus on C, C++, linux and embedded systems.</p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++, C and Qt stack running on Yocto linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.</p> <p>I've been a Linux and UNIX sysadmin for over 10 years.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>.</p>  <p>This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="tutorials/Cpp_std_async_with_a_concurrency_limit.html">C++ std::async with a concurrency limit (via semaphores)</a></h4>
+<small>11-01-2021 | Remy van Elst</small><br />
+<p>std::async is an easy way to do multiple things concurrently, without the hurdle of manual thread management in C++. Like batch converting images, database calls, http requests, you name it. Create a few 'std::futures' and later on when they're ready, '.get()' 'm while they're still hot. A 'future' is an object which handles the synchronization and guarantees that the results of the invocation are ready. If you '.get()' it and it's not ready, it will block.
+Recently I had a use case for concurrency with a limit. I needed to do hundreds of HTTP calls to a JSON API. The concurrency limit was not for the hardware, but for the server on the other side. I didn't want to hammer it with requests.
+There is no standard way to limit the amount of concurrent jobs via 'std::async'. You can fire of a hundred jobs and it is up to the implementation to not fry the hardware. On linux/gcc it will probably use a thread pool so you're lucky, but you cant assume that.
+This article will show you a simple short solution to implement a concurrency limit together with std::async, by using a semaphore, implemented with modern (C++ 11) standard library features ('std::mutex', 'std::condition_variable' and such).
+We start off with a shorter example showing how to fire off a set number of jobs and wait until all of those are finished before continuing. That is very useful if you have a set number of jobs and want the implementation to handle all the thread work for you.</p>
+<a href="tutorials/Cpp_std_async_with_a_concurrency_limit.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/Rant_Lets_talk_about_changelogs.html">Lets talk about changelogs, or, how I loathe 'bugfixes and performance improvements'</a></h4>
 <small>02-01-2021 | Remy van Elst</small><br />
 <p>This is a short personal rant to start the new year off. When you're a multi billion dollar company with more software developers than you'd ever need, how on earth is it possible that your public changelog in an app store is just 'bugfixes and performance improvements'? If that is all you're going to put there, then just leave it blank. Or be honest and put 'We can't be arsed to fill this in' there. For me as a technical user it's not actionable, and your non technical users are not going to read that page anyway.</p>
@@ -84,13 +93,6 @@
 The only options back then for emulation of Alpha were FreeAXP or AlphaVM, both paid, closed sourced products with watered down free versions. Nothing wrong with that, it enables us to play around, and now that OpenVMS is in the hands of VMS Software with an x86 port coming along we may hope for a bright future ahead for OpenVMS. VSI currently provides a hobbyist version, but it's a FreeAXP bundle for Windows only.
 Recently I got an email from Tom&aacute;&scaron; regarding his fork of the es40 emulator, axpbox. This short post is intended to give this emulator more visibility and exposure, since I find this to be amazingly cool and exciting. It lists the bugs fixed and new features, which allow OpenVMS 8.3 and 8.4 to install perfectly.</p>
 <a href="blog/Exciting_OpenVMS_Alpha_emulation_news_es40_has_been_forked_to_axpbox.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/I_enforced_the_AGPL_on_my_code_heres_how_it_went.html">I enforced the AGPL on my code, here's how it went</a></h4>
-<small>20-10-2020 | Remy van Elst</small><br />
-<p>Five years ago I made a website that allowed you to put in a few domains and get an email when the SSL certificate was about to expire. No ads, no fuss, just an easy way for people to keep tabs on their sites without setting up their own monitoring like Nagios. As with all of my software, I released it under the AGPL due to it being web based software.
-Recently I found a company that hosted certificatemonitor, with some modifications (branding and a dutch tanslation), without any reference to its origin, no source code provided and no mention of the license.
-In this article I'll talk about what I did to enforce the license and how it went. TL;DR, not as expected. The company responded timely and friendly, but did a half assed attempt (added a link to my site with 'Inspired By Remy' as the text), then after my complaints, took down the entire site.</p>
-<a href="blog/I_enforced_the_AGPL_on_my_code_heres_how_it_went.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

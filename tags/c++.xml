@@ -7,6 +7,19 @@
             <atom:link href="https://raymii.org/s/tags/c++.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>C++ std::async with a concurrency limit (via semaphores)</title> 
+                <link>https://raymii.org/s/tutorials/Cpp_std_async_with_a_concurrency_limit.html</link> 
+                <guid>https://raymii.org/s/tutorials/Cpp_std_async_with_a_concurrency_limit.html</guid>
+                <description>std::async is an easy way to do multiple things concurrently, without the hurdle of manual thread management in C++. Like batch converting images, database calls, http requests, you name it. Create a few 'std::futures' and later on when they're ready, '.get()' 'm while they're still hot. A 'future' is an object which handles the synchronization and guarantees that the results of the invocation are ready. If you '.get()' it and it's not ready, it will block.
+Recently I had a use case for concurrency with a limit. I needed to do hundreds of HTTP calls to a JSON API. The concurrency limit was not for the hardware, but for the server on the other side. I didn't want to hammer it with requests.
+There is no standard way to limit the amount of concurrent jobs via 'std::async'. You can fire of a hundred jobs and it is up to the implementation to not fry the hardware. On linux/gcc it will probably use a thread pool so you're lucky, but you cant assume that.
+This article will show you a simple short solution to implement a concurrency limit together with std::async, by using a semaphore, implemented with modern (C++ 11) standard library features ('std::mutex', 'std::condition_variable' and such).
+We start off with a shorter example showing how to fire off a set number of jobs and wait until all of those are finished before continuing. That is very useful if you have a set number of jobs and want the implementation to handle all the thread work for you.</description> 
+                <pubDate>Mon, 11 Jan 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 11 Jan 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Hacker News vs Lobste.rs in C++, an exercise in parsing json http api's and date/time/timezones</title> 
                 <link>https://raymii.org/s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html</link> 
                 <guid>https://raymii.org/s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html</guid>

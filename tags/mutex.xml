@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
     <rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
         <channel>
-            <title>RSS feed for tag async on Raymii.org</title> 
-            <link>https://raymii.org/s/tags/async.xml</link> 
-            <description>RSS feed for tag async on Raymii.org</description>
-            <atom:link href="https://raymii.org/s/tags/async.xml" rel="self" type="application/rss+xml" />
+            <title>RSS feed for tag mutex on Raymii.org</title> 
+            <link>https://raymii.org/s/tags/mutex.xml</link> 
+            <description>RSS feed for tag mutex on Raymii.org</description>
+            <atom:link href="https://raymii.org/s/tags/mutex.xml" rel="self" type="application/rss+xml" />
     
             <item>
                 <title>C++ std::async with a concurrency limit (via semaphores)</title> 
@@ -17,15 +17,6 @@ This article will show you a simple short solution to implement a concurrency li
 We start off with a shorter example showing how to fire off a set number of jobs and wait until all of those are finished before continuing. That is very useful if you have a set number of jobs and want the implementation to handle all the thread work for you.</description> 
                 <pubDate>Mon, 11 Jan 2021 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 11 Jan 2021 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>C++ async, threads and user input</title> 
-                <link>https://raymii.org/s/articles/Cpp_async_threads_and_user_input.html</link> 
-                <guid>https://raymii.org/s/articles/Cpp_async_threads_and_user_input.html</guid>
-                <description>For an unrelated piece of code, I recently spent a few days trying to figure out if there was a portable, modern C++ way to handle user input with a timeout. If there is no input after a few seconds, the program can continue doing other things. TL;DR, there is none, since stdin is blocking I/O. At the end of the article I'll also provide the code I ended up using, which uses two actual big-boy threads, one for input and one for 'other work'.</description> 
-                <pubDate>Fri, 24 Apr 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Fri, 24 Apr 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
         </channel>
