@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>C++ std::async with a concurrency limit (via semaphores)</h2>
-<p><small>Published: 11-01-2021 | Author: Remy van Elst | <a href="Cpp_std_async_with_a_concurrency_limit.txt">Text only version of this article</a>
+<p><small>Published: 09-01-2021 | Last update: 10-01-2021 | Author: Remy van Elst | <a href="Cpp_std_async_with_a_concurrency_limit.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -57,6 +57,14 @@
 </li>
 <li>
 <a href="#toc_3">Job queue with a concurrency limit</a>
+</li>
+<li>
+<a href="#toc_4">C++ 17 with a scoped_lock</a>
+<ul>
+<li>
+<a href="#toc_5">More comments from Chris</a>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -95,7 +103,10 @@ you cant assume that. </p>
 
 <p>This article will show you a simple short solution to implement a concurrency
 limit together with std::async, by using a <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)">Semaphore</a>, implemented with 
-modern (C++ 11) standard library features (<code>std::mutex</code>, <code>std::condition_variable</code> and such).</p>
+modern (C++ 11) standard library features (<code>std::mutex</code>, <code>std::condition_variable</code> and such).
+It also has a C++ 17 version which replaces our custom <code>CriticalSection</code>
+class with the use of an <code>std::scoped_lock</code> and implementing the <code>BasicLockable</code>
+Named Requirement.</p>
 
 <p>We start off with a shorter example showing how to fire off a set number of jobs 
 and wait until all of those are finished before continuing. That is very useful
@@ -245,7 +256,7 @@ int main() {
     for (int i = 0; i &lt; totalJobs; ++i) {
         futures.push_back(
             std::async(std::launch::async,
-                [&amp;](const std::string&amp; name){
+                [](const std::string&amp; name){
                     std::this_thread::sleep_for(std::chrono::seconds(1));
                        return &quot;Hi &quot; + name + &quot;, I&#39;m an example doing some work at &quot; +
                        timeString(std::chrono::system_clock::now(), &quot;%H:%M:%S&quot;);
@@ -268,7 +279,8 @@ int main() {
 }
 </code></pre>
 
-<p>If you don&#39;t like lambda&#39;s you can also use variadic arguments to call
+<p>I&#39;m explicitly using parameters in the lambda to show what is being passed
+around. If you don&#39;t like lambda&#39;s you can also use variadic arguments to call
 another function:</p>
 
 <pre><code>std::string ExampleJob(int tally) {
@@ -323,6 +335,9 @@ actual work, <code>count</code> is it&#39;s max limit of concurrent threads. The
 waits for the <code>Semafoor</code> (which in turn, when possible, acquires the lock) and
 in its destructor it releases the <code>Semafoor</code> (which in turn, releases the lock). </p>
 
+<p>See the last part of this article for a C++ 17 feature, the <code>std::scoped_lock</code> 
+which replaces our <code>CriticalSection</code>. </p>
+
 <p>That translates to, as long as your scope is correct, you never forget to lock or 
 unlock the <code>Semafoor</code>. </p>
 
@@ -330,13 +345,8 @@ unlock the <code>Semafoor</code>. </p>
 class Semafoor {
 public:
     explicit Semafoor(size_t count) : count(count) {}
-    size_t getCount() const { return count; };
-    void notify() {  // call after critical section
-        std::unique_lock&lt;std::mutex&gt; lock(mutex);
-        ++count;
-        condition_variable.notify_one();
-    }
-    void wait() { // call before critical section
+    size_t getCount() const { return count; };     
+    void lock() { // call before critical section
         std::unique_lock&lt;std::mutex&gt; lock(mutex);
         condition_variable.wait(lock, [this] {
           if (count != 0) // written out for clarity, could just be return (count != 0);
@@ -345,6 +355,11 @@ public:
               return false;
         });
         --count;
+    }
+    void unlock() {  // call after critical section
+        std::unique_lock&lt;std::mutex&gt; lock(mutex);
+        ++count;
+        condition_variable.notify_one();
     }
 
 private:
@@ -356,13 +371,15 @@ private:
 // RAII wrapper, make on of these in your &#39;work-doing&#39; class to
 // lock the critical section. once it goes out of scope the
 // critical section is unlocked
+// Note: If you can use C++ 17, use a std::scoped_lock(SemafoorRef) 
+//       instead of this class
 class CriticalSection {
 public:
     explicit CriticalSection(Semafoor &amp;s) : semafoor{s} {
-        semafoor.wait();
+        semafoor.lock();
     }
     ~CriticalSection() {
-        semafoor.notify();
+        semafoor.unlock();
     }
 private:
     Semafoor &amp;semafoor;
@@ -396,7 +413,7 @@ int main() {
     for (int i = 0; i &lt; totalJobs; ++i) {
         futures.push_back(
             std::async(std::launch::async,
-               [&amp;](const std::string&amp; name, Semafoor&amp; maxJobs){
+               [](const std::string&amp; name, Semafoor&amp; maxJobs){
                  CriticalSection w(maxJobs);
                  std::this_thread::sleep_for(std::chrono::seconds(1));
                  return &quot;Hi &quot; + name + &quot;, I&#39;m an example doing some work at &quot; +
@@ -419,9 +436,12 @@ int main() {
 }
 </code></pre>
 
-<p>In <code>main()</code> not much has changed. We create a <code>Semafoor</code> with a concurrent limit of 3, pass <a href="http://web.archive.org/web/20210104130103/https://stackoverflow.com/questions/18359864/passing-arguments-to-stdasync-by-reference-fails">a reference</a> to that
-into the lambda, and, most important, when our work starts we create a <code>CriticalSection</code> object, that acquires the 
-<code>Semafoor</code> or waits until it is available. When that goes out of scope, the <code>Semafoor</code> is released.</p>
+<p>In <code>main()</code> not much has changed. I&#39;m again explicitly using parameters in the
+lambda to show what is being passed around. We create a <code>Semafoor</code> with a
+concurrent limit of 3, pass <a href="http://web.archive.org/web/20210104130103/https://stackoverflow.com/questions/18359864/passing-arguments-to-stdasync-by-reference-fails">a reference</a> to that into the lambda, and,
+most important, when our work starts we create a <code>CriticalSection</code> object,
+that acquires the  <code>Semafoor</code> or waits until it is available. When that goes
+out of scope, the <code>Semafoor</code> is released.</p>
 
 <p>If you use this code, you can put your own critical section in <code>{}</code> (curly brackets) to limit that scope:</p>
 
@@ -436,8 +456,9 @@ more();
 code();
 </code></pre>
 
-<p>If you don&#39;t want to use a lambda you can pass a function when creating the <code>std::future</code>, but the <code>Semafoor</code> 
-has to be a reference (they all must use the same <code>Semafoor</code>), thus we <a href="http://web.archive.org/web/20210104130103/https://stackoverflow.com/questions/18359864/passing-arguments-to-stdasync-by-reference-fails">need to pass a</a> <code>std::ref()</code>, like so:</p>
+<p>If you don&#39;t want to use a lambda you can pass a function when creating the
+<code>std::future</code>, but the <code>Semafoor</code>  has to be a reference (they all must use
+the same <code>Semafoor</code>), thus we <a href="http://web.archive.org/web/20210104130103/https://stackoverflow.com/questions/18359864/passing-arguments-to-stdasync-by-reference-fails">need to pass a</a> <code>std::ref()</code>, like so:</p>
 
 <pre><code>std::string exampleJob(int tally, Semafoor&amp; maxJobs) {
     CriticalSection w(maxJobs);
@@ -452,17 +473,85 @@ futures.push_back(std::async(std::launch::async, exampleJob, i, std::ref(maxConc
 
 <p><img src="/s/inc/img/cpp-async-4.png" alt="code screenshot"></p>
 
-<p>As you can see, the timestamps now have a second between them each 3 jobs, just as we said.
-The <code>Semafoor</code> has a max concurrency limit of 3, which the code and output reflect. Only
-3 jobs are running at the same time. You must make sure to use the same semaphore everywhere,
-otherwise you&#39;ll be copying one and each instance has their own unique semaphore, which is 
-exactly not what we want. </p>
+<p>As you can see, the timestamps now have a second between them each 3 jobs,
+just as we said. The <code>Semafoor</code> has a max concurrency limit of 3, which the
+code and output reflect. Only 3 jobs are running at the same time. You must
+make sure to use the same semaphore everywhere, otherwise you&#39;ll be copying
+one and each instance has their own unique semaphore, which is  exactly not
+what we want. </p>
 
-<p>For jobs where you do need some parallelism but need more control than <code>std::async</code> provides you,
-whilst not having to result to manual threads, using this semaphore construction gives you 
-just enough control. In the case of my HTTP requests, I didn&#39;t overload the server but 
-limited the requests to 15, but you can think of many more use cases (converting files, database 
+<p>For jobs where you do need some parallelism but need more control than
+<code>std::async</code> provides you, whilst not having to result to manual threads,
+using this semaphore construction gives you  just enough control. In the case
+of my HTTP requests, I didn&#39;t overload the server but  limited the requests to
+15, but you can think of many more use cases (converting files, database 
 actions, you name it).</p>
+
+<h3 id="toc_4">C++ 17 with a scoped_lock</h3>
+
+<p>Soon after publishing this article I got a great email from <a href="http://www.tuncan.uk">Chris Tuncan</a>
+discussing  premature optimization and a new feature in C++ 17, the
+<code>std::scoped_lock</code> (<a href="https://en.cppreference.com/w/cpp/thread/scoped_lock">cppreference</a>). </p>
+
+<p>The <code>scoped_lock</code> basically replaces the <code>CriticalSection</code> class, as long as
+the <code>Semafoor</code>  <a href="https://en.cppreference.com/w/cpp/named_req/BasicLockable">implements the minimal characteristics</a> of the Named
+Requirement <code>BasicLockable</code>,  <code>.lock()</code> and <code>.unlock()</code>. </p>
+
+<p>It has one more  advantage, it has a variadic constructor taking more than one
+mutex. This allows it to lock multiple mutexes in a deadlock avoiding way. But
+since we&#39;re only using one mutex, that&#39;s not applicable to us. Still wanted to
+mention it since it is great to have that in the standard library.</p>
+
+<p>If you are using C++ 17 you can omit the <code>CriticalSection</code> class and replace all
+usage by a scoped lock. In the above example you would replace this line:</p>
+
+<pre><code>CriticalSection w(maxJobs);
+</code></pre>
+
+<p>by this:</p>
+
+<pre><code>std::scoped_lock w(maxJobs);
+</code></pre>
+
+<p>Also you must update the C++ standard to 17 in your <code>CMakeLists.txt</code>:</p>
+
+<pre><code>set(CMAKE_CXX_STANDARD 17)
+</code></pre>
+
+<p>That&#39;s all there is to it. You get the advantage of using multiple mutexes if
+you ever need it, and as we all know, the best code is the code you can delete
+easily later on, so go ahead and replace that <code>CriticalSection</code> by a
+<code>std::scoped_lock</code>. Or, if you&#39;re  not lucky enough to have a modern compiler
+like most of us, go cry in a corner on all the cool language stuff you&#39;re
+missing out on...</p>
+
+<h4 id="toc_5">More comments from Chris</h4>
+
+<p>Quoting Chris on the premature optimization, he responds to my statement in the opening
+paragraph <code>On linux/gcc it will probably use a thread pool...</code>. </p>
+
+<blockquote>
+<p>If we cannot assume the implementation uses a thread pool, and instead
+spawns a thread per <code>std:async</code> call, AND if you intent is to prevent lots of
+threads being launched, then we would need to add an extra layer of
+complexity. Currently <code>std::async</code> is called <code>totalJobs</code> times, with or
+without the semaphore. Just with the <code>Semafoor</code> all but <code>maxJobs</code> of those
+threads would go to sleep. We&#39;d end up needing some sort of queue of jobs to
+pass to <code>std::async</code>, any you&#39;d need to wrap <code>async</code> so you don&#39;t have to
+block created <code>async jobs</code>, and ..., and ....</p>
+
+<p>Eurgh, that ruins all the simplicity of your solution, and is definitely a
+case of premature optimisation!</p>
+</blockquote>
+
+<p>I agree with both points. Easy for me to assume GCC, but premature
+optimization is also a pitfall. For this articles purpose, the problem is not
+spawning too many threads but overloading the computer or remote server
+(either hundreds of concurrent requests or turning your computer into a <a href="https://xkcd.com/1172/">space
+heater</a> when converting a million photos at the same time).</p>
+
+<p>Thank you to Chris for both points of feedback and the code examples. I&#39;d not yet 
+worked with Named Requirements explicitly, exploring them will be fun.</p>
 Tags: <a href="../tags/async.html">async</a>
 , <a href="../tags/c++.html">c++</a>
 , <a href="../tags/cmake.html">cmake</a>
