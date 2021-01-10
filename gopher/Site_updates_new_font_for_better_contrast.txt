@@ -46,22 +46,29 @@ monitor, is now added to the top as well. I had to scroll down way too often.
 For your pleasure and archival purposes, here are a few screenshots detailing
 the changes.
 
-#### The frontpage, before:
+**The frontpage, before:**
 
 ![front before][2]
 
-#### The frontpage, now:
+<hr>
+
+**The frontpage, now:**
 
 ![front after][3]
 
-#### An article section, before:
+<hr>
+
+**An article section, before:**
 
 ![article before][4]
 
-#### An article section, now:
+<hr>
+
+**An article section, now:**
 
 ![article after][5]
 
+<hr>
 
 [1]: /s/software/Sparkling_Network.html
 [2]: /s/inc/img/raymiiorg/2021-old-font-1.png
