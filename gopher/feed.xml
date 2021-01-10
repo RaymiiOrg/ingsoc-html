@@ -10,7 +10,7 @@
                 <title>Site updates, new font for better contrast and other small CSS fixes</title> 
                 <link>gopher://raymii.org/0/Site_updates_new_font_for_better_contrast.txt</link> 
                 <guid>gopher://raymii.org/0/Site_updates_new_font_for_better_contrast.txt</guid>
-                <description>New year, time for some site updates. This site is generated with my self-written open source static site generator named ingsoc (named after 1984) and this update is a collection of  small improvements. A new font, internal code updates to the generator and a few CSS fixes here and there.</description> 
+                <description>New year, time for some site updates. This site is generated with my self-written open source static site generator named ingsoc (named after 1984) and this update is a collection of  small improvements. A new font, internal code updates to the generator and a few CSS fixes here and there. This article goes over all of them including screenshots before and after!</description> 
                 <pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate>
                 <lastBuildDate>Tue, 12 Jan 2021 00:00:00 GMT</lastBuildDate>
             </item>
