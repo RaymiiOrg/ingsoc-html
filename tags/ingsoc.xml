@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/ingsoc.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Site updates, new font for better contrast and other small CSS fixes</title> 
+                <link>https://raymii.org/s/blog/Site_updates_new_font_for_better_contrast.html</link> 
+                <guid>https://raymii.org/s/blog/Site_updates_new_font_for_better_contrast.html</guid>
+                <description>New year, time for some site updates. This site is generated with my self-written open source static site generator named ingsoc (named after 1984) and this update is a collection of  small improvements. A new font, internal code updates to the generator and a few CSS fixes here and there.</description> 
+                <pubDate>Tue, 12 Jan 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Tue, 12 Jan 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>What does raymii.org cost to run?</title> 
                 <link>https://raymii.org/s/blog/Costs_to_run_raymii.org.html</link> 
                 <guid>https://raymii.org/s/blog/Costs_to_run_raymii.org.html</guid>

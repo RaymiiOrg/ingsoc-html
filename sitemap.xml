@@ -6,6 +6,12 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
         <url>
+            <loc>https://raymii.org/s/blog/Site_updates_new_font_for_better_contrast.html</loc>
+            <lastmod>2021-01-12</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tutorials/Cpp_std_async_with_a_concurrency_limit.html</loc>
             <lastmod>2021-01-09</lastmod>
             <changefreq>weekly</changefreq>
@@ -3888,6 +3894,12 @@
         </url>
     
         <url>
+            <loc>https://raymii.org/s/tags/css.html</loc>
+            <lastmod>2021-01-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
             <loc>https://raymii.org/s/tags/soft-delete.html</loc>
             <lastmod>2021-01-03</lastmod>
             <changefreq>weekly</changefreq>
@@ -5881,6 +5893,12 @@
     
         <url>
             <loc>https://raymii.org/s/tags/rrdcached.html</loc>
+            <lastmod>2021-01-03</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    
+        <url>
+            <loc>https://raymii.org/s/tags/theme.html</loc>
             <lastmod>2021-01-03</lastmod>
             <changefreq>weekly</changefreq>
         </url>
