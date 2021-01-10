@@ -46,19 +46,19 @@ monitor, is now added to the top as well. I had to scroll down way too often.
 For your pleasure and archival purposes, here are a few screenshots detailing
 the changes.
 
-> This is the frontpage, before:
+#### The frontpage, before:
 
 ![front before][2]
 
-> This is the frontpage, now:
+#### The frontpage, now:
 
 ![front after][3]
 
-> This is an article section, before:
+#### An article section, before:
 
 ![article before][4]
 
-> This is an article section, now:
+#### An article section, now:
 
 ![article after][5]
 
