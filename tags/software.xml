@@ -7,21 +7,21 @@
             <atom:link href="https://raymii.org/s/tags/software.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Bash HTTP monitoring dashboard</title> 
+                <link>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</link> 
+                <guid>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</guid>
+                <description>This is a shell script that creates a webpage with the status of HTTP(s) sites. Parallel checking, thus very fast, only dependencies are curl and bash (version 4 or above). For all of you who want a simple script with a nice webpage to check a few websites. Perfect for a wall mounted monitoring display and a Raspberry Pi. Installation and configuration is easy to do inside the script. It scales well, both on the checking side as the information display page (dense on purpose). Failed checks appear right on top for you to act on. I had this script running at home for at least a year in that form, when I showed it to a friend he liked it,  asked me to make it public, but before I did that I polished it up a bit. </description> 
+                <pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 11 Jan 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Hacker News vs Lobste.rs in C++, an exercise in parsing json http api's and date/time/timezones</title> 
                 <link>https://raymii.org/s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html</link> 
                 <guid>https://raymii.org/s/software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html</guid>
                 <description>I recently wondered how many top posts on the Hacker News frontpage are also on Lobsters. At first I reached for my trusty Python, because when I need to do some JSON API parsing that's what I'll use. (Otherwise bash is my default goto for small things, except when json, networking or associative arrays are involved.) But, then, a thought came to my mind. Why not try it with reasonably modern C++. It's what I do at work, so why not a simple personal project. It would involve dependency management (json and a http library), parsing both API endpoints and, most importantly, doing stuff with time. Time, timezones and dates are hard. This article contains a bit of my learning process, compilation and usage instructions and an example run. Go look at the code and run the code yourself. Let me know if my timezone calculations are working outside of GMT+1.</description> 
                 <pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 31 Dec 2020 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Bash HTTP monitoring dashboard</title> 
-                <link>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</link> 
-                <guid>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</guid>
-                <description>This is a shell script that creates a webpage with the status of HTTP(s) sites. Parallel checking, thus very fast, only dependencies are curl and bash (version 4 or above). For all of you who want a simple script with a nice webpage to check a few websites. Perfect for a wall mounted monitoring display and a Raspberry Pi. Installation and configuration is easy to do inside the script. It scales well, both on the checking side as the information display page (dense on purpose). Failed checks appear right on top for you to act on. I had this script running at home for at least a year in that form, when I showed it to a friend he liked it,  asked me to make it public, but before I did that I polished it up a bit. </description> 
-                <pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 30 Dec 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

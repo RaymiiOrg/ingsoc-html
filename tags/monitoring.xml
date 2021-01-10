@@ -12,7 +12,7 @@
                 <guid>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</guid>
                 <description>This is a shell script that creates a webpage with the status of HTTP(s) sites. Parallel checking, thus very fast, only dependencies are curl and bash (version 4 or above). For all of you who want a simple script with a nice webpage to check a few websites. Perfect for a wall mounted monitoring display and a Raspberry Pi. Installation and configuration is easy to do inside the script. It scales well, both on the checking side as the information display page (dense on purpose). Failed checks appear right on top for you to act on. I had this script running at home for at least a year in that form, when I showed it to a friend he liked it,  asked me to make it public, but before I did that I polished it up a bit. </description> 
                 <pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Wed, 30 Dec 2020 00:00:00 GMT</lastBuildDate>
+                <lastBuildDate>Mon, 11 Jan 2021 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

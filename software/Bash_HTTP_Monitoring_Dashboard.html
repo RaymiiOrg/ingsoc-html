@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Bash HTTP monitoring dashboard</h2>
-<p><small>Published: 27-12-2020 | Last update: 30-12-2020 | Author: Remy van Elst | <a href="Bash_HTTP_Monitoring_Dashboard.txt">Text only version of this article</a>
+<p><small>Published: 27-12-2020 | Last update: 11-01-2021 | Author: Remy van Elst | <a href="Bash_HTTP_Monitoring_Dashboard.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -47,18 +47,24 @@
 <h3>Table of Contents</h3>
 <ul>
 <li>
-<a href="#toc_0">Installation &amp; Configuration</a>
-<ul>
-<li>
-<a href="#toc_1">CGI header (Docker)</a>
+<a href="#toc_0">Changelog</a>
 </li>
 <li>
-<a href="#toc_2">Cronjob setup</a>
+<a href="#toc_1">Installation &amp; Configuration</a>
+<ul>
+<li>
+<a href="#toc_2">CGI header (Docker)</a>
+</li>
+<li>
+<a href="#toc_3">Callback URL</a>
+</li>
+<li>
+<a href="#toc_4">Cronjob setup</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_3">Screenshots</a>
+<a href="#toc_5">Screenshots</a>
 </li>
 </ul>
 
@@ -106,7 +112,18 @@ to prevent flapping. </p>
 <li>History</li>
 </ul>
 
-<h3 id="toc_0">Installation &amp; Configuration</h3>
+<p>There however is the option to set a <code>callback_url</code>, whenever a check fails the script will send
+the status to that URL, allowing you to set up your own history logging or alerting.</p>
+
+<h3 id="toc_0">Changelog</h3>
+
+<ul>
+<li>27-12-2020: Initial release</li>
+<li>30-12-2020: Added <code>cgi-bin</code>/<code>docker</code> support</li>
+<li>11-01-2021: Added callback URL for failed checks</li>
+</ul>
+
+<h3 id="toc_1">Installation &amp; Configuration</h3>
 
 <p>Make sure you have curl installed (<code>apt install curl</code>). If you need a very
 simple webserver, try <a href="https://acme.com/software/micro_httpd/">micro-httpd, by ACME</a>. (<code>apt install micro-httpd</code>).</p>
@@ -146,6 +163,7 @@ defaultTimeOut=10 # Max timeout of a check in seconds
 flapRetry=5 # After how many seconds should we re-check any failed checks? (To prevent flapping)
 title=&quot;Status Dashboard&quot; # Title of the webpage
 cgi=false # Enable or disable CGI header
+callbackURL=&quot;&quot; # leave empty to disable, otherwise see readme
 </code></pre>
 
 <p>Execute the script and send the output to a file in your webservers documentroot:</p>
@@ -155,7 +173,7 @@ cgi=false # Enable or disable CGI header
 
 <p>View that file in a web browser.</p>
 
-<h4 id="toc_1">CGI header (Docker)</h4>
+<h4 id="toc_2">CGI header (Docker)</h4>
 
 <ul>
 <li>Update 30-12-2020: This was contributed by <a href="https://github.com/RaymiiOrg/bash-http-monitoring/pull/2">rabbit-of-caerbannog</a></li>
@@ -174,7 +192,63 @@ You can use <code>docker</code> to try this out. Like so:</p>
 <pre><code>docker run -d -p 9090:80 -v $PWD/srvmon:/usr/local/apache2/cgi-bin/srvmon hypoport/httpd-cgi
 </code></pre>
 
-<h4 id="toc_2">Cronjob setup</h4>
+<h4 id="toc_3">Callback URL</h4>
+
+<p>This script does not provide other means of alerting or history. If you do want that, you must do
+a bit of work yourself. The script supports a <code>callback url</code>, whenever a check failed, it will
+do a POST request to a configurable URL with the status and error. This allows you to setup 
+logging, history, graphs or otherwise alerting yourself. No examples are provided as of yet but
+feel free to open a merge request.</p>
+
+<p>The JSON sent is in the following format:</p>
+
+<pre><code>{
+    &quot;url&quot;: &quot;The configured URL, URL encoded&quot;,
+    &quot;name&quot;: &quot;The configured name&quot;
+    &quot;expected_status&quot;: &quot;The configured expected status code&quot;, // as a string
+    &quot;actual_status&quot;: &quot;The actual status code&quot;, // as a string
+    &quot;error&quot;: &quot;descriptive error text (from curl mostly)&quot;
+} 
+</code></pre>
+
+<p>Each failed check results in its own request. No bundling is done.</p>
+
+<p>You can use HTTPbin to test locally. HTTPbin is a so called <code>echo</code> server, anything 
+that is sent to it is returned for debugging purposes. Set this in the config:</p>
+
+<pre><code>callbackURL=&quot;http://127.0.0.1:8888/post/&quot;
+</code></pre>
+
+<p>Run httpbin in a local docker:</p>
+
+<pre><code>docker run -p 8888:80 kennethreitz/httpbin
+</code></pre>
+
+<p>Configure some failed checks, either a non matching status code or a non-existing domain:</p>
+
+<p>Example json data:</p>
+
+<pre><code>{
+    &quot;url&quot;: &quot;https%3A%2F%2Fgist.github.com&quot;,
+    &quot;name&quot;: &quot;gist.github.com&quot;,
+    &quot;expected_status&quot;: &quot;309&quot;,
+    &quot;actual_status&quot;: &quot;302&quot;,
+    &quot;error&quot;: &quot;Status code does not match expected code&quot;
+} 
+</code></pre>
+
+<p>Another example:</p>
+
+<pre><code>{
+    &quot;url&quot;: &quot;https%3A%2F%2Fwww.buiekjhkjhkhkhkjhnradar.nl&quot;,
+    &quot;name&quot;: &quot;www.buienradar.nl&quot;,
+    &quot;expected_status&quot;: &quot;200&quot;,
+    &quot;actual_status&quot;: &quot;000&quot;,
+    &quot;error&quot;: &quot;curl: (6) Could not resolve host: www.buiekjhkjhkhkhkjhnradar.nl&quot;
+}
+</code></pre>
+
+<h4 id="toc_4">Cronjob setup</h4>
 
 <p>If you want to set up a cronjob, send the output to a temp file and when finished, move that temp
 file over the &quot;actual&quot; file. Otherwise you might end up with an incomplete page when the checks are 
@@ -187,7 +261,7 @@ running. Like so:</p>
 
 <p>If the check fails for whatever reason, the &quot;old&quot; page will not be overridden.</p>
 
-<h3 id="toc_3">Screenshots</h3>
+<h3 id="toc_5">Screenshots</h3>
 
 <p>All checks are okay:</p>
 
