@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/openvms.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>AXPbox version 1.0.0 released! (Open source Alpha emulator)</title> 
+                <link>https://raymii.org/s/blog/AXPBox-version-1.0.0-released.html</link> 
+                <guid>https://raymii.org/s/blog/AXPBox-version-1.0.0-released.html</guid>
+                <description>Last year November, I posted on a new OpenVMS related project, AXPbox, the open source Alpha emulator, a fork of es40 by Tom&amp;aacute;&amp;scaron; Glozar. I got involved a bit in the project, submitting a few patches here and there, editing the Wiki and thus now have contributer rights on the github repository. After discussing a bit back and forth with Tom&amp;aacute;&amp;scaron;, I put together the first official release of AXPbox, very exciting news. The release can be found here on github. This article has the release notes and a bunch of screenshots of OpenVMS inside AXPbox running GUI applications over the network.</description> 
+                <pubDate>Sat, 23 Jan 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 23 Jan 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Installing OpenVMS 8.4 Alpha inside AXPbox on Debian 10 / Ubuntu 20.04 with networking</title> 
                 <link>https://raymii.org/s/tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html</link> 
                 <guid>https://raymii.org/s/tutorials/Installing_OpenVMS_8.4_Alpha_in_AXPbox_with_networking.html</guid>
