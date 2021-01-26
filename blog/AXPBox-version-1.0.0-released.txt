@@ -109,7 +109,7 @@ The linux ARM build is compiled statically, without networking, graphics or
 SDL support due to cross-compilation. It is recommended to compile it yourself
 on your own ARM hardware.
 
-[Downloads are on github][8]
+[Downloads are on github](https://github.com/lenticularis39/axpbox/releases/tag/v1.0.0)
 
 ### Screenshots
 
