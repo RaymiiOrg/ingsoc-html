@@ -161,8 +161,6 @@ Now onto the fun part, gaming!
 
 ### GENERIC-TETRIS
 
-![tetris][10]
-
 After posting the [OpenVMS CDE article][3] on Lobsters, user kidon replied 
 [on the tetris part][8]. It's written by Qiang Alex Zhao and although the 
 `Makefile` being outdated, you can manually compile and run it. First download
@@ -189,6 +187,9 @@ There should now be a binary in the folder which you can execute:
 Running it pops up a graphical window with the game:
 
 	./tetris
+
+
+![tetris][10]
 
 
 Use the arrow keys to move the piece around, `space` to plop it down
