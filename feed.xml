@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>The Common Desktop Environment (CDE) is still developed and modern in 2021</title> 
+                <link>https://raymii.org/s/blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html</link> 
+                <guid>https://raymii.org/s/blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html</guid>
+                <description>While playing around with the GUI on OpenVMS I was looking for CDE documentation and I found out CDE is still being developed and can be installed on modern linux. This quick post shows you how to install CDE on Debian 10 and includes a bit on compiling GENERIC TETRIS, the same program I installed on OpenVMS. Really cool to compile and run a game from 1992 on a retro/modern desktop environment.</description> 
+                <pubDate>Thu, 28 Jan 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 28 Jan 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>OpenVMS CDE Desktop Remote X session GUI (on AXPbox)</title> 
                 <link>https://raymii.org/s/blog/OpenVMS_CDE_Desktop_remote_x_axpbox.html</link> 
                 <guid>https://raymii.org/s/blog/OpenVMS_CDE_Desktop_remote_x_axpbox.html</guid>
