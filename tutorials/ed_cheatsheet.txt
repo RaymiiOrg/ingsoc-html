@@ -14,8 +14,7 @@ end-user programs hosted on the system and has been standard in Unix-based
 systems ever since. ed was originally written in PDP-11/20 assembler by Ken
 Thompson in 1971.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [Download the PDF cheatsheet][2]
 

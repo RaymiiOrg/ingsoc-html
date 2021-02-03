@@ -32,8 +32,7 @@ and I really enjoyed doing it. I might even, in the future, add some more Pi's
 on top and do some more benchmarks. But I already spent about two weeks working
 on this single article so three was just fine for now.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 Do note that two devices were sponsored for this article.
 

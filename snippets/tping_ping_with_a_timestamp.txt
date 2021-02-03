@@ -41,8 +41,7 @@ timestamp. Here's how it looks like:
 The host went down on 09:32 and was back up on 09:36. This was a scheduled
 reboot.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### .bashrc function
 

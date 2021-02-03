@@ -16,8 +16,7 @@ It used EncFS and dvcs-autosync which lets me share only the encrypted data and
 mount that locally to get the plaintext. It works on OS X, Linux and ARM linux.
 This article has setup instructions for all those platforms.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Diagram
 

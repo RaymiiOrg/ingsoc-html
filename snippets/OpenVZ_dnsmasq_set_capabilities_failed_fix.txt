@@ -15,8 +15,7 @@ privileged stuff and then drops to the configured run user. In OpenVZ these
 permissions are not passed to the VPS, sadly. These three commands fix the
 problem.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Replace 195 with your container ID in the steps below.
 

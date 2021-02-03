@@ -22,8 +22,7 @@ fail silently if no response is received in a timely manner. This reduces
 security, by allowing an attacker to DoS an OCSP responder to disable the
 validation.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The solution is to allow the server to send its cached OCSP record during the
 TLS handshake, therefore bypassing the OCSP responder. This mechanism saves a

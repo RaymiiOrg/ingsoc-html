@@ -13,8 +13,7 @@ Bash Bits are small examples and tips for Bash Scripts. This bash bit shows you
 how to check if a piece of software is installed on a machine. It's a function
 you can use in your shell scripts.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [All Bash Bits can be found using this link][2]
 

@@ -20,8 +20,7 @@ application as possible. I will go over the features of TIny Tiny RSS, compare
 it to Google Reader and write some things I like about it, and things I miss
 about it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ##### Features of Tiny Tiny RSS
 

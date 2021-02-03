@@ -16,12 +16,9 @@ errors in them. It sometimes can take a while before those errors show up
 because they are lower in a playbook. By running the syntax check you make sure
 this won't happen.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### Dummy inventory file
 

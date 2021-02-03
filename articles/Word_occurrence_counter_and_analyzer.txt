@@ -16,8 +16,7 @@ do I use more often, where are my spelling errors and such. It is also nice to
 win an argument against someone over a dragonforce song. This example will use
 lyrics as example, but it is applicable to all text files.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ##### Get the Lyrics (text)
 

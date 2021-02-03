@@ -21,12 +21,9 @@ groups, `webservers` and `databaseservers`. I only want my `http-status` plugin
 on the webservers, and the `postgres-status` plugin only on the datase servers.
 This is how you do that.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 Sample from the playbook:
 

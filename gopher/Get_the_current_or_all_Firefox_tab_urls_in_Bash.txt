@@ -16,8 +16,7 @@ almost instantly, however it will not always be the correct url.
 I use this to track my time on different websites over the day together with
 some other shell scripts.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Get all the open tabs:
 

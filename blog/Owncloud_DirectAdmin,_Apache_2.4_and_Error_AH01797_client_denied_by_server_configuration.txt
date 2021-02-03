@@ -16,8 +16,7 @@ other domains. Most of them run Directadmin, because it is easier to work with
 for the target audience. I'm very good with the command line, they've never
 heard of it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 One of my friends runs Owncloud, a wonderfull piece of software to get cloud
 services under your control. He does not use the file part but rather the

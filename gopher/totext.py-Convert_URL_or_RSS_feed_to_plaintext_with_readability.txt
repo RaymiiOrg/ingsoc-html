@@ -21,8 +21,7 @@ between RSS feed articles to not do excessive requests.
 
 The readability part is handled by Python, no external services are used.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 Here's an example of a news article. On the left, the text-only parsed version,
 on the right, the webpage:

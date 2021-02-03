@@ -19,8 +19,7 @@ place those in the collectd config files. This technique is applicable to all
 kinds of services that use a client-server model, for example, munin, haproxy,
 zabbix and many more.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Lets say you want to build a graphite server which gets data from a lot of
 collectd clients. You can hard code it in the `collectd.conf` file, but this is

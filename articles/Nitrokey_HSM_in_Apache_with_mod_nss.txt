@@ -18,8 +18,7 @@ The guide covers the installation and configuration of `mod_nss`, coupling the
 HSM to NSS, generating the keys and configuring Apache, and last but not least
 we also do some benchmarks on Apache with the HSM and different key sizes.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Introduction
 

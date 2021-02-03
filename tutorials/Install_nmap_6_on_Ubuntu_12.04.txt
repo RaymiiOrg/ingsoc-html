@@ -19,8 +19,7 @@ is a list of the biggest changes:
   * New Nping Tool
   * Faster scans
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 We'll use `checkinstall` to create a .deb package instead of `make install`.
 `checkinstall` allows us to easily manage, remove or upgrade the software later

@@ -21,8 +21,7 @@ stable choice. In this guide I'll show you how to setup incremental backups
 from `Google Photos` on Ubuntu. My `DigiKam` database moved over without problems,
 and now I'm glad I don't have to use Windows for picture managemant anymore.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

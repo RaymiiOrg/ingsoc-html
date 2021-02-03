@@ -27,8 +27,7 @@ I do assume you have a working mutt set up as I don't cover that here. [The Arch
 Linux Wiki][2] on mutt is a great place to start if you haven't got mutt setup
 yet.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ### Installing software
 

@@ -14,8 +14,7 @@ statistics. If you ever used [Logwatch][1] you'll feel at home.
 
 [Github repository here][2] or just [the script here][3].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 ### Requirements
 

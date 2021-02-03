@@ -69,8 +69,7 @@ certificates to the HSM.
 
 This guide was tested on Ubuntu 14.04 and Arch Linux with a NitroKey HSM.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][12]
+$SPONSORMSG$
 
 ### Installation of the sc-hsm-embedded module
 

@@ -16,8 +16,7 @@ installation recently stopped working correctly, having problems discovering new
 machines and connecting to already set up machines. These commands wipe all
 settings and the ARD installation is clean again. This solved my problem.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
     
     

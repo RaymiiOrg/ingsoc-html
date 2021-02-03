@@ -26,12 +26,9 @@ As you might have guessed, I went down a different rabbit hole to remove this
 folder, SSH public key authentication does not work yet. The [DECUServe][4]
 system allows SSH login with a password initially.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### DIR [.SSH]
 

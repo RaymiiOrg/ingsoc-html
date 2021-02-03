@@ -23,8 +23,7 @@ price is even more awesome, the device costs 45 euro's, add 5 euro's and you
 have yourself a nice black case. It consumes very little power, combined with
 all the features a perfect dev / tinkerboard.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 [Olimex][5] sponsored a board for me to create the image, I would like to thank
 them very much for them.

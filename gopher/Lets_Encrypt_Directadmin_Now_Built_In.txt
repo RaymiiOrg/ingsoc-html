@@ -22,8 +22,7 @@ that involved manually logging in via SSH and a lot of work.
 DirectAdmin now supports Lets Encrypt natively since [version 1.50][2], so no
 more ssh fiddling, just via the control panel, for all the users on the server.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 The previous article still applies and it still works. It's generic enough for
 all control panels and non-supported webservers by Let's Encrypt.

@@ -16,8 +16,7 @@ which you can later put in your CMDB. The report has all the hardware data, from
 firmware, serial number, model, MAC addresses, disk and memory information, in
 short everything you need for your CMDB and support contracts.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This is the script:
 

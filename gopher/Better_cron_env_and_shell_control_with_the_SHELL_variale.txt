@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 > original article from: <http://shtylman.com/post/cron-shell-power/> \-
 archived for importance.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 If you don't know what [cron][2] is this post is not for you.
 

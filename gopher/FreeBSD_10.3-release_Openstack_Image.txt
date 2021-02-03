@@ -18,8 +18,7 @@ Create an account there and install the Openstack command line tools, like
 You can see all my [Openstack related articles here][3]. For example, how to use
 [Duplicity to create Encrypted backups to the Openstack Swift Object Store][4]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
 This tutorial is available for:
 

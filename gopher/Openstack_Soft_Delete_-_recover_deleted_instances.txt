@@ -20,8 +20,7 @@ save your ass (or an end-users bottom) if the wrong instance is removed. Setup
 is simple, just one variable in `nova.conf`. There are some caveats we'll also
 discuss here.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Pro's and Con's
 

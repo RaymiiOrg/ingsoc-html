@@ -30,8 +30,7 @@ For example, this website:
     notAfter=Jun 25 23:59:59 2014 GMT
     
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 By replacing the last parameter `-enddate` with `-text` you get the full
 certificate output. If you use `-subject` you can get the common name.

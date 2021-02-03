@@ -48,8 +48,7 @@ and wait until all of those are finished before continuing. That is very useful
 if you have a set number of jobs and want the implementation to handle all the 
 thread work for you.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

@@ -38,8 +38,7 @@ usage examples with GPG, OpenSSH and Thunderbird.
 This article is largely compatible with other gnuk tokens and other OpenPGP
 Smartcards like the Nitrokey Pro or the Yubikey.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 Nitrokey has multiple models like the Start, Storage, Pro and HSM. I'm
 especially fond of the Nitrokey HSM. I've written a [getting started][4] article

@@ -24,8 +24,7 @@ Installer files copied onto that, some Grub config and a reboot later, you're in
 the Windows 7 Installer. TL;DR, the installer cannot complete due to missing
 VirtIO drivers, which is a project for another time.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ![][2]
 

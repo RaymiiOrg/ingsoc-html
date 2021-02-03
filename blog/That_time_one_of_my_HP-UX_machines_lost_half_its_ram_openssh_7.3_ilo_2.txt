@@ -32,8 +32,7 @@ I'll cover the use of cstm (Support Tool Manager), how to connect to the HP iLO
 (out of band access) with modern OpenSSH (7.2) and the steps I took to gather
 information on what might have happened.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 This machine is not under monitoring yet, therefore it is regularly visited and
 checked manually. You could call that monitoring as well, but I rather have

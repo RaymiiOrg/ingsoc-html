@@ -21,8 +21,7 @@ status and other fun facts on the system.
 [All articles in the retro PC ads series are found here][10].
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

@@ -33,8 +33,7 @@ I'll show you that there is no one size fits all solution. Or at least, not a
 single fix for all. Treating your employees well, educatingthem on risks 
 and automating as much as possible will get you a long way."
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

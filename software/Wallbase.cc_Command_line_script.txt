@@ -14,8 +14,7 @@ requires a lot of javascript and ajax, and it is hard to get a lot of wallpapers
 at once. I've written a script for this problem, it lets you grep wallbase from
 the cli!
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ##### Features
 

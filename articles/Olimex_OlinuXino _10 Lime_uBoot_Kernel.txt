@@ -19,8 +19,7 @@ Ubuntu 14.04
 Buy the board here: and see my other tutorials and a small image here:
 <https://raymii.org/s/tags/olimex.html>
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 The original guide can be found here:
 

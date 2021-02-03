@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 This little nginx config snippet shows you how to catch all error codes and show
 a single unified error page.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This will respond to all HTTP error codes and return the `error.html` page from
 the site `root` folder.

@@ -15,8 +15,7 @@ rules. I use this often to troubleshoot servers with networking issues. If you
 just blindly do an `iptables -F` you might lock yourself out of a server since
 the INPUT policy might be DROP.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Save the script to something like `iptables-reset.sh` and run it:
 

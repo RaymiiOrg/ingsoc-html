@@ -21,8 +21,7 @@ LibreNMS alerts. This guide covers the setup of services (it's not enabled by
 default) and a few basic checks, like an http health check, certificate expiry
 and SSH monitoring.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 You need a LibreNMS server for this guide to work. The project provides
 excellent documentation. To get started, get a [Digital Ocean VPS][1] and follow

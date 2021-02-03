@@ -18,8 +18,7 @@ represented in decimal, therefore they can never be more than 255. If we take
 the whole binary number of all blocks, and convert that to base 10, we get a
 result like above, which in turn is a working network address.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This "feature" is documented in the [inet_aton(3)][2] manpage.
 

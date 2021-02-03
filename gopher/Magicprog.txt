@@ -16,8 +16,7 @@ a program to keep the life in a 2 player game. It's called MagicProg. It will
 also work for TGC's like pokemon, yu-gi-oh, WoW TCG or any other TGC. And it has
 a note area.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Screenshots
 

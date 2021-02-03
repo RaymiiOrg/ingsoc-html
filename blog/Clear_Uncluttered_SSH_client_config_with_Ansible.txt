@@ -21,8 +21,7 @@ and some of those servers require a seperate key, username, port or
 configuration. I don't like the big `~/.ssh/config` file which, in my case, is
 extremely large.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 I much rather prefer the `conf.d` type structure with a lot of small files.
 OpenSSH does not support this, however, Ansible has the [assemble][2] module

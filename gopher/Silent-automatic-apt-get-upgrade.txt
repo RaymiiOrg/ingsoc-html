@@ -13,8 +13,7 @@ This tutorial will show you how to setup completely silent apt-get upgrade via
 cron. It also defaults to not overwriting config files if a package has a newer
 version.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 > Important! You should watch out with this. Upgrades can break things. Use this
 on your own risk.

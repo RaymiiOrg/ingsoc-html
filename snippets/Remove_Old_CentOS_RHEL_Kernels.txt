@@ -15,8 +15,7 @@ CentOS. This is sometimes necessary because the /boot partition can fill up.
 [Are you running Ubuntu and want to clean up kernels? See this article:
 https://raymii.org/s/snippets/Remove _Old_ Ubuntu_Kernels.html][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 You can check which kernels you have installed using the `rpm -q kernel`
 command:

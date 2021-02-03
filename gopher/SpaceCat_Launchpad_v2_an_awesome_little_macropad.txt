@@ -15,8 +15,7 @@ pad and to experiment with QMK (firmware). So I ordered the LaunchPad full kit,
 an assortment of Gateron switches and a VIM keycap. This article goes over the
 quality, the build process and my current setup of the Launchpad.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ![][3]
 

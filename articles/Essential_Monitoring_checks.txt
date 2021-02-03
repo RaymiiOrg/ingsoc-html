@@ -27,8 +27,7 @@ If you have no monitoring at all, I recommend looking into Icinga2 or Nagios,
 but that's just personal preference. Read an [install guide][2] and check out
 [all my monitoring articles here][3].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 This is quite a lengthy article, but using the table of contents you can skip
 directly to the sections relevant to you.

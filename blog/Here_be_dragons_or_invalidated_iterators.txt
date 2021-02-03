@@ -20,8 +20,7 @@ somewhere deep in `new_allocator.h`. In this article I'll give a few examples,
 both using index based for loops and iterator based for loops, plus some more 
 details on what's going on with iterator invalidation.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

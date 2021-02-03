@@ -18,8 +18,7 @@ dates.
 We'll set up our own root CA. We'll use the root CA to generate an example
 intermediate CA. We'll use the intermediate CA to sign end user certificates.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
   * 31-03-2015: initial article
   * 17-12-2018: update to fix a few command / file paths

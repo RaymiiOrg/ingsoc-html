@@ -14,8 +14,7 @@ bash and supports multiple forms of API interaction. It also supports `xclip`,
 when available, the result of an interaction is copied to the clipboard for
 later use.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Download
 

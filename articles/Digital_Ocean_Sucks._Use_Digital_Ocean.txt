@@ -16,8 +16,7 @@ What is DigitalOcean? Buzzword Bingo, DigitalOcean provides scalable cloud
 servers across the globe. Down to earth, they provide virtual private servers.
 And frankly, they do it quite well.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Why they suck!
 

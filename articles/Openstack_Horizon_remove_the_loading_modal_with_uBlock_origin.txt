@@ -22,8 +22,7 @@ enough. Let's re-invent the wheel and significantly impact the user experience.
 With two rules in uBlock Origin this loading modal is removed and you can work
 normally again in Horizon
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Here's a screenshot of the loading dialog:
 

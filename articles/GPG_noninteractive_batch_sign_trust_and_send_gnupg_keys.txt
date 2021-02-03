@@ -20,8 +20,7 @@ keys. I wanted to trust, sign and publish all keys to a keyserver, this article
 shows how to do that noninteractively in batch form. Saves me doing the same
 thing four times.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 If you ever want to send me something encrypted, you can find [my GPG and S/MIME
 keys here][3]

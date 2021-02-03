@@ -17,8 +17,7 @@ I wrote this as an addition for my Nagios monitoring, that only shows how many
 updates there are, this is a lot more verbose. It also runs on Debian since 1
 Nov 2012. Only the links don't work then, because the packages are different.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 #### Example output:
 

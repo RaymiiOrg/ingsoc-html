@@ -21,8 +21,7 @@ do an unattended dist-upgrade.
 
 > The 3-Pi HSM cluster to be used for the cluster articles
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 The [Nitrokey HSM][3] is an open hardware and open software device. It is a USB
 version of the [SmartCard-HSM][4]. Both the [SmartCard-HSM][5] as the [Nitrokey

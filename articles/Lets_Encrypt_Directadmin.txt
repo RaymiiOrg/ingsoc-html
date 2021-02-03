@@ -34,8 +34,7 @@ This article shows you how to setup Let's Encrypt with the DirectAdmin web
 control panel. The guide is generic, so it works for other controlpanels as
 well.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 First we talk a little bit on what Let's Encrypt is and how it works. We close
 off with the actual certificate generation and installation.

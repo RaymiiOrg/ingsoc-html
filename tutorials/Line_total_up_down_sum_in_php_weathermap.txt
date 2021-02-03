@@ -23,8 +23,7 @@ a location is using in total. Using a clever workaround, you can display a
 line's total usage, including the scale. This article also gives some more tips
 on weathermap, colouring and scale.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Example
 

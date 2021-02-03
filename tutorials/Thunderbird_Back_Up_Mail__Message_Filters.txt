@@ -15,8 +15,7 @@ in your thunderbird Profile folder. On Mac OS X for example this is under the
 `/Users/<username>/Library/Thunderbird/Profiles/<profile>/ImapMail/<mailserver>/`
 folder. (If you use IMAP.)
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The file is named `msgFilterRules.dat` and the contents look a bit like this:
 

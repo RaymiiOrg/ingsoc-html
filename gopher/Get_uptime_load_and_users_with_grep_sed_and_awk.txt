@@ -13,8 +13,7 @@ While doing my monitoring script [ray-mon][1] I found out it can be quite hard
 to get the correct values for uptime, load average and users on different
 systems.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 For example, the _uptime_ command displays this on a mac:
 

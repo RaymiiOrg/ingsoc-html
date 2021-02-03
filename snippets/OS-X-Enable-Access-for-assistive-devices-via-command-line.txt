@@ -13,8 +13,7 @@ This command enables access for assistive decives on Apple OS X machines via the
 command line, or via Apple Remote Desktop. This is needed for software like
 SpectacleApp or Sizeup.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Mavericks
 

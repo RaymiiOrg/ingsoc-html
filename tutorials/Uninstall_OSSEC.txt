@@ -15,8 +15,7 @@ time alerting and active response. It runs on most operating systems, including
 Linux, MacOS, Solaris, HP-UX, AIX and Windows. It also includes agentless
 monitoring for use with for example Cisco or Juniper hardware.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [If you are looking for an OSSEC installation tutorial, check this link. It
 covers the OSSEC client and server install, and includes MySQL support plus an

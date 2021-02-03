@@ -23,8 +23,7 @@ In this post I'll go over my usage of a feed reader, the differences between
 miniflux and tiny tiny rss and the differences in server hosting, miniflux has 
 different server requirements which most shared hosts don't offer.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

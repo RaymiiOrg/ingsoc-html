@@ -13,8 +13,7 @@ This tutorial shows you how to set up `ejabberd` to authenticate against a
 Microsoft Active Directory LDAP. It is tested with an mixed Server 2008 / Server
 2012 Active Directory, and ejabberd 2.1.10 running on Debian 7 and Ubuntu 12.04.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [If you need to set up an ejabberd server then you can read my tutorial here how
 to do that][2].

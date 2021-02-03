@@ -19,8 +19,7 @@ certificates for `*.example.com`, and not any CA in your browser store. This
 article has background theory and configuration examples for Apache, Lighttpd
 and NGINX.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### HTTP Public Key Pinning Extension
 

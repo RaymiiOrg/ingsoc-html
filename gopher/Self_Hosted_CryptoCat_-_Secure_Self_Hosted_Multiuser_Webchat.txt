@@ -19,8 +19,7 @@ chat and file and photo sharing.
 [There were/are some issues with the encryption provided by CryptoCat. These
 seem to be fixed now, but still, beware.][2]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 This tutorial is tested on Ubuntu 12.04.
 

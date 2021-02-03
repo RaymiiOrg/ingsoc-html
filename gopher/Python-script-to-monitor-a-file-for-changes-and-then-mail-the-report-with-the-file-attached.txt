@@ -16,8 +16,7 @@ the database. This script runs via cron before and after the AIDE run, so I have
 an archive of databases. But it can be used for all kind of files, not just for
 the AIDE database.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Requirements
 

@@ -20,8 +20,7 @@ else, so a more beginner friendly distro seemed to be a better choise. This
 article will cover the removal of Chrome OS and the installation of Ubuntu Mate
 on the LG Chromebase.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Hardware
 

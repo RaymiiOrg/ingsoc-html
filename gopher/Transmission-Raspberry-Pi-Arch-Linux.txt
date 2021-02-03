@@ -16,8 +16,7 @@ service. The test was sucessfull, so I set up a real world setup. The Raspberry
 Pi would serve another purpose, namely, a Linux Torrent seedbox. As in, to seed
 Linux torrents from [linuxtracker.org][2].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 I choose Transmission for this, because it is simple, fast and stable.
 Transmission has a good webinterface, plus it allows access from remote clients

@@ -14,8 +14,7 @@ bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only
 needing a web browser to view and no proprietary code, so you can make sure I
 won't steal your password.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Demo
 

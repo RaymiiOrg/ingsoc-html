@@ -15,8 +15,7 @@ only have to update the mirror, and the rest downloads the packages from there,
 so instead of having to download it 6 times (for 6 computers) you only download
 it once. Saves you and the mirrorservers some bandwidth.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 We will be using the apt-mirror tool to do all the magic.
 

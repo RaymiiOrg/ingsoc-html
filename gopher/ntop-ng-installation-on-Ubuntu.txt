@@ -21,8 +21,7 @@ This is a guide on installing the latest ntop-ng (1.1) on Ubuntu 12.04.
 This tutorial will walk you through the compilation and installation of ntopng
 from source. The package in the Ubuntu 12.04 repositories it quite old.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [![ntop][2]][2]
 

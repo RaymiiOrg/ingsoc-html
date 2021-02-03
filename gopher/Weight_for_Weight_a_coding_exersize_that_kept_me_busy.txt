@@ -17,8 +17,7 @@ I was not doing the exercise. If a problem fascinates me that way, I can't stop
 thinking about it until I've solved it. In this article I'll walk you through 
 my work on [this kata][2]. 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

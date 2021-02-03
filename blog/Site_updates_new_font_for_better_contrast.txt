@@ -21,8 +21,7 @@ found   [here][7]. The last site update was [about the costs to run
 Raymii.org][6]. If you read these site update articles, please [let me
 know][8]. I'd like to hear your opinion on the new layout.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

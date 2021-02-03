@@ -16,8 +16,7 @@ about this system or which parts were used, I managed to find the exact part
 number and device type so we could order a spare. This small guide uses sasmgr
 to get the data on HP-UX 11.31.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Hardware Information on HP-UX
 

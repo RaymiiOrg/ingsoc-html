@@ -16,8 +16,7 @@ Some software I encounter does not have a debian .deb package available. Via the
 here for download. There are also .rpm packages, but these are untested and only
 the .deb versions converted with alien.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ##### Logstalgia
 

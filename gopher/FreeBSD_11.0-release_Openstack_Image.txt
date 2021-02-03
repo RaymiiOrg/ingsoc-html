@@ -25,8 +25,7 @@ manually.
 You can see all my [Openstack related articles here][6]. For example, how to use
 [Duplicity to create Encrypted backups to the Openstack Swift Object Store][7]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][8]
+$SPONSORMSG$
 
 This tutorial is available for:
 

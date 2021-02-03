@@ -31,8 +31,7 @@ have a lot of professional experience with large expensive HSM hardware.
 If you want to know more on the Nitrokey HSM then please read the [getting
 started articles][7].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][9]
+$SPONSORMSG$
 
 ![][10]
 

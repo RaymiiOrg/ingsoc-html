@@ -38,8 +38,7 @@ This tutorial is available for the following platforms:
 
   * [Ubuntu 12.04 LTS][11]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][12]
+$SPONSORMSG$
 
 IPSec encrypts your IP packets to provide encryption and authentication, so no
 one can decrypt or forge data between your clients and your server. L2TP

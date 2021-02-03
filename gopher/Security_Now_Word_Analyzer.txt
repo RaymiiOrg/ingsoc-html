@@ -15,8 +15,7 @@ Twit.tv network.
 Steve pays to get the podcast transcribed, and the files are up over are
 [grc.com][1].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 I decided to run my [analyzer][3] over the complete podcast text archive. This
 is from episode 001 to 371.

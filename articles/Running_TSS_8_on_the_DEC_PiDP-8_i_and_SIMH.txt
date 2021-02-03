@@ -13,8 +13,7 @@ In this guide I'll show you how run the TSS/8 operating system on the PiDP
 replica by Oscar Vermeulen, and on SIMH on any other computer. I'll also cover a
 few basic commands like the editor, user management and system information.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 TSS-8 was a little time-sharing operating system released in 1968 and requires a
 minimum of 12K words of memory and a swapping device; on a 24K word machine, it

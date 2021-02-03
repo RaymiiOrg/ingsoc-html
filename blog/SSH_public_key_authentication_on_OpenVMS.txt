@@ -21,12 +21,9 @@ There is a bit of documentation from HP to set up SSH key authentication but
 that misses one important little thing. That thing took me a few days to figure
 out.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### Client public key authentication
 

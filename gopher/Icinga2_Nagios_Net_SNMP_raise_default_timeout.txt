@@ -17,8 +17,7 @@ for the checks above 60 seconds was not that easy since the 60 second timeout is
 hardcoded in the underlying library (NET::SNMP). This article shows you how to
 raise that timeout on an Ubuntu 16.04 system.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 In the webinterface of Icinga2 the logs are unclean, making it harder to find
 actual errors:

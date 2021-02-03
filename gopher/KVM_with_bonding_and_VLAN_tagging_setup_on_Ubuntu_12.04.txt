@@ -23,8 +23,7 @@ The switch ports for the KVM host are trunk ports for the above VLAN's (11, 10
 and 12). The two NIC's are bonded in balance-xor (bond mode 3) for fault
 tolerance and load balancing.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 We are going to create three interfaces using the linux vlan config, `bond0.11`,
 `bond0.10` and `bond0.12`. We need to do this for the VLAN tagging.

@@ -29,8 +29,7 @@ This article focusses on the hobbyist aspect of Alpha emulation. If you're a
 company and spend a big sum of money, you will have all the resources you'll
 ever need.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ### Limits of commercial Alpha emulators
 

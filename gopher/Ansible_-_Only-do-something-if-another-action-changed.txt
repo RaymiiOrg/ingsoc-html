@@ -16,12 +16,9 @@ signing but only executes the apt-add command if the key has changed. Or a
 playbook which clones a git repository and only restarts a service if the git
 repository has changed.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
   * 15-12-2018: Updated ansible syntax to 2.5
   * 22-12-2013: initial article

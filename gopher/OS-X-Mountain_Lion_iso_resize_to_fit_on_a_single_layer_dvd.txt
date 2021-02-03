@@ -15,8 +15,7 @@ big for a single layer DVD. The install works fine afterwards, the .dmg file
 just has a defined size of 4.75 GB. Resizing it via the Disk Utility will not
 work because it is a read only dmg image.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 You need to download OS X Mountain Lion via the App Store. This script assumes
 that file path.

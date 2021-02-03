@@ -13,8 +13,7 @@ This little bash script will let you do an action (or actions) in all
 subdirectories of a folder. It is a small for loop, which I needed for a git
 cleanup.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ##### Git clean
 

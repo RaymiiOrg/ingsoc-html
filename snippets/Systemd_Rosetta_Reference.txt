@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 The below table has systemd versus init examples. the service used as example is
 _nginx_ :
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Action | Debian Init | Ubuntu Upstart | Red Hat/CentOS Init | **Systemd**  
 \---|---|---|---|---  

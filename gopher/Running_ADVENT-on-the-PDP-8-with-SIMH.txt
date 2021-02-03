@@ -21,8 +21,7 @@ OS/8 to load ADVENTURE, then we use our brain to play the game. As a bonus, I
 also show you how to edit files using EDIT, and show you a bit of the OS/8
 system.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Introduction
 

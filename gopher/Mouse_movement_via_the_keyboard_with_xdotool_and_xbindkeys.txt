@@ -14,8 +14,7 @@ keyboard. Normally you would use [Mouse Keys][1], but she uses a [kinesis
 freestyle2][2] which has no numpad. By using [xbindkeys][3] together with
 [xdotool][4] we can use our own key combination to move the mouse keys.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
 Make sure the packages are installed:
 

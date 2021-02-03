@@ -16,8 +16,7 @@ from a desktop machine, or any machine which runs bash, find and ls. Usage is
 simple, save the script, chmod +x it, then run (./report.sh). If you want a
 specific directory to be scanned run it like ./report.sh /var/www/my/dir
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This is the script:
 

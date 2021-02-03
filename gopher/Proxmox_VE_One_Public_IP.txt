@@ -16,8 +16,7 @@ IP's. Therefore the VM's in proxmox cannot all have a public IP. For most of
 them that is not a problem. If needed I run a proxy or set up iptables to
 forward ports to the VM's.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This guide is tested on a proxmox machine running proxmox version 3.2.
 

@@ -13,8 +13,7 @@ Format      : 	Markdown/HTML
 
 I read an article on [The Register][2] ([via][3]) regarding the Investigatory Powers Bill. The part were ISP's are forced to save their customers browsing history for a year is the most horryfing part, just as that whole bill. Let's hope the political process and organizations like the Open Rights Group and the EFF have enough lobbying power to change people's minds. If that fails, then we can all try to overflow the logging. Just as some people put keywords in their mail signatures to trigger automatic filters and generate noise, we should all generate as much data and noise as possible. This way the information they do gather will not be usefull, it will take too much time, storage and effort to process it and thus the project will fail. 2 years ago I wrote a small Python script which browser the web for you, all the time. Running that on one or two Raspberry Pi's or other small low power computers 24/7 will generate a lot of noise in the logging and filtering.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 ### Background
 

@@ -18,9 +18,7 @@ once in an overview.
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 I'm using `jq` to filter out specific fields of the JSON API output, but you can
 omit that and just use shell (`awk`/`sed`) if you want to.

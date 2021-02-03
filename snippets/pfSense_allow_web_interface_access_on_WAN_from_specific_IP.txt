@@ -17,8 +17,7 @@ different IP via the WAN interface you can use the easyrule command line to
 temporarly add a rule that allows your remote IP in. This simple snippet shows
 you how.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The following command adds a firewall rule, allowing tcp traffic in on port 443
 from remote IP XX.XX.XX.XX: to the WAN IP on YY.YY.YY.YY:

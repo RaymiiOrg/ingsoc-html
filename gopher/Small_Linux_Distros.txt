@@ -18,8 +18,7 @@ interface and software to accomplish task with. ([Sorry MikeOS][1]). The list
 constist of: Feather Linux, MenuetOS, Sky OS, Damn Small Linux, Tiny Core,
 SliTaz GNU/Linux, ReactOS, Haiku, Syllable, AntiX, Puppy and EcomStation2.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Feather Linux
 

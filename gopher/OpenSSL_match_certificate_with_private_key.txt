@@ -14,8 +14,7 @@ certificate did not match the private key, because the private key file was
 damaged. After I copied the certificate all was good, so it might got damaged
 while `scping` it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The following `openssl` commands give you the hash of the modulus of certificate
 and the private key. If those two don't match then they either do not below to

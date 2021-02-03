@@ -33,8 +33,7 @@ written in Erlang. Configuration is done in a simple readable XML file. Tsung
 can be run distributed as well for large setups. It has good reporting and a
 live web interface for status and reports during a test.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 I'm by no means a load-testing expert. User flow, parsing the results and such
 are not my cup of tea. I do however understand server performance and

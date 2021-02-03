@@ -20,8 +20,7 @@ right place, too ;).
 You need a collectd server set up to fully use this tutorial, but I also have
 written a tutorial to do that.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [The collectd server tutorial can be found here][2].
 

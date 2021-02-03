@@ -13,8 +13,7 @@ This little snippet switches off Bonjour on OS X via the command line or Apple
 Remote Desktop. This is useful when you want to disable iChat or Messages
 chatting on the local network.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 > Bonjour is Apple's implementation of Zero configuration networking (Zeroconf),
 a group of technologies that includes service discovery, address assignment, and

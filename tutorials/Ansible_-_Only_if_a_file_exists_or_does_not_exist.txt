@@ -18,12 +18,9 @@ file exists. If the file exists, it will not execute the action. The same goes
 for checking if a file does exist and only executing the action if it exists.
 (The action you want to do will remove that file).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 The below example command will generate [Diffi Hellman parameters for NGINX
 ssl][2]. This command creates the file `/etc/ssl/certs/dhparam.pem`. It should

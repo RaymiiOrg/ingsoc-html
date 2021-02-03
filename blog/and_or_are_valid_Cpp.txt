@@ -16,8 +16,7 @@ he never saw it before. It's in C++ since C++ 11, but MSVC requires a specific
 compiler flag ('/Za') or the "iso646.h" header. This post has a few samples on 
 the usage inclusing other alternative tokens like bitor, xor and or_eq.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

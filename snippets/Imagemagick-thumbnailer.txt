@@ -16,8 +16,7 @@ screengrab. It also works with pictures, but then you'll have to change the png
 to jpg in the script. The script also makes a HTML page with a 2 collumn table
 witth the thumbs in it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Make sure you have imagemagick installed:
 

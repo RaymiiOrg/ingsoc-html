@@ -24,8 +24,7 @@ is released now, so HPKP is no longer supported.
 
 A certificate authority, like Comodo, because they are trusted by every browser, can issue a certificate for any site (so google.com, raymii.org). But, the Netherlands Government ([Staat der Nederlanden][3]) or the [Hong Kong Post office][4] (China government) are trusted as well, thus are also able to issue a certificate for google.com. Now, there are all kinds of rules prohibiting that, but as [I've shown][5] by getting a certificate for a website I don't own, just as [this guy for Microsoft Live.fi][6], that it is prohibited by rules doesn't mean it is not technically possible. HPKP was meant to prevent that, by hardcoding a certificate for your site into a browser.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][7]
+$SPONSORMSG$
 
 The [Google development announcement can be found here][8], where they describe
 and discuss the intent to remove the feature from chrome.

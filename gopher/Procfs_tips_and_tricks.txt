@@ -20,8 +20,7 @@ Note that most /proc/ entries are separated by null characters, and there may be
 a null character at the end. Where applicable the `tr` command is used to
 replace these.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Processes
 

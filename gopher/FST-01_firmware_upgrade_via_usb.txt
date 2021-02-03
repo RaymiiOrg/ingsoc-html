@@ -22,8 +22,7 @@ Pro) for their key storage, but the Nitrokey Start does that all in the
 microcontroller. The Nitrokey Start is based on the FST-01 device, as are the
 other Nitrokeys, since the Nitrokey Start runs the same firmware, gnuk 1.0.4.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][6]
+$SPONSORMSG$
 
 ![][7]
 

@@ -21,8 +21,7 @@ is still the in the 3 branch. This guide helps to fix that by using the latest
 Nagios version. We also install Nagiosgraph, a plugin for Nagios which gives you
 graps of the metrics.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 You can find more information about Nagios on the official website: [http://ww
 w.nagios.org/projects/nagioscore][3].

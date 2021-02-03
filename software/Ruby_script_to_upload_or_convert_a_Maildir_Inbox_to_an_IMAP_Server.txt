@@ -17,8 +17,7 @@ I decided to change email server for several reasons, anyway, long story short I
 was using postfix(qmail before that) and decided to switch to citadel, which is
 much easier to deal with (simple config).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Anyway, Citadel use it's own format for emails (Berkeley DB), so you can't just
 copy over the existing emails stored in Maildir format (8 years worth !), but

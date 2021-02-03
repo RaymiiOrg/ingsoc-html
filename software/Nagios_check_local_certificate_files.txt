@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 This tutorial will show you how you can use the nagios plugin "check _ssl_ cert"
 to monitor locally stored SSL certificates.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Installing the nagios-plugin
 

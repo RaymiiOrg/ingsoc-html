@@ -35,8 +35,7 @@ them very much for them.
 The difference with the A10-LIME is the dual core ARM processor, 1 GB of ram
 instead of 512 and gigabit networking.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
 This tutorial is inspired by the build scripts of Igor Pecovnik,
 [www.igorpecovnik.com][6]. They've made a script which does this all for you in

@@ -15,8 +15,7 @@ for Ansible.
 [Github repository][1]  
 [Official Website][2]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ### Installation
 

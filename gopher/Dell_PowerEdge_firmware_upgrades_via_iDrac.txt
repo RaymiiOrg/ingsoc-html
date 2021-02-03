@@ -16,8 +16,7 @@ the error that RPM could not be found. Which is correct since it's not Red Hat.
 In this small article I'll show you how to upgrade the firmware via the iDrac,
 which I recently discovered.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Upgrade via the shell
 

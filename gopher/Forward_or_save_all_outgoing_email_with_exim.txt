@@ -17,8 +17,7 @@ captures all outgoing email, sent by PHP scripts or cronjobs, or user accounts
 that send via exim. This tutorial also shows how to forward or save all outgoing
 email for a specific domain.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Exim configuration
 

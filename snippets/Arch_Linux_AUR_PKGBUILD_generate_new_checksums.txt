@@ -16,8 +16,7 @@ manually fix it, by changing the download link or version. With a new version
 you get new checksums, and the `makepkg` command has a neat feature which
 generates the checksums for you.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 After you have updated your `PKGBUILD` you can get new checksums with the
 following command:

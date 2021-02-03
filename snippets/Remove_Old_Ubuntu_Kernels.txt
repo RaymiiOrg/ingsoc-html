@@ -20,8 +20,7 @@ manually, or use this one liner to automatically remove them all.
     export KERNEL="$(uname -r | grep -Po '([0-9\.\-]*[0-9])?')"; dpkg --get-selections | grep -E "linux-(header|image).*" | grep -iw install | sort | grep -v "$KERNEL" | grep -v "lts" | sed 's/install//g' | xargs dpkg -P
     
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Here's the command by command explanation:
 

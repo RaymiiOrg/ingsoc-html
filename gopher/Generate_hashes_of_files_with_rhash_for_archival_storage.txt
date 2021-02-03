@@ -24,8 +24,7 @@ simple.
 This small article shows you how to create an archive file with the checksums
 included and shows you how to validate these checksums later on.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The data in question are archived tapes, disk copies, source code and
 documentation for the PDP8 mainframe. We also have these for the PDP11 and a few

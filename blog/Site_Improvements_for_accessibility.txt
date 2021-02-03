@@ -18,8 +18,7 @@ main improvements are a text-only version of every content page
 
 [Three months ago I also did some site [updates][1]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Skip to main content
 

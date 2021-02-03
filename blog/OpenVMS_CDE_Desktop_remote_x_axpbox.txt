@@ -24,14 +24,11 @@ This article shows you how to run the CDE GUI in a remote X session, including
 switching between the old Motif look and the new DECWindows and how to run 
 Tetris.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 VSI [offers a hobbyist program][6] where you can get an OpenVMS license for 
 free, and this guide is a great fit for hobbyists. I know of no OpenVMS server

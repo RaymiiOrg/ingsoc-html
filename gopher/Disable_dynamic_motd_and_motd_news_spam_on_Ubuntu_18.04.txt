@@ -16,8 +16,7 @@ Canonical (via `motd.ubuntu.com`). This small guide shows you how to disable
 news, (parts of) the dynamic motd or just revert back to a plain old `/etc/motd`
 file.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### (Dynamic) motd
 

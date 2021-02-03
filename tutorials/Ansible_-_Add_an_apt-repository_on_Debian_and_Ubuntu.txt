@@ -10,17 +10,9 @@ Format      : 	Markdown/HTML
 
 
 
-This is a guide that shows you how to add an apt repository to Debian and Ubuntu
-using Ansible. It includes both the old way, when the apt modules only worked on
-Ubuntu, and the new way, now that the apt-modules also support Debian, plus some
-other tricks.
+$SUMMARY$
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
-
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
-
-[100]: https://github.com/sponsors/RaymiiOrg/
+$SPONSORMSG$
 
   * 14-12-2018: updated ansible syntax to 2.5
   * 15-05-2016: initial article

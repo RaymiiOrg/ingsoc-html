@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 As all my servers run on Debian and I like to keep things clean, here are some
 handy commands.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ##### Find large packages
 

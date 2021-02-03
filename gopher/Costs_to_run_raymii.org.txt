@@ -29,8 +29,7 @@ with Ansible. The [VPS servers][99] don't need many resources, 2 GB of disk and
 nobody sells low end VPSes anymore. After the first sale of LowEndBox.org the 
 fun was gone there, I used to be very active on the site and forum there.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

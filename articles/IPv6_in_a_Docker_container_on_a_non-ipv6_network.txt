@@ -18,8 +18,7 @@ the workaround I used to add IPv6 to a Docker container on a non IPv6 network.
 It was tested on an `Ubuntu 14.04` container, but should work for other Linux
 distro's as well.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 The workaround involes installing `miredo` in the container to get a tunnel and
 an IPv6 connection that way. Extremely simple, but it required some extra

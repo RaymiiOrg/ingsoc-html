@@ -14,8 +14,7 @@ version of python you can either mess with repo's, compile from source or use
 pythonbrew. This tutorial will show you how to install python 2.7 or 3 under
 debian 6 using pythonbrew.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### What is pythonbrew
 

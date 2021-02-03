@@ -16,8 +16,7 @@ send` we can show the current song when it changes as a desktop notification.
 I'd rather use Python or `jq` if it has to be shell. In this case the co-worker
 asked to just use simple shell tools and no external dependencies.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 This is the `json` file, formatted:
 

@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 restrict _ssh.sh is a bash script which restricts ssh for a user to a set of
 (flexible) commands via .ssh/authorized_ keys, and log it verbosely.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Purpose
 

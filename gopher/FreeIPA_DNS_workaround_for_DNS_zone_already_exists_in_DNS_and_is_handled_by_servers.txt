@@ -14,8 +14,7 @@ zone. The zone already exists on the internet so, logically, FreeIPA wouldn't
 allow me to hijack this domain locally. My usecase is special, so I wanted to
 forcefully add this zone as a forward zone.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 In the web UI of FreeIPA when trying to add this existing zone, the following
 error appears:

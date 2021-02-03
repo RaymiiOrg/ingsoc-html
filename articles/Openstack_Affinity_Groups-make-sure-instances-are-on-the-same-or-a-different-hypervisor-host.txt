@@ -25,8 +25,7 @@ new server from that image, in the new affinity group.
 You can see all my [Openstack related articles here][1]. For example, how to
 build a [High Available cluster with Ansible and Openstack][2].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ### Create an Affinity Group
 

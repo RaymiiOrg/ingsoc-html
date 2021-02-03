@@ -44,8 +44,7 @@ This tutorial is available for the following platforms:
 
   * [Ubuntu 12.04 LTS][12]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][13]
+$SPONSORMSG$
 
 This tutorial was tested on a Raspberry Pi running Arch Linux ARM, installed via
 NOOBS. It ran the current up to date Arch Linux ARM, here are the versions used:

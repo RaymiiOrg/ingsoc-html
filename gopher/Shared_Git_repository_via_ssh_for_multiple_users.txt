@@ -15,8 +15,7 @@ if you have a small team of people that don't often need access to the repo and
 don't want something like github or bitbucket. With this you can use existing
 infrastructure.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 I have used this for a sysadmin team which had a few scripts scattered.
 

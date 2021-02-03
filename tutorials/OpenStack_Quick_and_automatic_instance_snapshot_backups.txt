@@ -30,8 +30,7 @@ store, allowing you to create a new VM based on the image, thus restoring the
 backup or creating a clone. If you use floating IP's, it's a matter of assigning
 the floating IP to the new VM and you're all set.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ![][3]
 

@@ -28,12 +28,9 @@ about Ansible.
 
 ![ansible][2]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 I [found][4] documentation on the new modules but that just created a single
 instance. I need to spawn multiple instances and add those to specific

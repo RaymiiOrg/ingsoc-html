@@ -17,8 +17,7 @@ it could not be a file, so using a YAML Literal Block Scalar I was able to add
 the key inline in the playbook. Not the best way to do it, but one of the many
 ways Ansible allows it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Literal Block Scalar
 

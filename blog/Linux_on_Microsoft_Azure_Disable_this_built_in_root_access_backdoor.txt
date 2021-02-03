@@ -17,8 +17,7 @@ passwords and SSH configuration. This article explains what the backdoor is,
 what it is meant to do, how it can be disabled and removed and what the
 implications are.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 Azure is Microsoft's Cloud platform. It provides virtual machines and related
 datacenter virtualization, next to software as a service (hosted stuff like

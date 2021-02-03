@@ -11,8 +11,7 @@ Format      : 	Markdown/HTML
 
 This site is generated with my [self-written open source static site generator named ingsoc][1] (named after 1984). I've updated the overview pages with a new layout so that items are sorted by their publishing date instead of alphabetically. I've also rewritten some internal logic regarding tags and categories. This article shows the difference before and after and includes some old screenshots of raymii.org
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Semantics
 

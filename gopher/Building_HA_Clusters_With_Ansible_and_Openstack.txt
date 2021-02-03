@@ -43,8 +43,7 @@ do. CloudVPS is the best one though, in my opinion. The screenshots you'll see
 are not of the default Openstack dashboard but of the CloudVPS Skyline Openstack
 Interface.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 The playbook can be found [in this git repository][4].
 

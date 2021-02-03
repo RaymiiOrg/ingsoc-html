@@ -9,8 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This is a one liner for OpenSSL to generate a self signed certificate and
 private key.

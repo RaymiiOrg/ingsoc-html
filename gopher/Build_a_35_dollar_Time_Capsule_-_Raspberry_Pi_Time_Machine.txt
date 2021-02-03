@@ -18,8 +18,7 @@ automatically create and restore (encrypted) backups. A Time Capsule is
 basically an expensive NAS that only talks the AFP/netatalk protocol. The 2 TB
 version [costs $299 at this time][2], a [Raspberry Pi only $35][3].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 You will need the following:
 

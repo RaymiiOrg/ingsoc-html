@@ -18,8 +18,7 @@ as a snap. My gnash package is confined (no `--classic` needed), the source
 code for the snap [is on my github][3] and on any snap-enabled distro you
 can now `snap install gnash-raymii` to enjoy Gnash again.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

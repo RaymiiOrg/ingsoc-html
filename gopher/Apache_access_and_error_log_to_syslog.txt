@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 This snippet shows you how to redirect the Apache access log to syslog using the
 Customlog statement, and the Error log to syslog via the ErrorLog statement.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Using the double pipe prevents spawning a shell for every hit. Append the below
 line to a vhost to have everything logged to syslog.

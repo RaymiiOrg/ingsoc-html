@@ -14,8 +14,7 @@ First we use sqlite3 to parse the Firefox history database and get the last
 three months, then we remove all the IP addresses and port numbers and finally
 we sort and count it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
     
     

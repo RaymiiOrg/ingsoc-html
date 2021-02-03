@@ -15,12 +15,9 @@ ownership of a key, or to prove that a file hasn't been modified since you
 signed it. This works both with small text files as well as huge photo's,
 documents or PDF files.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### Generate a keypair
 

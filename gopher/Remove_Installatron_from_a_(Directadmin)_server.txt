@@ -15,8 +15,7 @@ One of the servers I use to host email and a few small websites for friend and
 family comes with Installatron installed by default. It is a way to easily
 install web applications and keep them up to date automatically.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 It is a paid service, but it is free for one domain. It can be confusing for
 some users on the server since the button is in the controlpanel.

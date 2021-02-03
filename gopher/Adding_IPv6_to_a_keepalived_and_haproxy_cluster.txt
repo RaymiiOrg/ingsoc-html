@@ -17,8 +17,7 @@ reachable via IPv6. This article goes over the settings and configuration
 required for haproxy and keepalived for IPv6. The internal cluster will only be
 IPv4, the loadbalancer terminates HTTP and HTTPS connections.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Cluster setup
 

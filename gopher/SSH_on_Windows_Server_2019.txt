@@ -17,8 +17,7 @@ bonus this time is how to elevate permissions via SSH on Windows, sudo but way
 more complicated. This guide is also applicable on Windows 10, build 1809 and
 up.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
 ![][5]
 

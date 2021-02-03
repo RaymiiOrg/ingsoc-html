@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 So, I have some nice tips for your .bashrc, with screenshots. Also a handy
 command to show your biggest packages in pacman/arch.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ##### Simple Calendar with today marked as
 

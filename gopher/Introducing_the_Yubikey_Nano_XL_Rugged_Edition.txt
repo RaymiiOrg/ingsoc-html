@@ -23,8 +23,7 @@ so I wanted to fix this. I did not fix it by buying a regular sized yubikey, but
 I found a clever workaround, which I name the Yubikey nano XL Rugged. You'll
 understand when you see the pictures.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 ### Yubikey Nano Rugged XL
 

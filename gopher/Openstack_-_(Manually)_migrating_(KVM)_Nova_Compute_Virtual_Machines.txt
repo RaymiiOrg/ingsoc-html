@@ -32,8 +32,7 @@ manual migration using native linux tools.
 You can see all my [Openstack related articles here][1]. For example, how to
 build a [High Available cluster with Ansible and Openstack][2].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 It is tested on an Openstack cloud running Icehouse with KVM as the only
 hypervisor. If you run Xen or something else, the manual process is mostly the

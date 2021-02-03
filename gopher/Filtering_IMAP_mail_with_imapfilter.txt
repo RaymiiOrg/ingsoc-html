@@ -21,8 +21,7 @@ filters on the server using IMAP queries. It is a lightweight command line
 utility, the configuration can be versioned and is simple text and it is very
 fast.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 Imapfilter is configured via a config file. This article will discuss this
 config file with filtering and other examples. Start with a blank one:

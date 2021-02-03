@@ -16,8 +16,7 @@ is SUSE, we can add repositories and install software from there. By default it
 comes without repositories enabled. I needed to do this because I want to use
 NRPE on the vCenter appliance.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Make sure you can SSH to your vCenter Appliance. I use my own account with sudo,
 however, if you're feeling lucky you might be able to use the root account.

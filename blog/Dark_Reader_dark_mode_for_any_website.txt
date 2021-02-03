@@ -15,8 +15,7 @@ all other major browsers), is open source, causes less strain on the eyes and
 improves battery life. Just as the earlier post on Blokada, I find this such
 a cool piece of software I wanted to share it with all my readers.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

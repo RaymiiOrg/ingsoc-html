@@ -15,8 +15,7 @@ by assigning two or more nodes a virtual IP and monitoring those nodes, failing
 over when one goes down. Keepalived can do more, like load balancing and
 monitoring, but this tutorial focusses on a very simple setup, just IP failover.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Internally keepalived uses VRRP. The VRRP protocol ensures that one of
 participating nodes is master. The backup node(s) listens for multicast packets

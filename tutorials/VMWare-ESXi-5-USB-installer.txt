@@ -15,8 +15,7 @@ install disk.
 
 This also works for the special HP version of ESXi with all the drivers.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 These steps come from the [VMware install guide][2], but the VMWare website and
 their search function are both shit. And the steps in the manual don't

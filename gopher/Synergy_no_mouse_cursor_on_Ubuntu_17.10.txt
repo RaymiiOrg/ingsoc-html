@@ -15,8 +15,7 @@ and have a seperate box with Windows next to it, and use your Linux mouse to
 control windows. On Ubuntu 17.10 the mouse cursor is not visible, but does work.
 This snippet provides a fix. Hint, wayland is in the way.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Log out to the Login screen, open the Cog menu and select "Ubuntu on Xorg" as
 the desktop session. Then the cursor is displayed. zx

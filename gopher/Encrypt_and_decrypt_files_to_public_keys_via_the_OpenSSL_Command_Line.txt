@@ -14,12 +14,9 @@ and decrypt a file using a public key. We will first generate a random key,
 encrypt that random key against the public key of the other person and use that
 random key to encrypt the actual file with using symmetric encryption.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 Because of how the RSA algorithm works it is not possible to encrypt large
 files. If you create a key of `n` bits, then the file you want to encrypt must

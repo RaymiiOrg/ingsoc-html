@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 This tutorial shows you how to have NGINX use different folders as different
 upstream proxy's.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 By default, if you have a `location` block which has a proxy pass, and the
 `location` block is a folder, for example `/wiki`, the folder is sent back to

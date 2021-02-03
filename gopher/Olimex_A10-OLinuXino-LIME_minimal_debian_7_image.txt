@@ -19,8 +19,7 @@ more awesome, the device is 30 euro's, add 5 euro's and you have yourself a nice
 black case. It consumes very little power, combined with all the features a
 perfect dev / tinkerboard.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 Sadly, the default Debian 7 image suplied by Olimex is bloated and huge. Perfect
 for the general tinkerer, has a Desktop Environment and a lot of dev tools and

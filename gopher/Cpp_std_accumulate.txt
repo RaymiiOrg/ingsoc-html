@@ -18,12 +18,9 @@ header, and it also accepts a custom binary function to apply instead of
 the for loop you would use otherwise.
 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 Update 2020-11-08: Thank you Martin Blasko for reporting a few errors in this article!
 

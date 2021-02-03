@@ -21,8 +21,7 @@ will handle it, if it looks like something else, it will forward it to the
 configured other program. I used to use [SSLH][2] to get this functionality, but
 now it's built into the nginx webserver.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 This small guide will cover the installation of the latest version of nginx on
 Ubuntu and configuring this multiplex feature.

@@ -43,8 +43,7 @@ they allow people to  take your stuff and never contribute back. I prefer
 strong copyleft licenses that force you to contribute. [Here is a good
 article][23] going into permissive vs copyleft licensing.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

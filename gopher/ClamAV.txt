@@ -16,8 +16,7 @@ It also covers if, and why you might need a virus scanner for Linux/Unix. As an
 extra, it also covers scans for specific folders which remove infected files
 automatically.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 #### Do you need a virus scanner on Linux/Unix?
 

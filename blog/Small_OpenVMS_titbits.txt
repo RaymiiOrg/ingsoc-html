@@ -13,12 +13,9 @@ Format      : 	Markdown/HTML
 
 (You can read all my OpenVMS articles by [clicking the picture (above][2])
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 Here are some small titbits I found out this week on the DECUServe OpenVMS
 system. Not enough to write a blogpost on their own, but collected together.

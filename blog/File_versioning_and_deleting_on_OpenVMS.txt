@@ -23,12 +23,9 @@ so far on OpenVMS, but it does require maintenance to not have the disk get
 filled up fast. This article goes into the PURGE and DELETE commands which help
 you deal with file versioning and removal.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### DIR flags
 

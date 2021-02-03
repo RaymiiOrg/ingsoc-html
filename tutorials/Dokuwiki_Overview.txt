@@ -15,8 +15,7 @@ small companies. It has a simple but powerful syntax which makes sure the
 datafiles remain readable outside the Wiki and eases the creation of structured
 texts. All data is stored in plain text files no database is required.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Nowdays it can be used for a lot of things, like a wiki, note taking, podcast
 show notes, collaborative note taking and a lot more.

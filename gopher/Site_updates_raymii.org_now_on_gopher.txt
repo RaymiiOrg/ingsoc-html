@@ -110,8 +110,7 @@ If you use the gopher version of Raymii.org, [please let me know][8].
 
 [Last year I did some site updates focussed on accessibility][9].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][10]
+$SPONSORMSG$
 
    [1]: gopher://raymii.org:70/
    [2]: https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&hl=en_US

@@ -54,9 +54,8 @@
 </li>
 </ul>
 
-</div>
-<hr>
-<div id="contents">
+</div><hr><div id="contents">
+<p><strong>&#10071; This post is already over one year old. It may no longer be up to date. Opinions may have changed.</strong></p>
 <p>Recently a rather large amount of new infrastructure was added to one of my
 monitoring instances. Using SNMP exclusively, but not the fastest network or
 infrastructure. The SNMP checks in the Icinga2 instance started giving timeouts,
@@ -65,8 +64,7 @@ for the checks above 60 seconds was not that easy since the 60 second timeout is
 hardcoded in the underlying library (NET::SNMP). This article shows you how to
 raise that timeout on an Ubuntu 16.04 system.</p>
 
-<p><a href="https://www.digitalocean.com/?refcode=7435ae6b8212">If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you&#39;ll get $100 credit for 60 days). (referral link)</a></p>
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
 <p>In the webinterface of Icinga2 the logs are unclean, making it harder to find
 actual errors:</p>

@@ -16,8 +16,7 @@ instance using Duplicity. It provides encrypted backups using gpg so that you
 can safely use any public cloud storage to store them. This tutorial is for
 Ubuntu and CentOS and includes initial setup plus a script to automate it all.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 We will be using the Dutch provider [CloudVPS][3], which is not bound to the
 Patriot Act, so your data is more safe than it is with a provider that is

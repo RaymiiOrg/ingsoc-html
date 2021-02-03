@@ -13,22 +13,16 @@ Format      : 	Markdown/HTML
 
 > CDE on Debian 10 with Firefox open
 
-While playing around with [the GUI on OpenVMS][3] I was looking for CDE documentation
-and I found out CDE is still being developed and can be installed on modern linux. 
-This quick post shows you how to install CDE on Debian 10 and includes a bit on 
-compiling GENERIC TETRIS, the same program I installed [on OpenVMS][3].
+While playing around with [the GUI on OpenVMS][3] I was looking for CDE
+documentation and I found out CDE is still being developed and can be
+installed on modern linux.  This quick post shows you how to install CDE on
+Debian 10 and includes a bit on  compiling GENERIC TETRIS, the same program I
+installed [on OpenVMS][3]. 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
-
-[100]: https://github.com/sponsors/RaymiiOrg/
-
-Really cool to compile and run a game from 1992 on a retro/modern desktop
-environment. Makes you wonder how the world could look, if everyone was on 
+Really cool to compile and run a game from 1992 on
+a retro/modern desktop environment. Makes you wonder how the world could look, if everyone was on 
 CDE still. Resource usage is low and everything is so snappy and quick,
 it feels amazing. I might even consider switching to CDE fulltime.
 

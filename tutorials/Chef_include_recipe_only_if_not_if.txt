@@ -15,8 +15,7 @@ normal method. Therefore it ignores anything passed to it, including only _if or
 not_ if. This tutorial shows you how to include or not include a recipe based on
 a variable, comparable with not _if or only_ if.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Lets say you have a default recipe for all your nodes. It is a simple cookbook
 which includes other recipes via `include_recipe`. It sets standard

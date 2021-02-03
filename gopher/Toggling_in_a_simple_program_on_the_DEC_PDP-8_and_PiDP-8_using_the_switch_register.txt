@@ -36,8 +36,7 @@ panel with working switches and LED's, plus a simple Raspberry Pi running the
 SIMH emulator. [I've written][3] multiple articles [on the PDP and PiDP-8][4]
 and I like the device a lot in general.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
 ### Backstory
 

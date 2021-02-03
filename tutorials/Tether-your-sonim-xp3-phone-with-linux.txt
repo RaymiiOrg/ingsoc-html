@@ -15,8 +15,7 @@ Connection via USB and/or Wifi.
 This was one of the features I missed on the Sonim. The phone itself is awesome,
 but that is not in the scope of this guide.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 It is also tested with the newer Sonim XP1300 Core. Please note that some
 providers not allow you to tether your phones internet connection, and this may

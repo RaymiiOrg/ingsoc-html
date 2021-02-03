@@ -27,8 +27,7 @@ If you would have told me, I would ask you what you were smoking. Ten years ago
 regarding Internet Explorer as their default browser. Nowdays, [even Google][4] is 
 busy with default browser selection, but Apple? No of course not. 
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+$SPONSORMSG$
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 

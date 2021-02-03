@@ -26,8 +26,7 @@ of `vim`.
 These instructions are for Debian/Ubuntu, tested on an Ubuntu 14.04 64 bit
 machine.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ### Install required packages
 

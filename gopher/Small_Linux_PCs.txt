@@ -23,8 +23,7 @@ USB is always 2.0 unless otherwise stated.
 If specs are known, I add them, (HMDI 1.4, 10/100/1000 base T ethernet), if not
 then it is like (HDMI, RJ-45 ethernet).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 #### Table of Contents
 

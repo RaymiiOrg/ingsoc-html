@@ -19,8 +19,7 @@ servers. This article shows you my workflow, and how to set up a similar
 environment, including ssh, unison, todour for OS X, DayTasks for Ubuntu and
 Simpletasks Cloudless (for Android).
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 In this article I'll describe the applications I use and afterwards describe the
 sync setup I have with unison and Foldersync lite. Most of the applications are

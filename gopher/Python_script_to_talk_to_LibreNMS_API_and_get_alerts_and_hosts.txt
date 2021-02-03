@@ -16,8 +16,7 @@ able to get certain information and output it as HTML or text using PrettyTable.
 It can be included in other systems or be used in a chain of monitoring
 customizations.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Installation
 

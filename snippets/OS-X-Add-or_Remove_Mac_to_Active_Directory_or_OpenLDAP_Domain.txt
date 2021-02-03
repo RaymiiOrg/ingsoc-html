@@ -15,8 +15,7 @@ is tested on OS X 10.6, 10.7 and 10.8 combined with a Windows Server
 2003/2008/2012 mixed Active Directory domain and a Fedora 389 DS domain and an
 OpenLDAP domain.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
     
     

@@ -19,8 +19,7 @@ of your private server and are fed up with some homegrown solution you're at the
 right place, too ;). A collectd server is able to receive data from collectd
 clients.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 [The collectd client tutorial can be found here][2].
 

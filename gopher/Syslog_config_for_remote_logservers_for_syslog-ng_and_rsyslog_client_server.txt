@@ -24,12 +24,9 @@ shows how to set up a syslog server with rsyslog and syslog-ng and shows how to
 setup servers as a syslog client (that log to a remote server) with syslog-ng
 and rsyslog.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### Server: rsyslog
 

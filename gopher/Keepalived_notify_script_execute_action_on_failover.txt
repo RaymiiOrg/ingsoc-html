@@ -14,8 +14,7 @@ when you need to execute an action when a failover occurs. In my case, I have a
 VPN running on a Virtual IP and want to make sure the VPN only runs on the node
 with the Virtual IP.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 If you want to set up a simple keepalived cluster, see [my tutorial on that][2].
 

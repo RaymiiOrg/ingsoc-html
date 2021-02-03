@@ -18,12 +18,9 @@ to try to fix the SD card, including fsck, badblocks and other filesystem
 utilities. It also has tips to reduce the writing on the Raspberry Pi, this to
 save SD cards from some amount of wear and thus possible corruption.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 The machine was running as an [FM transmitter][3] so that my regular sound
 system could play podcasts (Please note that it is probably illegal to transmit

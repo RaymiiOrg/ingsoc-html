@@ -13,8 +13,7 @@ This little tutorial will show you how to set up the Munin plugin to monitor
 NGINX (nginx _request and nginx_ status) and graph it. You need to change some
 URLs in the config because by default this is wrong.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 For this tutorial you need to have a munin server and a NGINX server. All
 commands need to be run as root or a superuser.

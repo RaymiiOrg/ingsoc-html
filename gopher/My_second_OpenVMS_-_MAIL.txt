@@ -20,12 +20,9 @@ awesome.
 This week I learned how to use the OpenVMS `MAIL` program to read and reply to
 an email I got from George Cornelius, another user on the [DECUServe system][3]
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### MAIL
 

@@ -16,8 +16,7 @@ it is tricky to set up with Active Directory and Windows Server 2003/2008/2012.
 This tutorials shows you how to set up Gitlab to authenticate against Active
 Directory LDAP.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 You have to have a working Gitlab installation for this. It is tested with
 Gitlab 3 and up to 5.2, with an Active Directory 2008 env, and a Mixed 2008 &

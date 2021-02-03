@@ -15,8 +15,7 @@ With OpenSSL 1.1.1 you can use TLSv1.3. This guide covers the installation of
 OpenSSL 1.1.1 on Ubuntu, testing the connection to a server and specific
 ciphersuites. It also covers the big differences between TLSv1.3 and lower.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 I often write about OpenSSL. [You can see all my OpenSSL articles here][2]
 

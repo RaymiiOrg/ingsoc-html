@@ -21,8 +21,7 @@ embed. Like UUENCODE, but more complicated. (The next step in this process with
 the user is to automate the reason why they have to check those screenshots
 every night, that is something for another article)
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ![][2]
 

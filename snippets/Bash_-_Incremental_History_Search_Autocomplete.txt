@@ -13,8 +13,7 @@ This little snippet for your .bashrc or your .inputrc changes the Up/Down arrow
 behavior to autocomplete what is already typed instead of just go back in
 history.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Normally when you press Up in Bash you get the previous command. With these
 lines that is changed. If you typed `vim filename`, then `top` and then again

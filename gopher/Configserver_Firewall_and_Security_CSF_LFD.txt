@@ -14,8 +14,7 @@ firewall suite. lfd is the login failure daemon, which scans log files for
 failed authentication and blocks the IP's doing that. This page covers
 installation, populair command line options and popular config file options.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### CSF Installation
 

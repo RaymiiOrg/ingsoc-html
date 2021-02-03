@@ -14,8 +14,7 @@ There are good reasons for this, but sometimes you want to do something simple.
 This tutorial describes how to change the Dummy OCF resource to execute a script
 on failover.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 In this example it is a script which triggers a few SNMP traps, sends an alert
 to Nagios and sends some data to Graphite. SNMP alone could be done with the

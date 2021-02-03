@@ -14,8 +14,7 @@ CentOS 5. Some websites have certificates signed by authorities not in the
 default bundle and those websites will not work with tools like git, curl, wget
 or anything else that uses https.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 When trying to clone a repository from Github on an older CentOS 5 machine I ran
 into an SSL certificate verification issue. As it turns out, the Github

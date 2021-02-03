@@ -17,8 +17,7 @@ the above screenshot and it is meant as a handy one click start for stuff you
 want to do. Of course you will be able to turn it off at login, I do not want to
 bother you with stuff you do not want to have.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 ##### Features
 

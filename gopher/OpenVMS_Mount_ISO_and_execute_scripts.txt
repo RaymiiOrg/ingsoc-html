@@ -20,12 +20,9 @@ this article you'll learn some OpenVMS filesystem history, how OpenVMS handles
 line endings and in the end I get my license installed by creating an ISO with
 the script on it.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
+$SPONSORMSG$
 
-[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
 
-[100]: https://github.com/sponsors/RaymiiOrg/
 
 ### -SYSTEM-W-DATAOVERUN, data overrun
 

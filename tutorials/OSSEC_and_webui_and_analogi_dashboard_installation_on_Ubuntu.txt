@@ -15,8 +15,7 @@ time alerting and active response. It runs on most operating systems, including
 Linux, MacOS, Solaris, HP-UX, AIX and Windows. It also includes agentless
 monitoring for use with for example Cisco, HP or Juniper hardware.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 This tutorial covers the installation of the OSSEC server, the standard OSSEC
 Web UI and the Analogi dashboard on Ubuntu 12.04. It also covers OSSEC setup

@@ -17,8 +17,7 @@ can only try 1 password/minute, but the user will not be blocked for to long.
 Exchange 2010 has some special register settings to make IIS stop caching,
 otherwise it would not work.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 #### Group Policy settings
 

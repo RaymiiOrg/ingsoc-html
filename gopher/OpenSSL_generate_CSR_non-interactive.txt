@@ -13,8 +13,7 @@ This is a short command to generate a CSR (certificate signing request) with
 openssl without being prompted for the values which go in the certificate's
 Subject field.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 When you use OpenSSL to generate a CSR and a private key you use the following
 command:

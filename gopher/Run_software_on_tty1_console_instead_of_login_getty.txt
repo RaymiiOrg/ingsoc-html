@@ -15,8 +15,7 @@ console, I wanted it to start up `htop` right away and nothing else. Ubuntu
 14.04 uses `init` and Ubuntu 16.04 uses systemd. Both ways are shown in this
 tutorial.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 Here's what the default login prompt on the console looks:
 

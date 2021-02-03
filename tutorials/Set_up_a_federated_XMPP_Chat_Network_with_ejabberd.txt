@@ -14,8 +14,7 @@ ejabberd. It covers a basic single node ejabberd server and also the setup of an
 ejabberd cluster, including errors and DNS SRV record examples. Last but not
 least federation is also covered.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### Why set up your own XMPP server
 

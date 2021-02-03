@@ -13,8 +13,7 @@ I'm a *NIX sysadmin. That means I spend most of, and preferably all of my time
 inside terminals, text editors and IRC channels. Writing Ansible code to deploy
 environments here, doing some Python code to connect this with that there.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 But, sometimes, I get a project plan, document or other file I need to read or
 write. My go to choice is the excellent office suite, [LibreOffice][2].

@@ -12,8 +12,7 @@ Format      : 	Markdown/HTML
 This script will help you with nursing-related oxygen calculations.  
 **Also available as an online tool, scroll down for the link**.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
     
     

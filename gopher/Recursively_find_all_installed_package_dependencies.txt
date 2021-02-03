@@ -17,8 +17,7 @@ those dependencies, to remove the ones I didn't want. This small script shows
 you all packages that are dependencies of a package, and repeats that for those
 packages.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### The code
 

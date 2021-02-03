@@ -15,8 +15,7 @@ to record system state every X minutes, and we set it up to run every 5 minutes.
 You can then at a later moment see what the server was doing, even sorting by
 disk, memory, cpu or network usage.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ![atop][2]
 

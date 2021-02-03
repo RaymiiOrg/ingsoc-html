@@ -17,8 +17,7 @@ of unused storage space across all of them. This guide will be a quick
 introduction to setting up and using [Tahoe-LAFS][2], a distributed, redundant,
 and encrypted storage system - some may call it 'cloud storage'.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 [If you need VPS to set up your own Tahoe-LAFS storage grid, try
 InceptionHosting][4]

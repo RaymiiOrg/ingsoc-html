@@ -17,8 +17,7 @@ has a GMT time comparison bug fixed and I've added error handling so that if the
 plugin cannot get a crl file (because the webserver is down) it gives a Critical
 error in nagios.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
+$SPONSORMSG$
 
 #### Download
 

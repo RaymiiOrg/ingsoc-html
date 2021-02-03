@@ -18,8 +18,7 @@ original source, and retain the same license.
 This remix is converted manually to Markdown and HTML for ease of archiving and
 copy-pasting.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][3]
+$SPONSORMSG$
 
 Other converted Linux Voice articles [can be found here][4].
 

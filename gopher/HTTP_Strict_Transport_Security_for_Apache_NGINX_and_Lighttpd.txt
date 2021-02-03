@@ -17,8 +17,7 @@ NGINX 1.1.19, Lighttpd 1.4.28 and Apache 2.2.22 on Ubuntu 12.04, Debian 6 & 7
 and CentOS 6.It should work on other distro's however, these are just reference
 values.
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
+$SPONSORMSG$
 
 ### What is HTTP Strict Transport Security?
 

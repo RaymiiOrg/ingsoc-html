@@ -50,8 +50,7 @@ the same, maybe even a bit better.
 
 On the desktop (browser) I recommend [uBlock Origin][7].
 
-[If you like this article, consider sponsoring me by trying out a Digital Ocean
-VPS. With this link you'll get $100 credit for 60 days). (referral link)][8]
+$SPONSORMSG$
 
    [1]: https://raymii.org/s/inc/img/blokada1-small.png
    [2]: https://raymii.org/s/inc/img/blokada1-big.png
