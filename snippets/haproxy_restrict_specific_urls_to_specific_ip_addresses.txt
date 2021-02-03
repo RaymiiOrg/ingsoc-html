@@ -16,6 +16,10 @@ from your company IP address.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 This example restricts access to the `/admin/` and `/helpdesk` URL's. It only
 allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other
 IP addresses will get the standard haproxy 403 forbidden error.

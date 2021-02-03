@@ -20,6 +20,10 @@ VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 In [the first example][2] I wrote to a CSV file with a set amount of columns and
 types. After experimenting some more with templates and variadic templates, I 
 tried to create this function again but with templates. A simple example,

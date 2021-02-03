@@ -31,7 +31,12 @@ page.
 
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
+
 [99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
 
 You can set an expected status code and a max timeout per check, so if you
 consider your site up when it returns a 302 (redirect) or 401 (unauthorized)
