@@ -25,6 +25,10 @@ You can read more about the OCSP on [wikipedia][1]
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 If you want to verify a certificate against a CRL manually [you can read my
 article on that here][3].
 

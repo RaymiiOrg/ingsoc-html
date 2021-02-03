@@ -18,6 +18,10 @@ documents or PDF files.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 ### Generate a keypair
 
 We'll generate a new keypair for this. You can also use an exisiting one. Change
