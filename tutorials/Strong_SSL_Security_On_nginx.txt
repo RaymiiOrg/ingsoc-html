@@ -39,6 +39,10 @@ are updated continuously as new vulnerabilities are discovered.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][5]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 This tutorial works with the stricter requirements of the SSL Labs test [announced on the 21st of January 2014][6] (It already did before that, if you follow(ed) it you get an A+)
 
   * [This tutorial is also available for Apache][7]
