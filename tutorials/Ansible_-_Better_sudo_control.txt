@@ -9,8 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-This Ansible tutorial shows you how run some actions via sudo and some not. It
-also shows you how to run an entire role via sudo or not.
+$SUMMARY$
 
 $SPONSORMSG$
 
