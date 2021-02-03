@@ -24,6 +24,10 @@ to change it.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 ### DCL (shell)
 
 OpenVMS uses the DCL shell, short for Digital Command Language. It appears that

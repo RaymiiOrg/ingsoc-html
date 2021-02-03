@@ -17,6 +17,10 @@ simple frontend rspirep sets the secure attribute for all cookies.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][1]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 Add the following to a `frontend` block:
 
     

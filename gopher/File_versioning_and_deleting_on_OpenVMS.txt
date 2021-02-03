@@ -26,6 +26,10 @@ you deal with file versioning and removal.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][4]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 ### DIR flags
 
 My home folder [DECUS][3] is getting filled up with test files and other

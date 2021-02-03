@@ -32,6 +32,10 @@ This article will walk you through the steps of creating these packages by hand.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][2]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 All steps are executed as the root user. The system the packages are built on is
 running Ubuntu 18.04. If you haven't got `ar` installed, make sure to
 

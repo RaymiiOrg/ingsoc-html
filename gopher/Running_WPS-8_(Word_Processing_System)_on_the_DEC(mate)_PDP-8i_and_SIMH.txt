@@ -42,6 +42,10 @@ PiDP-8][9] and I like the device a lot in general.
 [If you like this article, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][10]
 
+[You can also sponsor me directly using Github Sponsors, as low as EUR/USD 1 a month][100]
+
+[100]: https://github.com/sponsors/RaymiiOrg/
+
 So why run WPS-8 today you might ask? Well, first of all, because it is fun to
 play with. Second, to appreciate the modern software we use the present day
 more. Just imagine you writing your thesis on an ASR-33 teletype or a DECmate.
