@@ -33,6 +33,11 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/OpenVMS_reset_SYSTEM-password.html">Reset the SYSTEM password on OpenVMS 8.4</a></h4>
+<small>03-02-2021 | Remy van Elst</small><br />
+<p>This short post shows you how to reset the SYSTEM account password on a single OpenVMS 8.4 ALpha machine via the serial console. You need physical access to the machine and the procedure looks a lot like linux and appending `init=/bin/bash` to the GRUB commandline to boot into single user mode. It is tested on the AXPbox Alpha emulator, I forgot my password after not using it for a month.</p>
+<a href="blog/OpenVMS_reset_SYSTEM-password.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html">The Common Desktop Environment (CDE) is still developed and modern in 2021</a></h4>
 <small>28-01-2021 | Remy van Elst</small><br />
 <p>While playing around with the GUI on OpenVMS I was looking for CDE documentation and I found out CDE is still being developed and can be installed on modern linux. This quick post shows you how to install CDE on Debian 10 and includes a bit on compiling GENERIC TETRIS, the same program I installed on OpenVMS. Really cool to compile and run a game from 1992 on a retro/modern desktop environment.</p>
@@ -86,11 +91,6 @@ We start off with a shorter example showing how to fire off a set number of jobs
 <small>07-12-2020 | Remy van Elst</small><br />
 <p>I hate snaps just as much as the next guy but last week I did something unexpected. I packaged up Gnash as a snap.  Gnash is a GNU flash media player, not updated since 2011, and  thus removed from the Ubuntu 20.04 repositories. The snap packaging is based on work by phil roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no '--classic' needed), the source code for the snap is on my github and on any snap-enabled distro you can now 'snap install gnash-raymii' to enjoy Gnash again.</p>
 <a href="blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Semi-accurate_live_stream_viewer_count.html">Semi-accurate live stream viewer count (hls/rtmp/restreamer) on the command line</a></h4>
-<small>25-11-2020 | Remy van Elst</small><br />
-<p>Due to all the working-from-home in the past few months I had to setup a live stream. At first the stream went directly to YouTube, but after they've screwed up multiple times, we decided to not be dependent on them. Using restreamer, a piece of open source software to live stream both to your own server and to another (YouTube) at the same time, we have more control over the stream and are not surprised by YouTube doing stupid stuff unannounced. Restreamer provides a simple web player that works on all major platforms and streams to YouTube, but one thing it lacks is a live viewer count. That's a hard problem to solve correctly and accurately, in this article I'll show you how to do it semi-accurately via multiple ways, including live graphs. This article contains a rant on YouTube breaking stuff and the commands used to get a live viewer count. </p>
-<a href="tutorials/Semi-accurate_live_stream_viewer_count.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

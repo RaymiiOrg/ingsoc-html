@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2021-01-28T16:11:38	/	localhost	70
+i            2021-02-03T07:11:45	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Reset the SYSTEM password on OpenVMS 8.4 (03-02-2021)	OpenVMS_reset_SYSTEM-password.txt	raymii.org	70
 0The Common Desktop Environment (CDE) is still developed and modern in 2021 (28-01-2021)	The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.txt	raymii.org	70
 0OpenVMS CDE Desktop Remote X session GUI (on AXPbox) (26-01-2021)	OpenVMS_CDE_Desktop_remote_x_axpbox.txt	raymii.org	70
 0AXPbox version 1.0.0 released! (Open source Alpha emulator) (23-01-2021)	AXPBox-version-1.0.0-released.txt	raymii.org	70

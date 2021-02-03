@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/blog.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Reset the SYSTEM password on OpenVMS 8.4</title> 
+                <link>https://raymii.org/s/blog/OpenVMS_reset_SYSTEM-password.html</link> 
+                <guid>https://raymii.org/s/blog/OpenVMS_reset_SYSTEM-password.html</guid>
+                <description>This short post shows you how to reset the SYSTEM account password on a single OpenVMS 8.4 ALpha machine via the serial console. You need physical access to the machine and the procedure looks a lot like linux and appending `init=/bin/bash` to the GRUB commandline to boot into single user mode. It is tested on the AXPbox Alpha emulator, I forgot my password after not using it for a month.</description> 
+                <pubDate>Wed, 03 Feb 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 03 Feb 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>The Common Desktop Environment (CDE) is still developed and modern in 2021</title> 
                 <link>https://raymii.org/s/blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html</link> 
                 <guid>https://raymii.org/s/blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html</guid>
