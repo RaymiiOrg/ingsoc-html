@@ -23,9 +23,6 @@ and now I'm glad I don't have to use Windows for picture managemant anymore.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 [gphotos-sync][2] describes itself as:
 
 > Google Photos Sync downloads your Google Photos to the local file system. 

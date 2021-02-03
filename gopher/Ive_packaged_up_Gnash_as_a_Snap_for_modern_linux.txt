@@ -20,9 +20,6 @@ can now `snap install gnash-raymii` to enjoy Gnash again.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 As the code is up [on github][3] and [Phil][4] has his code up as well, you 
 should be able to easily re-package deb's as snaps as well. Pygopherd comes
 to mind, but any package from the Ubuntu repositories you might need fits 

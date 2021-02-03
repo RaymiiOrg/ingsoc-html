@@ -19,9 +19,6 @@ and the server that it runs on has been migrated and upgraded a few times.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 [As you might know][2], I also love [plain text][3]. It's the most universal 
 storage format, both durable and small. I don't want your nicely designed website,
 I want your content. Even worse for Medium.com blogs, or other sites that interrupt

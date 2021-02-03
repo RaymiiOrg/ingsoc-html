@@ -112,7 +112,7 @@ OBS and checking if everything on YouTube works. Way more error-prone and more
 ways to, by accident, make mistakes.</p>
 
 <p>Using <a href="https://datarhei.github.io/restreamer/">Restreamer</a>, we have more control over the live stream. It&#39;s on our
-own server, <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">a $5 droplet at Digital Ocean</a>, which can easily support 120
+own server, [a $5 droplet at Digital Ocean][99], which can easily support 120
 concurrent viewers with a 5 mbit stream.</p>
 
 <p>We don&#39;t want to break existing work flows for our viewers (as opposed to what 
@@ -162,7 +162,7 @@ for our intended goal.</p>
 
 <p>Our stream has a set bitrate of 5 mbit. Restreamer does not do encoding, so every
 5 mbit out in that time should correspond to one stream viewer. Using the graphs
-<a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean</a> provides, we can do a simple division:</p>
+[Digital Ocean][99] provides, we can do a simple division:</p>
 
 <pre><code>55 mbit out / 5 mbit in = 11 viewers
 </code></pre>

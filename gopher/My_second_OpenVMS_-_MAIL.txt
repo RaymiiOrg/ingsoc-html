@@ -22,8 +22,6 @@ an email I got from George Cornelius, another user on the [DECUServe system][3]
 
 $SPONSORMSG$
 
-
-
 ### MAIL
 
 This blog item was put together using HP Enterprise's [online documentation][6]

@@ -23,8 +23,6 @@ This is how you do that.
 
 $SPONSORMSG$
 
-
-
 Sample from the playbook:
 
     

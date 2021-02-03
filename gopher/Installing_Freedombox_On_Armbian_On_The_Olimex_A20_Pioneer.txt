@@ -33,8 +33,6 @@ LDAP issues.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 I'm not sponsored by Olimex, I bought two Freedomboxes myself. There is also no
 referral link. 
 

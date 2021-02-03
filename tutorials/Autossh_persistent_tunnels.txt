@@ -23,8 +23,6 @@ don't like holes in the firewall/security. They don't block it for no reason.
 
 $SPONSORMSG$
 
-
-
 #### Naming convention:
 
 restricted machine: machine inside the restricted network middleman: machine to

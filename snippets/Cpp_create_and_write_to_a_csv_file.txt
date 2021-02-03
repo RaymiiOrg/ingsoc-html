@@ -21,10 +21,6 @@ new snippet][1].
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### write_csv.cpp
 
 The first method checks if the file exists. The second method is a template, but 

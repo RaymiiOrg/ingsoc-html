@@ -18,9 +18,6 @@ the usage inclusing other alternative tokens like bitor, xor and or_eq.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 The `or` and `and` feel more natural to me. Even though I perfectly know and 
 understand the `||` and `&&` operators, I would prefer the alternative tokens 
 when reading code. For bitsets, the `bitand`, `compl` and `bitor` also read 

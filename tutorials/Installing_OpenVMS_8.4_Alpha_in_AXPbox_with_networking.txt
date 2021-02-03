@@ -42,10 +42,6 @@ be more up to date on installing OpenVMS.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 This guide is a big and comprehensive one, we cover a lot of ground. Use the
 table of contents above to skip to a part you're interested in. The order of
 topics is  specifically so you can follow along. And if you're able, do

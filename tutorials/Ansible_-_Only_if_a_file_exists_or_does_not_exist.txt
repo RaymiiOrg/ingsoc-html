@@ -20,8 +20,6 @@ for checking if a file does exist and only executing the action if it exists.
 
 $SPONSORMSG$
 
-
-
 The below example command will generate [Diffi Hellman parameters for NGINX
 ssl][2]. This command creates the file `/etc/ssl/certs/dhparam.pem`. It should
 run only if that file does not exist (because only newly deployed servers will

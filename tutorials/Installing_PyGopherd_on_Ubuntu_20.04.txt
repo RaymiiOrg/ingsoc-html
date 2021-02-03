@@ -26,8 +26,6 @@ serving gopher pages via pygopherd:
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 Pygopherd is a gopher server written in python, as the name suggests. I use it 
 to provide this [website over gopher][1] as well as over http. I've even written
 [a log analyzer to get some statistics][2] for pygopherd. Gopher is a protocol

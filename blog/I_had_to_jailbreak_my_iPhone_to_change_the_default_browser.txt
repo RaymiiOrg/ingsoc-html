@@ -29,9 +29,6 @@ busy with default browser selection, but Apple? No of course not.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 ### Switch the default browser
 
 ![jailbreak1][5]

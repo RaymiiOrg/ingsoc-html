@@ -16,8 +16,6 @@ This snippet was tested on haproxy 1.5.
 
 $SPONSORMSG$
 
-
-
 To redirect traffic from a haproxy frontend, use the following config:
 
     

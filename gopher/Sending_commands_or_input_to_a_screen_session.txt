@@ -17,10 +17,6 @@ As I'm writing this article, I notice that [today screen 4.7.0 is released][3].
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### screen commands vs shell commands (input)
 
 For my [recent article][1] on serial port data I figured out how to send a command

@@ -18,11 +18,6 @@ for use with CLion.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
-
 ### Case transformation for ascii
 
 The codewars assignment was to count unique lowercase characters in a string, 

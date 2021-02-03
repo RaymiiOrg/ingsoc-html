@@ -16,10 +16,6 @@ remember.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 [All Bash Bits can be found using this link][98]
 [98]: https://raymii.org/s/tags/bash-bits.html
 

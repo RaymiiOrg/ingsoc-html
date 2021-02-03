@@ -22,9 +22,6 @@ details on what's going on with iterator invalidation.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 Here's a picture of the screen that CLion, my editor of choice gave when the crash
 occurs:
 

@@ -21,9 +21,6 @@ I've used donor keycaps from a Das Keyboard, the keycaps for `space`, `return`,
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 ### Review
 
 I've used the gherkin as `main` board for three days. I'm used to a split 

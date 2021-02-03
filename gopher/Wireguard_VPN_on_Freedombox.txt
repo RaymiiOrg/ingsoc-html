@@ -32,8 +32,6 @@ has a great guide. If you want to install [Freedombox on your Pioneer, read this
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 Quoting the Freedombox website:
 
 > [FreedomBox][3] is a private server for non-experts: it lets you install and

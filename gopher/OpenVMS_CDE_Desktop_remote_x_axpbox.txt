@@ -26,10 +26,6 @@ Tetris.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 VSI [offers a hobbyist program][6] where you can get an OpenVMS license for 
 free, and this guide is a great fit for hobbyists. I know of no OpenVMS server
 deployment where a GUI is actually used in day to day operations. (Most clusters

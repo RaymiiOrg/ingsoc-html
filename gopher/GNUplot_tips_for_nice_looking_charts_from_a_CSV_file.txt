@@ -38,10 +38,6 @@ doesn't matter for the gnuplot results.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 I'm using gnuplot 5.2 on Ubuntu 18.04, installed via the repository. You can
 find my example CSV data at the bottom of this article. Save it as `plot.csv`.
 The article will go over the different topics step by step. The data is from

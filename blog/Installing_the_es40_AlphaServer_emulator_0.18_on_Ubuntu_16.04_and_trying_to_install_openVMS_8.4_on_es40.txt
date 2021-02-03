@@ -25,8 +25,6 @@ OpenVMS fails. OpenVMS does boot however, very very slowly.
 
 $SPONSORMSG$
 
-
-
 ### AlphaServer and ES40
 
 Wikipedia defines the Alphaserver, of which ES40 is a type:

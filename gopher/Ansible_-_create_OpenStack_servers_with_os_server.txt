@@ -30,8 +30,6 @@ about Ansible.
 
 $SPONSORMSG$
 
-
-
 I [found][4] documentation on the new modules but that just created a single
 instance. I need to spawn multiple instances and add those to specific
 hostgroups based on variables, so this guide wasn't complete enough for me.

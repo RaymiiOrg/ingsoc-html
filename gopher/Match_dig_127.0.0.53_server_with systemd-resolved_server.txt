@@ -20,8 +20,6 @@ caching server.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 ### dig query
 
 Using the following example of a default dig query you will see in the output a

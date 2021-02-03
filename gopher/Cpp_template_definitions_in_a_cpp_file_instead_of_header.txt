@@ -19,11 +19,6 @@ be useful.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
-
 ### Template definitions
 
 Small recap on templates. A template is not an actual class or function, but 

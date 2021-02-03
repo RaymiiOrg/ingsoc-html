@@ -15,8 +15,6 @@ from your company IP address.
 
 $SPONSORMSG$
 
-
-
 This example restricts access to the `/admin/` and `/helpdesk` URL's. It only
 allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other
 IP addresses will get the standard haproxy 403 forbidden error.

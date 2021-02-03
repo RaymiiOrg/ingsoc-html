@@ -20,11 +20,9 @@ the for loop you would use otherwise.
 
 $SPONSORMSG$
 
-
-
 Update 2020-11-08: Thank you Martin Blasko for reporting a few errors in this article!
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 
 
 ### Plain old loop

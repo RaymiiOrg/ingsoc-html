@@ -23,8 +23,6 @@ status and other fun facts on the system.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 ### 1975: Sphere 1 
 
 The Sphere 1 was a personal computer from 1975 built around the Motorola 6800 

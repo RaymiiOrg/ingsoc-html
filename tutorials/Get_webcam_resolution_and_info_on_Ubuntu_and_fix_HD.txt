@@ -21,9 +21,6 @@ named [Webcamoid][2] solved it, that program was able to use `mjpeg`.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 Here's a picture of Cheese showing the possible resolutions, none of which are 
 even near HD:
 

@@ -39,8 +39,6 @@ there is a hosted version available at <https://certificatemonitor.org>.
 
 $SPONSORMSG$
 
-
-
 This tutorial works with the strict requirements of [the SSL Labs test][6]
 
 [This tutorial is also available for NGINX][7] [This tutorial is also available

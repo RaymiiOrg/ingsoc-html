@@ -38,8 +38,6 @@ are updated continuously as new vulnerabilities are discovered.
 
 $SPONSORMSG$
 
-
-
   * [This tutorial is also available for Apache2][6]
   * [This tutorial is also available for NGINX][7]
   * [This tutorial is also available for FreeBSD, NetBSD and OpenBSD over at the BSD Now podcast][8]

@@ -41,8 +41,6 @@ PiDP-8][9] and I like the device a lot in general.
 
 $SPONSORMSG$
 
-
-
 So why run WPS-8 today you might ask? Well, first of all, because it is fun to
 play with. Second, to appreciate the modern software we use the present day
 more. Just imagine you writing your thesis on an ASR-33 teletype or a DECmate.

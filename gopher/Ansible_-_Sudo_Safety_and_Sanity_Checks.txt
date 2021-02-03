@@ -15,8 +15,6 @@ sudoers file.
 
 $SPONSORMSG$
 
-
-
 I manage the `sudo` config (`/etc/sudoers/`) via Ansible. My sudo playbook
 creates an admin group, adds me to that admin group, and sets some variables in
 `/etc/sudoers/`. I do not have a sudoers template file, because I created the

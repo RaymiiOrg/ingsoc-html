@@ -23,8 +23,6 @@ to change it.
 
 $SPONSORMSG$
 
-
-
 ### DCL (shell)
 
 OpenVMS uses the DCL shell, short for Digital Command Language. It appears that

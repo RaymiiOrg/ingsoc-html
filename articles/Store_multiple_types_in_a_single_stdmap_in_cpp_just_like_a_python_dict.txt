@@ -44,8 +44,6 @@ file contents.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 First I'll go over some caveats of `std::any`, then a python example, ending 
 with the actual C++ code to have a dynamic map.
 

@@ -22,8 +22,6 @@ the script on it.
 
 $SPONSORMSG$
 
-
-
 ### -SYSTEM-W-DATAOVERUN, data overrun
 
 When pasting in my ISO using simh and a VAX system, I had no issues. When trying

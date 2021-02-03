@@ -26,9 +26,6 @@ this setup.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 At my job I use CLion as my editor of choice. All of our C++ (embedded) developers
 do, with one or two that prefer a different tool (nano). At home I use it as well
 for my training, the [codewars kata's][4] I often do and sometimes [write about][5]. 

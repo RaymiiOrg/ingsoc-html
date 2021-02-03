@@ -35,9 +35,6 @@ and automating as much as possible will get you a long way."
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 ### Humans are involved, thus things can go wrong
 
 If you have missed it, just recently very prominent twitter accounts started to

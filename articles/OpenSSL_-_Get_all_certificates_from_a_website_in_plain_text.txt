@@ -17,8 +17,6 @@ all certificates one by one to OpenSSL.
 
 $SPONSORMSG$
 
-
-
 ### Website certificate
 
 You can request a website's certificate using `openssl s_client`. To view the

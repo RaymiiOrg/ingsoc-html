@@ -14,8 +14,6 @@ This snippets shows you how to add an ssl backend to HAPROXY. You need haproxy
 
 $SPONSORMSG$
 
-
-
 Note: this is not about adding ssl to a frontend. this allows you to use an ssl
 enabled website as backend for haproxy.
 

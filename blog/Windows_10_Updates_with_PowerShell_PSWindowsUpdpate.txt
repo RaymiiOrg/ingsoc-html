@@ -21,8 +21,6 @@ the command line.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 These steps were tested on a Windows 10 machine running build 1703 and one
 running 1903. 
 

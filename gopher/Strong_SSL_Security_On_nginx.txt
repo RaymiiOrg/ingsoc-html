@@ -38,8 +38,6 @@ are updated continuously as new vulnerabilities are discovered.
 
 $SPONSORMSG$
 
-
-
 This tutorial works with the stricter requirements of the SSL Labs test [announced on the 21st of January 2014][6] (It already did before that, if you follow(ed) it you get an A+)
 
   * [This tutorial is also available for Apache][7]

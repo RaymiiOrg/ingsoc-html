@@ -29,10 +29,6 @@ You can find my [installation guide for OpenVMS with networking here][7].
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### Release notes v1.0.0
 
 The release notes are copied here below.

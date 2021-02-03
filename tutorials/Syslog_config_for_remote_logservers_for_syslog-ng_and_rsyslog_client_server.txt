@@ -26,8 +26,6 @@ and rsyslog.
 
 $SPONSORMSG$
 
-
-
 ### Server: rsyslog
 
 rsyslog is the default syslog service on Ubuntu, Debian, OpenSUSE and CentOS

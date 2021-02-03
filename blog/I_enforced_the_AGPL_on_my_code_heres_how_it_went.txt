@@ -45,8 +45,6 @@ article][23] going into permissive vs copyleft licensing.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 The following two paragraphs are taken from the [Plausible.io article][9]
 explaining their license switch. I found them to explain the AGPL so well,
 that I cited them here. Please [go read their article][9], I found out that 

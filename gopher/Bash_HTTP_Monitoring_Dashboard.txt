@@ -31,10 +31,6 @@ page.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 You can set an expected status code and a max timeout per check, so if you
 consider your site up when it returns a 302 (redirect) or 401 (unauthorized)
 the script consider that okay. If the status code is not what is configured or

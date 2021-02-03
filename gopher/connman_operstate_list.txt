@@ -21,10 +21,6 @@ for future reference.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### Log
 
 The relevant parts of the logging look like this:

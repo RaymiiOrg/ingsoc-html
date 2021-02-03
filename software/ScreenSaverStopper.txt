@@ -22,8 +22,6 @@ however, compile and run software.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 There is no window, no output, no settings, just a keystroke every 40 seconds. 
 If you need to stop the application, use the task manager.
 

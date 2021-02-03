@@ -18,8 +18,6 @@ this won't happen.
 
 $SPONSORMSG$
 
-
-
 ### Dummy inventory file
 
 Lets say your playbooks are located in `/home/username/ansible/playbooks`. You

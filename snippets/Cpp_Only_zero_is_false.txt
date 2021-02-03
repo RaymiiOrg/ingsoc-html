@@ -46,10 +46,6 @@ however I found it interesting.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### Implicit conversion rules to booleans
 
 The rules for implicit conversion, which is what's happening when you use

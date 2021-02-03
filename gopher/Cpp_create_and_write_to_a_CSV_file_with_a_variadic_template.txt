@@ -17,10 +17,6 @@ type that has  the overloaded `<<` operator.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 In [the first example][2] I wrote to a CSV file with a set amount of columns and
 types. After experimenting some more with templates and variadic templates, I 
 tried to create this function again but with templates. A simple example,

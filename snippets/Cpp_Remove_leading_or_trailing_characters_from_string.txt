@@ -15,10 +15,6 @@ in a game score display function.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### Code
 
 These are the two functions, one to remove leading zeroes and one to remove trailing 

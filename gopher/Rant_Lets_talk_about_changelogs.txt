@@ -34,10 +34,6 @@ Just put a small (or large) list with a few lines of what changes in there. Plea
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 I expect nothing less then bugfixes and performance improvements each update, otherwise,
 why update at all? I'm one of those people that [disables auto updates][6], manually goes 
 through the changelog and based on that, decide if I want to update now or in the

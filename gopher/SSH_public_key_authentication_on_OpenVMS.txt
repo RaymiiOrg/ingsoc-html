@@ -23,8 +23,6 @@ out.
 
 $SPONSORMSG$
 
-
-
 ### Client public key authentication
 
 On the HPe website there is extensive [documentation][4] on both the SSH server

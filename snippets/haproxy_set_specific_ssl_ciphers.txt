@@ -18,8 +18,6 @@ This was tested on haproxy 1.5.
 
 $SPONSORMSG$
 
-
-
 The following config is required in a `frontend` section:
 
     

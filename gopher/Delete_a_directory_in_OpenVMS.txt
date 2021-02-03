@@ -28,8 +28,6 @@ system allows SSH login with a password initially.
 
 $SPONSORMSG$
 
-
-
 ### DIR [.SSH]
 
 The folder I created is named `SSH`, but it should be named `SSH2`. This is

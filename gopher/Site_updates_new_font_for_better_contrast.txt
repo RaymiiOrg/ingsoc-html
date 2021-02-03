@@ -23,9 +23,6 @@ know][8]. I'd like to hear your opinion on the new layout.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 ### New font: Ubuntu instead of Raleway
 
 Most notably I've switched fonts, I'm now using Ubuntu instead of Raleway. One 

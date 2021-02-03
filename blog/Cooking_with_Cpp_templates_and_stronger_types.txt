@@ -21,8 +21,6 @@ sense. This post covers both my learning and a small piece on stronger types.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 ### Stronger typing
 
 Would you rather have a class be clear in its intended usage or would you rather

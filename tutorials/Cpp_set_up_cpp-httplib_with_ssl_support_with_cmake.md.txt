@@ -24,9 +24,6 @@ effort.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 This is the example code we're compiling, as is in the readme, for HTTP:
 
     httplib::Client cli("http://jsonplaceholder.typicode.com");

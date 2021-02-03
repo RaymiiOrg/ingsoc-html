@@ -20,8 +20,6 @@ here][2].
 
 $SPONSORMSG$
 
-
-
 We will be using OpenSSL in this article. I'm using the following version:
 
     

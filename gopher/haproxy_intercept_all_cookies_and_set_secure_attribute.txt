@@ -16,8 +16,6 @@ simple frontend rspirep sets the secure attribute for all cookies.
 
 $SPONSORMSG$
 
-
-
 Add the following to a `frontend` block:
 
     

@@ -32,9 +32,6 @@ after switching the theme to Dracula and back to High Contrast.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 I do love auto updates and the security benefit, but I rather prefer to be in 
 control on such an important system. I carefully `apt update` and `snap
 refresh` every week, but only after reviewing which packages are included in

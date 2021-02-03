@@ -24,8 +24,6 @@ You can read more about the OCSP on [wikipedia][1]
 
 $SPONSORMSG$
 
-
-
 If you want to verify a certificate against a CRL manually [you can read my
 article on that here][3].
 

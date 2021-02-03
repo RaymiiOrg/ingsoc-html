@@ -50,8 +50,6 @@ thread work for you.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 I was introduced to [Semafoor][5] in my childhood by the Dutch (Belgian)
 cartoon [Dommel][6], or `Cubitus` in the USA. The series tells the story of
 Cubitus, a good-natured large, white dog endowed with speech. He lives in a

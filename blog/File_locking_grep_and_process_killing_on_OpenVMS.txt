@@ -26,8 +26,6 @@ process. I did not get curl to work or compile my code, yet.
 
 $SPONSORMSG$
 
-
-
 The `cc` command is installed on the DECUS system:
 
     

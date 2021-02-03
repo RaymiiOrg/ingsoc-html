@@ -43,9 +43,6 @@ to check the current readings. Below is a screenshot of the webpage:
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 If the test results are good enough, those load cells might be used in the
 future, but not with the sparkfun openscale boards. The cells will then just be
 connected to the regular machine and we'll write our own software to use the

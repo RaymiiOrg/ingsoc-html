@@ -20,8 +20,6 @@ save SD cards from some amount of wear and thus possible corruption.
 
 $SPONSORMSG$
 
-
-
 The machine was running as an [FM transmitter][3] so that my regular sound
 system could play podcasts (Please note that it is probably illegal to transmit
 without having your HAM license). I't would sync up my feeds and, when turned

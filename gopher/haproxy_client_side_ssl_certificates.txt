@@ -17,8 +17,6 @@ full sha 1 hash of a certificate to a backend you need at least 1.5 dev 19.
 
 $SPONSORMSG$
 
-
-
 Place the certificate chain file somewhere haproxy can access it and append the
 following to your `bind` config line in the frontends where you want to use
 client side certificates: `ca-file <path to certificate chain> verify required`.

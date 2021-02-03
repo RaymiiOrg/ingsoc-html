@@ -35,9 +35,6 @@ space in development setup.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 Here is a picture of gnash running on Ubuntu 20.04, via a local docker 
 container:
 

@@ -16,8 +16,6 @@ This snippet was tested on haproxy 1.5.
 
 $SPONSORMSG$
 
-
-
 This for example can be used when haproxy is used for ssl offloading and you
 want to offer hsts, while the backends not support it.
 

@@ -31,8 +31,6 @@ This article will walk you through the steps of creating these packages by hand.
 
 $SPONSORMSG$
 
-
-
 All steps are executed as the root user. The system the packages are built on is
 running Ubuntu 18.04. If you haven't got `ar` installed, make sure to
 

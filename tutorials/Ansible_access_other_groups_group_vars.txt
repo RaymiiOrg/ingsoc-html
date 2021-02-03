@@ -26,8 +26,6 @@ was not an option in this situation.
 
 $SPONSORMSG$
 
-
-
 This is applicable for other scenario's as well. In templates this can be worked
 around by looping over all the groups, then over all the hosts in the specific
 group, then if the host is the first in the loop, go over all the hostvars for

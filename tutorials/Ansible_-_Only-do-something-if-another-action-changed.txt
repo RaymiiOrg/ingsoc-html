@@ -18,8 +18,6 @@ repository has changed.
 
 $SPONSORMSG$
 
-
-
   * 15-12-2018: Updated ansible syntax to 2.5
   * 22-12-2013: initial article
 

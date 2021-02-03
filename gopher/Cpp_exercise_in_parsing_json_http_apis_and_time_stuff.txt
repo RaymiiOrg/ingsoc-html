@@ -35,8 +35,6 @@ boost allowed this time),  which is why I went for header only libraries
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 Using std::async makes firing off multiple http requests a breeze. There is
 even [a sort of queue][6]. The code is simple enough to serve as an example for
 studying.

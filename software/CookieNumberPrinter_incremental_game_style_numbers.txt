@@ -34,7 +34,7 @@ incremental style. It's just one header. You can [get the code here][6].
 [If you like this class, consider sponsoring me by trying out a Digital Ocean
 VPS. With this link you'll get $100 credit for 60 days). (referral link)][99]
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
+
 
 Please do keep in mind that this is a hobby project, the code might not be up to
 your professional standards. As of now the class in my game has diverged a bit 

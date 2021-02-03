@@ -22,8 +22,6 @@ of my terminal.
 
 $SPONSORMSG$
 
-
-
 ### Prepare config files and place ISO
 
     

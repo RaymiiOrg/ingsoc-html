@@ -13,8 +13,6 @@ $SUMMARY$
 
 $SPONSORMSG$
 
-
-
 Ansible has the option to run playbooks via sudo. You can setup passwordless
 sudo, but also execute a playbook with the extra `--ask-sudo-pass` / `-K` option
 so that Ansible asks you for the sudo password. However, you can also have very

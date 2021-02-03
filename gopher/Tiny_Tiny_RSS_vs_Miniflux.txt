@@ -25,9 +25,6 @@ different server requirements which most shared hosts don't offer.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
 ### It all started on Lobste.rs
 
 Serial poster Calvin posted [a link][3] to a security researchers blog on exploits

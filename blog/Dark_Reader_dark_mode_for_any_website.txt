@@ -17,8 +17,6 @@ a cool piece of software I wanted to share it with all my readers.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 ### Dark Reader
 
 You can install [Dark Reader for all major browsers from here][2]

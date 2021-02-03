@@ -17,10 +17,6 @@ one by one. I've also included an example in Python to compare to.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 ### Variadic templates
 
 Variadic templates allow you to have a template with a variable number of 

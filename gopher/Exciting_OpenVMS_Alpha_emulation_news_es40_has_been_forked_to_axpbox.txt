@@ -39,10 +39,6 @@ at least works without major errors. Really cool, amazing work by Tomas.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
-
-
 I intend to get back into experimenting with Axpbox and write a few more 
 articles on it, including an compilation and installation guide and 
 maybe even some clustering if I get around to it.

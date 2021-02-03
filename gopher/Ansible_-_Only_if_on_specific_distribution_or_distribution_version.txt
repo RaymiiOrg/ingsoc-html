@@ -20,8 +20,6 @@ precise (12.04 LTS) or Ubuntu Trusty (14.04 LTS).
 
 $SPONSORMSG$
 
-
-
   * 2018-12-16: update ansible syntax to version 2.5, use become
   * 2015-09-24: Added `package` module, changed only_if to when
   * 2014-09-11: Initial release

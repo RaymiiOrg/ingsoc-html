@@ -28,8 +28,6 @@ to have an automated build / test system.
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 Do note that the build time decreased from 1 minute 48 seconds to 47 seconds for
 a small C++ project. The percentage wise speedup is large, but probably you might 
 find the title a bit clickbaity. The main focus of this article is to show how 

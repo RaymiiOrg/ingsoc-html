@@ -17,8 +17,6 @@ documents or PDF files.
 
 $SPONSORMSG$
 
-
-
 ### Generate a keypair
 
 We'll generate a new keypair for this. You can also use an exisiting one. Change

@@ -19,8 +19,6 @@ my work on [this kata][2].
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 ### The kata
 
 [Codewars][1] calls their exercises "kata" ([plural?][3]). [This one][2] is 

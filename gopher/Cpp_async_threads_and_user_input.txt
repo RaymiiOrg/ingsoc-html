@@ -27,8 +27,6 @@ work since `std::getline` is blocking. The `main()` function ends, but the
 
 $SPONSORMSG$
 
-[99]: https://www.digitalocean.com/?refcode=7435ae6b8212
-
 At the end of the article I'll also provide the code I ended up using, with the 
 two threads, one for input and one for 'other work'.
 

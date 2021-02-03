@@ -16,8 +16,6 @@ random key to encrypt the actual file with using symmetric encryption.
 
 $SPONSORMSG$
 
-
-
 Because of how the RSA algorithm works it is not possible to encrypt large
 files. If you create a key of `n` bits, then the file you want to encrypt must
 not larger than (`n` minus 11) bits. The most effective use of RSA crypto is to
