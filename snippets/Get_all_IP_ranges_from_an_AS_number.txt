@@ -14,7 +14,8 @@ have no IPv6 (yet) I figured the simplest way was to block access to the entire
 IP range. This won't work for all the CDN networks they use, but it does get you
 started.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 To find all the ranges beloning to an AS number you can query the
 `whois.radb.net` server with the AS number.

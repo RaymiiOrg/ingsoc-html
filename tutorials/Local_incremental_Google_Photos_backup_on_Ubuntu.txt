@@ -21,7 +21,8 @@ stable choice. In this guide I'll show you how to setup incremental backups
 from `Google Photos` on Ubuntu. My `DigiKam` database moved over without problems,
 and now I'm glad I don't have to use Windows for picture managemant anymore.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 [gphotos-sync][2] describes itself as:
 

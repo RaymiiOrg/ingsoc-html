@@ -23,7 +23,8 @@ USB is always 2.0 unless otherwise stated.
 If specs are known, I add them, (HMDI 1.4, 10/100/1000 base T ethernet), if not
 then it is like (HDMI, RJ-45 ethernet).
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 #### Table of Contents
 

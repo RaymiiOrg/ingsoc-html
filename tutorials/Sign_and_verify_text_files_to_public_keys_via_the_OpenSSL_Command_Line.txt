@@ -15,7 +15,8 @@ ownership of a key, or to prove that a file hasn't been modified since you
 signed it. This works both with small text files as well as huge photo's,
 documents or PDF files.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 ### Generate a keypair
 

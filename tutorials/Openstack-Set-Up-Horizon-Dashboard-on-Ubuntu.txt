@@ -15,7 +15,8 @@ This is a guide on installing the Openstack Horizon dashboard on Ubuntu 12.04 or
 14.04, including SSL setup. It features nice screenshots and even an Ansible
 playbook to automate it all. We will set up the Icehouse version of Horizon.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Openstack is one of those cloudy cloud projects. Warning, keep your buzzword
 bingo cards ready for the [Wikipedia][3] definition:

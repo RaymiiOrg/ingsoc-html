@@ -13,7 +13,8 @@ This snippet shows you how to use haproxy to restrict certain URLs to certain IP
 addresses. For example, to make sure your admin interface can only be accessed
 from your company IP address.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 This example restricts access to the `/admin/` and `/helpdesk` URL's. It only
 allows access from the IP addresses `20.30.40.50` and `20.30.40.40`. Any other

@@ -110,7 +110,8 @@ If you use the gopher version of Raymii.org, [please let me know][8].
 
 [Last year I did some site updates focussed on accessibility][9].
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
    [1]: gopher://raymii.org:70/
    [2]: https://play.google.com/store/apps/details?id=com.afewroosloose.gopher&hl=en_US

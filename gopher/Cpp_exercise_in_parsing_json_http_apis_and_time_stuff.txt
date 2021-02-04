@@ -33,7 +33,8 @@ built in http client, no JSON parser, dependency management isn't easy (no
 boost allowed this time),  which is why I went for header only libraries
 (that's by far the easiest solution).  
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Using std::async makes firing off multiple http requests a breeze. There is
 even [a sort of queue][6]. The code is simple enough to serve as an example for

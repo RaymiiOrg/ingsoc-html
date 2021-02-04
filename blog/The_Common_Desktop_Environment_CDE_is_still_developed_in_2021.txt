@@ -19,7 +19,8 @@ installed on modern linux.  This quick post shows you how to install CDE on
 Debian 10 and includes a bit on  compiling GENERIC TETRIS, the same program I
 installed [on OpenVMS][3]. 
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Really cool to compile and run a game from 1992 on
 a retro/modern desktop environment. Makes you wonder how the world could look, if everyone was on 

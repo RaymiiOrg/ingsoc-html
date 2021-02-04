@@ -21,7 +21,8 @@ found   [here][7]. The last site update was [about the costs to run
 Raymii.org][6]. If you read these site update articles, please [let me
 know][8]. I'd like to hear your opinion on the new layout.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 ### New font: Ubuntu instead of Raleway
 

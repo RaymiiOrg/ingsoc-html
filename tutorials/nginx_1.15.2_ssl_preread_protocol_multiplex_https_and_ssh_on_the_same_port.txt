@@ -21,7 +21,8 @@ will handle it, if it looks like something else, it will forward it to the
 configured other program. I used to use [SSLH][2] to get this functionality, but
 now it's built into the nginx webserver.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 This small guide will cover the installation of the latest version of nginx on
 Ubuntu and configuring this multiplex feature.

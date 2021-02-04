@@ -13,7 +13,8 @@ Arch Linux uses systemd. Therefore, init functions like rc.local are not
 supported anymore. This systemd service allows you to have support for
 `/etc/rc.local`.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Edit `/usr/lib/systemd/system/rc-local.service`:
 

@@ -22,7 +22,8 @@ command line. Also, my Windows knowledge is very limited. There are probably
 better ways to do the below things, if you know how, please shoot me an email
 via the contact page.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Start with a freshly installed Server 2012 R2 machine (or VM). Fire up a
 Powershell session.

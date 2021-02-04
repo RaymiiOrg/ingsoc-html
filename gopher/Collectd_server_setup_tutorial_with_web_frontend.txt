@@ -19,7 +19,8 @@ of your private server and are fed up with some homegrown solution you're at the
 right place, too ;). A collectd server is able to receive data from collectd
 clients.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 [The collectd client tutorial can be found here][2].
 

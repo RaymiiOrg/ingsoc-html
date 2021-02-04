@@ -17,7 +17,8 @@ passwords and SSH configuration. This article explains what the backdoor is,
 what it is meant to do, how it can be disabled and removed and what the
 implications are.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Azure is Microsoft's Cloud platform. It provides virtual machines and related
 datacenter virtualization, next to software as a service (hosted stuff like

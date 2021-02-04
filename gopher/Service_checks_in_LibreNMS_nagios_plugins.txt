@@ -21,7 +21,8 @@ LibreNMS alerts. This guide covers the setup of services (it's not enabled by
 default) and a few basic checks, like an http health check, certificate expiry
 and SSH monitoring.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 You need a LibreNMS server for this guide to work. The project provides
 excellent documentation. To get started, get a [Digital Ocean VPS][1] and follow

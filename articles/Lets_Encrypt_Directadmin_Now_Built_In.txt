@@ -22,7 +22,8 @@ that involved manually logging in via SSH and a lot of work.
 DirectAdmin now supports Lets Encrypt natively since [version 1.50][2], so no
 more ssh fiddling, just via the control panel, for all the users on the server.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 The previous article still applies and it still works. It's generic enough for
 all control panels and non-supported webservers by Let's Encrypt.

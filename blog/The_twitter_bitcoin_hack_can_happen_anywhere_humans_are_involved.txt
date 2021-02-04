@@ -33,7 +33,8 @@ I'll show you that there is no one size fits all solution. Or at least, not a
 single fix for all. Treating your employees well, educatingthem on risks 
 and automating as much as possible will get you a long way."
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 ### Humans are involved, thus things can go wrong
 

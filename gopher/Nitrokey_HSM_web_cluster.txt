@@ -32,7 +32,8 @@ and I really enjoyed doing it. I might even, in the future, add some more Pi's
 on top and do some more benchmarks. But I already spent about two weeks working
 on this single article so three was just fine for now.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Do note that two devices were sponsored for this article.
 

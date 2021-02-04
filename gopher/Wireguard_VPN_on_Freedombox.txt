@@ -30,7 +30,8 @@ nice hardware supported and endorsed by the Freedombox Foundation.
 If you want to setup everything by hand and not use a web ui, the [debian wiki][10]
 has a great guide. If you want to install [Freedombox on your Pioneer, read this][2].
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Quoting the Freedombox website:
 

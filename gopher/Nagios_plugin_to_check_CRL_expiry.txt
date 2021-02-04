@@ -17,7 +17,8 @@ has a GMT time comparison bug fixed and I've added error handling so that if the
 plugin cannot get a crl file (because the webserver is down) it gives a Critical
 error in nagios.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 #### Download
 

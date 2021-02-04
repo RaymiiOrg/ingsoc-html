@@ -14,7 +14,8 @@ them quicly? By default you can get some information in XML format, for ILO,
 ILO2, ILO3 and ILO4, with curl. You don't have to log in via SSH, and can script
 it/loop it.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 On the command line, make sure you're in the right VLAN/management network
 (replace the IP with your ILO IP) :

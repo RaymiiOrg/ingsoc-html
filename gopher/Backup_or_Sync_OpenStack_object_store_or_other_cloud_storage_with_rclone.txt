@@ -26,7 +26,8 @@ providers. Syncing between cloud providers is also possible. It can also help to
 lower the RTO (recovery time objective) and backups are just always a good thing
 to have and test.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 In this guide we'll do the following:
 

@@ -18,7 +18,8 @@ as a snap. My gnash package is confined (no `--classic` needed), the source
 code for the snap [is on my github][3] and on any snap-enabled distro you
 can now `snap install gnash-raymii` to enjoy Gnash again.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 As the code is up [on github][3] and [Phil][4] has his code up as well, you 
 should be able to easily re-package deb's as snaps as well. Pygopherd comes

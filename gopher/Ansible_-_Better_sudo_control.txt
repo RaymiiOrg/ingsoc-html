@@ -9,9 +9,10 @@ Format      : 	Markdown/HTML
 
 
 
-$SUMMARY$
+This Ansible tutorial shows you how run some actions via sudo and some not. It also shows you how to run an entire role via sudo or not.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Ansible has the option to run playbooks via sudo. You can setup passwordless
 sudo, but also execute a playbook with the extra `--ask-sudo-pass` / `-K` option

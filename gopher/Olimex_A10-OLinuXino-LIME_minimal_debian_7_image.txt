@@ -19,7 +19,8 @@ more awesome, the device is 30 euro's, add 5 euro's and you have yourself a nice
 black case. It consumes very little power, combined with all the features a
 perfect dev / tinkerboard.
 
-$SPONSORMSG$
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 Sadly, the default Debian 7 image suplied by Olimex is bloated and huge. Perfect
 for the general tinkerer, has a Desktop Environment and a lot of dev tools and
