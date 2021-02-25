@@ -11,7 +11,6 @@ Format      : 	Markdown/HTML
 
 QT has an Observer mechanism built in, which they call '[Signals and Slots](https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html)'. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from `QObject` and defining a few `Q_PROPERTY` macro's, the QT Meta Object Compiler (`moc`) does all the hard work for you.
 Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.
-This small example shows you how to setup a signal / slot from C++ to QML and back.
 
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
@@ -28,6 +27,8 @@ tools provided by your IDE. If your method is based on `value` and you want to c
 and bindings and all the regular C++ code. Not very obvious if you're not familiar with
 how QT signals and slots and QML work.
 
+### Summary
+
 Because this is a small snippet, it lacks the explanation and depth you normally get from 
 my articles. Some code comments are provided, but the QT documentation is recommended reading
 in this case:
@@ -37,6 +38,98 @@ in this case:
 
 It's explained there very extensive. That is also why I wrote up this summary,
 due to all the comprehensive documentation, it's hard to get started with something small.
+
+My example code has a C++ class named `Counter`, with one private `long long` named `m_Value`.
+In the QML file I want to use this class and its methods, including the QT Signal/Slot.
+
+The class must inherit from `QObject` and you must place the `Q_OBJECT` macro in the header:
+
+    class Counter : public QObject
+        {
+            Q_OBJECT
+            [...]
+
+
+The methods for setting and getting the value are as you'd expect:
+
+    long long value() const { return m_Value; };
+    [...]
+    void Counter::setValue(long long value) {
+            if (value == m_Value)
+                return;
+            m_Value = value;
+            emit valueChanged(value);
+        }
+
+In the above method you see the `emit` keyword. That's a blank define, for clarity. The
+function `valueChanged()` is called. This is our `signal`, as in the header file:
+
+    signals:
+        void valueChanged(long long newValue);
+
+
+The `setValue()` method is our `slot`:
+
+    public slots:
+            void setValue(long long value);
+
+These are accessible to QML by this `Q_PROPERTY` line:
+
+    Q_PROPERTY(long long value READ value WRITE setValue NOTIFY valueChanged)
+
+You could also connect these up to things via `QObject::connect()` but that is
+out of this snippets scope. That is for when you use the signaling inside C++.
+
+These lines in `main.cpp` is also required, it adds your class to QML so to say:
+
+        QQmlApplicationEngine engine;
+        Counter myCounter;
+
+        QQmlContext *context = engine.rootContext();
+        context->setContextProperty("MyCounter", &myCounter);
+
+After this you can access `MyCounter` inside of QML as if it was a
+regular C++ class. FOr example, to call the `Counter::value()` method:
+
+        Text {
+            text: "Counter: " + MyCounter.value + "."
+        }    
+
+Or the `Counter::setValue()` method:
+
+            Button {
+                text: qsTr("Set counter to 10")
+                // C++ method Counter::setValue(long long), bound via Q_PROPERTY
+                onClicked: MyCounter.setValue(10)
+            }
+
+Due to the magic of the `moc` and the extra code it generates via `Q_PROPERTY`,
+when you increment like in the below example, it knows which value to increment
+and has generated correct operator overloads for it:
+
+       Button {
+            text: qsTr("Increase Counter")
+            onClicked: ++MyCounter.value
+        }
+
+You can also receive the C++ signal right in QT. We've defined `valueChanged` as the
+signal and via a `Connection` with `onValueChanged` (capitals matter here, prefix your 
+method with `on` and change the first character of your method name to a capital) you
+can do things in QML. Like below, where I have a local variable that is incremented 
+each time the signal is received:
+
+    Text {
+        property int changeCount: 0
+        id: labelChanged
+        text: "Count has changed " + changeCount + " times."
+        // Receive the valueChanged NOTIFY
+        Connections {
+            target: MyCounter
+            onValueChanged: {
+                ++labelChanged.changeCount
+            }
+        }
+    }
 
 ### Example code
 
@@ -139,6 +232,22 @@ The project is also available on [github, here][3].
 
     #endif // COUNTER_H
 
+#### counter.cpp
+
+    #include "counter.h"
+
+    Counter::Counter(QObject* parent) : QObject(parent)
+    {
+    }
+
+    void Counter::setValue(long long value) {
+        if (value == m_Value)
+            return;
+        m_Value = value;
+        emit valueChanged(value);
+    }
+
+
 #### main.qml
 
     import QtQuick 2.11
@@ -203,14 +312,14 @@ The project is also available on [github, here][3].
 
                 Button {
                     text: qsTr("Set counter to 10")
-                    // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                    // C++ method Counter::setValue(long long), bound via Q_PROPERTY
                     onClicked: MyCounter.setValue(10)
-
                 }
+
                 Button {
                     text: qsTr("Reset")
                     onClicked: {
-                        // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                        // C++ method Counter::setValue(long long), bound via Q_PROPERTY
                         MyCounter.setValue(0)
                     }
                 }

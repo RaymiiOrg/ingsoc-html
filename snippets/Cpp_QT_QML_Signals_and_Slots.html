@@ -47,34 +47,39 @@
 <h3>Table of Contents</h3>
 <ul>
 <li>
-<a href="#toc_0">Example code</a>
+<a href="#toc_0">Summary</a>
+</li>
+<li>
+<a href="#toc_1">Example code</a>
 <ul>
 <li>
-<a href="#toc_1">qmlcppsignalexample.pro</a>
+<a href="#toc_2">qmlcppsignalexample.pro</a>
 </li>
 <li>
-<a href="#toc_2">qml.qrc</a>
+<a href="#toc_3">qml.qrc</a>
 </li>
 <li>
-<a href="#toc_3">main.cpp</a>
+<a href="#toc_4">main.cpp</a>
 </li>
 <li>
-<a href="#toc_4">counter.h</a>
+<a href="#toc_5">counter.h</a>
 </li>
 <li>
-<a href="#toc_5">main.qml</a>
+<a href="#toc_6">counter.cpp</a>
+</li>
+<li>
+<a href="#toc_7">main.qml</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_6">Build / Make</a>
+<a href="#toc_8">Build / Make</a>
 </li>
 </ul>
 
 </div><hr><div id="contents">
 <p>QT has an Observer mechanism built in, which they call &#39;<a href="https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html">Signals and Slots</a>&#39;. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from <code>QObject</code> and defining a few <code>Q_PROPERTY</code> macro&#39;s, the QT Meta Object Compiler (<code>moc</code>) does all the hard work for you.
-Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.
-This small example shows you how to setup a signal / slot from C++ to QML and back.</p>
+Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.</p>
 
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
@@ -90,6 +95,8 @@ tools provided by your IDE. If your method is based on <code>value</code> and yo
 and bindings and all the regular C++ code. Not very obvious if you&#39;re not familiar with
 how QT signals and slots and QML work.</p>
 
+<h3 id="toc_0">Summary</h3>
+
 <p>Because this is a small snippet, it lacks the explanation and depth you normally get from 
 my articles. Some code comments are provided, but the QT documentation is recommended reading
 in this case:</p>
@@ -102,13 +109,113 @@ in this case:</p>
 <p>It&#39;s explained there very extensive. That is also why I wrote up this summary,
 due to all the comprehensive documentation, it&#39;s hard to get started with something small.</p>
 
-<h3 id="toc_0">Example code</h3>
+<p>My example code has a C++ class named <code>Counter</code>, with one private <code>long long</code> named <code>m_Value</code>.
+In the QML file I want to use this class and its methods, including the QT Signal/Slot.</p>
+
+<p>The class must inherit from <code>QObject</code> and you must place the <code>Q_OBJECT</code> macro in the header:</p>
+
+<pre><code>class Counter : public QObject
+    {
+        Q_OBJECT
+        [...]
+</code></pre>
+
+<p>The methods for setting and getting the value are as you&#39;d expect:</p>
+
+<pre><code>long long value() const { return m_Value; };
+[...]
+void Counter::setValue(long long value) {
+        if (value == m_Value)
+            return;
+        m_Value = value;
+        emit valueChanged(value);
+    }
+</code></pre>
+
+<p>In the above method you see the <code>emit</code> keyword. That&#39;s a blank define, for clarity. The
+function <code>valueChanged()</code> is called. This is our <code>signal</code>, as in the header file:</p>
+
+<pre><code>signals:
+    void valueChanged(long long newValue);
+</code></pre>
+
+<p>The <code>setValue()</code> method is our <code>slot</code>:</p>
+
+<pre><code>public slots:
+        void setValue(long long value);
+</code></pre>
+
+<p>These are accessible to QML by this <code>Q_PROPERTY</code> line:</p>
+
+<pre><code>Q_PROPERTY(long long value READ value WRITE setValue NOTIFY valueChanged)
+</code></pre>
+
+<p>You could also connect these up to things via <code>QObject::connect()</code> but that is
+out of this snippets scope. That is for when you use the signaling inside C++.</p>
+
+<p>These lines in <code>main.cpp</code> is also required, it adds your class to QML so to say:</p>
+
+<pre><code>    QQmlApplicationEngine engine;
+    Counter myCounter;
+
+    QQmlContext *context = engine.rootContext();
+    context-&gt;setContextProperty(&quot;MyCounter&quot;, &amp;myCounter);
+</code></pre>
+
+<p>After this you can access <code>MyCounter</code> inside of QML as if it was a
+regular C++ class. FOr example, to call the <code>Counter::value()</code> method:</p>
+
+<pre><code>    Text {
+        text: &quot;Counter: &quot; + MyCounter.value + &quot;.&quot;
+    }    
+</code></pre>
+
+<p>Or the <code>Counter::setValue()</code> method:</p>
+
+<pre><code>        Button {
+            text: qsTr(&quot;Set counter to 10&quot;)
+            // C++ method Counter::setValue(long long), bound via Q_PROPERTY
+            onClicked: MyCounter.setValue(10)
+        }
+</code></pre>
+
+<p>Due to the magic of the <code>moc</code> and the extra code it generates via <code>Q_PROPERTY</code>,
+when you increment like in the below example, it knows which value to increment
+and has generated correct operator overloads for it:</p>
+
+<pre><code>   Button {
+        text: qsTr(&quot;Increase Counter&quot;)
+        onClicked: ++MyCounter.value
+    }
+</code></pre>
+
+<p>You can also receive the C++ signal right in QT. We&#39;ve defined <code>valueChanged</code> as the
+signal and via a <code>Connection</code> with <code>onValueChanged</code> (capitals matter here, prefix your 
+method with <code>on</code> and change the first character of your method name to a capital) you
+can do things in QML. Like below, where I have a local variable that is incremented 
+each time the signal is received:</p>
+
+<pre><code>Text {
+    property int changeCount: 0
+    id: labelChanged
+    text: &quot;Count has changed &quot; + changeCount + &quot; times.&quot;
+    // Receive the valueChanged NOTIFY
+    Connections {
+        target: MyCounter
+        onValueChanged: {
+            ++labelChanged.changeCount
+        }
+    }
+}
+</code></pre>
+
+<h3 id="toc_1">Example code</h3>
 
 <p>Create a project folder and place all the files there under the filenames provided.</p>
 
 <p>The project is also available on <a href="https://github.com/RaymiiOrg/qml_cpp_signal_example">github, here</a>.</p>
 
-<h4 id="toc_1">qmlcppsignalexample.pro</h4>
+<h4 id="toc_2">qmlcppsignalexample.pro</h4>
 
 <pre><code>QT += quick
 
@@ -135,7 +242,7 @@ HEADERS += \
     counter.h
 </code></pre>
 
-<h4 id="toc_2">qml.qrc</h4>
+<h4 id="toc_3">qml.qrc</h4>
 
 <pre><code>&lt;RCC&gt;
     &lt;qresource prefix=&quot;/&quot;&gt;
@@ -144,7 +251,7 @@ HEADERS += \
 &lt;/RCC&gt;
 </code></pre>
 
-<h4 id="toc_3">main.cpp</h4>
+<h4 id="toc_4">main.cpp</h4>
 
 <pre><code>#include &lt;QGuiApplication&gt;
 #include &lt;QQmlApplicationEngine&gt;
@@ -177,7 +284,7 @@ int main(int argc, char *argv[])
 }
 </code></pre>
 
-<h4 id="toc_4">counter.h</h4>
+<h4 id="toc_5">counter.h</h4>
 
 <pre><code>#ifndef COUNTER_H
 #define COUNTER_H
@@ -205,7 +312,23 @@ private:
 #endif // COUNTER_H
 </code></pre>
 
-<h4 id="toc_5">main.qml</h4>
+<h4 id="toc_6">counter.cpp</h4>
+
+<pre><code>#include &quot;counter.h&quot;
+
+Counter::Counter(QObject* parent) : QObject(parent)
+{
+}
+
+void Counter::setValue(long long value) {
+    if (value == m_Value)
+        return;
+    m_Value = value;
+    emit valueChanged(value);
+}
+</code></pre>
+
+<h4 id="toc_7">main.qml</h4>
 
 <pre><code>import QtQuick 2.11
 import QtQuick.Window 2.11
@@ -269,14 +392,14 @@ Window {
 
             Button {
                 text: qsTr(&quot;Set counter to 10&quot;)
-                // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                // C++ method Counter::setValue(long long), bound via Q_PROPERTY
                 onClicked: MyCounter.setValue(10)
-
             }
+
             Button {
                 text: qsTr(&quot;Reset&quot;)
                 onClicked: {
-                    // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                    // C++ method Counter::setValue(long long), bound via Q_PROPERTY
                     MyCounter.setValue(0)
                 }
             }
@@ -313,7 +436,7 @@ Window {
 }
 </code></pre>
 
-<h3 id="toc_6">Build / Make</h3>
+<h3 id="toc_8">Build / Make</h3>
 
 <p>To create the above code, first create a build folder outside of the project:</p>
 
