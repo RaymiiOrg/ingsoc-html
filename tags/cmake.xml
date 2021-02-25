@@ -7,6 +7,17 @@
             <atom:link href="https://raymii.org/s/tags/cmake.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>QT / QML Signals and Slots with C++</title> 
+                <link>https://raymii.org/s/snippets/Cpp_QT_QML_Signals_and_Slots.html</link> 
+                <guid>https://raymii.org/s/snippets/Cpp_QT_QML_Signals_and_Slots.html</guid>
+                <description>QT has an Observer mechanism built in, which they call '[Signals and Slots](https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html)'. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from `QObject` and defining a few `Q_PROPERTY` macro's, the QT Meta Object Compiler (`moc`) does all the hard work for you.
+Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.
+This small example shows you how to setup a signal / slot from C++ to QML and back.</description> 
+                <pubDate>Thu, 25 Feb 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Thu, 25 Feb 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>C++ std::async with a concurrency limit (via semaphores)</title> 
                 <link>https://raymii.org/s/tutorials/Cpp_std_async_with_a_concurrency_limit.html</link> 
                 <guid>https://raymii.org/s/tutorials/Cpp_std_async_with_a_concurrency_limit.html</guid>

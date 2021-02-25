@@ -1,0 +1,322 @@
+This is a text-only version of the following page on https://raymii.org:
+---
+Title       : 	QT / QML Signals and Slots with C++
+Author      : 	Remy van Elst
+Date        : 	25-02-2021
+URL         : 	https://raymii.org/s/snippets/Cpp_QT_QML_Signals_and_Slots.html
+Format      : 	Markdown/HTML
+---
+
+
+
+QT has an Observer mechanism built in, which they call '[Signals and Slots](https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html)'. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from `QObject` and defining a few `Q_PROPERTY` macro's, the QT Meta Object Compiler (`moc`) does all the hard work for you.
+Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.
+This small example shows you how to setup a signal / slot from C++ to QML and back.
+
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
+
+Below a screenshot of the application. It's nothing more than a simple counter that 
+increments with a button or is set via a text input field, but it is enough to get
+you started. 
+
+![screenshot][1]
+
+Because this signal/slot construction is mostly string based, you cannot use the refactoring
+tools provided by your IDE. If your method is based on `value` and you want to change
+`value` to, lets say, `something`, you need to change the `Q_PROPERTY`, the QML usage
+and bindings and all the regular C++ code. Not very obvious if you're not familiar with
+how QT signals and slots and QML work.
+
+Because this is a small snippet, it lacks the explanation and depth you normally get from 
+my articles. Some code comments are provided, but the QT documentation is recommended reading
+in this case:
+
+- [Signals and slots][2]
+- [Interaction with QML and C++][4]
+
+It's explained there very extensive. That is also why I wrote up this summary,
+due to all the comprehensive documentation, it's hard to get started with something small.
+
+### Example code
+
+Create a project folder and place all the files there under the filenames provided.
+
+The project is also available on [github, here][3].
+
+#### qmlcppsignalexample.pro
+
+    QT += quick
+
+    CONFIG += c++11
+
+    SOURCES += \
+            counter.cpp \
+            main.cpp
+
+    RESOURCES += qml.qrc
+
+    # Additional import path used to resolve QML modules in Qt Creator's code model
+    QML_IMPORT_PATH =
+
+    # Additional import path used to resolve QML modules just for Qt Quick Designer
+    QML_DESIGNER_IMPORT_PATH =
+
+    # Default rules for deployment.
+    qnx: target.path = /tmp/$${TARGET}/bin
+    else: unix:!android: target.path = /opt/$${TARGET}/bin
+    !isEmpty(target.path): INSTALLS += target
+
+    HEADERS += \
+        counter.h
+ 
+####  qml.qrc 
+
+    <RCC>
+        <qresource prefix="/">
+            <file>main.qml</file>
+        </qresource>
+    </RCC>
+
+
+####  main.cpp 
+
+    #include <QGuiApplication>
+    #include <QQmlApplicationEngine>
+    #include <QObject>
+    #include <QQmlContext>
+    #include "counter.h"
+
+    int main(int argc, char *argv[])
+    {
+
+        QGuiApplication app(argc, argv);
+
+        QQmlApplicationEngine engine;
+        Counter myCounter;
+
+        QQmlContext *context = engine.rootContext();
+        /* Below line makes myCounter object and methods available in QML as "MyCounter" */
+        context->setContextProperty("MyCounter", &myCounter);
+
+        const QUrl url(QStringLiteral("qrc:/main.qml"));
+        QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                         &app, [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        }, Qt::QueuedConnection);
+
+        engine.load(url);
+        return app.exec();
+
+    }
+
+
+#### counter.h
+
+    #ifndef COUNTER_H
+    #define COUNTER_H
+
+    #include <QObject>
+
+    class Counter : public QObject
+    {
+        Q_OBJECT
+        Q_PROPERTY(long long value READ value WRITE setValue NOTIFY valueChanged)
+    public:
+        explicit Counter(QObject *parent = nullptr);
+        long long value() const { return m_Value; };
+
+    public slots:
+        void setValue(long long value);
+
+    signals:
+        void valueChanged(long long newValue);
+
+    private:
+        long long m_Value {0} ;
+    };
+
+    #endif // COUNTER_H
+
+#### main.qml
+
+    import QtQuick 2.11
+    import QtQuick.Window 2.11
+    import QtQuick.Controls 2.11
+
+    Window {
+        width: 640
+        height: 480
+        visible: true
+        title: qsTr("QML Signals and slots example - Raymii.org")
+
+        MenuBar {
+            width: parent.width
+            Menu {
+                title: qsTr("File")
+                MenuItem {
+                    text: qsTr("Exit")
+                    onTriggered: Qt.quit();
+                }
+            }
+        }
+
+        Column {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 20
+
+            Text {
+                id: info
+                width: parent.width * 0.9
+                wrapMode: Text.WordWrap
+                text: "QML / C++ binding via signals and slots example program, by Raymii.org. License: GNU GPLv3"
+            }
+
+
+            Text {
+                id: labelCount
+                // C++ method Counter::value(). Bound via Q_PROPERTY, updates automatically on change
+                text: "Counter: " + MyCounter.value + "."
+            }
+
+            Text {
+                property int changeCount: 0
+                id: labelChanged
+                text: "Count has changed " + changeCount + " times."
+                // Receive the valueChanged NOTIFY
+                Connections {
+                    target: MyCounter
+                    onValueChanged: {
+                        ++labelChanged.changeCount
+                    }
+                }
+            }
+
+            Row {
+                spacing: 20
+                Button {
+                    text: qsTr("Increase Counter")
+                    onClicked: ++MyCounter.value
+                }
+
+                Button {
+                    text: qsTr("Set counter to 10")
+                    // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                    onClicked: MyCounter.setValue(10)
+
+                }
+                Button {
+                    text: qsTr("Reset")
+                    onClicked: {
+                        // C++ method Counter::setValue(int), bound via Q_PROPERTY
+                        MyCounter.setValue(0)
+                    }
+                }
+            }
+
+            Row {
+                spacing: 20
+
+                Text {
+                    id: setText
+                    text: qsTr("Enter counter value: ")
+                }
+                Rectangle {
+                    width: setText.width
+                    height: setText.height
+                    border.width: 1
+                    border.color: "black"
+
+                    TextInput {
+                        id: counterInput
+                        focus: true
+                        text: MyCounter.value
+                    }
+                }
+                // Bi-directional binding, entering a number in the textarea updates the
+                // C++ class, if the C++ class is updated, the textarea is updated as well.
+                Binding {
+                    target: MyCounter
+                    property: "value"
+                    value: counterInput.text
+                }
+            }
+        }
+    }
+
+
+
+
+### Build / Make
+
+To create the above code, first create a build folder outside of the project:
+
+    cd /tmp
+    mkdir build-qmlexample
+    cd build-qmlexample
+
+Run `qmake`, replace the path (`/home/remy/tmp/qt/qml_cpp_signal_example/`) to your project path:
+
+    qmake /home/remy/tmp/qt/qml_cpp_signal_example/qmlcppsignalexample.pro -spec linux-g++ CONFIG+=release && make qmake_all
+
+This example uses `qmake`, but there should be no trouble using `cmake`. Not using anything fancy here.
+
+When `qmake` has finished, you can run `make` to build the project:
+
+    make -j4
+
+After a short while, the binary should be available:
+
+    $ file qml_cpp_signal_example 
+    qml_cpp_signal_example: ELF 64-bit LSB shared object, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=f884f57b90ebf05b51551d42cef5ca3ee52037b4, for GNU/Linux 3.2.0, with debug_info, not stripped
+
+
+Run it from the commandline:
+
+    ./qml_cpp_signal_example
+
+[1]: /s/inc/img/qtqml-example.png
+[2]: https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html
+[3]: https://github.com/RaymiiOrg/qml_cpp_signal_example
+[4]: https://web.archive.org/web/20210225140546/https://doc.qt.io/qt-5/qtqml-cppintegration-interactqmlfromcpp.html
+
+
+
+---
+
+License:
+All the text on this website is free as in freedom unless stated otherwise. 
+This means you can use it in any way you want, you can copy it, change it 
+the way you like and republish it, as long as you release the (modified) 
+content under the same license to give others the same freedoms you've got 
+and place my name and a link to this site with the article as source.
+
+This site uses Google Analytics for statistics and Google Adwords for 
+advertisements. You are tracked and Google knows everything about you. 
+Use an adblocker like ublock-origin if you don't want it.
+
+All the code on this website is licensed under the GNU GPL v3 license 
+unless already licensed under a license which does not allows this form 
+of licensing or if another license is stated on that page / in that software:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Just to be clear, the information on this website is for ment for educational 
+purposes and you use it at your own risk. I do not take responsibility if you 
+screw something up. Use common sense, do not rm -rf / as root for example. 
+If you have any questions then do not hesitate to contact me.
+
+See https://raymii.org/s/static/About.html for details.

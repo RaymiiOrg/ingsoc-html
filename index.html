@@ -33,6 +33,14 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Cpp_QT_QML_Signals_and_Slots.html">QT / QML Signals and Slots with C++</a></h4>
+<small>25-02-2021 | Remy van Elst</small><br />
+<p><p>QT has an Observer mechanism built in, which they call &#39;<a href="https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html">Signals and Slots</a>&#39;. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from <code>QObject</code> and defining a few <code>Q_PROPERTY</code> macro&#39;s, the QT Meta Object Compiler (<code>moc</code>) does all the hard work for you.
+Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.
+This small example shows you how to setup a signal / slot from C++ to QML and back.</p>
+</p>
+<a href="snippets/Cpp_QT_QML_Signals_and_Slots.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/Limit_specific_process_memory_on_desktop_linux_with_cgroups.html">Limit specific process memory on desktop linux with cgroups and earlyoom</a></h4>
 <small>13-02-2021 | Remy van Elst</small><br />
 <p><p>On my laptop I recently had trouble with out of memory issues when running <code>clion</code>, <code>firefox</code>, <code>thunderbird</code>, <code>teams</code> and a virtualbox VM. To combat this, I&#39;ve setup cgroups to limit how much RAM specific applications can use and configured <code>earlyoom</code>, a very nifty tool that checks available memory and kills the process with the highest <code>oom_score</code> if available memory falls below 5%. Otherwise, my laptop would first grind to a halt (even without swap) and only after half an hour of seemingly being stuck would the OOM killer kick in. With <code>earlyoom</code> this hanging behavior is gone, although sometimes applications get killed when I don&#39;t expect it. I&#39;ve given firefox, thunderbird and teams a cgroup with memory limit and clion and virtualbox use their own configuration to limit their RAM usage.This post details how to setup <code>cgroups</code> to limit memory of specific processes including automatically placing process inside a cgroup.</p>
@@ -96,12 +104,6 @@ We start off with a shorter example showing how to fire off a set number of jobs
 <p><p>I recently wondered how many top posts on the Hacker News frontpage are also on Lobsters. At first I reached for my trusty Python, because when I need to do some JSON API parsing that&#39;s what I&#39;ll use. (Otherwise bash is my default goto for small things, except when json, networking or associative arrays are involved.) But, then, a thought came to my mind. Why not try it with reasonably modern C++. It&#39;s what I do at work, so why not a simple personal project. It would involve dependency management (json and a http library), parsing both API endpoints and, most importantly, doing stuff with time. Time, timezones and dates are hard. This article contains a bit of my learning process, compilation and usage instructions and an example run. Go look at the code and run the code yourself. Let me know if my timezone calculations are working outside of GMT+1.</p>
 </p>
 <a href="software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html">Read more...</a><br />
-<p></p>
-<h4><a href="tutorials/Cpp_set_up_cpp-httplib_with_ssl_support_with_cmake.md.html">C++ set up cpp-httplib with SSL support with cMake</a></h4>
-<small>14-12-2020 | Remy van Elst</small><br />
-<p><p>For a small personal project that talks to a few JSON API&#39;s and does some data parsing I needed a header only C++ HTTP library. Header only because that is the simplest way to include it in my project, just copy and paste the file. I came across the project cpp-httplib, which fits my needs, does all the http methods, small, a few examples and it looks modern and has recent development commits. Setup and getting it working was easy, but as soon as I tried an https url, I got an exception (&#39;https scheme is not supported.&#39;). This guide shows you how to setup cpp-httplib for SSL support with cmake. It took me a bit longer than I wanted to set it up correctly, so why not save you the effort.</p>
-</p>
-<a href="tutorials/Cpp_set_up_cpp-httplib_with_ssl_support_with_cmake.md.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
