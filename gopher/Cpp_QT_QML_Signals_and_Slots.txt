@@ -135,7 +135,6 @@ For a bi-directional binding example, look at the last `TextInput` in QML. It sh
 value of the C++ class, updates when the value is updated and when you enter a number,
 it updates the C++ class.
 
-
 ### Example code
 
 Create a project folder and place all the files there under the filenames provided.
