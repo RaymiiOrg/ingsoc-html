@@ -75,6 +75,9 @@
 <li>
 <a href="#toc_8">Build / Make</a>
 </li>
+<li>
+<a href="#toc_9">QT Webassembly Demo</a>
+</li>
 </ul>
 
 </div><hr><div id="contents">
@@ -94,6 +97,9 @@ tools provided by your IDE. If your method is based on <code>value</code> and yo
 <code>value</code> to, lets say, <code>something</code>, you need to change the <code>Q_PROPERTY</code>, the QML usage
 and bindings and all the regular C++ code. Not very obvious if you&#39;re not familiar with
 how QT signals and slots and QML work.</p>
+
+<p>For fun I compiled this example application to Webassembly as well. You can 
+<a href="https://raymii.org/s/inc/software/qt-webassembly-demo/">run it here</a>, or at the bottom of this page it&#39;s embedded as an <code>iframe</code>.</p>
 
 <h3 id="toc_0">Summary</h3>
 
@@ -471,6 +477,13 @@ qml_cpp_signal_example: ELF 64-bit LSB shared object, x86-64, version 1 (GNU/Lin
 
 <pre><code>./qml_cpp_signal_example
 </code></pre>
+
+<h3 id="toc_9">QT Webassembly Demo</h3>
+
+<p>For fun I compiled the example application to webassembly. Run it <a href="https://raymii.org/s/inc/software/qt-webassembly-demo/">here</a>
+or, if it loads, an <code>iframe</code> below:</p>
+
+<p><iframe width="640" height="480" src="https://raymii.org/s/inc/software/qt-webassembly-demo/index.html"></p>
 Tags: <a href="../tags/c++.html">c++</a>
 , <a href="../tags/cmake.html">cmake</a>
 , <a href="../tags/cpp.html">cpp</a>

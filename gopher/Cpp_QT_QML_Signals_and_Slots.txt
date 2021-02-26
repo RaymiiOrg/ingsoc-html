@@ -27,6 +27,10 @@ tools provided by your IDE. If your method is based on `value` and you want to c
 and bindings and all the regular C++ code. Not very obvious if you're not familiar with
 how QT signals and slots and QML work.
 
+For fun I compiled this example application to Webassembly as well. You can 
+[run it here][5], or at the bottom of this page it's embedded as an `iframe`.
+
+
 ### Summary
 
 Because this is a small snippet, it lacks the explanation and depth you normally get from 
@@ -390,11 +394,22 @@ Run it from the commandline:
 
     ./qml_cpp_signal_example
 
+
+### QT Webassembly Demo
+
+For fun I compiled the example application to webassembly. Run it [here][5]
+or, if it loads, an `iframe` below:
+
+
+<iframe width="640" height="480" src="https://raymii.org/s/inc/software/qt-webassembly-demo/index.html">
+
+
+
 [1]: /s/inc/img/qtqml-example.png
 [2]: https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html
 [3]: https://github.com/RaymiiOrg/qml_cpp_signal_example
 [4]: https://web.archive.org/web/20210225140546/https://doc.qt.io/qt-5/qtqml-cppintegration-interactqmlfromcpp.html
-
+[5]: https://raymii.org/s/inc/software/qt-webassembly-demo/
 
 
 ---
