@@ -7,6 +7,16 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Disable (debug) logging in QT and QML</title> 
+                <link>gopher://raymii.org/0/Disable_logging_in_QT_and_QML.txt</link> 
+                <guid>gopher://raymii.org/0/Disable_logging_in_QT_and_QML.txt</guid>
+                <description>In QT you can use a few functions from the `qDebug.h` header like `qDebug()` and `qWarning()` to log information to the console. In QML you can use the likes of `console.log()`, `console.error()`. It's also very easy to implement your own logger (eg. `SyslogMessageHandler`) if you want something different, like logging to syslog and the console.
+In this post I'll show you how to disable both forms of logging in a release build, qml and qt have different ways to manage their output.</description> 
+                <pubDate>Sat, 27 Feb 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 27 Feb 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>QT / QML Signals and Slots with C++</title> 
                 <link>gopher://raymii.org/0/Cpp_QT_QML_Signals_and_Slots.txt</link> 
                 <guid>gopher://raymii.org/0/Cpp_QT_QML_Signals_and_Slots.txt</guid>

@@ -33,6 +33,13 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="articles/Disable_logging_in_QT_and_QML.html">Disable (debug) logging in QT and QML</a></h4>
+<small>27-02-2021 | Remy van Elst</small><br />
+<p><p>In QT you can use a few functions from the <code>qDebug.h</code> header like <code>qDebug()</code> and <code>qWarning()</code> to log information to the console. In QML you can use the likes of <code>console.log()</code>, <code>console.error()</code>. It&#39;s also very easy to implement your own logger (eg. <code>SyslogMessageHandler</code>) if you want something different, like logging to syslog and the console.
+In this post I&#39;ll show you how to disable both forms of logging in a release build, qml and qt have different ways to manage their output.</p>
+</p>
+<a href="articles/Disable_logging_in_QT_and_QML.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Cpp_QT_QML_Signals_and_Slots.html">QT / QML Signals and Slots with C++</a></h4>
 <small>25-02-2021 | Remy van Elst</small><br />
 <p><p>QT has an Observer mechanism built in, which they call &#39;<a href="https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html">Signals and Slots</a>&#39;. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from <code>QObject</code> and defining a few <code>Q_PROPERTY</code> macro&#39;s, the QT Meta Object Compiler (<code>moc</code>) does all the hard work for you.
@@ -97,12 +104,6 @@ We start off with a shorter example showing how to fire off a set number of jobs
 <p><p>This is a short personal rant to start the new year off. When you&#39;re a multi billion dollar company with more software developers than you&#39;d ever need, how on earth is it possible that your public changelog in an app store is just &#39;bugfixes and performance improvements&#39;? If that is all you&#39;re going to put there, then just leave it blank. Or be honest and put &#39;We can&#39;t be arsed to fill this in&#39; there. For me as a technical user it&#39;s not actionable, and your non technical users are not going to read that page anyway.</p>
 </p>
 <a href="blog/Rant_Lets_talk_about_changelogs.html">Read more...</a><br />
-<p></p>
-<h4><a href="software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html">Hacker News vs Lobste.rs in C++, an exercise in parsing json http api's and date/time/timezones</a></h4>
-<small>31-12-2020 | Remy van Elst</small><br />
-<p><p>I recently wondered how many top posts on the Hacker News frontpage are also on Lobsters. At first I reached for my trusty Python, because when I need to do some JSON API parsing that&#39;s what I&#39;ll use. (Otherwise bash is my default goto for small things, except when json, networking or associative arrays are involved.) But, then, a thought came to my mind. Why not try it with reasonably modern C++. It&#39;s what I do at work, so why not a simple personal project. It would involve dependency management (json and a http library), parsing both API endpoints and, most importantly, doing stuff with time. Time, timezones and dates are hard. This article contains a bit of my learning process, compilation and usage instructions and an example run. Go look at the code and run the code yourself. Let me know if my timezone calculations are working outside of GMT+1.</p>
-</p>
-<a href="software/Cpp_exercise_in_parsing_json_http_apis_and_time_stuff.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
