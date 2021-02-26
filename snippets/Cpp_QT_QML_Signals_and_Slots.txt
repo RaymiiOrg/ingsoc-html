@@ -397,11 +397,11 @@ Run it from the commandline:
 
 ### QT Webassembly Demo
 
-For fun I compiled the example application to webassembly. Run it [here][5]
+For fun I [compiled][7] the example application to [webassembly][6]. Run it [here][5]
 or, if it loads, an `iframe` below:
 
 
-<iframe width="640" height="480" src="https://raymii.org/s/inc/software/qt-webassembly-demo/index.html">
+<iframe style="border:1px solid black;" width="640" height="480" src="https://raymii.org/s/inc/software/qt-webassembly-demo/index.html">
 
 
 
@@ -410,7 +410,8 @@ or, if it loads, an `iframe` below:
 [3]: https://github.com/RaymiiOrg/qml_cpp_signal_example
 [4]: https://web.archive.org/web/20210225140546/https://doc.qt.io/qt-5/qtqml-cppintegration-interactqmlfromcpp.html
 [5]: https://raymii.org/s/inc/software/qt-webassembly-demo/
-
+[6]: https://web.archive.org/web/20210226131058/https://doc.qt.io/qtcreator/creator-setup-webassembly.html
+[7]: https://archive.md/uDFe6
 
 ---
 
