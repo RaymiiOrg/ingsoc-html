@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/video.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Record your Linux Desktop with ffmpeg and slop to any format</title> 
+                <link>https://raymii.org/s/snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html</link> 
+                <guid>https://raymii.org/s/snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html</guid>
+                <description>This two-line shell script allows you to record a region of your linux desktop to a video file, or a `.gif`, using `slop` and `ffmpeg`. I use it often when a screenshot is not enough, or when you need to explain a sequence of events to someone.</description> 
+                <pubDate>Wed, 17 Mar 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 17 Mar 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Semi-accurate live stream viewer count (hls/rtmp/restreamer) on the command line</title> 
                 <link>https://raymii.org/s/tutorials/Semi-accurate_live_stream_viewer_count.html</link> 
                 <guid>https://raymii.org/s/tutorials/Semi-accurate_live_stream_viewer_count.html</guid>

@@ -7,6 +7,15 @@
             <atom:link href="gopher://raymii.org/gopher/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Record your Linux Desktop with ffmpeg and slop to any format</title> 
+                <link>gopher://raymii.org/0/Record_your_Linux_Desktop_with_ffmpeg_and_slop.txt</link> 
+                <guid>gopher://raymii.org/0/Record_your_Linux_Desktop_with_ffmpeg_and_slop.txt</guid>
+                <description>This two-line shell script allows you to record a region of your linux desktop to a video file, or a `.gif`, using `slop` and `ffmpeg`. I use it often when a screenshot is not enough, or when you need to explain a sequence of events to someone.</description> 
+                <pubDate>Wed, 17 Mar 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 17 Mar 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Disable (debug) logging in QT and QML</title> 
                 <link>gopher://raymii.org/0/Disable_logging_in_QT_and_QML.txt</link> 
                 <guid>gopher://raymii.org/0/Disable_logging_in_QT_and_QML.txt</guid>

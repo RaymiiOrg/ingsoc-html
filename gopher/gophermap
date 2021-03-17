@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2021-02-26T14:17:55	/	localhost	70
+i            2021-03-17T13:42:14	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0Record your Linux Desktop with ffmpeg and slop to any format (17-03-2021)	Record_your_Linux_Desktop_with_ffmpeg_and_slop.txt	raymii.org	70
 0Disable (debug) logging in QT and QML (27-02-2021)	Disable_logging_in_QT_and_QML.txt	raymii.org	70
 0QT / QML Signals and Slots with C++ (25-02-2021)	Cpp_QT_QML_Signals_and_Slots.txt	raymii.org	70
 0Limit specific process memory on desktop linux with cgroups and earlyoom (13-02-2021)	Limit_specific_process_memory_on_desktop_linux_with_cgroups.txt	raymii.org	70
