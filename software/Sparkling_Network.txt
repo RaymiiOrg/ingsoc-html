@@ -3,15 +3,17 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Sparkling Network
 Author      : 	Remy van Elst
 Date        : 	12-01-2019
-Last update : 	07-04-2019
+Last update : 	20-03-2021
 URL         : 	https://raymii.org/s/software/Sparkling_Network.html
 Format      : 	Markdown/HTML
 ---
 
 
 
+This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes. Prices are monthly, excluding VAT.
 
-This is an overview of all the servers in the Sparkling Network, including specifications and location, mostly as an overview for myself, but it might be interesting for others. It also has an HTTP status overview of the nodes. Prices are monthly, excluding VAT.
+<p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
+
 
 ### Active Servers for Raymii.org
 
@@ -62,6 +64,17 @@ This is an overview of all the servers in the Sparkling Network, including speci
       <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
       <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
       <td>Free Tier</td>
+    </tr>
+    <tr>
+      <td><img src="http://s3.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
+      <td><a href="http://s3.spnw.nl/munin/">s3</a></td>
+      <td>Inception Hosting</td>
+      <td><img src="https://raymii.org/s/inc/img/flags/nl.png" alt="NL" width="16" height="16"></td>
+      <td>1 GB</td>
+      <td>30 GB</td>
+      <td><img src="https://raymii.org/s/inc/img/ubuntu.png" alt="Ubuntu" width="16" height="16" /></td>
+      <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>EUR 1.25</td>
     </tr>
     <tr>
       <td><img src="http://s11.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>

@@ -17,6 +17,15 @@ I'll start with a simple `printf` with a ternary `if`  e.g. `(a ? this : that)` 
             </item>
     
             <item>
+                <title>Sparkling Network</title> 
+                <link>https://raymii.org/s/software/Sparkling_Network.html</link> 
+                <guid>https://raymii.org/s/software/Sparkling_Network.html</guid>
+                <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes. Prices are monthly, excluding VAT.</description> 
+                <pubDate>Sat, 12 Jan 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 20 Mar 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Record your Linux Desktop with ffmpeg and slop to any format</title> 
                 <link>https://raymii.org/s/snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html</link> 
                 <guid>https://raymii.org/s/snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html</guid>
@@ -726,15 +735,6 @@ In this article I'll talk about what I did to enforce the license and how it wen
                 <description>Markdown has two options to create a link. A link is the piece of text you click to go to another webpage. Actually, three ways, since you can just embed HTML code in Markdown. I write all the content for this site in Markdown files, which are then converted by my static site generator to HTML, text and a gopher version. I'm used to using the inline link style, which is  where you paste the link right in the text. Since I've enabled the Gopher  version of raymii.org, I noticed that there was no line wrapping. The HTML  website all arranges that via CSS, but the text-only Gopher does not. Sometimes  Gopher clients wrap text, but most don't. I'm re-wrapping all articles to make them fit, but the wrapping is way off with inline style markdown links. By  converting them to reference style markdown links, the wrapping looks way better, and as an added bonus, reference style links give a better overview. There are a few scripts floating around to convert these links, but either  Ruby or NodeJS. It turns out after a bit of research that Pandoc, the anything-to-anything text conversion tool, has an option to use reference style links. With this option, I converted all the articles here (almost 400) to the reference style Markdown links.</description> 
                 <pubDate>Wed, 10 Apr 2019 00:00:00 GMT</pubDate>
                 <lastBuildDate>Wed, 10 Apr 2019 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Sparkling Network</title> 
-                <link>https://raymii.org/s/software/Sparkling_Network.html</link> 
-                <guid>https://raymii.org/s/software/Sparkling_Network.html</guid>
-                <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes.</description> 
-                <pubDate>Sat, 12 Jan 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 07 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

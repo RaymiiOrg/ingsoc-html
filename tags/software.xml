@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/software.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Sparkling Network</title> 
+                <link>https://raymii.org/s/software/Sparkling_Network.html</link> 
+                <guid>https://raymii.org/s/software/Sparkling_Network.html</guid>
+                <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes. Prices are monthly, excluding VAT.</description> 
+                <pubDate>Sat, 12 Jan 2019 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 20 Mar 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>Bash HTTP monitoring dashboard</title> 
                 <link>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</link> 
                 <guid>https://raymii.org/s/software/Bash_HTTP_Monitoring_Dashboard.html</guid>
@@ -130,15 +139,6 @@
                 <description> Love plaintext? This script downloads an URL, parses it with readability and returns the plaintext (as markdown). It supports RSS feeds (will convert every article in the feed) and saves every article. My usecase is twofold. One is to convert RSS feeds to a gopher site, the second is to get full text in my RSS reader. The script contains a few workarounds for so-called cookiewalls. It also pauses between RSS feed articles to not do excessive requests. The readability part is handled by Python, no external services are used.</description> 
                 <pubDate>Thu, 18 Apr 2019 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 18 Apr 2019 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>Sparkling Network</title> 
-                <link>https://raymii.org/s/software/Sparkling_Network.html</link> 
-                <guid>https://raymii.org/s/software/Sparkling_Network.html</guid>
-                <description>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes.</description> 
-                <pubDate>Sat, 12 Jan 2019 00:00:00 GMT</pubDate>
-                <lastBuildDate>Sun, 07 Apr 2019 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>
