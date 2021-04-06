@@ -33,6 +33,14 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Run_one_specific_clang-tidy_check_on_your_codebase.html">Run one specific clang-tidy check on your entire codebase</a></h4>
+<small>05-04-2021 | Remy van Elst</small><br />
+<p><p>Recently I did a major refactor on a piece of code that involved thousands of lines of code which were in one  way or another related to string handling. All of the code handled <code>char*</code> (C style character pointer arrays) and the concept of <code>const</code> or ownership was literally unknown in that part of the codebase. The refactored code uses <code>std::string</code>&#39;s, but due to the legacy nature, a large number of methods returned <code>nullptr</code>&#39;s instead of empty strings. I understand why this was done, but finding all those instances and the fact it only gives a runtime error was a bit of a bummer.
+Luckily <code>clang-tidy</code> is here to save the day. In my IDE, CLion, it gives a warning when you return a <code>nullptr</code>. It however does that only in the file you&#39;re currently editing, and since we&#39;re talking millions of files, I wasn&#39;t going to open them by hand. You can run <code>clang-tidy</code> easily on one file, and it&#39;s not hard to run it on an entire codebase as well, using  the script <code>run-clang-tidy.py</code>, provided in their packages.
+This snippet shows you how to run one specific <code>clang-tidy</code> check, in my case, <code>bugprone-string-constructor</code>, on a (cmake and C++) codebase.</p>
+</p>
+<a href="snippets/Run_one_specific_clang-tidy_check_on_your_codebase.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/Print_booleans_as_True_or_False_in_C++.html">Three ways to print booleans as 'True' or 'False' in C++</a></h4>
 <small>21-03-2021 | Remy van Elst</small><br />
 <p><p>In this article I&#39;ll show you three ways to print a textual representation of a boolean in C++. Normally a bool is printed as either a <code>0</code> or a <code>1</code> by <code>std::cout</code>, but more often than not, if you&#39;re printing a <code>bool</code>, it&#39;s better to see <code>true/false</code>. Imagine reading through lines and lines of boring, repeating log files, how easy is it to miss a <code>0</code> in a sea of <code>1</code>&#39;s? I&#39;ve been there many times, wishing for more verbose logs.
@@ -95,12 +103,6 @@ Inside a C++ class this all works handy dandy and is reasonable easy to follow, 
 <p><p>Last year November, I posted on a new OpenVMS related project, AXPbox, the open source Alpha emulator, a fork of es40 by Tom&aacute;&scaron; Glozar. I got involved a bit in the project, submitting a few patches here and there, editing the Wiki and thus now have contributer rights on the github repository. After discussing a bit back and forth with Tom&aacute;&scaron;, I put together the first official release of AXPbox, very exciting news. The release can be found here on github. This article has the release notes and a bunch of screenshots of OpenVMS inside AXPbox running GUI applications over the network.</p>
 </p>
 <a href="blog/AXPBox-version-1.0.0-released.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/Site_updates_new_font_for_better_contrast.html">Site updates, new font for better contrast and other small CSS fixes</a></h4>
-<small>12-01-2021 | Remy van Elst</small><br />
-<p><p>New year, time for some site updates. This site is generated with my self-written open source static site generator named ingsoc (named after 1984) and this update is a collection of  small improvements. A new font, internal code updates to the generator and a few CSS fixes here and there. This article goes over all of them including screenshots before and after!</p>
-</p>
-<a href="blog/Site_updates_new_font_for_better_contrast.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
