@@ -33,6 +33,13 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/MS_Teams_on_a_Coffee_Machine_or_Framebuffer_VNC_Client.html">Run MS Teams on a coffee machine?!? (Or: Embedded Linux Framebuffer VNC client)</a></h4>
+<small>08-04-2021 | Remy van Elst</small><br />
+<p><p>To fill some time <a href="https://xkcd.com/303/">during compiling</a> I tried to get a VNC client running on a coffee machine, specifically to show MS Teams. At work I develop software for these coffee machines in C++, which allows me to do such fun stuff, because from a software point of view, it&#39;s just an ARM PC running linux with a framebuffer for graphics. I compiled a few framebuffer VNC clients, fired up an SSH tunnel and used <code>x11vnc</code> to share one specific window and after a few attempts, Teams was up and running on my &#39;new&#39; second monitor.
+This post contains my little adventure in framebuffer VNC clients, but it&#39;s not a comprehensive guide as most of my other articles. Showing you how to set up an Openembedded server with a VariScite specific toolchain is way too much work to cross-compile a simple C program, but since that&#39;s my day job, why not use it for fun. It contains some tips for <code>x11vnc</code> and shows you two different framebuffer VNC clients, <code>fbvnc</code> and <code>directvnc</code>.</p>
+</p>
+<a href="blog/MS_Teams_on_a_Coffee_Machine_or_Framebuffer_VNC_Client.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Run_one_specific_clang-tidy_check_on_your_codebase.html">Run one specific clang-tidy check on your entire codebase</a></h4>
 <small>05-04-2021 | Remy van Elst</small><br />
 <p><p>Recently I did a major refactor on a piece of code that involved thousands of lines of code which were in one  way or another related to string handling. All of the code handled <code>char*</code> (C style character pointer arrays) and the concept of <code>const</code> or ownership was literally unknown in that part of the codebase. The refactored code uses <code>std::string</code>&#39;s, but due to the legacy nature, a large number of methods returned <code>nullptr</code>&#39;s instead of empty strings. I understand why this was done, but finding all those instances and the fact it only gives a runtime error was a bit of a bummer.
@@ -97,12 +104,6 @@ Inside a C++ class this all works handy dandy and is reasonable easy to follow, 
 <p><p>Last year November, I posted on a new OpenVMS related project, AXPbox, the open source Alpha emulator, a fork of es40 by Tom&aacute;&scaron; Glozar. Last week I put together the first official release of AXPbox, one of the changes being in the network code, making it more stable, thus being able to run a remote X session. Meaning, you can run the CDE desktop and enjoy everything the OpenVMS GUI has to offer. This article shows you how to run the CDE GUI in a remote X session, including switching between the old Motif look and the new DECWindows and how to run Tetris.</p>
 </p>
 <a href="blog/OpenVMS_CDE_Desktop_remote_x_axpbox.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/AXPBox-version-1.0.0-released.html">AXPbox version 1.0.0 released! (Open source Alpha emulator)</a></h4>
-<small>23-01-2021 | Remy van Elst</small><br />
-<p><p>Last year November, I posted on a new OpenVMS related project, AXPbox, the open source Alpha emulator, a fork of es40 by Tom&aacute;&scaron; Glozar. I got involved a bit in the project, submitting a few patches here and there, editing the Wiki and thus now have contributer rights on the github repository. After discussing a bit back and forth with Tom&aacute;&scaron;, I put together the first official release of AXPbox, very exciting news. The release can be found here on github. This article has the release notes and a bunch of screenshots of OpenVMS inside AXPbox running GUI applications over the network.</p>
-</p>
-<a href="blog/AXPBox-version-1.0.0-released.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
