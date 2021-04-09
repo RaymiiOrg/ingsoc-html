@@ -85,7 +85,7 @@ port to the coffee machine:
 	ssh -R 5900:127.0.0.1:5900 user@IP.OF.COFFEE.MACHINE
 
 **The coffee machines normally do not have SSH running or exposed. For local
-development we can turn it on, but it requires a special signed piece package.**
+development we can turn it on, but it involves a signed package and UART.**
 
 Now, as far as the coffee machine is concerned, it has a port on `localhost:5900` 
 which is also a working VNC `display:0`. Great! Let's continue on to VNC clients.

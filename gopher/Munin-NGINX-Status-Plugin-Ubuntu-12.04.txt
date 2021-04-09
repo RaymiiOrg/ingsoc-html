@@ -46,7 +46,6 @@ URL for the plugin:
 Then configure the munin plugins:
 
     
-    
     munin-node-configure --suggest --shell | sh
     
 
@@ -54,8 +53,7 @@ This creates the symlinks in the `/etc/munin/plugins/` folder. If they are note
 there, `ln -s` them yourself.
 
 Finally restart munin:
-
-    
+   
     
     /etc/init.d/munin-node restart
     
