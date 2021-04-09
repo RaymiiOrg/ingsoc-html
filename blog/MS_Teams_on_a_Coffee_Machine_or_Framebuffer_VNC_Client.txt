@@ -39,6 +39,11 @@ flash UI][9] still runs with some hoops. And of course a bunch of coffee
 machines to test with, but who likes walking and manually pressing buttons if
 you can automate that stuff away?
 
+This is one of the Frankenstein just-enough-coffee-machines that serves
+as a second screen:
+
+![teams 3][19]
+
 ### Second screen?
 
 So why not get an actual second screen? Well, I personally use just one
@@ -181,6 +186,7 @@ showing the  performance. For an occasional second screen, it's just perfect.
 [16]: https://github.com/DirectFB/directfb
 [17]: https://web.archive.org/web/20210408185358/https://packages.debian.org/sid/directvnc
 [18]: http://litcave.rudi.ir
+[19]: /s/inc/img/teams3.jpg
 
 ---
 
