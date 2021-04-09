@@ -132,7 +132,7 @@ compilation required:
 
 `fbvnc` is a smaller, more bare-bones tool. The old [webpages are of course
 offline][5], but archive.org still has copies. However, to my surprise, the 
-[git repository has recent commits][7]! 
+[git repository has recent commits][7] from its author, [Ali Gholami Rudi][18]! 
 
 A `git clone` and `make fbvnc` in my cross-compile setup later I have a 
 working binary. The connection failed at first, because I had password
@@ -180,6 +180,7 @@ showing the  performance. For an occasional second screen, it's just perfect.
 [15]: /s/inc/img/fbvnc.png
 [16]: https://github.com/DirectFB/directfb
 [17]: https://web.archive.org/web/20210408185358/https://packages.debian.org/sid/directvnc
+[18]: http://litcave.rudi.ir
 
 ---
 
