@@ -45,8 +45,8 @@
                             </script>
                         </div><br><div class='olderthanayear'><p><strong>&#10071; This post is over eight years old. It may no longer be up to date. Opinions may have changed.</strong></p></div>
 <div id="contents">
-<p>This little tutorial will show you how to set up the Munin plugin to monitor
-NGINX (nginx <em>request and nginx</em> status) and graph it. You need to change some
+<p>This post will show you how to set up the Munin plugin to monitor
+NGINX (<code>nginx_request</code> and <code>nginx_status</code>) and graph it. You need to change some
 URLs in the config because by default this is wrong.</p>
 
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
@@ -69,7 +69,7 @@ location /nginx_status {
 access logging. This means that nobody other than munin can access the status
 page.</p>
 
-<p>Now execute this command to change the munin configuration to have the correct
+<p>Execute this command to change the munin configuration to have the correct
 URL for the plugin:</p>
 
 <pre><code>if [[ $(cat /etc/munin/plugin-conf.d/munin-node | grep &quot;nginx&quot;) = &quot;&quot; ]]; then echo -e &quot;\n[nginx*]\nenv.url http://localhost/nginx_status&quot; &gt;&gt; /etc/munin/plugin-conf.d/munin-node; fi
@@ -90,7 +90,7 @@ there, <code>ln -s</code> them yourself.</p>
 
 <p>Done. You will now have nice nginx ghraps like below:</p>
 
-<p>!(http://zeldor.biz/wp-content/uploads/2011/01/nginx_status-day.png)</p>
+<p><img src="/s/inc/img/nginx_status-day.png" alt="munin"></p>
 Tags: <a href="../tags/debian.html">debian</a>
 , <a href="../tags/monitoring.html">monitoring</a>
 , <a href="../tags/munin.html">munin</a>

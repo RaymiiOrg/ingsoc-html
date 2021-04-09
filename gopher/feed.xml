@@ -3381,7 +3381,7 @@ In this article I'll talk about what I did to enforce the license and how it wen
                 <title>Munin - Set up the NGINX status plugin on Ubuntu 12.04</title> 
                 <link>gopher://raymii.org/0/Munin-NGINX-Status-Plugin-Ubuntu-12.04.txt</link> 
                 <guid>gopher://raymii.org/0/Munin-NGINX-Status-Plugin-Ubuntu-12.04.txt</guid>
-                <description>This little tutorial will show you how to set up the Munin plugin to monitor NGINX (nginx_request and nginx_status) and graph it. You need to change some URLs in the config because by default this is wrong.</description> 
+                <description>This post will show you how to set up the Munin plugin to monitor NGINX (nginx_request and nginx_status) and graph it. You need to change some URLs in the config because by default this is wrong.</description> 
                 <pubDate>Thu, 31 Jan 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 31 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>

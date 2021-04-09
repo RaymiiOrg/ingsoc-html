@@ -80,9 +80,9 @@ This post contains my little adventure in framebuffer VNC clients, but it&#39;s 
 <p><strong>Important disclaimer: this was a fun side project, neither acknowledged nor endorsed by
 my employer. Their coffee machines can not run custom software under normal circumstances.</strong></p>
 
-<p>The instructions in this post are applicable to any linux framebuffer device. It could
-be a raspberry pi or even your own machine. I did not test user input (mouse/keyboard), 
-because I intended to use the device as a view only screen.</p>
+<p>The instructions in this post are applicable to any linux framebuffer device.
+It could be a raspberry pi or even your own machine. I did not test user input
+(mouse/keyboard),  because I intended to use the device as a view only screen.</p>
 
 <p>For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my <a href="/s/inc/img/gnash1.png">local machine</a>. Manual testing is a rare
@@ -163,7 +163,7 @@ the colours are a bit off on the other (working) half:</p>
 
 <p>I <a href="https://github.com/drinkmilk/directvnc/issues/1#issuecomment-815604974">filed a github issue</a> but I don&#39;t expect it will be fixed, since the
 project seems dead. The curious thing was that other code using <code>directfb</code> did
-work on the entire  screen, no issues [running the examples][3. <code>directvnc</code>
+work on the entire  screen, no issues <a href="/s/inc/img/directvnc.png">running the examples</a>. <code>directvnc</code>
 used <code>directfb</code> for the framebuffer rendering.</p>
 
 <p>I tried all the possible options in <code>/etc/directfbrc</code> and took a quick look at

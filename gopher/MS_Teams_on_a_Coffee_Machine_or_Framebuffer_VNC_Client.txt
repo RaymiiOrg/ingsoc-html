@@ -26,9 +26,9 @@ This post contains my little adventure in framebuffer VNC clients, but it's not 
 my employer. Their coffee machines can not run custom software under normal circumstances.**
 
 
-The instructions in this post are applicable to any linux framebuffer device. It could
-be a raspberry pi or even your own machine. I did not test user input (mouse/keyboard), 
-because I intended to use the device as a view only screen.
+The instructions in this post are applicable to any linux framebuffer device.
+It could be a raspberry pi or even your own machine. I did not test user input
+(mouse/keyboard),  because I intended to use the device as a view only screen.
 
 For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my [local machine][8]. Manual testing is a rare
@@ -108,7 +108,7 @@ the colours are a bit off on the other (working) half:
 
 I [filed a github issue][14] but I don't expect it will be fixed, since the
 project seems dead. The curious thing was that other code using `directfb` did
-work on the entire  screen, no issues [running the examples][3. `directvnc`
+work on the entire  screen, no issues [running the examples][3]. `directvnc`
 used `directfb` for the framebuffer rendering.
 
 I tried all the possible options in `/etc/directfbrc` and took a quick look at

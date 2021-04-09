@@ -181,7 +181,7 @@
                 <title>Munin - Set up the NGINX status plugin on Ubuntu 12.04</title> 
                 <link>https://raymii.org/s/snippets/Munin-NGINX-Status-Plugin-Ubuntu-12.04.html</link> 
                 <guid>https://raymii.org/s/snippets/Munin-NGINX-Status-Plugin-Ubuntu-12.04.html</guid>
-                <description>This little tutorial will show you how to set up the Munin plugin to monitor NGINX (nginx_request and nginx_status) and graph it. You need to change some URLs in the config because by default this is wrong.</description> 
+                <description>This post will show you how to set up the Munin plugin to monitor NGINX (nginx_request and nginx_status) and graph it. You need to change some URLs in the config because by default this is wrong.</description> 
                 <pubDate>Thu, 31 Jan 2013 00:00:00 GMT</pubDate>
                 <lastBuildDate>Thu, 31 Jan 2013 00:00:00 GMT</lastBuildDate>
             </item>
