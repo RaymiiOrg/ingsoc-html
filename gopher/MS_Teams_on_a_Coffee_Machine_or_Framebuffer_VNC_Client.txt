@@ -32,9 +32,12 @@ It could be a raspberry pi or even your own machine.
 Here is another picture with a keyboard attached, input works with fbvnc. The
 mouse is optional since the touchscreen works as well in fbvnc. I did not test
 user input (mouse/keyboard) much more,  because I intended to use the device
-as a view only screen.
+as a view only screen. Also, my spare board has a broken touch
+controller/screen, which is why I can re-use it as a second screen, otherwise
+it would be thrown out.
 
 ![teams5][20]
+
 
 For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my [local machine][8]. Manual testing is a rare
