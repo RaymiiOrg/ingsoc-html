@@ -81,8 +81,14 @@ This post contains my little adventure in framebuffer VNC clients, but it&#39;s 
 my employer. Their coffee machines can not run custom software under normal circumstances.</strong></p>
 
 <p>The instructions in this post are applicable to any linux framebuffer device.
-It could be a raspberry pi or even your own machine. I did not test user input
-(mouse/keyboard),  because I intended to use the device as a view only screen.</p>
+It could be a raspberry pi or even your own machine.</p>
+
+<p>Here is another picture with a keyboard attached, input works with fbvnc. The
+mouse is optional since the touchscreen works as well in fbvnc. I did not test
+user input (mouse/keyboard) much more,  because I intended to use the device
+as a view only screen.</p>
+
+<p>![20][teams5]</p>
 
 <p>For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my <a href="/s/inc/img/gnash1.png">local machine</a>. Manual testing is a rare
@@ -190,9 +196,9 @@ compilation required:</p>
 
 <h3 id="toc_3">fbvnc</h3>
 
-<p><code>fbvnc</code> is a smaller, more bare-bones tool. The old <a href="http://web.archive.org/web/20130430135501/http://pocketworkstation.org/fbvnc.html">webpages are of course
+<p><code>fbvnc</code> is a smaller, more bare-bones tool. The old Debian <a href="http://web.archive.org/web/20130430135501/http://pocketworkstation.org/fbvnc.html">webpages are of course
 offline</a>, but archive.org still has copies. However, to my surprise, the 
-<a href="https://repo.or.cz/w/fbvnc.git">git repository has recent commits</a> from its author, <a href="http://litcave.rudi.ir">Ali Gholami Rudi</a>! </p>
+<a href="https://repo.or.cz/w/fbvnc.git">git repository has recent commits</a> from its author, <a href="http://litcave.rudi.ir">Ali Gholami Rudi - his homepage</a>! </p>
 
 <p>A <code>git clone</code> and <code>make fbvnc</code> in my cross-compile setup later I have a 
 working binary. The connection failed at first, because I had password

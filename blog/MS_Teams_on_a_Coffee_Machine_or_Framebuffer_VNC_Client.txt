@@ -27,8 +27,14 @@ my employer. Their coffee machines can not run custom software under normal circ
 
 
 The instructions in this post are applicable to any linux framebuffer device.
-It could be a raspberry pi or even your own machine. I did not test user input
-(mouse/keyboard),  because I intended to use the device as a view only screen.
+It could be a raspberry pi or even your own machine.
+
+Here is another picture with a keyboard attached, input works with fbvnc. The
+mouse is optional since the touchscreen works as well in fbvnc. I did not test
+user input (mouse/keyboard) much more,  because I intended to use the device
+as a view only screen.
+
+![20][teams5]
 
 For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my [local machine][8]. Manual testing is a rare
@@ -135,9 +141,9 @@ compilation required:
 
 ### fbvnc
 
-`fbvnc` is a smaller, more bare-bones tool. The old [webpages are of course
+`fbvnc` is a smaller, more bare-bones tool. The old Debian [webpages are of course
 offline][5], but archive.org still has copies. However, to my surprise, the 
-[git repository has recent commits][7] from its author, [Ali Gholami Rudi][18]! 
+[git repository has recent commits][7] from its author, [Ali Gholami Rudi - his homepage][18]! 
 
 A `git clone` and `make fbvnc` in my cross-compile setup later I have a 
 working binary. The connection failed at first, because I had password
@@ -187,6 +193,7 @@ showing the  performance. For an occasional second screen, it's just perfect.
 [17]: https://web.archive.org/web/20210408185358/https://packages.debian.org/sid/directvnc
 [18]: http://litcave.rudi.ir
 [19]: /s/inc/img/teams3.jpg
+[20]: /s/inc/img/teams5.png
 
 ---
 
