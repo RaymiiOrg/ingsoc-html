@@ -34,7 +34,7 @@ mouse is optional since the touchscreen works as well in fbvnc. I did not test
 user input (mouse/keyboard) much more,  because I intended to use the device
 as a view only screen.
 
-![20][teams5]
+![teams5][20]
 
 For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my [local machine][8]. Manual testing is a rare
