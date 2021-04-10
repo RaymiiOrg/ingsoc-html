@@ -38,7 +38,6 @@ it would be thrown out.
 
 ![teams5][20]
 
-
 For local development, I sometimes do it the reverse way around, run the
 coffee machine UI on my [local machine][8]. Manual testing is a rare
 occurrence, since by far a  large part of our codebase is covered by unit
