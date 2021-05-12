@@ -73,7 +73,6 @@ or not finished. Now we have a newer compiler, thus we can take advantage
 of newer features.
 
 
-
 ### virtual and override
 
 Lets start with a bit of an introduction to how C++ handles derived methods
