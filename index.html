@@ -33,6 +33,14 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="articles/It_compiles_does_not_always_means_that_it_works.html">It compiles does not always mean that it works, a tale of virtual overridden fun in C++</a></h4>
+<small>12-05-2021 | Remy van Elst</small><br />
+<p><p>In a <a href="/s/snippets/Run_one_specific_clang-tidy_check_on_your_codebase.html">recent article on clang-tidy</a> I referenced the fact that we&#39;re doing a huge refactoring regarding <code>char</code> pointers, lifetime, ownership and <code>std::strings</code>. Todays post is another one related to that change, where even though everything compiled correctly, it didn&#39;t <code>work</code>. For a compiled language, that is not something you expect. Next to unit tests, a compiler error is your number one sign that you&#39;ve made a mistake somewhere.
+In this case however, the code all compiled fine. The issue here was an older part of the code not using <code>override</code> combined with automated refactoring in CLion missing some parts of the code during a change. So, the issue in this case is entirely our own fault, it was spotted in the manual testing, but I&#39;d rather had it not happen at all.
+In this post I&#39;ll describe the problem including some example code that illustrates what happened. My key point is that even though the code compiles, you should always test it, preferably automated with unit and integrations tests, otherwise manually with a runbook.</p>
+</p>
+<a href="articles/It_compiles_does_not_always_means_that_it_works.html">Read more...</a><br />
+<p></p>
 <h4><a href="blog/MS_Teams_on_a_Coffee_Machine_or_Framebuffer_VNC_Client.html">Run MS Teams on a coffee machine?!? (Or: Embedded Linux Framebuffer VNC client)</a></h4>
 <small>08-04-2021 | Remy van Elst</small><br />
 <p><p>To fill some time <a href="https://xkcd.com/303/">during compiling</a> I tried to get a VNC client running on a coffee machine, specifically to show MS Teams. At work I develop software for these coffee machines in C++, which allows me to do such fun stuff, because from a software point of view, it&#39;s just an ARM PC running linux with a framebuffer for graphics. I compiled a few framebuffer VNC clients, fired up an SSH tunnel and used <code>x11vnc</code> to share one specific window and after a few attempts, Teams was up and running on my &#39;new&#39; second monitor.
@@ -98,12 +106,6 @@ Inside a C++ class this all works handy dandy and is reasonable easy to follow, 
 <p><p>While playing around with the GUI on OpenVMS I was looking for CDE documentation and I found out CDE is still being developed and can be installed on modern linux. This quick post shows you how to install CDE on Debian 10 and includes a bit on compiling GENERIC TETRIS, the same program I installed on OpenVMS. Really cool to compile and run a game from 1992 on a retro/modern desktop environment.</p>
 </p>
 <a href="blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/OpenVMS_CDE_Desktop_remote_x_axpbox.html">OpenVMS CDE Desktop Remote X session GUI (on AXPbox)</a></h4>
-<small>26-01-2021 | Remy van Elst</small><br />
-<p><p>Last year November, I posted on a new OpenVMS related project, AXPbox, the open source Alpha emulator, a fork of es40 by Tom&aacute;&scaron; Glozar. Last week I put together the first official release of AXPbox, one of the changes being in the network code, making it more stable, thus being able to run a remote X session. Meaning, you can run the CDE desktop and enjoy everything the OpenVMS GUI has to offer. This article shows you how to run the CDE GUI in a remote X session, including switching between the old Motif look and the new DECWindows and how to run Tetris.</p>
-</p>
-<a href="blog/OpenVMS_CDE_Desktop_remote_x_axpbox.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
