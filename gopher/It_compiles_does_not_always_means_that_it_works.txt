@@ -63,7 +63,7 @@ few C libraries, so constructing a temporary string each time instead of
 using a `const reference` would require more changes and thus more testing,
 whereas we tried to keep this refactoring change as small and scoped to
 as possible, not changing behavior if not absolutely required. That will
-come in a next round of refactoring. Go read that part on the 	
+come in a next round of refactoring. Go read that part on the
 [Big Redesign In The Sky][5], then come back here.
 
 Why are we doing this right now and not way earlier? We only just got an
