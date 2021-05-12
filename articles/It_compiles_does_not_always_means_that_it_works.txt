@@ -56,6 +56,24 @@ refactoring missed one such derived function. In the next paragraph I'll go
 into the exact issue that occurred. We caught the bug when we did our manual
 testing, but it all compiled just fine, so I wasn't expecting  such an issue.
 
+If you're wondering why we are so late with this change, and why we're not using
+a `std::string_view`, I'll try to address that. `std::string_view` does not 
+guarantee a null-terminated string, `std::string` does. We have to use a
+few C libraries, so constructing a temporary string each time instead of 
+using a `const reference` would require more changes and thus more testing,
+whereas we tried to keep this refactoring change as small and scoped to
+as possible, not changing behavior if not absolutely required. That will
+come in a next round of refactoring. Go read that part on the 	
+[Big Redesign In The Sky][5], then come back here.
+
+Why are we doing this right now and not way earlier? We only just got an
+updated compiler for the specific hardware we use that supports modern
+C++ 17, before that we had a half-baked C++ 11 with big parts either missing
+or not finished. Now we have a newer compiler, thus we can take advantage 
+of newer features.
+
+
+
 ### virtual and override
 
 Lets start with a bit of an introduction to how C++ handles derived methods
@@ -117,6 +135,17 @@ The automated refactoring missed the `SubDerived` but all code still compiled,
 so I myself missed that as well. I'm not sure why it was missed, probably due
 to the sheer size of the amount of refactorings. I think there were at  least
 2500 occurrences of that specific method, maybe even double that amount.
+
+The workflow for this refactoring was a bit repetitive:
+
+1. Change a function signature / return value from `char*` to `const std::string&`
+2. Fix the most obvious errors indicated by the IDE
+3. Compile
+4. Fix compilation errors
+5. GOTO 1
+
+This workflow, fixing all compiler errors until none were left, contributed
+to the missing of this specific issue.
 
 Due to this being older style code, `override` was not used to tell the
 compiler that `::method()` was overridden, this was pre-C++ 11 style code. It

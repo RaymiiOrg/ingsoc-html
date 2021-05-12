@@ -112,6 +112,22 @@ refactoring missed one such derived function. In the next paragraph I&#39;ll go
 into the exact issue that occurred. We caught the bug when we did our manual
 testing, but it all compiled just fine, so I wasn&#39;t expecting  such an issue.</p>
 
+<p>If you&#39;re wondering why we are so late with this change, and why we&#39;re not using
+a <code>std::string_view</code>, I&#39;ll try to address that. <code>std::string_view</code> does not 
+guarantee a null-terminated string, <code>std::string</code> does. We have to use a
+few C libraries, so constructing a temporary string each time instead of 
+using a <code>const reference</code> would require more changes and thus more testing,
+whereas we tried to keep this refactoring change as small and scoped to
+as possible, not changing behavior if not absolutely required. That will
+come in a next round of refactoring. Go read that part on the<br>
+<a href="http://web.archive.org/web/20210511180209/http://www.luckymethod.com/2013/03/the-big-redesign-in-the-sky/">Big Redesign In The Sky</a>, then come back here.</p>
+
+<p>Why are we doing this right now and not way earlier? We only just got an
+updated compiler for the specific hardware we use that supports modern
+C++ 17, before that we had a half-baked C++ 11 with big parts either missing
+or not finished. Now we have a newer compiler, thus we can take advantage 
+of newer features.</p>
+
 <h3 id="toc_1">virtual and override</h3>
 
 <p>Lets start with a bit of an introduction to how C++ handles derived methods
@@ -177,6 +193,19 @@ had a <code>char*</code>.  </p>
 so I myself missed that as well. I&#39;m not sure why it was missed, probably due
 to the sheer size of the amount of refactorings. I think there were at  least
 2500 occurrences of that specific method, maybe even double that amount.</p>
+
+<p>The workflow for this refactoring was a bit repetitive:</p>
+
+<ol>
+<li>Change a function signature / return value from <code>char*</code> to <code>const std::string&amp;</code></li>
+<li>Fix the most obvious errors indicated by the IDE</li>
+<li>Compile</li>
+<li>Fix compilation errors</li>
+<li>GOTO 1</li>
+</ol>
+
+<p>This workflow, fixing all compiler errors until none were left, contributed
+to the missing of this specific issue.</p>
 
 <p>Due to this being older style code, <code>override</code> was not used to tell the
 compiler that <code>::method()</code> was overridden, this was pre-C++ 11 style code. It
