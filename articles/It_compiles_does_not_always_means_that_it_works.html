@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>It compiles does not always mean that it works, a tale of virtual overridden fun in C++</h2>
-<p><small>Published: 12-05-2021 | Author: Remy van Elst | <a href="It_compiles_does_not_always_means_that_it_works.txt">Text only version of this article</a>
+<p><small>Published: 12-05-2021 | Last update: 14-05-2021 | Author: Remy van Elst | <a href="It_compiles_does_not_always_means_that_it_works.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -187,7 +187,9 @@ refactoring changed both <code>Base::method()</code> and <code>Derived::method()
 to find all occurrences of <code>SubDerived::method()</code>. Both <code>Base::method()</code> and
 <code>Derived::method()</code> had a <code>char*</code> argument which was changed to a 
 <code>const std::string&amp;</code> argument, but all <code>SubDerived::method()</code> instances still
-had a <code>char*</code>.  </p>
+had a <code>char*</code>. That <code>method()</code> was used in a different place, where it was
+presented as a <code>Base::method()</code>. Because the <code>override</code> path now was incorrect,
+even though it is a <code>Derived</code>, the <code>method()</code> on <code>Base</code> was called.</p>
 
 <p>The automated refactoring missed the <code>SubDerived</code> but all code still compiled,
 so I myself missed that as well. I&#39;m not sure why it was missed, probably due

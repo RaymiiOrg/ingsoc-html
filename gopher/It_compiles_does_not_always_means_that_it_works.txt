@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	It compiles does not always mean that it works, a tale of virtual overridden fun in C++
 Author      : 	Remy van Elst
 Date        : 	12-05-2021
+Last update : 	14-05-2021
 URL         : 	https://raymii.org/s/articles/It_compiles_does_not_always_means_that_it_works.html
 Format      : 	Markdown/HTML
 ---
@@ -128,7 +129,9 @@ refactoring changed both `Base::method()` and `Derived::method()`, but failed
 to find all occurrences of `SubDerived::method()`. Both `Base::method()` and
 `Derived::method()` had a `char*` argument which was changed to a 
 `const std::string&` argument, but all `SubDerived::method()` instances still
-had a `char*`.  
+had a `char*`. That `method()` was used in a different place, where it was
+presented as a `Base::method()`. Because the `override` path now was incorrect,
+even though it is a `Derived`, the `method()` on `Base` was called.
 
 The automated refactoring missed the `SubDerived` but all code still compiled,
 so I myself missed that as well. I'm not sure why it was missed, probably due
