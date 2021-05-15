@@ -30,7 +30,6 @@ how QT signals and slots and QML work.
 For fun I compiled this example application to Webassembly as well. You can 
 [run it here][5], or at the bottom of this page it's embedded as an `iframe`.
 
-
 ### Summary
 
 Because this is a small snippet, it lacks the explanation and depth you normally get from 
