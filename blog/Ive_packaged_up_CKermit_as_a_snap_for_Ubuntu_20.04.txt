@@ -43,7 +43,6 @@ The snapcraft code is up [on github][3], the version is 9.0-302. Since
 there is no snap core for 21.04, I cannot convert 9.0-305. But 
 as far as support is concerned, this is the LTS version from 18.04.
 
-
 ### What is (c)kermit?
 
 Quoted from the [project website][8]:
