@@ -7,6 +7,26 @@
             <atom:link href="https://raymii.org/s/feed.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>I've packaged up CKermit as a snap, for Ubuntu 20.04</title> 
+                <link>https://raymii.org/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html</link> 
+                <guid>https://raymii.org/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html</guid>
+                <description>Last year I packaged up [gnash as a snap](/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html) because it was missing from the Ubuntu 20.04 apt repositories. Recently I found out that `ckermit` is also not in Ubuntu 20.04, as far as I can tell because it wasn't in the Debian repositories when the Ubuntu 20.04 initial sync happened. Which is very inconvenient for an LTS release.
+I often use `ckermit` to connect to our hardware via a script, to automatically boot from NFS (via u-boot). I could do that manually via `screen` or `minicom`, but I have a `kermit` script that does it for me, which is very convenient. Since the snapping of `gnash` was so easy, I decided to do it for `ckermit` as well, since I now know how to convert deb packages to snaps. I also have a few colleagues who also use those kermit scripts and are going to update to 20.04 in the (near) future.
+The snap packaging is based on work by Phil Roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My `ckermit` package is confined (no `--classic` needed), the source code for the snap is on my github and on any snap-enabled distro you can now 'snap install ckermit-raymii' to enjoy CKermit.</description> 
+                <pubDate>Sun, 16 May 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sun, 16 May 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>I've packaged up Gnash as a snap, for modern linux</title> 
+                <link>https://raymii.org/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html</link> 
+                <guid>https://raymii.org/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html</guid>
+                <description>I hate snaps just as much as the next guy but last week I did something unexpected. I packaged up Gnash as a snap.  Gnash is a GNU flash media player, not updated since 2011, and  thus removed from the Ubuntu 20.04 repositories. The snap packaging is based on work by phil roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no '--classic' needed), the source code for the snap is on my github and on any snap-enabled distro you can now 'snap install gnash-raymii' to enjoy Gnash again.</description> 
+                <pubDate>Mon, 07 Dec 2020 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 15 May 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>It compiles does not always mean that it works, a tale of virtual overridden fun in C++</title> 
                 <link>https://raymii.org/s/articles/It_compiles_does_not_always_means_that_it_works.html</link> 
                 <guid>https://raymii.org/s/articles/It_compiles_does_not_always_means_that_it_works.html</guid>
@@ -187,15 +207,6 @@ We start off with a shorter example showing how to fire off a set number of jobs
                 <description>For a small personal project that talks to a few JSON API's and does some data parsing I needed a header only C++ HTTP library. Header only because that is the simplest way to include it in my project, just copy and paste the file. I came across the project cpp-httplib, which fits my needs, does all the http methods, small, a few examples and it looks modern and has recent development commits. Setup and getting it working was easy, but as soon as I tried an https url, I got an exception ('https scheme is not supported.'). This guide shows you how to setup cpp-httplib for SSL support with cmake. It took me a bit longer than I wanted to set it up correctly, so why not save you the effort.</description> 
                 <pubDate>Mon, 14 Dec 2020 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 14 Dec 2020 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>I've packaged up Gnash as a snap, for modern linux</title> 
-                <link>https://raymii.org/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html</link> 
-                <guid>https://raymii.org/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html</guid>
-                <description>I hate snaps just as much as the next guy but last week I did something unexpected. I packaged up Gnash as a snap.  Gnash is a GNU flash media player, not updated since 2011, and  thus removed from the Ubuntu 20.04 repositories. The snap packaging is based on work by phil roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no '--classic' needed), the source code for the snap is on my github and on any snap-enabled distro you can now 'snap install gnash-raymii' to enjoy Gnash again.</description> 
-                <pubDate>Mon, 07 Dec 2020 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 07 Dec 2020 00:00:00 GMT</lastBuildDate>
             </item>
     
             <item>

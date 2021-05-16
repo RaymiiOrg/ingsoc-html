@@ -33,6 +33,20 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html">I've packaged up CKermit as a snap, for Ubuntu 20.04</a></h4>
+<small>16-05-2021 | Remy van Elst</small><br />
+<p><p>Last year I packaged up <a href="/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">gnash as a snap</a> because it was missing from the Ubuntu 20.04 apt repositories. Recently I found out that <code>ckermit</code> is also not in Ubuntu 20.04, as far as I can tell because it wasn&#39;t in the Debian repositories when the Ubuntu 20.04 initial sync happened. Which is very inconvenient for an LTS release.
+I often use <code>ckermit</code> to connect to our hardware via a script, to automatically boot from NFS (via u-boot). I could do that manually via <code>screen</code> or <code>minicom</code>, but I have a <code>kermit</code> script that does it for me, which is very convenient. Since the snapping of <code>gnash</code> was so easy, I decided to do it for <code>ckermit</code> as well, since I now know how to convert deb packages to snaps. I also have a few colleagues who also use those kermit scripts and are going to update to 20.04 in the (near) future.
+The snap packaging is based on work by Phil Roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My <code>ckermit</code> package is confined (no <code>--classic</code> needed), the source code for the snap is on my github and on any snap-enabled distro you can now &#39;snap install ckermit-raymii&#39; to enjoy CKermit.</p>
+</p>
+<a href="blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html">Read more...</a><br />
+<p></p>
+<h4><a href="blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">I've packaged up Gnash as a snap, for modern linux</a></h4>
+<small>Published: 07-12-2020 | Last update: 15-05-2021 | Author: Remy van Elst</small><br />
+<p><p>I hate snaps just as much as the next guy but last week I did something unexpected. I packaged up Gnash as a snap.  Gnash is a GNU flash media player, not updated since 2011, and  thus removed from the Ubuntu 20.04 repositories. The snap packaging is based on work by phil roche, he wrote about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no &#39;--classic&#39; needed), the source code for the snap is on my github and on any snap-enabled distro you can now &#39;snap install gnash-raymii&#39; to enjoy Gnash again.</p>
+</p>
+<a href="blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/It_compiles_does_not_always_means_that_it_works.html">It compiles does not always mean that it works, a tale of virtual overridden fun in C++</a></h4>
 <small>Published: 12-05-2021 | Last update: 14-05-2021 | Author: Remy van Elst</small><br />
 <p><p>In a <a href="/s/snippets/Run_one_specific_clang-tidy_check_on_your_codebase.html">recent article on clang-tidy</a> I referenced the fact that we&#39;re doing a huge refactoring regarding <code>char</code> pointers, lifetime, ownership and <code>std::strings</code>. Todays post is another one related to that change, where even though everything compiled correctly, it didn&#39;t <code>work</code>. For a compiled language, that is not something you expect. Next to unit tests, a compiler error is your number one sign that you&#39;ve made a mistake somewhere.
@@ -94,18 +108,6 @@ Inside a C++ class this all works handy dandy and is reasonable easy to follow, 
 <p><p>On my laptop I recently had trouble with out of memory issues when running <code>clion</code>, <code>firefox</code>, <code>thunderbird</code>, <code>teams</code> and a virtualbox VM. To combat this, I&#39;ve setup cgroups to limit how much RAM specific applications can use and configured <code>earlyoom</code>, a very nifty tool that checks available memory and kills the process with the highest <code>oom_score</code> if available memory falls below 5%. Otherwise, my laptop would first grind to a halt (even without swap) and only after half an hour of seemingly being stuck would the OOM killer kick in. With <code>earlyoom</code> this hanging behavior is gone, although sometimes applications get killed when I don&#39;t expect it. I&#39;ve given firefox, thunderbird and teams a cgroup with memory limit and clion and virtualbox use their own configuration to limit their RAM usage.This post details how to setup <code>cgroups</code> to limit memory of specific processes including automatically placing process inside a cgroup.</p>
 </p>
 <a href="articles/Limit_specific_process_memory_on_desktop_linux_with_cgroups.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/OpenVMS_reset_SYSTEM-password.html">Reset the SYSTEM password on OpenVMS 8.4</a></h4>
-<small>03-02-2021 | Remy van Elst</small><br />
-<p><p>This short post shows you how to reset the SYSTEM account password on a single OpenVMS 8.4 ALpha machine via the serial console. You need physical access to the machine and the procedure looks a lot like linux and appending <code>init=/bin/bash</code> to the GRUB commandline to boot into single user mode. It is tested on the AXPbox Alpha emulator, I forgot my password after not using it for a month.</p>
-</p>
-<a href="blog/OpenVMS_reset_SYSTEM-password.html">Read more...</a><br />
-<p></p>
-<h4><a href="blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html">The Common Desktop Environment (CDE) is still developed and modern in 2021</a></h4>
-<small>28-01-2021 | Remy van Elst</small><br />
-<p><p>While playing around with the GUI on OpenVMS I was looking for CDE documentation and I found out CDE is still being developed and can be installed on modern linux. This quick post shows you how to install CDE on Debian 10 and includes a bit on compiling GENERIC TETRIS, the same program I installed on OpenVMS. Really cool to compile and run a game from 1992 on a retro/modern desktop environment.</p>
-</p>
-<a href="blog/The_Common_Desktop_Environment_CDE_is_still_developed_in_2021.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

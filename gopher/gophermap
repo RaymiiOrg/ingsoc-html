@@ -12,13 +12,14 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2021-05-15T22:23:08	/	localhost	70
+i            2021-05-16T20:43:10	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
 1Links to other gopherspaces	links/	raymii.org	70
 i 	/	localhost	70
 
+0I've packaged up CKermit as a snap, for Ubuntu 20.04 (16-05-2021)	Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.txt	raymii.org	70
 0It compiles does not always mean that it works, a tale of virtual overridden fun in C++ (12-05-2021)	It_compiles_does_not_always_means_that_it_works.txt	raymii.org	70
 0Run MS Teams on a coffee machine?!? (Or: Embedded Linux Framebuffer VNC client) (08-04-2021)	MS_Teams_on_a_Coffee_Machine_or_Framebuffer_VNC_Client.txt	raymii.org	70
 0Run one specific clang-tidy check on your entire codebase (05-04-2021)	Run_one_specific_clang-tidy_check_on_your_codebase.txt	raymii.org	70

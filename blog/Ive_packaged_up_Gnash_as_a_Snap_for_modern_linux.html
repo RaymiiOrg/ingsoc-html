@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>I've packaged up Gnash as a snap, for modern linux</h2>
-<p><small>Published: 07-12-2020 | Author: Remy van Elst | <a href="Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.txt">Text only version of this article</a>
+<p><small>Published: 07-12-2020 | Last update: 15-05-2021 | Author: Remy van Elst | <a href="Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -55,14 +55,16 @@
 </ul>
 
 </div><hr><div id="contents">
-<p><a href="/s/blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html">I hate snaps just as much as the next guy</a> but last week I did something
-unexpected. I <a href="https://snapcraft.io/gnash-raymii">packaged up Gnash as a snap</a>.  Gnash is a GNU flash media 
-player, not updated since 2011, and  thus removed from the Ubuntu 20.04
-repositories. The snap packaging is based on work by <a href="http://web.archive.org/web/20201207100511/https://philroche.net/2020/10/08/using-snaps-to-package-old-software/">phil roche</a>, he wrote
-about re-packaging older debian packages with an Ubuntu 18.04/16.04 base layer
-as a snap. My gnash package is confined (no <code>--classic</code> needed), the source
-code for the snap <a href="https://github.com/RaymiiOrg/gnash-snap/">is on my github</a> and on any snap-enabled distro you
-can now <code>snap install gnash-raymii</code> to enjoy Gnash again.</p>
+<p><a href="https://snapcraft.io/gnash-raymii"><img src="https://snapcraft.io/static/images/badges/en/snap-store-white.svg" alt="Get it from the Snap Store"></a></p>
+
+<p>Last week I did something unexpected, I <a href="https://snapcraft.io/gnash-raymii">packaged up Gnash as a snap</a>. 
+Gnash is a GNU flash media  player, not updated since 2011, and  thus removed
+from the Ubuntu 20.04 repositories. The snap packaging is based on work by
+<a href="http://web.archive.org/web/20201207100511/https://philroche.net/2020/10/08/using-snaps-to-package-old-software/">phil roche</a>, he wrote about re-packaging older debian packages with an
+Ubuntu 18.04/16.04 base layer as a snap. My gnash package is confined (no
+<code>--classic</code> needed), the source code for the snap <a href="https://github.com/RaymiiOrg/gnash-snap/">is on my github</a> and on
+any snap-enabled distro you can now <code>snap install gnash-raymii</code> to enjoy Gnash
+again.</p>
 
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
@@ -75,9 +77,21 @@ the bill, search/replace gnash, test the confinement options and you&#39;re done
 
 <p><img src="/s/inc/img/gnash-snap.png" alt="gnash snap"></p>
 
+<p><strong>Update: 15-05-2021</strong></p>
+
+<p>I&#39;ve updated the gnash snap package on user request to include a few
+extra commands, namely <code>dump-gnash</code>, <code>cygnal</code>, <code>rtmpget</code>, <code>gprocessor</code>
+<code>flvdumper</code> and <code>soldumper</code>. The main package is now also named 
+<code>gnash-raymii</code>, so you&#39;ll no longer need to use the command <code>gnash-raymii.gnash</code>,
+you can just use <code>gnash-raymii</code>. Although the former is kept around for
+scripting. </p>
+
+<p>As the snap store tells me, this snap has almost 1500 active installs, way
+more than I ever expected. Happy to see that people actually still use gnash.</p>
+
 <h3 id="toc_0">Why re-package gnash as a snap?</h3>
 
-<p>As you might know, <a href="/s/blog/Ubuntu_Snap_auto_updates_broke_my_development_setup.html">I sincerely dislike snap</a> and I actively avoid using
+<p>As you might know, [I sincerely dislike snap][1] and I actively avoid using
 it. However, a few co-workers do run Ubuntu and were fiddling around with my 
 <a href="/s/tutorials/Running_gnash_on_Ubuntu_20.04.html">docker gnash</a> guide, didn&#39;t get it to work and asked me for help. As I
 recently read <a href="http://web.archive.org/web/20201207100511/https://philroche.net/2020/10/08/using-snaps-to-package-old-software/">Phil&#39;s</a> article and this was a good way to put that into
@@ -93,9 +107,9 @@ were a good fit. Saves my current and future co-workers a bunch of time.</p>
 
 <h3 id="toc_1">Why run gnash?</h3>
 
-<p>Some of my $dayjob work depends on gnash, although it&#39;s actively being
-replaced with QT. Gnash in our case runs on the framebuffer of an embedded
-device, no network connectivity, no external input, so almost no risk.</p>
+<p>Some of my work depends on gnash, although it&#39;s actively being replaced with
+QT. Gnash in our case runs on the framebuffer of an embedded device, no
+network connectivity, no external input, so almost no risk.</p>
 
 <p>For  development and testing we sometimes need to run gnash on my workstation
 with an SSH  port forward to a development board. We can then locally interact
