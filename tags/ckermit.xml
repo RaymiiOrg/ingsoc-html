@@ -7,6 +7,16 @@
             <atom:link href="https://raymii.org/s/tags/ckermit.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>All packages that were present in Ubuntu 18.04 but absent in Ubuntu 20.04</title> 
+                <link>https://raymii.org/s/articles/All_packages_that_were_present_in_Ubuntu_18.04_but_removed_in_20.04.html</link> 
+                <guid>https://raymii.org/s/articles/All_packages_that_were_present_in_Ubuntu_18.04_but_removed_in_20.04.html</guid>
+                <description>Otherwise titled 'Figure out the differences between two apt repositories'. Recently I've had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is [ckermit](/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html) and the other is [gnash](/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html), both of which I 'converted' to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As `apt` and `dpkg` are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
+This post shows you how to do the comparison yourself and I discuss the removed packages a bit. Some are version increments (like `gcc-6` in Ubuntu 18.04 but `gcc-7`in Ubuntu 20.04),  and some are packages that were combined into one instead of split up  (like `ltsp` in Ubuntu 20.04 but a bunch of seperate `ltsp-$postfix` packages instead  in Ubuntu 18.04). Many others are just replaced by newer versions (`python-ceph` vs `python3-ceph`). The list of differences is provided as a download, both ways.</description> 
+                <pubDate>Wed, 19 May 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Wed, 19 May 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>I've packaged up CKermit as a snap, for Ubuntu 20.04</title> 
                 <link>https://raymii.org/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html</link> 
                 <guid>https://raymii.org/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html</guid>
