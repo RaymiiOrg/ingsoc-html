@@ -10,7 +10,7 @@ Format      : 	Markdown/HTML
 
 
 
-Otherwise titled 'Figure out the differences between two apt repositories'. Recently I've had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is [ckermit](/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html) and the other is [gnash](/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html), both of which I 'converted' to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As `apt` and `dpkg` are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
+Otherwise titled `Figure out the differences between two apt repositories`. Recently I've had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is [ckermit](/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html) and the other is [gnash](/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html), both of which I 'converted' to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As `apt` and `dpkg` are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
 This post shows you how to do the comparison yourself and I discuss the removed packages a bit. Some are version increments (like `gcc-6` in Ubuntu 18.04 but `gcc-7`in Ubuntu 20.04),  and some are packages that were combined into one instead of split up  (like `ltsp` in Ubuntu 20.04 but a bunch of seperate `ltsp-$postfix` packages instead  in Ubuntu 18.04). Many others are just replaced by newer versions (`python-ceph` vs `python3-ceph`). The list of differences is provided as a download, both ways.
 
 ![snap upload][7]
@@ -175,7 +175,8 @@ supports simple editing as well as region or window specific screenshots.  But
 it depends on `gtk2`, so I have to do the special dance via the PPA and 
 manually install some other dependencies. Works perfectly fine afterwards,  so
 the developers or package maintainers just moved away the hassle / work  from
-them to the users.
+them to the users. [Canonical even blogged about the shutter snap][8], which
+[Allen Pope][9] snapped up.
 
 
 [1]: /s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html
@@ -185,7 +186,8 @@ them to the users.
 [5]: https://github.com/nmap/nmap/issues/2022
 [6]: https://askubuntu.com/questions/1258007/how-to-install-cherrytree-on-ubuntu-20-04-focal-fossa
 [7]: /s/inc/img/snap_upload.png
-
+[8]: https://ubuntu.com/blog/a-blast-from-the-past-shutter
+[9]: https://github.com/popey/shutter-snap/blob/master/snap/snapcraft.yaml
 
 ---
 

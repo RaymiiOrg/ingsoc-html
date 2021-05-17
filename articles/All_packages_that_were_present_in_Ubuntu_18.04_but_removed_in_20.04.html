@@ -55,7 +55,7 @@
 </ul>
 
 </div><hr><div id="contents">
-<p>Otherwise titled &#39;Figure out the differences between two apt repositories&#39;. Recently I&#39;ve had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is <a href="/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html">ckermit</a> and the other is <a href="/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">gnash</a>, both of which I &#39;converted&#39; to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As <code>apt</code> and <code>dpkg</code> are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
+<p>Otherwise titled <code>Figure out the differences between two apt repositories</code>. Recently I&#39;ve had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is <a href="/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html">ckermit</a> and the other is <a href="/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">gnash</a>, both of which I &#39;converted&#39; to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As <code>apt</code> and <code>dpkg</code> are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
 This post shows you how to do the comparison yourself and I discuss the removed packages a bit. Some are version increments (like <code>gcc-6</code> in Ubuntu 18.04 but <code>gcc-7</code>in Ubuntu 20.04),  and some are packages that were combined into one instead of split up  (like <code>ltsp</code> in Ubuntu 20.04 but a bunch of seperate <code>ltsp-$postfix</code> packages instead  in Ubuntu 18.04). Many others are just replaced by newer versions (<code>python-ceph</code> vs <code>python3-ceph</code>). The list of differences is provided as a download, both ways.</p>
 
 <p><img src="/s/inc/img/snap_upload.png" alt="snap upload"></p>
@@ -225,7 +225,8 @@ supports simple editing as well as region or window specific screenshots.  But
 it depends on <code>gtk2</code>, so I have to do the special dance via the PPA and 
 manually install some other dependencies. Works perfectly fine afterwards,  so
 the developers or package maintainers just moved away the hassle / work  from
-them to the users.</p>
+them to the users. <a href="https://ubuntu.com/blog/a-blast-from-the-past-shutter">Canonical even blogged about the shutter snap</a>, which
+<a href="https://github.com/popey/shutter-snap/blob/master/snap/snapcraft.yaml">Allen Pope</a> snapped up.</p>
 Tags: <a href="../tags/articles.html">articles</a>
 , <a href="../tags/ckermit.html">ckermit</a>
 , <a href="../tags/deb.html">deb</a>
