@@ -167,6 +167,48 @@ library. In 18.04 it's package name is `libboost1.62-dev` (or 1.65) and on 20.04
 `libboost-1.67-dev` (or 1.71). 
 
 
+On [Reddit][10], user `elatllat` gives a nice overview as well. Quoting the
+numbers below. Most packages removed are related to sub-packages:
+
+	738 python
+	151 php
+	144 linux
+	 70 kde
+	 59 ruby
+	 56 eclipse
+	 55 libghc
+	 53 libvisp
+	 49 libgnatvsn
+	 48 libgnatprj
+	 39 node
+	 38 opensips
+	 38 libjs
+	 36 xserver
+
+
+Many additions in 20.04 are also related to subpackages:
+
+	1292 librust
+	 595 python
+	 406 golang
+	 383 r
+	 366 libghc
+	 245 ruby
+	 195 node
+	  98 gambas
+	  79 php
+	  78 elpa
+	  68 fonts
+	  63 librte
+	  62 dict
+	  47 oem
+	  45 linux
+	  40 libmkl
+	  39 puppet
+
+Notable changes are a lot of rust packages added and eclipse removed. Top changes
+are still in the development packages, `node`, `rust`, `python`, `ruby` and `golang`.
+
 All in all the list of packages removed is not that big if you take the above
 in to consideration. Mostly unmaintained software, or software that depends on
 unmaintained libraries. Which still can be annoying. Next to the above
@@ -188,6 +230,7 @@ them to the users. [Canonical even blogged about the shutter snap][8], which
 [7]: /s/inc/img/snap_upload.png
 [8]: https://ubuntu.com/blog/a-blast-from-the-past-shutter
 [9]: https://github.com/popey/shutter-snap/blob/master/snap/snapcraft.yaml
+[10]: https://old.reddit.com/r/linux/comments/neqgr4/all_packages_that_were_present_in_ubuntu_1804_but/gyhs1k4/
 
 ---
 
