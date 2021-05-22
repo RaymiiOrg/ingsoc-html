@@ -77,6 +77,17 @@ This is an overview of all the servers in the Sparkling Network, mostly as an ov
       <td>EUR 1.25</td>
     </tr>
     <tr>
+      <td><img src="http://s4.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
+      <td><a href="http://s4.spnw.nl/munin/">s3</a></td>
+      <td>Scaleway Stardust</td>
+      <td><img src="https://raymii.org/s/inc/img/flags/nl.png" alt="NL" width="16" height="16"></td>
+      <td>1 GB</td>
+      <td>10 GB</td>
+      <td><img src="https://raymii.org/s/inc/img/debian.png" alt="Debian" width="16" height="16" /></td>
+      <td><img src="https://raymii.org/s/inc/img/kvm.gif" alt="KVM" width="16" height="16" /></td>
+      <td>EUR 1.83</td>
+    </tr>
+    <tr>
       <td><img src="http://s11.spnw.nl/s/inc/img/online.png" alt="ball" onerror="this.src='../inc/img/offline.png'" /></td>
       <td><a href="http://s11.spnw.nl/munin/">s11</a></td>
       <td>Aruba Cloud</td>
