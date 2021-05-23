@@ -31,7 +31,7 @@ Here is a picture showing it in action:
 
 More information can be found in the [manpage][4] of `less`:
 
-	`&pattern`
+	&pattern
 
 	Display only lines which match the pattern; lines which do not match the pattern are not displayed.  
 	If pattern is empty (if you type & immediately followed by ENTER), any filtering is turned off, and 
