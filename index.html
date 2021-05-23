@@ -33,6 +33,12 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="snippets/Exclude_lines_in_less_or_journalctl.html">Exclude lines in less (or journalctl)</a></h4>
+<small>23-05-2021 | Remy van Elst</small><br />
+<p><p>This is a small tip I want to give you when using a <code>less</code> based pager, for example in <code>journalctl</code> or when viewing a file interactively with <code>less</code> or <code>more</code>. You can exclude certain lines that match one or multiple words (or a regex) with a few keystrokes, once <code>less</code> is open. This is one of those tips you never knew you needed, but when you know it, you&#39;ll use it frequently. Like in my case today when searching through some logfiles to find out why my database stopped working.</p>
+</p>
+<a href="snippets/Exclude_lines_in_less_or_journalctl.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/All_packages_that_were_present_in_Ubuntu_18.04_but_removed_in_20.04.html">All packages that were present in Ubuntu 18.04 but absent in Ubuntu 20.04</a></h4>
 <small>19-05-2021 | Remy van Elst</small><br />
 <p><p>Otherwise titled <code>Figure out the differences between two apt repositories</code>. Recently I&#39;ve had a few packages that I often use but were missing from Ubuntu 20.04 LTS. One is <a href="/s/blog/Ive_packaged_up_CKermit_as_a_snap_for_Ubuntu_20.04.html">ckermit</a> and the other is <a href="/s/blog/Ive_packaged_up_Gnash_as_a_Snap_for_modern_linux.html">gnash</a>, both of which I &#39;converted&#39; to a snap. (In air quotes because I just converted the 18.04 deb). This made me wonder if I could figure out a list of that are present in Ubuntu 18.04, but absent in Ubuntu 20.04. As <code>apt</code> and <code>dpkg</code> are standardized tools and and package formats, we can use a few shell tools to parse the package lists and compare them side by side.
@@ -102,13 +108,6 @@ I&#39;ll start with a simple <code>printf</code> with a ternary <code>if</code> 
 In this post I&#39;ll show you how to disable both forms of logging in a release build, qml and qt have different ways to manage their output.</p>
 </p>
 <a href="articles/Disable_logging_in_QT_and_QML.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Cpp_QT_QML_Signals_and_Slots.html">QT / QML Signals and Slots with C++</a></h4>
-<small>25-02-2021 | Remy van Elst</small><br />
-<p><p>QT has an Observer mechanism built in, which they call &#39;<a href="https://web.archive.org/web/20210210180603/https://doc.qt.io/qt-5/signalsandslots.html">Signals and Slots</a>&#39;. It allows objects to communicate with each other without having to have knowledge of either ones internals. By inheriting from <code>QObject</code> and defining a few <code>Q_PROPERTY</code> macro&#39;s, the QT Meta Object Compiler (<code>moc</code>) does all the hard work for you.
-Inside a C++ class this all works handy dandy and is reasonable easy to follow, but when using QML it requires a bit more work. This small example shows you how to bind QML and C++ together using signals and slots, in QT 5.12.</p>
-</p>
-<a href="snippets/Cpp_QT_QML_Signals_and_Slots.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>
