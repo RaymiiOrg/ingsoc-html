@@ -65,7 +65,15 @@ following part, and then you enter your search term. </p>
 
 <p>(<a href="/s/snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html">Here&#39;s a guide</a> how to make such screen recordings with ffmpeg.)</p>
 
-<p>More information can be found in the <a href="http://manpages.ubuntu.com/manpages/focal/en/man1/less.1.html">manpage</a> of <code>less</code>:</p>
+<p>To make this even more useful, if you have presses <code>&amp;!</code>. you can
+press <code>UP</code> to get your last command. Want to exclude another word?
+Just add a pipe to it. Example to exclude both <code>cron</code> and <code>sshd</code>:</p>
+
+<pre><code>&amp;!cron|sshd
+</code></pre>
+
+<p>As these are just simple regexes, imagine the rest you can do.
+More information can be found in the <a href="http://manpages.ubuntu.com/manpages/focal/en/man1/less.1.html">manpage</a> of <code>less</code>:</p>
 
 <pre><code>&amp;pattern
 

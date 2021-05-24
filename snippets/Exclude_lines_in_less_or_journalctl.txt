@@ -29,6 +29,14 @@ Here is a picture showing it in action:
 
 ([Here's a guide][3] how to make such screen recordings with ffmpeg.)
 
+To make this even more useful, if you have presses `&!`. you can
+press `UP` to get your last command. Want to exclude another word?
+Just add a pipe to it. Example to exclude both `cron` and `sshd`:
+
+    &!cron|sshd
+
+
+As these are just simple regexes, imagine the rest you can do.
 More information can be found in the [manpage][4] of `less`:
 
 	&pattern
