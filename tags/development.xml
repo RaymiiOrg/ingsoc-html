@@ -7,7 +7,7 @@
             <atom:link href="https://raymii.org/s/tags/development.xml" rel="self" type="application/rss+xml" />
     
             <item>
-                <title>Execute a command and get both output and exit status in C++</title> 
+                <title>Execute a command and get both output and exit status in C++ (Windows &amp; Linux)</title> 
                 <link>https://raymii.org/s/articles/Execute_a_command_and_get_both_output_and_exit_code.html</link> 
                 <guid>https://raymii.org/s/articles/Execute_a_command_and_get_both_output_and_exit_code.html</guid>
                 <description>Recently I had to parse some command line output inside a C++ program. Executing a command and getting just the exit status is easy using `std::system`, but  also getting output is a bit harder and OS specific. By using `popen`, a POSIX `C` function we can get both the exit status as well as the output of a given command. On Windows I'm using `_popen`, so the code should be cross platform. This article starts off with a stack overflow example to  get just the output of a command and builds on that to a safer version (null-byte handling) that returns both the exit status as well as the command output. It also involves a lot of detail on `fread` vs `fgets` and how to handle binary data.</description> 

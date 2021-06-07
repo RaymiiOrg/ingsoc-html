@@ -1,6 +1,6 @@
 This is a text-only version of the following page on https://raymii.org:
 ---
-Title       : 	Execute a command and get both output and exit status in C++
+Title       : 	Execute a command and get both output and exit status in C++ (Windows & Linux)
 Author      : 	Remy van Elst
 Date        : 	07-06-2021
 URL         : 	https://raymii.org/s/articles/Execute_a_command_and_get_both_output_and_exit_code.html
