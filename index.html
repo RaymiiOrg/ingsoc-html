@@ -33,6 +33,12 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++, C, linux and embedded systems. </p> <p>I currently work for <a href="http://www.dejongduke.nl/">De Jong DUKE</a> were I develop software for an embedded  platform that powers coffee machines. This is a C++ and Qt stack running on Yocto Linux and <a href="https://en.wikipedia.org/wiki/Nucleus_RTOS">Nucleus RTOS</a>. It controls hardware, runs the UI and has  a few utilities for IoT connectivity and configuration. Technology is mostly C++ but includes Microsoft MFC, Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over 10 years before I got into development.</p> <p>To read more or get in touch, <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. Any resemblance to reality is pure coincidence.</p>
 <h2>Latest Items</h2>
+<h4><a href="articles/Execute_a_command_and_get_both_output_and_exit_code.html">Execute a command and get both output and exit status in C++</a></h4>
+<small>07-06-2021 | Remy van Elst</small><br />
+<p><p>Recently I had to parse some command line output inside a C++ program. Executing a command and getting just the exit status is easy using <code>std::system</code>, but  also getting output is a bit harder and OS specific. By using <code>popen</code>, a POSIX <code>C</code> function we can get both the exit status as well as the output of a given command. On Windows I&#39;m using <code>_popen</code>, so the code should be cross platform. This article starts off with a stack overflow example to  get just the output of a command and builds on that to a safer version (null-byte handling) that returns both the exit status as well as the command output. It also involves a lot of detail on <code>fread</code> vs <code>fgets</code> and how to handle binary data.</p>
+</p>
+<a href="articles/Execute_a_command_and_get_both_output_and_exit_code.html">Read more...</a><br />
+<p></p>
 <h4><a href="snippets/Exclude_lines_in_less_or_journalctl.html">Exclude lines in less (or journalctl)</a></h4>
 <small>23-05-2021 | Remy van Elst</small><br />
 <p><p>This is a small tip I want to give you when using a <code>less</code> based pager, for example in <code>journalctl</code> or when viewing a file interactively with <code>less</code> or <code>more</code>. You can exclude certain lines that match one or multiple words (or a regex) with a few keystrokes, once <code>less</code> is open. This is one of those tips you never knew you needed, but when you know it, you&#39;ll use it frequently. Like in my case today when searching through some logfiles to find out why my database stopped working.</p>
@@ -101,13 +107,6 @@ I&#39;ll start with a simple <code>printf</code> with a ternary <code>if</code> 
 <p><p>This two-line shell script allows you to record a region of your linux desktop to a video file, or a <code>.gif</code>, using <code>slop</code> and <code>ffmpeg</code>. I use it often when a screenshot is not enough, or when you need to explain a sequence of events to someone.</p>
 </p>
 <a href="snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html">Read more...</a><br />
-<p></p>
-<h4><a href="articles/Disable_logging_in_QT_and_QML.html">Disable (debug) logging in QT and QML</a></h4>
-<small>27-02-2021 | Remy van Elst</small><br />
-<p><p>In QT you can use a few functions from the <code>qDebug.h</code> header like <code>qDebug()</code> and <code>qWarning()</code> to log information to the console. In QML you can use the likes of <code>console.log()</code>, <code>console.error()</code>. It&#39;s also very easy to implement your own logger (eg. <code>SyslogMessageHandler</code>) if you want something different, like logging to syslog and the console.
-In this post I&#39;ll show you how to disable both forms of logging in a release build, qml and qt have different ways to manage their output.</p>
-</p>
-<a href="articles/Disable_logging_in_QT_and_QML.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

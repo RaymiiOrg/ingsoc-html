@@ -35,7 +35,6 @@ Just add a pipe to it. Example to exclude both `cron` and `sshd`:
 
     &!cron|sshd
 
-
 As these are just simple regexes, imagine the rest you can do.
 More information can be found in the [manpage][4] of `less`:
 
