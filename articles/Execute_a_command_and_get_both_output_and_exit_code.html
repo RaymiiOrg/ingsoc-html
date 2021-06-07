@@ -405,7 +405,7 @@ namespace raymii {
              */
         static CommandResult exec(const std::string &amp;command) {
             int exitcode = 255;
-            std::array&lt;char, 4&gt; buffer{};
+            std::array&lt;char, 1048576&gt; buffer {};
             std::string result;
 #ifdef _WIN32
 #define popen _popen
