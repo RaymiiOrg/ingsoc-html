@@ -37,7 +37,9 @@ null termination  and null-terminated. They all mean the same, [the null-byte
 character][6] used to end a C string (`\0`, or `^@`, `U+0000` or `0x00`, you
 get the gist).
 
-
+If you need more features, more cross-platform or async execution, [boost.Process][12]
+is a great alternative. I however can't use boost on the environment this code
+is going to run due to compiler and size constraints.
 
 ### The stackoverflow example using fgets
 

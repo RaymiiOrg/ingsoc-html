@@ -91,6 +91,10 @@ null termination  and null-terminated. They all mean the same, <a href="https://
 character</a> used to end a C string (<code>\0</code>, or <code>^@</code>, <code>U+0000</code> or <code>0x00</code>, you
 get the gist).</p>
 
+<p>If you need more features, more cross-platform or async execution, [boost.Process][12]
+is a great alternative. I however can&#39;t use boost on the environment this code
+is going to run due to compiler and size constraints.</p>
+
 <h3 id="toc_0">The stackoverflow example using fgets</h3>
 
 <p>On <a href="http://web.archive.org/web/20210607112805/https://stackoverflow.com/questions/478898/how-do-i-execute-a-command-and-get-the-output-of-the-command-within-c-using-po/478960">stackoverflow</a> the example given is a good base to build on, however,
