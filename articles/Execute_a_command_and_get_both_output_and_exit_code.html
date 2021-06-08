@@ -64,7 +64,7 @@
 </ul>
 
 </div><hr><div id="contents">
-<p>Recently I had to parse some command line output inside a C++ program. Executing a command and getting just the exit status is easy using <code>std::system</code>, but  also getting output is a bit harder and OS specific. By using <code>popen</code>, a POSIX <code>C</code> function we can get both the exit status as well as the output of a given command. On Windows I&#39;m using <code>_popen</code>, so the code should be cross platform. This article starts off with a stack overflow example to  get just the output of a command and builds on that to a safer version (null-byte handling) that returns both the exit status as well as the command output. It also involves a lot of detail on <code>fread</code> vs <code>fgets</code> and how to handle binary data.</p>
+<p>Recently I had to parse some command line output inside a C++ program. Executing a command and getting just the exit status is easy using <code>std::system</code>, but  also getting output is a bit harder and OS specific. By using <code>popen</code>, a POSIX <code>C</code> function we can get both the exit status as well as the output of a given command. On Windows I&#39;m using <code>_popen</code>, so the code should be cross platform, except for the exit status on Windows is alway 0, that concept does not exist there. This article starts off with a stack overflow example to  get just the output of a command and builds on that to a safer version (null-byte handling) that returns both the exit status as well as the command output. It also involves a lot of detail on <code>fread</code> vs <code>fgets</code> and how to handle binary data.</p>
 
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
@@ -294,6 +294,10 @@ have no control over environment variables or the default shell. Read more on th
 std::cout &lt;&lt; Command::exec(&quot;dir * /on /p&quot;) &lt;&lt; std::endl;
 </code></pre>
 
+<p>The exit code will always be zero since that concept does not translate to
+windows. There is <code>%ErrorLevel%</code>, but that is only an environment variable 
+for console applications, not the actual exit status.</p>
+
 <h3 id="toc_3">Nullbytes in output example:</h3>
 
 <p>In the example code on github you&#39;ll also see a <code>execFgets</code> function, I&#39;ve left that
@@ -404,7 +408,7 @@ namespace raymii {
              * use shell redirection (2&amp;&gt;1).
              */
         static CommandResult exec(const std::string &amp;command) {
-            int exitcode = 255;
+            int exitcode = 0;
             std::array&lt;char, 1048576&gt; buffer {};
             std::string result;
 #ifdef _WIN32
