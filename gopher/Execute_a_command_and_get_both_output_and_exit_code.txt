@@ -232,6 +232,8 @@ Pipes work as well as in your shell, but do note that this is all using `sh` and
 have no control over environment variables or the default shell. Read more on the 
 [POSIX page on `popen`][10] to find out why that is.
 
+#### A note on Windows
+
 Here is an example for Windows, where we [must use `_popen` and `_pclose`][9]:
 
  	std::cout << "Windows example:" << std::endl;
@@ -240,6 +242,9 @@ Here is an example for Windows, where we [must use `_popen` and `_pclose`][9]:
 The exit code will always be zero since that concept does not translate to
 windows. There is `%ErrorLevel%`, but that is only an environment variable 
 for console applications, not the actual exit status.
+
+The microsoft page also notes that `_popen` will not work with GUI applications,
+just console programs. If you need that, use [Boost.process][12] or `system`.
 
 ### Nullbytes in output example:
 
@@ -393,6 +398,7 @@ usage examples you can find them in the github project `main.cpp` file.
 [9]: http://web.archive.org/web/20210607191758/https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/popen-wpopen?view=msvc-160
 [10]: http://web.archive.org/web/20210607193329/https://pubs.opengroup.org/onlinepubs/9699919799/functions/popen.html
 [11]: https://github.com/RaymiiOrg/cpp-command-output/actions
+[12]: https://www.boost.org/doc/libs/1_76_0/doc/html/process.html
 
 ---
 

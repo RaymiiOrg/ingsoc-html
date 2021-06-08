@@ -54,12 +54,17 @@
 </li>
 <li>
 <a href="#toc_2">Command execution including output and exit code</a>
+<ul>
+<li>
+<a href="#toc_3">A note on Windows</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#toc_3">Nullbytes in output example:</a>
+<a href="#toc_4">Nullbytes in output example:</a>
 </li>
 <li>
-<a href="#toc_4">Complete code</a>
+<a href="#toc_5">Complete code</a>
 </li>
 </ul>
 
@@ -91,7 +96,7 @@ null termination  and null-terminated. They all mean the same, <a href="https://
 character</a> used to end a C string (<code>\0</code>, or <code>^@</code>, <code>U+0000</code> or <code>0x00</code>, you
 get the gist).</p>
 
-<p>If you need more features, more cross-platform or async execution, [boost.Process][12]
+<p>If you need more features, more cross-platform or async execution, <a href="https://www.boost.org/doc/libs/1_76_0/doc/html/process.html">boost.Process</a>
 is a great alternative. I however can&#39;t use boost on the environment this code
 is going to run due to compiler and size constraints.</p>
 
@@ -292,6 +297,8 @@ so:</p>
 have no control over environment variables or the default shell. Read more on the 
 <a href="http://web.archive.org/web/20210607193329/https://pubs.opengroup.org/onlinepubs/9699919799/functions/popen.html">POSIX page on <code>popen</code></a> to find out why that is.</p>
 
+<h4 id="toc_3">A note on Windows</h4>
+
 <p>Here is an example for Windows, where we <a href="http://web.archive.org/web/20210607191758/https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/popen-wpopen?view=msvc-160">must use <code>_popen</code> and <code>_pclose</code></a>:</p>
 
 <pre><code>std::cout &lt;&lt; &quot;Windows example:&quot; &lt;&lt; std::endl;
@@ -302,7 +309,10 @@ std::cout &lt;&lt; Command::exec(&quot;dir * /on /p&quot;) &lt;&lt; std::endl;
 windows. There is <code>%ErrorLevel%</code>, but that is only an environment variable 
 for console applications, not the actual exit status.</p>
 
-<h3 id="toc_3">Nullbytes in output example:</h3>
+<p>The microsoft page also notes that <code>_popen</code> will not work with GUI applications,
+just console programs. If you need that, use <a href="https://www.boost.org/doc/libs/1_76_0/doc/html/process.html">Boost.process</a> or <code>system</code>.</p>
+
+<h3 id="toc_4">Nullbytes in output example:</h3>
 
 <p>In the example code on github you&#39;ll also see a <code>execFgets</code> function, I&#39;ve left that
 in there to show the difference in nullbyte handling. For reference I&#39;ll show an
@@ -354,7 +364,7 @@ milage may vary.</p>
 <p>Try playing with the <code>buffer</code> size and then looking at the output. If you set it to 4, the output
 with <code>fgets</code> is <code>testbc</code>. Funny right? I like such things.</p>
 
-<h3 id="toc_4">Complete code</h3>
+<h3 id="toc_5">Complete code</h3>
 
 <p>Below you can find the header file <code>command.h</code>. It is also on <a href="https://github.com/RaymiiOrg/cpp-command-output">my github</a>. If you want
 usage examples you can find them in the github project <code>main.cpp</code> file.</p>
