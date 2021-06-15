@@ -11,18 +11,19 @@ Format      : 	Markdown/HTML
 
 Hi there! I'm Remy, a developer with a focus on C, C++, linux and embedded systems.
 
-I currently work for [De Jong DUKE][11] were I develop software for an embedded 
-platform that powers coffee machines. This is a C++, C and Qt stack running
-on Yocto linux and [Nucleus RTOS][12]. It controls hardware, runs the UI and has 
-a few utilities for IoT connectivity and configuration. Technology is mostly
-C++ but includes Microsoft Visual C++, Flash, Qt and ARM kernel drivers.
+I currently work for [De Jong DUKE][11] were I develop software for an
+embedded platform that powers coffee machines. This is a C++ and Qt stack
+running on Yocto Linux. It controls hardware, runs the UI and has a few
+utilities for IoT connectivity and configuration. Technology includes
+Microsoft Visual C++ (MFC), .NET (Framework, C++/CLI and Core), Flash, Qt
+and ARM kernel drivers.
 
-I've been a Linux/UNIX sysadmin for over 10 years; I've built high-available 
-cloud environments in OpenStack, Azure or on premise with Ansible and Terraform
-(or any other configuration management tool). My sysadmin keywords are
-OpenStack, cloud, virtualization, high-availability, scaling and clustering,
-security, (Open)SSL, Python, Powershell, bash and general linux/UNIX system
-administration. 
+I've been a Linux/UNIX sysadmin for over 10 years; I've built high-available
+cloud environments in OpenStack, Azure or on premise, with Ansible, Chef,
+Puppet and Terraform (but can work with any other configuration management
+tool). My sysadmin keywords are OpenStack, cloud, virtualization,
+high-availability, scaling and clustering, security, (Open)SSL, Python,
+Powershell, bash and general linux/UNIX system administration. 
 
 I've worked in a devops role for [the Erasmus University Medical Center][3] (a
 large hospital and medical university in Rotterdam), [Digidentity][4] (a Dutch
@@ -43,7 +44,7 @@ or are based on work, opinions or policies of any of my (previous) employers.
 Any resemblance to reality is pure coincidence.
 
 This site started in 2006 as my form of (public) documentation. It has grown to
-include software, tutorials, snippets and articles on linux/UNIX, system
+include software, guides, snippets and articles on linux/UNIX, programming, system
 administration and everything related with over 10.000 unique visitors a day as
 of [2018-06][9]. The URL is the phonetic way you say my name (Ray-Mii), since
 non-Dutch speakers always have trouble with the correct pronunciation.
@@ -59,9 +60,12 @@ education, please send me an email.
 ### Contact
 
 You can reach me by email, try mailing "contact" "at" "relst" "dot" "nl". I'm
-not on any social networks, not on facebook, not on linkedin, not on twitter,
-not on identica, not on diaspora, mastodont, nowhere. Every profile on a social
-network claiming to be me is false.
+not on any social networks, not on Facebook, not on LinkedIn, not on twitter, 
+Identica, IRC, diaspora, mastodon, nowhere. Every profile on a social network 
+claiming to be me is false.
+
+In the past this page also had a GPG and S/MIME key for secure email. I removed 
+that because the usage was so low compared to the maintenance efforts.
 
 ### Disclaimer
 
@@ -72,8 +76,8 @@ same license_ to give others the same freedoms you've got and place my name and
 a link to this site with the article as source.
 
 This site uses Google Analytics for statistics and Google Adwords for
-advertisements. You are tracked and Google knows everything about you. Use an
-adblocker like ublock-origin if you don't want it.
+advertisements. You are tracked and Google knows everything about you. Use a 
+content blocker like ublock-origin if you don't want it.
 
 All the code on this website is licensed under the GNU GPL v3 license unless
 already licensed under a license which does not allows this form of licensing or
@@ -93,23 +97,22 @@ if another license is stated on that page / in that software:
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
 
-Just to be clear, the information on this website is for ment for educational
-purposes and you use it at your own risk. I do not take responsibility if you
-screw something up. Use common sense, do not `rm -rf /` as root for example. If
-you have any questions then do not hesitate to contact me.
+Just to be clear, the information on this website is for meant for educational
+purposes and you should use it at your own risk.  Use common sense, do not
+`rm -rf / --no-preserve-root` as root for example. If you have any questions
+then do not hesitate to contact me.
 
-   [1]: https://github.com/raymiiorg/
-   [2]: https://en.wikipedia.org/wiki/VolkerWessels
-   [3]: https://en.wikipedia.org/wiki/Erasmus_MC
-   [4]: https://www.digidentity.eu/
-   [5]: https://en.wikipedia.org/wiki/PKIoverheid
-   [6]: https://en.wikipedia.org/wiki/DigiD
-   [7]: https://www.cloudvps.com/about-cloudvps
-   [8]: https://raymii.org/s/static/About.html
-   [9]: https://raymii.org/s/inc/img/hits-2018.png
-   [10]: http://pool.sks-keyservers.net/pks/lookup?op=vindex&search=0x1B7F88DC&fingerprint=on
-   [11]: http://www.dejongduke.nl/
-   [12]: https://en.wikipedia.org/wiki/Nucleus_RTOS
+
+
+[2]: https://en.wikipedia.org/wiki/VolkerWessels
+[3]: https://en.wikipedia.org/wiki/Erasmus_MC
+[4]: http://web.archive.org/web/20130423160830/https://www.digidentity.eu/static/en/over-digidentity/index.html
+[5]: https://en.wikipedia.org/wiki/PKIoverheid
+[6]: https://en.wikipedia.org/wiki/DigiD
+[7]: http://web.archive.org/web/20180621194238/https://www.cloudvps.com/about-cloudvps
+[9]: https://raymii.org/s/inc/img/hits-2018.png
+[11]: http://web.archive.org/web/20190110180032/http://dejongduke.nl/
+
 
 ---
 
