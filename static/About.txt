@@ -9,7 +9,7 @@ Format      : 	Markdown/HTML
 
 
 
-Hi there! I'm Remy, a developer with a focus on C, C++, linux and embedded systems.
+Hi there! I'm Remy, a developer with a focus on C, C++, .Net, Linux and embedded systems.
 
 I currently work for [De Jong DUKE][11] were I develop software for an
 embedded platform that powers coffee machines. This is a C++ and Qt stack
