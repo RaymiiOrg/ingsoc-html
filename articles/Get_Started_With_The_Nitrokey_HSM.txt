@@ -3,6 +3,7 @@ This is a text-only version of the following page on https://raymii.org:
 Title       : 	Get started with the Nitrokey HSM or SmartCard-HSM
 Author      : 	Remy van Elst
 Date        : 	19-06-2016
+Last update : 	20-06-2021
 URL         : 	https://raymii.org/s/articles/Get_Started_With_The_Nitrokey_HSM.html
 Format      : 	Markdown/HTML
 ---
@@ -30,6 +31,16 @@ Web cluster with Apache and mod_nss and the decryption of the keys.
 ![][4]
 
 > The SmartCard-HSM
+
+
+### Changelog 
+
+#### 2021-06-20
+
+Jan-Piet Mens has written an article on using the HSM with OpenSSH
+and EC keys. When I wrote this article, OpenSSH `PKCS#11` had no 
+support, he has figured out how to get it working. It does involve
+compiling your own (newer) OpenSSH build. [Article is here: https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/](https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/).
 
 ### What is an HSM (Hardware Security Module)
 
@@ -1039,9 +1050,10 @@ I've [raised an issue][30] to see how to get EC keys and OpenSSH working.
 **Update:** `Unfortunately OpenSSH PKCS#11 interface does not support ECC`. The
 issue was updated and we now know that OpenSSH doesn't support ECC via PKCS#11.
 
+**Update 2**: [Jan-Piet Mens has figured out how to get EC keys working with OpenSSH. Article is here: https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/](https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/).
+
 This public key can be placed in the `~/.ssh/authorized_keys` file on your
-servers. I spun up a new [Digital Ocean VPS to test it. With this referral link
-you'll get a $5 VPS for 2 months free (as in, you get $10 credit).][1]
+servers. I spun up a new [Digital Ocean VPS to test it.][1]
 
 Digital Ocean automatically places the ssh key in the authorized_keys file, if
 you need to do that yourself you can use the following command:

@@ -32,7 +32,7 @@
             </header>
           
     <h2 class='headheader' id='main'>Get started with the Nitrokey HSM or SmartCard-HSM</h2>
-<p><small>Published: 19-06-2016 | Author: Remy van Elst | <a href="Get_Started_With_The_Nitrokey_HSM.txt">Text only version of this article</a>
+<p><small>Published: 19-06-2016 | Last update: 20-06-2021 | Author: Remy van Elst | <a href="Get_Started_With_The_Nitrokey_HSM.txt">Text only version of this article</a>
 </small></p>
 <div class='ad'>
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -43,65 +43,72 @@
                             <script>
                             (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
-                        </div><br><div class='olderthanayear'><p><strong>&#10071; This post is over four years old. It may no longer be up to date. Opinions may have changed.</strong></p></div>
-<div id="toc">
+                        </div><br><div id="toc">
 <h3>Table of Contents</h3>
 <ul>
 <li>
-<a href="#toc_0">What is an HSM (Hardware Security Module)</a>
-</li>
-<li>
-<a href="#toc_1">Nitrokey and SmartCard HSM</a>
-</li>
-<li>
-<a href="#toc_2">Software installation</a>
-</li>
-<li>
-<a href="#toc_3">PKCS#11, #15 and OpenSC</a>
-</li>
-<li>
-<a href="#toc_4">SO and User Pins</a>
-</li>
-<li>
-<a href="#toc_5">Warnings</a>
-</li>
-<li>
-<a href="#toc_6">HSM Backups with a DKEK</a>
-</li>
-<li>
-<a href="#toc_7">Initialize the HSM</a>
-</li>
-<li>
-<a href="#toc_8">Create a keypair</a>
-</li>
-<li>
-<a href="#toc_9">Backing up and restoring the keys with a DKEK</a>
-</li>
-<li>
-<a href="#toc_10">Using the keys</a>
-</li>
-<li>
-<a href="#toc_11">SSH Keys with the HSM</a>
+<a href="#toc_0">Changelog</a>
 <ul>
 <li>
-<a href="#toc_12">EC keys to OpenSSH</a>
+<a href="#toc_1">2021-06-20</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#toc_13">Using the HSM for Thunderbird with S/MIME</a>
+<a href="#toc_2">What is an HSM (Hardware Security Module)</a>
 </li>
 <li>
-<a href="#toc_14">Deleting objects from the HSM</a>
+<a href="#toc_3">Nitrokey and SmartCard HSM</a>
 </li>
 <li>
-<a href="#toc_15">Apache with mod_nss</a>
+<a href="#toc_4">Software installation</a>
 </li>
 <li>
-<a href="#toc_16">Decrypting the private keys of the HSM</a>
+<a href="#toc_5">PKCS#11, #15 and OpenSC</a>
 </li>
 <li>
-<a href="#toc_17">Storing arbitraty data in Elementary Files (EF)</a>
+<a href="#toc_6">SO and User Pins</a>
+</li>
+<li>
+<a href="#toc_7">Warnings</a>
+</li>
+<li>
+<a href="#toc_8">HSM Backups with a DKEK</a>
+</li>
+<li>
+<a href="#toc_9">Initialize the HSM</a>
+</li>
+<li>
+<a href="#toc_10">Create a keypair</a>
+</li>
+<li>
+<a href="#toc_11">Backing up and restoring the keys with a DKEK</a>
+</li>
+<li>
+<a href="#toc_12">Using the keys</a>
+</li>
+<li>
+<a href="#toc_13">SSH Keys with the HSM</a>
+<ul>
+<li>
+<a href="#toc_14">EC keys to OpenSSH</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_15">Using the HSM for Thunderbird with S/MIME</a>
+</li>
+<li>
+<a href="#toc_16">Deleting objects from the HSM</a>
+</li>
+<li>
+<a href="#toc_17">Apache with mod_nss</a>
+</li>
+<li>
+<a href="#toc_18">Decrypting the private keys of the HSM</a>
+</li>
+<li>
+<a href="#toc_19">Storing arbitraty data in Elementary Files (EF)</a>
 </li>
 </ul>
 
@@ -133,7 +140,16 @@ Web cluster with Apache and mod_nss and the decryption of the keys.</p>
 <p>The SmartCard-HSM</p>
 </blockquote>
 
-<h3 id="toc_0">What is an HSM (Hardware Security Module)</h3>
+<h3 id="toc_0">Changelog</h3>
+
+<h4 id="toc_1">2021-06-20</h4>
+
+<p>Jan-Piet Mens has written an article on using the HSM with OpenSSH
+and EC keys. When I wrote this article, OpenSSH <code>PKCS#11</code> had no 
+support, he has figured out how to get it working. It does involve
+compiling your own (newer) OpenSSH build. <a href="https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/">Article is here: https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/</a>.</p>
+
+<h3 id="toc_2">What is an HSM (Hardware Security Module)</h3>
 
 <p>A Hardware Security Module, HSM, is a device where secure key material is
 stored. This private data only be accessed by the HSM, it can never leave the
@@ -217,7 +233,7 @@ type of HSM device, can import these keys with a special password. The Safenet
 Protectservers called this a Transport Key, which was a long (32 bit) password
 used to export and import the key.</p>
 
-<h3 id="toc_1">Nitrokey and SmartCard HSM</h3>
+<h3 id="toc_3">Nitrokey and SmartCard HSM</h3>
 
 <p><img src="https://raymii.org/s/inc/img/nitrokey2.jpg" alt=""></p>
 
@@ -249,7 +265,7 @@ like this article, consider sponsoring me by trying out a Digital Ocean VPS.
 With this link you&#39;ll get a $5 VPS for 2 months free (as in, you get $10
 credit). (referral link)</a></p>
 
-<h3 id="toc_2">Software installation</h3>
+<h3 id="toc_4">Software installation</h3>
 
 <p>On Arch Linux you need to install the following packages:</p>
 
@@ -335,7 +351,7 @@ Slot 2 (0x5): Nitrokey Nitrokey HSM (010000000000000000000000) 01 00
   serial num         : DENK0100186
 </code></pre>
 
-<h3 id="toc_3">PKCS#11, #15 and OpenSC</h3>
+<h3 id="toc_5">PKCS#11, #15 and OpenSC</h3>
 
 <p>PKCS#11 is, as said, a software API for accessing cryptographic hardware like
 smart cards or HSM. PKCS#11 is NOT a hardware standard or hardware interface.
@@ -343,7 +359,7 @@ PKCS#15 is a format of on-card structures that defines a &quot;filesystem layout
 smart cards. PKCS#15 does not define how those structures are generated or
 written to the card.</p>
 
-<h3 id="toc_4">SO and User Pins</h3>
+<h3 id="toc_6">SO and User Pins</h3>
 
 <p>Some functions on the HSM are protected by PIN codes. There are different access
 levels, most common SO (security officer) and user. Each slot can have a
@@ -357,7 +373,7 @@ For the Nitrokey HSM the SO pin is <code>3537363231383830</code>. This is not se
 it&#39;s a publicly known code. Therefore it needs to be changed to something else.
 But before we do that, first a few warnings.</p>
 
-<h3 id="toc_5">Warnings</h3>
+<h3 id="toc_7">Warnings</h3>
 
 <p>Please read the below parts. You might render your device bricked if you use it
 wrong, and there is no way of recovering a blocked/bricked Nitrokey HSM.</p>
@@ -373,7 +389,7 @@ wrong, and there is no way of recovering a blocked/bricked Nitrokey HSM.</p>
 
 <p>So, TL;DR: NEVER ENTER THE WRONG SO PIN AND NEVER FORGET THE SO PIN.</p>
 
-<h3 id="toc_6">HSM Backups with a DKEK</h3>
+<h3 id="toc_8">HSM Backups with a DKEK</h3>
 
 <p>As said earlier, most HSM&#39;s offer a backup option. You can export the key
 material in a specific format readably by other HSM&#39;s of that type. The Safenet
@@ -441,7 +457,7 @@ dGgOu7ahEjm6YzzYWtxMnA==
 
 <p>Create more key shares if needed.</p>
 
-<h3 id="toc_7">Initialize the HSM</h3>
+<h3 id="toc_9">Initialize the HSM</h3>
 
 <p>The following command initializes the HSM. The default SO pin for the Nitrokey
 HSM is <code>3537363231383830</code>. The initialization will be done with one DKEK share
@@ -505,7 +521,7 @@ DKEK key check value : 53CA37CEED5B227F
 
 <p>Now that the HSM is initialized, we can start using it.</p>
 
-<h3 id="toc_8">Create a keypair</h3>
+<h3 id="toc_10">Create a keypair</h3>
 
 <p>The HSM supports the <a href="https://www.nitrokey.com/documentation/frequently-asked-questions#which-algorithms-and-maximum-key-length-are-supported">following</a> key types:</p>
 
@@ -642,7 +658,7 @@ Decryption (RSA)
 No errors
 </code></pre>
 
-<h3 id="toc_9">Backing up and restoring the keys with a DKEK</h3>
+<h3 id="toc_11">Backing up and restoring the keys with a DKEK</h3>
 
 <p>Now that we have some keys in the HSM, we want to make a backup. Since we&#39;ve
 generated a DKEK earlier, we can use that to create a backup of the material in
@@ -772,7 +788,7 @@ Public Key Object; EC  EC_POINT 256 bits
   Usage:      none
 </code></pre>
 
-<h3 id="toc_10">Using the keys</h3>
+<h3 id="toc_12">Using the keys</h3>
 
 <p>You can get the public keys out of the device by using the <code>pkcs15-tool</code>
 command:</p>
@@ -946,7 +962,7 @@ encryption like RSA is not suitable for large files. Please make sure you read
 both the articles to understand the subject, and then use this article to use
 the HSM.</p>
 
-<h3 id="toc_11">SSH Keys with the HSM</h3>
+<h3 id="toc_13">SSH Keys with the HSM</h3>
 
 <p>OpenSSH has support for PKCS#11, so we can use the HSM for SSH Key based
 authentication. The private key never leaves the HSM so this is more secure than
@@ -988,7 +1004,7 @@ command to lookup the ID if you don&#39;t know it.</p>
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/HG1cG6ecGnadde9g4aZCWuL1dzsgOKUstyP7yUAclEtd1GwgQKSrVPixp7jllvoW0kCCtvsT8JMV+pEytcenOpfO06n4DvqjJ1aNMqQK6xw3CeJXz1TXJe7Z7L722/w96bHioZuSRBWumAAcGUoANd/WQ3MXNAmocgvW/WGSnl3kb9Vif7hzirecmcFSaU3djeEXpu42wZG6GGdw9WlvrXV1AsrE0mLQxyZmCEOs6CF0/cyaHuUE24Jz6oOfKkeYjCQgvBUK0D1MU3odnisbvfVLGJuF9RPMBY20Hey8z6dUXQV2WMeknV9/vN2n7Nk7pxOSViIQQ3w9rc7y1f4J HSM SSH Key Remy
 </code></pre>
 
-<h4 id="toc_12">EC keys to OpenSSH</h4>
+<h4 id="toc_14">EC keys to OpenSSH</h4>
 
 <p>For EC generated keys the <code>pkcs15-tool</code> doesn&#39;t seem to work. However, because
 all keys can be converted one way or another we can dump the EC public key and
@@ -1033,9 +1049,10 @@ root@server&#39;s password:
 <p><strong>Update:</strong> <code>Unfortunately OpenSSH PKCS#11 interface does not support ECC</code>. The
 issue was updated and we now know that OpenSSH doesn&#39;t support ECC via PKCS#11.</p>
 
+<p><strong>Update 2</strong>: <a href="https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/">Jan-Piet Mens has figured out how to get EC keys working with OpenSSH. Article is here: https://jpmens.net/2021/06/16/ssh-with-a-smartcard-hsm/</a>.</p>
+
 <p>This public key can be placed in the <code>~/.ssh/authorized_keys</code> file on your
-servers. I spun up a new <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean VPS to test it. With this referral link
-you&#39;ll get a $5 VPS for 2 months free (as in, you get $10 credit).</a></p>
+servers. I spun up a new <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">Digital Ocean VPS to test it.</a></p>
 
 <p>Digital Ocean automatically places the ssh key in the authorized_keys file, if
 you need to do that yourself you can use the following command:</p>
@@ -1116,7 +1133,7 @@ command:</p>
 <pre><code>Card removed: opensc-pkcs11.so
 </code></pre>
 
-<h3 id="toc_13">Using the HSM for Thunderbird with S/MIME</h3>
+<h3 id="toc_15">Using the HSM for Thunderbird with S/MIME</h3>
 
 <p>If you want to sign your email using S/MIME and the HSM you need to generate a
 keypair and a certificate. Make sure your email address is in the label:</p>
@@ -1237,7 +1254,7 @@ certificate in the HSM:</p>
 encrypt if you have someone elses S/MIME key) the message and while sending your
 HSM LED turns on.</p>
 
-<h3 id="toc_14">Deleting objects from the HSM</h3>
+<h3 id="toc_16">Deleting objects from the HSM</h3>
 
 <p>If you are done with testing or want to free up space on the HSM you can remove
 objects from it. You can delete certificates and the private keys, either by ID
@@ -1268,7 +1285,7 @@ below command:</p>
 <p>Do note that when you remove a privkey you also remove the certificate and any
 data.</p>
 
-<h3 id="toc_15">Apache with mod_nss</h3>
+<h3 id="toc_17">Apache with mod_nss</h3>
 
 <p><img src="https://raymii.org/s/inc/img/hsm-icon.png" alt=""></p>
 
@@ -1283,7 +1300,7 @@ to manage keys on the HSM, you do that on your offline management workstation.</
 <p>The guide for mod_nss, Apache and the read-only-module <code>sc-hsm-embedded</code> is <a href="https://raymii.org/s/articles/Use_the_Nitrokey_HSM_or_SmartCard-HSM_with_sc-hsm-embedded_mod_nss_and_Apache_read_only_module.html">on
 a seperate page</a> as well.</p>
 
-<h3 id="toc_16">Decrypting the private keys of the HSM</h3>
+<h3 id="toc_18">Decrypting the private keys of the HSM</h3>
 
 <p>This is a guide which shows you how to extract private RSA key material from the
 Nitrokey HSM / SmartCard-HSM using the DKEK. This way you can get the private
@@ -1303,7 +1320,7 @@ internal DKEK of the HSM.</p>
 
 <p>This guide is on <a href="https://raymii.org/s/articles/Decrypt_NitroKey_HSM_or_SmartCard-HSM_private_keys.html">a seperate page</a> as well.</p>
 
-<h3 id="toc_17">Storing arbitraty data in Elementary Files (EF)</h3>
+<h3 id="toc_19">Storing arbitraty data in Elementary Files (EF)</h3>
 
 <p>This is a guide which shows you how to write small elementary files to a
 nitrokey HSM. This can be usefull if you want to securely store data protected

@@ -33,6 +33,12 @@
           
     <h2>Hi there!</h2>   <p>I'm Remy, a developer from The Netherlands with a focus on C++,  C, .NET, Linux and embedded systems. </p> <p>I currently work for <ahref="http://www.dejongduke.nl/">De Jong DUKE</a>  were I develop software for an embedded platform that powers coffee machines.  This is a C++ and Qt stack running on Yocto Linux. It controls hardware,  runs the UI and has a few utilities for IoT connectivity and configuration.  Technology includes Visual C++ (MFC), .NET (Core, Framework and C++/CLI),  Flash, Qt and ARM kernel drivers. I was Linux and UNIX sysadmin for over  10 years before I got into development.</p> <p>To read more or get in touch,  <a href="https://raymii.org/s/static/About.html"> click here</a>. This is my personal website, these articles do not reflect or are based on work, opinions or policies of any of my (previous) employers. <b>Any resemblance to reality is pure coincidence.</b></p>
 <h2>Latest Items</h2>
+<h4><a href="articles/Get_Started_With_The_Nitrokey_HSM.html">Get started with the Nitrokey HSM or SmartCard-HSM</a></h4>
+<small>Published: 19-06-2016 | Last update: 20-06-2021 | Author: Remy van Elst</small><br />
+<p><p>This is a guide to get started with the Nitrokey HSM (or SmartCard-HSM). It covers what a HSM is and what it can be used for. It also goes over software installation and initializing the device, including backups of the device and the keys. Finally we do some actual crypto operatons via pkcs11, OpenSSL, Apache and OpenSSH. We also cover usage in Thunderbird (S/MIME), Elementary Files (EF), a Web cluster with Apache and mod_nss and the decryption of the keys.</p>
+</p>
+<a href="articles/Get_Started_With_The_Nitrokey_HSM.html">Read more...</a><br />
+<p></p>
 <h4><a href="articles/Execute_a_command_and_get_both_output_and_exit_code.html">Execute a command and get both output and exit status in C++ (Windows & Linux)</a></h4>
 <small>07-06-2021 | Remy van Elst</small><br />
 <p><p>Recently I had to parse some command line output inside a C++ program. Executing a command and getting just the exit status is easy using <code>std::system</code>, but  also getting output is a bit harder and OS specific. By using <code>popen</code>, a POSIX <code>C</code> function we can get both the exit status as well as the output of a given command. On Windows I&#39;m using <code>_popen</code>, so the code should be cross platform, except for the exit status on Windows is alway 0, that concept does not exist there. This article starts off with a stack overflow example to  get just the output of a command and builds on that to a safer version (null-byte handling) that returns both the exit status as well as the command output. It also involves a lot of detail on <code>fread</code> vs <code>fgets</code> and how to handle binary data.</p>
@@ -101,12 +107,6 @@ I&#39;ll start with a simple <code>printf</code> with a ternary <code>if</code> 
 <p><p>This is an overview of all the servers in the Sparkling Network, mostly as an overview for myself, but it might be interesting for others. It also has a status overview of the nodes. Prices are monthly, excluding VAT.</p>
 </p>
 <a href="software/Sparkling_Network.html">Read more...</a><br />
-<p></p>
-<h4><a href="snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html">Record your Linux Desktop with ffmpeg and slop to any format</a></h4>
-<small>17-03-2021 | Remy van Elst</small><br />
-<p><p>This two-line shell script allows you to record a region of your linux desktop to a video file, or a <code>.gif</code>, using <code>slop</code> and <code>ffmpeg</code>. I use it often when a screenshot is not enough, or when you need to explain a sequence of events to someone.</p>
-</p>
-<a href="snippets/Record_your_Linux_Desktop_with_ffmpeg_and_slop.html">Read more...</a><br />
 <p></p>
 <h4><a href="tags/all.html">View all Items</a>
 </h4>

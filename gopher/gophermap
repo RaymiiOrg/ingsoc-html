@@ -12,7 +12,7 @@ i                                                   	/	localhost	70
 i            Quis custodiet ipsos custodes?         	/	localhost	70
 i                                                   	/	localhost	70
 i            This page was last updated on:         	/	localhost	70
-i            2021-06-15T15:35:37	/	localhost	70
+i            2021-06-20T13:23:45	/	localhost	70
 i  	/	localhost	70
 0Read more about me and this site	About.txt	raymii.org	70
 1Raymii.org Gopher RSS feed	feed.xml	raymii.org	70
@@ -353,8 +353,8 @@ i 	/	localhost	70
 0Nagios - Hide all hosts in hostgroup (30-07-2013)	Nagios_-_Hide-entire-hostgroup.txt	raymii.org	70
 0Diffie Hellman Key Exchange Dutch Notes and Example (28-07-2013)	Diffie-Hellman-Key-Exchange-Dutch-Notes.txt	raymii.org	70
 0OpenSSL - Generate Psuedo Random Passwords (26-07-2013)	OpenSSL_Password_Generator.txt	raymii.org	70
-0Stong SSL Security on Lighttpd (24-07-2013)	Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0My Todo.txt Workflow, including Unison, Todour and Android (24-07-2013)	My_Todo.txt_Workflow.txt	raymii.org	70
+0Stong SSL Security on Lighttpd (24-07-2013)	Pass_the_SSL_Labs_Test_on_Lighttpd_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0Pass the SSL Labs Test on NGINX (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (23-07-2013)	Pass_the_SSL_Labs_Test_on_NGINX_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0Pass the SSL Labs Test on Apache2 (Mitigate the CRIME and BEAST attack, Disable SSLv2 and Enable Perfect Forward Secrecy). (20-07-2013)	Pass_the_SSL_Labs_Test_on_Apache2_(Mitigate_the_CRIME_and_BEAST_attack_-_Disable_SSLv2_-_Enable_PFS).txt	raymii.org	70
 0OS X: Disable Notification Center (10-07-2013)	OS_X-Disable_Notification_Centre.txt	raymii.org	70
@@ -375,8 +375,8 @@ i 	/	localhost	70
 0Hide or determine BIND version number (08-05-2013)	Get_DNS_server_version_and_hide_it_in_BIND.txt	raymii.org	70
 0Nagios plugin to check an OCSP server (06-05-2013)	Nagios_plugin_to_check_OCSP.txt	raymii.org	70
 0Nagios plugin to check Safenet HSM (03-05-2013)	Nagios_Plugin_to_check_a_Safenet_HSM.txt	raymii.org	70
-0Join Mac OS X to an Active Directory / OpenDLAP directory from the commandline (02-05-2013)	OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt	raymii.org	70
 0Nagios plugin to check CRL expiry in minutes (02-05-2013)	Nagios_plugin_to_check_CRL_expiry.txt	raymii.org	70
+0Join Mac OS X to an Active Directory / OpenDLAP directory from the commandline (02-05-2013)	OS-X-Add-or_Remove_Mac_to_Active_Directory_or_OpenLDAP_Domain.txt	raymii.org	70
 0HP ILO - Quickly gather ILO version and firmware information via CURL (13-04-2013)	HP-ILO-Quickly-gather-firmware-and-version-information-with-CUR.txt	raymii.org	70
 0Munin plugin to show Logstash/Kibana messages per hour (12-04-2013)	Munin_plugin_Logstash_Kibana_messages_per_hour.txt	raymii.org	70
 0Set up a Collectd client (09-04-2013)	Collectd_client_setup_tutorial.txt	raymii.org	70
