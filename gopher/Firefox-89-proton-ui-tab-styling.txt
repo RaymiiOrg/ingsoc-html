@@ -129,6 +129,11 @@ the browser to see the changes.
 Most of the CSS came from [this article][8], customized to my liking (no rounded corners or fancy
 purple/yellow colours). Also the tab bar height was added.
 
+How do you find out that you need to use those specific class names? If you
+want to tweak the UI further, you can inspect the Firefox UI via the Browser Toolbox
+(You can [enable it in the Developer Tools][9] settings and then press
+Ctrl+Alt+Shift+I). (Thank you to `gillescastel` on Lobste.rs).
+
 [1]: https://web.archive.org/web/20210616060802/https://blog.mozilla.org/en/mozilla/news/modern-clean-new-firefox-clears-the-way-to-all-you-need-online/
 [2]: http://web.archive.org/web/20210627183546/http://n-gate.com/hackernews/2020/09/
 [3]: http://web.archive.org/web/20210627183744/https://bugzilla.mozilla.org/show_bug.cgi?id=1709425
@@ -137,6 +142,7 @@ purple/yellow colours). Also the tab bar height was added.
 [6]: /s/inc/img/ff-89-tabbar-proton-disabled.png
 [7]: /s/inc/img/ff-profile-folder.png
 [8]: http://web.archive.org/web/20210627190427/https://amitp.blogspot.com/2021/06/firefox-89-tab-appearance.html
+[9]: https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox
 
 ---
 
