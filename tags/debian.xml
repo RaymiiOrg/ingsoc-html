@@ -7,6 +7,15 @@
             <atom:link href="https://raymii.org/s/tags/debian.xml" rel="self" type="application/rss+xml" />
     
             <item>
+                <title>Using IceWM and a Raspberry Pi as my main PC, sharing my theme, config and some tips and tricks.</title> 
+                <link>https://raymii.org/s/blog/Using_IceWM_and_sharing_my_config_and_tips_tricks.html</link> 
+                <guid>https://raymii.org/s/blog/Using_IceWM_and_sharing_my_config_and_tips_tricks.html</guid>
+                <description>KDE is my desktop environment of choice. KDE5 is rock-solid, configurable in any way possible and works great. It treats you like a responsible adult instead of a child like GNOME does these days, and after XFCE switched to GTK3, the RAM usage is on-par, more often than not a bare KDE install (Debian or Arch) uses around 300MB ram. This is with Baloo (search indexer) and Akonadi (PIM database backend) disabled. Great default behaviour, low resource usage and enourmous configurability, so why is this post then titled 'IceWM'? At home I'm using a small ARM device (Raspberry Pi 4 with an SSD) as my main computer, and there resources are limited. KDE runs fine, but you notice that it is a bit slower than on my work computer. IceWM on the other hand, uses less than 30 MB of RAM and even less CPU. The program that gives you a desktop background, icewmbg, uses double the RAM of IceWM itself! IceWM, next to Awesome, is one of my favorite window managers, very configurable and provides all I need. This PC doesn't have multiple screens, which would be a bit more of a hassle than with KDE. After switching, the machine feels a lot faster. It's the small details in which I notice it, like text input, a few seconds of lag here and there. This post shows my IceWM config including some options explained, my IceWM theme and a few tips and tricks to configure the rest of the desktop.</description> 
+                <pubDate>Sat, 10 Jul 2021 00:00:00 GMT</pubDate>
+                <lastBuildDate>Sat, 10 Jul 2021 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
                 <title>All packages that were present in Ubuntu 18.04 but absent in Ubuntu 20.04</title> 
                 <link>https://raymii.org/s/articles/All_packages_that_were_present_in_Ubuntu_18.04_but_removed_in_20.04.html</link> 
                 <guid>https://raymii.org/s/articles/All_packages_that_were_present_in_Ubuntu_18.04_but_removed_in_20.04.html</guid>
@@ -226,24 +235,6 @@ The snap packaging is based on work by Phil Roche, he wrote about re-packaging o
             </item>
     
             <item>
-                <title>IPSEC L2TP VPN on Ubuntu 12.04 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html</guid>
-                <description>Not available.</description> 
-                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
-                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
-                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
-                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
-                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
-                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
-                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
-            </item>
-    
-            <item>
                 <title>IPSEC L2TP VPN on Ubuntu 12.10 with OpenSwan, xl2tpd and ppp</title> 
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.10.html</guid>
@@ -257,6 +248,24 @@ The snap packaging is based on work by Phil Roche, he wrote about re-packaging o
                 <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</link> 
                 <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_13.10.html</guid>
                 <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 13.10 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step.</description> 
+                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>IPSEC L2TP VPN on Ubuntu 12.04 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_12.04.html</guid>
+                <description>Not available.</description> 
+                <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
+                <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
+            </item>
+    
+            <item>
+                <title>IPSEC L2TP VPN on Ubuntu 14.04 with OpenSwan, xl2tpd and ppp</title> 
+                <link>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</link> 
+                <guid>https://raymii.org/s/tutorials/IPSEC_L2TP_vpn_with_Ubuntu_14.04.html</guid>
+                <description>This is a guide on setting up an IPSEC/L2TP vpn server with Ubuntu 14.04 using Openswan as the IPsec server, xl2tpd as the l2tp provider and ppp or local users / PAM for authentication. It has a detailed explanation with every step. We choose the IPSEC/L2TP protocol stack because of recent vulnerabilities found in pptpd VPNs and because it is supported on all major operating systems by default. More than ever, your freedom and privacy when online is under threat. Governments and ISPs want to control what you can and can't see while keeping a record of everything you do, and even the shady-looking guy lurking around your coffee shop or the airport gate can grab your bank details easier than you may think. A self hosted VPN lets you surf the web the way it was intended: anonymously and without oversight.</description> 
                 <pubDate>Mon, 01 Dec 2014 00:00:00 GMT</pubDate>
                 <lastBuildDate>Mon, 01 Dec 2014 00:00:00 GMT</lastBuildDate>
             </item>
