@@ -16,6 +16,17 @@ KDE is my desktop environment of choice. KDE5 is rock-solid, configurable in any
 <p> <a href="https://github.com/sponsors/RaymiiOrg/">Consider sponsoring me on Github. It means the world to me if you show your appreciation and you'll help pay the server costs.</a><br><br> <a href="https://www.digitalocean.com/?refcode=7435ae6b8212">You can also sponsor me by getting a Digital Ocean VPS. With this referral link you'll get $100 credit for 60 days. </a><br> </p>
 
 
+If you're wondering why I use a Raspberry Pi, it has to do with my commute and
+the weight of my backpack. For the past few years I'd only have work computers
+at home, sometimes workstations and sometimes laptops (heavy due to the specs).
+Nothing that actually was mine. We are going back to the office instead of full
+remote work, what drew me over the line was the weight of my current work
+laptop. When cycling to work its really noticeable if you have 3 kilograms less
+weight in your bag. Without laptop and power brick, I'm only carrying lunch, a
+tire repair kit and my wallet. Why not leave the laptop at work? Well, it's
+uncertain if the next day I'll be at work due to covid. Maybe a coworker has to
+quarantine and so do we or maybe the rules change. Also, just  tinkering and
+playing around with the Pi 4, is fun.
 
 ### Resource Usage
 
